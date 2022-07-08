@@ -1,14 +1,13 @@
 package edu.kh.bangbanggokgok.controller.main;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class MainController {
-	
-	@RequestMapping("/main")
-	public String mainForward() {
-		return "/NewFile";
+
+	@GetMapping("/main")
+	public String main() {
+		return "NewFile";
 	}
-	
 }
