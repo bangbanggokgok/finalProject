@@ -1,0 +1,229 @@
+*{
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+body,html,.header,.main-container
+,.content,.content>form,.input-row
+,.all-modal,.mod-top,.mod-bot,.all *{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+body{
+    width: 1140px;
+    height: 730.25px;
+    background-color: #bbd0ff47;
+}
+
+.header{
+    height: 150px;
+    width: 600px;
+    margin-bottom: 50px;
+}
+
+.main-container{
+    width: 700px;
+    height: 420px;
+}
+
+.controller{
+    width: 75%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.controller>div{
+    width: 32%;
+    height: 100%;
+    text-align: center;
+    border: 2px solid #bbd0ff;
+    border-radius: 13px;
+    padding : 6px;
+    display: flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.controller>div>span{
+    font-size: 20px;
+    letter-spacing: -3px;
+}
+
+.content{
+    width: 75%;
+    height: 100%;
+}
+
+.content>form{
+    width: 100%;
+    height: 100%;
+    border: 2px #1BB3FE solid;
+    background-color: white;
+    margin-top: 12px;
+    border-radius: 8px;
+    padding: 36px;
+    box-shadow: 5px 5px 7px 1px rgb(68 68 68 / 8%);
+}
+
+/* 토글용  */
+.controller>.selected-div{
+    border: 2px #1BB3FE solid;
+    box-shadow: 5px 5px 7px 1px rgb(68 68 68 / 8%);
+}
+
+.controller>.selected-div>span{
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.input-row{
+    flex-direction: row;
+    width: 87.2%;
+    height: 20.3%;
+    margin: 12px;
+}
+
+.input-row input{
+    width: 100%;
+    height: 88%;
+    padding-left: 20px;
+    border: none;
+    border-radius: 8px;
+    letter-spacing: -0.5px;
+    border: 2px #1BB3FE solid;
+}
+
+.input-row input:focus{
+    outline: none;
+    box-shadow: inset 4px 4px 3px 3px rgb(73 69 69 / 36%);
+    padding-left: 24px;
+    padding-top: 4px;    
+    transition-duration: 80ms;
+}
+
+.img-container{
+    margin-right: 13px;
+    width: 44px;
+    height: 44px;
+}
+
+.img-container img{
+    width: 44px;
+    height: 42px;
+}
+
+ /* #1BB3FE #1F3A93 #bbd0ff  */
+.submit-button{
+    background-color: #1BB3FE;
+    color: aliceblue;
+    margin-top: 30px;
+    width: 87.2%;
+    height: 40px;
+    font-size: 23px;
+    letter-spacing: -2px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.submit-button:hover{
+    background-color: #1F3A93;
+    transition-duration: 120ms;
+}
+
+.content>.hidden-object{
+    display: none;
+    width: 0;
+    height: 0;
+}
+
+.account-sign-up{
+    margin-top: 10px;
+    height: 18px;
+    width: 48px;
+}
+.account-sign-up a{
+    font-size: 14px;
+    letter-spacing: -2px;
+    color: #1BB3FE;
+    text-decoration: none;
+}
+.account-sign-up a:hover{
+    text-decoration: underline;
+}
+
+/* 이메일 찾기 관련 모달 */
+/* .all-modal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+} */
+
+.modal{
+    width: 100%;
+    height: 100%;
+    background-color: #22222391;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.modal>div{
+    width: 525px;
+    height: 200px;
+    background-color: white;
+    transition : opacity 0.5s;
+}
+
+.modal>div:first-child{
+    background-color: #1F3A93;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.modal>div:first-child>div{
+    color: white;
+}
+.modal>div:last-child{
+    border-end-end-radius: 20px;
+    border-end-start-radius: 20px;
+}
+.close{
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
+}
+.close>img{
+    width: 50px;
+    height: 75px;
+    cursor: pointer;
+}
+
+/* .all-modal-opacity{
+    display: none;
+} */
+.all-modal-opacity{
+    opacity : 0;
+	transition : opacity 1s;
+    z-index: -999;
+}
+
+all-modal{
+    opacity : 1;
+    transition : opacity 1s;
+    z-index: 999;
+}
+
+.unstaged {
+	top: -100px;
+	height : 0;
+}
