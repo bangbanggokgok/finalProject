@@ -15,10 +15,10 @@ public class LoginController {
 		return "loginPage/loginPage";
 	}
 	
-	@PostMapping("")
-	public String login(User user) {
-		return "loginPage/loginPage";
-	}
+//	@PostMapping("")
+//	public String login(User user) {
+//		return "loginPage/loginPage";
+//	}
 	
 	
 	public String findAccount() {
