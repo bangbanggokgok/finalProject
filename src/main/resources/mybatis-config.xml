@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+
+	<!-- SqlSessionTamplate -->
+	<settings>
+		<!-- 값 삽입/수정 시 값이 null 일 경우 NULL로 삽입/수정 -->
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	
+	<!-- 별칭 -->
+	<typeAliases>
+
+	</typeAliases>
+
+	<!-- sql 작성 파일 매핑 -->
+	<mappers>
+
+	</mappers>
+
+</configuration>
