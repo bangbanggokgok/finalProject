@@ -9,5 +9,6 @@
 <body>
 	<h1>test</h1>
 	test
+	<a href="${contextPath}/login">로그인 페이지 ${contextPath}</a>
 </body>
 </html>
