@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마이페이지</title>
+
+    <link rel="stylesheet" href="../resources/css/myPage-main.css">
+    <link rel="stylesheet" href="../resources/css/myPage-board.css">
+
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+    
+</head>
+<body>
+    <main>
+        헤더
+    </main>
+
+    <div class="myPage-container">
+        <div class="myPage-profile-area">
+            <div class="myPage-profile">
+                
+                <div class="myPage-image-area">
+                    <form action="#">
+                        <div class="myPage-image">
+                            <img src="../resources/images/user.png">
+                            <span id="delete-image">&times;</span>
+                        </div>
+                        <div class="image-btn-area">
+                            <button>변 경</button>
+                            <button>취 소</button>
+                        </div>
+                    </form>
+                </div>
+    
+                <div class="myPage-myInfo">
+                    <h2>[ 방방 ]님의 현재 정보</h2>
+                    <div class="myPage-row">
+                        <span>아이디 : </span>
+                        <span>user@xx.co.kr</span>
+                    </div>
+                    <div class="myPage-row">
+                        <span>닉네임 : </span>
+                        <span>방방</span>
+                    </div>
+                    <div class="myPage-row">
+                        <span>연락처 : </span>
+                        <span>01012345678</span>
+                    </div>
+                    <div class="myPage-row">
+                        <span>주&nbsp;&nbsp;소 : </span>
+                        <span>서울시 중구 남대문로</span>
+                    </div>
+                    <div class="myPage-row">
+                        <span>가입일 : </span>
+                        <span>2022.06.30</span>
+                    </div>
+                    <div class="myInfo-btn">
+                        <a href="myPage-changeInfo.html">정보수정</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="myPage-nav">
+            <ul>
+                <li><a href="myPage-favorite.html">내 즐겨찾기 조회</a></li>
+                <span>|</span>
+                <li><a href="myPage-course.html">내 코스 조회</a></li>
+                <span>|</span>
+                <li><a href="myPage-reply.html">내 댓글 조회</a></li>
+                <span>|</span>
+                <li><a href="myPage-inquiry.html">1:1 문의</a></li>
+            </ul>
+        </div>
+
+        <section class="board-list">
+            <h1 class="board-name">1:1 문의</h1>
+            
+            <div class="btn-area">
+                <button id="insert-btn">문의하기</button>
+            </div>
+
+            <div class="list-wrapper">
+                <table class="list-table">
+                    <thead>
+                        <tr>
+                            <th>번호</th>
+                            <th>제목</th>
+                            <th>작성일</th>
+                            <th>답변여부</th>
+                        </tr>
+                    </thead>
+    
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>
+                                <a href="#">문의합니다.</a>
+                            </td>
+                            <td>2022.07.06</td>
+                            <td>미답변</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>
+                                <a href="#">문의합니다.</a>
+                            </td>
+                            <td>2022.07.06</td>
+                            <td>미답변</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>
+                                <a href="#">문의합니다.</a>
+                            </td>
+                            <td>2022.07.06</td>
+                            <td>미답변</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>
+                                <a href="#">문의합니다.</a>
+                            </td>
+                            <td>2022.07.06</td>
+                            <td>미답변</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+    
+
+            <div class="pagination-area">
+                <ul class="pagination">
+                    <li><a href="#">&lt;&lt;</a></li>
+                    <li><a href="#">&lt;</a></li>
+                    <li><a class="current">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">7</a></li>
+                    <li><a href="#">8</a></li>
+                    <li><a href="#">9</a></li>
+                    <li><a href="#">10</a></li>
+                    <li><a href="#">&gt;</a></li>
+                    <li><a href="#">&gt;&gt;</a></li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    
+</body>
+</html>
