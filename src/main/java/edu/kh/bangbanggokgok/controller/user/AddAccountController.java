@@ -5,14 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import edu.kh.bangbanggokgok.service.user.UserService;
+import edu.kh.bangbanggokgok.service.user.UserServiceImpl;
 
-@Controller
+//@Controller
 public class AddAccountController {
 
-	@Autowired
-	private UserService service;
+//	@Autowired
+	private UserServiceImpl service;
 	
-	@PostMapping()
+//	@PostMapping()
 	public int addAccount() {
 		return 1;
 	}
