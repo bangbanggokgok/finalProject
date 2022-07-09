@@ -6,6 +6,12 @@
 
 *{font-family: 'NanumBarunGothic';}
 
+.myPage-container{
+    display: flex;
+    width: 1000px;
+    height: 650px;
+    margin: auto;
+}
 
 .myInfo-content{
     width: 650px;
@@ -103,12 +109,6 @@
 
 
 /* 정보 수정 사이드메뉴 */
-.myPage-content{
-    display: flex;
-    width: 1000px;
-    margin: auto;
-}
-
 .left-side{
     width: 20%;
     background-color: #bbd0ff4f;
