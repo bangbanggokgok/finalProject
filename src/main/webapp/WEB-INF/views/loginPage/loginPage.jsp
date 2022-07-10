@@ -7,12 +7,12 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>로그인 페이지</title>
+	<title>로그인페이지</title>
    <link rel="stylesheet" href="${contextPath}/resources/css/loginPage/login-page-css.css">
 </head>
 <body>
     <div class="header">
-        <a href="#"><img src="${contextPath}/resources/images/loginPageImage/KakaoTalk_20220706_164429231.png" alt="logo"></a>
+        <a href="#"><img src="${contextPath}/resources/images/loginPage/KakaoTalk_20220706_164429231.png" alt="logo"></a>
     </div>
     <div class="wrapper">
         <div class="main-container">
@@ -26,13 +26,13 @@
                 <form action="login" method="post" onsubmit="return login()">
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/letter-removebg-preview.png" alt="">
+                            <img src="${contextPath}/resources/images/loginPage/letter-removebg-preview.png" alt="">
                         </div>
                         <input type="email" name="email" placeholder="이메일" autocomplete="off">
                     </div>
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/pwIcon.png" alt="">
+                            <img src="${contextPath}/resources/images/loginPage/pwIcon.png" alt="">
                         </div>
                         <input type="password" name="password" placeholder="비밀번호" autocomplete="off">
                     </div>
@@ -43,13 +43,13 @@
                 <form action="#" method="post" class="hidden-object">
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/telIcon.png" alt="폰이미지">
+                            <img src="${contextPath}/resources/images/loginPage/telIcon.png" alt="폰이미지">
                         </div>
                         <input type="tel" name="userTel" placeholder="전화번호(-제외)" autocomplete="off">
                     </div>
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/idIcon.png" alt="">
+                            <img src="${contextPath}/resources/images/loginPage/idIcon.png" alt="">
                         </div>
                         <input type="text" name="uesrName" placeholder="성함" autocomplete="off">
                     </div>
@@ -60,13 +60,13 @@
                 <form action="reset-password" method="post" class="hidden-object" onsubmit="return resetPassword()">
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/letter-removebg-preview.png" alt="">
+                            <img src="${contextPath}/resources/images/loginPage/letter-removebg-preview.png" alt="">
                         </div>
                         <input type="email" name="RPEmail" placeholder="이메일" autocomplete="off">
                     </div>
                     <div class="input-row">
                         <div class="img-container">
-                            <img src="${contextPath}/resources/images/loginPageImage/idIcon.png" alt="">
+                            <img src="${contextPath}/resources/images/loginPage/idIcon.png" alt="">
                         </div>
                         <input type="text" name="RPUserName" placeholder="성함" autocomplete="off">
                     </div>
@@ -81,7 +81,7 @@
             <div class="mod-top all-modal-opacity unstaged">
                 <div class="name-data all-modal-opacity unstaged"> 임*현 님의 회원가입된 이메일은 </div>
             </div>
-            <button class="close all-modal-opacity unstaged"><img src="../final_html/css/resources/800px-Letter_x_negative.png" class="all-modal-opacity" alt=""></button>
+            <button class="close all-modal-opacity unstaged"><img src="${contextPath}/resources/images/loginPage/800px-Letter_x_negative.png" class="all-modal-opacity" alt=""></button>
             <div class="mod-bot all-modal-opacity unstaged">
                 <div class="email-data all-modal-opacity unstaged"> fi***@naver.com (앞의 두자리만 오픈)</div>
             </div>
@@ -89,6 +89,6 @@
     </div>
     <div id="a">모달용</div>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script src="${contextPath}/resources/js/loginPageJS/login-page.js"></script>
+    <script src="${contextPath}/resources/js/loginPage/login-page.js"></script>
 </body>
 </html>

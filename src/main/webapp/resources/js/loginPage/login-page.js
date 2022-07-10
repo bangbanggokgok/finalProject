@@ -65,31 +65,21 @@ function resetPassword() {
         alert("성함을 입력해주세요.");
         return false;
     }
-
 };
 
 $('.close').click(function(){
-    $('.all').children().toggleClass("all-modal");
-    $('.all').children().children().toggleClass("all-modal");
-    $('.all').children().children().children().toggleClass("all-modal");
-    $('.all').children().toggleClass("unstaged");
-    $('.all').children().children().toggleClass("unstaged");
-    $('.all').children().children().children().toggleClass("unstaged");
-    $('.all').children().toggleClass("all-modal-opacity");
-    $('.all').children().children().toggleClass("all-modal-opacity");
-    $('.all').children().children().children().toggleClass("all-modal-opacity");
-
+    $('.all *').toggleClass("all-modal-opacity");
+    $('.all *').toggleClass("all-modal");
+    
+    $('.all *').on('transitionend', function(e){
+        $('.all *').toggleClass("unstaged");
+        $('.all *').off('transitionend',arguments.callee);
+      });
 })
 
+// 모달테스트용
 $("#a").click(function(){
-    $('.all').children().toggleClass("all-modal");
-    $('.all').children().children().toggleClass("all-modal");
-    $('.all').children().children().children().toggleClass("all-modal");
-    $('.all').children().toggleClass("unstaged");
-    $('.all').children().children().toggleClass("unstaged");
-    $('.all').children().children().children().toggleClass("unstaged");
-    $('.all').children().toggleClass("all-modal-opacity");
-    $('.all').children().children().toggleClass("all-modal-opacity");
-    $('.all').children().children().children().toggleClass("all-modal-opacity");
-
+    $('.all *').toggleClass("unstaged");
+    $('.all *').toggleClass("all-modal-opacity");
+    $('.all *').toggleClass("all-modal");
 })
