@@ -8,15 +8,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 
-<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
-
-<link
-	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
-	rel="stylesheet">
+	<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
+	
+	<link
+		href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
+		rel="stylesheet">
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 	<main>
-		헤더
 
 		<section class="signUp-content">
 			<h1 class="page-title">회원가입</h1>
