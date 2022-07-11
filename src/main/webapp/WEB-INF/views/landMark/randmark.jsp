@@ -17,10 +17,10 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     /> -->
-    <link rel="stylesheet" href="../../resources/css/common/nav.css" />
-    <link rel="stylesheet" href="../../resources/css/randmark/randmark.css" />
-    <link rel="stylesheet" href="../../resources/css/randmark/style.css" />
-    <script src="../../resources/js/randmark/randmark.js"></script>
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/randmark.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/style.css" />
+    <script src="${contextPath}/resources/js/randmark/randmark.js"></script>
 
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -30,7 +30,7 @@
   <body>
     <nav id="mainNavbar1" class="nav">
       <a href="#" class="nav-title"
-        ><img class="logo" src="../../resources/images/logo.png" alt=""
+        ><img class="logo" src="${contextPath}/resources/images/logo.png" alt=""
       /></a>
 
       <div class="navbarWrap">
@@ -64,21 +64,21 @@
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/1.jpg"
+              src="${contextPath}/resources/images/randmark/1.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/2.jpg"
+              src="${contextPath}/resources/images/randmark/2.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/3.jpg"
+              src="${contextPath}/resources/images/randmark/3.jpg"
               alt="first_img"
             />
           </li>
@@ -92,14 +92,14 @@
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/4.jpg"
+              src="${contextPath}/resources/images/randmark/4.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/5.jpg"
+              src="${contextPath}/resources/images/randmark/5.jpg"
               alt="first_img"
             />
           </li>
@@ -319,7 +319,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="../../resources/js/common/nav.js"></script>
-    <script src="../../resources/js/randmark/main.js"></script>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/randmark/main.js"></script>
   </body>
 </html>

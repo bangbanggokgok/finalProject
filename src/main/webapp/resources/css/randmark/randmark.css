@@ -22,11 +22,12 @@ body {
     /* height:50%; */
     /* position: absolute; */
 }
+
 .container {
     position: relative;
     width: 100%;	
     /* height:300px; */
-    /* overflow: hidden;	    */
+    overflow: hidden;	   
     padding-bottom: 80px; 
 }
 
