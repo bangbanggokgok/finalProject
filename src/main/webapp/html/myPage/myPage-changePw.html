@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>비밀번호 변경</title>
+
+    <link rel="stylesheet" href="../resources/css/myPage/changeInfo.css">
+    <link rel="stylesheet" href="../resources/css/footer.css">
+
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+</head>
+<body>
+    <main>
+        헤더
+
+        <section class="myPage-container">
+            <section class="left-side">
+                <ul>
+                    <li><a href="myPage-changeInfo.html">회원정보 수정</a></li>
+                    <li><a href="myPage-changePw.html">비밀번호 변경</a></li>
+                    <li><a href="myPage-seccession.html">회원 탈퇴</a></li>
+                </ul>
+            </section>
+
+            <section class="myInfo-content">
+                <h1 class="page-title">비밀번호 변경</h1>
+
+                <form action="#">
+
+                    <div class="myInfo-row">
+                        <label for="memberPw">현재 비밀번호</label>
+                        <input type="password" id="memberPw" required>
+                    </div>
+                    <span class="myInfo-message">현재 비밀번호를 입력해주세요.</span>
+    
+                    <div class="myInfo-row">
+                        <label for="changePw">변경 비밀번호</label>
+                        <input type="password" id="changePw" required>
+                    </div>
+                    <span class="myInfo-message">영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+    
+                    <div class="myInfo-row">
+                        <label for="changePwConfirm">비밀번호 확인</label>
+                        <input type="password" id="changePwConfirm" required>
+                    </div>
+                    <span class="myInfo-message">변경 비밀번호가 일치하지 않습니다.</span>
+
+
+                    <div class="myInfo-row">
+                        <button id="myInfo-btn">변 경 하 기</button>
+                    </div>
+                    
+                </form>
+            </section>
+        </section>
+
+    </main>
+
+    <footer>
+        <img src="../resources/images/logo.png">
+        <div>
+            <span>방방곡곡</span><br>
+            <span>고객센터 : cs@bangbang.com</span><br>
+            <span>서울시 중구 남대문로 120, 2층</span>
+        </div>
+    </footer>
+
+</body>
+</html>
