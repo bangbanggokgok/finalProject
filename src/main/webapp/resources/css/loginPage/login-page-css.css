@@ -208,22 +208,17 @@ body{
     cursor: pointer;
 }
 
-/* .all-modal-opacity{
-    display: none;
-} */
 .all-modal-opacity{
     opacity : 0;
-	transition : opacity 1s;
-    z-index: -999;
+	transition : opacity 0.6s;
 }
 
-all-modal{
+.all-modal{
     opacity : 1;
-    transition : opacity 1s;
-    z-index: 999;
+    transition : opacity 0.6s;
 }
 
 .unstaged {
 	top: -100px;
-	height : 0;
+    height : 0;
 }

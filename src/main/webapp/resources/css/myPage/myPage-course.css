@@ -1,0 +1,53 @@
+/* 마이페이지 코스 조회 */
+
+.board-list{
+    width: 1000px;
+    margin: auto;
+}
+
+.course-list, .on{
+    height: 250px;
+    display: flex;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.course-content{
+    flex-basis: 25%;
+    padding: 5px;
+}
+
+.course-img{
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+}
+
+.course-img > a{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px 30px;
+
+    color: white;
+    text-decoration: none;
+}
+
+.course-img h1{
+    height: 120px;
+}
+
+.course-img ul{
+    font-size: 15px;
+    list-style: none;
+    padding: 0;
+}
+
+.course-img > img{
+    width: 100%;
+}
+
