@@ -13,11 +13,11 @@ function findEmail() {
     const uesrName = $("input[name=uesrName]").val();
 
     if ($.trim(userTel).length == 0) {
-        alert("해당 전화번호를 기입해주세요.");
+        alert("해당 전화번호를 기입해주세요.")
         return false;
     }
     if ($.trim(uesrName).length == 0) {
-        alert("가입했던 성함을 입력해주세요.");
+        alert("가입했던 성함을 입력해주세요.")
         return false;
     }
 

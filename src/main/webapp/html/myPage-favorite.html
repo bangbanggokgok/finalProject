@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
 
-    <link rel="stylesheet" href="../resources/css/myPage/myPage-main.css">
-    <link rel="stylesheet" href="../resources/css/myPage/myPage-course.css">
-    <link rel="stylesheet" href="../resources/css/myPage/myPage-favorite.css">
+    <link rel="stylesheet" href="../resources/css/myPage-main.css">
+    <link rel="stylesheet" href="../resources/css/myPage-favorite.css">
     <link rel="stylesheet" href="../resources/css/footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
@@ -24,22 +23,15 @@
                 <div class="myPage-profile">
                     
                     <div class="myPage-image-area">
-                        <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return profileValidate()">
-                            
+                        <form action="#">
                             <div class="myPage-image">
-                                <label for="input-image">
-                                    <img src="../resources/images/user.png" id="profile-image">
-                                </label>
-                                <input type="file" name="uploadImage" id="input-image" accept="image/*">
+                                <img src="../resources/images/user.png">
+                                <span id="delete-image">&times;</span>
                             </div>
-                            
                             <div class="image-btn-area">
                                 <button>변 경</button>
-                                <button type="reset" id="delete-image">취 소</button>
+                                <button>취 소</button>
                             </div>
-                            
-                            <!-- 삭제버튼 hidden -->
-                            <input type="hidden" name="delete" id="delete" value="0">
                         </form>
                     </div>
         
@@ -88,139 +80,83 @@
                 <h1 class="board-name">내 즐겨찾기</h1>
                 
                 <div class="favorite-tab">
-                    <ul class="tab_title">
-                        <li class="current-tab">랜드마크</li>
-                        <li>코스</li>
+                    <ul>
+                        <li><a href="#landmark-list" class="current-tab">랜드마크</a></li>
+                        <li><a href="#">코스</a></li>
                     </ul>
                 </div>
 
-                <div class="tab_content">
 
-                    <!-- 랜드마크 즐겨찾기 -->
-                    <div class="landmark-list" id="landmark-list">
-                        <div class="landmark-content">
-                            <div class="landmark-img">
-                                <img src="../resources/images/lottetower.JPEG">
-                            </div>
-                            <div class="landmark-text">
-                                <!-- 클릭 시 랜드마크 바로가기 -->
-                                <h3><a href="#">[ 롯데타워 ]</a></h3>
-                                <div>
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                </div>
-                            </div>
+                <div class="landmark-list" id="landmark-list">
+                    <div class="landmark-content">
+                        <div class="landmark-img">
+                            <img src="../resources/images/lottetower.JPEG">
                         </div>
-                        <div class="landmark-content">
-                            <div class="landmark-img">
-                                <img src="../resources/images/lottetower.JPEG">
-                            </div>
-                            <div class="landmark-text">
-                                <!-- 클릭 시 랜드마크 바로가기 -->
-                                <h3><a href="#">[ 롯데타워 ]</a></h3>
-                                <div>
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                </div>
-                            </div>
-                        </div>
-                        <div class="landmark-content">
-                            <div class="landmark-img">
-                                <img src="../resources/images/lottetower.JPEG">
-                            </div>
-                            <div class="landmark-text">
-                                <!-- 클릭 시 랜드마크 바로가기 -->
-                                <h3><a href="#">[ 롯데타워 ]</a></h3>
-                                <div>
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                </div>
-                            </div>
-                        </div>
-                        <div class="landmark-content">
-                            <div class="landmark-img">
-                                <img src="../resources/images/lottetower.JPEG">
-                            </div>
-                            <div class="landmark-text">
-                                <!-- 클릭 시 랜드마크 바로가기 -->
-                                <h3><a href="#">[ 롯데타워 ]</a></h3>
-                                <div>
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                    롯데타워 정보정보정보
-                                </div>
+                        <div class="landmark-text">
+                            <!-- 클릭 시 랜드마크 바로가기 -->
+                            <h3><a href="#">[ 롯데타워 ]</a></h3>
+                            <div>
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- 코스 즐겨찾기 -->
-                    <div class="course-list" id="course-list">
-                        <div class="course-content">
-                            <div class="course-img">
-                                <a href="#">
-                                    <h1>서울 여행 </h1>
-                                    <ul>
-                                        <li>지역 : 서울</li>
-                                        <li>총거리 : 77.7km</li>
-                                    </ul>
-                                </a>
-                                <img src="../resources/images/lottetower.JPEG">
+                    <div class="landmark-content">
+                        <div class="landmark-img">
+                            <img src="../resources/images/lottetower.JPEG">
+                        </div>
+                        <div class="landmark-text">
+                            <!-- 클릭 시 랜드마크 바로가기 -->
+                            <h3><a href="#">[ 롯데타워 ]</a></h3>
+                            <div>
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
                             </div>
                         </div>
-                        <div class="course-content">
-                            <div class="course-img">
-                                <a href="#">
-                                    <h1>서울 여행 </h1>
-                                    <ul>
-                                        <li>지역 : 서울</li>
-                                        <li>총거리 : 77.7km</li>
-                                    </ul>
-                                </a>
-                                <img src="../resources/images/lottetower.JPEG">
+                    </div>
+                    <div class="landmark-content">
+                        <div class="landmark-img">
+                            <img src="../resources/images/lottetower.JPEG">
+                        </div>
+                        <div class="landmark-text">
+                            <!-- 클릭 시 랜드마크 바로가기 -->
+                            <h3><a href="#">[ 롯데타워 ]</a></h3>
+                            <div>
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
                             </div>
                         </div>
-                        <div class="course-content">
-                            <div class="course-img">
-                                <a href="#">
-                                    <h1>서울 여행 </h1>
-                                    <ul>
-                                        <li>지역 : 서울</li>
-                                        <li>총거리 : 77.7km</li>
-                                    </ul>
-                                </a>
-                                <img src="../resources/images/lottetower.JPEG">
-                            </div>
+                    </div>
+                    <div class="landmark-content">
+                        <div class="landmark-img">
+                            <img src="../resources/images/lottetower.JPEG">
                         </div>
-                        <div class="course-content">
-                            <div class="course-img">
-                                <a href="#">
-                                    <h1>서울 여행 </h1>
-                                    <ul>
-                                        <li>지역 : 서울</li>
-                                        <li>총거리 : 77.7km</li>
-                                    </ul>
-                                </a>
-                                <img src="../resources/images/lottetower.JPEG">
+                        <div class="landmark-text">
+                            <!-- 클릭 시 랜드마크 바로가기 -->
+                            <h3><a href="#">[ 롯데타워 ]</a></h3>
+                            <div>
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
+                                롯데타워 정보정보정보
                             </div>
                         </div>
                     </div>
@@ -259,10 +195,6 @@
         </div>
     </footer>
 
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        
-    <script src="../resources/js/myPage/myPage.js"></script>
     
 </body>
 </html>
