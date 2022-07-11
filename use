@@ -1,9 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2022-07-11T03:06:59.788Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.49" etag="9q-qm6aRiqvHTdGqJjIp" version="20.0.4" type="github">
+<mxfile host="app.diagrams.net" modified="2022-07-11T03:08:02.226Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.114 Safari/537.36 Edg/103.0.1264.49" etag="_SKtjXAnPjd6guSib80E" version="20.0.4" type="github">
   <diagram id="KQdm0W3e0moU9vXbKYJW" name="Page-1">
-    <mxGraphModel dx="2184" dy="1561" grid="1" gridSize="13" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2397" dy="1678" grid="1" gridSize="13" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="0" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="xXcrSLBOJPmgamrQWPbc-67" value="게시글 검색" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="-108" y="-315" width="140" height="70" as="geometry" />
+        </mxCell>
         <mxCell id="xXcrSLBOJPmgamrQWPbc-17" value="랜드마크 목록조회" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="213" y="39" width="140" height="70" as="geometry" />
         </mxCell>
@@ -264,9 +267,6 @@
         </mxCell>
         <mxCell id="xXcrSLBOJPmgamrQWPbc-96" value="회원 등록" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-108" y="-385" width="140" height="70" as="geometry" />
-        </mxCell>
-        <mxCell id="xXcrSLBOJPmgamrQWPbc-67" value="게시글 검색" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-108" y="-315" width="140" height="70" as="geometry" />
         </mxCell>
         <mxCell id="xXcrSLBOJPmgamrQWPbc-119" value="회원탈퇴" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-108" y="-245" width="140" height="70" as="geometry" />
