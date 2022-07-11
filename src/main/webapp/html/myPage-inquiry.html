@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>마이페이지</title>
 
-    <link rel="stylesheet" href="../resources/css/myPage-main.css">
-    <link rel="stylesheet" href="../resources/css/myPage-board.css">
+    <link rel="stylesheet" href="../resources/css/myPage/myPage-main.css">
+    <link rel="stylesheet" href="../resources/css/myPage/myPage-board.css">
     <link rel="stylesheet" href="../resources/css/footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
@@ -22,15 +22,22 @@
                 <div class="myPage-profile">
                     
                     <div class="myPage-image-area">
-                        <form action="#">
+                        <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return profileValidate()">
+                            
                             <div class="myPage-image">
-                                <img src="../resources/images/user.png">
-                                <span id="delete-image">&times;</span>
+                                <label for="input-image">
+                                    <img src="../resources/images/user.png" id="profile-image">
+                                </label>
+                                <input type="file" name="uploadImage" id="input-image" accept="image/*">
                             </div>
+                            
                             <div class="image-btn-area">
                                 <button>변 경</button>
-                                <button>취 소</button>
+                                <button type="reset" id="delete-image">취 소</button>
                             </div>
+                            
+                            <!-- 삭제버튼 hidden -->
+                            <input type="hidden" name="delete" id="delete" value="0">
                         </form>
                     </div>
         
@@ -162,6 +169,10 @@
             <span>서울시 중구 남대문로 120, 2층</span>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        
+    <script src="../resources/js/myPage/myPage.js"></script>
     
 </body>
 </html>
