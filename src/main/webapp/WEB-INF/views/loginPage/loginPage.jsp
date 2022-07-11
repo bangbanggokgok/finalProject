@@ -37,7 +37,7 @@
                         <input type="password" name="password" placeholder="비밀번호" autocomplete="off">
                     </div>
                     <button class="submit-button">로그인</button>
-                    <div class="account-sign-up"><span><a href="#">회원가입</a></span></div>
+                    <div class="account-sign-up"><span><a href="${contextPath}/addAccount">회원가입</a></span></div>
                 </form>
 
                 <form action="#" method="post" class="hidden-object">
