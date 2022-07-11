@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <link rel="stylesheet" href="../resources/css/member/signUp.css">
+    <link rel="stylesheet" href="../resources/css/common/footer.css">
+
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+</head>
+<body>
+    <main>
+        헤더
+
+        <section class="signUp-content">
+            <h1 class="page-title">회원가입</h1>
+
+            <form action="#" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
+
+                <div class="signUp-row">
+                    <label for="memberEmail">아이디(이메일)</label>
+                    <input type="text" id="memberEmail" placeholder="ex) user@xx.co.kr" maxlength="30" autocomplete="off" required>
+                    <button type="button" id="sendBtn">인증번호 전송</button>
+                </div>
+                <span class="signUp-message" id="emailMessage">사용 가능한 이메일 주소를 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="emailCheck">인증번호</label>
+                    <input type="text" id="cNumber" placeholder="인증번호 6자리" maxlength="6" autocomplete="off" required>
+                    <button type="button" id="cBtn">확인</button>
+                </div>
+                <span class="signUp-message" id="cMessage">인증 번호를 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="memberName">이름</label>
+                    <input type="text" id="memberName" placeholder="ex) 유저일" required>
+                </div>
+                <span class="signUp-message">한글, 영어만 입력해주세요.</span>
+                
+                <div class="signUp-row">
+                    <label for="memberPw">비밀번호</label>
+                    <input type="password" id="memberPw" placeholder="비밀번호 입력" required>
+                </div>
+                <span class="signUp-message">영어, 숫자, 특수문자(!,@,#,-,_) 6~20글자 사이로 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="memberPwConfirm">비밀번호 확인</label>
+                    <input type="password" id="memberPwConfirm" placeholder="비밀번호 확인" required>
+                </div>
+                <span class="signUp-message">비밀번호가 일치하지 않습니다.</span>
+
+                <div class="signUp-row">
+                    <label for="memberTel">전화번호</label>
+                    <input type="text" id="memberTel" placeholder="ex) 01012345678" required>
+                </div>
+                <span class="signUp-message">전화번호를 입력해주세요.(- 제외)</span>
+            
+                <div class="signUp-row">
+                    <label for="memberAddress">주소</label>
+                
+                    <input type="text" id="sample4_postcode" name="memberAddress"
+                        placeholder="우편번호" maxlength="6" required>
+                    
+                    <button type="button" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
+                </div>
+                    
+                <div class="signUp-row">
+                    <label for=""></label>
+                    <input type="text" id="sample4_roadAddress" name="memberAddress" placeholder="도로명주소" required>
+                </div>
+                
+                <div class="signUp-row">
+                    <label for=""></label>
+                    <input type="text" id="sample4_detailAddress" name="memberAddress" placeholder="상세주소" required>
+                </div>
+
+                <div class="signUp-row">
+                    <button id="signUp-btn">가 입 하 기</button>
+                </div>
+                
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <img src="../resources/images/logo.png">
+        <div>
+            <span>방방곡곡</span><br>
+            <span>고객센터 : cs@bangbang.com</span><br>
+            <span>서울시 중구 남대문로 120, 2층</span>
+        </div>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ 
+    <script src="../resources/js/member/signUp.js"></script>
+</body>
+</html>
