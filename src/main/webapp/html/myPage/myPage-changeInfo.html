@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보 수정</title>
+
+    <link rel="stylesheet" href="../resources/css/myPage/changeInfo.css">
+    <link rel="stylesheet" href="../resources/css/footer.css">
+
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+</head>
+<body>
+    <main>
+        헤더
+
+        <section class="myPage-container">
+            <section class="left-side">
+                <ul>
+                    <li><a href="myPage-changeInfo.html">회원정보 수정</a></li>
+                    <li><a href="myPage-changePw.html">비밀번호 변경</a></li>
+                    <li><a href="myPage-seccession.html">회원 탈퇴</a></li>
+                </ul>
+            </section>
+
+            <section class="myInfo-content">
+                <h1 class="page-title">회원정보 수정</h1>
+
+                <form action="#">
+
+                    <div class="myInfo-row">
+                        <label for="memberName">이름</label>
+                        <input type="text" id="memberName" value="">
+                    </div>
+                    <span class="myInfo-message">한글, 영어만 입력해주세요.</span>
+                    
+                    <div class="myInfo-row">
+                        <label for="memberTel">전화번호</label>
+                        <input type="text" id="memberTel" value="">
+                    </div>
+                    <span class="myInfo-message">전화번호를 입력해주세요.(- 제외)</span>
+                
+                    <div class="myInfo-row">
+                        <label>주소</label>
+                        <input type="text" id="sample4_postcode" name="memberAddress" value="" maxlength="6">
+                        <button type="button" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
+                    </div>
+                        
+                    <div class="myInfo-row">
+                        <label for=""></label>
+                        <input type="text" id="sample4_roadAddress" name="memberAddress" value="">
+                    </div>
+                    
+                    <div class="myInfo-row">
+                        <label for=""></label>
+                        <input type="text" id="sample4_detailAddress" name="memberAddress" value="">
+                    </div>
+
+                    <div class="myInfo-row">
+                        <button id="myInfo-btn">수 정 하 기</button>
+                    </div>
+                    
+                </form>
+            </section>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <img src="../resources/images/logo.png">
+        <div>
+            <span>방방곡곡</span><br>
+            <span>고객센터 : cs@bangbang.com</span><br>
+            <span>서울시 중구 남대문로 120, 2층</span>
+        </div>
+    </footer>
+
+</body>
+</html>

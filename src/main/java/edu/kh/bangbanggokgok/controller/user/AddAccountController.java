@@ -10,7 +10,7 @@ import edu.kh.bangbanggokgok.service.user.UserService;
 import edu.kh.bangbanggokgok.service.user.UserServiceImpl;
 
 @Controller
-@RequestMapping("/addAccount/*")
+@RequestMapping("addAccount")
 public class AddAccountController {
 
 //	@Autowired
@@ -18,7 +18,7 @@ public class AddAccountController {
 	
 	@GetMapping("")
 	public String addAcount() {
-		return "addAccount/addAccount";
+		return "addAccount/signUp";
 	}
 	
 	@PostMapping("")
