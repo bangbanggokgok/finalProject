@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +8,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 
-<link rel="stylesheet" href="../resources/css/signUp.css">
+<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
 
 <link
 	href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
 	rel="stylesheet">
-
 </head>
 <body>
 	<main>
@@ -84,10 +85,8 @@
 				<div class="signUp-row">
 					<button id="signUp-btn">가 입 하 기</button>
 				</div>
-
 			</form>
 		</section>
 	</main>
-
 </body>
 </html>
