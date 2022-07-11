@@ -4,6 +4,9 @@
 
 *{font-family: 'NanumBarunGothic';}
 
+body{
+	margin-top: 120px;
+}
 
 .signUp-content{
     width: 650px;

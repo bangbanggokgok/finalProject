@@ -28,35 +28,7 @@
     ></script>
   </head>
   <body>
-    <nav id="mainNavbar1" class="nav">
-      <a href="#" class="nav-title"
-        ><img class="logo" src="${contextPath}/resources/images/logo.png" alt=""
-      /></a>
-
-      <div class="navbarWrap">
-        <ul class="nav-nav">
-          <li>
-            <a href="#" class="nav-menu">코스</a>
-          </li>
-          <li>
-            <a href="#" class="nav-menu">랜드마크</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul class="nav-in">
-          <li>
-            <a href="#" class="login-btn nav-hover">로그인</a>
-          </li>
-          <li>
-            <a href="#" class="signUp-btn nav-hover">회원가입</a>
-          </li>
-        </ul>
-        <!--         <a href="#" class="login-btn nav-hover">로그인</a>
-        <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
-      </div>
-      <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
-    </nav>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
     <section id="slide1">
       <div class="container">
