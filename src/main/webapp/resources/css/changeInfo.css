@@ -1,0 +1,138 @@
+/* 회원 정보 수정 */
+/* 비밀번호 변경 */
+/* 회원 탈퇴 */
+
+/* * {border: 1px solid black;} */
+
+*{font-family: 'NanumBarunGothic';}
+
+.myPage-container{
+    display: flex;
+    width: 1000px;
+    height: 650px;
+    margin: auto;
+}
+
+.myInfo-content{
+    width: 650px;
+    margin: auto;
+}
+
+.myInfo-content > form{
+    height: 500px;
+    margin: auto;
+}
+
+.myInfo-explanation{
+    width: 500px;
+    margin: 20px auto;
+    align-items: center;
+}
+
+/* 페이지 이름 */
+.page-title{
+    height: 50px;
+    border-bottom: 3px solid #bbd0ff;
+}
+
+/* 정보 수정 부분 */
+.myInfo-row{
+    margin: 10px 60px -8px 60px;
+    display: flex; 
+    align-items: center
+}
+
+.myInfo-row > label{
+    width: 100px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #1F3A93;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.myInfo-row > input{
+    width: 300px;
+    height: 30px;
+    font-size: 13px;
+    margin: 10px;
+}
+
+.myInfo-row > button{
+    width: 100px;
+    height: 30px;
+    color: white;
+    background-color: #1F3A93;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.myInfo-row > button:hover{
+    font-weight: bold;
+    color: #1F3A93;
+    background-color: white;
+    border: 1px solid #1F3A93;
+}
+
+#myInfo-btn{
+    width: 310px;
+    height: 40px;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 20px;
+    color: black;
+    background-color: #bbd0ff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#myInfo-btn:hover{
+    color: #1F3A93;
+    background-color: white;
+    border: 3px solid #bbd0ff;
+}
+
+
+/* 회원가입 메세지 */
+.myInfo-message{
+    margin-left: 170px;
+    font-size: 0.8em;
+    color: #1BB3FE;
+}
+
+.confirm{ color : #bbd0ff;}
+.error{  color : red;  }
+
+
+
+/* 정보 수정 사이드메뉴 */
+.left-side{
+    width: 20%;
+    background-color: #bbd0ff4f;
+}
+
+.left-side ul{
+    margin-top: 40px;
+}
+
+.left-side li{
+    margin-bottom: 20px;
+}
+
+.left-side a{
+    color: #1F3A93;
+    font-size: 17px;
+    text-decoration: none;
+    
+}
+
+.left-side a:hover{
+    color: #1BB3FE;
+    font-size: 17px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
