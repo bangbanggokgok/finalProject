@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="header">
-        <a href="${contextPath}"><img src="${contextPath}/resources/images/loginPage/KakaoTalk_20220706_164429231.png" alt="logo"></a>
+        <a href="#"><img src="${contextPath}/resources/images/loginPage/KakaoTalk_20220706_164429231.png" alt="logo"></a>
     </div>
     <div class="wrapper">
         <div class="main-container">
