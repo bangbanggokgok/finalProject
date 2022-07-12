@@ -4,7 +4,7 @@
 
 /* * {border: 1px solid black;} */
 
-section *, footer {font-family: 'NanumBarunGothic';}
+section * {font-family: 'NanumBarunGothic';}
 
 body{
 	margin-top: 120px;
@@ -119,6 +119,7 @@ body{
 }
 
 .left-side ul{
+    margin: auto;
     margin-top: 40px;
 }
 

@@ -1,5 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -11,49 +12,12 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="../../resources/css/common/nav.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../resources/css/common/footer.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="../../resources/css/landmark/land-detail.css"
+      href="${contextPath}/resources/css/landmark/land-detail.css"
     />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style1.css" /> -->
   </head>
   <body>
-    <nav id="mainNavbar1" class="nav">
-      <a href="#" class="nav-title"
-        ><img class="logo" src="../../resources/images/logo.png" alt=""
-      /></a>
-
-      <div class="navbarWrap">
-        <ul class="nav-nav">
-          <li>
-            <a href="#" class="nav-menu">코스</a>
-          </li>
-          <li>
-            <a href="#" class="nav-menu">랜드마크</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul class="nav-in">
-          <li>
-            <a href="#" class="login-btn nav-hover">로그인</a>
-          </li>
-          <li>
-            <a href="#" class="signUp-btn nav-hover">회원가입</a>
-          </li>
-        </ul>
-      </div>
-      <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
-    </nav>
-
+  	<jsp:include page="/WEB-INF/views/common/nav.jsp"/>
     <section id="contents">
       <div class="titleType1">
         <div class="area_tag">
@@ -90,21 +54,21 @@
                 <li class="slide">
                   <img
                     class="slide-img"
-                    src="../../resources/images/randmark/1.jpg"
+                    src="${contextPath}/resources/images/randmark/1.jpg"
                     alt="first_img"
                   />
                 </li>
                 <li class="slide">
                   <img
                     class="slide-img"
-                    src="../../resources/images/randmark/2.jpg"
+                    src="${contextPath}/resources/images/randmark/2.jpg"
                     alt="first_img"
                   />
                 </li>
                 <li class="slide">
                   <img
                     class="slide-img"
-                    src="../../resources/images/randmark/3.jpg"
+                    src="${contextPath}/resources/images/randmark/3.jpg"
                     alt="first_img"
                   />
                 </li>
@@ -120,8 +84,8 @@
             <!-- end container -->
           </div>
           <div class="second-img">
-            <img src="../../resources/images/randmark/3.jpg" alt="" />
-            <img src="../../resources/images/randmark/3.jpg" alt="" />
+            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
+            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
           </div>
         </section>
         <section id="section2" class="section2" data-num="1">
@@ -187,99 +151,7 @@
       </main>
     </section>
 
-    <footer class="foot">
-      <div class="foot_in">
-        <div class="foot-content">
-          <div class="foot-title">
-            <!-- <i class="fa-solid fa-face-laugh-wink"></i> -->
-            방방곡곡 사진들을 SNS에 업로드하세요!
-          </div>
-          <ul class="sns-list">
-            <li>
-              <i class="fa-solid fa-blog"></i>
-              <a
-                href="https://section.blog.naver.com/BlogHome.naver?directoryNo=0&currentPage=1&groupId=0"
-                >블로그</a
-              >
-            </li>
-            <li>
-              <i class="fa-brands fa-facebook"></i>
-              <a href="https://www.facebook.com/" target="_blank">페이스북</a>
-            </li>
-            <li>
-              <i class="fa-brands fa-twitter"></i>
-              <a href="https://twitter.com/" target="_blank">트위터</a>
-            </li>
-            <li>
-              <i class="fa-brands fa-instagram"></i>
-              <a href="https://instagram.com/" target="_blank">인스타그램</a>
-            </li>
-            <li>
-              <i class="fa-brands fa-youtube"></i>
-              <a href="https://youtube.com/" target="_blank">유튜브</a>
-            </li>
-          </ul>
-        </div>
-        <ul class="btn_menu">
-          <li>개인정보처리방침</li>
-          <li>이용약관</li>
-          <li>저작권정책</li>
-          <li>고객서비스현장</li>
-          <li>Q&A</li>
-          <li></li>
-        </ul>
-        <ul class="ft_address"></ul>
-      </div>
-      <div class="footer_pcLogo">
-        <div class="btn_footLogo">
-          <span>
-            <i class="fa-solid fa-building"></i>
-            방방곡곡
-          </span>
-          <span>tel : 02-1100-1100</span>
-          <span>email : bangbang@naver.com</span>
-          <span>address : 서울 특별시 종로구 홍지동 125번지 </span>
-        </div>
-        <ul class="logo_list">
-          <li>
-            <a href="http://api.visitkorea.or.kr/" target="_blank" title="새창"
-              ><img
-                src="https://cdn.visitkorea.or.kr/resources/images/common/logo_foot_api.png"
-                alt="TourAPI 3.0"
-              />
-            </a>
-          </li>
-          <li>
-            <a
-              href="http://www.wa.or.kr/board/list.asp?BoardID=0006"
-              target="_blank"
-              title="새창"
-              ><img
-                src="https://cdn.visitkorea.or.kr/resources/images/common/logo_foot_wa.png"
-                alt="과학기술정보통신부 웹 접근성 품질인증 마크"
-            /></a>
-          </li>
-          <li>
-            <a
-              href="http://kto.visitkorea.or.kr/kor.kto"
-              target="_blank"
-              title="새창"
-              ><img
-                src="https://cdn.visitkorea.or.kr/resources/images/common/logo_foot_gg.png"
-                alt="한국관광공사"
-            /></a>
-          </li>
-          <li>
-            <a href="http://www.mcst.go.kr/" target="_blank" title="새창"
-              ><img
-                src="https://cdn.visitkorea.or.kr/resources/images/common/logo_foot_mg.png"
-                alt="문화체육관광부"
-            /></a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-
+	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -287,29 +159,29 @@
     ></script>
     <script
       type="text/javascript"
-      src="../../resources/js/landmark/jquery-1.9.1.min.js"
+      src="${contextPath}/resources/js/landmark/jquery-1.9.1.min.js"
     ></script>
     <script
       type="text/javascript"
-      src="../../resources/js/landmark/jquery.easing.1.3.min.js"
+      src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"
     ></script>
     <!-- <script type="text/javascript" src="js/script.js"></script> -->
     <script
       type="text/javascript"
-      src="../../resources/js/common/nav.js"
+      src="${contextPath}/resources/js/common/nav.js"
     ></script>
     <script
       type="text/javascript"
-      src="../../resources/js/landmark/scroll_menu.js"
+      src="${contextPath}/resources/js/landmark/scroll_menu.js"
     ></script>
     <script
       type="text/javascript"
-      src="../../resources/js/landmark/script.js"
+      src="${contextPath}/resources/js/landmark/script.js"
     ></script>
     <script
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"
     ></script>
-    <script src="../../resources/js/landmark/location.js"></script>
+    <script src="${contextPath}/resources/js/landmark/location.js"></script>
   </body>
 </html>

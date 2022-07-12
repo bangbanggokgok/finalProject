@@ -23,10 +23,13 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public int login(String email, String password) {
-		String matchPW = dao.matchPW();
-		
-		return 0;
+	public User login(String email, String password) {
+		String matchPW = dao.matchPW(email);
+		if(bcrypt.matches(password, matchPW)) {
+			User loginUser = dao.login(email);
+			return loginUser;
+		}
+		return null;
 	}
 
 }
