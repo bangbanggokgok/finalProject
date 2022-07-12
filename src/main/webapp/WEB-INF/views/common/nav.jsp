@@ -41,15 +41,23 @@
       </div>
       <div>
         <ul class="nav-in">
+        <c:if test="${empty loginUser}">
           <li>
             <a href="${contextPath}/user/login" class="login-btn nav-hover">로그인</a>
           </li>
           <li>
             <a href="${contextPath}/addAccount/sign-up" class="signUp-btn nav-hover">회원가입</a>
           </li>
+        </c:if>
+		<c:if test="${!empty loginUser}">
+			<li>
+				<a href="#" class="login-btn nav-hover">내 정보 조회</a>
+			</li>
+			<li>
+				<a href="#" class="signUp-btn nav-hover">로그아웃</a>
+			</li>
+		</c:if>
         </ul>
-        <!--         <a href="#" class="login-btn nav-hover">로그인</a>
-        <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
       </div>
       <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
     </nav>

@@ -24,9 +24,20 @@ public class UserDAO {
 		return sqlSession.insert("userMapper.addAccount",account);
 	}
 
-	public String matchPW() {
-		// TODO Auto-generated method stub
-		return null;
+	/** 로그인계정 비밀번호 조회
+	 * @param email
+	 * @return
+	 */
+	public String matchPW(String email) {
+		return sqlSession.selectOne("userMapper.matchPW",email);
+	}
+
+	/** 로그인 유저 정보
+	 * @param email
+	 * @return
+	 */
+	public User login(String email) {
+		return sqlSession.selectOne("userMapper.login",email);
 	}
 
 }
