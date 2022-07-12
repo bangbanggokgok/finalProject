@@ -2,7 +2,7 @@
 
 /* * {border: 1px solid black;} */
 
-section *, footer {font-family: 'NanumBarunGothic';}
+section * {font-family: 'NanumBarunGothic';}
 
 html{
     display: flex;
