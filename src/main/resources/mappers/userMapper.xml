@@ -19,4 +19,17 @@
 		(SEQ_USER_NO.NEXTVAL,#{userEmail},#{userPW},#{userName},#{userTel},DEFAULT,#{userAddress},DEFAULT,DEFAULT,DEFAULT)
 	</insert>
 	
+	<select id="matchPW" parameterType="string" resultType="string">
+		SELECT USER_PW
+		FROM USER_TB
+		WHERE USER_EMAIL = #{email}
+		AND SECESSION_DT IS NULL
+	</select>
+	
+	<select id="login" parameterType="string" resultMap="user_RM">
+		SELECT USER_NO,USER_EMAIL,USER_NAME,USER_PHONE,ADMIN_FL,USER_ADDRESS,REGIST_DT,USER_PROFILE
+		FROM USER_TB
+		WHERE USER_EMAIL = #{email}
+		AND SECESSION_DT IS NULL
+	</select>
 </mapper>
