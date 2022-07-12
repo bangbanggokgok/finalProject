@@ -6,11 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보 수정</title>
 
-    <link rel="stylesheet" href="../../resources/css/common/nav.css">
     <link rel="stylesheet" href="../../resources/css/myPage/changeInfo.css">
-    <link rel="stylesheet" href="../../resources/css/common/footer.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet"/>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
     <script src="https://kit.fontawesome.com/243327ab3a.js" crossorigin="anonymous"></script>
@@ -18,35 +15,6 @@
 </head>
 <body>
     <main>
-        <nav id="mainNavbar1" class="nav">
-            <a href="#" class="nav-title"
-              ><img class="logo" src="../../resources/images/logo.png" alt=""
-            /></a>
-      
-            <div class="navbarWrap">
-              <ul class="nav-nav">
-                <li>
-                  <a href="#" class="nav-menu">코스</a>
-                </li>
-                <li>
-                  <a href="#" class="nav-menu">랜드마크</a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <ul class="nav-in">
-                <li>
-                  <a href="#" class="login-btn nav-hover">로그인</a>
-                </li>
-                <li>
-                  <a href="#" class="signUp-btn nav-hover">회원가입</a>
-                </li>
-              </ul>
-              <!--         <a href="#" class="login-btn nav-hover">로그인</a>
-              <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
-            </div>
-            <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
-        </nav>
 
         <section class="myPage-container">
             <section class="left-side">
@@ -60,35 +28,36 @@
             <section class="myInfo-content">
                 <h1 class="page-title">회원정보 수정</h1>
 
-                <form action="#">
+                <form action="#" method="POST" name="myPage-form" onsubmit="return infoValidate()">
 
                     <div class="myInfo-row">
-                        <label for="memberName">이름</label>
-                        <input type="text" id="memberName" value="">
+                        <label for="userName">이름</label>
+                        <input type="text" id="userName" maxlength="8" value="">
                     </div>
-                    <span class="myInfo-message">한글, 영어만 입력해주세요.</span>
+                    <span class="myInfo-message" id="nameMessage">한글만 입력해주세요.</span>
                     
                     <div class="myInfo-row">
-                        <label for="memberTel">전화번호</label>
-                        <input type="text" id="memberTel" value="">
+                        <label for="userTel">전화번호</label>
+                        <input type="text" id="userTel" maxlength="11" value="">
                     </div>
-                    <span class="myInfo-message">전화번호를 입력해주세요.(- 제외)</span>
+                    <span class="myInfo-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
                 
                     <div class="myInfo-row">
                         <label>주소</label>
-                        <input type="text" id="sample4_postcode" name="memberAddress" value="" maxlength="6">
-                        <button type="button" onclick="sample4_execDaumPostcode()">우편번호 찾기</button>
+                        <input type="text" id="sample2_postcode" name="userAddress" maxlength="6" value="">
+                        <button type="button" onclick="sample2_execDaumPostcode()">우편번호 찾기</button>
                     </div>
                         
                     <div class="myInfo-row">
-                        <label for=""></label>
-                        <input type="text" id="sample4_roadAddress" name="memberAddress" value="">
+                        <label></label>
+                        <input type="text" id="sample2_address" name="userAddress" value="">
                     </div>
                     
                     <div class="myInfo-row">
-                        <label for=""></label>
-                        <input type="text" id="sample4_detailAddress" name="memberAddress" value="">
+                        <label></label>
+                        <input type="text" id="sample2_detailAddress" name="userAddress" value="">
                     </div>
+                    <span class="myInfo-message" id="addrMessage"></span>
 
                     <div class="myInfo-row">
                         <button id="myInfo-btn">수 정 하 기</button>
@@ -101,18 +70,17 @@
     </main>
 
 
-    <footer>
-        <img src="../../resources/images/logo.png">
-        <div>
-            <span>방방곡곡</span><br>
-            <span>고객센터 : cs@bangbang.com</span><br>
-            <span>서울시 중구 남대문로 120, 2층</span>
-        </div>
-    </footer>
+    <!-- 우편번호 찾기 팝업 -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
  
-    <script src="../../resources/js/common/nav.js"></script>
+    <!-- 주소 API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script src="../../resources/js/myPage/myPage.js"></script>
 
 </body>
 </html>

@@ -7,14 +7,12 @@
     <title>회원 탈퇴</title>
 
     <link rel="stylesheet" href="../../resources/css/myPage/changeInfo.css">
-    <link rel="stylesheet" href="../../resources/css/common/footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
 </head>
 <body>
     <main>
-        헤더
 
         <section class="myPage-container">
             <section class="left-side">
@@ -28,15 +26,15 @@
             <section class="myInfo-content">
                 <h1 class="page-title">회원 탈퇴</h1>
 
-                <form action="#">
+                <form action="#" method="POST" name="myPage-form" onsubmit="return secessionValidate()">
                     <div class="myInfo-explanation">
                         <span>* 탈퇴를 원하는 경우 현재 비밀번호를 입력 후 탈퇴하기 버튼을 클릭 해주세요.</span>
                     </div>
                 
 
                     <div class="myInfo-row">
-                        <label for="memberPw">현재 비밀번호</label>
-                        <input type="password" id="memberPw" required>
+                        <label for="userPw">현재 비밀번호</label>
+                        <input type="password" id="userPw" required>
                     </div>
                     <span class="myInfo-message">현재 비밀번호를 입력해주세요.</span>
 
@@ -50,14 +48,9 @@
 
     </main>
 
-    <footer>
-        <img src="../../resources/images/logo.png">
-        <div>
-            <span>방방곡곡</span><br>
-            <span>고객센터 : cs@bangbang.com</span><br>
-            <span>서울시 중구 남대문로 120, 2층</span>
-        </div>
-    </footer>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="../../resources/js/myPage/myPage.js"></script>
 
 </body>
 </html>
