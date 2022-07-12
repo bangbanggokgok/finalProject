@@ -13,7 +13,6 @@
     margin: 5px 25px;
     background-color: white;
 }
-
 .favorite-tab > ul{
     display: flex;
     list-style: none;
@@ -21,17 +20,14 @@
     margin: 0;
     height: 100%;
 }
-.favorite-tab li{
-    flex: 1 1 150px; 
-}
 .current-tab{
     font-weight: bold;
     background-color: #bbd0ff;
     border: 1px solid #1BB3FE;
     border-radius: 10px;
 }
-
-.favorite-tab a{
+.favorite-tab li{
+    flex: 1 1 150px; 
     display: block;
     height: 100%;
     padding: 10px 0;
@@ -39,8 +35,9 @@
     text-decoration: none;
     font-size: 1.1em;
     color: black;
+    cursor: pointer;
 }
-.favorite-tab a:hover{
+.favorite-tab li:hover{
     border: 1px solid #1BB3FE;
     border-radius: 10px;
     font-weight: bold;
@@ -48,7 +45,7 @@
 
 
 /* 랜드마크 정보 */
-.landmark-list{
+.landmark-list, .on{
     display: flex;
     margin: auto;
     margin-bottom: 20px;
@@ -57,7 +54,6 @@
     flex-basis: 25%;
     text-align: center;
 }
-
 .landmark-img > img{
     width: 200px;
     height: 200px;
@@ -79,4 +75,10 @@
     display: -webkit-box;
     -webkit-line-clamp: 5;
     -webkit-box-orient: vertical;
+}
+
+
+/* 즐겨찾기 탭 */
+.course-list{
+    display: none;
 }

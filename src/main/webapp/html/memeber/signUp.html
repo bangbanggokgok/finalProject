@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+
+    <link rel="stylesheet" href="../../resources/css/member/signUp.css">
+    <link rel="stylesheet" href="../../resources/css/common/nav.css">
+    <link rel="stylesheet" href="../../resources/css/common/footer.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet"/>
+    <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/243327ab3a.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <main>
+        <nav id="mainNavbar1" class="nav">
+            <a href="#" class="nav-title"
+              ><img class="logo" src="../../resources/images/logo.png" alt=""
+            /></a>
+      
+            <div class="navbarWrap">
+              <ul class="nav-nav">
+                <li>
+                  <a href="#" class="nav-menu">코스</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-menu">랜드마크</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="nav-in">
+                <li>
+                  <a href="#" class="login-btn nav-hover">로그인</a>
+                </li>
+                <li>
+                  <a href="#" class="signUp-btn nav-hover">회원가입</a>
+                </li>
+              </ul>
+              <!--         <a href="#" class="login-btn nav-hover">로그인</a>
+              <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
+            </div>
+            <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
+        </nav>
+
+        <section class="signUp-content">
+            <div>
+                <h1 class="page-title">회원가입</h1>
+            </div>
+
+            <form action="#" method="POST" name="signUp-form" onsubmit="return signUpValidate()">
+
+                <div class="signUp-row">
+                    <label for="memberEmail">아이디(이메일)</label>
+                    <input type="text" id="memberEmail" placeholder="ex) user@xx.co.kr" maxlength="30" autocomplete="off" required>
+                    <button type="button" id="sendBtn">인증번호 전송</button>
+                </div>
+                <span class="signUp-message" id="emailMessage">사용 가능한 이메일 주소를 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="cNumber">인증번호</label>
+                    <input type="text" id="cNumber" placeholder="인증번호 6자리" maxlength="6" autocomplete="off">
+                    <button type="button" id="cBtn">확인</button>
+                </div>
+                <span class="signUp-message" id="cMessage">인증 번호를 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="memberName">이름</label>
+                    <input type="text" id="memberName" placeholder="ex) 유저일" maxlength="8" required>
+                </div>
+                <span class="signUp-message" id="nameMessage">한글만 입력해주세요.</span>
+                
+                <div class="signUp-row">
+                    <label for="memberPw">비밀번호</label>
+                    <input type="password" id="memberPw" placeholder="비밀번호 입력" maxlength="20" required>
+                </div>
+                <span class="signUp-message" id="pwMessage">영어, 숫자, 특수문자(!,@,#,-,_)를 6~20글자 사이로 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <label for="memberPwConfirm">비밀번호 확인</label>
+                    <input type="password" id="memberPwConfirm" placeholder="비밀번호 확인" maxlength="20" required>
+                </div>
+                <span class="signUp-message" id="pwConfirmMessage"></span>
+
+                <div class="signUp-row">
+                    <label for="memberTel">전화번호</label>
+                    <input type="text" id="memberTel" placeholder="ex) 01012345678" maxlength="11" required>
+                </div>
+                <span class="signUp-message" id="telMessage">전화번호를 입력해주세요.(- 제외)</span>
+            
+                <div class="signUp-row">
+                    <label>주소</label>
+                    <input type="text" id="sample2_postcode" name="memberAddress"
+                        placeholder="우편번호" maxlength="6" required>
+                    
+                    <button type="button" onclick="sample2_execDaumPostcode()">우편번호 찾기</button>
+                </div>
+                    
+                <div class="signUp-row">
+                    <label></label>
+                    <input type="text" id="sample2_address" name="memberAddress" placeholder="도로명주소" required>
+                </div>
+                
+                <div class="signUp-row">
+                    <label></label>
+                    <input type="text" id="sample2_detailAddress" name="memberAddress" placeholder="상세주소" required>
+                </div>
+                <span class="signUp-message" id="addrMessage">주소를 입력해주세요.</span>
+
+                <div class="signUp-row">
+                    <button id="signUp-btn">가 입 하 기</button>
+                </div>
+                
+            </form>
+        </section>
+    </main>
+
+
+    <footer>
+        <img src="../../resources/images/logo.png">
+        <div>
+            <span>방방곡곡</span><br>
+            <span>고객센터 : cs@bangbang.com</span><br>
+            <span>서울시 중구 남대문로 120, 2층</span>
+        </div>
+    </footer>
+
+    <!-- 우편번호 찾기 팝업 -->
+    <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
+        <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ 
+    <!-- 주소 API -->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+    <script src="../../resources/js/common/nav.js"></script>
+    <script src="../../resources/js/member/signUp.js"></script>
+</body>
+</html>

@@ -6,15 +6,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보 수정</title>
 
-    <link rel="stylesheet" href="../resources/css/myPage/changeInfo.css">
-    <link rel="stylesheet" href="../resources/css/footer.css">
+    <link rel="stylesheet" href="../../resources/css/common/nav.css">
+    <link rel="stylesheet" href="../../resources/css/myPage/changeInfo.css">
+    <link rel="stylesheet" href="../../resources/css/common/footer.css">
 
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet"/>
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/243327ab3a.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
     <main>
-        헤더
+        <nav id="mainNavbar1" class="nav">
+            <a href="#" class="nav-title"
+              ><img class="logo" src="../../resources/images/logo.png" alt=""
+            /></a>
+      
+            <div class="navbarWrap">
+              <ul class="nav-nav">
+                <li>
+                  <a href="#" class="nav-menu">코스</a>
+                </li>
+                <li>
+                  <a href="#" class="nav-menu">랜드마크</a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <ul class="nav-in">
+                <li>
+                  <a href="#" class="login-btn nav-hover">로그인</a>
+                </li>
+                <li>
+                  <a href="#" class="signUp-btn nav-hover">회원가입</a>
+                </li>
+              </ul>
+              <!--         <a href="#" class="login-btn nav-hover">로그인</a>
+              <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
+            </div>
+            <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
+        </nav>
 
         <section class="myPage-container">
             <section class="left-side">
@@ -70,13 +102,17 @@
 
 
     <footer>
-        <img src="../resources/images/logo.png">
+        <img src="../../resources/images/logo.png">
         <div>
             <span>방방곡곡</span><br>
             <span>고객센터 : cs@bangbang.com</span><br>
             <span>서울시 중구 남대문로 120, 2층</span>
         </div>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+ 
+    <script src="../../resources/js/common/nav.js"></script>
 
 </body>
 </html>
