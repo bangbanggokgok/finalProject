@@ -9,6 +9,7 @@
 <body>
 	<h1>test</h1>
 	test
-	<a href="${contextPath}/login">로그인 페이지 ${contextPath}</a>
+	<a href="${contextPath}/login">로그인 페이지 ${contextPath}</a><br>
+	<a href="${contextPath}/landmark-main">랜드마크 페이지 테스트</a>
 </body>
 </html>

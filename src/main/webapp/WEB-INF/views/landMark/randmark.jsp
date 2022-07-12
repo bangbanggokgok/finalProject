@@ -17,10 +17,10 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     /> -->
-    <link rel="stylesheet" href="../../resources/css/common/nav.css" />
-    <link rel="stylesheet" href="../../resources/css/randmark/randmark.css" />
-    <link rel="stylesheet" href="../../resources/css/randmark/style.css" />
-    <script src="../../resources/js/randmark/randmark.js"></script>
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/randmark.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/style.css" />
+    <script src="${contextPath}/resources/js/randmark/randmark.js"></script>
 
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -28,35 +28,7 @@
     ></script>
   </head>
   <body>
-    <nav id="mainNavbar1" class="nav">
-      <a href="#" class="nav-title"
-        ><img class="logo" src="../../resources/images/logo.png" alt=""
-      /></a>
-
-      <div class="navbarWrap">
-        <ul class="nav-nav">
-          <li>
-            <a href="#" class="nav-menu">코스</a>
-          </li>
-          <li>
-            <a href="#" class="nav-menu">랜드마크</a>
-          </li>
-        </ul>
-      </div>
-      <div>
-        <ul class="nav-in">
-          <li>
-            <a href="#" class="login-btn nav-hover">로그인</a>
-          </li>
-          <li>
-            <a href="#" class="signUp-btn nav-hover">회원가입</a>
-          </li>
-        </ul>
-        <!--         <a href="#" class="login-btn nav-hover">로그인</a>
-        <a href="#" class="signUp-btn nav-hover">회원가입</a> -->
-      </div>
-      <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
-    </nav>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
     <section id="slide1">
       <div class="container">
@@ -64,21 +36,21 @@
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/1.jpg"
+              src="${contextPath}/resources/images/randmark/1.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/2.jpg"
+              src="${contextPath}/resources/images/randmark/2.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/3.jpg"
+              src="${contextPath}/resources/images/randmark/3.jpg"
               alt="first_img"
             />
           </li>
@@ -92,14 +64,14 @@
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/4.jpg"
+              src="${contextPath}/resources/images/randmark/4.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="../../resources/images/randmark/5.jpg"
+              src="${contextPath}/resources/images/randmark/5.jpg"
               alt="first_img"
             />
           </li>
@@ -319,7 +291,7 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="../../resources/js/common/nav.js"></script>
-    <script src="../../resources/js/randmark/main.js"></script>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/randmark/main.js"></script>
   </body>
 </html>

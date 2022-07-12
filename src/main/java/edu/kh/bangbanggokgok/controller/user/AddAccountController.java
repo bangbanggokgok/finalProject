@@ -10,18 +10,18 @@ import edu.kh.bangbanggokgok.service.user.UserService;
 import edu.kh.bangbanggokgok.service.user.UserServiceImpl;
 
 @Controller
-@RequestMapping("/addAccount/*")
+@RequestMapping("addAccount/*")
 public class AddAccountController {
 
 //	@Autowired
 	private UserServiceImpl service;
 	
-	@GetMapping("")
+	@GetMapping("sign-up")
 	public String addAcount() {
-		return "addAccount/addAccount";
+		return "user/addAccount/signUp";
 	}
 	
-	@PostMapping("")
+	@PostMapping("sign-up")
 	public int addAccount() {
 		return 1;
 	}
