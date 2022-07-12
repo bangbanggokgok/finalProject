@@ -51,7 +51,7 @@
         </c:if>
         <c:if test="${!empty loginUser}">
           <li>
-            <a href="#" class="login-btn nav-hover">내 정보 조회</a>
+            <a href="${contextPath}/myPage/info" class="login-btn nav-hover">내 정보 조회</a>
           </li>
           <li>
             <a href="#" class="signUp-btn nav-hover">로그아웃</a>
