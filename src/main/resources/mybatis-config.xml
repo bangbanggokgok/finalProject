@@ -16,6 +16,7 @@
 	<!-- sql 작성 파일 매핑 -->
 	<mappers>
 		<mapper resource="/mappers/userMapper.xml"/>
+		<mapper resource="/mappers/myPageMapper.xml"/>
 	</mappers>
 
 </configuration>
