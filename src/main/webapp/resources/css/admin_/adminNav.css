@@ -1,0 +1,50 @@
+/* 관리자 네비 */
+.navWrapper{
+    margin-left: 50px;
+    width: 300px;
+    z-index: 100;
+    font-size: 20px;
+    position: absolute;
+    left: 3%;
+    top: 15%;
+    border-radius: 30px;
+    font-weight: 530;
+    height: 400px;
+    padding: 50px 0;
+    align-content: center;
+}
+
+.listWrapper{
+    list-style: none;
+}
+
+#adminList{
+    margin-bottom: 40px;
+}
+
+#adminList, #adminList > a, #adminList > div > a{
+    text-decoration: none;
+    color: #535353;
+    letter-spacing: 2px;
+}
+
+#adminList{
+    margin-left: 32px;
+}
+
+#adminList > div > a{
+    margin-left: 26px;
+}
+
+#contentWrapper{
+    /* position: absolute;
+    left: 30%;
+    margin-left: 10px; */
+} 
+
+.adminList{
+    background-color: #c5c5c5;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
