@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>회원가입</title>
 
-	<link rel="stylesheet" href="${contextPath}/resources/css/signUp.css">
+	<link rel="stylesheet" href="${contextPath}/resources/css/member/signUp.css">
 	
 	<link
 		href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css"
@@ -17,12 +17,9 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 	<main>
-
 		<section class="signUp-content">
 			<h1 class="page-title">회원가입</h1>
-
-			<form action="#">
-
+			<form action="#" method="post">
 				<div class="signUp-row">
 					<label for="memberEmail">아이디(이메일)</label> <input type="text"
 						id="memberEmail" placeholder="ex) user@xx.co.kr" required>
@@ -87,6 +84,7 @@
 				</div>
 			</form>
 		</section>
+		<script src="${contextPath}/resources/js/member/signUp.js"></script>
 	</main>
 </body>
 </html>
