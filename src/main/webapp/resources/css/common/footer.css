@@ -1,25 +1,99 @@
-/* footer */
-
-footer{ 
-    margin: auto;
-    height: 150px; 
+/*--------footer */
+.foot{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    border-top:1px solid #ddd;
+    width: 100%;
+    margin-top: 60px;
+    padding-bottom: 10px;
+    background: #f7f7f7;
+    box-sizing: border-box;
+}
+.foot_in{
+    /* display:flex;
+    justify-content: center; */
+    width:980px;
+    padding:0 auto;
+}
+.btn_menu{
+    margin-top:15px;
+    display:flex;
+    justify-content: center;
+}
+.foot li{
 
-    border-top: 1px solid #bbd0ff ;
+    line-height: 30px;
+    margin-left:50px;
+    font-size:14px;
+}
+.footer_pcLogo{
+    width:980px;
+    padding:0 auto;
+    /* width: 100%; */
+    padding-bottom: 16px;
+    border-top: 1px solid #e6e6e6;
+}
+.btn_footLogo{
+    /* float: left; */
+    display:flex;
+    flex-direction: column;
+    font-size:14px;
+    margin-right:40px;
+    /* width: 89px; */
+    padding-top: 23px;
+}
+.btn_footLogo img{
+    margin-left:50px;
+    width: 89px;
+    height: 14px;
+}
+.logo_list{
+    display:flex;
+    justify-content: right;
+    padding-top: 14px;
+}
+.logo_list li{
+    float: left;
+    margin-left: 20px;
+}
+.foot-title{
+    margin-top:20px;
+    display:flex;
+    justify-content: center;
+}
+.sns-list{
+    margin-top:10px;
+    display:flex;
+    justify-content: space-around;
+    
+}
+.sns-list li{
+    font-size:20px;
+}
+.sns-list li i{
+    font-size:30px;
+}
+.fa-face-laugh-wink{
+    margin-right:5px;
+}
+.sns-list li:nth-of-type(1):hover{
+    color:#8ac926;
+}
+.sns-list li:nth-of-type(2):hover{
+    color:#4361ee;
+}
+.sns-list li:nth-of-type(3):hover{
+    color:#00bbf9;
+}
+.sns-list li:nth-of-type(4):hover{
+    color:#405DE6;
+}
+.sns-list li:nth-of-type(5):hover{
+    color:#d90429;
 }
 
-footer > img{
-    height: 40px;
-}
-
-footer > div{
-    margin: auto 50px;
-    font-size: 14px;
-}
-
-footer span:nth-of-type(1){
-    font-weight: bold;
-    font-size: 18px;
+.btn_menu li{
+    cursor: pointer;
 }
