@@ -42,10 +42,10 @@
       <div>
         <ul class="nav-in">
           <li>
-            <a href="${contextPath}/login" class="login-btn nav-hover">로그인</a>
+            <a href="${contextPath}/user/login" class="login-btn nav-hover">로그인</a>
           </li>
           <li>
-            <a href="${contextPath}/addAccount" class="signUp-btn nav-hover">회원가입</a>
+            <a href="${contextPath}/addAccount/sign-up" class="signUp-btn nav-hover">회원가입</a>
           </li>
         </ul>
         <!--         <a href="#" class="login-btn nav-hover">로그인</a>
