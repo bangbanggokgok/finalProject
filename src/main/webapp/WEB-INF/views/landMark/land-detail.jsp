@@ -152,7 +152,6 @@
     </section>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -160,9 +159,17 @@
     ></script>
     <script
       type="text/javascript"
+      src="${contextPath}/resources/js/landmark/jquery-1.9.1.min.js"
+    ></script>
+    <script
+      type="text/javascript"
       src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"
     ></script>
     <!-- <script type="text/javascript" src="js/script.js"></script> -->
+    <script
+      type="text/javascript"
+      src="${contextPath}/resources/js/common/nav.js"
+    ></script>
     <script
       type="text/javascript"
       src="${contextPath}/resources/js/landmark/scroll_menu.js"
