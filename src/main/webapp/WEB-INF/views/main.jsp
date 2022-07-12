@@ -16,7 +16,9 @@
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
-	
+	<main>
+		<a href="${contextPath}/landmark-main/landmark-detail">랜드마크 확인용</a>
+	</main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"
