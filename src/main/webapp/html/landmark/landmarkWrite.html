@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>랜드마크 작성</title>
+
+    <link rel="stylesheet" href="../../resources/css/randmark/landmarkWrite.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+</head>
+
+<body>
+    <section class="header">
+        <section class="pageWrapper">
+            <h1 font-size="24px" class="boardTitle">랜드마크 작성</h1>
+        </section>
+    </section>
+
+    <section class="board">
+        <section class="pageWrapper">
+            <form>
+                <div class="titleFields">
+                    <div>
+                        <label class="title">제목</label>
+                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" value="">
+                    </div>
+                </div>
+
+
+               
+    
+                <!-- 업로드 이미지 -->
+                <label class="addImg">사진 첨부</label>
+                <div class="img-box">
+    
+                    <div class="boardImg">
+                        <label for="img1">
+                            <i class="far fa-plus-circle fa-lg" src="${img1}"></i>
+                        </label>
+                        <input type="file" class="inputImage" id="img1" name="images" accept="image/*">
+                        <span class="delete-image">&times;</span>
+                    </div>
+    
+                    <div class="boardImg">
+                        <label for="img2">
+                            <i class="far fa-plus-circle fa-lg" src="${img2}"></i>
+                        </label>
+                        <input type="file" class="inputImage" id="img2" name="images" accept="image/*">
+                        <span class="delete-image">&times;</span>
+                    </div>
+    
+                    <div class="boardImg">
+                        <label for="img3">
+                            <i class="far fa-plus-circle fa-lg" src="${img3}"></i>
+                        </label>
+                        <input type="file" class="inputImage" id="img3" name="images" accept="image/*">
+                        <span class="delete-image">&times;</span>
+                    </div>
+                    
+                    <div class="boardImg">
+                        <label for="img4">
+                            <i class="far fa-plus-circle fa-lg" src="${img4}"></i>
+                        </label>
+                        <input type="file" class="inputImage" id="img4" name="images" accept="image/*">
+                        <span class="delete-image">&times;</span>
+                    </div>
+
+                </div>
+
+                <div class="contentField">
+                    <label class="contentLabel">상세정보</label>
+                    <article class="contentArea">
+                        <textarea placeholder="내용을 입력해주세요." class="content"></textarea>
+                    </article>
+
+                    <div class="WritingTag">
+                        <div class="tag_inner">
+                            <strong class="blind">태그 입력</strong>
+                            <div class="tag_input_box inactive">
+                                <input data-v-1f66f3e0="" type="text" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
+                                <div class="layer_auto_tag" style="display: none;">
+                                    <ul class="auto_tag_list"></ul>
+                                </div>
+                                <div class="ToggleSwitchTooltip">
+                                    <div class="tooltip" style="display: none;">
+                                        태그는 최대 10개까지 입력할 수 있습니다.
+                                    </div>
+                                </div>
+                                <div class="ToggleSwitchTooltip">
+                                    <div class="tooltip" style="display: none;">
+                                        태그는 최대 20자까지 입력할 수 있습니다.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="addressField">
+                    <input type="text" id="sample6_postcode" placeholder="우편번호">
+                    <input type="Button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" id="find"><br>
+                    <input type="text" id="sample6_address" placeholder="주소">
+                    <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                </div>
+                
+                <section class="submitBar">
+                    <div class="buttonContainer">
+                        <button type="button" disabled="" class="submitButton">등록하기</button>
+                    </div>
+                </section>
+            </form>
+            <div class="sc-fznxKY bjxHni">
+                <section class="sc-fzpmMD fpVDsP"></section>
+            </div>
+        </section>
+    </section>
+</body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../../resources/js/randmark/landmarkWrite.js"></script>
+</html>

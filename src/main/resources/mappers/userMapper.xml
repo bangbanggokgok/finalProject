@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="userMapper">
+	<resultMap type="User" id="user_RM">
+		<id 	property="userNo" 			column="USER_NO"/> 	<!-- PRIMARY KEY -->
+		<result property="userEmail" 		column="USER_EMAIL"/>
+		<result property="userPW" 			column="USER_PW"/>
+		<result property="userName" 		column="USER_NAME"/>
+		<result property="userTel" 			column="USER_PHONE"/>
+		<result property="adminFlag" 		column="ADMIN_FL"/>
+		<result property="userAddress" 		column="USER_ADDRESS"/>
+		<result property="profileImage" 	column="USER_PROFILE"/>
+		<result property="registDate" 		column="REGIST_DT"/>
+		<result property="secessionDate" 	column="SECESSION_DT"/>
+	</resultMap>
+	
+	<insert id="addAccount" parameterType="User">
+		INSERT INTO USER_TB VALUES
+		(SEQ_USER_NO.NEXTVAL,#{userEmail},#{userPW},#{userName},#{userTel},DEFAULT,#{userAddress},DEFAULT,DEFAULT,DEFAULT)
+	</insert>
+	
+</mapper>
