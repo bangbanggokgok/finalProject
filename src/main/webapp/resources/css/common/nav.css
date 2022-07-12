@@ -137,6 +137,7 @@ ul,li,ol{
 .cursor{
     cursor: pointer;
 }
+
 @media (max-width: 768px){
     .nav, .nav ul{
         flex-direction: column;

@@ -40,4 +40,16 @@ public class UserDAO {
 		return sqlSession.selectOne("userMapper.login",email);
 	}
 
+	public User findAccount(User findInfo) {
+		return sqlSession.selectOne("userMapper.findAccount",findInfo);
+	}
+
+	public String selectAccount(User resetAccount) {
+		return sqlSession.selectOne("userMapper.selectAccount",selectAccount(resetAccount));
+	}
+
+	public int updatePassword(User resetAccount) {
+		return sqlSession.update("userMapper.updatePassword", resetAccount);
+	}
+
 }

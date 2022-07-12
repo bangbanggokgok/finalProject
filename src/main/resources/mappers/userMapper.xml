@@ -32,4 +32,22 @@
 		WHERE USER_EMAIL = #{email}
 		AND SECESSION_DT IS NULL
 	</select>
+	
+	<select id="findAccount" parameterType="User" resultMap="user_RM">
+		SELECT USER_EMAIL,USER_NAME
+		FROM USER_TB
+		WHERE USER_PHONE = #{userTel}
+		AND USER_NAME = #{userName}
+	</select>
+	<select id="selectAccount" parameterType="User" resultMap="string">
+		SELECT USER_PW
+		FROM USER_TB
+		WHERE USER_EMAIL = #{userEmail}
+		AND USER_NAME = #{userName}
+	</select>
+	<update id="updatePassword" parameterType="User">
+		UPDATE SET USER_TB INTO USER_PW = #{userPW}
+		WHERE USER_EMAIL = #{userEmail}
+		AND USER_NAME = #{userName}
+	</update>
 </mapper>

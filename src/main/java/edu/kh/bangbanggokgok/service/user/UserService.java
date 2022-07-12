@@ -7,4 +7,8 @@ public interface UserService {
 	int addAccount(User account);
 
 	User login(String email, String password);
+
+	User findAccount(User findInfo);
+
+	int resetPassword(User resetAccount);
 }

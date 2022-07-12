@@ -10,7 +10,7 @@ public class LandMarkController {
 
 	@GetMapping("/list")
 	public String landMarkMainPage() {
-		return "landMark/randmark";
+		return "landMark/landmark";
 	}
 	@GetMapping("/landmark-detail")
 	public String landMarkDetail() {
