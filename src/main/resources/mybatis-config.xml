@@ -10,12 +10,12 @@
 	
 	<!-- 별칭 -->
 	<typeAliases>
-
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
 	<mappers>
-
+		<mapper resource="/mappers/userMapper.xml"/>
 	</mappers>
 
 </configuration>

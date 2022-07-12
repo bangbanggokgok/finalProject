@@ -13,7 +13,7 @@ const checkObj = {
 
 
 // 이메일 유효성 검사
-const memberEmail = document.getElementById("memberEmail");
+const memberEmail = document.getElementById("userEmail");
 const emailMessage = document.querySelector("#emailMessage");
 
 memberEmail.addEventListener("input", function(){
@@ -174,7 +174,7 @@ cBtn.addEventListener("click", function(){
 
 
 // 이름 유효성 검사
-const memberName = document.getElementById("memberName");
+const memberName = document.getElementById("userName");
 const nameMessage = document.getElementById("nameMessage");
 
 memberName.addEventListener("input", function(){
@@ -207,8 +207,8 @@ memberName.addEventListener("input", function(){
 
 
 // 비밀번호 유효성 검사
-const memberPw = document.getElementById("memberPw");
-const memberPwConfirm = document.getElementById("memberPwConfirm");
+const memberPw = document.getElementById("userPW");
+const memberPwConfirm = document.getElementById("userPWConfirm");
 const pwMessage = document.getElementById("pwMessage");
 
 memberPw.addEventListener("input", function(){
@@ -265,7 +265,7 @@ function checkPw(){
 
 
 // 전화번호 유효성 검사
-const memberTel = document.getElementById("memberTel");
+const memberTel = document.getElementById("userTel");
 const telMessage = document.getElementById("telMessage");
 
 memberTel.addEventListener("input", function(){
