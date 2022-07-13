@@ -39,7 +39,7 @@ public class AddAccountController {
 		
 		return "redirect:/";
 	}
-	
+//	중복 ajex
 	public int duplicateEmail() {
 		return 1;
 	}

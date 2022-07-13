@@ -12,11 +12,14 @@
 	href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
 	rel="stylesheet" />
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
-<title>Document</title>
+<title>방방곡곡</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 	<main>
+		<a href="${contextPath}/landmark-main/list">랜드마크 리스트 확인용</a>
+		
+		
 		<a href="${contextPath}/landmark-main/landmark-detail">랜드마크 확인용</a>
 	</main>
 

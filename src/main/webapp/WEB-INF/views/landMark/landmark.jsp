@@ -18,9 +18,9 @@
       crossorigin="anonymous"
     /> -->
     <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/randmark.css" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/randmark/style.css" />
-    <script src="${contextPath}/resources/js/randmark/randmark.js"></script>
+    <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
+    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -292,6 +292,6 @@
     ></script>
 
     <script src="${contextPath}/resources/js/common/nav.js"></script>
-    <script src="${contextPath}/resources/js/randmark/main.js"></script>
+    <script src="${contextPath}/resources/js/landmark/main.js"></script>
   </body>
 </html>

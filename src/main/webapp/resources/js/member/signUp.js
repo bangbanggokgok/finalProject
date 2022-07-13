@@ -25,7 +25,7 @@ memberEmail.addEventListener("input", function(){
         return;
     }
 
-    const regExp = /^[\w\-\_]{4,}@[\w\-\_]+(\.\w+){1,3}$/;
+    const regExp = /^[\w\-\_]{5,}@[\w\-\_]+(\.\w+){1,3}$/;
 
     if( regExp.test(memberEmail.value) ){ 
         

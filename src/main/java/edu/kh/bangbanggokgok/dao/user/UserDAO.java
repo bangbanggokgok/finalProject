@@ -40,4 +40,28 @@ public class UserDAO {
 		return sqlSession.selectOne("userMapper.login",email);
 	}
 
+	/** 계정찾기
+	 * @param findInfo
+	 * @return
+	 */
+	public User findAccount(User findInfo) {
+		return sqlSession.selectOne("userMapper.findAccount",findInfo);
+	}
+
+	/** 비밀번호 검색
+	 * @param resetAccount
+	 * @return
+	 */
+	public String selectAccount(User resetAccount) {
+		return sqlSession.selectOne("userMapper.selectAccount",selectAccount(resetAccount));
+	}
+
+	/** 비밀번호 무작위 생성 삽입
+	 * @param resetAccount
+	 * @return
+	 */
+	public int updatePassword(User resetAccount) {
+		return sqlSession.update("userMapper.updatePassword", resetAccount);
+	}
+
 }

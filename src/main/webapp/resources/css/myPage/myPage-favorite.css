@@ -60,6 +60,7 @@
 }
 .landmark-text{
     text-align: left;
+    padding: 5px;
     margin: 10px 17px;
 }
 .landmark-text a{
@@ -67,7 +68,7 @@
     color: #1BB3FE;
 }
 .landmark-text > div{
-    margin-top: -10px;
+    margin-top: 8px;
     height: 95px;
     max-width: 200px;
     overflow: hidden;
