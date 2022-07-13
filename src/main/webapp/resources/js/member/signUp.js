@@ -66,52 +66,65 @@ memberEmail.addEventListener("input", function(){
 // 인증번호 발송
 const sendBtn = document.getElementById("sendBtn");
 const cMessage = document.getElementById("cMessage");
+let reValue = document.getElementById("re");
 
 // 타이머 변수
 let checkInterval; // setInterval을 저장할 변수
 let min = 4;
 let sec = 59;
 
+function intervalTime(){
+    if(sec < 10) sec = "0" + sec;
+    cMessage.innerText = min + ":" + sec;
+
+    if(Number(sec) === 0){
+        min--;
+        sec = 59;
+    }else{
+        sec--;
+    }
+
+    if(min === -1){ // 만료
+        cMessage.classList.add("error");
+        cMessage.innerText = "인증번호가 만료되었습니다.";
+
+        clearInterval(checkInterval); 
+    }
+};
+
 sendBtn.addEventListener("click", function(){
 
     if( checkObj.memberEmail ){ 
-
+        
         $.ajax({
             url : "sendEmail"  ,
-            data : {"inputEmail" : memberEmail.value},
+            data : {"inputEmail" : memberEmail.value,
+                    "flag": reValue.value},
             type : "GET",
             success : function(result){
-                console.log("이메일 발송 성공");
-                console.log(result);
-                checkObj.sendEmail = true;
+                if(reValue.value == 0){
+                    reValue.value = 1;
+                    sendBtn.innerText = "인증번호 재발송"
+                    console.log("이메일 발송 성공");
+                    checkObj.sendEmail = true;
+    
+                    cMessage.innerText = "5:00"; 
+                    min = 4;
+                    sec = 59;
+                    cMessage.classList.remove("confirm", "error");
+                    checkInterval = setInterval(intervalTime, 1000);
+                }
+
+                if(reValue.value == 1){
+                    clearInterval(checkInterval);
+                    cMessage.innerText = "5:00"; 
+                    min = 4;
+                    sec = 59;
+                    checkInterval = setInterval(intervalTime, 1000);
+                }
             }
         });
-
-        cMessage.innerText = "5:00"; 
-        min = 4;
-        sec = 59;
-
-        cMessage.classList.remove("confirm", "error");
-
-        checkInterval = setInterval(function(){
-            if(sec < 10) sec = "0" + sec;
-            cMessage.innerText = min + ":" + sec;
-
-            if(Number(sec) === 0){
-                min--;
-                sec = 59;
-            }else{
-                sec--;
-            }
-
-            if(min === -1){ // 만료
-                cMessage.classList.add("error");
-                cMessage.innerText = "인증번호가 만료되었습니다.";
-
-                clearInterval(checkInterval); 
-            }
-        }, 1000);
-
+       
         alert("인증번호가 발송되었습니다. 이메일을 확인 후 인증번호를 입력해주세요.");
     }
 });
