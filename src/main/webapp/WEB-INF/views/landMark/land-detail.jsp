@@ -165,7 +165,6 @@
       type="text/javascript"
       src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"
     ></script>
-    <!-- <script type="text/javascript" src="js/script.js"></script> -->
     <script
       type="text/javascript"
       src="${contextPath}/resources/js/common/nav.js"

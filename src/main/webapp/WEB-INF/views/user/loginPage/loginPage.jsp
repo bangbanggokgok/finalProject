@@ -23,7 +23,7 @@
             </div>
             <!-- 클릭 시 js로 토글 이벤트 추가 할 예정 -->
             <div class="content">
-                <form action="login" method="post" onsubmit="return login()">
+                <form action="login" method="POST" onsubmit="return login()">
                     <div class="input-row">
                         <div class="img-container">
                             <img src="${contextPath}/resources/images/loginPage/letter-removebg-preview.png" alt="">
@@ -37,10 +37,10 @@
                         <input type="password" name="password" placeholder="비밀번호" autocomplete="off">
                     </div>
                     <button class="submit-button">로그인</button>
-                    <div class="account-sign-up"><span><a href="${contextPath}/addAccount">회원가입</a></span></div>
+                    <div class="account-sign-up"><span><a href="${contextPath}/addAccount/sign-up">회원가입</a></span></div>
                 </form>
 
-                <form action="#" method="post" class="hidden-object">
+                <form class="hidden-object">
                     <div class="input-row">
                         <div class="img-container">
                             <img src="${contextPath}/resources/images/loginPage/telIcon.png" alt="폰이미지">
@@ -51,9 +51,9 @@
                         <div class="img-container">
                             <img src="${contextPath}/resources/images/loginPage/idIcon.png" alt="">
                         </div>
-                        <input type="text" name="uesrName" placeholder="성함" autocomplete="off">
+                        <input type="text" name="userName" placeholder="성함" autocomplete="off">
                     </div>
-                    <button class="submit-button" onclick="return findEmail()">계정 찾기</button>
+                    <button type="button" class="submit-button" onclick="return findEmail()">계정 찾기</button>
                     <div class="account-sign-up"><span><a href="#"></a></span></div>
                 </form>
 
@@ -79,16 +79,15 @@
     <div class="all">
         <div class="modal all-modal-opacity unstaged">
             <div class="mod-top all-modal-opacity unstaged">
-                <div class="name-data all-modal-opacity unstaged"> 임*현 님의 회원가입된 이메일은 </div>
+                <div class="name-data all-modal-opacity unstaged"> </div>
             </div>
             <button class="close all-modal-opacity unstaged"><img src="${contextPath}/resources/images/loginPage/800px-Letter_x_negative.png" class="all-modal-opacity" alt=""></button>
             <div class="mod-bot all-modal-opacity unstaged">
-                <div class="email-data all-modal-opacity unstaged"> fi***@naver.com (앞의 두자리만 오픈)</div>
+                <div class="email-data all-modal-opacity unstaged"> </div>
             </div>
         </div>
     </div>
-    <div id="a">모달용</div>
-    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/loginPage/login-page.js"></script>
 </body>
 </html>

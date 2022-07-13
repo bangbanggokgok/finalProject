@@ -1,18 +1,26 @@
 package edu.kh.bangbanggokgok.controller.user;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.user.UserService;
 import edu.kh.bangbanggokgok.service.user.UserServiceImpl;
 import edu.kh.bangbanggokgok.vo.user.User;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("user/*")
@@ -22,7 +30,7 @@ public class LoginController {
 	@Autowired
 	private UserService service;
 	
-	@GetMapping("login")
+	@GetMapping("login-page")
 	public String login() {
 		return "user/loginPage/loginPage";
 	}
@@ -45,9 +53,29 @@ public class LoginController {
 		return path;
 	}
 
-	@PostMapping("find-account")
-	public String findAccount() {
-		return "";
+	@ResponseBody
+	@PostMapping("find-email")
+	public String findAccount(User findInfo) {
+		User findEmail = service.findAccount(findInfo);
+		Map<String, String> map = new HashMap<String, String>();
+		if(findEmail != null) {
+			map.put("userEmail", findEmail.getUserEmail());
+			map.put("userName", findEmail.getUserName());
+		}
+		return new Gson().toJson(map);
+	}
+	
+	@PostMapping("reset-password")
+	public String resetPassword(User resetAccount,RedirectAttributes ra) {
+		String path = "";
+		int result = service.resetPassword(resetAccount);
+		if(result>0) {
+			path = "패스워드 바꿧다고 페이지 넣어야함";
+		} else {
+			ra.addFlashAttribute("message","해당 회원은 존재하지 않습니다.");
+			path = "redirect:/uesr/login-page";
+		}
+		return path;
 	}
 	
 }

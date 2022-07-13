@@ -1,10 +1,13 @@
-const toggleBtn = document.querySelector('.ham');
-const nav = document.querySelector('.nav-nav');
-const navin = document.querySelector('.nav-in');
+
+let nav = document.querySelector('.nav-nav');
+let navin = document.querySelector('.nav-in');
+let toggleBtn = document.querySelector('.ham');
+
 toggleBtn.addEventListener('click',()=>{
     nav.classList.toggle('active');
-    navin.classList.toggle('active');
+    navin.classList.toggle('active');``
 });
+
 
 $(function () {
     $(document).scroll(function () {
@@ -17,4 +20,4 @@ $(function () {
       $signUp.toggleClass("color", $(this).scrollTop() > $nav.height());
       $menu.toggleClass("white", $(this).scrollTop() > $nav.height());
     });
-  });
+});
