@@ -3,6 +3,8 @@
 //import java.util.List;
 //import java.util.Map;
 //
+//import edu.kh.bangbanggokgok.vo.board.MoveLine;
+//
 //public interface MoveLineService {
 //
 //	
@@ -17,6 +19,7 @@
 //	 * @return map
 //	 */
 //	Map<String, Object> selectMoveLineList(int cp, int locationType);
+//
 //	
 //	
 ////	/** 검색 게시글 목록 조회 서비스
