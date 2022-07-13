@@ -12,7 +12,7 @@
 	href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
 	rel="stylesheet" />
 <link rel="stylesheet" href="${contextPath}/resources/css/main.css">
-<title>Document</title>
+<title>방방곡곡</title>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
