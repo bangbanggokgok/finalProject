@@ -68,5 +68,4 @@
       crossorigin="anonymous"
     ></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
-  </body>
-</html>
+

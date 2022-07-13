@@ -86,8 +86,9 @@
 				</div>
             </form>
         </section>
-		<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-		<script src="${contextPath}/resources/js/member/signUp.js"></script>
 	</main>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script src="${contextPath}/resources/js/member/signUp.js"></script>
 </body>
 </html>
