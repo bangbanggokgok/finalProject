@@ -28,10 +28,11 @@ body{
 }
 
 .myInfo-explanation{
-    width: 500px;
-    margin: 20px auto;
-    align-items: center;
+    margin: 30px auto;
+    text-align: center;
+    font-size: 1.1em;
 }
+
 
 /* 페이지 이름 */
 .page-title{
@@ -119,8 +120,7 @@ body{
 }
 
 .left-side ul{
-    margin: auto;
-    margin-top: 40px;
+    margin: 40px 30px;
 }
 
 .left-side li{
@@ -129,15 +129,15 @@ body{
 
 .left-side a{
     color: #1F3A93;
-    font-size: 17px;
+    font-size: 16px;
     text-decoration: none;
-    
+    margin-left: 10px;
 }
 
 .left-side a:hover{
     color: #1BB3FE;
     font-size: 17px;
-    font-weight: bold;
+    /* font-weight: bold; */
     text-decoration: underline;
 }
 
