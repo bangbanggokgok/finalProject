@@ -29,8 +29,6 @@ public interface MyPageService {
 	 * @param loginUser
 	 * @return result
 	 */
-//	int secession(User loginUser);
-
 	int secession(Map<String, Object> map);
 
 	
