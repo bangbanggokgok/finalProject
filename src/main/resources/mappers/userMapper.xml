@@ -39,12 +39,14 @@
 		WHERE USER_PHONE = #{userTel}
 		AND USER_NAME = #{userName}
 	</select>
+	
 	<select id="selectAccount" parameterType="User" resultMap="string">
 		SELECT USER_PW
 		FROM USER_TB
 		WHERE USER_EMAIL = #{userEmail}
 		AND USER_NAME = #{userName}
 	</select>
+	
 	<update id="updatePassword" parameterType="User">
 		UPDATE SET USER_TB INTO USER_PW = #{userPW}
 		WHERE USER_EMAIL = #{userEmail}
