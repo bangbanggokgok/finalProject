@@ -32,7 +32,7 @@
       <div class="navbarWrap">
         <ul class="nav-nav">
           <li>
-            <a href="#" class="nav-menu">코스</a>
+            <a href="${contextPath}/movelineSort/" class="nav-menu">코스</a>
           </li>
           <li>
             <a href="${contextPath}/landmark-main" class="nav-menu">랜드마크</a>
