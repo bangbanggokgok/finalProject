@@ -73,6 +73,25 @@ let checkInterval; // setInterval을 저장할 변수
 let min = 4;
 let sec = 59;
 
+function intervalTime(){
+    if(sec < 10) sec = "0" + sec;
+    cMessage.innerText = min + ":" + sec;
+
+    if(Number(sec) === 0){
+        min--;
+        sec = 59;
+    }else{
+        sec--;
+    }
+
+    if(min === -1){ // 만료
+        cMessage.classList.add("error");
+        cMessage.innerText = "인증번호가 만료되었습니다.";
+
+        clearInterval(checkInterval); 
+    }
+};
+
 sendBtn.addEventListener("click", function(){
 
     if( checkObj.memberEmail ){ 
@@ -93,45 +112,15 @@ sendBtn.addEventListener("click", function(){
                     min = 4;
                     sec = 59;
                     cMessage.classList.remove("confirm", "error");
-                    checkInterval = setInterval(function(){
-                        if(sec < 10) sec = "0" + sec;
-                        cMessage.innerText = min + ":" + sec;
-    
-                        if(Number(sec) === 0){
-                            min--;
-                            sec = 59;
-                        }else{
-                            sec--;
-                        }
-    
-                        if(min === -1){ // 만료
-                            cMessage.classList.add("error");
-                            cMessage.innerText = "인증번호가 만료되었습니다.";
-    
-                            clearInterval(checkInterval); 
-                        }
-                    }, 1000);
+                    checkInterval = setInterval(intervalTime, 1000);
                 }
-                if(reValue == 1){
+
+                if(reValue.value == 1){
                     clearInterval(checkInterval);
-                    checkInterval = setInterval(function(){
-                        if(sec < 10) sec = "0" + sec;
-                        cMessage.innerText = min + ":" + sec;
-    
-                        if(Number(sec) === 0){
-                            min--;
-                            sec = 59;
-                        }else{
-                            sec--;
-                        }
-    
-                        if(min === -1){ // 만료
-                            cMessage.classList.add("error");
-                            cMessage.innerText = "인증번호가 만료되었습니다.";
-    
-                            clearInterval(checkInterval); 
-                        }
-                    }, 1000);
+                    cMessage.innerText = "5:00"; 
+                    min = 4;
+                    sec = 59;
+                    checkInterval = setInterval(intervalTime, 1000);
                 }
             }
         });
