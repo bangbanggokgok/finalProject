@@ -48,6 +48,7 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 .myPage-image input{
@@ -55,15 +56,16 @@ body{
 }
 
 .image-btn-area{
-    margin: 10px auto;
+    margin: 18px auto;
     display: flex;
     justify-content: space-between;
+    width: 160px;
 }
 
 .image-btn-area > button{
-    width: 65px;
+    width: 70px;
     height: 30px;
-    font-size: 1.1em;
+    font-size: 1em;
     color: white;
     background-color: #1F3A93;
     border: none;

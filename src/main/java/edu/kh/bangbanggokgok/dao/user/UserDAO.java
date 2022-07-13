@@ -78,14 +78,16 @@ public class UserDAO {
 		return sqlSession.selectOne("userMapper.emailReduplicateCheck",userEmail);
 	}
 
-
 	public int insertCertification(Map<String,String> map) {
 		return sqlSession.insert("userMapper.insertCertification",map);
 	}
 
-
 	public int emailUserCheck(Map<String, String> map) {
 		return sqlSession.selectOne("userMapper.emailUserCheck",map);
+	}
+
+	public int updateCertification(Map<String, String> map) {
+		return sqlSession.update("userMapper.updateCertification",map);
 	}
 
 }

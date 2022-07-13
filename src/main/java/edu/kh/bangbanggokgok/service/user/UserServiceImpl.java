@@ -1,8 +1,6 @@
 package edu.kh.bangbanggokgok.service.user;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
@@ -175,6 +173,14 @@ public class UserServiceImpl implements UserService {
 		map.put("userEmail", userEmail);
 		return dao.insertCertification(map);
 	}
+	
+	@Override
+	public int updateCertification(String userEmail, String cNumber) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cNumber", cNumber);
+		map.put("userEmail", userEmail);
+		return dao.updateCertification(map);
+	}
 
 	@Override
 	public int emailUserCheck(String userEmail, String cNumber) {
@@ -183,5 +189,6 @@ public class UserServiceImpl implements UserService {
 		map.put("userEmail", userEmail);
 		return dao.emailUserCheck(map);
 	}
+
 
 }

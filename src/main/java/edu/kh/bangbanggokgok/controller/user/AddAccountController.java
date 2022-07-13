@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.service.user.UserService;
 import edu.kh.bangbanggokgok.vo.user.User;
+import oracle.net.aso.c;
 
 @Controller
 @RequestMapping("addAccount/*")
@@ -59,7 +60,8 @@ public class AddAccountController {
 	
 	@ResponseBody
 	@GetMapping("sendEmail")
-	public int sendEmail(@RequestParam("inputEmail") String userEmail) {
+	public int sendEmail(@RequestParam("inputEmail") String userEmail
+			,@RequestParam("flag") int flag) {
 		
 		String subject = "방방곡곡 인증 번호 안내";
 		String fromEmail = "iwanttogotrip1@gmail.com";
@@ -139,8 +141,15 @@ public class AddAccountController {
 			t.connect(smtpEmail, password);
 			t.sendMessage(message, message.getAllRecipients());
 			t.close();
+			int result = -10;
 			
-			int result = service.insertCertification(userEmail, cNumber);
+			if(flag!=1) {
+				result = service.insertCertification(userEmail, cNumber);
+			}
+			if(flag==1) {
+				result = service.updateCertification(userEmail, cNumber);
+			}
+			
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -154,4 +163,6 @@ public class AddAccountController {
 			@RequestParam("cNumber") String cNumber) {
 		return service.emailUserCheck(userEmail,cNumber);
 	}
+	
+
 }

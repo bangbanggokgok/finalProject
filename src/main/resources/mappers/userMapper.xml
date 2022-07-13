@@ -67,6 +67,13 @@
 		INSERT INTO CERTIFICATION VALUES (#{userEmail},#{cNumber},SYSDATE)
 	</insert>
 	
+	<update id="updateCertification" parameterType="map">
+		UPDATE CERTIFICATION SET 
+		C_NUMBER = #{cNumber},
+		ISSUE_DT = SYSDATE
+		WHERE EMAIL = #{userEmail}
+	</update>
+	
 	<select id="emailUserCheck" parameterType="map" resultType="_int">
 		SELECT 
 		   CASE WHEN (SELECT '1' FROM CERTIFICATION

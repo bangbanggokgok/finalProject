@@ -23,6 +23,8 @@
                     <input type="text" id="userEmail" 
 					name="userEmail" placeholder="ex) user@xx.co.kr" maxlength="30" autocomplete="off" required>
                     <button type="button" id="sendBtn">인증번호 전송</button>
+                    <button type="button" id="resendBtn" style='display:none;'>인증번호 재발급</button>
+                    <input type="number" name="re" id="re" hidden value='0'>
                 </div>
                 <span class="signUp-message" id="emailMessage">사용 가능한 이메일 주소를 입력해주세요.</span>
 

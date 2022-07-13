@@ -21,4 +21,6 @@ public interface UserService {
 
 	int emailUserCheck(String userEmail, String cNumber);
 
+	int updateCertification(String userEmail, String cNumber);
+
 }
