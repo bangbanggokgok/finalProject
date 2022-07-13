@@ -38,6 +38,7 @@
 		FROM USER_TB
 		WHERE USER_PHONE = #{userTel}
 		AND USER_NAME = #{userName}
+		AND SECESSION_DT IS NULL
 	</select>
 	
 	<select id="selectAccount" parameterType="User" resultType="string">
@@ -45,11 +46,37 @@
 		FROM USER_TB
 		WHERE USER_EMAIL = #{userEmail}
 		AND USER_NAME = #{userName}
+		AND SECESSION_DT IS NULL		
 	</select>
 	
 	<update id="updatePassword" parameterType="User">
 		UPDATE USER_TB SET USER_PW = #{userPW}
 		WHERE USER_EMAIL = #{userEmail}
 		AND USER_NAME = #{userName}
+		AND SECESSION_DT IS NULL
 	</update>
+	
+	<select id="emailReduplicateCheck" resultType="_int" parameterType="string">
+		SELECT COUNT(*)
+		FROM USER_TB
+		WHERE USER_EMAIL = #{userEmail}
+		AND SECESSION_DT IS NULL
+	</select>
+	
+	<insert id="insertCertification" parameterType="map">
+		INSERT INTO CERTIFICATION VALUES (#{userEmail},#{cNumber},SYSDATE)
+	</insert>
+	
+	<select id="emailUserCheck" parameterType="map" resultType="_int">
+		SELECT 
+		   CASE WHEN (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND C_NUMBER = #{cNumber})  = 1
+		      THEN NVL( (SELECT '1' FROM CERTIFICATION
+		            WHERE EMAIL = #{userEmail}
+		            AND ISSUE_DT + (INTERVAL '5' MINUTE) >= SYSDATE) , '2') 
+		      ELSE '3'	
+		   END			
+		FROM DUAL
+	</select>
 </mapper>

@@ -15,4 +15,10 @@ public interface UserService {
 
 	int resetPassword(User resetAccount,HttpServletResponse resp);
 
+	int emailReduplicateCheck(String userEmail);
+
+	int insertCertification(String userEmail, String cNumber);
+
+	int emailUserCheck(String userEmail, String cNumber);
+
 }
