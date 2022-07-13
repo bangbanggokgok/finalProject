@@ -14,12 +14,14 @@ import edu.kh.bangbanggokgok.service.board.LandMarkService;
 @Controller
 @RequestMapping("landmark/*")
 public class LandMarkController {
-<<<<<<< HEAD
+
 
 	@GetMapping("/list")
 	public String landMarkMainPage() {
 		return "landMark/landmark";
-=======
+			}
+	
+
 	
 	@Autowired
 	private LandMarkService service;
@@ -36,7 +38,7 @@ public class LandMarkController {
 		model.addAttribute("map", map);
 		
 		return "landMark/randmark";
->>>>>>> 218a78f (랜드마크 중간 커밋)
+
 	}
 	@GetMapping("/landmark-detail")
 	public String landMarkDetail() {
