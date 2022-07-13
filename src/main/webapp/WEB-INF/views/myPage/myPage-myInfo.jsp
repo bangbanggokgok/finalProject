@@ -62,10 +62,10 @@
     <ul>
         <li><a href="${contextPath}/myPage/info">내 즐겨찾기 조회</a></li>
         <span>|</span>
-        <li><a href="#">내 코스 조회</a></li>
+        <li><a href="${contextPath}/myPage/course">내 코스 조회</a></li>
         <span>|</span>
-        <li><a href="#">내 댓글 조회</a></li>
+        <li><a href="${contextPath}/myPage/reply">내 댓글 조회</a></li>
         <span>|</span>
-        <li><a href="#">1:1 문의</a></li>
+        <li><a href="${contextPath}/myPage/inquiry">1:1 문의</a></li>
     </ul>
 </div>
