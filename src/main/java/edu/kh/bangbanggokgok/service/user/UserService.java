@@ -1,5 +1,8 @@
 package edu.kh.bangbanggokgok.service.user;
 
+
+import javax.servlet.http.HttpServletResponse;
+
 import edu.kh.bangbanggokgok.vo.user.User;
 
 public interface UserService {
@@ -10,5 +13,6 @@ public interface UserService {
 
 	User findAccount(User findInfo);
 
-	int resetPassword(User resetAccount);
+	int resetPassword(User resetAccount,HttpServletResponse resp);
+
 }

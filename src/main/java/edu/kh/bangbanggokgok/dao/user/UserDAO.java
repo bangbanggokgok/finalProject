@@ -23,6 +23,7 @@ public class UserDAO {
 	public int addAccount(User account) {
 		return sqlSession.insert("userMapper.addAccount",account);
 	}
+	
 
 	/** 로그인계정 비밀번호 조회
 	 * @param email
@@ -53,7 +54,7 @@ public class UserDAO {
 	 * @return
 	 */
 	public String selectAccount(User resetAccount) {
-		return sqlSession.selectOne("userMapper.selectAccount",selectAccount(resetAccount));
+		return sqlSession.selectOne("userMapper.selectAccount",resetAccount);
 	}
 
 	/** 비밀번호 무작위 생성 삽입
