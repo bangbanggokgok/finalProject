@@ -1,0 +1,12 @@
+/* 전체 화면 */
+#contents{
+    width: 1140px;
+    padding: 70px 20px 27px 20px;
+    /* margin-left: 560px; */
+
+    border: 1px solid #ddd;
+}
+
+#top{
+    border: 1px solid #ddd;
+}
