@@ -2,7 +2,10 @@
     box-sizing: border-box;
     /* border: 1px solid black; */
 }
-
+a{
+    text-decoration: none;
+    color: black;
+}
 body,html,.header,.main-container
 ,.content,.content>form,.input-row
 ,.all-modal,.mod-top,.mod-bot,.all *{
@@ -14,8 +17,10 @@ body,html,.header,.main-container
 
 body{
     width: 1140px;
-    height: 730.25px;
     background-color: #bbd0ff47;
+}
+.wrapper{
+    height: 600px;
 }
 
 .header{

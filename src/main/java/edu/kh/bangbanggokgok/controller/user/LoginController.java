@@ -35,8 +35,9 @@ public class LoginController {
 	}
 
 	@PostMapping("login")
-	public String login(@RequestParam(value = "email") String email, @RequestParam(value = "password") String password,
-			RedirectAttributes ra, Model model) {
+	public String login(@RequestParam(value = "email") String email,
+						@RequestParam(value = "password") String password,
+						RedirectAttributes ra, Model model) {
 
 		User result = service.login(email, password);
 		String path = "";
@@ -65,8 +66,8 @@ public class LoginController {
 
 	@PostMapping("reset-password")
 	public String resetPassword(@RequestParam("RPEmail")String email,
-			@RequestParam("RPUserName") String name,
-			HttpServletResponse resp, RedirectAttributes ra) {
+								@RequestParam("RPUserName") String name,
+								HttpServletResponse resp, RedirectAttributes ra) {
 		String path = "";
 		User resetAccount = new User();
 		resetAccount.setUserEmail(email);
