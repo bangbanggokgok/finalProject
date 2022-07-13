@@ -2,7 +2,7 @@
 
 const checkObj = { 
     "memberEmail"     : false,
-    // "sendEmail"       : false, 
+    "sendEmail"       : false, 
     "memberName"  : false,
     "memberPw"        : false,
     "memberPwConfirm" : false,
@@ -29,29 +29,29 @@ memberEmail.addEventListener("input", function(){
 
     if( regExp.test(memberEmail.value) ){ 
         
-        // $.ajax({
-        //     url : "emailDupCheck",   
-        //     data : {"memberEmail" : memberEmail.value},
-        //     type : "GET", 
-        //     success : function(result){
+        $.ajax({
+            url : "email-reduplicate-check",   
+            data : {"memberEmail" : memberEmail.value},
+            type : "GET", 
+            success : function(result){
 
-        //         if(result == 1){ // 중복 O
-        //             emailMessage.innerText = "이미 사용중인 이메일 입니다.";
-        //             emailMessage.classList.add("error");
-        //             emailMessage.classList.remove("confirm");
-        //             checkObj.memberEmail = false; 
+                if(result == 1){ // 중복 O
+                    emailMessage.innerText = "이미 사용중인 이메일 입니다.";
+                    emailMessage.classList.add("error");
+                    emailMessage.classList.remove("confirm");
+                    checkObj.memberEmail = false; 
 
-        //         } else { // 중복 X
+                } else { // 중복 X
                     emailMessage.innerText = "사용 가능한 이메일 형식 입니다.";
                     emailMessage.classList.add("confirm");
                     emailMessage.classList.remove("error");
                     checkObj.memberEmail = true; 
-        //         }
-        //     },
-        //     error : function(){
-        //         console.log("에러 발생");
-        //     }
-        // });
+                }
+            },
+            error : function(){
+                console.log("에러 발생");
+            }
+        });
         
     }else{
         emailMessage.innerText = "이메일 형식이 유효하지 않습니다.";
@@ -76,45 +76,41 @@ sendBtn.addEventListener("click", function(){
 
     if( checkObj.memberEmail ){ 
 
-        // $.ajax({
-        //     url : "sendEmail"  ,
-        //     data : {"inputEmail" : memberEmail.value},
-        //     type : "GET",
-        //     success : function(result){
+        $.ajax({
+            url : "sendEmail"  ,
+            data : {"inputEmail" : memberEmail.value},
+            type : "GET",
+            success : function(result){
+                console.log("이메일 발송 성공");
+                console.log(result);
+                checkObj.sendEmail = true;
+            }
+        });
 
-        //         console.log("이메일 발송 성공");
-        //         console.log(result);
-        //         checkObj.sendEmail = true;
-        //     },
-        //     error : function(){
-        //         console.log("이메일 발송 실패")
-        //     }
-        // });
+        cMessage.innerText = "5:00"; 
+        min = 4;
+        sec = 59;
 
-        // cMessage.innerText = "5:00"; 
-        // min = 4;
-        // sec = 59;
+        cMessage.classList.remove("confirm", "error");
 
-        // cMessage.classList.remove("confirm", "error");
+        checkInterval = setInterval(function(){
+            if(sec < 10) sec = "0" + sec;
+            cMessage.innerText = min + ":" + sec;
 
-        // checkInterval = setInterval(function(){
-        //     if(sec < 10) sec = "0" + sec;
-        //     cMessage.innerText = min + ":" + sec;
+            if(Number(sec) === 0){
+                min--;
+                sec = 59;
+            }else{
+                sec--;
+            }
 
-        //     if(Number(sec) === 0){
-        //         min--;
-        //         sec = 59;
-        //     }else{
-        //         sec--;
-        //     }
+            if(min === -1){ // 만료
+                cMessage.classList.add("error");
+                cMessage.innerText = "인증번호가 만료되었습니다.";
 
-        //     if(min === -1){ // 만료
-        //         cMessage.classList.add("error");
-        //         cMessage.innerText = "인증번호가 만료되었습니다.";
-
-        //         clearInterval(checkInterval); 
-        //     }
-        // }, 1000);
+                clearInterval(checkInterval); 
+            }
+        }, 1000);
 
         alert("인증번호가 발송되었습니다. 이메일을 확인 후 인증번호를 입력해주세요.");
     }
@@ -131,36 +127,36 @@ cBtn.addEventListener("click", function(){
 
         if( cNumber.value.length == 6 ){
 
-            // $.ajax({
-            //     url : "checkNumber",
-            //     data : { "cNumber" : cNumber.value,
-            //              "inputEmail" : memberEmail.value },
-            //     type : "GET",
-            //     success : function(result){
-            //         console.log(result);  
-            //         // 1 : 인증번호 일치 O, 시간 만족O
-            //         // 2 : 인증번호 일치 O, 시간 만족X
-            //         // 3 : 인증번호 일치 X
+            $.ajax({
+                url : "checkNumber",
+                data : { "cNumber" : cNumber.value,
+                         "inputEmail" : memberEmail.value },
+                type : "GET",
+                success : function(result){
+                    console.log(result);  
+                    // 1 : 인증번호 일치 O, 시간 만족O
+                    // 2 : 인증번호 일치 O, 시간 만족X
+                    // 3 : 인증번호 일치 X
 
-            //         if(result == 1){
+                    if(result == 1){
 
-            //             clearInterval(checkInterval); // 타이머 멈춤     
+                        clearInterval(checkInterval); // 타이머 멈춤     
 
                         cMessage.innerText = "인증되었습니다.";
                         cMessage.classList.add("confirm");
                         cMessage.classList.remove("error");
 
-            //         } else if(result == 2){
-            //             alert("만료된 인증 번호 입니다.");
+                    } else if(result == 2){
+                        alert("만료된 인증 번호 입니다.");
 
-            //         } else{ // 3
-            //             alert("인증 번호가 일치하기 않습니다.");
-            //         }
-            //     },
-            //     error : function(){
-            //         console.log("이메일 인증 실패")
-            //     }
-            // });
+                    } else{ // 3
+                        alert("인증 번호가 일치하기 않습니다.");
+                    }
+                },
+                error : function(){
+                    console.log("이메일 인증 실패")
+                }
+            });
 
         } else { // 6자리 아님
             alert("인증번호를 정확하게 입력해주세요.");

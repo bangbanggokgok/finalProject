@@ -1,5 +1,9 @@
 package edu.kh.bangbanggokgok.service.user;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Properties;
 import java.util.Random;
 
@@ -40,11 +44,12 @@ public class UserServiceImpl implements UserService {
 	public User login(String email, String password) {
 		String matchPW = dao.matchPW(email);
 		
-		if (bcrypt.matches(password, matchPW)) {
-			User loginUser = dao.login(email);
-			return loginUser;
+		if(matchPW!=null) {
+			if (bcrypt.matches(password, matchPW)) {
+				User loginUser = dao.login(email);
+				return loginUser;
+			}
 		}
-		
 		return null;
 	}
 
@@ -156,6 +161,27 @@ public class UserServiceImpl implements UserService {
 		} 
 		
 		return 0;
+	}
+
+	@Override
+	public int emailReduplicateCheck(String userEmail) {
+		return dao.emailReduplicateCheck(userEmail);
+	}
+
+	@Override
+	public int insertCertification(String userEmail, String cNumber) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cNumber", cNumber);
+		map.put("userEmail", userEmail);
+		return dao.insertCertification(map);
+	}
+
+	@Override
+	public int emailUserCheck(String userEmail, String cNumber) {
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("cNumber", cNumber);
+		map.put("userEmail", userEmail);
+		return dao.emailUserCheck(map);
 	}
 
 }

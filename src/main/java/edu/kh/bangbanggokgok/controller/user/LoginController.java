@@ -46,7 +46,7 @@ public class LoginController {
 			path = "redirect:/";
 		} else {
 			ra.addFlashAttribute("message", "실패");
-			path = "redirect:/user/login";
+			path = "redirect:/user/login-page";
 		}
 		return path;
 	}
@@ -66,7 +66,7 @@ public class LoginController {
 	@PostMapping("reset-password")
 	public String resetPassword(@RequestParam("RPEmail")String email,
 			@RequestParam("RPUserName") String name,
-			HttpServletResponse resp,RedirectAttributes ra) {
+			HttpServletResponse resp, RedirectAttributes ra) {
 		String path = "";
 		User resetAccount = new User();
 		resetAccount.setUserEmail(email);
