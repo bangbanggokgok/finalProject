@@ -25,14 +25,16 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="edu.kh.bangbanggokgok" />
+	<!-- 
+	    <interceptors>
+        <interceptor>
+            <mapping path="/**"/>
+            <beans:bean id="boardTypeInterceptor" 
+            class="edu.kh.bangbanggokgok.common.interceptor.BoardTypeInterceptor"/>
+        </interceptor>
 	
-	<interceptors>
-		<interceptor>
-			<mapping path="/**"/>
-			<beans:bean id="boardTypeInterceptor" 
-			class="edu.kh.bangbanggokgok.common.interceptor.BoardTypeInterceptor"/>
-		</interceptor>
-	</interceptors>
+	    </interceptors>
+	-->
 
 	<tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class="true"/>
 	

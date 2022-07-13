@@ -1,7 +1,5 @@
 package edu.kh.bangbanggokgok.common.interceptor;
 
-import java.util.List;
-
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +11,6 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
-import edu.kh.bangbanggokgok.vo.board.BoardType;
 
 public class BoardTypeinterceptor implements HandlerInterceptor{
 	
