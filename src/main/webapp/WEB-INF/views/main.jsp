@@ -21,6 +21,8 @@
 		
 		
 		<a href="${contextPath}/landmark-main/landmark-detail">랜드마크 확인용</a>
+		
+		<a href="${contextPath}/notice/list">공지사항 확인용</a>
 	</main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
