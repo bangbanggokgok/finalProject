@@ -37,28 +37,22 @@
                 <div id="location-area">
                     <h1 class="location-sort">지역별</h1>
                     <div id="locations">
-                        <ul class="l-List1">
-                            <li id="1" onclick="located(1)">서울</li>
-                            <li id="2" onclick="located(2)">인천</li>
-                            <li id="3" onclick="located(3)">대전</li>
-                            <li id="4" onclick="located(4)">대구</li>
-                            <li id="5" onclick="located(5)">광주</li>
-                            <li id="6" onclick="located(6)">부산</li>
-                            <li id="7" onclick="located(7)">울산</li> 
-                            <li id="8" onclick="located(8)">세종</li>
-                            <li id="9" onclick="located(9)">경기</li>
-                        </ul>
-                        <ul class="l-List2">
-                            <li id="10" onclick="located(10)">강원</li>
-                            <li id="11" onclick="located(11)">충북</li>
-                            <li id="12" onclick="located(12)">충남</li>
-                            <li id="13" onclick="located(13)">경북</li>
-                            <li id="14" onclick="located(14)">경남</li>
-                            <li id="15" onclick="located(15)">전북</li>
-                            <li id="16" onclick="located(16)">전남</li>
-                            <li id="17" onclick="located(17)">제주</li>
-                            <li id="18" onclick="located(18)">전체보기</li>
-                        </ul>
+                        <div class="location-div"><a href="#">서울</a></div>
+                        <div class="location-div"><a href="#">부산</a></div>
+                        <div class="location-div"><a href="#">대구</a></div>
+                        <div class="location-div"><a href="#">인천</a></div>
+                        <div class="location-div"><a href="#">광주</a></div>
+                        <div class="location-div"><a href="#">대전</a></div>
+                        <div class="location-div"><a href="#">울산</a></div>
+                        <div class="location-div"><a href="#">세종</a></div>
+                        <div class="location-div"><a href="#">경기</a></div>
+                        <div class="location-div"><a href="#">강원</a></div>
+                        <div class="location-div"><a href="#">충북</a></div>
+                        <div class="location-div"><a href="#">전북</a></div>
+                        <div class="location-div"><a href="#">전남</a></div>
+                        <div class="location-div"><a href="#">경북</a></div>
+                        <div class="location-div"><a href="#">경남</a></div>
+                        <div class="location-div"><a href="#">제주</a></div>
                     </div>
                 </div> 
         
@@ -86,21 +80,6 @@
                             <li><a href="">#해쉬태그3</a></li>
                             <li><a href="">#해쉬태그4</a></li>
                             <li><a href="">#해쉬태그5</a></li>
-                            <li><a href="">#해쉬태그6</a></li>
-                            <li><a href="">#해쉬태그7</a></li>
-                            <li><a href="">#해쉬태그8</a></li>
-                            <li><a href="">#해쉬태그9</a></li>
-                            <li><a href="">#해쉬태그10</a></li>
-                            <li><a href="">#해쉬태그11</a></li>
-                            <li><a href="">#해쉬태그12</a></li>
-                            <li><a href="">#해쉬태그13</a></li>
-                            <li><a href="">#해쉬태그14</a></li>
-                            <li><a href="">#해쉬태그15</a></li>
-                            <li><a href="">#해쉬태그16</a></li>
-                            <li><a href="">#해쉬태그17</a></li>
-                            <li><a href="">#해쉬태그18</a></li>
-                            <li><a href="">#해쉬태그19</a></li>
-                            <li><a href="">#해쉬태그20</a></li>
                         </ul>
                     </div>
                 </div>
