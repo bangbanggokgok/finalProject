@@ -69,17 +69,6 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	// 회원 탈퇴
-//	@Override
-//	public int secession(User loginUser) {
-//		
-//		String encPw = dao.selectEncPw(loginUser.getUserNo());
-//		
-//		if(loginUser.getUserPW() == encPw) {
-//			return dao.secession(loginUser.getUserNo());
-//		}
-//		return 0;
-//	}
-
 	@Override
 	public int secession(Map<String, Object> map) {
 		String encPw = dao.selectEncPw((int)map.get("userNo"));
