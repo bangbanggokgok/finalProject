@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.bangbanggokgok.dao.notice.NoticeDAO;
 
 @Service
-public class NoticeServiceImpl{
+public class NoticeServiceImpl implements NoticeService{
 
 	@Autowired
 	private NoticeDAO dao;
