@@ -1,5 +1,9 @@
 package edu.kh.bangbanggokgok.dao.user;
 
+import java.util.Map;
+
+import javax.print.DocFlavor.STRING;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +27,7 @@ public class UserDAO {
 	public int addAccount(User account) {
 		return sqlSession.insert("userMapper.addAccount",account);
 	}
+	
 
 	/** 로그인계정 비밀번호 조회
 	 * @param email
@@ -53,7 +58,7 @@ public class UserDAO {
 	 * @return
 	 */
 	public String selectAccount(User resetAccount) {
-		return sqlSession.selectOne("userMapper.selectAccount",selectAccount(resetAccount));
+		return sqlSession.selectOne("userMapper.selectAccount",resetAccount);
 	}
 
 	/** 비밀번호 무작위 생성 삽입
@@ -62,6 +67,27 @@ public class UserDAO {
 	 */
 	public int updatePassword(User resetAccount) {
 		return sqlSession.update("userMapper.updatePassword", resetAccount);
+	}
+
+	//중복 체크 메소드 집합
+	/** 이메일 중복
+	 * @param userEmail
+	 * @return
+	 */
+	public int emailReduplicateCheck(String userEmail) {
+		return sqlSession.selectOne("userMapper.emailReduplicateCheck",userEmail);
+	}
+
+	public int insertCertification(Map<String,String> map) {
+		return sqlSession.insert("userMapper.insertCertification",map);
+	}
+
+	public int emailUserCheck(Map<String, String> map) {
+		return sqlSession.selectOne("userMapper.emailUserCheck",map);
+	}
+
+	public int updateCertification(Map<String, String> map) {
+		return sqlSession.update("userMapper.updateCertification",map);
 	}
 
 }

@@ -59,6 +59,8 @@
                     <label for="memberEmail">아이디(이메일)</label>
                     <input type="text" id="memberEmail" placeholder="ex) user@xx.co.kr" maxlength="30" autocomplete="off" required>
                     <button type="button" id="sendBtn">인증번호 전송</button>
+                    <button type="button" id="resendBtn" style='display:none;'>인증번호 재발급</button>
+                    <input type="number" name="re" id="re" hidden>
                 </div>
                 <span class="signUp-message" id="emailMessage">사용 가능한 이메일 주소를 입력해주세요.</span>
 
@@ -129,7 +131,7 @@
             <span>서울시 중구 남대문로 120, 2층</span>
         </div>
     </footer>
-
+    
     <!-- 우편번호 찾기 팝업 -->
     <div id="layer" style="display:none;position:fixed;overflow:hidden;z-index:1;-webkit-overflow-scrolling:touch;">
         <img src="//t1.daumcdn.net/postcode/resource/images/close.png" id="btnCloseLayer" style="cursor:pointer;position:absolute;right:-3px;top:-3px;z-index:1" onclick="closeDaumPostcode()" alt="닫기 버튼">

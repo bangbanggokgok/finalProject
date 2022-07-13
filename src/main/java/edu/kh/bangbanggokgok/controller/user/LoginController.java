@@ -3,12 +3,13 @@ package edu.kh.bangbanggokgok.controller.user;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -18,9 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.user.UserService;
-import edu.kh.bangbanggokgok.service.user.UserServiceImpl;
 import edu.kh.bangbanggokgok.vo.user.User;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("user/*")
@@ -29,7 +28,7 @@ public class LoginController {
 
 	@Autowired
 	private UserService service;
-	
+
 	@GetMapping("login-page")
 	public String login() {
 		return "user/loginPage/loginPage";
@@ -37,18 +36,18 @@ public class LoginController {
 
 	@PostMapping("login")
 	public String login(@RequestParam(value = "email") String email,
-			@RequestParam(value = "password") String password,
-			RedirectAttributes ra, Model model) {
-		
-		User result = service.login(email,password);
+						@RequestParam(value = "password") String password,
+						RedirectAttributes ra, Model model) {
+
+		User result = service.login(email, password);
 		String path = "";
-		if(result!=null) {
-			model.addAttribute("loginUser",result);
-			ra.addFlashAttribute("message","로그인 성공");
+		if (result != null) {
+			model.addAttribute("loginUser", result);
+			ra.addFlashAttribute("message", "로그인 성공");
 			path = "redirect:/";
 		} else {
-			ra.addFlashAttribute("message","실패");
-			path = "redirect:/user/login";
+			ra.addFlashAttribute("message", "실패");
+			path = "redirect:/user/login-page";
 		}
 		return path;
 	}
@@ -58,17 +57,22 @@ public class LoginController {
 	public String findAccount(User findInfo) {
 		User findEmail = service.findAccount(findInfo);
 		Map<String, String> map = new HashMap<String, String>();
-		if(findEmail != null) {
+		if (findEmail != null) {
 			map.put("userEmail", findEmail.getUserEmail());
 			map.put("userName", findEmail.getUserName());
 		}
 		return new Gson().toJson(map);
 	}
-	
+
 	@PostMapping("reset-password")
-	public String resetPassword(User resetAccount,RedirectAttributes ra) {
+	public String resetPassword(@RequestParam("RPEmail")String email,
+								@RequestParam("RPUserName") String name,
+								HttpServletResponse resp, RedirectAttributes ra) {
 		String path = "";
-		int result = service.resetPassword(resetAccount);
+		User resetAccount = new User();
+		resetAccount.setUserEmail(email);
+		resetAccount.setUserName(name);
+		int result = service.resetPassword(resetAccount,resp);
 		if(result>0) {
 			path = "패스워드 바꿧다고 페이지 넣어야함";
 		} else {
@@ -77,5 +81,5 @@ public class LoginController {
 		}
 		return path;
 	}
-	
+
 }

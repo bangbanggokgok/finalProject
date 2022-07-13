@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,35 +9,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원 탈퇴</title>
 
-    <link rel="stylesheet" href="../../resources/css/myPage/changeInfo.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/changeInfo.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
 
+    <script src="https://kit.fontawesome.com/4f7f0292da.js" crossorigin="anonymous"></script>
+
 </head>
 <body>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
+
     <main>
 
         <section class="myPage-container">
-            <section class="left-side">
-                <ul>
-                    <li><a href="myPage-changeInfo.html">회원정보 수정</a></li>
-                    <li><a href="myPage-changePw.html">비밀번호 변경</a></li>
-                    <li><a href="myPage-seccession.html">회원 탈퇴</a></li>
-                </ul>
-            </section>
+            
+            <jsp:include page="/WEB-INF/views/myPage/sideMenu.jsp"/>
 
             <section class="myInfo-content">
                 <h1 class="page-title">회원 탈퇴</h1>
 
-                <form action="#" method="POST" name="myPage-form" onsubmit="return secessionValidate()">
+                <form action="secession" method="POST" name="myPage-form" onsubmit="return secessionValidate()">
                     <div class="myInfo-explanation">
-                        <span>* 탈퇴를 원하는 경우 현재 비밀번호를 입력 후 탈퇴하기 버튼을 클릭 해주세요.</span>
+                        <i class="fa-solid fa-bullhorn fa-xl" style="color: tomato;"></i>
+                        <span> 탈퇴를 원하는 경우 현재 비밀번호를 입력 후 탈퇴하기 버튼을 클릭 해주세요.</span>
                     </div>
-                
 
                     <div class="myInfo-row">
                         <label for="userPw">현재 비밀번호</label>
-                        <input type="password" id="userPw" required>
+                        <input type="password" id="userPw" name="userPw" maxlength="20">
                     </div>
                     <span class="myInfo-message">현재 비밀번호를 입력해주세요.</span>
 
@@ -48,9 +50,11 @@
 
     </main>
 
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-    <script src="../../resources/js/myPage/myPage.js"></script>
+    <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
 
 </body>
 </html>

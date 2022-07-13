@@ -11,6 +11,7 @@
 	<!-- 별칭 -->
 	<typeAliases>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLine" alias="MoveLine"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
