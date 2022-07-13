@@ -40,7 +40,7 @@
 		AND USER_NAME = #{userName}
 	</select>
 	
-	<select id="selectAccount" parameterType="User" resultMap="string">
+	<select id="selectAccount" parameterType="User" resultType="string">
 		SELECT USER_PW
 		FROM USER_TB
 		WHERE USER_EMAIL = #{userEmail}
@@ -48,7 +48,7 @@
 	</select>
 	
 	<update id="updatePassword" parameterType="User">
-		UPDATE SET USER_TB INTO USER_PW = #{userPW}
+		UPDATE USER_TB SET USER_PW = #{userPW}
 		WHERE USER_EMAIL = #{userEmail}
 		AND USER_NAME = #{userName}
 	</update>
