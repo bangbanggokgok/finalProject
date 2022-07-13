@@ -16,6 +16,7 @@ public class LandMark {
 	private String landMarkAddress;
 	private char landMarkFL;
 	private String landMarkCreate;
+	private String thumbnail;
 	private int userNo;
 	private int locationType;
 }

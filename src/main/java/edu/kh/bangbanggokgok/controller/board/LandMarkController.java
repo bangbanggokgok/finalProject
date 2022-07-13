@@ -16,10 +16,11 @@ import edu.kh.bangbanggokgok.service.board.LandMarkService;
 public class LandMarkController {
 
 
-	@GetMapping("/list")
-	public String landMarkMainPage() {
-		return "landMark/landmark";
-			}
+//	@GetMapping("/list")
+//	public String landMarkMainPage() {
+//		
+//		return "landMark/landmark";
+//			}
 	
 
 	
@@ -37,7 +38,7 @@ public class LandMarkController {
 		
 		model.addAttribute("map", map);
 		
-		return "landMark/randmark";
+		return "landMark/landmark";
 
 	}
 	@GetMapping("/landmark-detail")
