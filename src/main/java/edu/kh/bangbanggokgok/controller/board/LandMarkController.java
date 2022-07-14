@@ -15,21 +15,15 @@ import edu.kh.bangbanggokgok.service.board.LandMarkService;
 @RequestMapping("landmark/*")
 public class LandMarkController {
 
-
-//	@GetMapping("/list")
-//	public String landMarkMainPage() {
-//		
-//		return "landMark/landmark";
-//			}
-	
-
-	
 	@Autowired
 	private LandMarkService service;
 	
-	@GetMapping("/list/{locationType}")
-	public String landMarkMainPage(@RequestParam(value="locationType",required=false,defaultValue="1") int locationType
-			,Model model) {
+	@GetMapping("/list/{locationNum}")
+	public String landMarkMainPage(@RequestParam(value="locationNum"
+									,required=false
+									,defaultValue="100") 
+									int locationType
+									,Model model) {
 		
 		// 랜드마크 목록 조회 서비스
 		// 지역 이름 조회

@@ -2,6 +2,7 @@ package edu.kh.bangbanggokgok.service.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,13 +79,11 @@ public class MyPageServiceImpl implements MyPageService {
 		}
 		return 0;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public List<Integer> favoriteList(Map<String, Object> param) {
+		return dao.selectFavorite(param);
+	}
+	
+	
 }
