@@ -3,7 +3,6 @@
 
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="noticeList" value="${map.noticeList}" />
-<%-- <c:set var="noticeType" value="${map.noticeType}" /> --%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -27,18 +26,21 @@
         </div>
         <ul class="noticePage">
 
+
             <c:choose>
                             <c:when test="${empty noticeList}">
+                                <!-- 게시글 목록 조회 결과가 비어있다면 -->
                                 <li>
                                     <span colspan="5">게시글이 존재하지 않습니다.</span>
                                 </li>
                             </c:when>
-                     <c:when test="${empty noticeList.noticeType}">
+
                             <c:otherwise>
+                                <!-- 게시글 목록 조회 결과가 비어있지 않다면 -->
 
-                               
-
+                                <!-- 향상된 for문처럼 사용 -->
                                 <c:forEach var="notice" items="${noticeList}">
+
                                 <li>
                                     <div class="titleWrapper">
                                         <div class="noticeBadge">${notice.noticeType}</div>
@@ -49,8 +51,7 @@
                                 </c:forEach>
 
                             </c:otherwise>
-                                </c:when>
-            </c:choose>
+                        </c:choose>
             <%-- <li>
                 <div class="titleWrapper">
                     <div class="noticeBadge">공지</div>
@@ -65,7 +66,7 @@
         <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="list/cp="/>
+                <c:set var="url" value="&cp="/>
 
 
                 <ul class="pagination">
