@@ -25,23 +25,24 @@
 
         <section class="pageWrapper" id="contentWrapper">
                 
-                <div class="title">ㅇㅇㅇ에 대해 문의드립니다.<br>
-                    <span class="createDate">작성일 : 2022-07-14 11:11:11</span>
+                <div class="title">${detail.questionTitle}<br>
+                    <span class="createDate">작성일 : ${detail.createDate}</span>
                 </div>
 
                 <div class="contentArea">
-                    <div class="content">
-                        풍부하게 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며
-                    </div>
+                    <div class="content">${detail.questionContent}</div>
                 </div>
                 
                 <div class="replyArea">
                     <div>
-                        <p>관리자</p>
-                        <p>
-                            안녕하세요.. 답변
-                            풍부하게 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며
-                        </p>
+                        <c:if test="${!empty detail.questionAnswer}">
+                            <p>${detail.managerName}</p>
+                            <p>${detail.questionAnswer}</p>
+                        </c:if>
+
+                        <c:if test="${empty detail.questionAnswer}">
+                            <p>등록된 답변이 없습니다.</p>
+                        </c:if>
                     </div>
                 </div>
             

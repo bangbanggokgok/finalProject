@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.Pagination;
 import edu.kh.bangbanggokgok.vo.question.Question;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Repository
@@ -30,7 +31,7 @@ public class QuestionDAO {
 	/** 문의 게시판 목록 조회
 	 * @param pagination
 	 * @param loginUser 
-	 * @return questionList
+	 * @return qList
 	 */
 	public List<Question> selectQuestionList(Pagination pagination, User loginUser) {
 		
@@ -38,6 +39,15 @@ public class QuestionDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
 		return sqlSession.selectList("questionMapper.selectQuestionList", loginUser, rowBounds);
+	}
+
+
+	/** 문의 게시글 상세 조회
+	 * @param questionNo
+	 * @return questionDetail
+	 */
+	public QuestionDetail selectQuestionDetail(int questionNo) {
+		return sqlSession.selectOne("questionMapper.selectQuestionDetail", questionNo);
 	}
 
 

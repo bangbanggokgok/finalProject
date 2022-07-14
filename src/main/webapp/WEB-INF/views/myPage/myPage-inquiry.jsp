@@ -59,7 +59,7 @@
                                         <tr>
                                             <td>${question.questionNo}</td>
                                             <td>
-                                                <a href="#">${question.questionTitle}</a>
+                                                <a href="inquiry/detail/${question.questionNo}?cp=${pagination.currentPage}${sURL}">${question.questionTitle}</a>
                                             </td>
                                             <td>${question.createDate}</td>
                                             <c:if test="${!empty question.questionAnswer}">

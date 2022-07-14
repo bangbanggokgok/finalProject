@@ -7,12 +7,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class Question {
+public class QuestionDetail {
 	
 	private int questionNo;
 	private String questionTitle;
+	private String questionContent;
 	private String createDate;
 	private String questionAnswer;
 	private int userNo;
+	private String managerName;
 	
+
 }
