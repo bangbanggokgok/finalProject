@@ -16,11 +16,12 @@ ul,li,ol{
     list-style: none;
 }
 #mainNavbar1{
-
+    /* background-color:rgb(237, 242, 244,0.6); */
     font-size: 1.5rem;
     font-weight: 100;
 }
 .nav{
+    background-color:rgb(237, 242, 244,0.5);
     display:flex;
     justify-content: flex-start;
     /* align-items: center; */
