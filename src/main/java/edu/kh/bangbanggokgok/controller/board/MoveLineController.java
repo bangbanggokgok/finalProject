@@ -25,10 +25,7 @@ public class MoveLineController {
 //	
 	// 코스 구분 페이지 조회
 	@GetMapping("/list")
-	@Scope("application")
 	public String moveLineSort(Model model) {
-		List<Location> locationList = service.selectLocation();
-		model.addAttribute("locationList",locationList);
 		return "moveline/movelineSort";
 	}
 	
