@@ -41,7 +41,6 @@ public class LandMarkController {
 		return "landMark/landmark";
 
 	}
-	
 	@GetMapping("/landmark-detail")
 	public String landMarkDetail() {
 		return "landMark/land-detail";
