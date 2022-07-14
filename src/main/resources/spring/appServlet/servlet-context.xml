@@ -33,7 +33,7 @@
 			class="edu.kh.bangbanggokgok.common.interceptor.LocationInterceptor"/>
 		</interceptor>
 	</interceptors>
-	 <!-- 이오류는 파일없어서 뜨는거 -->
+
 	<tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class="true"/>
 	
 	<aop:aspectj-autoproxy proxy-target-class="false"/>
