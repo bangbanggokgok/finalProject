@@ -2,13 +2,23 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="questionMapper">
 
-	<!-- 게시글 목록용 -->
+	<!-- 문의 게시글 목록용 -->
 	<resultMap type="question" id="question_rm">
 		<id property="questionNo" column="Q_NO" />
 		<result property="questionTitle" column="Q_TITLE" />
 		<result property="createDate" column="Q_DATE" />
-		<result property="userName" column="USER_NAME" />
 		<result property="userNo" column="USER_NO" />
+		<result property="questionAnswer" column="Q_ANSWER" />
+	</resultMap>
+
+	<!-- 문의 게시글 상세조회용 -->
+	<resultMap type="questionDetail" id="questionDetail_rm">
+		<id property="questionNo" column="Q_NO" />
+		<result property="questionTitle" column="Q_TITLE" />
+		<result property="questionContent" column="Q_CONTENT" />
+		<result property="createDate" column="Q_DATE" />
+		<result property="userNo" column="USER_NO" />
+		<result property="managerName" column="USER_NAME" />
 		<result property="questionAnswer" column="Q_ANSWER" />
 	</resultMap>
 
@@ -27,5 +37,12 @@
 		ORDER BY Q_NO DESC
 	</select>
 	
+	<!-- 문의 게시글 상세 조회 -->
+	<select id="selectQuestionDetail" resultMap="questionDetail_rm">
+		SELECT Q_TITLE, Q_DATE, Q_CONTENT, USER_NAME, Q_ANSWER
+		FROM QUESTION Q
+		JOIN USER_TB U ON(Q.MANAGER_NO = U.USER_NO)
+		WHERE Q_NO = #{questionNo}
+	</select>
 
 </mapper>

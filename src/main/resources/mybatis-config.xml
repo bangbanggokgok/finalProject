@@ -20,6 +20,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeImage" alias="NoticeImage"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->

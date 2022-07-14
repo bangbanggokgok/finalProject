@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.bangbanggokgok.dao.question.QuestionDAO;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
 import edu.kh.bangbanggokgok.vo.question.Question;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Service
@@ -33,6 +34,14 @@ public class QuestionServiceImpl implements QuestionService{
 		
 		return map;
 	}
+
+	// 문의 게시글 상세 조회
+	@Override
+	public QuestionDetail selectQuestionDetail(int questionNo) {
+		return dao.selectQuestionDetail(questionNo);
+	}
+	
+	
 	
 	
 	
