@@ -25,7 +25,6 @@ public class MoveLineController {
 //	
 	// 코스 구분 페이지 조회
 	@GetMapping("/list")
-	@Scope("application")
 	public String moveLineSort(Model model) {
 		return "moveline/movelineSort";
 	}
