@@ -26,7 +26,6 @@ a{
 h1{
     border-bottom: 1px solid #CCC;
     padding-bottom: 10px;
-    padding-left: 100px;
     margin-left: 12px;
     margin-right: 12px;
 }
@@ -36,16 +35,19 @@ h1{
     margin-top: 30px;
     display: inline-block;
     width: 100%;
+    position: relative;
+    width: 100%;
+    margin-top: 24px;
 }
 
 #locations{
     margin-top: 20px;
-    display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 65px;
 }
 .location-div{
-    border: 1px solid #bbd0ff;
+    /* border: 1px solid #bbd0ff;
     width: 6.25%;
     display: flex;
     justify-content: center;
@@ -53,7 +55,12 @@ h1{
     border-radius: 12px;
     margin: 5px;
     height: 40px;
-    font-size: 24px;
+    font-size: 24px; */
+
+    float: left;
+    width: 11.1%;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .location-div:hover{

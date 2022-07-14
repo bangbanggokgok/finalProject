@@ -23,6 +23,7 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 	<context:component-scan base-package="edu.kh.bangbanggokgok" />
 	
 	<interceptors>
@@ -32,7 +33,7 @@
 			class="edu.kh.bangbanggokgok.common.interceptor.LocationInterceptor"/>
 		</interceptor>
 	</interceptors>
-
+	 
 	<tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class="true"/>
 	
 	<aop:aspectj-autoproxy proxy-target-class="false"/>
