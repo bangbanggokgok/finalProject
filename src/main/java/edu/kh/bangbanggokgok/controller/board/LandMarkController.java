@@ -12,7 +12,6 @@ public class LandMarkController {
 	public String landMarkMainPage() {
 		return "landMark/landmark";
 	}
-	
 	@GetMapping("/landmark-detail")
 	public String landMarkDetail() {
 		return "landMark/land-detail";
