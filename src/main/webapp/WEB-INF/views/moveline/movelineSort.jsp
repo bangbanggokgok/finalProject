@@ -1,14 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
-
-<!-- map에 저장된 값을 각각 변수에 저장 -->
-<c:forEach var="locationType" items="${locationTypeList}">
-    <c:if test="${locationType == locations.locationType}">
-        <c:set var="locationName" value="${locations.locationName}" />
-    </c:if>
-</c:forEach>
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -37,22 +28,13 @@
                 <div id="location-area">
                     <h1 class="location-sort">지역별</h1>
                     <div id="locations">
-                        <div class="location-div"><a href="#">서울</a></div>
-                        <div class="location-div"><a href="#">부산</a></div>
-                        <div class="location-div"><a href="#">대구</a></div>
-                        <div class="location-div"><a href="#">인천</a></div>
-                        <div class="location-div"><a href="#">광주</a></div>
-                        <div class="location-div"><a href="#">대전</a></div>
-                        <div class="location-div"><a href="#">울산</a></div>
-                        <div class="location-div"><a href="#">세종</a></div>
-                        <div class="location-div"><a href="#">경기</a></div>
-                        <div class="location-div"><a href="#">강원</a></div>
-                        <div class="location-div"><a href="#">충북</a></div>
-                        <div class="location-div"><a href="#">전북</a></div>
-                        <div class="location-div"><a href="#">전남</a></div>
-                        <div class="location-div"><a href="#">경북</a></div>
-                        <div class="location-div"><a href="#">경남</a></div>
-                        <div class="location-div"><a href="#">제주</a></div>
+                    	<c:if test="${!empty LocationList}">
+	                    	<c:forEach var="location" items="${LocationList}">
+		                        <div class="location-div">
+		                        	<a href="location/${location.locationNum}">${location.locationName}</a>
+		                        </div>
+	                    	</c:forEach>
+                    	</c:if>
                     </div>
                 </div> 
         
