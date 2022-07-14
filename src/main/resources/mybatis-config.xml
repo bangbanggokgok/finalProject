@@ -25,6 +25,7 @@
 		<mapper resource="/mappers/userMapper.xml"/>
 		<mapper resource="/mappers/myPageMapper.xml"/>
 		<mapper resource="/mappers/locationMapper.xml"/>
+		<mapper resource="/mappers/noticeMapper.xml"/>
 	</mappers>
 
 </configuration>
