@@ -12,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.user.MyPageDAO;
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Service
@@ -81,9 +83,13 @@ public class MyPageServiceImpl implements MyPageService {
 	}
 
 	@Override
-	public List<Integer> favoriteList(Map<String, Object> param) {
-		return dao.selectFavorite(param);
+	public List<LandMark> favoriteLandmark(int userNo) {
+		return dao.favoriteLandmark(userNo);
 	}
-	
+
+	@Override
+	public List<MoveLine> favoriteMoveline(int userNo) {
+		return dao.favoriteMoveline(userNo);
+	}
 	
 }
