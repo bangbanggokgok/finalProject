@@ -15,6 +15,7 @@ $(document).ready(function() {
         dataType: "JSON",
         success : function(result){
           console.log(result);
+          // 아약스 처리를 오또케할까
         }
       })
       $(".tab_content > div").eq(idx).show();

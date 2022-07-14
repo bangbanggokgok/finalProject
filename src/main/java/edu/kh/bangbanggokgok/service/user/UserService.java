@@ -23,4 +23,6 @@ public interface UserService {
 
 	int updateCertification(String userEmail, String cNumber);
 
+	int selectCertification(String userEmail);
+
 }
