@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
+<c:forEach var="location" items="${LocationList}">
+    <c:if test="${locationNum == location.locationNum}">
+        <c:set var="locationName" value="${location.locationName}" />
+    </c:if>
+</c:forEach>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -27,10 +33,17 @@
         <div id="contents">
             <section id="top">
                 <div>
-                    <h1>서울</h1>
+                    <c:if test="${!empty LocationList}">
+                        <h1 id="first-h1">
+                            ${locationName}</a>
+                        </h1>
+                    </c:if>
                 </div>
+
                 <div>
-                    <button id="write-form">작성하기</button>
+                    <c:if test="${!empty loginMember}">
+                        <button id="write-form">작성하기</button>
+                    </c:if>
                 </div>
             </section>
             
@@ -41,7 +54,10 @@
                     </div>
 
                     <div class="ml-detail">
-                        <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
+                        <div class="title-area">
+                            <p class="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p>
+                        </div>
+
                         <p>
                             <span class="landmarks">롯데타워 </span>
                             <span class="landmarks">63빌딩 </span>
@@ -73,128 +89,24 @@
                     </div>
 
                     <div class="ml-detail-plus">
-                        <button type="button" class="btn-bookmark" onclick="setBookmark();"><span class="icon-bookmark">즐겨찾기</span></button>
+                        <button type="button" class="btn-bookmark" onclick="setBookmark();">
+                            <span class="icon-bookmark">즐겨찾기</span>
+                        </button>
                     </div>
                </li>
             </ul>
 
-
-
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-             <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
             <ul class="detail-list">
                <li>
                     <div class="thumbnail">
-                        <img src="../../resources/images/randmark/6.jpg" alt="">
+                        <img src="${contextPath}/resources/images/randmark/6.jpg" alt="">
                     </div>
 
                     <div class="ml-detail">
-                        <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
+                        <div class="title-area">
+                            <p class="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p>
+                        </div>
+
                         <p>
                             <span class="landmarks">롯데타워 </span>
                             <span class="landmarks">63빌딩 </span>
@@ -226,114 +138,63 @@
                     </div>
 
                     <div class="ml-detail-plus">
-                        <button type="button" class="btn-bookmark" onclick="setBookmark();"><span class="icon-bookmark">즐겨찾기</span></button>
+                        <button type="button" class="btn-bookmark" onclick="setBookmark();">
+                            <span class="icon-bookmark">즐겨찾기</span>
+                        </button>
                     </div>
                </li>
             </ul>
 
+            <%-- jsp 구조 --%>
+
+            <c:choose>
+                <c:when test="${empty locationList}">
+                    <!-- 목록 조회 결과가 비어있다면 -->
+                    <tr>
+                        <th colspan="5">게시글이 존재하지 않습니다.</th>
+                    </tr>
+                </c:when>
+
+                <c:otherwise>
+
+                    <c:forEach var="movelineDetail" items="${movelineDetail}">
+
+                        <ul class="detail-list">
+                            <li>
+                                <div class="thumbnail">
+                                    <c:if test="${!empty thumbnail}">
+                                        <img src="${contextPath}/resources/images/randmark/6.jpg" alt="">
+                                    </c:if>  
+                                </div>
+
+                                <div class="ml-detail">
+                                    <div class="title-area">
+                                        <p class="ml-title">${movelineTitle}</p>
+                                    </div>
+                                    <p>
+                                        <span class="landmarks">${landmarkName}</span>
+                                    </p>
+
+                                    <p>
+                                        <span class="hashtags">${hashName}</span>
+                                    </p>
+                                </div>
+
+                                <div class="ml-detail-plus">
+                                    <button type="button" class="btn-bookmark" onclick="setBookmark();">
+                                        <span class="icon-bookmark">즐겨찾기</span>
+                                    </button>
+                                </div>
+                            </li>
+                        </ul>
+                    </c:forEach>
+
+                </c:otherwise>
+            </c:choose>
 
 
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-            <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         <p>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                             <span class="hashtags">#해시태그1</span>
-                         </p>
-                     </div>
-                </li>
-            </ul>
-
-             <ul class="detail-list">
-                <li>
-                     <div class="thumbnail">
-                         <img src="../../resources/images/randmark/6.jpg" alt="">
-                     </div>
-                     <div class="ml-detail">
-                         <div><p id="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p></div>
-                         <p>
-                             <span class="landmarks">롯데타워 </span>
-                             <span class="landmarks">63빌딩 </span>
-                             <span class="landmarks">남산타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워 </span>
-                             <span class="landmarks">OO타워</span>
-                         </p>
-                         
-                     </div>
-                </li>
-            </ul>
-
+            
+            <%-- 페이지네이션 보류? --%>
             <div class="pagination-area">
                 <ul class="pagination">
                     <li><a href="#">&lt;&lt;</a></li>
