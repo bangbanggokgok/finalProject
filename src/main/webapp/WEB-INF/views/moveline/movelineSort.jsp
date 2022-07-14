@@ -27,15 +27,16 @@
             <div id="contents">
                 <div id="location-area">
                     <h1 class="location-sort">지역별</h1>
-                    <div id="locations">
+                    <ul id="locations">
                     	<c:if test="${!empty LocationList}">
 	                    	<c:forEach var="location" items="${LocationList}">
-		                        <div class="location-div">
+		                        <li class="location-div">
 		                        	<a href="location/${location.locationNum}">${location.locationName}</a>
-		                        </div>
+		                        </li>
 	                    	</c:forEach>
                     	</c:if>
-                    </div>
+                        <li class="location-div">전체</li>
+                    </ul>
                 </div> 
         
                 <div id="course-area">
