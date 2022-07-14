@@ -12,7 +12,5 @@ public class MainController {
 		return "main";
 	}
 	
-//	메인에 로케이션 긁어와야할듯
-	
 	
 }
