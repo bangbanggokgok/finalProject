@@ -28,12 +28,7 @@ a:hover { text-decoration:none !important }
     width:100px;
     height:100px;
 }
-.card-1:hover{
-    border-color: tomato;
-}
-.card-2{
 
-}
 .card-wrap{
     display:flex;
     justify-content: space-around;
