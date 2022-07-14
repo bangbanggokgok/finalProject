@@ -131,8 +131,12 @@ h1{
     border: 1px solid #ccc;
     overflow: hidden;   
     position: relative;
-    height: 260px;
+    width: 350px;
+}
 
+.s-img{
+    min-width: 350px;
+    max-height: 250px;
 }
 
 .s-pic>a{

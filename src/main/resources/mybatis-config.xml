@@ -12,12 +12,20 @@
 	<typeAliases>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLine" alias="MoveLine"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.Location" alias="Locations"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.Notice" alias="Notice"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeDetail" alias="NoticeDetail"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeImage" alias="NoticeImage"/>
+		
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
 	<mappers>
 		<mapper resource="/mappers/userMapper.xml"/>
 		<mapper resource="/mappers/myPageMapper.xml"/>
+		<mapper resource="/mappers/locationMapper.xml"/>
+		<mapper resource="/mappers/noticeMapper.xml"/>
 	</mappers>
 
 </configuration>
