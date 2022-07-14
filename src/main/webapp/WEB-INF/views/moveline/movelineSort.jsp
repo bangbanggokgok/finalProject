@@ -28,10 +28,10 @@
                 <div id="location-area">
                     <h1 class="location-sort">지역별</h1>
                     <div id="locations">
-                    	<c:if test="">
-	                    	<c:forEach var="locationList" items="${locationList}">
+                    	<c:if test="${!empty LocationList}">
+	                    	<c:forEach var="location" items="${LocationList}">
 		                        <div class="location-div">
-		                        	<a href="location/${locationList.locationNum}">${location.locationName}</a>
+		                        	<a href="location/${location.locationNum}">${location.locationName}</a>
 		                        </div>
 	                    	</c:forEach>
                     	</c:if>

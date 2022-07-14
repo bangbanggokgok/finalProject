@@ -22,7 +22,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 
 	@Override
 	public List<String> selectMovelineList() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
