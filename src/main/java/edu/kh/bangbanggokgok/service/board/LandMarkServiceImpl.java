@@ -8,21 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.board.LandMarkDAO;
-import edu.kh.bangbanggokgok.vo.board.BoardType;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.Location;
 
 @Service
 public class LandMarkServiceImpl implements LandMarkService{
 	
 	@Autowired
 	private LandMarkDAO dao;
-	
-	// 지역 코드, 이름 조회
-	@Override
-	public List<BoardType> selectBoardType() {
-		
-		return dao.selectBoardType();
-	}
 	
 	// 랜드마크 목록 조회
 	@Override
