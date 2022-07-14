@@ -90,4 +90,9 @@ public class UserDAO {
 		return sqlSession.update("userMapper.updateCertification",map);
 	}
 
+
+	public int selectCertification(String userEmail) {
+		return sqlSession.selectOne("userMapper.selectCertification",userEmail);
+	}
+
 }
