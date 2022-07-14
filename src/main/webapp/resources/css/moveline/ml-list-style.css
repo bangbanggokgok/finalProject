@@ -1,3 +1,8 @@
+li{
+    list-style: none;
+}
+
+
 /* 전체 화면 */
 #contents{
     width: 1140px;
@@ -7,6 +12,151 @@
     border: 1px solid #ddd;
 }
 
+/* 맨위 */
 #top{
-    border: 1px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+h1{
+    font-size: 30px;
+}
+
+#write-form{
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 60px;
+    border-color: white;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+#write-form:hover{
+    cursor: pointer;
+    background-color: #13294b;
+    border-color: #13294b;
+    color: white;
+}
+
+#ml-title{
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+
+.detail-list{
+    width: 100%;
+    padding-left: 0;
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px solid #ddd;
+    box-sizing: border-box;
+    float: none !important;
+
+    padding: 10px 10px
+}
+
+/* 썸네일 */
+.thumbnail{
+    
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 140px;
+    height: 94px;
+}
+
+div>img{
+    width: 150px;
+    height: 100px;
+}
+
+
+/* 코스 디테일 */
+.ml-detail{
+    padding-left: 160px;
+}
+
+.landmarks{
+    border: 1px solid #13294b;
+    border-radius: 20px;
+    background-color: #13294b;
+    color: white;
+    padding: 3px 12px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    display: inline-block;
+
+}
+
+.hashtags{
+    margin-right: 10px;
+    margin-bottom: 5px;
+    display: inline-block;
+
+}
+
+/* 즐겨찾기, 조회수, 작성자 영역 */
+.ml-detail-plus{
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+}
+
+.btn-bookmark{
+    border: 0 none;
+    margin-top: 0;
+    background-color: transparent;
+}
+
+.icon-bookmark{
+    display: inline-block;
+    text-indent: -9999px;
+    width: 25px;
+    height: 25px;
+    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat;
+}
+
+.icon-bookmark:hover{
+    cursor: pointer;
+}
+
+/* 페이지네이션(Pagination */
+.pagination{
+    padding: 0;
+    margin-top: 50px;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.pagination>li{
+    width: 20px;
+    margin: 0 6px;
+    text-align: center;
+    color: #13294b;
+}
+
+.pagination a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    letter-spacing: 1px;
+    text-decoration: none;
+    font-size: 20px;
+    color: black;
+}
+
+/* 현재 페이지 번호 */
+.pagination .current{
+    background-color: #13294b;
+    color: white;
+    border-radius: 50%;
+    font-weight: bold;
 }

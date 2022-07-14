@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.dao.user;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -50,6 +51,10 @@ public class MyPageDAO {
 	 */
 	public int secession(int userNo) {
 		return sqlSession.update("myPageMapper.secession", userNo);
+	}
+
+	public List<Integer> selectFavorite(Map<String, Object> param) {
+		return sqlSession.selectList("myPageMapper.selectFavorite",param);
 	}
 
 

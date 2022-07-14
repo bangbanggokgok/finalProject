@@ -1,7 +1,10 @@
 package edu.kh.bangbanggokgok.service.user;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
+
+import com.google.gson.JsonElement;
 
 import edu.kh.bangbanggokgok.vo.user.User;
 
@@ -30,6 +33,8 @@ public interface MyPageService {
 	 * @return result
 	 */
 	int secession(Map<String, Object> map);
+
+	List<Integer> favoriteList(Map<String, Object> param);
 
 	
 }
