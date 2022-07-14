@@ -56,6 +56,21 @@ public class MyPageController {
 		return "myPage/myPage-secession";
 	}
 	
+	@GetMapping("/course")
+	public String course() {
+		return "myPage/myPage-course";
+	}
+	
+	@GetMapping("/reply")
+	public String reply() {
+		return "myPage/myPage-reply";
+	}
+	
+	@GetMapping("/inquiry")
+	public String inquiry() {
+		return "myPage/myPage-inquiry";
+	}
+	
 
 	
 	// 프로필 이미지 변경
@@ -154,8 +169,6 @@ public class MyPageController {
 		
 		String message = null;
 		String path = null;
-		
-		System.out.println("result : "+result);
 		
 		if(result>0) {
 			message = "회원 탈퇴되었습니다.";
