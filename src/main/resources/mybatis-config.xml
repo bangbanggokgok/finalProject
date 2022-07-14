@@ -13,6 +13,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLine" alias="MoveLine"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.Location" alias="Locations"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMark" alias="LandMark"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.Notice" alias="Notice"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeDetail" alias="NoticeDetail"/>

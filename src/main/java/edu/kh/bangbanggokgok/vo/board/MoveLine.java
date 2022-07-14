@@ -16,6 +16,6 @@ public class MoveLine {
 	private String movelineDD;
 	private String movelineTheme;
 	private String userNo;
-	private String locationType;
+	private String locationName;
 	
 }
