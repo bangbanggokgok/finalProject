@@ -1,0 +1,76 @@
+.header {
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+article, aside, details, figcaption, figure, footer, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    outline: none;
+    font-family: inherit;
+}
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+.pageWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.boardTitle {
+    margin: 50px 0px 20px;
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.board {
+    margin: 24px 0px 58px;
+}
+
+.title{
+    padding: 40px 0 30px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    font-size: 23px;
+}
+
+.createDate{
+    font-size: 15px;
+    float: right;
+}
+
+.contentArea{
+    margin-top: 30px;
+    height: 600px;
+    border-bottom: 1px solid rgb(209, 209, 209);
+    border-top: 1px solid rgb(209, 209, 209);
+}
+
+.content{
+    margin-top: 30px;
+    height: 600px;
+    width: 100%;
+    resize: none;
+    border: none;
+    font-size: 18px;
+}
+
+
+.replyArea{
+    margin: 40px 0 50px;
+    min-height: 100px;
+}
+
+.replyArea p:nth-of-type(1){
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+

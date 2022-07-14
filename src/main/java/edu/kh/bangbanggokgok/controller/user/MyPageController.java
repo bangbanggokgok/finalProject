@@ -66,11 +66,6 @@ public class MyPageController {
 		return "myPage/myPage-reply";
 	}
 
-	@GetMapping("/inquiry")
-	public String inquiry() {
-		return "myPage/myPage-inquiry";
-	}
-
 	// 프로필 이미지 변경
 	@PostMapping("/profile")
 	public String updateProfile(@ModelAttribute("loginUser") User loginUser,

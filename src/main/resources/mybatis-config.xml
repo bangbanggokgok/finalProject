@@ -19,6 +19,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeDetail" alias="NoticeDetail"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeImage" alias="NoticeImage"/>
 		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
@@ -27,6 +28,7 @@
 		<mapper resource="/mappers/myPageMapper.xml"/>
 		<mapper resource="/mappers/locationMapper.xml"/>
 		<mapper resource="/mappers/noticeMapper.xml"/>
+		<mapper resource="/mappers/questionMapper.xml"/>
 	</mappers>
 
 </configuration>
