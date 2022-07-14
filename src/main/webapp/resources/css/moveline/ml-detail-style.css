@@ -1,0 +1,74 @@
+/* 전체 화면 */
+#contents{
+    width: 1140px;
+    padding: 70px 20px 27px 20px;   
+    /* margin-left: 560px; */
+}
+
+#top1{
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
+}
+
+
+.profileImage{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    vertical-align: top;
+    margin-bottom: 5px;
+}
+
+.icon-writer>img{
+    width: 40px;
+}
+
+.btn-bookmark{
+    border: 0 none;
+    margin-top: 0;
+    background-color: transparent;
+}
+
+.icon-bookmark{
+    display: inline-block;
+    text-indent: -9999px;
+    width: 25px;
+    height: 25px;
+    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat;
+}
+
+.icon-bookmark:hover{
+    cursor: pointer;
+}
+
+#middle-top{
+    text-align: center;
+}
+
+#btn-area{
+}
+
+#btn-area>button{
+    margin-left: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border-color: white;
+    background-color: white;
+    height: 30px;
+}
+
+#btn-area>button:hover{
+    cursor: pointer;
+    background-color: #13294b;
+    border-color: #13294b;
+    color: white;
+}
+
+#bottom-top{
+    display: flex;
+    justify-content: space-between;
+}

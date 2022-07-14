@@ -42,13 +42,20 @@
 
                 <div>
                     <c:if test="${!empty loginMember}">
-                        <button id="write-form">작성하기</button>
+                        <button id="write-btn">작성하기</button>
                     </c:if>
                 </div>
             </section>
             
             <ul class="detail-list">
                <li>
+                    <%-- 썸네일 없을시 --%>
+                    <c:if test="${!empty thumbnail}">
+                        <div class="thumbnail">
+                            <img src="${contextPath}/resources/images/user.png" alt="">
+                        </div>
+                    </c:if>
+                    
                     <div class="thumbnail">
                         <img src="${contextPath}/resources/images/randmark/6.jpg" alt="">
                     </div>
@@ -99,7 +106,7 @@
             <ul class="detail-list">
                <li>
                     <div class="thumbnail">
-                        <img src="${contextPath}/resources/images/randmark/6.jpg" alt="">
+                        <img src="" alt="">
                     </div>
 
                     <div class="ml-detail">
@@ -115,17 +122,9 @@
                             <span class="landmarks">OO타워 </span>
                             <span class="landmarks">OO타워</span>
                             <span class="landmarks">OO타워</span>
-                            <span class="landmarks">OO타워</span>
-                            <span class="landmarks">OO타워</span>
-                            <span class="landmarks">OO타워</span>
-                            <span class="landmarks">OO타워</span>
                         </p>
 
                         <p>
-                            <span class="hashtags">#해시태그1</span>
-                            <span class="hashtags">#해시태그1</span>
-                            <span class="hashtags">#해시태그1</span>
-                            <span class="hashtags">#해시태그1</span>
                             <span class="hashtags">#해시태그1</span>
                             <span class="hashtags">#해시태그1</span>
                             <span class="hashtags">#해시태그1</span>
@@ -148,7 +147,7 @@
             <%-- jsp 구조 --%>
 
             <c:choose>
-                <c:when test="${empty locationList}">
+                <c:when test="${empty movelineDetail}">
                     <!-- 목록 조회 결과가 비어있다면 -->
                     <tr>
                         <th colspan="5">게시글이 존재하지 않습니다.</th>
@@ -163,7 +162,7 @@
                             <li>
                                 <div class="thumbnail">
                                     <c:if test="${!empty thumbnail}">
-                                        <img src="${contextPath}/resources/images/randmark/6.jpg" alt="">
+                                        <img src="${contextPath}/resources/images/randmark/6.jpg" alt="" class="list-thumbnail">
                                     </c:if>  
                                 </div>
 
@@ -220,7 +219,12 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     </main>
 
+    <div class="modal">
+        <span id="modal-close">&times;</span>
+        <img id="modal-image" src="/comm/resources/images/user.png">
+    </div>
 
     <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
 </body>
 </html>

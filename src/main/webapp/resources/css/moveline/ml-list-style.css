@@ -33,7 +33,7 @@ h1{
     font-size: 30px;
 }
 
-#write-form{
+#write-btn{
     font-size: 15px;
     font-weight: bold;
     margin-top: 60px;
@@ -44,7 +44,7 @@ h1{
     height: 50px;
 }
 
-#write-form:hover{
+#write-btn:hover{
     cursor: pointer;
     background-color: #13294b;
     border-color: #13294b;
@@ -103,7 +103,7 @@ div>img{
 /* 코스 디테일 */
 .ml-detail{
     padding-left: 220px;
-    height: 230px;
+    min-height: 160px;
 }
 
 .ml-title:hover{
@@ -192,4 +192,81 @@ div>img{
     color: white;
     border-radius: 50%;
     font-weight: bold;
+}
+
+/* 게시글 목록 없을 시 */
+tr{
+    text-align: center;
+}
+
+
+
+/**********************************************/
+/* modal : 화면내에 html 요소를 이용해서 만드는 분할 창 */
+.modal{
+    background-color: rgba(0, 0, 0, 0.4);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 50;
+
+    display: none;
+}
+
+.modal.show { /* 클래스로 modal, show를 동시에 가진 요소 선택 */
+    display: flex;
+
+    animation-name: show; /* @keyframes  show 적용 */
+    animation-duration: 0.5s;  /* 애니메이션 수행 시간 */
+}
+
+.modal.hide{
+    animation-name: hide; /* @keyframes  show 적용 */
+    animation-duration: 0.5s;  /* 애니메이션 수행 시간 */
+}
+
+#modal-image {
+    background-color: white;
+    margin: auto;
+    border-radius: 10px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* 닫기 버튼 */
+#modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+#modal-close:hover{
+    transform: scale(1.2);
+}
+
+
+
+/* @keyframes : 
+애니메이션 중간중간의 특정 지점들을 거칠 수 있는 키프레임들을 설정함으로써
+CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.  */
+@keyframes show {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes hide {
+    from {opacity: 1;}
+    to {opacity: 0;}
 }
