@@ -8,7 +8,16 @@ $(document).ready(function() {
       $(".tab_title li").eq(idx).addClass("current-tab");
 
       $(".tab_content > div").hide();
-
+      $.ajax({
+        url:"my-favorite",
+        type: "GET",
+        data: {"indexFlag": idx},
+        dataType: "JSON",
+        success : function(result){
+          console.log(result);
+          // 아약스 처리를 오또케할까
+        }
+      })
       $(".tab_content > div").eq(idx).show();
       $(".tab_content > div").eq(idx).css("display", "flex");
     })

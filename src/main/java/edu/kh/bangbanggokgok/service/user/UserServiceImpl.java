@@ -190,5 +190,10 @@ public class UserServiceImpl implements UserService {
 		return dao.emailUserCheck(map);
 	}
 
+	@Override
+	public int selectCertification(String userEmail) {
+		return dao.selectCertification(userEmail);
+	}
+
 
 }

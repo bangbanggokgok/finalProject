@@ -2,6 +2,7 @@ package edu.kh.bangbanggokgok.service.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.user.MyPageDAO;
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Service
@@ -78,13 +81,15 @@ public class MyPageServiceImpl implements MyPageService {
 		}
 		return 0;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
+	@Override
+	public List<LandMark> favoriteLandmark(int userNo) {
+		return dao.favoriteLandmark(userNo);
+	}
+
+	@Override
+	public List<MoveLine> favoriteMoveline(int userNo) {
+		return dao.favoriteMoveline(userNo);
+	}
+	
 }

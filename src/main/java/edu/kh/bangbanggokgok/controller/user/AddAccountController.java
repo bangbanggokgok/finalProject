@@ -141,12 +141,13 @@ public class AddAccountController {
 			t.connect(smtpEmail, password);
 			t.sendMessage(message, message.getAllRecipients());
 			t.close();
-			int result = -10;
 			
-			if(flag!=1) {
+			int result = service.selectCertification(userEmail);
+	
+			if(flag == 0 && result == 0) {
 				result = service.insertCertification(userEmail, cNumber);
 			}
-			if(flag==1) {
+			if(result == 1) {
 				result = service.updateCertification(userEmail, cNumber);
 			}
 			

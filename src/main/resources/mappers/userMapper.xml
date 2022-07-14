@@ -86,4 +86,10 @@
 		   END			
 		FROM DUAL
 	</select>
+	
+	<select id="selectCertification" parameterType="string" resultType="_int">
+		SELECT COUNT(*)
+		FROM CERTIFICATION
+		WHERE EMAIL = #{userEmail}
+	</select>
 </mapper>
