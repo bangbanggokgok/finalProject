@@ -55,20 +55,20 @@
 		UPDATE USER_TB SET SECESSION_DT = SYSDATE
 		WHERE USER_NO = #{userNo}
 	</update>
-	
-	<select id="selectFavorite" resultMap="">
-		SELECT 
-		<if test='indexFlag == "0"'>
-		LM_NO,LM_NAME,LM_CONTENT
-		FROM BOOKMARK_LM A
-		JOIN LANDMARK USING(LM_NO)
-		</if>
-		<if test='indexFlag == "1"'>
-		ML_NO,ML_TITLE,LOCATION_NAME
+ 
+ 	<select id="favoriteLandmark" resultMap="landMark_rm">
+ 		SELECT LM_NO,LM_NAME,LM_CONTENT
+ 		FROM BOOKMARK_LM A
+ 		JOIN LANDMARK USING(LM_NO)
+ 		WHERE A.USER_NO = #{userNo}
+ 	</select>
+ 	
+ 	<select id="favoriteMoveline" resultMap="moveline_rm">
+		SELECT ML_NO,ML_TITLE,LOCATION_NAME
 		FROM BOOKMARK_ML A
-		JOIN BOOKMARK_ML USING(ML_NO)
-		</if>
-		WHERE A.USER_NO = #{userNo}
-	</select>
-
+		JOIN MOVELINE_BOARD USING(ML_NO)
+        JOIN LOCATIONS USING(LOCATION_TYPE)
+ 		WHERE A.USER_NO = #{userNo}
+ 	</select>
+ 	
 </mapper>

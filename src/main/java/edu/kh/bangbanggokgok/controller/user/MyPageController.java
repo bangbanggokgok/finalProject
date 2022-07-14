@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.controller.user;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.user.MyPageService;
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
@@ -64,11 +67,6 @@ public class MyPageController {
 	@GetMapping("/reply")
 	public String reply() {
 		return "myPage/myPage-reply";
-	}
-
-	@GetMapping("/inquiry")
-	public String inquiry() {
-		return "myPage/myPage-inquiry";
 	}
 
 	// 프로필 이미지 변경
@@ -172,12 +170,18 @@ public class MyPageController {
 
 	@ResponseBody
 	@GetMapping("/my-favorite")
-	public String favoriteList(@ModelAttribute("loginUser") User loginUser,
-							@RequestParam Map<String,Object> param) {
+	public String favoriteList(@ModelAttribute("loginUser") User loginUser, @RequestParam("indexFlag") int flag) {
 //												0 landMark | 1 moveLine indexFlag
-		int userNo = loginUser.getUserNo();
- 		param.put("userNo", userNo);
-		return new Gson().toJson(service.favoriteList(param));
+		List<LandMark> landMarkList = null;
+		List<MoveLine> moveLineList = null;
+		
+		if (flag == 0) {
+			landMarkList = service.favoriteLandmark(loginUser.getUserNo());
+			return new Gson().toJson(landMarkList);
+		} else {
+			moveLineList = service.favoriteMoveline(loginUser.getUserNo());
+			return new Gson().toJson(moveLineList);
+		}
 	}
 
 }

@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
+<c:set var="pagination" value="${map.pagination}" />
+<c:set var="qList" value="${map.qList}" />
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,41 +47,57 @@
                         </thead>
         
                         <tbody>
+                            <c:choose>
+                                <c:when test="${empty qList}">
+                                    <tr>
+                                        <th colspan="4">작성한 글이 없습니다.</th>
+                                    </tr>
+                                </c:when>
 
-                            <tr>
-                                <th colspan="4">작성한 글이 없습니다.</th>
-                            </tr>
-
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="#">문의합니다.</a>
-                                </td>
-                                <td>2022.07.06</td>
-                                <td>미답변</td>
-                            </tr>
-                            
+                                <c:otherwise>
+                                    <c:forEach var="question" items="${qList}">
+                                        <tr>
+                                            <td>${question.questionNo}</td>
+                                            <td>
+                                                <a href="#">${question.questionTitle}</a>
+                                            </td>
+                                            <td>${question.createDate}</td>
+                                            <c:if test="${!empty question.questionAnswer}">
+                                                <td style="color : #bbd0ff;">답변 완료</td>
+                                            </c:if>
+                                            <c:if test="${empty question.questionAnswer}">
+                                                <td style="color : green;">미답변</td>
+                                            </c:if>
+                                        </tr>
+                                        </c:forEach>
+                                </c:otherwise>
+                            </c:choose>
                         </tbody>
                     </table>
                 </div>
         
 
                 <div class="pagination-area">
+                    <c:set var="url" value="inquiry?cp="/>
+
                     <ul class="pagination">
-                        <li><a href="#">&lt;&lt;</a></li>
-                        <li><a href="#">&lt;</a></li>
-                        <li><a class="current">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#">10</a></li>
-                        <li><a href="#">&gt;</a></li>
-                        <li><a href="#">&gt;&gt;</a></li>
+                        <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
+                        <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
+
+                        <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                            <c:choose>
+                                <c:when test="${i == pagination.currentPage}">
+                                    <li><a class="current">${i}</a></li>
+                                </c:when>
+
+                                <c:otherwise>
+                                    <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                </c:otherwise>
+                            </c:choose>
+                        </c:forEach>
+                        
+                        <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
+                        <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
                     </ul>
                 </div>
             </section>

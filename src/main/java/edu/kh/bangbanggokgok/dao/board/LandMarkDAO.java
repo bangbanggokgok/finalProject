@@ -6,7 +6,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import edu.kh.bangbanggokgok.vo.board.BoardType;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 
 
@@ -15,10 +14,6 @@ public class LandMarkDAO {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public List<BoardType> selectBoardType() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectList("landMarkMapper.selectBoardType");
-	}
 
 	/** 특정 지역 랜드마크 게시글 수 조회
 	 * @param locationType

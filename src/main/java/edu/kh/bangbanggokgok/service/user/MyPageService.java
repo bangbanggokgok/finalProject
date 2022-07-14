@@ -6,6 +6,8 @@ import java.util.Map;
 
 import com.google.gson.JsonElement;
 
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 public interface MyPageService {
@@ -34,7 +36,9 @@ public interface MyPageService {
 	 */
 	int secession(Map<String, Object> map);
 
-	List<Integer> favoriteList(Map<String, Object> param);
-
 	
-}
+	// 즐겨찾는 랜드마크/무브라인 관련 메소드
+	List<LandMark> favoriteLandmark(int userNo);
+	List<MoveLine> favoriteMoveline(int userNo);
+
+ }

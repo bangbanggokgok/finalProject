@@ -14,7 +14,7 @@ $(document).ready(function() {
         data: {"indexFlag": idx},
         dataType: "JSON",
         success : function(result){
-          console.log("d");
+          console.log(result);
         }
       })
       $(".tab_content > div").eq(idx).show();
