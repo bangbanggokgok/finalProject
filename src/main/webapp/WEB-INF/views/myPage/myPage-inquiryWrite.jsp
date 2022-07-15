@@ -30,14 +30,14 @@
                 <div class="titleFields">
                     <div>
                         <label class="title">제목</label>
-                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput">
+                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" name="questionTitle">
                     </div>
                 </div>
 
                 <div class="contentField">
                     <label class="contentLabel">내용</label>
                     <article class="contentArea">
-                        <textarea placeholder="내용을 입력해주세요." class="content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요." class="content" name="questionContent"></textarea>
                     </article>
                 </div>
                 
