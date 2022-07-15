@@ -31,7 +31,7 @@
                     	<c:if test="${!empty LocationList}">
 	                    	<c:forEach var="location" items="${LocationList}">
 		                        <li class="location-div">
-		                        	<a href="location/${location.locationNum}">${location.locationName}</a>
+		                        	<a href="list/location/${location.locationNum}">${location.locationName}</a>
 		                        </li>
 	                    	</c:forEach>
                     	</c:if>
