@@ -17,6 +17,8 @@
 </head>
 
 <body>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
+
     <section class="header">
         <section class="pageWrapper">
             <h1 font-size="24px" class="boardTitle">공지</h1>
@@ -53,7 +55,7 @@
         <section class="pageWrapper" id="contentWrapper">
             <form>
                 
-                <div class="title">공지제목</div>
+                <div class="title">${detail.noticeTitle}</div>
 
                 <!-- 이미지 조회 -->
                 <c:set var="start" value="0"/>
@@ -75,16 +77,18 @@
 
                 <div class="contentArea">
                     <div class="content">
-                    풍부하게 하는 것이다 보라 청춘을 ! 그들의 몸이 얼마나 튼튼하며 그들의 피부가 얼마나 생생하며 그들의 눈에 무엇이 타오르고 있는가? 우리 눈이 그것을 보는 때에 우리의 귀는 생의 찬미를 듣는다 그것은 웅대한 관현악이며
+                        ${detail.noticeContent}
                     </div>
                 </div>
                 
-
+                <c:if test="${fn:contains(loginUser.adminFlag, 'Y')}">
+                <%-- <c:if test="${empty loginUser}"> --%>
                 <section class="submitBar">
                     <div class="buttonContainer">
                         <button type="button" disabled="" class="submitButton">수정하기</button>
                     </div>
                 </section>
+                </c:if>
             </form>
             <div class="sc-fznxKY bjxHni">
                 <section class="sc-fzpmMD fpVDsP"></section>
