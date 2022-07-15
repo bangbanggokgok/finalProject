@@ -25,6 +25,7 @@ import com.google.gson.Gson;
 import edu.kh.bangbanggokgok.service.user.MyPageService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.reply.MyReply;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
@@ -68,8 +69,8 @@ public class MyPageController {
 	@GetMapping("/reply")
 	public String reply(@ModelAttribute("loginUser") User loginUser,
 			Model model) {
-		
-		
+		List<MyReply> myReplyList = service.selectMyReplyList(loginUser.getUserNo());
+		model.addAttribute("myReplyList",myReplyList);
 		return "myPage/myPage-reply";
 	}
 

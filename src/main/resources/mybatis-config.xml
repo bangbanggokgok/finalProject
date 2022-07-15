@@ -21,6 +21,8 @@
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.reply.MyReply" alias="MyReply"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->

@@ -38,23 +38,23 @@
                             </tr>
                         </thead>
         
-
                         <tbody>
-
-                            <tr>
-                                <th colspan="4">작성한 댓글이 없습니다.</th>
-                            </tr>
-
-                            <tr>
-                                <td>1</td>
-                                <td>
-                                    <a href="#">서울 여행</a>
-                                </td>
-                                <td>좋아요~~
-                                </td>
-                                <td>유저일</td>
-                            </tr>
-                            
+							<c:if test="${empty myReplyList}">
+	                            <tr>
+	                                <th colspan="4">작성한 댓글이 없습니다.</th>
+	                            </tr>
+							</c:if>
+							<c:if test="${!empty myReplyList}">
+	                            <tr>
+	                                <td>1</td>
+	                                <td>
+	                                    <a href="#">서울 여행</a>
+	                                </td>
+	                                <td>좋아요~~
+	                                </td>
+	                                <td>유저일</td>
+	                            </tr>
+							</c:if>
                         </tbody>
                     </table>
                 </div>
