@@ -15,7 +15,6 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage-main.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage-board.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css">
 
     <link href="https://hangeul.pstatic.net/hangeul_static/css/nanum-barun-gothic.css" rel="stylesheet">
     
@@ -32,7 +31,7 @@
                 <h1 class="board-name">1:1 문의</h1>
                 
                 <div class="btn-area">
-                    <button id="insert-btn">문의하기</button>
+                    <button id="insert-btn" onclick="location.href='inquiry/q_write?cp=1'">문의하기</button>
                 </div>
 
                 <div class="list-wrapper">
@@ -57,7 +56,7 @@
                                 <c:otherwise>
                                     <c:forEach var="question" items="${qList}">
                                         <tr>
-                                            <td>${question.questionNo}</td>
+                                            <td>${question.rowNo}</td>
                                             <td>
                                                 <a href="inquiry/detail/${question.questionNo}?cp=${pagination.currentPage}${sURL}">${question.questionTitle}</a>
                                             </td>
