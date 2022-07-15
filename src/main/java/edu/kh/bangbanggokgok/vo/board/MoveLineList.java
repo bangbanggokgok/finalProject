@@ -7,16 +7,15 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class MoveLine {
-
+public class MoveLineList {
+	
+	// 지역별 게시글 목록 조회용 VO
+	
 	private int movelineNo;
 	private String movelineTitle;
-	private String movelineContent;
-	private String createDate;
-	private String updateDate;
-	private String deleteDate;
-	private String movelineTheme;
-	private String userNo;
+	private String landMarkName;
+	private String movelineHashName;
 	private String locationName;
+	private String thumbnail;
 	
 }

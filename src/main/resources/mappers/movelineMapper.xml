@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="movelineMapper">
+
+	<!-- ================================== resultMap ========================================== -->
+
+	<!-- 지역별 코스 목록 조회용 resultMap -->   
+	<resultMap type="MoveLineList" id="movelineList_rm">
+		
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="movelineTitle" column="ML_TITLE"/>
+		<result property="landMarkName" column="LM_NAME"/>
+		<result property="movelineHashName" column="ML_HASH_NAME"/>
+		<result property="locationName" column="LOCATION_NAME"/>
+		
+	</resultMap>
+	
+	<!-- ======================================================================================== -->
+	
+
+	<!-- 특정 지역 전체 게시글 수 조회 -->
+	<select id="locationListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		WHERE LOCATION_TYPE = #{locationNum}
+		AND ML_DELETE_DT IS NOT NULL
+	</select>
+
+	
+	<!-- 특정 해시태그 전체 게시글 수 조회 -->
+	<select id="hashTagListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		JOIN MOVELINE_HASH USING(ML_NO)
+		WHERE ML_HASH_NO = #{mLHashTagNo}
+		AND ML_DELETE_DT IS NOT NULL
+	</select>
+   
+   	
+    <!-- 특정 지역 목록 조회 -->
+	<select id="selectLocationList" resultMap="movelineList_rm">
+	SELECT ML_TITLE, ML_HASH_NAME, LM_NAME
+          
+             (SELECT ML_RENAME FROM ML_IMG 
+             WHERE MOVELINE_BOARD.ML_NO = ML_IMG.ML_IMG_NO
+             AND ML_IMG_LEVEL = 0) THUMBNAIL
+             
+         FROM MOVELINE_BOARD
+         
+         JOIN LOCATIONS USING(LOCATION_TYPE)
+         JOIN USER_TB USING(USER_NO)
+         JOIN COORDINATE USING(ML_NO)
+         JOIN MOVELINE_HASH USING(ML_NO)
+         JOIN ML_IMG USING(ML_NO)
+         
+         WHERE ML_DELETE_DT IS NOT NULL
+         AND LOCATION_TYPE = #{locationNum}
+         ORDER BY BOARD_NO DESC
+	</select>
+   
+   
+    <!-- 특정 해시태그 목록 조회 -->
+	<select id="selectHashTagList" resultMap="movelineList_rm">
+	SELECT ML_TITLE, ML_HASH_NAME, LM_NAME
+          
+             (SELECT ML_RENAME FROM ML_IMG 
+             WHERE MOVELINE_BOARD.ML_NO = ML_IMG.ML_IMG_NO
+             AND ML_IMG_LEVEL = 0) THUMBNAIL
+             
+         FROM MOVELINE_BOARD
+         
+         JOIN LOCATIONS USING(LOCATION_TYPE)
+         JOIN USER_TB USING(USER_NO)
+         JOIN COORDINATE USING(ML_NO)
+         JOIN MOVELINE_HASH USING(ML_NO)
+         JOIN ML_IMG USING(ML_NO)
+         
+         WHERE ML_DELETE_DT IS NOT NULL
+         AND ML_HASH_NO = #{MLHashTagNo}
+         ORDER BY BOARD_NO DESC
+	</select>
+   
+</mapper>

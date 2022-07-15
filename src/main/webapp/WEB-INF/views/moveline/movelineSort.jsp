@@ -58,11 +58,18 @@
                     <h1>해시태그별</h1>
                     <div id="tags">
                         <ul class="t-list">
-                            <li><a href="">#해쉬태그1</a></li>
-                            <li><a href="">#해쉬태그2</a></li>
-                            <li><a href="">#해쉬태그3</a></li>
-                            <li><a href="">#해쉬태그4</a></li>
-                            <li><a href="">#해쉬태그5</a></li>
+                            <li>
+                                <a href="list/hashtag/${hashtag.MLHashTagNo}">해시태그1</a>
+                            </li>
+
+                            <c:if test="${!empty HashTagList}">
+                                <c:forEach var="hashtag" items="${HashTagList}">
+                                    <li>
+                                        <a href="list/hashtag/${hashtag.MLHashTagNo}">${MLHashTagNo}</a>
+                                    </li>
+                                </c:forEach>
+                            </c:if>
+
                         </ul>
                     </div>
                 </div>

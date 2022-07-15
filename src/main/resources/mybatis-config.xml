@@ -21,6 +21,9 @@
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineList" alias="MoveLineList"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineHashTag" alias="MoveLineHashTag"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
@@ -30,6 +33,8 @@
 		<mapper resource="/mappers/locationMapper.xml"/>
 		<mapper resource="/mappers/noticeMapper.xml"/>
 		<mapper resource="/mappers/questionMapper.xml"/>
+		<mapper resource="/mappers/movelineMapper.xml"/>
+		<mapper resource="/mappers/hashTagMapper.xml"/>
 	</mappers>
 
 </configuration>

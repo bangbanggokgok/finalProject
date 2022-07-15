@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="hashTagMapper">
+
+	<resultMap type="MoveLineHashTag" id="HashTag_rm">
+		<id 	property="MLHashTagNo" 		column="ML_HASH_NO"/>
+		<result property="MLHashTag" 	column="ML_HASH_NAME"/>
+	</resultMap>
+	
+	<select id="hashtagList" resultMap="HashTag_rm">
+		SELECT * 
+		FROM MOVELINE_HASH
+	</select>
+
+
+</mapper>
