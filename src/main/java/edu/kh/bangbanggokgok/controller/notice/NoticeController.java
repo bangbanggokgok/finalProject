@@ -10,15 +10,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import edu.kh.bangbanggokgok.service.notice.NoticeService;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
+import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
 @RequestMapping("/notice")
+//@SessionAttributes({ "loginUser" })
 public class NoticeController {
 
 	@Autowired
@@ -40,11 +44,20 @@ public class NoticeController {
 	public String boardDetail( @PathVariable("boardNo") int boardNo
 							, @RequestParam(value="cp", required=false, defaultValue="1") int cp
 							, Model model
-//							, HttpSession session
-//							, HttpServletRequest req, HttpServletResponse resp
-							) {
+							, HttpSession session
+							, HttpServletRequest req, HttpServletResponse resp) {
 		
 		NoticeDetail detail = service.selectNoticeDetail(boardNo);
+		
+		
+		if(detail != null) {
+			User loginUser = (User)session.getAttribute("loginUser");
+			
+			char adminFlag = 'N';
+			if(loginUser != null) {
+				adminFlag = loginUser.getAdminFlag();
+			}
+		}
 		
 		model.addAttribute("detail", detail);
 		
