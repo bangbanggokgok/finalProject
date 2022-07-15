@@ -38,7 +38,10 @@ public class MyPageController {
 	private MyPageService service;
 
 	@GetMapping("/info")
-	public String info() {
+	public String info(@ModelAttribute("loginUser") User loginUser
+			,Model model) {
+		List<LandMark> landmarkList = service.favoriteLandmark(loginUser.getUserNo());
+		model.addAttribute("landmarkList", landmarkList);
 		return "myPage/myPage-favorite";
 	}
 
@@ -189,7 +192,8 @@ public class MyPageController {
 	 */
 	@ResponseBody
 	@GetMapping("/my-favorite")
-	public String favoriteList(@ModelAttribute("loginUser") User loginUser, @RequestParam("indexFlag") int flag) {
+	public String favoriteList(@ModelAttribute("loginUser") User loginUser, 
+			@RequestParam("indexFlag") int flag) {
 //												0 landMark | 1 moveLine indexFlag
 		List<LandMark> landMarkList = null;
 		List<MoveLine> moveLineList = null;
