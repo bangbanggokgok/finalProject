@@ -1,4 +1,4 @@
-package edu.kh.bangbanggokgok.vo.reply;
+package edu.kh.bangbanggokgok.vo.user;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,11 +9,11 @@ import lombok.ToString;
 @Setter
 @NoArgsConstructor
 @ToString
-public class MyReply {
+public class MyMoveline {
 	
 	private int movelineNo;
 	private String movelineTitle;
-	private String replyContent;
-	private String movelineWriter;
+	private String locationName;
+	private String reNameImage;
 	
 }

@@ -7,7 +7,8 @@ import java.util.Map;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
-import edu.kh.bangbanggokgok.vo.reply.MyReply;
+import edu.kh.bangbanggokgok.vo.user.MyMoveline;
+import edu.kh.bangbanggokgok.vo.user.MyReply;
 
 public interface MyPageService {
 
@@ -45,5 +46,11 @@ public interface MyPageService {
 	 * @return list
 	 */
 	List<MyReply> selectMyReplyList(int userNo);
+
+	/** 내 작성 코스 조회
+	 * @param userNo
+	 * @return
+	 */
+	List<MyMoveline> selectMyMovelineList(int userNo);
 
  }

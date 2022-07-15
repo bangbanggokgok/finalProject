@@ -14,7 +14,8 @@ import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.user.MyPageDAO;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
-import edu.kh.bangbanggokgok.vo.reply.MyReply;
+import edu.kh.bangbanggokgok.vo.user.MyMoveline;
+import edu.kh.bangbanggokgok.vo.user.MyReply;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Service
@@ -83,6 +84,7 @@ public class MyPageServiceImpl implements MyPageService {
 		return 0;
 	}
 
+	//즐겨찾는 친구들
 	@Override
 	public List<LandMark> favoriteLandmark(int userNo) {
 		return dao.favoriteLandmark(userNo);
@@ -92,10 +94,16 @@ public class MyPageServiceImpl implements MyPageService {
 		return dao.favoriteMoveline(userNo);
 	}
 
-	
+	//내댓글
 	@Override
 	public List<MyReply> selectMyReplyList(int userNo) {
 		return dao.selectMyReplyList(userNo);
+	}
+
+	//내코스
+	@Override
+	public List<MyMoveline> selectMyMovelineList(int userNo) {
+		return dao.selectMyMovelineList(userNo);
 	}
 	
 }
