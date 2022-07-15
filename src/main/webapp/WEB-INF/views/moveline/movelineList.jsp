@@ -36,15 +36,23 @@
         <div id="contents">
             <section id="top">
                 <div>
-                    <c:if test="${!empty LocationList}">
-                        <h1 id="first-h1">
-                            ${locationName}</a>
-                        </h1>
-                    </c:if>
+                    <c:choose>
+                        <c:when test="${!empty hashTag}">
+                            <h1 id="first-h1">
+                            #${param.hashTag}</a>
+                            </h1>
+                        </c:when>
+                        
+                        <c:when test="${!empty LocationList}">
+                            <h1 id="first-h1">
+                                ${locationName}</a>
+                            </h1>
+                        </c:when>
+                    </c:choose>
                 </div>
 
                 <div>
-                    <c:if test="${!empty loginMember}">
+                    <c:if test="${!empty loginUser}">
                         <button id="write-btn">작성하기</button>
                     </c:if>
                 </div>

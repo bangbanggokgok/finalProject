@@ -1,8 +1,17 @@
 
-// 지역 클릭 시
+// 네비에서 코스 클릭 시
 function located(num){
-    location.href = "${contextPath}/movelineSort/locationType" + num;
+
+    $.ajax({
+        url : "moveline-main/list"
+
+    })
+
 }
+
+
+
+
 
 
 // 썸네일 클릭 시 확대 이벤트 

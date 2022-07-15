@@ -16,7 +16,8 @@ public class MoveLine {
 	private String updateDate;
 	private String deleteDate;
 	private String movelineTheme;
-	private String userNo;
+	private int userNo;
 	private String locationName;
+	private int readCount;
 	
 }

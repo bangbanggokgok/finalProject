@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.controller.board;
 
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.google.gson.Gson;
+
 import edu.kh.bangbanggokgok.service.board.MoveLineService;
+import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 
 
 @Controller
@@ -22,10 +26,14 @@ public class MoveLineController {
 	
 	
 	// 코스 구분 페이지 조회
-	@GetMapping("/list")
-	public String moveLineSort(Model model) {
-		return "moveline/movelineSort";
-	}
+//	@GetMapping("/list")
+//	public String moveLineSort(Model model) {
+//		
+//		List<MoveLineDetail> list = service.selectMoveLineDetail();
+//		
+//		return new Gson().toJson(list);
+//		
+//	}
 	
 	
 	/** 특정 지역 코스 목록 조회
@@ -50,24 +58,81 @@ public class MoveLineController {
 	}
 	
 	
-	/** 특정 해시태그 목록 조회
+//	/** 특정 해시태그 목록 조회
+//	 * @param model
+//	 * @param MLHashTagNo
+//	 * @param cp
+//	 * @return map
+//	 */
+//	@GetMapping("/list/hashtag/{MLHashTagNo}")
+//	public String moveLineHashTag(Model model,
+//								@PathVariable("MLHashTagNo") int MLHashTagNo,
+//								@RequestParam(value="cp", required=false, defaultValue="1") int cp
+//								) {
+//		
+//		Map<String, Object> map = null;
+//		
+////		map = service.selectHashTagList(cp, MLHashTagNo);
+//		
+//		model.addAttribute("map",map);
+//		
+//		return "moveline/movelineList";
+//	}
+//	
+//	
+//	
+//	@GetMapping("/list/hashtag?hashTagName={MLHashTag}")
+//	public String movelineHashTag2(
+//			
+//			Model model,
+//			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+//			@RequestParam(value="MLHashTag", required=false, defaultValue="") String MLHashTag,
+//			@RequestParam Map<String, Object> paramMap) {
+//		
+//		Map<String, Object> map = null;
+//			
+//					
+//		paramMap.put("cp", cp);
+//		paramMap.put("MLHashTag", MLHashTag);
+//
+//		map = service.selectHashTagList(paramMap);
+//		
+//		model.addAttribute("map",map);
+//
+//		
+//		return null;
+//		
+//	}
+	
+	
+	/**
 	 * @param model
-	 * @param MLHashTagNo
 	 * @param cp
-	 * @return map
+	 * @param MLHashTag
+	 * @param paramMap
+	 * @return
 	 */
-	@GetMapping("/list/hashtag/{MLHashTagNo}")
-	public String moveLineHashTag(Model model,
-								@PathVariable("MLHashTagNo") int MLHashTagNo,
-								@RequestParam(value="cp", required=false, defaultValue="1") int cp
-								) {
+	@GetMapping("/list/hashtag?hashTagName={MLHashTag}")
+	public String movelineHashTag(
+			
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam(value="MLHashTag", required=false, defaultValue="") String MLHashTag,
+			@RequestParam Map<String, Object> paramMap
+			
+			) {
 		
 		Map<String, Object> map = null;
 		
-//		map = service.selectHashTagList(cp, MLHashTagNo);
+//		map = service.selectHashTagList(cp, MLHashTag);
 		
 		model.addAttribute("map",map);
 		
 		return "moveline/movelineList";
+		
+		
 	}
+	
+	
+	
 }

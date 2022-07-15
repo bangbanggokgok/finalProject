@@ -2,6 +2,7 @@ package edu.kh.bangbanggokgok.vo.board;
 
 import java.util.List;
 
+import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -30,7 +31,16 @@ public class MoveLineDetail {
 	private String userName;
 	private String profileImage;
 
-	private List<MoveLineIMG> imageList;
+	private List<MoveLineImage> imageList;
 	private String thumbnail;
 
+	
+	private int landMarkNo;
+	private int landMarkX;
+	private int landMarkY;
+	private String landMarkName;
+	private String landMarkContent;
+	private String landMarkAddress;
+	private char landMarkFL;
+	private String landMarkCreate;
 }

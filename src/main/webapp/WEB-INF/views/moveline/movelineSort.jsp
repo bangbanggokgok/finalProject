@@ -59,13 +59,13 @@
                     <div id="tags">
                         <ul class="t-list">
                             <li>
-                                <a href="list/hashtag/${hashtag.MLHashTagNo}">해시태그1</a>
+                                <a href="list/hashtag?hashTagName=${hashtag.MLHashTag}">해시태그1</a>
                             </li>
 
                             <c:if test="${!empty HashTagList}">
                                 <c:forEach var="hashtag" items="${HashTagList}">
                                     <li>
-                                        <a href="list/hashtag/${hashtag.MLHashTagNo}">${MLHashTagNo}</a>
+                                        <a href="list/hashtag?hashTagName=${hashtag.MLHashTag}">${hashtag.MLHashTag}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>

@@ -3,8 +3,10 @@
     width: 1140px;
     padding: 70px 20px 27px 20px;   
     /* margin-left: 560px; */
+    border: 1px solid #ccc;
 }
 
+/* 헤더  */
 #top1{
     border-bottom: 1px solid #ccc;
     padding-bottom: 10px;
@@ -71,4 +73,13 @@
 #bottom-top{
     display: flex;
     justify-content: space-between;
+}
+
+/* 바디 */
+#moveline-area{
+    border: 1px solid #ccc;
+}
+
+#moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
+    border: 1px solid #ccc;
 }

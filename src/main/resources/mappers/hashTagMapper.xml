@@ -9,8 +9,13 @@
 	</resultMap>
 	
 	<select id="hashtagList" resultMap="HashTag_rm">
-		SELECT * 
-		FROM MOVELINE_HASH
+		SELECT ML_HASH_NAME
+		
+		FROM (SELECT ML_HASH_NAME
+			  FROM MOVELINE_HASH
+			  ORDER BY ML_HASH_NO DESC)
+		
+		<![CDATA[WHERE rownum <= 10]]>
 	</select>
 
 

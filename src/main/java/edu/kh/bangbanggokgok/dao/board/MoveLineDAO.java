@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
+import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
 
@@ -28,7 +29,7 @@ public class MoveLineDAO {
 	}
 
 	
-	/** 해시태그 구분 조회 DAO
+	/** 해시태그 이름 조회 DAO
 	 * @return hashtagList
 	 */
 	public List<Location> selectHashTag() {
@@ -61,27 +62,68 @@ public class MoveLineDAO {
 	}
 
 
-	/** 특정 해시태그 수 조회 DAO
-	 * @param mLHashTagNo
-	 * @return listCount
+//	/** 특정 해시태그 수 조회 DAO
+//	 * @param mLHashTagNo
+//	 * @return listCount
+//	 */
+//	public int hashTagListCount(int mLHashTagNo) {
+//		return sqlSession.selectOne("movelineMapper.hashTagListCount", mLHashTagNo);
+//	}
+//
+//
+//	/** 특정 해시태그 목록 조회 DAO
+//	 * @param pagination
+//	 * @param mLHashTagNo
+//	 * @return listByHashTag
+//	 */
+//	public List<MoveLineList> selectHashTagList(Pagination pagination, int MLHashTagNo) {
+//		
+//		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
+//		
+//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+//		
+//		return sqlSession.selectList("movelineMapper.selectHashTagList", MLHashTagNo, rowBounds);
+//	}
+//
+//
+//	public int hashTagListCount(Map<String, Object> paramMap) {
+//		
+//		return sqlSession.selectOne("movelineMapper.hashTagListCount", paramMap);
+//
+//	}
+
+
+	/**
+	 * @param mLHashTag
+	 * @return
 	 */
-	public int hashTagListCount(int mLHashTagNo) {
-		return sqlSession.selectOne("movelineMapper.hashTagListCount", mLHashTagNo);
+	public int hashTagListCount(String mLHashTag) {
+		
+		return sqlSession.selectOne("movelineMapper.hashTagListCount", mLHashTag);
 	}
 
 
-	/** 특정 해시태그 목록 조회 DAO
+	/**
 	 * @param pagination
-	 * @param mLHashTagNo
-	 * @return listByHashTag
+	 * @param mLHashTag
+	 * @return
 	 */
-	public List<MoveLineList> selectHashTagList(Pagination pagination, int MLHashTagNo) {
+	public List<MoveLineList> selectHashTagList(Pagination pagination, String mLHashTag) {
 		
 		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("movelineMapper.selectHashTagList", MLHashTagNo, rowBounds);
+		return sqlSession.selectList("movelineMapper.selectHashTagList", mLHashTag, rowBounds);
+	}
+
+
+	/** 코스 메인 조회 서비스 DAO
+	 * @return list
+	 */
+	public List<MoveLineDetail> selectMoveLineDetail() {
+		
+		return sqlSession.selectList("movelineMapper.selectMoveLineDetail");
 	}
 
 
