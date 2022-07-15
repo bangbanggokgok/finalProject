@@ -55,4 +55,13 @@ public class QuestionController {
 		return "myPage/myPage-inquiryDetail";
 	}
 	
+	// 문의 게시글 작성 화면
+	@GetMapping("/inquiry/q_write")
+	public String questionWriteForm(@RequestParam(value="cp", required=false, defaultValue="1") int cp) {
+		return "myPage/myPage-inquiryWrite";
+	}
+	
+	// 문의 게시글 등록
+	
+	
 }
