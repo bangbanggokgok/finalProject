@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.notice.Notice;
+import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
 
 @Repository
@@ -34,6 +35,15 @@ public class NoticeDAO {
 		
 		return sqlSession.selectList("noticeMapper.selectNoticeList", rowBounds);
 		
+	}
+
+
+	/** 공지 상세조회 DAO
+	 * @param boardNo
+	 * @return
+	 */
+	public NoticeDetail selectnoticeDetail(int boardNo) {
+		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", boardNo);
 	}
 	
 	

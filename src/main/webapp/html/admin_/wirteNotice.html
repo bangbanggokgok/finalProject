@@ -15,7 +15,7 @@
 <body>
 
     <section class="navWrapper">
-        <div class="adminNav">
+        <!-- <div class="adminNav">
             <ul class="listWrapper">
                 <div class="adminList">Admin</div>
                 <li id="adminList">
@@ -36,7 +36,7 @@
                 </li>
             </ul>
 
-        </div>
+        </div> -->
 
     </section>
 
@@ -50,14 +50,30 @@
         <section class="pageWrapper">
             <form>
                 <label class="choice">공지 선택</label>
-                <div class="inputFieldsContainer">
+                <div id="inputFieldsContainer" onclick="drop_choiceFields()">
                     <div class="inputFields">
-                        <div color="#333333" class="title">공지</div>
-                        <div class="inputField">
-                            <i class="fal fa-angle-down"></i>
+                        <div color="#333333" class="title">선택</div>
+                        <div id="inputField">
+                            <i class='fal fa-angle-down'></i>
                         </div>
                     </div>
                 </div>
+
+                <div style="display: none;" id="choiceFieldsContainer">
+                    <div class="choiceFeild">
+                        <div class="choiceFields" id="notice">
+                            <div color="#333333" class="title">공지</div>
+                        </div>
+                    </div>
+                    <div class="choiceFeild">
+                        <div class="choiceFields" id="event">
+                            <div color="#333333" class="title">이벤트</div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <div class="titleFields">
                     <div>
                         <label class="title">제목</label>
@@ -126,5 +142,8 @@
         </section>
     </section>
 </body>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="../../resources/js/admin_/writeNotice.js"></script>
 
 </html>
