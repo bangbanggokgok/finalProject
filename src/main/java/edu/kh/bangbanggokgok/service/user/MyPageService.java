@@ -4,11 +4,11 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import com.google.gson.JsonElement;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
-import edu.kh.bangbanggokgok.vo.user.User;
+import edu.kh.bangbanggokgok.vo.user.MyMoveline;
+import edu.kh.bangbanggokgok.vo.user.MyReply;
 
 public interface MyPageService {
 
@@ -40,5 +40,17 @@ public interface MyPageService {
 	// 즐겨찾는 랜드마크/무브라인 관련 메소드
 	List<LandMark> favoriteLandmark(int userNo);
 	List<MoveLine> favoriteMoveline(int userNo);
+
+	/** 내 댓글 조회
+	 * @param userNo
+	 * @return list
+	 */
+	List<MyReply> selectMyReplyList(int userNo);
+
+	/** 내 작성 코스 조회
+	 * @param userNo
+	 * @return
+	 */
+	List<MyMoveline> selectMyMovelineList(int userNo);
 
  }

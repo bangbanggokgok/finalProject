@@ -16,7 +16,7 @@ public class User {
 	private String userPW;
 	private String userName;
 	private String userTel;
-	private char adminFlag;
+	private String adminFlag;
 	private String userAddress;
 	private String registDate;
 	private String secessionDate;
