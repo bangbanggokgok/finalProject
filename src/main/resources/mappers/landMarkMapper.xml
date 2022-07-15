@@ -76,6 +76,7 @@
 	ORDER BY LM_NO DESC
 	</select>
 	-->
+	
 	<!-- 특정 지역의 랜드마크 수 조회 -->
 	<select id="getListCount">
 		SELECT COUNT(*) FROM LANDMARK
