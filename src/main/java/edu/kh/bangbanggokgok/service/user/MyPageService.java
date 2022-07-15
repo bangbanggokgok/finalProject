@@ -1,8 +1,13 @@
 package edu.kh.bangbanggokgok.service.user;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
+import com.google.gson.JsonElement;
+
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 public interface MyPageService {
@@ -32,4 +37,8 @@ public interface MyPageService {
 	int secession(Map<String, Object> map);
 
 	
-}
+	// 즐겨찾는 랜드마크/무브라인 관련 메소드
+	List<LandMark> favoriteLandmark(int userNo);
+	List<MoveLine> favoriteMoveline(int userNo);
+
+ }

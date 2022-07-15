@@ -1,10 +1,14 @@
 package edu.kh.bangbanggokgok.dao.user;
 
+import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 
 @Repository
 public class MyPageDAO {
@@ -50,6 +54,14 @@ public class MyPageDAO {
 	 */
 	public int secession(int userNo) {
 		return sqlSession.update("myPageMapper.secession", userNo);
+	}
+
+	public List<LandMark> favoriteLandmark(int userNo) {
+		return sqlSession.selectList("myPageMapper.favoriteLandmark",userNo);
+	}
+
+	public List<MoveLine> favoriteMoveline(int userNo) {
+		return sqlSession.selectList("myPageMapper.favoriteMoveline",userNo);
 	}
 
 

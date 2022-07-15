@@ -3,7 +3,7 @@
 <mapper namespace="landMarkMapper">
 
 	<!-- 지역 조회용 sesultMap -->
-	<resultMap type="boardType" id="boardType_rm">
+	<resultMap type="Location" id="Location_rm">
 		<id property="locationType" column="LOCATION_TYPE" />
 		<result property="locationName" column="LOCATION_NAME"/>
 	</resultMap>
@@ -19,7 +19,7 @@
 	<!-- ==================================================================================================================== -->
 	
 	<!-- 지역 번호, 지역명 조회 -->
-	<select id="selectBoardType" resultMap="boardType_rm">
+	<select id="selectBoardType" resultMap="Location_rm">
 		SELECT * FROM LOCATIONS
 		ORDER BY LOCATION_TYPE
 	</select>

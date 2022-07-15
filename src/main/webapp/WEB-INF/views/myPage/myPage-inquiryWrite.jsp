@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,11 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1:1 문의하기</title>
 
-    <link rel="stylesheet" href="../../resources/css/myPage/myPage-inquiryWrite.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/myPage/myPage-inquiryWrite.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 
 <body>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
+
     <section class="header">
         <section class="pageWrapper">
             <h1 font-size="24px" class="boardTitle">1:1 문의하기</h1>
@@ -48,6 +53,8 @@
             </div>
         </section>
     </section>
+
+    <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 </body>
 
 </html>

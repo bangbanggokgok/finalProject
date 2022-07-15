@@ -43,7 +43,7 @@
         <ul class="nav-in">
         <c:if test="${empty loginUser}">
           <li>
-            <a href="${contextPath}/user/login" class="login-btn nav-hover">로그인</a>
+            <a href="${contextPath}/user/login-page" class="login-btn nav-hover">로그인</a>
           </li>
           <li>
             <a href="${contextPath}/addAccount/sign-up" class="signUp-btn nav-hover">회원가입</a>
