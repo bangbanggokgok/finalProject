@@ -21,14 +21,12 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
 		
-<<<<<<< HEAD
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineList" alias="MoveLineList"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineHashTag" alias="MoveLineHashTag"/>
-=======
+		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyMoveline" alias="MyMoveline"/>
->>>>>>> c79b25763d7a228a6f670590d017a0dbe846aff7
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
