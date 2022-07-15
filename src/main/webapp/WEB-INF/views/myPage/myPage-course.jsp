@@ -28,58 +28,65 @@
                 <h1 class="board-name">내 코스</h1>
                 
                 <div class="course-list" id="course-list">
-                    <div class="course-content">
-                        <div class="course-img">
-                            <a href="#">
-                                <h1>서울 여행 </h1>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 77.7km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/lottetower.JPEG">
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-img">
-                            <a href="#">
-                                <h1>서울 여행 </h1>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 77.7km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/lottetower.JPEG">
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-img">
-                            <a href="#">
-                                <h1>서울 여행 </h1>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 77.7km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/lottetower.JPEG">
-                        </div>
-                    </div>
-                    <div class="course-content">
-                        <div class="course-img">
-                            <a href="#">
-                                <h1>서울 여행 </h1>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 77.7km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/lottetower.JPEG">
-                        </div>
-                    </div>
+                    	<c:if test="${empty movelineList}">
+                    		등록한 코스가 없음
+                    	</c:if>
+                    	<c:if test="${!empty movelineList}">
+                    		<c:forEach var="moveline" items="${movelineList}">
+                    		이건 있지롱 // 샘플 넣어보고 생각해요
+                    		</c:forEach>
+                    	</c:if>
+
+				<%--   <div class="course-content">
+			                      <div class="course-img">
+			                          <a href="#">
+			                              <h1>서울 여행 </h1>
+			                              <ul>
+			                                  <li>지역 : 서울</li>
+			                                  <li>총거리 : 77.7km</li>
+			                              </ul>
+			                          </a>
+			                          <img src="${contextPath}/resources/images/lottetower.JPEG">
+			                      </div>
+			                  </div>
+			                  <div class="course-content">
+			                      <div class="course-img">
+			                          <a href="#">
+			                              <h1>서울 여행 </h1>
+			                              <ul>
+			                                  <li>지역 : 서울</li>
+			                                  <li>총거리 : 77.7km</li>
+			                              </ul>
+			                          </a>
+			                          <img src="${contextPath}/resources/images/lottetower.JPEG">
+			                      </div>
+			                  </div>
+			                  <div class="course-content">
+			                      <div class="course-img">
+			                          <a href="#">
+			                              <h1>서울 여행 </h1>
+			                              <ul>
+			                                  <li>지역 : 서울</li>
+			                                  <li>총거리 : 77.7km</li>
+			                              </ul>
+			                          </a>
+			                          <img src="${contextPath}/resources/images/lottetower.JPEG">
+			                      </div>
+			                  </div>
+			                  <div class="course-content">
+			                      <div class="course-img">
+			                          <a href="#">
+			                              <h1>서울 여행 </h1>
+			                              <ul>
+			                                  <li>지역 : 서울</li>
+			                                  <li>총거리 : 77.7km</li>
+			                              </ul>
+			                          </a>
+			                          <img src="${contextPath}/resources/images/lottetower.JPEG">
+			                      </div>
+			                  </div>
+			              </div> --%>				
                 </div>
-
-                
-
 
                 <div class="pagination-area">
                     <ul class="pagination">

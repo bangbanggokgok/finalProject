@@ -46,15 +46,15 @@
 							</c:if>
 							<c:if test="${!empty myReplyList}">
 								<c:forEach var="myReply" items="${myReplyList}" >
-	                            <tr>
-	                                <td>1</td>
-	                                <td>
-	                                    <a href="#">서울 여행</a>
-	                                </td>
-	                                <td>좋아요~~
-	                                </td>
-	                                <td>유저일</td>
-	                            </tr>
+		                            <tr>
+		                                <td>1</td>
+		                                <td>
+		                                    <a href="#">서울 여행</a>
+		                                </td>
+		                                <td>좋아요~~
+		                                </td>
+		                                <td>유저일</td>
+		                            </tr>
 								</c:forEach>
 							</c:if>
                         </tbody>
