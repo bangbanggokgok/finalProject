@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="noticeList" value="${map.noticeList}" />
@@ -28,37 +29,25 @@
 
 
             <c:choose>
-                            <c:when test="${empty noticeList}">
-                                <!-- 게시글 목록 조회 결과가 비어있다면 -->
-                                <li>
-                                    <span colspan="5">게시글이 존재하지 않습니다.</span>
-                                </li>
-                            </c:when>
+                    <c:when test="${empty noticeList}">
+                        <li>
+                            <span colspan="5">게시글이 존재하지 않습니다.</span>
+                        </li>
+                    </c:when>
 
-                            <c:otherwise>
-                                <!-- 게시글 목록 조회 결과가 비어있지 않다면 -->
+                    <c:otherwise>
+                        <c:forEach var="notice" items="${noticeList}">
+                            <li>
+                                <div class="titleWrapper">
+                                    <div class="noticeBadge">${notice.noticeType}</div>
+                                    <div class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a></div>
+                                    <div class="noticeDate">${notice.noticeCreate}</div>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </c:otherwise>
+            </c:choose>
 
-                                <!-- 향상된 for문처럼 사용 -->
-                                <c:forEach var="notice" items="${noticeList}">
-
-                                <li>
-                                    <div class="titleWrapper">
-                                        <div class="noticeBadge">${notice.noticeType}</div>
-                                        <div class="noticeTitle">${notice.noticeTitle}</div>
-                                        <div class="noticeDate">${notice.noticeCreate}</div>
-                                    </div>
-                                </li>
-                                </c:forEach>
-
-                            </c:otherwise>
-                        </c:choose>
-            <%-- <li>
-                <div class="titleWrapper">
-                    <div class="noticeBadge">공지</div>
-                    <div class="noticeTitle">개인정보 처리방침 변경 안내</div>
-                    <div class="noticeDate">2022-07-06 14:46</div>
-                </div>
-            </li> --%>
             
         </ul>
 
@@ -98,7 +87,7 @@
                     <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
 
                 </ul>
-            </div>
+        </div>
     </div>
 </body>
 
