@@ -45,6 +45,7 @@
 	                            </tr>
 							</c:if>
 							<c:if test="${!empty myReplyList}">
+								<c:forEach var="myReply" items="${myReplyList}" >
 	                            <tr>
 	                                <td>1</td>
 	                                <td>
@@ -54,6 +55,7 @@
 	                                </td>
 	                                <td>유저일</td>
 	                            </tr>
+								</c:forEach>
 							</c:if>
                         </tbody>
                     </table>
