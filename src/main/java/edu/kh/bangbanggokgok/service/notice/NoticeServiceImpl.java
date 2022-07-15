@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.notice.NoticeDAO;
 import edu.kh.bangbanggokgok.vo.notice.Notice;
+import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
 
 @Service
@@ -31,6 +32,14 @@ public class NoticeServiceImpl implements NoticeService{
 		map.put("noticeList", noticeList);
 		
 		return map;
+	}
+
+	// 게시글 상세 조회 서비스 구현
+	@Override
+	public NoticeDetail selectNoticeDetail(int boardNo) {
+		
+		
+		return dao.selectnoticeDetail(boardNo);
 	}
 	
 	
