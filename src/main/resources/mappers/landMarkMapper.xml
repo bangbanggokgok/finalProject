@@ -24,6 +24,35 @@
 		ORDER BY LOCATION_TYPE
 	</select>
 	
+	<!-- 랜드마크 메인 슬라이드 이미지 조회 -->
+	<select id="selectLandMakrIMG">
+		SELECT LM_NO, COUNT(USER_NO) AS USER_CT,
+    	(SELECT LM_IMG_RENAME FROM LAND_IMG
+		WHERE BOOKMARK_LM.LM_NO = LAND_IMG.LM_NO
+		AND LM_IMG_LEVEL = 0) THUMBNAIL
+    	FROM BOOKMARK_LM
+    	GROUP BY LM_NO
+    	ORDER BY USER_CT DESC;
+	</select>
+	
+	<!-- 랜드마크 전체 수 조회 -->
+	<select id="getListAllCount">
+		SELECT COUNT(*) FROM LANDMARK
+		AND LM_FL = 'N'
+	</select>
+	
+	<!-- 랜드마크 전체 목록 조회 -->
+	<select id="selectLandMark" resultMap="landMark_rm">
+	SELECT LM_NO, LM_NAME, LM_CONTENT
+	(SELECT LM_IMG_RENAME FROM LAND_IMG
+	WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
+	AND LM_IMG_LEVEL = 0) THUMBNAIL
+	FROM LANDMARK
+	JOIN LOCATIONS USING(LOCATION_TYPE)
+	WHERE LM_FL = 'N'
+	ORDER BY LM_NO DESC
+	</select>
+	
 	<!-- 특정 지역의 랜드마크 수 조회 -->
 	<select id="getListCount">
 		SELECT COUNT(*) FROM LANDMARK
@@ -31,7 +60,8 @@
 		AND LM_FL = 'N'
 	</select>
 	
-	<!-- 랜드마크 목록 조회 -->
+
+	<!-- 특정 지역의 랜드마크 목록 조회 -->
 	<select id="selectLandMarkList" resultMap="landMark_rm">
 	SELECT LM_NO, LM_NAME, LM_CONTENT
 	(SELECT LM_IMG_RENAME FROM LAND_IMG
