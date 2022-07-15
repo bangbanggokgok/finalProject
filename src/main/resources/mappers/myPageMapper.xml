@@ -30,6 +30,8 @@
 		<result property="movelineTitle" 	column="ML_TITLE"/>
 		<result property="replyContent" 	column="REPLY_CONTENT"/>
 		<result property="movelineWriter" 	column="USER_NAME"/>
+		<result property="replyNo" 	column="REPLY_NO"/>
+		<result property="rowNo" 	column="ROWNUM"/>
 	</resultMap>
 	
 	<resultMap type="MyMoveline" id="myMoveline_rm">
@@ -87,12 +89,21 @@
  		WHERE A.USER_NO = #{userNo}
  	</select>
  	
+ 	
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) FROM REPLY
+		WHERE USER_NO = #{userNo}
+	</select>
+	
  	<select id="selectMyReplyList" resultMap="myReply_rm">
- 		SELECT ML_NO,ML_TITLE,REPLY_CONTENT,C.USER_NAME
-		FROM REPLY A
-		JOIN MOVELINE_BOARD B USING(ML_NO)
-		JOIN USER_TB C ON B.USER_NO = C.USER_NO 
-		WHERE A.USER_NO = #{userNo}
+ 		SELECT ROWNUM, D.*FROM
+		    (SELECT REPLY_NO, ML_NO, ML_TITLE, REPLY_CONTENT, C.USER_NAME
+		    FROM REPLY A
+		    JOIN MOVELINE_BOARD B USING(ML_NO)
+		    JOIN USER_TB C ON B.USER_NO = C.USER_NO 
+		    WHERE A.USER_NO = #{userNo}
+		    ORDER BY REPLY_NO) D
+		ORDER BY ROWNUM DESC
  	</select>
  	
  	<select id="selectMyMovelineList" resultMap="myMoveline_rm">
