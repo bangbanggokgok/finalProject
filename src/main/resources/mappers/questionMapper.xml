@@ -48,6 +48,14 @@
 		WHERE Q_NO = #{questionNo}
 	</select>
 	
+	<!-- 문의 게시글 작성 -->
+	<insert id="insertQuestion" useGeneratedKeys="true">
+		<selectKey keyProperty="questionNo" resultType="_int" order="BEFORE">
+   			SELECT SEQ_Q_NO.NEXTVAL FROM DUAL
+   		</selectKey>
+   		
+		INSERT INTO QUESTION VALUES(#{questionNo}, #{questionTitle}, #{questionContent}, NULL, SYSDATE, #{userNo}, NULL)
+	</insert>
 	
 
 </mapper>

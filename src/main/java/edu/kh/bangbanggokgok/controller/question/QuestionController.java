@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.controller.question;
 
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +12,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.service.question.QuestionService;
 import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
@@ -62,6 +65,31 @@ public class QuestionController {
 	}
 	
 	// 문의 게시글 등록
+	@PostMapping("/inquiry/q_write")
+	public String questionWrite(QuestionDetail detail
+							  , @ModelAttribute("loginUser") User loginUser
+							  , HttpServletRequest req
+							  , RedirectAttributes ra) throws IOException {
+		
+		detail.setUserNo(loginUser.getUserNo());
+		
+		int questionNo = service.insertQuestion(detail);
+		
+		String path = null;
+		String message = null;
+		
+		if(questionNo>0) {
+			path = "detail/"+questionNo+"?cp=1";
+			message = "문의 게시글이 작성되었습니다.";
+		} else {
+			path = req.getHeader("referer");
+			message = "작성 실패";
+		}
+		ra.addFlashAttribute("message", message);
+		return "redirect:" + path;
+	}
+	
+	
 	
 	
 }
