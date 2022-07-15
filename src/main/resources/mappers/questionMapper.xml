@@ -9,6 +9,7 @@
 		<result property="createDate" column="Q_DATE" />
 		<result property="userNo" column="USER_NO" />
 		<result property="questionAnswer" column="Q_ANSWER" />
+		<result property="rowNo" column="ROWNUM" />
 	</resultMap>
 
 	<!-- 문의 게시글 상세조회용 -->
@@ -30,19 +31,31 @@
 
 	<!-- 문의 게시글 목록 조회 -->
 	<select id="selectQuestionList" resultMap="question_rm">
-		SELECT Q_NO, Q_TITLE, Q_DATE, Q_ANSWER
-		FROM QUESTION
-		JOIN USER_TB USING(USER_NO)
-		WHERE USER_NO = #{userNo}
-		ORDER BY Q_NO DESC
+		SELECT ROWNUM, A.* FROM 
+			(SELECT Q_NO, Q_TITLE, Q_DATE, Q_ANSWER
+	        FROM QUESTION
+	        JOIN USER_TB USING(USER_NO)
+	        WHERE USER_NO = #{userNo}
+	        ORDER BY Q_NO) A
+		ORDER BY ROWNUM DESC
 	</select>
 	
 	<!-- 문의 게시글 상세 조회 -->
 	<select id="selectQuestionDetail" resultMap="questionDetail_rm">
 		SELECT Q_TITLE, Q_DATE, Q_CONTENT, USER_NAME, Q_ANSWER
 		FROM QUESTION Q
-		JOIN USER_TB U ON(Q.MANAGER_NO = U.USER_NO)
+		LEFT JOIN USER_TB U ON(Q.MANAGER_NO = U.USER_NO)
 		WHERE Q_NO = #{questionNo}
 	</select>
+	
+	<!-- 문의 게시글 작성 -->
+	<insert id="insertQuestion" useGeneratedKeys="true">
+		<selectKey keyProperty="questionNo" resultType="_int" order="BEFORE">
+   			SELECT SEQ_Q_NO.NEXTVAL FROM DUAL
+   		</selectKey>
+   		
+		INSERT INTO QUESTION VALUES(#{questionNo}, #{questionTitle}, #{questionContent}, NULL, SYSDATE, #{userNo}, NULL)
+	</insert>
+	
 
 </mapper>

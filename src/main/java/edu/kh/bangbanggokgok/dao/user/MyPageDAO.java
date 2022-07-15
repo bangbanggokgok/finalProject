@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.user.MyMoveline;
+import edu.kh.bangbanggokgok.vo.user.MyReply;
 
 @Repository
 public class MyPageDAO {
@@ -56,12 +58,28 @@ public class MyPageDAO {
 		return sqlSession.update("myPageMapper.secession", userNo);
 	}
 
+	//즐겨찾기 목록
 	public List<LandMark> favoriteLandmark(int userNo) {
 		return sqlSession.selectList("myPageMapper.favoriteLandmark",userNo);
 	}
-
 	public List<MoveLine> favoriteMoveline(int userNo) {
 		return sqlSession.selectList("myPageMapper.favoriteMoveline",userNo);
+	}
+
+	/** 내 댓글 조회
+	 * @param userNo
+	 * @return
+	 */
+	public List<MyReply> selectMyReplyList(int userNo) {
+		return sqlSession.selectList("myPageMapper.selectMyReplyList",userNo);
+	}
+
+	/** 내 작성 코스 조회
+	 * @param userNo
+	 * @return
+	 */
+	public List<MyMoveline> selectMyMovelineList(int userNo) {
+		return sqlSession.selectList("myPageMapper.selectMyMovelineList",userNo);
 	}
 
 

@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.service.question;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.question.QuestionDAO;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
 import edu.kh.bangbanggokgok.vo.question.Question;
@@ -39,6 +41,17 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public QuestionDetail selectQuestionDetail(int questionNo) {
 		return dao.selectQuestionDetail(questionNo);
+	}
+
+	// 문의 게시글 작성
+	@Override
+	public int insertQuestion(QuestionDetail detail) throws IOException {
+		
+		detail.setQuestionTitle(Util.XSSHandling(detail.getQuestionTitle()));
+		detail.setQuestionContent(Util.XSSHandling(detail.getQuestionContent()));
+		detail.setQuestionContent(Util.newLineHandling(detail.getQuestionContent()));
+		
+		return dao.insertQuestion(detail);
 	}
 	
 	

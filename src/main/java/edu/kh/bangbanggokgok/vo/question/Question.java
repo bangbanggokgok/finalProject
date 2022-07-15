@@ -9,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Question {
 	
+	private int rowNo;
 	private int questionNo;
 	private String questionTitle;
 	private String createDate;

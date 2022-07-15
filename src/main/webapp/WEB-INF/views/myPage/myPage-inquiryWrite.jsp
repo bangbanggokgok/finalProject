@@ -25,36 +25,38 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form>
+            <form action="q_write" method="POST" onsubmit="return q_writeValidate()">
                 
                 <div class="titleFields">
                     <div>
                         <label class="title">제목</label>
-                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" value="">
+                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" name="questionTitle">
                     </div>
                 </div>
 
                 <div class="contentField">
                     <label class="contentLabel">내용</label>
                     <article class="contentArea">
-                        <textarea placeholder="내용을 입력해주세요." class="content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요." class="content" name="questionContent"></textarea>
                     </article>
                 </div>
-
                 
                 <section class="submitBar">
                     <div class="buttonContainer">
-                        <button disabled="" class="submitButton">등록하기</button>
+                        <button class="submitButton">등록하기</button>
                     </div>
                 </section>
+                <div class="sc-fznxKY bjxHni">
+                    <section class="sc-fzpmMD fpVDsP"></section>
+                </div>
             </form>
-            <div class="sc-fznxKY bjxHni">
-                <section class="sc-fzpmMD fpVDsP"></section>
-            </div>
         </section>
     </section>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script src="${contextPath}/resources/js/myPage/inquiry.js"></script>
+
 </body>
 
 </html>

@@ -18,14 +18,28 @@ public class LandMarkController {
 	@Autowired
 	private LandMarkService service;
 	
+	@GetMapping("/list")
+	public String landmarkMainPage(Model model) {
+		
+		
+		// 랜드마크 목록 조회 서비스
+		// 게시글 목록 조회
+		Map<String, Object> map = service.selectAllLandMarkList();
+		
+		model.addAttribute("map", map);
+		
+		return "landMark/landmark";
+	}
+	
+	
 	@GetMapping("/list/{locationNum}")
-	public String landMarkMainPage(@RequestParam(value="locationNum"
+	public String landMarkListPage(@RequestParam(value="locationNum"
 									,required=false
 									,defaultValue="100") 
 									int locationType
 									,Model model) {
 		
-		// 랜드마크 목록 조회 서비스
+		// 랜드마크 특정 지역 목록 조회 서비스
 		// 지역 이름 조회
 		// 게시글 목록 조회
 		Map<String, Object> map = service.selectLandMarkList(locationType);

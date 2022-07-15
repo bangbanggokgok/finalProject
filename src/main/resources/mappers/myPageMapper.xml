@@ -25,6 +25,22 @@
 		<result property="locationName"		 column="LOCATION_NAME"/>
 	</resultMap>
 	
+	<resultMap type="MyReply" id="myReply_rm">
+		<id 	property="movelineNo"		column="ML_NO"/>
+		<result property="movelineTitle" 	column="ML_TITLE"/>
+		<result property="replyContent" 	column="REPLY_CONTENT"/>
+		<result property="movelineWriter" 	column="USER_NAME"/>
+	</resultMap>
+	
+	<resultMap type="MyMoveline" id="myMoveline_rm">
+		<id 	property='movelineNo'		column="ML_NO"/>
+		<result property="movelineTitle" 	column="ML_TITLE"/>
+		<result property="locationName" 	column="LOCATION_NAME"/>
+		<result property="reNameImage" 		column="MB_IMG_RENAME"/>
+	</resultMap>
+	
+	
+	
 	<!-- 프로필 이미지 변경 -->
 	<update id="updateProfile">
 		UPDATE USER_TB SET USER_PROFILE = #{profileImage}
@@ -69,6 +85,23 @@
 		JOIN MOVELINE_BOARD USING(ML_NO)
         JOIN LOCATIONS USING(LOCATION_TYPE)
  		WHERE A.USER_NO = #{userNo}
+ 	</select>
+ 	
+ 	<select id="selectMyReplyList" resultMap="myReply_rm">
+ 		SELECT ML_NO,ML_TITLE,REPLY_CONTENT,C.USER_NAME
+		FROM REPLY A
+		JOIN MOVELINE_BOARD B USING(ML_NO)
+		JOIN USER_TB C ON B.USER_NO = C.USER_NO 
+		WHERE A.USER_NO = #{userNo}
+ 	</select>
+ 	
+ 	<select id="selectMyMovelineList" resultMap="myMoveline_rm">
+ 		SELECT ML_NO,ML_TITLE,LOCATION_NAME,ML_RENAME
+ 		FROM MOVELINE_BOARD
+ 		JOIN LOCATIONS USING(LOCATION_TYPE)
+        JOIN ML_IMG USING(ML_NO)
+ 		WHERE USER_NO = 2
+ 		AND ML_IMG_LEVEL = 0
  	</select>
  	
 </mapper>

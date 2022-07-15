@@ -10,7 +10,6 @@
 	
 	<!-- 별칭 -->
 	<typeAliases>
-		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLine" alias="MoveLine"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.Location" alias="Locations"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMark" alias="LandMark"/>
@@ -21,6 +20,10 @@
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyMoveline" alias="MyMoveline"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->

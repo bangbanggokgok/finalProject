@@ -24,7 +24,7 @@
     <section class="board">
 
         <section class="pageWrapper" id="contentWrapper">
-                
+
                 <div class="title">${detail.questionTitle}<br>
                     <span class="createDate">작성일 : ${detail.createDate}</span>
                 </div>
@@ -45,11 +45,14 @@
                         </c:if>
                     </div>
                 </div>
+                <button type="button" id="goToList">목록으로</button>
             
         </section>
     </section>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
+
+    <script src="${contextPath}/resources/js/myPage/inquiry.js"></script>
 
 </body>
 </html>
