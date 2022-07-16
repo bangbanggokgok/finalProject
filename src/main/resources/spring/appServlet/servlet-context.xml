@@ -32,7 +32,16 @@
 			<beans:bean id="LocationInterceptor" 
 			class="edu.kh.bangbanggokgok.common.interceptor.LocationInterceptor"/>
 		</interceptor>
+		
+		<interceptor>
+			<mapping path="/**/moveline-main/list"/>
+			<beans:bean id="MoveLineMainInterceptor" 
+			class="edu.kh.bangbanggokgok.common.interceptor.MoveLineMainInterceptor"/>
+		</interceptor>
+		
 	</interceptors>
+
+
 	 
 	<tx:annotation-driven transaction-manager="transactionManager"  proxy-target-class="true"/>
 	

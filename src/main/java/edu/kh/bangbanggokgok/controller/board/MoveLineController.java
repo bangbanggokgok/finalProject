@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
 
@@ -26,13 +27,22 @@ public class MoveLineController {
 	
 	
 	// 코스 구분 페이지 조회
-//	@GetMapping("/list")
-//	public String moveLineSort(Model model) {
-//		
-//		List<MoveLineDetail> list = service.selectMoveLineDetail();
-//		
+	@GetMapping("/list")
+//	@ResponseBody
+	public String moveLineSort(Model model) {
+		
+//		List<MoveLineDetail> list = service.selectMoveLineMain();
+//		List<MoveLineDetail> list2 = service.selectMoveLineMain2();
+		
 //		return new Gson().toJson(list);
+		return "moveline/movelineSort";
+	}
+	
+//	// 코스 구분 페이지 조회
+//	@GetMapping("/list/main")
+//	public String moveLineMain(Model model) {
 //		
+//		return "moveline/movelineSort";
 //	}
 	
 	

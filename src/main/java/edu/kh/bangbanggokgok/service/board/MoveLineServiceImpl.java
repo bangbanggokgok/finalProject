@@ -12,9 +12,11 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.board.MoveLineDAO;
 import edu.kh.bangbanggokgok.vo.board.Location;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
+import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 
 @Service
 public class MoveLineServiceImpl implements MoveLineService{
@@ -125,8 +127,21 @@ public class MoveLineServiceImpl implements MoveLineService{
 
 	// 코스 메인 조회 서비스 구현
 	@Override
-	public List<MoveLineDetail> selectMoveLineDetail() {
-		return dao.selectMoveLineDetail();
+	public List<MoveLineHashTag> selectMoveLineMain() {
+		return dao.selectMoveLineMain();
+	}
+
+
+	// 코스 메인 조회 서비스 구현
+	@Override
+	public List<MoveLineDetail> selectMoveLineMain2() {
+		return dao.selectMoveLineMain2();
+	}
+
+	// 마지막 코스 번호 조회
+	@Override
+	public List<MoveLine> selectLastNo() {
+		return dao.selectLastNo();
 	}
 	
 	
