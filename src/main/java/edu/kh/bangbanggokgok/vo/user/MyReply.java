@@ -15,6 +15,8 @@ public class MyReply {
 	private String movelineTitle;
 	private String replyContent;
 	private String movelineWriter;
+	private String replyNo;
+	private String rowNo;
 	
 }
 

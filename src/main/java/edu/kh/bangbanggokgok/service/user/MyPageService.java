@@ -9,6 +9,7 @@ import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.MyReply;
+import edu.kh.bangbanggokgok.vo.user.User;
 
 public interface MyPageService {
 
@@ -42,10 +43,11 @@ public interface MyPageService {
 	List<MoveLine> favoriteMoveline(int userNo);
 
 	/** 내 댓글 조회
-	 * @param userNo
+	 * @param cp
+	 * @param loginUser 
 	 * @return list
 	 */
-	List<MyReply> selectMyReplyList(int userNo);
+	Map<String, Object> selectMyReplyList(int cp, User loginUser);
 
 	/** 내 작성 코스 조회
 	 * @param userNo

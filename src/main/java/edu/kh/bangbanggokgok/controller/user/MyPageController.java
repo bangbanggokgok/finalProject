@@ -73,16 +73,16 @@ public class MyPageController {
 		return "myPage/myPage-course";
 	}
 
-	/** 내가 작성한 댓글 목록
-	 * @param loginUser
-	 * @param model
-	 * @return
-	 */
+	//내가 작성한 댓글 목록
 	@GetMapping("/reply")
 	public String reply(@ModelAttribute("loginUser") User loginUser,
-			Model model) {
-		List<MyReply> myReplyList = service.selectMyReplyList(loginUser.getUserNo());
-		model.addAttribute("myReplyList",myReplyList);
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> paramMap) {
+		
+		Map<String, Object>	map = service.selectMyReplyList(cp, loginUser);
+		model.addAttribute("map", map);
+		
 		return "myPage/myPage-reply";
 	}
 
