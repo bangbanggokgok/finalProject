@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 
 
@@ -25,14 +26,21 @@ public class LandMarkDAO {
 		return sqlSession.selectOne("landMarkMapper.getListCount", locationType);
 	}
 
-	/** 랜드마크 목록 조회 DAO
+	/** 특정 지역 랜드마크 목록 조회 DAO
 	 * @param locationType
 	 * @return
 	 */
 	public List<LandMark> selectLandMarkList(int locationType) {
 		return sqlSession.selectList("landMarkMapper.selectLandMarkList", locationType);
 	}
-
+	
+	/** 랜드마크 슬라이드 이미지 조회
+	 * @return
+	 */
+	public List<LandMarkIMG> selectLandMakrIMG() {		
+		return sqlSession.selectList("landMarkMapper.selectLandMarkIMG");
+	}
+	
 	/** 랜드마크 전체 게시글 수 조회 DAO
 	 * @return
 	 */
@@ -47,10 +55,13 @@ public class LandMarkDAO {
 		return sqlSession.selectList("landMarkMapper.selectAllLandMarkList");
 	}
 
-	/** 랜드마크 슬라이드 이미지 조회
-	 * @return
+	
+
+	/** 랜드마크 상세 조회
+	 * @param landMakrNo
+	 * @return detail
 	 */
-	public List<LandMarkIMG> selectLandMakrIMG() {		
-		return sqlSession.selectList("landMakrMapper.selectLandMarkIMG");
+	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
+		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMakrNo);
 	}
 }

@@ -2,17 +2,25 @@ package edu.kh.bangbanggokgok.controller.board;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
-@RequestMapping("landmark/*")
+@RequestMapping("landmark-main/*")
 public class LandMarkController {
 
 	@Autowired
@@ -49,8 +57,36 @@ public class LandMarkController {
 		return "landMark/landmark";
 
 	}
-	@GetMapping("/landmark-detail")
-	public String landMarkDetail() {
+	// 랜드마크 상세 조회
+	@GetMapping("/detail/{landMakrNo}")
+	public String landMarkDetail(@PathVariable ("landMarkNo") int landMakrNo
+								 ,Model model,
+								 HttpSession session,
+								 HttpServletRequest req, HttpServletResponse resp) {
+		
+		LandMarkDetail detail = service.selectLandMakrDetail(landMakrNo);
+		
 		return "landMark/land-detail";
 	}
+	// 게시글 작성 화면 전환
+	@GetMapping("/write")
+	public String landWriteForm(String mode, Model model) {
+		
+		
+		
+		
+		return "land/landWriteForm";
+	}
+	
+	// 게시글 삽입/수정
+	@PostMapping("/write")
+	public String landWrite() {
+		
+		
+		
+		return "redirect:";
+	}
+	
+	
+	
 }
