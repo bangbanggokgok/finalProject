@@ -1,49 +1,4 @@
-
-// 즐겨찾기 탭
-$(document).ready(function () {
-  $(".tab_title li").click(function () {
-    var idx = $(this).index();
-
-    $(".tab_title li").removeClass("current-tab");
-    $(".tab_title li").eq(idx).addClass("current-tab");
-
-    $(".tab_content > div").hide();
-    $.ajax({
-      url: "my-favorite",
-      type: "GET",
-      data: { "indexFlag": idx },
-      dataType: "JSON",
-      success: function (result) {
-        console.log(result);
-        const a = $(".landmark-list")
-        const b = $(".course-list")
-        // 배열의 담긴 게 없을때 
-        if (result.length == 0) {
-          if (idx == 0) {
-            //메인 리스트 라인에 텍스트를 넣었어요. 다슬님이 디자인 구성만 맞춰주시면 될거 같아요.
-            a.text("아직 즐겨찾는 랜드마크가 없습니다.\n마음에든 랜드마크를 추가 해주세요.");
-          }
-          if (idx != 0) {
-            b.text("아직 즐겨찾는 코스가 없습니다.\n마음에든 코스를 추가 해주세요.")
-          }
-        }
-        //배열에 담긴 게 있을때
-        if (result.length != 0) {
-          if (idx == 0) {
-            //샘플링 이후 작업예정
-          }
-          if (idx != 0) {
-            //샘플링 이후 작업예정
-          }
-        }
-      }
-    })
-    $(".tab_content > div").eq(idx).show();
-    $(".tab_content > div").eq(idx).css("display", "flex");
-  })
-});
-
-
+// 내정보 수정 관련
 
 // 프로필 이미지 미리보기
 const inputImage = document.getElementById("input-image");
@@ -310,5 +265,3 @@ function secessionValidate() {
   }
   return true;
 }
-
-

@@ -1,9 +1,12 @@
 /* 마이페이지 즐겨찾기 */
 
+/* *{border: 1px solid black;} */
 
 .board-list{
     width: 1000px;
+    height: 420px;
     margin: auto;
+    overflow: hidden;
 }
 
 /* 즐겨찾기 탭 */
@@ -49,9 +52,11 @@
     display: flex;
     margin: auto;
     margin-bottom: 20px;
+    height: 250px; 
+    width: 1000px;
 }
 .landmark-content{
-    flex-basis: 25%;
+    min-width: 250px;
     text-align: center;
 }
 .landmark-img > img{
@@ -79,7 +84,23 @@
 }
 
 
-/* 즐겨찾기 탭 */
-.course-list{
+/* 코스영역 초기 */
+.course-area{
     display: none;
+}
+
+/* 슬라이드 */
+.landmarkSlider{
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    z-index: 11;
+    margin-top: 120px;
+    margin-left: -70px;
+}
+
+.landmarkSlider > i{
+    cursor: pointer;
 }
