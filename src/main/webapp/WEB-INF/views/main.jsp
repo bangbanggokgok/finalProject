@@ -27,6 +27,7 @@
 
 		<a href="${contextPath}/moveline-main/list"> 무브라인 확인용 </a>
 		
+		
 	</main>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
