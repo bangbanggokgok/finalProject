@@ -19,5 +19,5 @@ public class MoveLine {
 	private int userNo;
 	private String locationName;
 	private int readCount;
-	
+	private String reNameImage;
 }
