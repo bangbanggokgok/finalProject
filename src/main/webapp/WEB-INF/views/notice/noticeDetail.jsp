@@ -2,6 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +22,13 @@
 
     <section class="header">
         <section class="pageWrapper">
-            <h1 font-size="24px" class="boardTitle">공지</h1>
+            <c:if test="${fn:contains(detail.noticeType, 'event')}">
+                    <h1 font-size="24px" class="boardTitle">이벤트</h1>
+            </c:if>
+            <c:if test="${fn:contains(detail.noticeType, 'notice')}">
+                    <h1 font-size="24px" class="boardTitle">공지</h1>
+            </c:if>
+
         </section>
     </section>
 
@@ -55,6 +62,7 @@
         <section class="pageWrapper" id="contentWrapper">
             <form>
                 
+                
                 <div class="title">${detail.noticeTitle}</div>
 
                 <!-- 이미지 조회 -->
@@ -82,7 +90,6 @@
                 </div>
                 
                 <c:if test="${fn:contains(loginUser.adminFlag, 'Y')}">
-                <%-- <c:if test="${empty loginUser}"> --%>
                 <section class="submitBar">
                     <div class="buttonContainer">
                         <button type="button" disabled="" class="submitButton">수정하기</button>

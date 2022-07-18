@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){ 
+// document.addEventListener('DOMContentLoaded', function(){ 
     
     // 변수 지정
     var $slideWrap = document.querySelector('.container'),
@@ -125,7 +125,71 @@ document.addEventListener('DOMContentLoaded', function(){
         });
    }
 
-});//DOMcontentloaded
+
+   const btn = document.querySelector('.btn');
+   const ul = document.querySelector('.image-list');
+
+
+   window.onscroll = function(){
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+        
+        for(let i=0; i<3; i++){
+            const li = document.createElement('li');
+            const figure = document.createElement('figure');
+            const img = document.createElement('img');
+            const figcaption = document.createElement('figcaption');
+            const p1 = document.createElement('p');
+            const p2 = document.createElement('p');
+            li.append(figure);
+            figure.append(img);
+            img.setAttribute("src","https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg");
+            figure.append(figcaption);
+            p1.innerText='abcd';
+            p2.innerText='bbcdc';
+            figcaption.append(p1);
+            figcaption.append(p2);
+            ul.append(li);
+        }
+    }
+   }
+
+   var btt = document.getElementById("back-to-top"),
+        docElem = document.documentElement,
+        offset,
+        scrollPos,
+        docHeight;
+
+      docHeight = Math.max(docElem.offsetHeight, docElem.scrollHeight);
+
+      if (docHeight != "undefined") {
+        offset = docHeight / 4;
+      }
+
+      window.addEventListener("scroll", function () {
+        scrollPos = docElem.scrollTop;
+        console.log(scrollPos);
+
+        btt.className = scrollPos > offset ? "visible" : "";
+      });
+
+      btt.addEventListener("click", function (e) {
+        e.preventDefault();
+        // docElem.scrollTop = 0;
+        scrollToTop();
+      });
+      function scrollToTop() {
+        //일정시간 마다 할 일 setubterval(할일, 시간);   0.0015 == 15
+
+        var scrollInterval = setInterval(function () {
+          if (scrollPos != 0) {
+            window.scrollBy(0, -55);
+          } else {
+            clearInterval(scrollInterval);
+          }
+        }, 15);
+      }
+
+// });//DOMcontentloaded
 
 
 

@@ -57,7 +57,7 @@
           </li>
           	<c:if test="${loginUser.adminFlag == 'Y' }">
 	          <li>
-		       	<a href="">관리자 임시 버튼</a>
+		       	<a href="${contextPath}/admin/main">관리자 임시 버튼</a>
 	          </li>
           	</c:if>
         </c:if>

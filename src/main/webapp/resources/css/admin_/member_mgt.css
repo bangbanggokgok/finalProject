@@ -7,6 +7,7 @@
     width: 100%;
     padding: 0px 20px;
     min-height: 1px;
+    margin-top: 80px;
 }
 
 * {
@@ -148,4 +149,34 @@ li {
     background-color: rgb(160, 130, 250);
     -webkit-box-flex: 0;
     flex: 0 0 auto;
+}
+
+/* 페이지 */
+.pagination{
+    padding: 0;
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.pagination > li{
+    width: 20px;
+    margin: 0 5px;
+    text-align: center;
+}
+
+.pagination a{
+    width: 100%;
+    height: 100%;
+    display: block;
+    /* letter-spacing : -2px; */
+}
+
+/* 현재 페이지 번호 */
+.pagination .current{
+    background-color: #455ba8;
+    border-radius: 50%;
+    color: white;
+    font-weight: bold;
 }

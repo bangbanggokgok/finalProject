@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.board.LandMarkDAO;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
 
@@ -22,12 +23,12 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public Map<String, Object> selectLandMarkList(int locationType) {
 		
-		int ListCount = dao.getListCount(locationType);
+//		int ListCount = dao.getListCount(locationType);
 		
 		List<LandMark> landMarkList = dao.selectLandMarkList(locationType);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("ListCount",ListCount);
+//		map.put("ListCount",ListCount);
 		map.put("landMarkList",landMarkList);
 		
 		return map;
@@ -37,19 +38,28 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public Map<String, Object> selectAllLandMarkList() {
 		
-		int ListCount = dao.getListCount();
+		
+//		int ListCount = dao.getListCount();
 		
 		List<LandMarkIMG> landMakrImage = dao.selectLandMakrIMG();
 		
-		List<LandMark> landMarkList = dao.selectAllLandMarkList();
+//		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-		map.put("", map);
-		map.put("", map);
+//		map.put("ListCount", ListCount);
+		map.put("landMakrImage", landMakrImage);
+//		map.put("landMarkList", landMarkList);
 		
 		
 		return map;
+	}
+	
+	
+	//랜드마크 상세 조회
+	@Override
+	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
+		return dao.selectLandMakrDetail(landMakrNo);
 	}
 
 
