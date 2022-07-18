@@ -102,7 +102,7 @@
         <div class="region-1">
 		<c:if test="${!empty LocationList}">
 			<c:forEach var="locations" items="${LocationList}">
-				 <span class="region-detail" onclick="functionName(${locations.locationNum})">${locations.locationName}</span>
+				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
 			</c:forEach>
 		</c:if>
 		<c:if test="${empty LocationList}">
@@ -321,5 +321,6 @@
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
+    <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
 </html>
