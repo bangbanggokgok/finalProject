@@ -18,6 +18,8 @@
 </head>
 
 <body>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
+
     <div class="board">
         <h1>공지사항</h1>
         <div class="list">
@@ -60,10 +62,10 @@
 
                 <ul class="pagination">
                     <!-- 첫 페이지로 이동 -->
-                    <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
+                    <li><a href="${url}1">&lt;&lt;</a></li>
 
                     <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
+                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
 
                     <!-- 범위가 정해진 일반 for문 사용 -->
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
@@ -74,17 +76,17 @@
                             </c:when>
 
                             <c:otherwise>
-                                <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                <li><a href="${url}${i}">${i}</a></li>        
                             </c:otherwise>
                         </c:choose>
 
                     </c:forEach>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
+                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
 
                 </ul>
         </div>
