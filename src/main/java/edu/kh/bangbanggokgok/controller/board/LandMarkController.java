@@ -1,6 +1,5 @@
 package edu.kh.bangbanggokgok.controller.board;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,12 +14,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
-import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -40,11 +35,11 @@ public class LandMarkController {
 		Map<String, Object> map = service.selectAllLandMarkList();
 		
 		model.addAttribute("map", map);
-		//미리 작성한 비동기 친구에 매개변수 100을 넣으면 서울에있는 랜드마크 검색
+		
 		return "landMark/landmark";
 	}
 	
-	@ResponseBody
+	
 	@GetMapping("/list/{locationNum}")
 	public String landMarkListPage(@RequestParam(value="locationNum"
 									,required=false
@@ -56,9 +51,11 @@ public class LandMarkController {
 		// 게시글 목록 조회
 		Map<String, Object> map = service.selectLandMarkList(locationType);
 		
-		return new Gson().toJson(map);
+		model.addAttribute("map", map);
+		
+		return "landMark/landmark";
+
 	}
-	
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{landMakrNo}")
 	public String landMarkDetail(@PathVariable ("landMarkNo") int landMakrNo
