@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <div class="myPage-profile-area">
     <div class="myPage-profile">
@@ -29,6 +30,8 @@
             </form>
         </div>
 
+        <c:set var="addr"  value="${fn:split(loginUser.userAddress, ',,')}"  />
+
         <div class="myPage-myInfo">
             <h2>[ ${loginUser.userName} ]님의 현재 정보</h2>
             <div class="myPage-row">
@@ -45,7 +48,7 @@
             </div>
             <div class="myPage-row">
                 <span>주&nbsp;&nbsp;소 : </span>
-                <span>${loginUser.userAddress}</span>
+                <span>(${addr[0]}) ${addr[1]}, ${addr[2]}</span>
             </div>
             <div class="myPage-row">
                 <span>가입일 : </span>
