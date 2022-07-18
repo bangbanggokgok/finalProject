@@ -1,12 +1,11 @@
 function searchingLocation(locationNum){
-    
     $.ajax({
         url: "list/"+locationNum,
         type: "GET",
         data: { "locationNum": locationNum },
         dataType: "JSON",
         success:function(result){
-            
+            console.log(result);
             const landMarkList = document.getElementById("landMarkList");
 
             for(let landMark of result.landMarkList){
