@@ -55,7 +55,7 @@ public class NoticeController {
 			
 			char adminFlag = 'N';
 			if(loginUser != null) {
-				adminFlag = loginUser.getAdminFlag();
+//				adminFlag = loginUser.getAdminFlag();
 			}
 		}
 		

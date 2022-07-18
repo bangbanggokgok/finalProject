@@ -10,9 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
+import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 
 @Repository
 public class MoveLineDAO {
@@ -33,7 +35,7 @@ public class MoveLineDAO {
 	 * @return hashtagList
 	 */
 	public List<Location> selectHashTag() {
-		return sqlSession.selectList("hasTagMapper.hashtagList");
+		return sqlSession.selectList("hashTagMapper.hashtagList");
 	}
 
 	
@@ -118,12 +120,28 @@ public class MoveLineDAO {
 	}
 
 
-	/** 코스 메인 조회 서비스 DAO
+	/** 코스 메인 조회 서비스 DAO (랜덤 해시태그)
 	 * @return list
 	 */
-	public List<MoveLineDetail> selectMoveLineDetail() {
+	public List<MoveLineHashTag> selectMoveLineMain() {
 		
-		return sqlSession.selectList("movelineMapper.selectMoveLineDetail");
+		return sqlSession.selectList("movelineMapper.selectMoveLineMain");
+	}
+
+
+	/** 코스 메인 조회 서비스 DAO (최신 코스)
+	 * @return
+	 */
+	public List<MoveLineDetail> selectMoveLineMain2() {
+		return sqlSession.selectList("movelineMapper.selectMoveLineMain2");
+	}
+
+
+	/** 마지막 코스 번호 조회
+	 * @return
+	 */
+	public List<MoveLine> selectLastNo() {
+		return sqlSession.selectList("movelineMapper.selectLastNo");
 	}
 
 

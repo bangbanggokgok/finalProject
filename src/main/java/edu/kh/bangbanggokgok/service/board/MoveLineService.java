@@ -4,7 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
+import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
+import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 
 public interface MoveLineService {
 
@@ -54,7 +56,21 @@ public interface MoveLineService {
 	/** 코스 메인 조회 서비스
 	 * @return list
 	 */
-	List<MoveLineDetail> selectMoveLineDetail();
+	List<MoveLineHashTag> selectMoveLineMain();
+
+
+	/** 코스 메인 조회 서비스
+	 * @return list
+	 */
+	List<MoveLineDetail> selectMoveLineMain2();
+
+
+	/** 마지막 코스 번호 조회
+	 * @return list
+	 */
+	List<MoveLine> selectLastNo();
+
+
 
 
 }

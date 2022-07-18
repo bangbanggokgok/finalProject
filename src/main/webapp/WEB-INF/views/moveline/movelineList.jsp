@@ -33,6 +33,8 @@
 
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
+        <section>
+        
         <div id="contents">
             <section id="top">
                 <div>
@@ -238,7 +240,7 @@
 
                 </ul>
             </div>
-
+        </section>
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     </main>
 

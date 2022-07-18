@@ -40,7 +40,7 @@
                 </div> 
         
                 <div id="course-area">
-                    <h1>코스별</h1>
+                    <h1>테마별</h1>
                     <div id="courses">
                         <ul class="c-list">
                             <li>가족</li>
@@ -57,15 +57,15 @@
                 <div id="hashTag-area">
                     <h1>해시태그별</h1>
                     <div id="tags">
-                        <ul class="t-list">
-                            <li>
+                        <ul id="tlist" class="t-list">
+                            <%-- <li>
                                 <a href="list/hashtag?hashTagName=${hashtag.MLHashTag}">해시태그1</a>
-                            </li>
+                            </li> --%>
 
-                            <c:if test="${!empty HashTagList}">
-                                <c:forEach var="hashtag" items="${HashTagList}">
+                            <c:if test="${!empty preHashTagList}">
+                                <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
-                                        <a href="list/hashtag?hashTagName=${hashtag.MLHashTag}">${hashtag.MLHashTag}</a>
+                                        <a href="list/hashtag?hashTagName=${hashtag.mlHashName}">#${hashtag.mlHashName}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>
@@ -74,72 +74,29 @@
                     </div>
                 </div>
 
-                <div id="sample-area">
-                    <div class="samples">
-                        <div class="s-pic">
-                            <a href="">
-                                <strong>사랑하는 연인과 타워 여행 어떠세요?</strong>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 86.4km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/randmark/1.jpg" alt="">
-                        </div>
-                        <ul class="s-list">
-                            <li><span><a href="">롯데타워</a></span></li>
-                            <li><span><a href="">63빌딩</a></span></li>
-                            <li><span><a href="">남산타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                        </ul>
-                    </div>
+                <div class="sample-area">
 
-                    <div class="samples">
-                        <div class="s-pic">
-                            <a href="">
-                                <strong>사랑하는 연인과 타워 여행 어떠세요?</strong>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 86.4km</li>
+                    <c:if test="${!empty preMoveLineList}">
+                        <c:forEach var="moveline" items="${preMoveLineList}">
+                            <div class="samples">
+                                <div class="s-pic">
+                                    <a href="">
+                                        <strong>${moveline.movelineTitle}</strong>
+                                        <ul>
+                                            <li>지역 : ${moveline.locationName}</li>
+                                            <li>총거리 : ${moveline.landMarkX}</li>
+                                        </ul>
+                                    </a>
+                                    <img src="${moveline.thumbnail}" alt="">
+                                </div>
+                                <ul class="s-list">
+                                    <li><span><a href="">${moveline.landMarkName}</a></span></li>
                                 </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/randmark/2.jpg" alt="">
-                        </div>
-                        <ul class="s-list">
-                            <li><span><a href="">롯데타워</a></span></li>
-                            <li><span><a href="">63빌딩</a></span></li>
-                            <li><span><a href="">남산타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                        </ul>
-                    </div>
+                            </div>
+                        </c:forEach>
+                    </c:if>
 
-                    <div class="samples">
-                        <div class="s-pic">
-                            <a href="">
-                                <strong>사랑하는 연인과 타워 여행 어떠세요?</strong>
-                                <ul>
-                                    <li>지역 : 서울</li>
-                                    <li>총거리 : 86.4km</li>
-                                </ul>
-                            </a>
-                            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="">
-                        </div>
-                        <ul class="s-list">
-                            <li><span><a href="">롯데타워</a></span></li>
-                            <li><span><a href="">63빌딩</a></span></li>
-                            <li><span><a href="">남산타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                            <li><span><a href="">OO타워</a></span></li>
-                        </ul>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -151,6 +108,10 @@
 
 
     <script src="${contextPath}/resources/js/common/nav.js"></script>
-    <script src="${contextPath}/resources/js/moveline-sort.js"></script>
+
+    <!-- jQuery 라이브러리 추가 -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
 </body>
 </html>
