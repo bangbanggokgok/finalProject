@@ -8,7 +8,7 @@ function searchingLocation(locationNum){
             
             // const landMarkList = document.getElementById("landMarkList");
             // 이 요소는 좀 생각해봐야할지도 
-            const ol = document.getElementById("ol");
+            const ol = document.getElementById("landMakrList");
             //이거 맞던가
 
             for(let landMark of map.landMarkList){
