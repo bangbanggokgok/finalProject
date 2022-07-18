@@ -1,5 +1,6 @@
 .header {
     border-bottom: 1px solid rgb(238, 238, 238);
+    margin-top: 80px;
 }
 article, aside, details, figcaption, figure, footer, main, menu, nav, section, summary {
     display: block;
@@ -32,7 +33,7 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 }
 
 .board {
-    margin: 24px 0px 58px;
+    margin: 28px 0px 58px;
 }
 
 .choice {

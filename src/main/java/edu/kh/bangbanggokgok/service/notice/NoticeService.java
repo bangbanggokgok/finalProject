@@ -10,7 +10,7 @@ public interface NoticeService {
 	 * @param cp
 	 * @return map
 	 */
-	Map<String, Object> selectNoticeList(int cp);
+	Map<String, Object> selectNoticeList(int cp, String list);
 
 	/** 공지 상세 조회 서비스
 	 * @param boardNo

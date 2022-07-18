@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +9,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항 작성</title>
 
-    <link rel="stylesheet" href="../../resources/css/admin_/notice-write.css">
-    <link rel="stylesheet" href="../../resources/css/admin_/adminNav.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/admin_/notice-write.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/admin_/adminNav.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 
@@ -48,7 +50,7 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form>
+            <form enctype="multipart/form-data" method="POST">
                 <label class="choice">공지 선택</label>
                 <div id="inputFieldsContainer" onclick="drop_choiceFields()">
                     <div class="inputFields">
@@ -63,6 +65,7 @@
                     <div class="choiceFeild">
                         <div class="choiceFields" id="notice">
                             <div color="#333333" class="title">공지</div>
+                            <input name="noticeType" id="noticeType" hidden>
                         </div>
                     </div>
                     <div class="choiceFeild">
@@ -77,46 +80,70 @@
                 <div class="titleFields">
                     <div>
                         <label class="title">제목</label>
-                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" value="">
+                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" name="noticeTitle" value="">
                     </div>
                 </div>
 
 
-               
-        
+               <c:forEach items="${detail.imageList}" var="noticeImage">
+
+                <c:choose>
+                    <c:when test="${noticeImage.imageLevel == 0}">
+                        <%-- c:set 변수는 page scope가 기본값 (조건문이 끝나도 사용 가능)  --%>
+                        <c:set var="img0"  value="${contextPath}${noticeImage.imageReName}" />
+                    </c:when>
+
+                    <c:when test="${noticeImage.imageLevel == 1}">
+                        <c:set var="img1"  value="${contextPath}${noticeImage.imageReName}" />
+                    </c:when>
+
+                    <c:when test="${noticeImage.imageLevel == 2}">
+                        <c:set var="img2"  value="${contextPath}${noticeImage.imageReName}" />
+                    </c:when>
+
+                    <c:when test="${noticeImage.imageLevel == 3}">
+                        <c:set var="img3"  value="${contextPath}${noticeImage.imageReName}" />
+                    </c:when>
+                </c:choose>
+            </c:forEach>
+    
                 <!-- 업로드 이미지 -->
                 <label class="addImg">사진 첨부</label>
                 <div class="img-box">
     
                     <div class="boardImg">
                         <label for="img1">
-                            <i class="far fa-plus-circle fa-lg" src="${img1}"></i>
+                            <img class="preview" src="${img0}">
+                            <i class="far fa-plus-circle fa-lg"></i>
+                        </label>
+                        <input type="file" class="inputImage" id="img0" name="images" accept="image/*">
+                        <span class="delete-image">&times;</span>
+                    </div>
+    
+                    <div class="boardImg">
+                        <label for="img2">
+                            <img class="preview" src="${img1}">
+                            <i class="far fa-plus-circle fa-lg"></i>
                         </label>
                         <input type="file" class="inputImage" id="img1" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
                     </div>
     
                     <div class="boardImg">
-                        <label for="img2">
-                            <i class="far fa-plus-circle fa-lg" src="${img2}"></i>
+                        <label for="img3">
+                            <img class="preview" src="${img2}">
+                            <i class="far fa-plus-circle fa-lg"></i>
                         </label>
                         <input type="file" class="inputImage" id="img2" name="images" accept="image/*">
-                        <span class="delete-image">&times;</span>
-                    </div>
-    
-                    <div class="boardImg">
-                        <label for="img3">
-                            <i class="far fa-plus-circle fa-lg" src="${img3}"></i>
-                        </label>
-                        <input type="file" class="inputImage" id="img3" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
                     </div>
                     
                     <div class="boardImg">
                         <label for="img4">
-                            <i class="far fa-plus-circle fa-lg" src="${img4}"></i>
+                            <img class="preview" src="${img3}">
+                            <i class="far fa-plus-circle fa-lg"></i>
                         </label>
-                        <input type="file" class="inputImage" id="img4" name="images" accept="image/*">
+                        <input type="file" class="inputImage" id="img3" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
                     </div>
 
@@ -125,14 +152,14 @@
                 <div class="contentField">
                     <label class="contentLabel">내용</label>
                     <article class="contentArea">
-                        <textarea placeholder="내용을 입력해주세요." class="content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요." class="content" name="noticeContent"></textarea>
                     </article>
                 </div>
 
                 
                 <section class="submitBar">
                     <div class="buttonContainer">
-                        <button type="button" disabled="" class="submitButton">등록하기</button>
+                        <button type="submit" class="submitButton">등록하기</button>
                     </div>
                 </section>
             </form>

@@ -1,5 +1,6 @@
 .header {
     border-bottom: 1px solid rgb(238, 238, 238);
+    margin-top: 80px;
 }
 article, aside, details, figcaption, figure, footer, main, menu, nav, section, summary {
     display: block;

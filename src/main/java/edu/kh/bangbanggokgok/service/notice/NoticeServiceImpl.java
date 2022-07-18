@@ -20,12 +20,12 @@ public class NoticeServiceImpl implements NoticeService{
 
 	// 공지사항 목록 조회 서비스
 	@Override
-	public Map<String, Object> selectNoticeList(int cp) {
+	public Map<String, Object> selectNoticeList(int cp, String list) {
 		
 		int listCount = dao.getListCount();
 		Pagination pagination = new Pagination(cp, listCount);
 		
-		List<Notice> noticeList = dao.selectNoticeList(pagination);
+		List<Notice> noticeList = dao.selectNoticeList(pagination, list);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pagination", pagination);
