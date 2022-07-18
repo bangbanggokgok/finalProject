@@ -44,16 +44,16 @@ public class LandMarkDAO {
 	/** 랜드마크 전체 게시글 수 조회 DAO
 	 * @return
 	 */
-	public int getListCount() {
-		return sqlSession.selectOne("landMarkMapper.getListAllCount");
-	}
+//	public int getListCount() {
+//		return sqlSession.selectOne("landMarkMapper.getListAllCount");
+//	}
 
 	/** 랜드마크 전체 게시글 조회
 	 * @return
 	 */
-	public List<LandMark> selectAllLandMarkList() {
-		return sqlSession.selectList("landMarkMapper.selectAllLandMarkList");
-	}
+//	public List<LandMark> selectAllLandMarkList() {
+//		return sqlSession.selectList("landMarkMapper.selectAllLandMarkList");
+//	}
 
 	
 

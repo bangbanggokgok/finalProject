@@ -57,6 +57,7 @@ public class LandMarkController {
 		return "landMark/landmark";
 
 	}
+	
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{landMakrNo}")
 	public String landMarkDetail(@PathVariable ("landMarkNo") int landMakrNo

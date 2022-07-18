@@ -38,17 +38,18 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public Map<String, Object> selectAllLandMarkList() {
 		
+		
 //		int ListCount = dao.getListCount();
 		
 		List<LandMarkIMG> landMakrImage = dao.selectLandMakrIMG();
 		
-		List<LandMark> landMarkList = dao.selectAllLandMarkList();
+//		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		
 //		map.put("ListCount", ListCount);
 		map.put("landMakrImage", landMakrImage);
-		map.put("landMarkList", landMarkList);
+//		map.put("landMarkList", landMarkList);
 		
 		
 		return map;
