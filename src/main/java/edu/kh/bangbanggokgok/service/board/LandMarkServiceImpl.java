@@ -23,12 +23,12 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public Map<String, Object> selectLandMarkList(int locationType) {
 		
-		int ListCount = dao.getListCount(locationType);
+//		int ListCount = dao.getListCount(locationType);
 		
 		List<LandMark> landMarkList = dao.selectLandMarkList(locationType);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("ListCount",ListCount);
+//		map.put("ListCount",ListCount);
 		map.put("landMarkList",landMarkList);
 		
 		return map;
