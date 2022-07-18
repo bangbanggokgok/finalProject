@@ -31,18 +31,13 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyMoveline" alias="MyMoveline"/>
-<<<<<<< HEAD
 
 		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag" alias="MoveLineHashTag"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.LandmarkHashTag" alias="LandmarkHashtag"/>
 
 		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
 		
-		
-=======
-		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportMoveLine" alias="ReportML"/>
->>>>>>> origin/main
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
@@ -53,11 +48,8 @@
 		<mapper resource="/mappers/locationMapper.xml"/>
 		<mapper resource="/mappers/noticeMapper.xml"/>
 		<mapper resource="/mappers/questionMapper.xml"/>
-<<<<<<< HEAD
 		
-=======
 		<mapper resource="/mappers/adminMapper.xml"/>
->>>>>>> origin/main
 		<mapper resource="/mappers/movelineMapper.xml"/>
 		<mapper resource="/mappers/hashTagMapper.xml"/>
 		
