@@ -23,7 +23,7 @@ public class MoveLineDAO {
 	private SqlSessionTemplate sqlSession;
 
 	
-	/** 지역 구분 조회 DAO
+	/** 코스 메인 - 지역 구분 조회 DAO
 	 * @return locationList
 	 */
 	public List<Location> selectLocation() {
@@ -46,7 +46,6 @@ public class MoveLineDAO {
 	public int locationListCount(int locationNum) {
 		return sqlSession.selectOne("movelineMapper.locationListCount", locationNum);
 	}
-
 	
 	
 	/** 특정 지역 코스 목록 조회 DAO
@@ -64,6 +63,71 @@ public class MoveLineDAO {
 	}
 
 
+	/** 특정 해시태그가 작성된 전체 코스 수 조회
+	 * @param mLHashTag
+	 * @return
+	 */
+	public int hashTagListCount(Map<String, Object> paramMap) {
+		
+		return sqlSession.selectOne("movelineMapper.hashtagListCount", paramMap);
+	}
+
+
+	/** 특정 해시태그가 작성된 코스 목록 조회
+	 * @param pagination
+	 * @param mLHashTag
+	 * @return
+	 */
+	public List<MoveLineList> selectHashTagList(Map<String, Object> paramMap, Pagination pagination) {
+		
+		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movelineMapper.selectHashTagList", paramMap, rowBounds);
+	}
+
+
+	/** 코스 메인 - 랜덤 해시태그 10개 조회 서비스 DAO
+	 * @return list
+	 */
+	public List<MoveLineHashTag> selectMoveLineMain() {
+		
+		return sqlSession.selectList("movelineMapper.selectMoveLineMain");
+	}
+
+
+	/** 코스 메인 - 최신 코스 3개 조회
+	 * @return list
+	 */
+	public List<MoveLineDetail> selectMoveLineMain2() {
+		return sqlSession.selectList("movelineMapper.selectMoveLineMain2");	
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 //	/** 특정 해시태그 수 조회 DAO
 //	 * @param mLHashTagNo
 //	 * @return listCount
@@ -93,62 +157,34 @@ public class MoveLineDAO {
 //		return sqlSession.selectOne("movelineMapper.hashTagListCount", paramMap);
 //
 //	}
+	
+	
 
+//	/** 코스 메인 조회 서비스 DAO (최신 코스)
+//	 * @return
+//	 */
+//	public List<MoveLineDetail> selectMoveLineMain2(List<MoveLine> lastNo) {
+//		return sqlSession.selectList("movelineMapper.selectMoveLineMain2", lastNo);
+//	}
 
-	/**
-	 * @param mLHashTag
-	 * @return
-	 */
-	public int hashTagListCount(String mLHashTag) {
-		
-		return sqlSession.selectOne("movelineMapper.hashTagListCount", mLHashTag);
-	}
-
-
-	/**
-	 * @param pagination
-	 * @param mLHashTag
-	 * @return
-	 */
-	public List<MoveLineList> selectHashTagList(Pagination pagination, String mLHashTag) {
-		
-		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
-		
-		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-		return sqlSession.selectList("movelineMapper.selectHashTagList", mLHashTag, rowBounds);
-	}
-
-
-	/** 코스 메인 조회 서비스 DAO (랜덤 해시태그)
+	/** 
+	 * @param locationNum
 	 * @return list
 	 */
-	public List<MoveLineHashTag> selectMoveLineMain() {
-		
-		return sqlSession.selectList("movelineMapper.selectMoveLineMain");
-	}
-
-
-	/** 코스 메인 조회 서비스 DAO (최신 코스)
-	 * @return
+	/*
+	 * public int selectMovelineBylocation() { return
+	 * sqlSession.selectOne("movelineMapper.selectMovelineBylocation", locationNum);
+	 * }
 	 */
-	public List<MoveLineDetail> selectMoveLineMain2() {
-		return sqlSession.selectList("movelineMapper.selectMoveLineMain2");
-	}
 
 
 	/** 마지막 코스 번호 조회
 	 * @return
 	 */
-	public List<MoveLine> selectLastNo() {
-		return sqlSession.selectList("movelineMapper.selectLastNo");
-	}
-
-
-
-	
-
-	
+	/*
+	 * public int selectLastNo() { return
+	 * sqlSession.selectOne("movelineMapper.selectLastNo"); }
+	 */
 	
 	
 	

@@ -53,7 +53,7 @@ public class NoticeController {
 		if(detail != null) {
 			User loginUser = (User)session.getAttribute("loginUser");
 			
-			char adminFlag = 'N';
+			String adminFlag = "N";
 			if(loginUser != null) {
 				adminFlag = loginUser.getAdminFlag();
 			}

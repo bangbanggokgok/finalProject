@@ -1,43 +1,43 @@
-// function located(num){
+function located(num){
 
-//     $.ajax({
-//         url : "moveline-main/list",
-//         dataType : "json",
-//         success : function( list ){
+    $.ajax({
+        url : "moveline-main/list",
+        dataType : "json",
+        success : function( list ){
 
-//             const tlist = document.getElementById("tlist");
-//             // const t-list = document.getElementsByClassName("t-list")[0];
+            const tlist = document.getElementById("tlist");
+            // const t-list = document.getElementsByClassName("t-list")[0];
 
-//             tlist.innerHTML = "";
+            tlist.innerHTML = "";
 
-//             for(let hash of list){
+            for(let hash of list){
 
-//                 const li = document.createElement("li");
+                const li = document.createElement("li");
 
-//                 const a = document.createElement("a");
-//                 a.innerText = item.mlHashName;
+                const a = document.createElement("a");
+                a.innerText = item.mlHashName;
                 
-//                 li.append(a);
+                li.append(a);
 
-//                 tlist.append(li);
+                tlist.append(li);
 
-//                 const pathname = location.pathname;
+                const pathname = location.pathname;
 
-//                 let url = pathname.substring(0,  pathname.indexOf("/", 1))
+                let url = pathname.substring(0,  pathname.indexOf("/", 1))
 
-//                 url = "/moveline-main/list/main"
+                url = "/moveline-main/list/main"
 
-//             }
+            }
 
-//             location.href = url;
+            location.href = url;
 
-//         },
+        },
 
-//         error : function(){
-//             console.log("에러 발생");
-//         }
-//     });
-// }
+        error : function(){
+            console.log("에러 발생");
+        }
+    });
+}
 
 
 
