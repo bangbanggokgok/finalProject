@@ -6,7 +6,9 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.board.LandMarkDAO;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
@@ -60,6 +62,27 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
 		return dao.selectLandMakrDetail(landMakrNo);
+	}
+
+	// 게시글,이미지 삽입
+	@Override
+	public int insertLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath) {
+		
+		
+		// XSS 방지
+		detail.setLandMarkName( Util.XSSHandling(detail.getLandMarkName()) );
+		detail.setLandMarkContent( Util.XSSHandling(detail.getLandMarkContent()) );
+		detail.setLandMarkContent( Util.newLineHandling(detail.getLandMarkContent()) );
+		
+		int landMarkNo = dao.insetLandMark(detail);
+		
+		if(landMarkNo > 0) {
+			
+			
+		}
+		
+		
+		return 0;
 	}
 
 
