@@ -99,7 +99,7 @@
         <div class="tit">
           <h2 id="zoneTitle">대전</h2>
         </div>
-        <div class="region-1">
+        <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
 			<c:forEach var="locations" items="${LocationList}">
 				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
@@ -316,7 +316,11 @@
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
       crossorigin="anonymous"
-    ></script>
+    >
+    
+    const locationType = "${locations.locationNum}"
+    
+    </script>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
