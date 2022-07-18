@@ -48,7 +48,6 @@ public class LandMarkController {
 	@ResponseBody
 	@GetMapping("/list/{locationNum}")
 	public String landMarkListPage(@RequestParam(value="locationNum"
-									,required=false
 									,defaultValue="100") 
 									int locationType
 									,Model model) {

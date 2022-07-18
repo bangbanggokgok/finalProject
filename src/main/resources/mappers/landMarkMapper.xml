@@ -87,7 +87,7 @@
 
 	<!-- 특정 지역의 랜드마크 목록 조회 -->
 	<select id="selectLandMarkList" resultMap="landMark_rm">
-	SELECT LM_NO, LM_NAME, LM_CONTENT
+	SELECT LM_NO, LM_NAME, LM_CONTENT,
 	(SELECT LM_IMG_RENAME FROM LAND_IMG
 	WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
 	AND LM_IMG_LEVEL = 0) THUMBNAIL
