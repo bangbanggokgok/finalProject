@@ -22,4 +22,9 @@ public class NoticeDetail {
 	private String userName;
 	
 	private List<NoticeImage> imageList;
+
+	
+
+
+	
 }

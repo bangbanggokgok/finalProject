@@ -32,6 +32,8 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyMoveline" alias="MyMoveline"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportMoveLine" alias="ReportML"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
@@ -42,6 +44,7 @@
 		<mapper resource="/mappers/locationMapper.xml"/>
 		<mapper resource="/mappers/noticeMapper.xml"/>
 		<mapper resource="/mappers/questionMapper.xml"/>
+		<mapper resource="/mappers/adminMapper.xml"/>
 		<mapper resource="/mappers/movelineMapper.xml"/>
 		<mapper resource="/mappers/hashTagMapper.xml"/>
 	</mappers>

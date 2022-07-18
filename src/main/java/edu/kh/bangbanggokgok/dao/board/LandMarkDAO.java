@@ -21,10 +21,10 @@ public class LandMarkDAO {
 	 * @param locationType
 	 * @return ListCount
 	 */
-	public int getListCount(int locationType) {
-		
-		return sqlSession.selectOne("landMarkMapper.getListCount", locationType);
-	}
+//	public int getListCount(int locationType) {
+//		
+//		return sqlSession.selectOne("landMarkMapper.getListCount", locationType);
+//	}
 
 	/** 특정 지역 랜드마크 목록 조회 DAO
 	 * @param locationType
