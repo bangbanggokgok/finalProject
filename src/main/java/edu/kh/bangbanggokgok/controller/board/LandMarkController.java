@@ -38,7 +38,6 @@ public class LandMarkController {
 		// 랜드마크 목록 조회 서비스
 		// 게시글 목록 조회
 		Map<String, Object> map = service.selectAllLandMarkList();
-		List<LandMark> landMarks = landMarkListPage(100, model);
 		
 		model.addAttribute("map", map);
 		//미리 작성한 비동기 친구에 매개변수 100을 넣으면 서울에있는 랜드마크 검색
@@ -50,8 +49,7 @@ public class LandMarkController {
 	public String landMarkListPage(@RequestParam(value="locationNum"
 									,required=false
 									,defaultValue="100") 
-									int locationType
-									,Model model) {
+									int locationType) {
 		
 		// 랜드마크 특정 지역 목록 조회 서비스
 		// 지역 이름 조회
