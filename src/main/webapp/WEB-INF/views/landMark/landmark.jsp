@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,8 +150,20 @@
             </li>
           </ul>
         </div>
-        <ol class="image-list grid-view">
-          <li>
+
+        <ol class="image-list grid-view" id="landMakrList">
+         <c:forEach var="landMark" items="${landmarkList}">
+          <li class='land-row'>
+            <fiqure>
+              <img src="${contexxtPath}${landmakrList.landMarkImage}"></img>
+              <figcaption>
+                <p class="land-Title"></p>
+                <p class="land-content"></p>
+              </figcaption>
+            </fiqure>
+          </li>
+          </c:forEach>
+          <%--<li>
             <figure>
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature1.jpg"
@@ -190,7 +202,7 @@
               </figcaption>
             </figure>
           </li>
-          <li>
+           <li>
             <figure>
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
@@ -308,7 +320,7 @@
                 </p>
               </figcaption>
             </figure>
-          </li>
+          </li> --%>
         </ol>
       </div>
     </section>
