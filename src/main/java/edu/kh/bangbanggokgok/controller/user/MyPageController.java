@@ -38,7 +38,10 @@ public class MyPageController {
 	private MyPageService service;
 
 	@GetMapping("/info")
-	public String info() {
+	public String info(@ModelAttribute("loginUser") User loginUser
+			,Model model) {
+		List<LandMark> landmarkList = service.favoriteLandmark(loginUser.getUserNo());
+		model.addAttribute("landmarkList", landmarkList);
 		return "myPage/myPage-favorite";
 	}
 
@@ -70,16 +73,16 @@ public class MyPageController {
 		return "myPage/myPage-course";
 	}
 
-	/** 내가 작성한 댓글 목록
-	 * @param loginUser
-	 * @param model
-	 * @return
-	 */
+	//내가 작성한 댓글 목록
 	@GetMapping("/reply")
 	public String reply(@ModelAttribute("loginUser") User loginUser,
-			Model model) {
-		List<MyReply> myReplyList = service.selectMyReplyList(loginUser.getUserNo());
-		model.addAttribute("myReplyList",myReplyList);
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> paramMap) {
+		
+		Map<String, Object>	map = service.selectMyReplyList(cp, loginUser);
+		model.addAttribute("map", map);
+		
 		return "myPage/myPage-reply";
 	}
 
@@ -189,7 +192,8 @@ public class MyPageController {
 	 */
 	@ResponseBody
 	@GetMapping("/my-favorite")
-	public String favoriteList(@ModelAttribute("loginUser") User loginUser, @RequestParam("indexFlag") int flag) {
+	public String favoriteList(@ModelAttribute("loginUser") User loginUser, 
+			@RequestParam("indexFlag") int flag) {
 //												0 landMark | 1 moveLine indexFlag
 		List<LandMark> landMarkList = null;
 		List<MoveLine> moveLineList = null;

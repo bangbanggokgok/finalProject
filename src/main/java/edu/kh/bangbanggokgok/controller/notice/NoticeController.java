@@ -59,7 +59,7 @@ public class NoticeController {
 			
 			String adminFlag = "N";
 			if(loginUser != null) {
-				adminFlag = loginUser.getAdminFlag();
+//				adminFlag = loginUser.getAdminFlag();
 			}
 		}
 		

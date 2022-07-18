@@ -12,10 +12,12 @@ public class MoveLine {
 	private int movelineNo;
 	private String movelineTitle;
 	private String movelineContent;
-	private String movelineCD;
-	private String movelineDD;
+	private String createDate;
+	private String updateDate;
+	private String deleteDate;
 	private String movelineTheme;
-	private String userNo;
+	private int userNo;
 	private String locationName;
-	
+	private int readCount;
+	private String reNameImage;
 }

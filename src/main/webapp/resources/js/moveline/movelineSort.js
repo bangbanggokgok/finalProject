@@ -1,8 +1,48 @@
+// function located(num){
 
-// 지역 클릭 시
-function located(num){
-    location.href = "${contextPath}/movelineSort/locationType" + num;
-}
+//     $.ajax({
+//         url : "moveline-main/list",
+//         dataType : "json",
+//         success : function( list ){
+
+//             const tlist = document.getElementById("tlist");
+//             // const t-list = document.getElementsByClassName("t-list")[0];
+
+//             tlist.innerHTML = "";
+
+//             for(let hash of list){
+
+//                 const li = document.createElement("li");
+
+//                 const a = document.createElement("a");
+//                 a.innerText = item.mlHashName;
+                
+//                 li.append(a);
+
+//                 tlist.append(li);
+
+//                 const pathname = location.pathname;
+
+//                 let url = pathname.substring(0,  pathname.indexOf("/", 1))
+
+//                 url = "/moveline-main/list/main"
+
+//             }
+
+//             location.href = url;
+
+//         },
+
+//         error : function(){
+//             console.log("에러 발생");
+//         }
+//     });
+// }
+
+
+
+
+
 
 
 // 썸네일 클릭 시 확대 이벤트 

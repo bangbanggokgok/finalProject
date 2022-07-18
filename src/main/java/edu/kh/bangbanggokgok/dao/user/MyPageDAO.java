@@ -11,6 +11,7 @@ import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.MyReply;
+import edu.kh.bangbanggokgok.vo.user.User;
 
 @Repository
 public class MyPageDAO {
@@ -65,13 +66,21 @@ public class MyPageDAO {
 	public List<MoveLine> favoriteMoveline(int userNo) {
 		return sqlSession.selectList("myPageMapper.favoriteMoveline",userNo);
 	}
+	
+	/** 내 댓글수 조회
+	 * @param loginUser
+	 * @return listCount
+	 */
+	public int getListCount(User loginUser) {
+		return sqlSession.selectOne("myPageMapper.getListCount",loginUser);
+	}
 
 	/** 내 댓글 조회
 	 * @param userNo
-	 * @return
+	 * @return myReplyList
 	 */
-	public List<MyReply> selectMyReplyList(int userNo) {
-		return sqlSession.selectList("myPageMapper.selectMyReplyList",userNo);
+	public List<MyReply> selectMyReplyList(User loginUser) {
+		return sqlSession.selectList("myPageMapper.selectMyReplyList", loginUser);
 	}
 
 	/** 내 작성 코스 조회
@@ -81,6 +90,9 @@ public class MyPageDAO {
 	public List<MyMoveline> selectMyMovelineList(int userNo) {
 		return sqlSession.selectList("myPageMapper.selectMyMovelineList",userNo);
 	}
+
+
+
 
 
 }

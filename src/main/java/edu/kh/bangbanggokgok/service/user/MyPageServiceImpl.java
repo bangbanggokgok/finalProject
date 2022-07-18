@@ -2,6 +2,7 @@ package edu.kh.bangbanggokgok.service.user;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,6 +15,7 @@ import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.user.MyPageDAO;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.board.Pagination;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.MyReply;
 import edu.kh.bangbanggokgok.vo.user.User;
@@ -96,8 +98,18 @@ public class MyPageServiceImpl implements MyPageService {
 
 	//내댓글
 	@Override
-	public List<MyReply> selectMyReplyList(int userNo) {
-		return dao.selectMyReplyList(userNo);
+	public Map<String, Object> selectMyReplyList(int cp, User loginUser) {
+		
+		int listCount = dao.getListCount(loginUser);
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<MyReply> myReplyList = dao.selectMyReplyList(loginUser);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("myReplyList", myReplyList);
+		
+		return map;
 	}
 
 	//내코스

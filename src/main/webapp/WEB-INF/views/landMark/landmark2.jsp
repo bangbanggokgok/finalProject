@@ -18,7 +18,6 @@
       crossorigin="anonymous"
     /> -->
     <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
@@ -29,7 +28,8 @@
     ></script>
   </head>
   <body>
-  	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
+
     <section id="slide1">
       <div class="container">
         <ul class="slider-container simple-list" id="slider">
@@ -96,43 +96,10 @@
 
     <section class="gallery">
       <div class="container">
-        <div class="tit">
-          <h2 id="zoneTitle">대전</h2>
-        </div>
-        <div class="region-1">
-		<c:if test="${!empty LocationList}">
-			<c:forEach var="locations" items="${LocationList}">
-				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
-			</c:forEach>
-		</c:if>
-		<c:if test="${empty LocationList}">
-			비어있음
-		</c:if>
-<%--           <span class="region-detail">서울</span>
-          <span class="region-detail">부산</span>
-          <span class="region-detail">대구</span>
-          <span class="region-detail">인천</span>
-          <span class="region-detail">광주</span>
-          <span class="region-detail">대전</span>
-          <span class="region-detail">울산</span>
-          <span class="region-detail">세종</span>
-          <span class="region-detail">경기</span>
-          <span class="region-detail">강원</span>
-          <span class="region-detail">충북</span>
-          <span class="region-detail">충남</span>
-          <span class="region-detail">전북</span>
-          <span class="region-detail">전남</span>
-          <span class="region-detail">경북</span>
-          <span class="region-detail">경남</span>
-          <span class="region-detail">제주</span> --%>
-        </div>
         <div class="toolbar">
           <div class="search-wrapper">
-            <div class="search">
-              <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="랜드마크 검색" />
-            </div>
-            <!-- <div class="counter">게시글 수: <span>12</span></div> -->
+            <input type="search" placeholder="랜드마크 검색" />
+            <div class="counter">게시글 수:<span>12</span></div>
           </div>
           <ul class="view-options">
             <li class="zoom">
@@ -140,12 +107,18 @@
             </li>
             <li class="show-grid active">
               <button>
-                <i class="fa-solid fa-border-all"></i>
+                <img
+                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/grid-view.svg"
+                  alt="grid view"
+                />
               </button>
             </li>
             <li class="show-list">
               <button>
-                <i class="fa-solid fa-list-ul"></i>
+                <img
+                  src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/list-view.svg"
+                  alt="list view"
+                />
               </button>
             </li>
           </ul>
@@ -318,9 +291,7 @@
       crossorigin="anonymous"
     ></script>
 
-	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
-    <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
 </html>
