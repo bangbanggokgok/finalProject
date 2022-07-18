@@ -155,7 +155,7 @@ i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
          <c:forEach var="landMark" items="${landmarkList}">
           <li class='land-row'>
             <figure> <%--이부분은 진국님이 작성하셨나요??넵 음... 일단이건 냅둬두고 다만들고 설명해드림--%>
-              <img src="${contextPath}"+"${landmakrList.landMarkImage}"></img>
+              <img src="${contextPath}${landmakrList.landMarkImage}"></img>
                 <%-- 이부분은 좀 테스트 해봅시다 --%>
               <figcaption class="landMark" id="landMark">
                 <p class="land-Title"></p>
@@ -332,7 +332,6 @@ i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
         const contextPath = "${contextPath}"
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    </script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
