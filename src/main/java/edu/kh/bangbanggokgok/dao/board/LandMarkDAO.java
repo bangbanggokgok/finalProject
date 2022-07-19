@@ -64,4 +64,18 @@ public class LandMarkDAO {
 	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
 		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMakrNo);
 	}
+
+	/** 게시글 삽입 DAO
+	 * @param detail
+	 * @return landMarkNo
+	 */
+	public int insetLandMark(LandMarkDetail detail) {
+		
+		int result = sqlSession.insert("landMarkMapper.insertLandMark", detail);
+		
+		if(result > 0) result = detail.getLandMakrNo();
+		
+		
+		return result;
+	}
 }
