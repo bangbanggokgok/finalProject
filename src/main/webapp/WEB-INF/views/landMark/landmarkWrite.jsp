@@ -25,7 +25,7 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form>
+            <form action="" method="POST" onsubmit="checkSubmit()">
                 <div class="titleFields">
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
@@ -36,7 +36,7 @@
                         </select>
                         <div style="height:20px;"></div>
                         <label class="title" style="font-weight:bold;">랜드마크 이름</label>
-                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title">
+                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName">
                     </div>
                 </div>
     
@@ -81,7 +81,7 @@
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
                     <article class="contentArea">
-                        <textarea placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
+                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
                     </article>
 
                     <div class="WritingTag">
@@ -89,7 +89,7 @@
                             <strong class="blind">태그 입력</strong>
                             <div class="tag_input_box inactive">
                             <%-- 이부분 이해안됨 --%>
-                                <input type="text" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
+                                <input type="text" name="hashTag" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
                                 <div class="layer_auto_tag" style="display: none;">
                                     <ul class="auto_tag_list"></ul>
                                 </div>
@@ -97,7 +97,8 @@
                         </div>
                     </div>
                 </div>
-                
+                <input type="text" name="lng" style="display:none;">
+                <input type="text" name="lag" style="display:none;">
                 <div class="addressField">
                     <div id="map" style="width:764px;height:400px;"></div>
                 </div>
@@ -105,7 +106,7 @@
                 <section class="submitBar">
                     <div class="buttonContainer">
                         <div id="clickLatlng"></div>
-                        <button type="button" class="submitButton">등록하기</button>
+                        <button class="submitButton">등록하기</button>
                     </div>
                 </section>
             </form>
