@@ -30,8 +30,8 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     console.log(document.getElementsByName("lag")[0].value);
 });
 
-//  getLng() 위
-//  getLat() 경
+//  getLng() 위 가로 x
+//  getLat() 경 세로 y
 
 // document.getElementsByClassName("submitButton")[0].addEventListener("click",function submitAction(){
 //     if(confirm("랜드마크를 등록 하시겠습니까?")){
