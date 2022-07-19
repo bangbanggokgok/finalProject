@@ -69,13 +69,10 @@ public class LandMarkDAO {
 	 * @param detail
 	 * @return landMarkNo
 	 */
-	public int insetLandMark(LandMarkDetail detail) {
+	public int insertLandMark(LandMarkDetail detail) {
 		
 		int result = sqlSession.insert("landMarkMapper.insertLandMark", detail);
-		
 		if(result > 0) result = detail.getLandMakrNo();
-		
-		
 		return result;
 	}
 }

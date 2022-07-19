@@ -14,7 +14,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.Location" alias="Locations"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMark" alias="LandMark"/>
-		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMarkDetail" alias="Detail"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMarkDetail" alias="LandmarkDetail"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMarkIMG" alias="LandMarkImage"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.Notice" alias="Notice"/>
