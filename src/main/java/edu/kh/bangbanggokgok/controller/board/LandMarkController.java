@@ -76,7 +76,7 @@ public class LandMarkController {
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{locationNum}")
 	public String landWriteForm(@PathVariable("locationNum") int locationType) {
-		return "land/landWriteForm";
+		return "landMark/landmarkWrite";
 	}
 
 	// 게시글 삽입/수정
