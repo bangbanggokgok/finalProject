@@ -2,6 +2,7 @@ package edu.kh.bangbanggokgok.vo.board;
 
 import java.util.List;
 
+import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,8 +24,8 @@ public class MoveLineDetail {
 	private String movelineTheme;
 	private int readCount;
 	
-	private int mlHashNo;
-	private String mlHashName;
+	private int MLHashTagNo;
+	private String MLHashTag;
 	
 	
 	private int userNo;
@@ -43,4 +44,7 @@ public class MoveLineDetail {
 	private String landMarkAddress;
 	private char landMarkFL;
 	private String landMarkCreate;
+	
+	private List<LandMark> landmarkList;
+	private List<MoveLineHashTag> hashtagList;
 }

@@ -1,5 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+
+
+
+<c:forEach var="moveline" items="${preMoveLineList}">
+    <c:if test="${movelineNo == moveline.movelineNo}">
+        <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
+        <c:set var="landMarkName" value="${moveline.landMarkName}" />
+        <c:set var="landMarkX" value="${moveline.landMarkX}" />
+        <c:set var="locationName" value="${moveline.locationName}" />
+        <c:set var="thumbnail" value="${moveline.thumbnail}" />
+    </c:if>
+</c:forEach>
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -22,6 +36,8 @@
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
+
+        <c:set var="url" value="&hashtag=${hashtag.MLHashTag}" />
 
         <section>
             <div id="contents">
@@ -65,7 +81,7 @@
                             <c:if test="${!empty preHashTagList}">
                                 <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
-                                        <a href="list/hashtag?hashTagName=${hashtag.mlHashName}">#${hashtag.mlHashName}</a>
+                                        <a href="list/hashtag/${url}">#${hashtag.MLHashTag}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>
@@ -75,24 +91,40 @@
                 </div>
 
                 <div class="sample-area">
-
                     <c:if test="${!empty preMoveLineList}">
                         <c:forEach var="moveline" items="${preMoveLineList}">
-                            <div class="samples">
-                                <div class="s-pic">
-                                    <a href="">
-                                        <strong>${moveline.movelineTitle}</strong>
-                                        <ul>
-                                            <li>지역 : ${moveline.locationName}</li>
-                                            <li>총거리 : ${moveline.landMarkX}</li>
-                                        </ul>
-                                    </a>
-                                    <img src="${moveline.thumbnail}" alt="">
+                                <div class="samples">
+                                    <div class="s-pic">
+                                        <a href="list/location/${movelineTitle}">
+                                            <strong>${moveline.movelineTitle}</strong>
+                                            <ul>
+                                                <li>지역 : ${moveline.locationName}</li>
+                                                <li>총거리 : ${moveline.landMarkX}</li>
+                                            </ul>
+                                        </a>
+
+                                        <c:if test="${empty moveline.thumbnail}">
+											<div class="thumbnail">
+												<img src="${contextPath}/resources/images/user.png" alt=""
+												class="list-thumbnail">
+											</div>
+										</c:if>
+
+										<c:if test="${!empty thumbnail}">
+											<div class="thumbnail">
+												<img src="${contextPath}${moveline.thumbnail}" alt=""
+												class="list-thumbnail">
+											</div>
+										</c:if>
+                                        
+                                    </div>
+                                    
+                                    <c:forEach var="landmark" items="${moveline.landmarkList}">
+                                            <ul class="s-list">
+                                                <li><span><a href="">${landmark.landMarkName}</a></span></li>
+                                            </ul>   
+                                    </c:forEach>
                                 </div>
-                                <ul class="s-list">
-                                    <li><span><a href="">${moveline.landMarkName}</a></span></li>
-                                </ul>
-                            </div>
                         </c:forEach>
                     </c:if>
 

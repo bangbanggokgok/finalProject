@@ -19,13 +19,6 @@ public interface MoveLineService {
 	List<Location> selectLocation();
 	
 	
-	/** 해시태그 이름 조회 서비스
-	 * @return hashtagList
-	 */
-	List<Location> selectHashTag();
-
-	
-	
 	/** 특정 지역 코스 목록 조회 서비스
 	 * @param cp
 	 * @param locationNum
@@ -33,6 +26,47 @@ public interface MoveLineService {
 	 */
 	Map<String, Object> selectLocationList(int cp, int locationNum);
 
+	
+	/** 특정 해시태그 목록 조회 서비스
+	 * @param cp
+	 * @param mLHashTag
+	 * @return
+	 */
+	Map<String, Object> selectHashTagList(Map<String, Object> paramMap);
+
+
+	/** 코스 메인 - 랜덤 해시태그 10개 조회 서비스
+	 * @return list
+	 */
+	List<MoveLineHashTag> selectMoveLineMain();
+
+
+	/** 코스 메인 - 
+	 * @param lastNo
+	 * @return
+	 */
+	List<MoveLineDetail> selectMoveLineMain2();
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/** 해시태그 이름 조회 서비스
+	 * @return hashtagList
+	 */
+	/*
+	 * List<Location> selectHashTag();
+	 */
 
 //	/** 특정 해시태그 목록 조회 서비스
 //	 * @param cp
@@ -43,34 +77,5 @@ public interface MoveLineService {
 //
 //
 //	Map<String, Object> selectHashTagList(Map<String, Object> paramMap);
-
-
-	/**
-	 * @param cp
-	 * @param mLHashTag
-	 * @return
-	 */
-	Map<String, Object> selectHashTagList(int cp, String mLHashTag);
-
-
-	/** 코스 메인 조회 서비스
-	 * @return list
-	 */
-	List<MoveLineHashTag> selectMoveLineMain();
-
-
-	/** 코스 메인 조회 서비스
-	 * @return list
-	 */
-	List<MoveLineDetail> selectMoveLineMain2();
-
-
-	/** 마지막 코스 번호 조회
-	 * @return list
-	 */
-	List<MoveLine> selectLastNo();
-
-
-
 
 }

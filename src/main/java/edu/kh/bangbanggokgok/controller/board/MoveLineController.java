@@ -38,13 +38,6 @@ public class MoveLineController {
 		return "moveline/movelineSort";
 	}
 	
-//	// 코스 구분 페이지 조회
-//	@GetMapping("/list/main")
-//	public String moveLineMain(Model model) {
-//		
-//		return "moveline/movelineSort";
-//	}
-	
 	
 	/** 특정 지역 코스 목록 조회
 	 * @param model
@@ -55,17 +48,70 @@ public class MoveLineController {
 	@GetMapping("/list/location/{locationNum}")
 	public String moveLineLocation(Model model,
 								@PathVariable("locationNum") int locationNum,
-								@RequestParam(value="cp", required=false, defaultValue="1") int cp
+								@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+								@RequestParam Map<String, Object> paramMap
 								) {
 		
 		Map<String, Object> map = null;
 		
-//		map = service.selectLocationList(cp, locationNum);
+		map = service.selectLocationList(cp, locationNum);
 		
 		model.addAttribute("map",map);
 		
 		return "moveline/movelineList";
 	}
+	
+
+	/** 특정 해시태그 목록 조회
+	 * @param model
+	 * @param cp
+	 * @param MLHashTag
+	 * @param paramMap
+	 * @return
+	 */
+	@GetMapping("/list/hashtag")
+	public String movelineHashTag(
+//			@PathVariable("MLHashTag") String MLHashTag,
+
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam(value="MLHashTag", required=true) String MLHashTag,
+			@RequestParam Map<String, Object> paramMap
+			
+			) {
+		
+		Map<String, Object> map = null;
+		
+		paramMap.put("cp", cp);
+		paramMap.put("MLHashTag", MLHashTag);
+		
+		map = service.selectHashTagList(paramMap);
+		
+		model.addAttribute("map",map);
+		
+		return "moveline/movelineList";
+		
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 //	/** 특정 해시태그 목록 조회
@@ -115,34 +161,12 @@ public class MoveLineController {
 //	}
 	
 	
-	/**
-	 * @param model
-	 * @param cp
-	 * @param MLHashTag
-	 * @param paramMap
-	 * @return
-	 */
-	@GetMapping("/list/hashtag?hashTagName={MLHashTag}")
-	public String movelineHashTag(
-			
-			Model model,
-			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
-			@RequestParam(value="MLHashTag", required=false, defaultValue="") String MLHashTag,
-			@RequestParam Map<String, Object> paramMap
-			
-			) {
-		
-		Map<String, Object> map = null;
-		
-//		map = service.selectHashTagList(cp, MLHashTag);
-		
-		model.addAttribute("map",map);
-		
-		return "moveline/movelineList";
-		
-		
-	}
-	
+//	// 코스 구분 페이지 조회
+//	@GetMapping("/list/main")
+//	public String moveLineMain(Model model) {
+//		
+//		return "moveline/movelineSort";
+//	}
 	
 	
 }

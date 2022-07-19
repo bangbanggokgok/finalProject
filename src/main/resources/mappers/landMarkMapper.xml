@@ -117,4 +117,28 @@
      AND LM_FL = 'N'
      </select>
 	
+	<!-- 랜드마크 삽입 -->
+	
+	<insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
+		
+		<selectKey keyProperty ="landMarkNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_LM_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO LANDMARK VALUES(
+			#{landMarkNo},
+			1,
+			1,
+			#{landMarkName},
+			#{landMarkContent},
+			#{landMarkAddress},
+			DEFAULT,
+			#{userNo},
+			#{locationNum}
+		)
+	</insert>
+	
+	
+	
+	
 </mapper>
