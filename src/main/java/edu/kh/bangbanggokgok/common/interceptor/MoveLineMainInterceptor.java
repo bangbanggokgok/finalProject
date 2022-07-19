@@ -31,6 +31,8 @@ public class MoveLineMainInterceptor implements HandlerInterceptor{
 		
 		ServletContext application = request.getServletContext();
 		
+		
+		// 코스 메인 - 랜덤 해시태그 10개 조회		
 		if(application.getAttribute("preHashTagList") == null) {
 			
 			List<MoveLineHashTag> preHashTagList = MovelineService.selectMoveLineMain();
@@ -40,19 +42,11 @@ public class MoveLineMainInterceptor implements HandlerInterceptor{
 		}
 		
 		
+		
+		// 코스 메인 - 최신 코스 3개 조회		
+
 		if(application.getAttribute("preMoveLineList") == null) {
 			
-			
-			//List<List> aaa = new ArrayList();
-			//List<String> bbb = new ArrayList();
-			//aaa.add(bbb);
-			
-			//1. 코스 게시글 번호 제일 큰거 가져와 변수로 담아
-			//2. ex) maxNo = 1.
-			//3. List<MoveLineDetail> preMoveLineList = MovelineService.selectMoveLineMain2(maxNo);
-			//3-1. 쿼리 where에  WHERE ML_NO > 'maxNo' - 3
-			
-			List<MoveLine> lastNo = MovelineService.selectLastNo();
 			List<MoveLineDetail> preMoveLineList = MovelineService.selectMoveLineMain2();
 
 			application.setAttribute("preMoveLineList", preMoveLineList);

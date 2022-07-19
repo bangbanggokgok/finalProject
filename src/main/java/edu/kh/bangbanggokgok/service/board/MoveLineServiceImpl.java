@@ -25,19 +25,12 @@ public class MoveLineServiceImpl implements MoveLineService{
 	@Autowired
 	private MoveLineDAO dao;
 
-	// 지역 구분 조회 서비스 구현
+	// 코스 메인 - 지역 구분 조회 서비스 구현
 	@Override
 	public List<Location> selectLocation() {
 		return dao.selectLocation();
 	}
 	
-	
-	// 해시태그 이름 조회 서비스 구현
-	@Override
-	public List<Location> selectHashTag() {
-		return dao.selectHashTag();
-	}
-
 
 	@Override
 	public List<String> selectMovelineList() {
@@ -59,11 +52,81 @@ public class MoveLineServiceImpl implements MoveLineService{
 		map.put("pagination", pagination);
 		map.put("listBylocation", listBylocation);
 		
+//		int MovelineBylocation = dao.selectMovelineBylocation(locationNum);
+		
+//		map.put("MovelineBylocation", MovelineBylocation);
+		
 		return map;
 	
 	}
 
+
+	// 특정 해시태그 목록 조회 서비스
+	@Override
+	public Map<String, Object> selectHashTagList(Map<String, Object> paramMap) {
+		
+		// 특정 해시태그 코스 수 조회 DAO 및 페이지네이션 객체 생성
+		int listCount = dao.hashTagListCount(paramMap);
+		Pagination pagination = new Pagination((int)paramMap.get("cp"), listCount);
+		
+		// 특정 해시태그 목록 조회
+		List<MoveLineList> listByHashTag = dao.selectHashTagList(paramMap, pagination);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("pagination", pagination);
+		map.put("listByHashTag", listByHashTag);
+		
+		return map;
+		
+	}
+
+
+	// 코스 메인 - 랜덤 해시태그 10개 조회 서비스
+	@Override
+	public List<MoveLineHashTag> selectMoveLineMain() {
+		return dao.selectMoveLineMain();
+	}
+
+	// 코스 메인 - 최신 코스 3개 조회
+	@Override
+	public List<MoveLineDetail> selectMoveLineMain2() {
+		return dao.selectMoveLineMain2();
+	}
 	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+	/*
+	 * // 마지막 코스 번호 조회
+	 * 
+	 * @Override public int selectLastNo() { return dao.selectLastNo(); }
+	 */
+
+	
+	
+	// 해시태그 이름 조회 서비스 구현
+	/*
+	 * @Override public List<Location> selectHashTag() { return dao.selectHashTag();
+	 * }
+	 */
+
 //	// 특정 해시태그 목록 조회 서비스 구현
 //	@Override
 //	public Map<String, Object> selectHashTagList(int cp, int MLHashTagNo) {
@@ -103,48 +166,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 //		
 //		return null;
 //	}
-
-
-	//
-	@Override
-	public Map<String, Object> selectHashTagList(int cp, String mLHashTag) {
-		
-		// 특정 해시태그 코스 수 조회 DAO 및 페이지네이션 객체 생성
-		int listCount = dao.hashTagListCount(mLHashTag);
-		Pagination pagination = new Pagination(cp, listCount);
-		
-		// 특정 해시태그 목록 조회
-		List<MoveLineList> listByHashTag = dao.selectHashTagList(pagination, mLHashTag);
-		
-		Map<String,Object> map = new HashMap<String,Object>();
-		map.put("pagination", pagination);
-		map.put("listByHashTag", listByHashTag);
-		
-		return map;
-		
-	}
-
-
-	// 코스 메인 조회 서비스 구현
-	@Override
-	public List<MoveLineHashTag> selectMoveLineMain() {
-		return dao.selectMoveLineMain();
-	}
-
-
-	// 코스 메인 조회 서비스 구현
-	@Override
-	public List<MoveLineDetail> selectMoveLineMain2() {
-		return dao.selectMoveLineMain2();
-	}
-
-	// 마지막 코스 번호 조회
-	@Override
-	public List<MoveLine> selectLastNo() {
-		return dao.selectLastNo();
-	}
-	
-	
 	
 	
 	

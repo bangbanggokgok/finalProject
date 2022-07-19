@@ -8,7 +8,7 @@ import lombok.Setter;
 public class LandMarkIMG {
 	private int landMarkImageNo;
 	private int landMarkNo;
-	private String landMarkRename;
+	private String landMarkReName;
 	private int landMarkImageLV;
 	
 }

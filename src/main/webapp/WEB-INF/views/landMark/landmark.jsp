@@ -97,9 +97,9 @@
     <section class="gallery">
       <div class="container">
         <div class="tit">
-          <h2 id="zoneTitle">대전</h2>
+          <h2 id="zoneTitle">서울</h2>
         </div>
-        <div class="region-1">
+        <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
 			<c:forEach var="locations" items="${LocationList}">
 				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
@@ -108,23 +108,6 @@
 		<c:if test="${empty LocationList}">
 			비어있음
 		</c:if>
-<%--           <span class="region-detail">서울</span>
-          <span class="region-detail">부산</span>
-          <span class="region-detail">대구</span>
-          <span class="region-detail">인천</span>
-          <span class="region-detail">광주</span>
-          <span class="region-detail">대전</span>
-          <span class="region-detail">울산</span>
-          <span class="region-detail">세종</span>
-          <span class="region-detail">경기</span>
-          <span class="region-detail">강원</span>
-          <span class="region-detail">충북</span>
-          <span class="region-detail">충남</span>
-          <span class="region-detail">전북</span>
-          <span class="region-detail">전남</span>
-          <span class="region-detail">경북</span>
-          <span class="region-detail">경남</span>
-          <span class="region-detail">제주</span> --%>
         </div>
         <div class="toolbar">
           <div class="search-wrapper">
@@ -150,8 +133,21 @@
             </li>
           </ul>
         </div>
-        <ol class="image-list grid-view">
-          <li>
+
+        <ol class="image-list grid-view" id="landMakrList">
+         <c:forEach var="landMark" items="${landmarkList}">
+          <li class='land-row'>
+            <figure> <%--이부분은 진국님이 작성하셨나요??넵 음... 일단이건 냅둬두고 다만들고 설명해드림--%>
+              <img src="${contextPath}${landmakrList.landMarkImage}"></img>
+                <%-- 이부분은 좀 테스트 해봅시다 --%>
+              <figcaption class="landMark" id="landMark">
+                <p class="land-Title"></p>
+                <p class="land-content"></p>
+              </figcaption>
+            </figure>
+          </li>
+          </c:forEach>
+          <%--<li>
             <figure>
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature1.jpg"
@@ -190,7 +186,7 @@
               </figcaption>
             </figure>
           </li>
-          <li>
+           <li>
             <figure>
               <img
                 src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
@@ -308,17 +304,17 @@
                 </p>
               </figcaption>
             </figure>
-          </li>
+          </li> --%>
         </ol>
       </div>
     </section>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script>
+        const locationType = "${locations.locationNum}"
+        const contextPath = "${contextPath}"
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>

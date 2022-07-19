@@ -5,6 +5,14 @@ const active = 'active';
 const listView = 'list-view';
 const gridView = 'grid-view';
 const dNone = 'd-none';
+const regions = document.querySelectorAll('.region-detail');
+const zoneTitle = document.querySelector('#zoneTitle');
+
+for(let region of regions){
+  region.addEventListener('click',()=>{
+    zoneTitle.innerText = region.innerText;
+  });
+}
 
 //버튼 활성화
 for(const btn of btns){ //배열명 btns 하나하나 각각의 요소를 btn이라는 요소로 설정한다
@@ -49,7 +57,7 @@ for(const caption of captions){
         text:caption.textContent
     });
 }
-console.log(myArray);
+// console.log(myArray);
 
 const searchInput = document.querySelector('input[type="search"]');
 const photosCounter = document.querySelector('.toolbar .counter span');
@@ -82,11 +90,11 @@ function keyupHandler(){
 var region = document.getElementsByClassName("region-detail");
 
 function handleClick(event) {
-  console.log(event.target);
+  // console.log(event.target);
   // console.log(this);
   // 콘솔창을 보면 둘다 동일한 값이 나온다
 
-  console.log(event.target.classList);
+  // console.log(event.target.classList);
 
   if (event.target.classList[1] === "clicked") {
     event.target.classList.remove("clicked");

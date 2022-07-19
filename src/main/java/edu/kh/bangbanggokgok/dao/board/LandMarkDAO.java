@@ -21,10 +21,10 @@ public class LandMarkDAO {
 	 * @param locationType
 	 * @return ListCount
 	 */
-	public int getListCount(int locationType) {
-		
-		return sqlSession.selectOne("landMarkMapper.getListCount", locationType);
-	}
+//	public int getListCount(int locationType) {
+//		
+//		return sqlSession.selectOne("landMarkMapper.getListCount", locationType);
+//	}
 
 	/** 특정 지역 랜드마크 목록 조회 DAO
 	 * @param locationType
@@ -64,4 +64,25 @@ public class LandMarkDAO {
 	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
 		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMakrNo);
 	}
+
+	/** 게시글 삽입 DAO
+	 * @param detail
+	 * @return landMarkNo
+	 */
+	public int insertLandMark(LandMarkDetail detail) {
+		
+		int result = sqlSession.insert("landMarkMapper.insertLandMark", detail);
+		if(result > 0) result = detail.getLandMarkNo();
+		return result;
+	}
+
+	/** 게시글 이미지 삽입
+	 * @param landMarkImageList
+	 * @return
+	 */
+	public int insertLandMarkImageList(List<LandMarkIMG> landMarkImageList) {
+		return sqlSession.insert("boardMapper.insertLandMarkImageList", landMarkImageList);
+	}
+
+
 }

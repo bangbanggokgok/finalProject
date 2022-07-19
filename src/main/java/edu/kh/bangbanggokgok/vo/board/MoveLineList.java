@@ -14,7 +14,7 @@ public class MoveLineList {
 	private int movelineNo;
 	private String movelineTitle;
 	private String landMarkName;
-	private String movelineHashName;
+	private String MLHashTag;
 	private String locationName;
 	private String thumbnail;
 	
