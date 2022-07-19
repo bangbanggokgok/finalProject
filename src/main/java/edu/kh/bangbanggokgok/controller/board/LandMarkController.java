@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.controller.board;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -72,10 +73,25 @@ public class LandMarkController {
 		model.addAttribute("landmarkDetail",landmarkDetail);
 		return "landMark/land-detail";
 	}
-
+	//왜 이거써요
+	
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{locationNum}")
-	public String landWriteForm(@PathVariable("locationNum") int locationType) {
+	public String landWriteForm(@PathVariable("locationNum") int locationType,
+								String mode,
+								@RequestParam(value="no", required=false, defaultValue = "0") int landMarkNo,
+								Model model) {
+//		
+//		if(mode.equals("update")) {
+//			
+//			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
+//			
+//			detail.setLandMarkContent(mode);
+//			
+//			
+//		}
+//		
+		
 		return "landMark/landmarkWrite";
 	}
 
@@ -84,7 +100,9 @@ public class LandMarkController {
 	public String landWrite(LandMarkDetail detail, // 제목, 내용
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList, // 이미지 리스트
 			@PathVariable("locationNum") int locationNum, String mode, @ModelAttribute("loginUser") User loginUser,
-			HttpServletRequest req, RedirectAttributes ra) {
+			HttpServletRequest req, RedirectAttributes ra,
+			@RequestParam( value = "deleteList", required=false) String deleteList)
+			throws IOException {
 
 		// 회원번호 얻어오기
 		detail.setUserNo(loginUser.getUserNo());
@@ -114,10 +132,27 @@ public class LandMarkController {
 			return "redirect:" + path;
 
 		} else {// 수정코드 작성 공간
-
+			
+			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
+			
+			String path = null;
+			String message = null;
+			
+			if(result > 0) {
+				message = "게시글이 수정되었습니다.";
+				// 현재 : /board/write/{boardCode}
+				// 목표 : /board/detail/{boardCode}/{boardNo}?cp=10
+				path = "../detail/" + locationNum + "/" + detail.getLandMakrNo();
+			}else {
+				message = "게시글 수정 실패";
+				path = req.getHeader(	"referer");
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:"+path; 
 		}
 
-		return "";
 
 	}
 

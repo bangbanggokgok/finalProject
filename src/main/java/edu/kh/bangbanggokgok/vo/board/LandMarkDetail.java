@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class LandMarkDetail {
+	
 	private int landMakrNo;
 	private int landMarkX;
 	private int landMarkY;
