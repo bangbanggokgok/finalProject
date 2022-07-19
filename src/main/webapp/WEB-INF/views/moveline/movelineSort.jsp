@@ -37,6 +37,8 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
+        <c:set var="url" value="&hashtag=${hashtag.MLHashTag}" />
+
         <section>
             <div id="contents">
                 <div id="location-area">
@@ -79,12 +81,12 @@
                             <c:if test="${!empty preHashTagList}">
                                 <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
-                                        <a href="list/hashtag?hashtagName=${hashtag.MLHashTag}">#${hashtag.MLHashTag}</a>
+                                        <a href="list/hashtag/${url}">#${hashtag.MLHashTag}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>
 
-                        </ul>l
+                        </ul>
                     </div>
                 </div>
 
@@ -100,7 +102,21 @@
                                                 <li>총거리 : ${moveline.landMarkX}</li>
                                             </ul>
                                         </a>
-                                        <img src="${moveline.thumbnail}" alt="">
+
+                                        <c:if test="${empty moveline.thumbnail}">
+											<div class="thumbnail">
+												<img src="${contextPath}/resources/images/user.png" alt=""
+												class="list-thumbnail">
+											</div>
+										</c:if>
+
+										<c:if test="${!empty thumbnail}">
+											<div class="thumbnail">
+												<img src="${contextPath}${moveline.thumbnail}" alt=""
+												class="list-thumbnail">
+											</div>
+										</c:if>
+                                        
                                     </div>
                                     
                                     <c:forEach var="landmark" items="${moveline.landmarkList}">

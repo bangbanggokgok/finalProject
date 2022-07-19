@@ -80,3 +80,18 @@ function located(num){
     }
 
 })();
+
+
+// 즐겨찾기
+(function(){
+    const bookmarkBtn = document.getElementsByClassName("btn-bookmark")[0];
+
+    if("bookmarkBtn != null"){
+
+        bookmarkBtn.addEventListener("click", function(){
+
+        })
+
+    }
+
+})
