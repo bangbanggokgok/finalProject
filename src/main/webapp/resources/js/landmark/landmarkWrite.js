@@ -49,7 +49,32 @@ document.getElementsByClassName("submitButton")[0].addEventListener("click",func
                     "lng":lng,
                     "lat":lat,
                     "locationNum":selectLocation},
-            type: "post"
+            type: "POST"
         })
     }
-})
+});
+
+for(let i=0;i<inputImage.length;i++){
+    inputImage[i].addEventListener("change",function(){
+        if(this.files[0] != undefined){
+            const reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);  // 파일 url따오기
+            reader.onload = function(e){      // 적제 완료 시 
+                preview[i].setAttribute("src",e.target.result);
+                deleteSet.delete(i);
+            }
+        } else {
+            preview[i].removeAttribute("src");
+        }
+    });
+    deleteImage[i].addEventListener("click",function(){
+        if(preview[i].getAttribute("src") != ""){
+            inputImage[i].value = "";
+            preview[i].removeAttribute("src");
+            deleteSet.add(i);
+        }
+    });
+}
+
+
+
