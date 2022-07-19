@@ -26,7 +26,7 @@
                     <a href="${contextPath}/admin/user/list"><i class="fal fa-user-friends"></i> 회원관리</a>
                 </li>
                 <li id="adminList">
-                    <a href="${contextPath}/admin/inquiry/list"><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
+                    <a href="${contextPath}/admin/qna/list"><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
                 </li>
                 <li id="adminList">
                     <a href="${contextPath}/admin/report/list"><i class="fal fa-siren-on"></i> 신고관리</a>

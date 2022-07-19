@@ -7,10 +7,12 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.NoticeImage;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
 import edu.kh.bangbanggokgok.vo.question.Question;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Repository
@@ -104,6 +106,26 @@ public class AdminDAO {
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("adminMapper.selectReportList", list, rowBounds);
+	}
+
+	/** 문의 상세조회
+	 * @param questionNo
+	 * @return
+	 */
+	public QuestionDetail selectQuestionDetail(int questionNo) {
+		return sqlSession.selectOne("adminMapper.selectQuestionDetail", questionNo);
+	}
+
+	/** 문의 답변 등록
+	 * @param detail
+	 * @return result
+	 */
+	public int insertAnswer(QuestionDetail detail) {
+		return sqlSession.update("adminMapper.insertAnswer", detail);
+	}
+
+	public int updateReport(ReportMoveLine report) {
+		return sqlSession.update("adminMapper.updateReport", report);
 	}
 	
 	

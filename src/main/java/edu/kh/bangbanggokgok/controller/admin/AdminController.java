@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,13 +18,16 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.service.admin.AdminService;
+import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.question.Question;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
@@ -107,7 +112,7 @@ public class AdminController {
 	}
 	
 	// 문의 조회
-	@GetMapping("/inquiry/{list}")
+	@GetMapping("/qna/{list}")
 	public String inquiryList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
 							 , Model model
 							 , @RequestParam Map<String, Object> paramMap
@@ -118,6 +123,21 @@ public class AdminController {
 		
 		return "admin_/inquiry-list";
 	}
+	
+	
+	//문의 상세 조회
+	@GetMapping("/qna/detail/{questionNo}")
+	public String QuestionDetail(@PathVariable("questionNo") int questionNo
+								, Model model,  @ModelAttribute("loginUser") User loginUser){
+		
+		QuestionDetail detail = service.selectQuestionDetail(questionNo);
+		
+		detail.setUserNo( loginUser.getUserNo()  );
+		
+		model.addAttribute("detail", detail);
+		return "admin_/inquiry-detail";
+	}
+	
 	
 	// 신고 코스 조회
 	@GetMapping("/report/{list}")
@@ -134,5 +154,17 @@ public class AdminController {
 	}
 	
 	
+	// 문의 답변 등록
+	@ResponseBody
+	@PostMapping("/qna/insert")
+	public int insertAnswer(QuestionDetail detail) {
+		return service.insertAnswer(detail);
+	}
 	
+	// 신고 처리
+	@ResponseBody
+	@GetMapping("/report/situation")
+	public int updateReport(ReportMoveLine report) {
+		return service.updateReport(report);
+	}
 }

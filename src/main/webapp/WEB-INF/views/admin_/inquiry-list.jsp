@@ -18,7 +18,9 @@
 </head>
 
 <body>
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
     <div class="board">
+
         <h1>1:1 문의관리</h1>
         
 
@@ -65,18 +67,18 @@
                     <li>
                         <div class="wrapper">
                             <div class="memberNo">${question.questionNo}</div>
-                            <div class="title">${question.questionTitle}</div>
+                            <div class="title"><a href="../qna/detail/${question.questionNo}">${question.questionTitle}</a></div>
                             <div class="writer">${question.userName}</div>
 
                             <c:choose>
-                            <c:when test="${!empty question.questionAnswer}">
-                                <div class="situation">답변완료</div>
-                            </c:when>
+                                <c:when test="${!empty question.questionAnswer}">
+                                    <div class="situation">답변완료</div>
+                                </c:when>
 
-                            <c:otherwise>
-                               <div class="situation">답변대기</div>       
-                            </c:otherwise>
-                        </c:choose>
+                                <c:otherwise>
+                                <div class="situation">답변대기</div>       
+                                </c:otherwise>
+                            </c:choose>
                             <div class="date">${question.createDate}</div>
 
                         </div>
@@ -91,7 +93,7 @@
             <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="list&cp="/>
+                <c:set var="url" value="${list}?cp="/>
 
 
                 <ul class="pagination">
@@ -123,8 +125,9 @@
                     <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
 
                 </ul>
-        </div>
+            </div>
         </section>
+    </div>
 
 
 

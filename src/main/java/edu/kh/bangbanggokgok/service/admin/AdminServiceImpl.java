@@ -13,10 +13,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.admin.AdminDAO;
+import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.NoticeImage;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
 import edu.kh.bangbanggokgok.vo.question.Question;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Service
@@ -112,6 +114,28 @@ public class AdminServiceImpl implements AdminService{
 		map.put("reportList", reportList);
 		
 		return map;
+	}
+
+	// 문의 상세 조회
+	@Override
+	public QuestionDetail selectQuestionDetail(int questionNo) {
+		return dao.selectQuestionDetail(questionNo);
+	}
+
+	// 문의 답변 등록
+	@Override
+	public int insertAnswer(QuestionDetail detail) {
+		
+		detail.setQuestionAnswer(Util.XSSHandling(detail.getQuestionAnswer()));
+		detail.setQuestionAnswer(Util.newLineHandling(detail.getQuestionAnswer()));
+		
+		return dao.insertAnswer(detail);
+	}
+
+	// 신고 처리
+	@Override
+	public int updateReport(ReportMoveLine report) {
+		return dao.updateReport(report);
 	}
 
 

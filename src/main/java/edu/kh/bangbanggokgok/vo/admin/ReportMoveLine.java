@@ -14,5 +14,6 @@ public class ReportMoveLine {
 	private String reportDate;
 	private int moveLineNo;
 	private String moveLineTitle;
+	private int userNo;
 	private String userName;
 }
