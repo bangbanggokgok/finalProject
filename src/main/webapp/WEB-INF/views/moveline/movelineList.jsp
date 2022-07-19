@@ -68,7 +68,10 @@
 
 				<ul class="detail-list">
 					<li>
-						
+						<div class="thumbnail">
+							<img src="${contextPath}/resources/images/randmark/1.jpg" alt=""
+							class="list-thumbnail">
+						</div>
 
 						<div class="ml-detail">
 							<div class="title-area">
@@ -108,7 +111,7 @@
 					<c:when test="${empty listBylocation}">
 						<!-- 목록 조회 결과가 비어있다면 -->
 						<tr>
-							<th colspan="5">게시글이 존재하지 않습니다.</th>
+							<th colspan="5">등록된 코스가 없습니다.</th>
 						</tr>
 					</c:when>
 
@@ -116,40 +119,43 @@
 
 					
                         <c:if test="${!empty listBylocation}">
-                            <c:forEach var="moveline" items="${listBylocation}">
+							<c:forEach var="moveline" items="${listBylocation}">
                                 <ul class="detail-list">
                                     <li>
 
-										<c:if test="${!empty thumbnail}">
+										<c:if test="${empty moveline.thumbnail}">
 											<div class="thumbnail">
 												<img src="${contextPath}/resources/images/user.png" alt=""
 												class="list-thumbnail">
 											</div>
 										</c:if>
 
-										<c:if test="${empty thumbnail}">
+										<c:if test="${!empty thumbnail}">
 											<div class="thumbnail">
-												<img src="${contextPath}/resources/images/randmark/3.jpg" alt=""
+												<img src="${contextPath}${moveline.thumbnail}" alt=""
 												class="list-thumbnail">
 											</div>
 										</c:if>
-
-                                        <div class="ml-detail">
-                                            <div class="title-area">
-                                                <p class="ml-title">${moveline.movelineTitle}</p>
-                                            </div>
-
-                                            
-
-
-                                            <ul class="s-list">
-                                                <span class="landmarks">${moveline.landmarkList}</span>
-                                            </ul>
-
-                                            <p>
-                                                <span class="hashtags">${moveline.hashtagList}</span>
-                                            </p>
-                                        </div>
+										
+											<div class="ml-detail">
+												<div class="title-area">
+													<p class="ml-title">${moveline.movelineTitle}</p>
+												</div>
+													<ul class="s-list">
+														<c:forEach var="landmark" items="${moveline.landmarkList}">
+															<c:if test="${!empty landmark}">
+																<span class="landmarks">${landmark.landMarkName}</span>
+															</c:if>
+														</c:forEach>
+													</ul>
+													<p>
+														<c:forEach var="hashtag" items="${moveline.hashtagList}">
+															<c:if test="${!empty hashtag}">
+																	<span class="hashtags">#${hashtag.MLHashTag}</span>
+															</c:if>
+														</c:forEach>
+													</p>
+											</div>
 
                                         <div class="ml-detail-plus">
                                             <button type="button" class="btn-bookmark"
@@ -164,7 +170,7 @@
                         </c:if>
                     </c:otherwise>
 
-				</c:choose>.
+				</c:choose>
 
 
 

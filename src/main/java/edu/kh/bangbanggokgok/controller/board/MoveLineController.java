@@ -69,7 +69,7 @@ public class MoveLineController {
 	 * @param paramMap
 	 * @return
 	 */
-	@GetMapping("/list/hashtag?hashtagName={MLHashTag}")
+	@GetMapping("/list/hashtag")
 	public String movelineHashTag(
 //			@PathVariable("MLHashTag") String MLHashTag,
 
