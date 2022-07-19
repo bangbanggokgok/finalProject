@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<!-- 랜드마크 상세 조회용 resultMap -->
-	<resultMap type="detail" id="detail_rm">
+	<resultMap type="LandmarkDetail" id="LandmarkDetail_rm">
 		<id property="landMarkNo" column="LM_NO" />
 		<result property="landMarkName" column="LM_NAME" />
 		<result property="landMarkContent" column="LM_CONTENT" />
@@ -106,7 +106,7 @@
     </select>
     
 	<!-- 랜드마크 상세 조회 -->
-	<select id="selectLandMarkDetail" resultMap="detail_rm">
+	<select id="selectLandMarkDetail" resultMap="LandmarkDetail_rm">
 	 SELECT LM_NO, LM_NAME, LM_CONTENT,
      TO_CHAR(LM_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') LM_CREATE_DT,
      USER_NAME, USER_NO
@@ -119,20 +119,38 @@
 	
 	<!-- 랜드마크 삽입 -->
 	
-	<insert id="insertLandMark" parameterType="detail" useGeneratedKeys="true">
+	<insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
 		
 		<selectKey keyProperty ="landMarkNo" resultType="_int" order="BEFORE">
 			SELECT SEQ_LM_NO.NEXTVAL FROM DUAL
 		</selectKey>
 	
 		INSERT INTO LANDMARK VALUES(
-			#{landMarkNo},X좌표,Y좌표,
-			#{landMarkName}, #{landMarkContent},#{landMarkAddress},DEFAULT,#{userNo},#{locationNum}
-			 
-			
+			#{landMarkNo},
+			#{landMarkX},
+			#{landMarkY},
+			#{landMarkName},
+			#{landMarkContent},
+			#{landMarkAddress},
+			DEFAULT,
+			DEFAULT,
+			#{userNo},
+			#{locationNum}
 		)
+	</insert>
 	
-	
+	<!-- 랜드마크 이미지 삽입 -->
+	<insert id="insertBoardImageList" parameterType="list">
+		INSERT INTO BOARD_IMG 
+		SELECT SEQ_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
+		
+			<foreach collection="list"  item="img" separator="UNION ALL" >
+			    SELECT  #{img.landMarkReName}     LM_IMG_RENAME, 
+			        	#{img.landMarkImageLV}      LM_IMG_LEVEL, 
+			        	#{img.landMarkNo}         LM_NO
+			    FROM DUAL
+			</foreach>
+		) A   
 	</insert>
 	
 	
