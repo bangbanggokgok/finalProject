@@ -1,4 +1,4 @@
-i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
@@ -97,7 +97,7 @@ i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
     <section class="gallery">
       <div class="container">
         <div class="tit">
-          <h2 id="zoneTitle">대전</h2>
+          <h2 id="zoneTitle">서울</h2>
         </div>
         <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
@@ -108,23 +108,6 @@ i<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="U
 		<c:if test="${empty LocationList}">
 			비어있음
 		</c:if>
-<%--           <span class="region-detail">서울</span>
-          <span class="region-detail">부산</span>
-          <span class="region-detail">대구</span>
-          <span class="region-detail">인천</span>
-          <span class="region-detail">광주</span>
-          <span class="region-detail">대전</span>
-          <span class="region-detail">울산</span>
-          <span class="region-detail">세종</span>
-          <span class="region-detail">경기</span>
-          <span class="region-detail">강원</span>
-          <span class="region-detail">충북</span>
-          <span class="region-detail">충남</span>
-          <span class="region-detail">전북</span>
-          <span class="region-detail">전남</span>
-          <span class="region-detail">경북</span>
-          <span class="region-detail">경남</span>
-          <span class="region-detail">제주</span> --%>
         </div>
         <div class="toolbar">
           <div class="search-wrapper">
