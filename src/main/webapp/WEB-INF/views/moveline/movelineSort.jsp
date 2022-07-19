@@ -3,7 +3,7 @@
 
 
 
-<c:forEach var="moveline" items="${preMoveLineList}">
+<%-- <c:forEach var="moveline" items="${preMoveLineList}">
     <c:if test="${movelineNo == moveline.movelineNo}">
         <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
         <c:set var="landMarkName" value="${moveline.landMarkName}" />
@@ -11,7 +11,7 @@
         <c:set var="locationName" value="${moveline.locationName}" />
         <c:set var="thumbnail" value="${moveline.thumbnail}" />
     </c:if>
-</c:forEach>
+</c:forEach> --%>
 
 
 <!DOCTYPE html>
@@ -36,8 +36,6 @@
 <body>
     <main>
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
-
-        <c:set var="url" value="&hashtag=${hashtag.MLHashTag}" />
 
         <section>
             <div id="contents">
@@ -81,7 +79,7 @@
                             <c:if test="${!empty preHashTagList}">
                                 <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
-                                        <a href="list/hashtag/${url}">#${hashtag.MLHashTag}</a>
+                                        <a href="list/hashtag?hashtag=${hashtag.MLHashTag}">#${hashtag.MLHashTag}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>
@@ -110,7 +108,7 @@
 											</div>
 										</c:if>
 
-										<c:if test="${!empty thumbnail}">
+										<c:if test="${!empty moveline.thumbnail}">
 											<div class="thumbnail">
 												<img src="${contextPath}${moveline.thumbnail}" alt=""
 												class="list-thumbnail">

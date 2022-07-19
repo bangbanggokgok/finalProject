@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.service.board;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import edu.kh.bangbanggokgok.dao.board.MoveLineDAO;
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
@@ -50,7 +52,7 @@ public class MoveLineServiceImpl implements MoveLineService{
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("pagination", pagination);
-		map.put("listBylocation", listBylocation);
+		map.put("movelineList", listBylocation);
 		
 //		int MovelineBylocation = dao.selectMovelineBylocation(locationNum);
 		
@@ -74,7 +76,7 @@ public class MoveLineServiceImpl implements MoveLineService{
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("pagination", pagination);
-		map.put("listByHashTag", listByHashTag);
+		map.put("movelineList", listByHashTag);
 		
 		return map;
 		
@@ -91,6 +93,19 @@ public class MoveLineServiceImpl implements MoveLineService{
 	@Override
 	public List<MoveLineDetail> selectMoveLineMain2() {
 		return dao.selectMoveLineMain2();
+	}
+
+	
+	// 코스 즐겨찾기
+	@Override
+	public int movelineBookmark(MoveLineBookmark moveLineBookMark) {
+		return dao.bookmarkMoveline(moveLineBookMark);
+	}
+
+	// 코스 즐겨찾기 목록 조회
+	@Override
+	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
+		return dao.selectBookmarkList(moveLineBookMark);
 	}
 	
 	

@@ -12,7 +12,7 @@
 
 <c:set var="moveline2" value="${map.MovelineBylocation}"/>
 <c:set var="pagination" value="${map.pagination}" />
-<c:set var="listBylocation" value="${map.listBylocation}" />
+<c:set var="movelineList" value="${map.movelineList}" />
 <c:set var="listByHashTag" value="${map.listByHashTag}" />
 
 <!DOCTYPE html>
@@ -39,23 +39,28 @@
 
 		<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
+
+		<c:if test="${!empty param.hashtag}">
+            <c:set var="hash" value="${param.hashtag}" />
+        </c:if>
+
 		<section>
 
 			<div id="contents">
 				<section id="top">
 					<div>
 						<c:choose>
-							<c:when test="${!empty listByHashTag}">
+							<c:when test="${empty hash}">
 								<h1 id="first-h1">
-									<a>#${param.MLHashTag}</a>
+									<a>${locationName}</a>
+								</h1>
+							</c:when>
+							<c:when test="${!empty hash}">
+								<h1 id="first-h1">
+									<a>#${hash}</a>
 								</h1>
 							</c:when>
 
-							<c:when test="${!empty LocationList}">
-								<h1 id="first-h1">
-									<a>${locationName}${moveline.movelineTitle}</a>
-								</h1>
-							</c:when>
 						</c:choose>
 					</div>
 
@@ -66,49 +71,9 @@
 					</div>
 				</section>
 
-				<ul class="detail-list">
-					<li>
-						<div class="thumbnail">
-							<img src="${contextPath}/resources/images/randmark/1.jpg" alt=""
-							class="list-thumbnail">
-						</div>
-
-						<div class="ml-detail">
-							<div class="title-area">
-								<p class="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p>
-							</div>
-
-							<p>
-								<span class="landmarks">롯데타워 </span> <span class="landmarks">63빌딩
-								</span> <span class="landmarks">남산타워 </span> <span class="landmarks">랜드마크
-									이름 긴 경우</span> <span class="landmarks">OO타워 </span> <span
-									class="landmarks">OO타워</span> <span class="landmarks">OO타워</span>
-								<span class="landmarks">OO타워</span> <span class="landmarks">OO타워</span>
-								<span class="landmarks">OO타워</span> <span class="landmarks">OO타워</span>
-							</p>
-
-							<p>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-							</p>
-						</div>
-
-						<div class="ml-detail-plus">
-							<button type="button" class="btn-bookmark"
-								onclick="setBookmark();">
-								<span class="icon-bookmark">즐겨찾기</span>
-							</button>
-						</div>
-					</li>
-				</ul>
-
 				<%-- jsp 구조 --%>
 				<c:choose>
-					<c:when test="${empty listBylocation}">
+					<c:when test="${empty movelineList}">
 						<!-- 목록 조회 결과가 비어있다면 -->
 						<tr>
 							<th colspan="5">등록된 코스가 없습니다.</th>
@@ -118,11 +83,10 @@
 					<c:otherwise>
 
 					
-                        <c:if test="${!empty listBylocation}">
-							<c:forEach var="moveline" items="${listBylocation}">
+                        <c:if test="${!empty movelineList}">
+							<c:forEach var="moveline" items="${movelineList}">
                                 <ul class="detail-list">
                                     <li>
-
 										<c:if test="${empty moveline.thumbnail}">
 											<div class="thumbnail">
 												<img src="${contextPath}/resources/images/user.png" alt=""
@@ -130,7 +94,7 @@
 											</div>
 										</c:if>
 
-										<c:if test="${!empty thumbnail}">
+										<c:if test="${!empty moveline.thumbnail}">
 											<div class="thumbnail">
 												<img src="${contextPath}${moveline.thumbnail}" alt=""
 												class="list-thumbnail">
@@ -159,7 +123,7 @@
 
                                         <div class="ml-detail-plus">
                                             <button type="button" class="btn-bookmark"
-                                                onclick="setBookmark();">
+                                                onclick="setBookmark(${moveline.movelineNo});">
                                                 <span class="icon-bookmark">즐겨찾기</span>
                                             </button>
                                         </div>
@@ -172,69 +136,16 @@
 
 				</c:choose>
 
-
-
-				<%-- <ul class="detail-list">
-					<li>
-						<div class="thumbnail">
-							<img src="" alt="">
-						</div>
-
-						<div class="ml-detail">
-							<div class="title-area">
-								<p class="ml-title">사랑하는 연인과 타워 여행 어떠세요?</p>
-							</div>
-
-							<p>
-								<span class="landmarks">롯데타워 </span> <span class="landmarks">63빌딩
-								</span> <span class="landmarks">남산타워 </span> <span class="landmarks">랜드마크
-									이름 긴 경우</span> <span class="landmarks">OO타워 </span> <span
-									class="landmarks">OO타워</span> <span class="landmarks">OO타워</span>
-							</p>
-
-							<p>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-								<span class="hashtags">#해시태그1</span> <span class="hashtags">#해시태그1</span>
-							</p>
-						</div>
-
-						<div class="ml-detail-plus">
-							<button type="button" class="btn-bookmark"
-								onclick="setBookmark();">
-								<span class="icon-bookmark">즐겨찾기</span>
-							</button>
-						</div>
-					</li>
-				</ul> --%>
-											<%-- <c:if test="${fn:length(moveline.landmarkList) > 0}">
-                                                <c:set var="lm" value="${moveline.landmarkList[0]}" />
-                                                <!-- page scope (페이지 어디서든 사용 가능) -->
-                                            </c:if> --%>
-
-                                            <%-- <c:forEach  var="i" begin="${start}" end="${fn:length(moveline.landmarkList)}">
-                                                <c:if test="!empty lm">
-                                                    <p>
-                                                    </p>
-                                                </c:if>
-                                            </c:forEach> --%>
-
-                                            <%-- <c:if test="${landmark.imageList[0]}">
-                                                <c:set var="thumbnail" value="${detail.imageList[0]}" />
-                                            </c:if> --%>
-
-                                           <%--  <c:forEach var="landmark" items="${landmarkList}">
-                                                <c:forEach items="${landmark.landMarkName}" var="map">
-                                                    <span class="landmarks">${map[i]}</span>
-                                                </c:forEach>
-                                            </c:forEach> --%>
-
-
 				<div class="pagination-area">
+					<c:choose>
+						<c:when test="${empty hash}">
+							<c:set var="url" value="?cp=" />
+						</c:when>
 
-					<c:set var="url" value="${boardCode}?cp=" />
-
+						<c:when test="${!empty hash}">
+							<c:set var="url" value="?hashtag=${hash}&cp=" />
+						</c:when>
+					</c:choose>
 					<ul class="pagination">
 						<!-- 첫 페이지로 이동 -->
 						<li><a href="${url}1${sURL}">&lt;&lt;</a></li>
@@ -275,6 +186,10 @@
 		<span id="modal-close">&times;</span> <img id="modal-image"
 			src="/comm/resources/images/user.png">
 	</div>
+
+	<script>
+		const contextPath = "${contextPath}";
+	</script>
 
 	<script src="${contextPath}/resources/js/common/nav.js"></script>
 	<script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 
@@ -46,6 +47,26 @@ public interface MoveLineService {
 	 * @return
 	 */
 	List<MoveLineDetail> selectMoveLineMain2();
+
+
+
+	/** 코스 즐겨찾기
+	 * @param moveLineBookMark
+	 * @return result
+	 */
+	int movelineBookmark(MoveLineBookmark moveLineBookMark);
+
+
+	/** 코스 즐겨찾기 목록 조회
+	 * @param moveLineBookMark
+	 * @return result
+	 */
+	List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark);
+
+
+
+
+
 
 
 	
