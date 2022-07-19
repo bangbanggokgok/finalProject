@@ -72,7 +72,7 @@ public class LandMarkDAO {
 	public int insertLandMark(LandMarkDetail detail) {
 		
 		int result = sqlSession.insert("landMarkMapper.insertLandMark", detail);
-		if(result > 0) result = detail.getLandMakrNo();
+		if(result > 0) result = detail.getLandMarkNo();
 		return result;
 	}
 
@@ -83,4 +83,6 @@ public class LandMarkDAO {
 	public int insertLandMarkImageList(List<LandMarkIMG> landMarkImageList) {
 		return sqlSession.insert("boardMapper.insertLandMarkImageList", landMarkImageList);
 	}
+
+
 }

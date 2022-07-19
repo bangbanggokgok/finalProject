@@ -127,11 +127,12 @@
 	
 		INSERT INTO LANDMARK VALUES(
 			#{landMarkNo},
-			1,
-			1,
+			#{landMarkX},
+			#{landMarkY},
 			#{landMarkName},
 			#{landMarkContent},
 			#{landMarkAddress},
+			DEFAULT,
 			DEFAULT,
 			#{userNo},
 			#{locationNum}

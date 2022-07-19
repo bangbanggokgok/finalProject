@@ -136,76 +136,76 @@ public class LandMarkServiceImpl implements LandMarkService{
 	public int updateLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
 			String deleteList) throws IOException {
 
-				detail.setLandMarkName( Util.XSSHandling(detail.getLandMarkName()) );
-				detail.setLandMarkContent( Util.XSSHandling(detail.getLandMarkContent()) );
-				detail.setLandMarkContent( Util.newLineHandling(detail.getLandMarkContent()) );
-				
-				
-				int result = dao.updateLandMark(detail);
-				
-				if(result > 0) {
-					
-					
-					List<LandMarkIMG> ladnMarkImageList = new ArrayList<LandMarkIMG>();
-					List<String> reNameList = new ArrayList<String>();
-					
-					for(int i=0 ; i<imageList.size() ; i++) {
-						
-						if( imageList.get(i).getSize() > 0  ) { // i번째 요소에 업로드된 이미지가 있을 경우
-							
-							
-							String reName = Util.fileRename( imageList.get(i).getOriginalFilename()  );
-							reNameList.add(reName);
-							
-							
-							LandMarkIMG img = new LandMarkIMG();
-							img.setLandMarkNo(landMarkNo);
-							img.setLandMarkImageLV(i); 
-							img.setLandMarkReName( webPath + reName );
-							
-							ladnMarkImageList.add(img);
-						}
-					} 
-
-					
-					//삭제된 이미지 delete
-					if(!deleteList.equals("")) {
-						Map<String, Object> map = new HashMap<>();
-						
-						map.put("boardNo", detail.getLandMakrNo());
-						map.put("deleteList", deleteList);
-						
-						result = dao.deleteBoardImage(map);
-					}
-					
-					
-					if(result > 0) {
-						
-						
-						for(LandMarkIMG img : ladnMarkImageList) {
-							result = dao.updateLandMarkImage(img); // 변경명, 원본명, 게시글번호, 레벨
-							
-							if(result == 0) {
-								result = dao.insertLandMarkImage(img);
-							
-							}
-					
-						} 
-						
-						
-						if(!ladnMarkImageList.isEmpty() && result != 0) {
-							
-							for(int i=0 ; i< ladnMarkImageList.size() ; i++) {
-								
-								int index = ladnMarkImageList.get(i).getImageLevel();
-								
-								imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));    
-							}
-						}
-						
-					}
-					
-				}
+//				detail.setLandMarkName( Util.XSSHandling(detail.getLandMarkName()) );
+//				detail.setLandMarkContent( Util.XSSHandling(detail.getLandMarkContent()) );
+//				detail.setLandMarkContent( Util.newLineHandling(detail.getLandMarkContent()) );
+//				
+//				
+//				int result = dao.updateLandMark(detail);
+//				
+//				if(result > 0) {
+//					
+//					
+//					List<LandMarkIMG> ladnMarkImageList = new ArrayList<LandMarkIMG>();
+//					List<String> reNameList = new ArrayList<String>();
+//					
+//					for(int i=0 ; i<imageList.size() ; i++) {
+//						
+//						if( imageList.get(i).getSize() > 0  ) { // i번째 요소에 업로드된 이미지가 있을 경우
+//							
+//							
+//							String reName = Util.fileRename( imageList.get(i).getOriginalFilename()  );
+//							reNameList.add(reName);
+//							
+//							
+//							LandMarkIMG img = new LandMarkIMG();
+//							img.setLandMarkNo(landMarkNo);
+//							img.setLandMarkImageLV(i); 
+//							img.setLandMarkReName( webPath + reName );
+//							
+//							ladnMarkImageList.add(img);
+//						}
+//					} 
+//
+//					
+//					//삭제된 이미지 delete
+//					if(!deleteList.equals("")) {
+//						Map<String, Object> map = new HashMap<>();
+//						
+//						map.put("boardNo", detail.getLandMakrNo());
+//						map.put("deleteList", deleteList);
+//						
+//						result = dao.deleteBoardImage(map);
+//					}
+//					
+//					
+//					if(result > 0) {
+//						
+//						
+//						for(LandMarkIMG img : ladnMarkImageList) {
+//							result = dao.updateLandMarkImage(img); // 변경명, 원본명, 게시글번호, 레벨
+//							
+//							if(result == 0) {
+//								result = dao.insertLandMarkImage(img);
+//							
+//							}
+//					
+//						} 
+//						
+//						
+//						if(!ladnMarkImageList.isEmpty() && result != 0) {
+//							
+//							for(int i=0 ; i< ladnMarkImageList.size() ; i++) {
+//								
+//								int index = ladnMarkImageList.get(i).getImageLevel();
+//								
+//								imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));    
+//							}
+//						}
+//						
+//					}
+//					
+//				}
 		return 0;
 	}
 		

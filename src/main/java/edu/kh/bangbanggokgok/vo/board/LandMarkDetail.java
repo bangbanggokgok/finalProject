@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 public class LandMarkDetail {
 	
-	private int landMakrNo;
+	private int landMarkNo;
 	private double landMarkX;
 	private double landMarkY;
 	private String landMarkName;
