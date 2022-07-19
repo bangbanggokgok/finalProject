@@ -18,7 +18,7 @@
 	</resultMap>
 	
 	<!-- 랜드마크 상세 조회용 resultMap -->
-	<resultMap type="detail" id="detail_rm">
+	<resultMap type="LandmarkDetail" id="detail_rm">
 		<id property="landMarkNo" column="LM_NO" />
 		<result property="landMarkName" column="LM_NAME" />
 		<result property="landMarkContent" column="LM_CONTENT" />
@@ -127,8 +127,8 @@
 	
 		INSERT INTO LANDMARK VALUES(
 			#{landMarkNo},
-			1,
-			1,
+			#{landMarkX},
+			#{landMarkY},
 			#{landMarkName},
 			#{landMarkContent},
 			#{landMarkAddress},

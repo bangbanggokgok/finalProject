@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,14 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>랜드마크 작성</title>
 
-    <link rel="stylesheet" href="../../resources/css/randmark/landmarkWrite.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmarkWrite.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
 </head>
 
 <body>
+	<jsp:include page="/WEB-INF/views/common/nav.jsp"/>
     <section class="header">
         <section class="pageWrapper">
-            <h1 font-size="24px" class="boardTitle">랜드마크 작성</h1>
+            <h1 class="boardTitle">랜드마크 작성</h1>
         </section>
     </section>
 
@@ -23,21 +28,25 @@
             <form>
                 <div class="titleFields">
                     <div>
-                        <label class="title">제목</label>
-                        <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" value="">
+                        <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
+                            <option value="locationNull">지역을 선택해주세요</option>
+                            <c:forEach var="locations" items="${LocationList}">
+                                <option value="${locations.locationNum}">${locations.locationName}</option>        
+                            </c:forEach>
+                        </select>
+                        <div style="height:20px;"></div>
+                        <label class="title" style="font-weight:bold;">랜드마크 이름</label>
+                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title">
                     </div>
                 </div>
-
-
-               
     
                 <!-- 업로드 이미지 -->
-                <label class="addImg">사진 첨부</label>
+                <label class="addImg" style="font-weight:bold;">사진 첨부</label>
                 <div class="img-box">
     
                     <div class="boardImg">
                         <label for="img1">
-                            <i class="far fa-plus-circle fa-lg" src="${img1}"></i>
+                            <img class="far fa-plus-circle fa-lg" src="${img1}">
                         </label>
                         <input type="file" class="inputImage" id="img1" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
@@ -45,7 +54,7 @@
     
                     <div class="boardImg">
                         <label for="img2">
-                            <i class="far fa-plus-circle fa-lg" src="${img2}"></i>
+                            <img class="far fa-plus-circle fa-lg" src="${img1}">
                         </label>
                         <input type="file" class="inputImage" id="img2" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
@@ -53,7 +62,7 @@
     
                     <div class="boardImg">
                         <label for="img3">
-                            <i class="far fa-plus-circle fa-lg" src="${img3}"></i>
+                            <img class="far fa-plus-circle fa-lg" src="${img1}">
                         </label>
                         <input type="file" class="inputImage" id="img3" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
@@ -61,7 +70,7 @@
                     
                     <div class="boardImg">
                         <label for="img4">
-                            <i class="far fa-plus-circle fa-lg" src="${img4}"></i>
+                            <img class="far fa-plus-circle fa-lg" src="${img1}">
                         </label>
                         <input type="file" class="inputImage" id="img4" name="images" accept="image/*">
                         <span class="delete-image">&times;</span>
@@ -72,26 +81,17 @@
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
                     <article class="contentArea">
-                        <textarea placeholder="내용을 입력해주세요." class="content"></textarea>
+                        <textarea placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
                     </article>
 
                     <div class="WritingTag">
                         <div class="tag_inner">
                             <strong class="blind">태그 입력</strong>
                             <div class="tag_input_box inactive">
-                                <input data-v-1f66f3e0="" type="text" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
+                            <%-- 이부분 이해안됨 --%>
+                                <input type="text" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
                                 <div class="layer_auto_tag" style="display: none;">
                                     <ul class="auto_tag_list"></ul>
-                                </div>
-                                <div class="ToggleSwitchTooltip">
-                                    <div class="tooltip" style="display: none;">
-                                        태그는 최대 10개까지 입력할 수 있습니다.
-                                    </div>
-                                </div>
-                                <div class="ToggleSwitchTooltip">
-                                    <div class="tooltip" style="display: none;">
-                                        태그는 최대 20자까지 입력할 수 있습니다.
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -99,15 +99,13 @@
                 </div>
                 
                 <div class="addressField">
-                    <input type="text" id="sample6_postcode" placeholder="우편번호">
-                    <input type="Button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" id="find"><br>
-                    <input type="text" id="sample6_address" placeholder="주소">
-                    <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                    <div id="map" style="width:764px;height:400px;"></div>
                 </div>
                 
                 <section class="submitBar">
                     <div class="buttonContainer">
-                        <button type="button" disabled="" class="submitButton">등록하기</button>
+                        <div id="clickLatlng"></div>
+                        <button type="button" class="submitButton">등록하기</button>
                     </div>
                 </section>
             </form>
@@ -116,7 +114,7 @@
             </div>
         </section>
     </section>
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
 </body>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../../resources/js/randmark/landmarkWrite.js"></script>
+<script src="${contextPath}/resources/js/landmark/landmarkWrite.js"></script>
 </html>
