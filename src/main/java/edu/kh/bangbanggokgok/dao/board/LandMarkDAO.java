@@ -75,4 +75,12 @@ public class LandMarkDAO {
 		if(result > 0) result = detail.getLandMakrNo();
 		return result;
 	}
+
+	/** 게시글 이미지 삽입
+	 * @param landMarkImageList
+	 * @return
+	 */
+	public int insertLandMarkImageList(List<LandMarkIMG> landMarkImageList) {
+		return sqlSession.insert("boardMapper.insertLandMarkImageList", landMarkImageList);
+	}
 }
