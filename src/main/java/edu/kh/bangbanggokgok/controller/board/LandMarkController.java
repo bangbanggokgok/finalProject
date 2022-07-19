@@ -11,20 +11,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import edu.kh.bangbanggokgok.vo.user.User;
 import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
+@SessionAttributes("loginUser")
 @RequestMapping("landmark-main/*")
 public class LandMarkController {
 
@@ -72,8 +78,8 @@ public class LandMarkController {
 		return "landMark/land-detail";
 	}
 	// 게시글 작성 화면 전환
-	@GetMapping("/write")
-	public String landWriteForm(String mode, Model model) {
+	@GetMapping("/write/{locationNum}")
+	public String landWriteForm(@PathVariable("locationNum") int locationType) {
 		
 		
 		
@@ -82,12 +88,52 @@ public class LandMarkController {
 	}
 	
 	// 게시글 삽입/수정
-	@PostMapping("/write")
-	public String landWrite() {
+	@PostMapping("/write/{locationNum}")
+	public String landWrite(LandMarkDetail detail, // 제목, 내용
+							@RequestParam(value="images", required=false) List<MultipartFile> imageList, // 이미지 리스트
+							@PathVariable("locationNum") int locationNum,
+							String mode,
+							@ModelAttribute("loginUser") User loginUser,
+							HttpServletRequest req, 
+							RedirectAttributes ra) {
+		
+		// 회원번호 얻어오기
+		detail.setUserNo(loginUser.getUserNo() );
+		
+		// 이미지 저장 경로
+		String webPath = "/resources/images/landMark/";
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		if(mode.equals("insert")) {
+			
+			int landMarkNo = service.insertLandMark(detail, imageList, webPath, folderPath);
+			
+			String path = null;
+			String message = null;
+			if(landMarkNo > 0) {
+				
+				path="../detail/" + locationNum + "/" + landMarkNo;
+				message = "게시글이 등록되었습니다.";
+				
+			}else {
+				path= req.getHeader("referer");
+				message = "게시글 삽입 실패";
+			}
+			
+			ra.addFlashAttribute("message", message);
+			
+			return "redirect:" + path;
+			
+		}else {// 수정코드 작성 공간
+			
+		}
+		
+	
 		
 		
 		
-		return "redirect:";
+		
+		
 	}
 	
 	
