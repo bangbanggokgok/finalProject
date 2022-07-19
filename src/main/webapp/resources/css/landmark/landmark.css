@@ -153,34 +153,4 @@ cite {
     transition: 0.7s;
 }
 
-/* 스크롤 탑 버튼 css*/
 
-#back-to-top {
-    position: fixed;
-    bottom: 3em;
-    right: 3em;
-    background-color: rgba(255, 255, 255, .9);
-    color: #313943;
-    border: none;
-    border-radius: 5px;
-    padding: 1em;
-    text-transform: uppercase;
-    cursor: pointer;
-    font-weight: 700;
-    box-shadow: 0 0 2em 0 rgba(0, 0, 0, .25);
-    transition: all .3s ease-in-out;
-    display: inline-block;
-    opacity: 0;
-    text-decoration: none;
-    font-size: .75em;
-}
-
-    #back-to-top:hover {
-        background-color: #A2D2FF;
-        color:#fff;
-        padding: 1em 3em;
-    }
-
-#back-to-top.visible {
-    opacity: 1;
-}
