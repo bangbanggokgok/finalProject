@@ -73,10 +73,25 @@ public class LandMarkController {
 		model.addAttribute("landmarkDetail",landmarkDetail);
 		return "landMark/land-detail";
 	}
-
+	//왜 이거써요
+	
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{locationNum}")
-	public String landWriteForm(@PathVariable("locationNum") int locationType) {
+	public String landWriteForm(@PathVariable("locationNum") int locationType,
+								String mode,
+								@RequestParam(value="no", required=false, defaultValue = "0") int landMarkNo,
+								Model model) {
+//		
+//		if(mode.equals("update")) {
+//			
+//			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
+//			
+//			detail.setLandMarkContent(mode);
+//			
+//			
+//		}
+//		
+		
 		return "landMark/landmarkWrite";
 	}
 
