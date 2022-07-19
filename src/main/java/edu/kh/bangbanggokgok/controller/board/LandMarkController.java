@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
@@ -73,53 +74,62 @@ public class LandMarkController {
 		model.addAttribute("landmarkDetail",landmarkDetail);
 		return "landMark/land-detail";
 	}
-	//왜 이거써요
 	
 	// 게시글 작성 화면 전환
-	@GetMapping("/write/{locationNum}")
-	public String landWriteForm(@PathVariable("locationNum") int locationType,
-								String mode,
+	@GetMapping("/write/{mode}")
+	public String landWriteForm(//@PathVariable("locationNum") int locationType,
+								@PathVariable String mode,
 								@RequestParam(value="no", required=false, defaultValue = "0") int landMarkNo,
 								Model model) {
-//		
-//		if(mode.equals("update")) {
-//			
-//			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
-//			
-//			detail.setLandMarkContent(mode);
-//			
-//			
-//		}
-//		
+		
+		if(mode.equals("update")) {
+			
+			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
+			detail.setLandMarkContent(mode);
+		}
 		
 		return "landMark/landmarkWrite";
 	}
 
 	// 게시글 삽입/수정
-	@PostMapping("/write/{locationNum}")
+	@PostMapping("/write/{mode}")
 	public String landWrite(LandMarkDetail detail, // 제목, 내용
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList, // 이미지 리스트
-			@PathVariable("locationNum") int locationNum, String mode, @ModelAttribute("loginUser") User loginUser,
-			HttpServletRequest req, RedirectAttributes ra,
-			@RequestParam( value = "deleteList", required=false) String deleteList)
+			@RequestParam Map<String, String> param,
+			@PathVariable String mode,
+			@ModelAttribute("loginUser") User loginUser,
+			HttpServletRequest req, RedirectAttributes ra//,
+//			@RequestParam( value = "deleteList", required=false) String deleteList
+			)
 			throws IOException {
 
 		// 회원번호 얻어오기
+		detail.setUserName(loginUser.getUserName());
 		detail.setUserNo(loginUser.getUserNo());
-
+		
+		detail.setLocationNum(Integer.parseInt(param.get("locationsList")));
+		detail.setLandMarkContent(param.get("contents"));
+		
+		detail.setLandMarkX(Double.parseDouble(param.get("lng")));
+		detail.setLandMarkY(Double.parseDouble(param.get("lag")));
+		
+		detail.setLandMarkName( Util.XSSHandling(param.get("landmarkName")) );
+		detail.setLandMarkContent( Util.XSSHandling(param.get("contents")) );
+		detail.setLandMarkContent( Util.newLineHandling(detail.getLandMarkContent()) );
+		
 		// 이미지 저장 경로
 		String webPath = "/resources/images/landMark/";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 
 		if (mode.equals("insert")) {
-
+			
 			int landMarkNo = service.insertLandMark(detail, imageList, webPath, folderPath);
 
 			String path = null;
 			String message = null;
 			if (landMarkNo > 0) {
 
-				path = "../detail/" + locationNum + "/" + landMarkNo;
+				path = "../detail/" + param.get("locationNum") + "/" + landMarkNo;
 				message = "게시글이 등록되었습니다.";
 
 			} else {
@@ -133,24 +143,24 @@ public class LandMarkController {
 
 		} else {// 수정코드 작성 공간
 			
-			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
+//			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
+//			
+//			String path = null;
+//			String message = null;
+//			
+//			if(result > 0) {
+//				message = "게시글이 수정되었습니다.";
+//				// 현재 : /board/write/{boardCode}
+//				// 목표 : /board/detail/{boardCode}/{boardNo}?cp=10
+//				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMakrNo();
+//			}else {
+//				message = "게시글 수정 실패";
+//				path = req.getHeader(	"referer");
+//			}
+//			
+//			ra.addFlashAttribute("message", message);
 			
-			String path = null;
-			String message = null;
-			
-			if(result > 0) {
-				message = "게시글이 수정되었습니다.";
-				// 현재 : /board/write/{boardCode}
-				// 목표 : /board/detail/{boardCode}/{boardNo}?cp=10
-				path = "../detail/" + locationNum + "/" + detail.getLandMakrNo();
-			}else {
-				message = "게시글 수정 실패";
-				path = req.getHeader(	"referer");
-			}
-			
-			ra.addFlashAttribute("message", message);
-			
-			return "redirect:"+path; 
+			return "redirect:";//+path; 
 		}
 
 

@@ -17,42 +17,52 @@ var marker = new kakao.maps.Marker({
 // 지도에 마커를 표시합니다
 marker.setMap(map);
 
-let lng = null;
-let lat = null;
 
 kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 
     // 클릭한 위도, 경도 정보를 가져옵니다 
     var latlng = mouseEvent.latLng;
     marker.setPosition(latlng);
-    lng = latlng.getLng();
-    lat = latlng.getLat();
+
+    document.getElementsByName("lng")[0].value = latlng.getLng();;
+    document.getElementsByName("lag")[0].value = latlng.getLat();
+    console.log(document.getElementsByName("lng")[0].value);
+    console.log(document.getElementsByName("lag")[0].value);
 });
 
 //  getLng() 위
 //  getLat() 경
 
-document.getElementsByClassName("submitButton")[0].addEventListener("click",function submitAction(){
-    if(confirm("랜드마크를 등록 하시겠습니까?")){
-        const contents = document.getElementById("contents").value;
-        const title = document.getElementById("title").value;
-        const hashTag = document.getElementsByClassName("tag_input")[0].value;
-        const hashTagArray = hashTag.spilt("#");
-        const selectLocation = document.getElementById("locations-list").value;
-        const images = document.getElementsByClassName("images")
+// document.getElementsByClassName("submitButton")[0].addEventListener("click",function submitAction(){
+//     if(confirm("랜드마크를 등록 하시겠습니까?")){
+//         const contents = document.getElementById("contents").value;
+//         const title = document.getElementById("title").value;
+//         const hashTag = document.getElementsByClassName("tag_input")[0].value;
+//         console.log(hashTag);
+//         const hashTagArray = hashTag.split("#");
+//         console.log(hashTagArray);
+//         const selectLocation = document.getElementById("locations-list").value;
+//         const images = document.getElementsByClassName("images")
 
-        $.ajax({
-            url: "/write/"+selectLocation,
-            data: {"landmarkContents": contents,
-                    "landmarkName": title,
-                    "hashTag": hashTagArray,
-                    "lng":lng,
-                    "lat":lat,
-                    "locationNum":selectLocation},
-            type: "POST"
-        })
+//         $.ajax({
+//             url: selectLocation,
+//             data: {"landmarkContents": contents,
+//                     "landmarkName": title,
+//                     "hashTag": hashTagArray,
+//                     "lng":lng,
+//                     "lat":lat,
+//                     "locationNum":selectLocation},
+//             type: "POST"
+//         })
+//     }
+// });
+
+function checkSubmit(){
+    if(confirm("랜드마크를 등록 하시겠습니까?")){
+        return true;
     }
-});
+};
+
 
 for(let i=0;i<inputImage.length;i++){
     inputImage[i].addEventListener("change",function(){

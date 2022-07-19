@@ -75,10 +75,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 	public int insertLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
 		
 		// XSS 방지
-		detail.setLandMarkName( Util.XSSHandling(detail.getLandMarkName()) );
-		detail.setLandMarkContent( Util.XSSHandling(detail.getLandMarkContent()) );
-		detail.setLandMarkContent( Util.newLineHandling(detail.getLandMarkContent()) );
-		
+
 		int landMarkNo = dao.insertLandMark(detail);
 		
 		if(landMarkNo > 0) {
