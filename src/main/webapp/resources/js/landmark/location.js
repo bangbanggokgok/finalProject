@@ -1,6 +1,6 @@
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 mapOption = {
-    center: new kakao.maps.LatLng(X,Y), // 지도의 중심좌표
+    center: new kakao.maps.LatLng(Y,X), // 지도의 중심좌표
     level: 4, // 지도의 확대 레벨
     mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
 }; 
@@ -10,8 +10,8 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 
 // 지도에 마커를 생성하고 표시한다
 var marker = new kakao.maps.Marker({
-    position: new kakao.maps.LatLng(37.56999, 126.97874), // 마커의 좌표
-    draggable : true, // 마커를 드래그 가능하도록 설정한다
+    position: new kakao.maps.LatLng(Y,X), // 마커의 좌표
+    // draggable : true, // 마커를 드래그 가능하도록 설정한다
     map: map // 마커를 표시할 지도 객체
 });
 

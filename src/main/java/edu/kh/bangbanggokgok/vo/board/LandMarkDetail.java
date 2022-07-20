@@ -21,5 +21,6 @@ public class LandMarkDetail {
 	
 	private List<LandMarkIMG> imageList;
 	
+	private String locationName;
 	private int locationNum;
 }

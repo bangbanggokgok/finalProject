@@ -20,11 +20,14 @@
 	<!-- 랜드마크 상세 조회용 resultMap -->
 	<resultMap type="LandmarkDetail" id="LandmarkDetail_rm">
 		<id 	property="landMarkNo" 		column="LM_NO" 			/>
+		<result property="landMarkX"		column="LM_X"			/>
+		<result property="landMarkY"		column="LM_Y"			/>
 		<result property="landMarkName" 	column="LM_NAME" 		/>
 		<result property="landMarkContent" 	column="LM_CONTENT" 	/>
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
 		<result property="userName" 		column="USER_NAME" 		/>
+		<result property="locationName"		column="LOCATION_NAME"/>
 		
 		<collection property="imageList" column="LM_NO" 
 			javaType="java.util.ArrayList" ofType="landMarkImage" 
@@ -39,15 +42,6 @@
 		<result property="landMarkImageLV" 	column="LM_IMG_LEVEL" 	/>
 		<result property="landMarkNo" 		column="LM_NO" 			/>
 	</resultMap> 
-	
-	
-	<!-- ==================================================================================================================== -->
-	
-	<!-- 지역 번호, 지역명 조회 
-	<select id="selectBoardType" resultMap="Location_rm">
-		SELECT * FROM LOCATIONS
-		ORDER BY LOCATION_TYPE
-	</select>-->
 	
 	<!-- 랜드마크 메인 슬라이드 이미지 조회 -->
 	<select id="selectLandMarkIMG" resultMap="landmarkImage_rm">
@@ -110,11 +104,12 @@
     
 	<!-- 랜드마크 상세 조회 -->
 	<select id="selectLandMarkDetail" resultMap="LandmarkDetail_rm">
-	 	SELECT LM_NO, LM_NAME, LM_CONTENT,
+	 	SELECT LM_NO, LM_NAME, LM_CONTENT,LM_X,LM_Y,
     	TO_CHAR(LM_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') LM_CREATE_DT,
-     	USER_NAME, USER_NO
+     	USER_NAME, USER_NO,LOCATION_NAME
      	FROM LANDMARK
      	JOIN USER_TB USING(USER_NO)
+     	JOIN LOCATIONS USING(LOCATION_TYPE)
      	WHERE LM_NO = #{landMakrNo}
      	AND LM_FL = 'N'
     </select>
