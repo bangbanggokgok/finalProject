@@ -11,8 +11,6 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmarkWrite.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
 </head>
 
 <body>
@@ -25,7 +23,7 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form action="" method="POST" onsubmit="checkSubmit()">
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="checkSubmit()">
                 <div class="titleFields">
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
@@ -36,7 +34,7 @@
                         </select>
                         <div style="height:20px;"></div>
                         <label class="title" style="font-weight:bold;">랜드마크 이름</label>
-                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName">
+                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landMarkDetail.landMarkName}">
                     </div>
                 </div>
     
@@ -46,33 +44,34 @@
     
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
                         </label>
-                        <input type="file" class="inputImage" id="img1" name="images" accept="image/*">
+                        <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
     
                     <div class="boardImg">
                         <label for="img2">
-                            <img class="far fa-plus-circle fa-lg" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
                         </label>
-                        <input type="file" class="inputImage" id="img2" name="images" accept="image/*">
+                        <input type="file" class="input-img" id="img2" 
+                            name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
     
                     <div class="boardImg">
                         <label for="img3">
-                            <img class="far fa-plus-circle fa-lg" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
                         </label>
-                        <input type="file" class="inputImage" id="img3" name="images" accept="image/*">
+                        <input type="file" class="input-img" id="img3" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
                     
                     <div class="boardImg">
                         <label for="img4">
-                            <img class="far fa-plus-circle fa-lg" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
                         </label>
-                        <input type="file" class="inputImage" id="img4" name="images" accept="image/*">
+                        <input type="file" class="input-img" id="img4" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
 
@@ -81,14 +80,13 @@
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
                     <article class="contentArea">
-                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
+                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents">${landMarkDetail.landMarkContent}</textarea>
                     </article>
 
                     <div class="WritingTag">
                         <div class="tag_inner">
                             <strong class="blind">태그 입력</strong>
                             <div class="tag_input_box inactive">
-                            <%-- 이부분 이해안됨 --%>
                                 <input type="text" name="hashTag" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
                                 <div class="layer_auto_tag" style="display: none;">
                                     <ul class="auto_tag_list"></ul>
@@ -97,8 +95,10 @@
                         </div>
                     </div>
                 </div>
-                <input type="text" name="lng" style="display:none;">
-                <input type="text" name="lag" style="display:none;">
+                <input type="text" name="lng" style="display:none;" value="${landmarkDetail.landMarkX}">
+                <input type="text" name="lag" style="display:none;" value="${landmarkDetail.landMarkY}">
+                <input type="hidden" name="deleteList" id="deleteList" value="">
+               
                 <div class="addressField">
                     <div id="map" style="width:764px;height:400px;"></div>
                 </div>
@@ -116,6 +116,14 @@
         </section>
     </section>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
+    <c:if test="${!empty landmarkDetail}">
+        <script>
+            const lng = landmarkDetail.landMarkX;
+            const lag = landmarkDetail.landMarkY;
+        </script>
+    </c:if>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
 </body>
 <script src="${contextPath}/resources/js/landmark/landmarkWrite.js"></script>
 </html>

@@ -35,7 +35,7 @@
                 
                 <div class="course-list" id="course-list">
 					<c:if test="${empty movelineList}">
-						등록한 코스가 없음
+						등록한 코스가 없습니다.
 					</c:if>
 
 					<c:if test="${!empty movelineList}">

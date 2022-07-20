@@ -1,3 +1,5 @@
+//  getLng() 위 가로 x
+//  getLat() 경 세로 y
 
 //지도 관련
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
@@ -12,6 +14,7 @@ var marker = new kakao.maps.Marker({
     // 지도 중심좌표에 마커를 생성합니다 
     position: map.getCenter()
 });
+
 
 
 // 지도에 마커를 표시합니다
@@ -30,8 +33,85 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     console.log(document.getElementsByName("lag")[0].value);
 });
 
-//  getLng() 위 가로 x
-//  getLat() 경 세로 y
+
+const inputImage = document.getElementsByClassName("input-img");
+const preview = document.getElementsByClassName("preview");
+const deleteImage = document.getElementsByClassName("delete-image");
+
+const deleteList = document.getElementById("deleteList")
+const deleteSet = new Set();
+
+for(let i=0;i<inputImage.length;i++){
+    inputImage[i].addEventListener("change",function(){
+        if(this.files[0] != undefined){
+            const reader = new FileReader();
+            reader.readAsDataURL(this.files[0]);  // 파일 url따오기
+            reader.onload = function(e){      // 적제 완료 시 
+                preview[i].setAttribute("src",e.target.result);
+                deleteSet.delete(i);
+            }
+        } else {
+            preview[i].removeAttribute("src");
+        }
+    });
+    deleteImage[i].addEventListener("click",function(){
+        if(preview[i].getAttribute("src") != ""){
+            inputImage[i].value = "";
+            preview[i].removeAttribute("src");
+            deleteSet.add(i);
+        }
+    });
+};
+
+function checkSubmit(){
+    const locationList = document.getElementById("locationList")[0];
+    const landmarkName =document.getElementById("landmarkName")[0];
+    const landMarkContent = document.getElementById("ladnmarkContent")[0];
+    const images = document.getElementById("images")[0];
+    
+
+    if(confirm("랜드마크를 등록 하시겠습니까?")){
+        
+        if(locationList.value.length== ""){
+            alert("지역을 선택해주세요.");
+
+            locationList.value="";
+            locationList.focus();
+            return false;
+        }
+
+        if(landmarkName.value.trim().length ==0){
+            alert("랜드마크 이름을 입력해주세요.");
+
+            landmarkName.value="";
+            landmarkName.focus();
+            return false;
+        }
+        if(landMarkContent.value.trim().length == 0){
+            alert("랜드마크 소개를 입력해주세요.");
+
+            landMarkContent.value="";
+            landMarkContent.focus();
+            return false;
+        }
+
+        const regExp = /(.*?)\.(jpg|png)$/;
+        if(images.value.length == 0){
+            alert("랜드마크 사진을 넣어주세요.");
+            return false;
+        }
+        if(!images.match(regExp)){
+            alert("jpg,png 파일만 사용할 수 있습니다.");
+            return false;
+         }
+
+
+        return true;
+    }
+    };
+
+
+
 
 // document.getElementsByClassName("submitButton")[0].addEventListener("click",function submitAction(){
 //     if(confirm("랜드마크를 등록 하시겠습니까?")){
@@ -56,35 +136,3 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
 //         })
 //     }
 // });
-
-function checkSubmit(){
-    if(confirm("랜드마크를 등록 하시겠습니까?")){
-        return true;
-    }
-};
-
-
-for(let i=0;i<inputImage.length;i++){
-    inputImage[i].addEventListener("change",function(){
-        if(this.files[0] != undefined){
-            const reader = new FileReader();
-            reader.readAsDataURL(this.files[0]);  // 파일 url따오기
-            reader.onload = function(e){      // 적제 완료 시 
-                preview[i].setAttribute("src",e.target.result);
-                deleteSet.delete(i);
-            }
-        } else {
-            preview[i].removeAttribute("src");
-        }
-    });
-    deleteImage[i].addEventListener("click",function(){
-        if(preview[i].getAttribute("src") != ""){
-            inputImage[i].value = "";
-            preview[i].removeAttribute("src");
-            deleteSet.add(i);
-        }
-    });
-}
-
-
-
