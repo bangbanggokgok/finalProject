@@ -81,7 +81,7 @@ public class LandMarkDAO {
 	 * @return
 	 */
 	public int insertLandMarkImageList(List<LandMarkIMG> landMarkImageList) {
-		return sqlSession.insert("boardMapper.insertLandMarkImageList", landMarkImageList);
+		return sqlSession.insert("landMarkMapper.insertLandMarkImageList", landMarkImageList);
 	}
 
 
