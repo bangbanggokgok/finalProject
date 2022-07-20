@@ -84,5 +84,9 @@ public class LandMarkDAO {
 		return sqlSession.insert("landMarkMapper.insertLandMarkImageList", landMarkImageList);
 	}
 
+	public List<String> selectImageList() {
+		return sqlSession.selectList("landMarkMapper.selectImageList");
+	}
+
 
 }

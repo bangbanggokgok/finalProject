@@ -64,10 +64,41 @@ for(let i=0;i<inputImage.length;i++){
 };
 
 function checkSubmit(){
+    const landmarkName =document.getElementById("landmarkName")[0];
+    const landMarkContent = document.getElementById("ladnmarkContent")[0];
+    const images = document.getElementById("images")[0];
+    
+
     if(confirm("랜드마크를 등록 하시겠습니까?")){
+        if(landmarkName.value.trim().length ==0){
+            alert("랜드마크 이름을 입력해주세요.");
+
+            landmarkName.value="";
+            landmarkName.focus();
+            return false;
+        }
+        if(landMarkContent.value.trim().length == 0){
+            alert("랜드마크 소개를 입력해주세요.");
+
+            landMarkContent.value="";
+            landMarkContent.focus();
+            return false;
+        }
+
+        const regExp = /(.*?)\.(jpg|png)$/;
+        if(images.value.length == 0){
+            alert("랜드마크 사진을 넣어주세요.");
+            return false;
+        }
+        if(!images.match(regExp)){
+            alert("jpg,png 파일만 사용할 수 있습니다.");
+            return false;
+         }
+
+
         return true;
     }
-};
+    };
 
 
 

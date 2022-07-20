@@ -23,7 +23,7 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form action="" method="POST" enctype="multipart/form-data" onsubmit="checkSubmit()">
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="return checkSubmit()">
                 <div class="titleFields">
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
