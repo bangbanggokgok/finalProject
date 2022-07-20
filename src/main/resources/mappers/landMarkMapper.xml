@@ -110,14 +110,13 @@
 	 SELECT LM_NO, LM_NAME, LM_CONTENT,
      TO_CHAR(LM_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') LM_CREATE_DT,
      USER_NAME, USER_NO
-     LM_NAME
      FROM LANDMARK
      JOIN USER_TB USING(USER_NO)
-     WHERE LM_NO = 1
+     WHERE LM_NO = #{landMarkNo}
      AND LM_FL = 'N'
      </select>
 	
-	<!-- 랜드마크 삽입 -->
+	<!-- 랜드마크삽입 -->
 	
 	<insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
 		
