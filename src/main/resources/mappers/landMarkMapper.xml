@@ -112,7 +112,7 @@
      USER_NAME, USER_NO
      FROM LANDMARK
      JOIN USER_TB USING(USER_NO)
-     WHERE LM_NO = #{landMarkNo}
+     WHERE LM_NO = #{landMakrNo}
      AND LM_FL = 'N'
      </select>
 	
@@ -139,14 +139,15 @@
 	</insert>
 	
 	<!-- 랜드마크 이미지 삽입 -->
-	<insert id="insertBoardImageList" parameterType="list">
-		INSERT INTO BOARD_IMG 
-		SELECT SEQ_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
+	<insert id="insertLandMarkImageList" parameterType="list">
+		INSERT INTO LAND_IMG 
+		SELECT SEQ_LM_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
 		
 			<foreach collection="list"  item="img" separator="UNION ALL" >
-			    SELECT  #{img.landMarkReName}     LM_IMG_RENAME, 
-			        	#{img.landMarkImageLV}      LM_IMG_LEVEL, 
-			        	#{img.landMarkNo}         LM_NO
+			    SELECT  
+			        	#{img.landMarkNo}         LM_NO,
+			    		#{img.landMarkReName}     LM_IMG_RENAME, 
+			        	#{img.landMarkImageLV}      LM_IMG_LEVEL
 			    FROM DUAL
 			</foreach>
 		) A   
