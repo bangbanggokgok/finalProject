@@ -19,6 +19,12 @@ public class NoticeDetail {
 	private String noticeEnd;
 	private String noticeType;
 	private int userNo;
+	private String userName;
 	
 	private List<NoticeImage> imageList;
+
+	
+
+
+	
 }

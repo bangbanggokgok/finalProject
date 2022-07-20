@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){ 
+
     
     // 변수 지정
     var $slideWrap = document.querySelector('.container'),
@@ -66,19 +66,31 @@ document.addEventListener('DOMContentLoaded', function(){
   
     //자동 슬라이드
    
-      
+
+
+
     //상세정보 토글
     const $detail = document.querySelector('.detail');
     const $down = document.querySelector('.fa-chevron-down');
     const $up = document.querySelector('.fa-angle-up');
     const $content = document.querySelector('.detail-content');
-  
+    const $contentsDetail = document.querySelector('#contents-detail');
+    const $heart = document.querySelector('.heart1');
+    const $heartShape = document.querySelector('.heart-img');
+    const $redHeartShape = document.querySelector('.redHeart-img');
+
     $detail.addEventListener('click', function(){
+        
       $down.classList.toggle('d-none');
       $up.classList.toggle('active');
       $content.classList.toggle('active');
+      $contentsDetail.classList.toggle('width');
     });
-  
+    $heart.addEventListener('click', function(){
+        $heartShape.classList.toggle('none');
+        $redHeartShape.classList.toggle('active');
+        $redHeartShape.classList.toggle('none');
+    });
   
   
     $(function () {
@@ -87,9 +99,9 @@ document.addEventListener('DOMContentLoaded', function(){
         $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
       });
     });
-  });//DOMcontentloaded
+
   
-  
+
   
   
   

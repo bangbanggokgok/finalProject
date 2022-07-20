@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="movelineMapper">
+
+	<!-- ================================== resultMap ========================================== -->
+	
+	<!--  -->
+	<resultMap type="MoveLineTheme" id="MoveLineTheme_rm">
+		<id property="movelineNo" column="ML_NO" />
+		<result property="movelineTheme" column="ML_THEME" />
+	</resultMap>
+	
+	<!-- 코스 즐겨찾기 목록 조회 -->
+	<resultMap type="MoveLineBookmark" id="MoveLineBookmark_rm">
+		<id property="userNo" column="USER_NO" />
+		<result property="movelineNo" column="ML_NO" />
+	</resultMap>
+	
+	
+	<!-- 코스_해시태그용 resultMap -->
+ 	<resultMap type="MoveLineHashTag" id="hashTag_rm">
+		<id property="MLHashTagNo" column="ML_HASH_NO" />
+		<result property="MLHashTag" column="ML_HASH_NAME" />
+	</resultMap>
+	 
+	<!-- 특정 코스 랜드마크 목록 조회용 resultMap -->
+	<resultMap type="LandMark" id="landMark_rm">
+		<id property="landMarkNo" column="LM_NO" />
+		<result property="landMarkName" column="LM_NAME"/>
+		<result property="landMarkContent" column="LM_CONTENT"/>
+		<result property="thumbnail" column="THUMBNAIL"/>
+	</resultMap>
+
+	<!-- 지역별 코스 목록 조회용 resultMap -->   
+	<resultMap type="MoveLineList" id="MoveLineList_rm">
+		<result property="thumbnail" column="THUMBNAIL"/>
+		<result property="movelineTitle" column="ML_TITLE"/>
+		<result property="landMarkName" column="LM_NAME"/>
+		<result property="MLHashTag" column="ML_HASH_NAME"/>
+		<result property="locationName" column="LOCATION_NAME"/>
+	</resultMap>
+	
+	
+	<!-- 코스 이미지 목록 조회용 -->
+	<resultMap type="MoveLineImage" id="MoveLineImage_rm">
+      <id property="movelineImageNo" column="ML_IMG_NO"/>
+      <result property="movelineRename" column="ML_RENAME"/>
+      <result property="movelineLevel" column="ML_IMG_LEVEL"/>
+      <result property="movelineNo" column="ML_NO"/>
+   </resultMap>
+   
+   
+	<!-- 기본 코스 vo -->
+	<resultMap type="MoveLine" id="MoveLine_rm">
+		<result property="movelineNo" column="ML_NO"/>
+		<result property="movelineTitle" column="ML_TITLE"/>
+		<result property="movelineContent" column="ML_CONTENT"/>
+		<result property="createDate" column="ML_CREATE_DT"/>
+		<result property="updateDate" column="ML_UPDATE_DT"/>
+		<result property="deleteDate" column="ML_DELETE_DT"/>
+		<result property="movelineTheme" column="ML_THEME"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="locationName" column="LOCATION_NAME"/>
+		<result property="readCount" column="READ_COUNT"/>
+	</resultMap>
+	
+	
+	<!-- 코스 상세 조회용 resultMap -->
+	<resultMap type="MoveLineDetail" id="MoveLineDetail_rm">
+	
+		<result property="movelineNo" column="ML_NO" />
+		
+		<result property="movelineTitle" column="ML_TITLE" />
+		<result property="movelineContent" column="ML_CONTENT" />
+		<result property="createDate" column="ML_CREATE_DT" />
+		<result property="updateDate" column="ML_UPDATE_DT" />
+		<result property="deleteDate" column="ML_DELETE_DT" />
+		<result property="movelineTheme" column="ML_THEME" />
+		<result property="readCount" column="READ_COUNT" />
+		
+		<result property="locationType" column="LOCATION_TYPE" />
+		<result property="locationName" column="LOCATION_NAME" />
+		
+		<result property="MLHashTagNo" column="ML_HASH_NO" />
+		<result property="MLHashTag" column="ML_HASH_NAME" />
+		
+		<result property="userNo" column="USER_NO" />
+		<result property="userName" column="USER_NAME" />
+		<result property="profileImage" column="USER_PROFILE" />
+		
+		<result property="thumbnail" column="THUMBNAIL" />
+		
+		<result property="landMarkNo" column="LM_NO" />
+		<result property="landMarkX" column="LM_X" />
+		<result property="landMarkY" column="LM_Y" />
+		<result property="landMarkName" column="LM_NAME" />
+		<result property="landMarkContent" column="LM_CONTENT" />
+		<result property="landMarkAddress" column="LM_ADDRESS" />
+		<result property="landMarkFL" column="LM_FL" />
+		<result property="landMarkCreate" column="LM_CREATE_DT" />
+		
+		<!-- <collection property="hashtagList" column="ML_NO"
+	  javaType="java.util.ArrayList" ofType="MoveLineHashTag" select="selectHashTagList2"/> -->
+	  
+		<collection property="hashtagList" column="ML_NO"
+	  javaType="java.util.ArrayList" ofType="MoveLineHashTag" select="selectHashTagList2"/>
+		 
+		<collection property="landmarkList" column="ML_NO"
+	  javaType="java.util.ArrayList" ofType="LandMark" select="selectLandMarkList"/>
+	  
+		<collection property="imageList" column="ML_NO"
+	  javaType="java.util.ArrayList" ofType="MoveLineImage" select="selectImageList"/>
+	  
+	  	<collection property="themeList" column="ML_THEME"
+	  javaType="java.util.ArrayList" ofType="MoveLineTheme" select="selectTheme"/>
+	  
+	</resultMap>
+	
+	<!-- ======================================================================================== -->
+	
+	
+	<!--  -->
+	<select id="selectTheme" resultMap="MoveLineTheme_rm">
+		SELECT *
+		FROM MOVELINE_BOARD
+		WHERE ML_THEME = #{theme}
+	</select>
+	
+	<!-- -->
+	<select id="selectHashTagList2" resultMap="hashTag_rm">
+		SELECT *
+		FROM MOVELINE_HASH
+		JOIN MOVELINE_BOARD USING(ML_NO)
+		WHERE ML_DELETE_DT IS NULL
+		AND ML_NO = #{movelineNo}
+		ORDER BY ML_HASH_NO
+	</select>
+
+
+	<!--  -->
+	<select id="selectLandMarkList" resultMap="landMark_rm">
+		SELECT LM_NO, LM_NAME, LM_X, LM_Y, LM_INDEX
+		FROM LANDMARK
+		JOIN COORDINATE USING(LM_NO)
+		WHERE LM_FL ='N'
+		AND ML_NO = #{movelineNo}
+		ORDER BY LM_INDEX
+	</select>
+
+	
+	<!-- 특정 게시글 이미지 목록 조회 -->
+    <select id="selectImageList" resultMap="MoveLineImage_rm">
+		SELECT * FROM ML_IMG
+		WHERE ML_IMG_NO = #{movelineNo}
+		ORDER BY ML_IMG_LEVEL
+    </select>
+	
+	
+	<!-- 코스 메인 - 랜덤 해시태그 10개 조회 (랜덤 해시태그) -->
+	<select id="selectMoveLineMain" resultMap="MoveLineDetail_rm">
+		SELECT ML_HASH_NAME
+		FROM (SELECT * 
+		      FROM MOVELINE_HASH
+		      ORDER BY DBMS_RANDOM.RANDOM())
+		      
+		<![CDATA[WHERE ROWNUM <= 10]]>
+	</select>
+	
+	
+	<!-- 코스 메인 - 최신 코스 3개 조회 -->
+	<select id="selectMoveLineMain2" resultMap="MoveLineDetail_rm">
+		SELECT A.*,
+				(SELECT ML_RENAME FROM ML_IMG
+		           WHERE A.ML_NO = ML_IMG.ML_NO
+		           AND ML_IMG_LEVEL = 0) THUMBNAIL
+		FROM (SELECT *
+			 FROM MOVELINE_BOARD
+			 JOIN LOCATIONS USING(LOCATION_TYPE)
+			 ORDER BY ML_NO DESC) A
+						
+		WHERE ROWNUM &lt;= 3
+	</select>
+					
+	
+
+	<!-- 특정 지역 전체 게시글 수 조회 -->
+	<select id="locationListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		WHERE LOCATION_TYPE = #{locationNum}
+		AND ML_DELETE_DT IS NULL
+	</select>
+
+	
+	<!-- 특정 해시태그가 작성된 전체 코스 수 조회 -->
+	<select id="hashtagListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		JOIN MOVELINE_HASH USING(ML_NO)
+		WHERE ML_HASH_NAME = #{MLHashTag}
+		AND ML_DELETE_DT IS NULL
+	</select>
+   
+	 
+    <!-- 특정 지역 목록 조회 -->
+	<select id="selectLocationList" resultMap="MoveLineDetail_rm" >
+		SELECT A.*,
+				  (SELECT ML_RENAME FROM ML_IMG
+		           WHERE A.ML_NO = ML_IMG.ML_NO
+		           AND ML_IMG_LEVEL = 0) THUMBNAIL
+		FROM (SELECT * FROM MOVELINE_BOARD
+			  JOIN LOCATIONS USING(LOCATION_TYPE)
+		      ORDER BY ML_NO DESC) A
+		      
+		WHERE LOCATION_TYPE = #{locationNum}
+	</select>
+	
+	
+	<!-- 특정 해시태그가 작성된 코스 목록 조회 -->
+	<select id="selectHashTagList" resultMap="MoveLineDetail_rm">
+		SELECT A.*,
+				  (SELECT ML_RENAME FROM ML_IMG
+		           WHERE A.ML_NO = ML_IMG.ML_NO
+		           AND ML_IMG_LEVEL = 0) THUMBNAIL
+		           
+		FROM (SELECT * FROM MOVELINE_BOARD
+		      JOIN MOVELINE_HASH USING(ML_NO)
+		      ORDER BY ML_NO DESC) A
+		      
+			  
+			  <if test='hashtag != null and hashtag != ""'>
+			  		
+				  WHERE ML_HASH_NAME LIKE '%' || #{hashtag} || '%'
+			  		
+			  </if>
+			  
+		<!-- WHERE ML_HASH_NAME LIKE '%' || #{MLHashTag} || '%' -->
+	</select>
+	
+	
+	<!-- 코스 즐겨찾기 -->
+	<insert id="bookmarkMoveline">
+	INSERT INTO BOOKMARK_ML VALUES
+	(#{userNo}, #{movelineNo})
+	</insert>
+	
+	<!-- 코스 즐겨찾기 목록 조회 -->
+	<select id="selectBookmarkList" resultMap="MoveLineBookmark_rm">
+	SELECT * FROM BOOKMARK_ML
+	WHERE ML_NO = #{movelineNo}
+	AND USER_NO = #{userNo}
+	</select>
+	
+	
+	<!-- 특정 코스 테마 전체 수 조회 -->
+	<select id="themeListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		
+		<if test='theme != null and theme != ""'>
+			WHERE ML_THEME LIKE '%' || #{theme} || '%'
+		</if>
+		
+		AND ML_DELETE_DT IS NULL
+	</select>
+	
+	
+	<!-- 코스 테마별 목록 조회 -->
+	<select id="selectMovelineTheme" resultMap="MoveLineDetail_rm">
+	SELECT A.*,
+				  (SELECT ML_RENAME FROM ML_IMG
+		           WHERE A.ML_NO = ML_IMG.ML_NO
+		           AND ML_IMG_LEVEL = 0) THUMBNAIL
+	FROM MOVELINE_BOARD A
+	
+		<if test='theme != null and theme != ""'>
+			WHERE ML_THEME LIKE '%' || #{theme} || '%'
+		</if>
+	</select>
+	
+	<!-- 코스 테마별 목록 조회 -->
+	<!-- <select id="selectMovelineTheme" resultMap="MoveLineDetail_rm">
+	SELECT A.*,
+				  (SELECT ML_RENAME FROM ML_IMG
+		           WHERE A.ML_NO = ML_IMG.ML_NO
+		           AND ML_IMG_LEVEL = 0) THUMBNAIL
+	FROM MOVELINE_BOARD A
+	JOIN MOVELINE_HASH B USING(ML_NO)
+	JOIN LOCATIONS C USING(LOCATION_TYPE)
+	JOIN COORDINATE D USING(ML_NO)
+	
+		<if test='theme != null and theme != ""'>
+			WHERE ML_THEME LIKE '%' || #{theme} || '%'
+		</if>
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+   
+</mapper>

@@ -75,4 +75,19 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
     font-size: 1.1em;
 }
 
+#goToList {
+    height: 40px;
+    font-size: 0.9em;
+    color: white;
+    background-color: #1F3A93;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
 
+#goToList:hover{
+    font-weight: bold;
+    color: #1F3A93;
+    background-color: white;
+    border: 1px solid #1F3A93;
+}

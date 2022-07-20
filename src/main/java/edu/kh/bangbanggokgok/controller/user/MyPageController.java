@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,8 @@ import com.google.gson.Gson;
 import edu.kh.bangbanggokgok.service.user.MyPageService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.user.MyMoveline;
+import edu.kh.bangbanggokgok.vo.user.MyReply;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
@@ -35,7 +38,10 @@ public class MyPageController {
 	private MyPageService service;
 
 	@GetMapping("/info")
-	public String info() {
+	public String info(@ModelAttribute("loginUser") User loginUser
+			,Model model) {
+		List<LandMark> landmarkList = service.favoriteLandmark(loginUser.getUserNo());
+		model.addAttribute("landmarkList", landmarkList);
 		return "myPage/myPage-favorite";
 	}
 
@@ -60,12 +66,23 @@ public class MyPageController {
 	}
 
 	@GetMapping("/course")
-	public String course() {
+	public String course(@ModelAttribute("loginUser") User loginUser,
+			Model model) {
+		List<MyMoveline> movelineList = service.selectMyMovelineList(loginUser.getUserNo());
+		model.addAttribute("movelineList",movelineList);
 		return "myPage/myPage-course";
 	}
 
+	//내가 작성한 댓글 목록
 	@GetMapping("/reply")
-	public String reply() {
+	public String reply(@ModelAttribute("loginUser") User loginUser,
+			Model model,
+			@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+			@RequestParam Map<String, Object> paramMap) {
+		
+		Map<String, Object>	map = service.selectMyReplyList(cp, loginUser);
+		model.addAttribute("map", map);
+		
 		return "myPage/myPage-reply";
 	}
 
@@ -168,9 +185,15 @@ public class MyPageController {
 		return "redirect:" + path;
 	}
 
+	/** 즐겨찾는 랜드/코스 조회
+	 * @param loginUser
+	 * @param flag
+	 * @return
+	 */
 	@ResponseBody
 	@GetMapping("/my-favorite")
-	public String favoriteList(@ModelAttribute("loginUser") User loginUser, @RequestParam("indexFlag") int flag) {
+	public String favoriteList(@ModelAttribute("loginUser") User loginUser, 
+			@RequestParam("indexFlag") int flag) {
 //												0 landMark | 1 moveLine indexFlag
 		List<LandMark> landMarkList = null;
 		List<MoveLine> moveLineList = null;

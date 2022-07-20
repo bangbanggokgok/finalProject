@@ -23,7 +23,6 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
     <nav id="mainNavbar1" class="nav">
       <a href="${contextPath}" class="nav-title"
         ><img class="logo" src="${contextPath}/resources/images/logo.png" alt=""
@@ -35,7 +34,7 @@
             <a href="${contextPath}/moveline-main/list" class="nav-menu">코스</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main" class="nav-menu">랜드마크</a>
+            <a href="${contextPath}/landmark-main/list" class="nav-menu">랜드마크</a>
           </li>
         </ul>
       </div>
@@ -56,12 +55,16 @@
           <li>
             <a href="#" class="signUp-btn nav-hover">로그아웃</a>
           </li>
+          	<c:if test="${loginUser.adminFlag == 'Y' }">
+	          <li>
+		       	<a href="${contextPath}/admin/main">관리자 임시 버튼</a>
+	          </li>
+          	</c:if>
         </c:if>
         </ul>
       </div>
       <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
     </nav>
-
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

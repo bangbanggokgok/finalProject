@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.service.question;
 
+import java.io.IOException;
 import java.util.Map;
 
 import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
@@ -19,5 +20,12 @@ public interface QuestionService {
 	 * @return questionDetail
 	 */
 	QuestionDetail selectQuestionDetail(int questionNo);
+
+	/** 문의 게시글 작성
+	 * @param detail
+	 * @return questionNo
+	 * @throws IOException
+	 */
+	int insertQuestion(QuestionDetail detail) throws IOException;
 
 }

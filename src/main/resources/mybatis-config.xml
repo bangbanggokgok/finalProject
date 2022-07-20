@@ -10,10 +10,12 @@
 	
 	<!-- 별칭 -->
 	<typeAliases>
-		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLine" alias="MoveLine"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.Location" alias="Locations"/>
+		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMark" alias="LandMark"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMarkDetail" alias="LandmarkDetail"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.LandMarkIMG" alias="LandMarkImage"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.Notice" alias="Notice"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.notice.NoticeDetail" alias="NoticeDetail"/>
@@ -21,15 +23,38 @@
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.Question" alias="Question"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.question.QuestionDetail" alias="QuestionDetail"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineList" alias="MoveLineList"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineDetail" alias="MoveLineDetail"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineBookmark" alias="MoveLineBookmark"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineTheme" alias="MoveLineTheme"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyMoveline" alias="MyMoveline"/>
+
+		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag" alias="MoveLineHashTag"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.LandmarkHashTag" alias="LandmarkHashtag"/>
+
+		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
+		
+		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportMoveLine" alias="ReportML"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->
 	<mappers>
+		<mapper resource="/mappers/landMarkMapper.xml"/>
 		<mapper resource="/mappers/userMapper.xml"/>
 		<mapper resource="/mappers/myPageMapper.xml"/>
 		<mapper resource="/mappers/locationMapper.xml"/>
 		<mapper resource="/mappers/noticeMapper.xml"/>
 		<mapper resource="/mappers/questionMapper.xml"/>
+		
+		<mapper resource="/mappers/adminMapper.xml"/>
+		<mapper resource="/mappers/movelineMapper.xml"/>
+		<mapper resource="/mappers/hashTagMapper.xml"/>
+		
 	</mappers>
 
 </configuration>

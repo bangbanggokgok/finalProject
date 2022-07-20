@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.notice.Notice;
+import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
 
 @Repository
@@ -26,13 +27,23 @@ public class NoticeDAO {
 	 * @param pagination
 	 * @return NoticeList
 	 */
-	public List<Notice> selectNoticeList(Pagination pagination) {
+	public List<Notice> selectNoticeList(Pagination pagination, String list) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		
-		return sqlSession.selectList("noticeMapper.selectNoticeList", rowBounds);
+//		return sqlSession.selectList("noticeMapper.selectNoticeList", rowBounds);
+		return sqlSession.selectList("noticeMapper.selectNoticeList", list, rowBounds);
+	}
+
+
+	/** 공지 상세조회 DAO
+	 * @param boardNo
+	 * @return
+	 */
+	public NoticeDetail selectnoticeDetail(int boardNo) {
+		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", boardNo);
 	}
 	
 	

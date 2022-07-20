@@ -51,6 +51,19 @@ public class QuestionDAO {
 	}
 
 
+	/** 문의 게시글 작성
+	 * @param detail
+	 * @return questionNo
+	 */
+	public int insertQuestion(QuestionDetail detail) {
+		int result = sqlSession.insert("questionMapper.insertQuestion", detail);
+		
+		if(result>0) result = detail.getQuestionNo();
+		
+		return result;
+	}
+
+
 	
 	
 	

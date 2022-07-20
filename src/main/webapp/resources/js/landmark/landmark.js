@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function(){ 
+// document.addEventListener('DOMContentLoaded', function(){ 
     
     // 변수 지정
     var $slideWrap = document.querySelector('.container'),
@@ -125,7 +125,38 @@ document.addEventListener('DOMContentLoaded', function(){
         });
    }
 
-});//DOMcontentloaded
+
+   const btn = document.querySelector('.btn');
+   const ul = document.querySelector('.image-list');
+
+
+/* 무한스크롤 기능  */
+
+//    window.onscroll = function(){
+//     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight){
+        
+//         for(let i=0; i<3; i++){
+//             const li = document.createElement('li');
+//             const figure = document.createElement('figure');
+//             const img = document.createElement('img');
+//             const figcaption = document.createElement('figcaption');
+//             const p1 = document.createElement('p');
+//             const p2 = document.createElement('p');
+//             li.append(figure);
+//             figure.append(img);
+//             img.setAttribute("src","https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg");
+//             figure.append(figcaption);
+//             p1.innerText='abcd';
+//             p2.innerText='bbcdc';
+//             figcaption.append(p1);
+//             figcaption.append(p2);
+//             ul.append(li);
+//         }
+//     }
+//    }
+
+
+// });//DOMcontentloaded
 
 
 

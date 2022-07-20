@@ -11,7 +11,7 @@
 		<result property="landMarkAddress"	column="LM_ADDRESS"/>
 		<result property="landMarkCreate"	column="LM_CREATE_DT"/>
 		<result property="userName"			column="USER_NAME"/>
-		<result property="thumbnail" 		column="THUMBNAIL"/>
+		<result property="thumbnail" 		column="LM_IMG_RENAME"/>
 	</resultMap>
 	
 	<resultMap type="MoveLine" id="moveline_rm">
@@ -23,7 +23,26 @@
 		<result property="movelineTheme" 	 column="ML_THEME"/>
 		<result property="userName"		 	 column="USER_NAME"/>
 		<result property="locationName"		 column="LOCATION_NAME"/>
+		<result property="reNameImage" 		 column="ML_RENAME"/>
 	</resultMap>
+	
+	<resultMap type="MyReply" id="myReply_rm">
+		<id 	property="movelineNo"		column="ML_NO"/>
+		<result property="movelineTitle" 	column="ML_TITLE"/>
+		<result property="replyContent" 	column="REPLY_CONTENT"/>
+		<result property="movelineWriter" 	column="USER_NAME"/>
+		<result property="replyNo"			column="REPLY_NO"/>
+		<result property="rowNo" 			column="ROWNUM"/>
+	</resultMap>
+	
+	<resultMap type="MyMoveline" id="myMoveline_rm">
+		<id 	property='movelineNo'		column="ML_NO"/>
+		<result property="movelineTitle" 	column="ML_TITLE"/>
+		<result property="locationName" 	column="LOCATION_NAME"/>
+		<result property="reNameImage" 		column="ML_RENAME"/>
+	</resultMap>
+	
+	
 	
 	<!-- 프로필 이미지 변경 -->
 	<update id="updateProfile">
@@ -56,19 +75,54 @@
 		WHERE USER_NO = #{userNo}
 	</update>
  
+	<!-- 랜드마크 즐겨찾기 -->
  	<select id="favoriteLandmark" resultMap="landMark_rm">
- 		SELECT LM_NO,LM_NAME,LM_CONTENT
- 		FROM BOOKMARK_LM A
- 		JOIN LANDMARK USING(LM_NO)
- 		WHERE A.USER_NO = #{userNo}
+ 		SELECT LM_NO, LM_NAME, LM_CONTENT, LM_IMG_RENAME
+		FROM BOOKMARK_LM A
+		JOIN LANDMARK USING(LM_NO)
+		JOIN LAND_IMG USING(LM_NO)
+		WHERE A.USER_NO = #{userNo}
+		AND LM_IMG_LEVEL = 0
  	</select>
  	
+ 	<!-- 코스 즐겨찾기 -->
  	<select id="favoriteMoveline" resultMap="moveline_rm">
-		SELECT ML_NO,ML_TITLE,LOCATION_NAME
+		SELECT ML_NO, ML_TITLE, LOCATION_NAME, ML_RENAME
 		FROM BOOKMARK_ML A
 		JOIN MOVELINE_BOARD USING(ML_NO)
-        JOIN LOCATIONS USING(LOCATION_TYPE)
- 		WHERE A.USER_NO = #{userNo}
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		JOIN ML_IMG USING(ML_NO)
+		WHERE A.USER_NO = #{userNo}
+		AND ML_IMG_LEVEL = 0
+ 	</select>
+ 	
+ 	<!-- 내 댓글 수 -->
+	<select id="getListCount" resultType="_int">
+		SELECT COUNT(*) FROM REPLY
+		WHERE USER_NO = #{userNo}
+	</select>
+	
+	<!-- 내 댓글 목록 -->
+ 	<select id="selectMyReplyList" resultMap="myReply_rm">
+ 		SELECT ROWNUM, D.*FROM
+		    (SELECT REPLY_NO, ML_NO, ML_TITLE, REPLY_CONTENT, C.USER_NAME
+		    FROM REPLY A
+		    JOIN MOVELINE_BOARD B USING(ML_NO)
+		    JOIN USER_TB C ON B.USER_NO = C.USER_NO 
+		    WHERE A.USER_NO = #{userNo}
+		    ORDER BY REPLY_NO) D
+		ORDER BY ROWNUM DESC
+ 	</select>
+ 	
+ 	<!-- 내 코스 조회 -->
+ 	<select id="selectMyMovelineList" resultMap="myMoveline_rm">
+ 		SELECT ML_NO, ML_TITLE, LOCATION_NAME, ML_RENAME
+ 		FROM MOVELINE_BOARD
+ 		JOIN LOCATIONS USING(LOCATION_TYPE)
+        JOIN ML_IMG USING(ML_NO)
+ 		WHERE USER_NO = #{userNo}
+ 		AND ML_IMG_LEVEL = 0
+ 		ORDER BY ML_NO
  	</select>
  	
 </mapper>

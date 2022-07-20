@@ -3,7 +3,7 @@
 <mapper namespace="noticeMapper">
 
 
-	<!-- 공지 목록욕 resultMap -->
+	<!-- 공지 목록용 resultMap -->
 	<resultMap type="notice" id="notice_rm">
 		<id property="noticeNo" column="MB_NO"/>
 		<result property="noticeTitle" column="MB_TITLE"/>
@@ -11,6 +11,37 @@
 		<result property="noticeType" column="MB_TYPE"/>
 	</resultMap>
 
+	<!-- 공지 상세조회 resultMap -->
+	<resultMap type="noticeDetail" id="detail_rm">
+		<id property="noticeNo" column="MB_NO"/>
+		<result property="noticeTitle" column="MB_TITLE"/>
+		<result property="noticeContent" column="MB_CONTENT"/>
+		<result property="noticeType" column="MB_TYPE"/>
+		<result property="noticeCreate" column="MB_CREATE_DT"/>
+		<result property="userNo" column="USER_NO"/>
+		<result property="userName" column="USER_NAME"/>
+		
+		
+		<collection property="imageList" column="MB_NO" javaType="java.util.ArrayList" ofType="noticeImage" select="selectImageList"/>
+		
+	</resultMap>
+	
+	<!-- 이미지 정보 조회용 resultMap -->
+	<resultMap type="noticeImage" id="noticeImage_rm">
+		<id property="imageNo" column="MB_IMG_NO"/>
+		<result property="imageReName" column="MB_IMG_RENAME"/>
+		<result property="imageLevel" column="MB_IMG_LEVEL"/>
+		<result property="noticeNo" column="MB_NO"/>
+	</resultMap>
+	
+	<!-- 특정 공지 이미지 목록 조회 -->
+	<select id="selectImageList" resultMap="noticeImage_rm">
+		SELECT * FROM MANAGER_BOARD_IMG
+		WHERE MB_NO = #{noticeNo}
+		ORDER BY MB_IMG_LEVEL
+	</select>
+	
+	
 	
 	<!-- 공지사항 전체 게시글 수 조회 -->
 	<select id="getListCount" resultType="_int">
@@ -20,7 +51,7 @@
 	<!-- 공지사항 목록 조회 -->
 	<select id="selectNoticeList" resultMap="notice_rm">
 		SELECT MB_NO, MB_TITLE, 
-			CASE WHEN MB_TYPE = 'NOTICE'
+			CASE WHEN MB_TYPE = 'notice'
 			    THEN '공지'
 			    ELSE '이벤트'
 			    END MB_TYPE,
@@ -29,7 +60,19 @@
 			        ELSE TO_CHAR(MB_CREATE_DT, 'YYYY-MM-DD')
 			    END MB_CREATE_DT
 			    
-			FROM MANAGER_BOARD
-			ORDER BY MB_NO DESC
+		FROM MANAGER_BOARD
+		ORDER BY MB_NO DESC
 	</select>
+	
+	<!-- 게시글 상세 조회 -->
+	<select id="selectNoticeDetail" resultMap="detail_rm">
+		SELECT MB_NO, MB_TITLE, MB_CONTENT, MB_TYPE,
+	      TO_CHAR(MB_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') MB_CREATE_DT,
+	      USER_NO, USER_NAME
+	      FROM MANAGER_BOARD
+	      JOIN USER_TB USING(USER_NO)
+	      WHERE MB_NO = ${noticeNo}
+	</select>
+	
+	
 </mapper>

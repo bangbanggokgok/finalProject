@@ -1,0 +1,313 @@
+.header {
+    border-bottom: 1px solid rgb(238, 238, 238);
+    margin-top: 80px;
+}
+article, aside, details, figcaption, figure, footer, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    outline: none;
+    font-family: inherit;
+}
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+.pageWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.boardTitle {
+    margin: 50px 0px 20px;
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.board {
+    margin: 28px 0px 58px;
+}
+
+.choice {
+    display: block;
+    margin-bottom: 6px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+#inputFieldsContainer {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+}
+
+.inputFields {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    /* margin: 0px 0px 8px; */
+    padding: 14px 21px 12px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+}
+
+.choiceFields {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    padding: 14px 21px 12px 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 24px;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+}
+
+
+
+.title {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(51, 51, 51);
+    margin-top: 8px;
+}
+
+#inputField {
+    width: 7px;
+    height: 24px;
+    opacity: 1;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: opacity 0.2s ease 0s, transform 0.5s ease 0s;
+}
+
+
+.title {
+    display: block;
+    margin-bottom: 6px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.titleInput {
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 14px 57px 12px 14px;
+    background: rgb(250, 250, 250);
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+#choiceFieldsContainer{
+    position: absolute;
+    z-index: 1000;
+    width: 808px;
+    border: 1px solid rgb(238, 238, 238);
+    box-sizing: border-box;
+    border-radius: 3px;
+    /* padding: 10px 57px 12px 14px; */
+    background: white;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 6px;
+}
+.choiceFields:hover{
+    background-color: rgb(250, 250, 250);
+}
+
+.choiceFields{
+   cursor: pointer;
+}
+
+#notice, #event{
+   border: none;
+}
+
+.contentField {
+    margin: 16px 0px 0px;
+}
+
+.contentLabel {
+    display: block;
+    margin-bottom: 6px;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.contentArea {
+    position: relative;
+    min-height: 600px;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    background: rgb(250, 250, 250);
+    margin-bottom: 100px;
+}
+
+.content {
+    height: 600px;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 14px 14px 0px;
+    background: rgb(250, 250, 250);
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    border: none;
+}
+
+.submitBar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 93px;
+    z-index: 200;
+    box-shadow: rgb(0 0 0 / 8%) 0px -10px 30px -10px;
+    background-color: white;
+}
+
+.buttonContainer {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 768px;
+    margin: 13px auto 24px;
+}
+
+.submitButton {
+    background: #1BB3FE;
+    color: rgb(255, 255, 255);
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    border-radius: 10px;
+    padding: 16px 22px;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+/* 이미지 영역 */
+.img-box{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* 이미지를 감싸는 div */
+.boardImg{
+    width: 180px;
+    height: 180px;
+    display: inline-block;
+    text-align: center;
+
+    position : relative;
+}
+
+/* 미리보기 영역 */
+.boardImg > label{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* file타입 input */
+.inputImage{ display: none; }
+
+/* 미리보기 이미지 */
+.preview{
+    max-width: 100%;
+    max-height: 100%;
+    /* 지정된 칸 내부에 비율을 변경하지 않고 이미지 배치 */
+}
+
+/* 이미지 미리보기 삭제 */
+.delete-image{
+    position: absolute;
+    top: 0;
+    right: 7px;
+    font-size: 20px;
+    cursor: pointer; 
+}
+
+
+
+.fa-plus-circle{
+    color: rgb(146, 146, 146);
+}
+
+.addImg {
+    display: block;
+    margin: 6px 0;
+    color: rgb(102, 102, 102);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
