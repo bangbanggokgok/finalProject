@@ -42,7 +42,7 @@ body{
 
 /* 정보 수정 부분 */
 .myInfo-row{
-    margin: 10px 60px -8px 60px;
+    margin: 10px 70px -8px 60px;
     display: flex; 
     align-items: center
 }

@@ -54,6 +54,7 @@ body{overflow-x: hidden;}
 
 .course-img > img{
     width: 250px;
+    height: 250px;
 }
 
 .courseSlider{
