@@ -116,7 +116,7 @@
      AND LM_FL = 'N'
      </select>
 	
-	<!-- 랜드마크 삽입 -->
+	<!-- 랜드마크삽입 -->
 	
 	<insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
 		
