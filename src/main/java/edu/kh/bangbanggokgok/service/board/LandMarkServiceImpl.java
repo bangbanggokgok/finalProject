@@ -18,14 +18,12 @@ import edu.kh.bangbanggokgok.exception.InsertFailException;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
-import edu.kh.bangbanggokgok.vo.board.Location;
 
 @Service
 public class LandMarkServiceImpl implements LandMarkService{
 	
 	@Autowired
 	private LandMarkDAO dao;
-	private int landMarkNo;
 	
 	// 랜드마크 특정 지역 목록 조회
 	@Override
@@ -74,8 +72,6 @@ public class LandMarkServiceImpl implements LandMarkService{
 	@Override
 	public int insertLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath) throws IOException {
 		
-		// XSS 방지
-
 		int landMarkNo = dao.insertLandMark(detail);
 		
 		if(landMarkNo > 0) {
@@ -101,13 +97,9 @@ public class LandMarkServiceImpl implements LandMarkService{
 				}
 			} // for 종료
 			
-			
-			
 			if( !landMarkImageList.isEmpty()  ) {
 				
 				int result = dao.insertLandMarkImageList(landMarkImageList);
-				
-			
 				
 				if(result == landMarkImageList.size()) { // 삽입된 행의 개수와 업로드 이미지 수가 같을 경우  
 					
