@@ -21,12 +21,20 @@
     <section id="contents">
       <div class="titleType1">
         <div class="area_tag">
-          <span class="name1">
+          <div class="name1">
             <a href="#">
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
-          </span>
+          </div>
+          <div class="name1">
+            <div class="heart1">
+              <i class="fa-solid fa-heart"></i>
+              <!-- <label id="fa-heart" name="fa-heart"></label> -->
+              <!-- <i class="fa-solid fa-siren"></i> -->
+              <span>찜하기</span>
+            </div>
+          </div>
         </div>
         <div class="area_address">
           <h2>숲쟁이공원</h2>

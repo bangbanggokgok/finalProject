@@ -17,10 +17,12 @@ div {
     position: relative;
 }
 .titleType1 .area_tag {
-    text-align: left;
+    /* text-align: left; */
+    display:flex;
+    justify-content: space-between;
 }
 .titleType1 .area_tag .name1 {
-    padding: 5px 0 0 30px;
+    /* padding: 5px 0 0 30px; */
 }
 .titleType1 .area_tag > span {
     float: left;
@@ -44,8 +46,10 @@ div {
     word-break: keep-all;
 }
 .titleType1 .area_address {
-    margin-right:105px;
-    display: inline-block;
+    /* margin-right:105px;
+    display: inline-block; */
+    display:flex;
+    flex-direction: column;
     padding-top: 10px;
 }
 .area_address>span{
@@ -55,7 +59,16 @@ div {
 .fa-ranking-star{
     color:#ff006e;
 }
-
+.red{
+    color:#ff006e;
+    transition: 0.15s;
+}
+.heart1 {
+    cursor: pointer;
+}
+#fa-heart{
+    cursor: pointer;
+}
 
 #top_menu { /* position: fixed; */ display:flex; align-items: center;margin-top: 20px;height:114px; }
 .container-1{ width: 940px; margin:0 auto;} /* TOP 메뉴  */
@@ -169,10 +182,22 @@ div {
         
     }
     .container-1>ul{
-        width:55%;
+        width:62%;
     }
     .area_address{
-        margin-left:210px;
+        margin-left:78px;
+    }
+    .titleType1{
+        width:60%;
+    }
+    .area_tag{
+        width:100%;
+    }
+    #contents-detail{
+        width:68%;
+    }
+    #contents-detail.width{
+        width:68%;
     }
 
 }
