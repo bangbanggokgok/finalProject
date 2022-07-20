@@ -76,7 +76,8 @@
     const $content = document.querySelector('.detail-content');
     const $contentsDetail = document.querySelector('#contents-detail');
     const $heart = document.querySelector('.heart1');
-    const $heartShape = document.querySelector('.fa-heart');
+    const $heartShape = document.querySelector('.heart-img');
+    const $redHeartShape = document.querySelector('.redHeart-img');
 
     $detail.addEventListener('click', function(){
         
@@ -86,7 +87,9 @@
       $contentsDetail.classList.toggle('width');
     });
     $heart.addEventListener('click', function(){
-        $heartShape.classList.toggle('red');
+        $heartShape.classList.toggle('none');
+        $redHeartShape.classList.toggle('active');
+        $redHeartShape.classList.toggle('none');
     });
   
   

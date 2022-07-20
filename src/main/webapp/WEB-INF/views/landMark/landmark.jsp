@@ -97,6 +97,7 @@
       <div class="container">
         <div class="tit">
           <h2 id="zoneTitle">서울</h2>
+          <a class="randWrite" href="">랜드마크 작성하기</a>
         </div>
         <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
@@ -316,6 +317,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/common/scroll-top.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
