@@ -69,14 +69,15 @@
                         <div class="date">${report.reportDate}</div>
                         <c:choose>
                             <c:when test="${report.reportFlag == 'N'}">
-                                <div class="situation">처리대기</div>
+                                <div  id="wait" class="situation">처리대기</div>
                             </c:when>
 
                             <c:otherwise>
-                               <div class="situation">처리완료</div>       
+                               <div id="wait" class="situation">처리완료</div>       
                             </c:otherwise>
                         </c:choose>
                     </div>
+                   
                 </li>
 
                         <%-- <c:if test="${empty user.secessionDate}">
@@ -89,7 +90,44 @@
             
         </ul>
     </div>
-    </div>
-</body>
+    <div class="pagination-area">
 
+                <c:set var="url" value="${list}?cp="/>
+
+                <ul class="pagination">
+                    <li><a href="${url}1">&lt;&lt;</a></li>
+
+                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+
+                    <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+
+                        <c:choose>
+                            <c:when test="${i == pagination.currentPage}">
+                                <li><a class="current">${i}</a></li>
+                            </c:when>
+
+                            <c:otherwise>
+                                <li><a href="${url}${i}">${i}</a></li>        
+                            </c:otherwise>
+                        </c:choose>
+
+                    </c:forEach>
+                    
+                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
+
+                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+
+                </ul>
+        </div>
+    
+     <script>
+        const contextPath = "${contextPath}";
+        const reportNo = "${reportList.reportNo}";
+    </script> 
+        <%--const reportNo = "${reportList.reportNo}";
+        const reportFlage = "${reportList.reportFlag}";--%>
+</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="${contextPath}/resources/js/admin_/report-list.js"></script>
+    
 </html>
