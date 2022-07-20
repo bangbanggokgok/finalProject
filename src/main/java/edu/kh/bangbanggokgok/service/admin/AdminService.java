@@ -6,8 +6,9 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
-import edu.kh.bangbanggokgok.vo.user.User;
+import edu.kh.bangbanggokgok.vo.question.QuestionDetail;
 
 public interface AdminService {
 
@@ -42,5 +43,23 @@ public interface AdminService {
 	 * @return map
 	 */
 	Map<String, Object> selectreportList(int cp, String list);
+
+	/** 문의 상세 조회
+	 * @param questionNo
+	 * @return
+	 */
+	QuestionDetail selectQuestionDetail(int questionNo);
+
+	/** 문의 답변 등록
+	 * @param detail
+	 * @return result
+	 */
+	int insertAnswer(QuestionDetail detail);
+
+	/** 신고처리
+	 * @param report
+	 * @return result
+	 */
+	int updateReport(ReportMoveLine report);
 
 }

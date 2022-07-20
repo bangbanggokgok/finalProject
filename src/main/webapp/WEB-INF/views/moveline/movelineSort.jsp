@@ -3,7 +3,7 @@
 
 
 
-<c:forEach var="moveline" items="${preMoveLineList}">
+<%-- <c:forEach var="moveline" items="${preMoveLineList}">
     <c:if test="${movelineNo == moveline.movelineNo}">
         <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
         <c:set var="landMarkName" value="${moveline.landMarkName}" />
@@ -11,7 +11,7 @@
         <c:set var="locationName" value="${moveline.locationName}" />
         <c:set var="thumbnail" value="${moveline.thumbnail}" />
     </c:if>
-</c:forEach>
+</c:forEach> --%>
 
 
 <!DOCTYPE html>
@@ -37,8 +37,6 @@
     <main>
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
-        <c:set var="url" value="&hashtag=${hashtag.MLHashTag}" />
-
         <section>
             <div id="contents">
                 <div id="location-area">
@@ -59,13 +57,13 @@
                     <h1>테마별</h1>
                     <div id="courses">
                         <ul class="c-list">
-                            <li>가족</li>
-                            <li>아이</li>
-                            <li>데이트</li>
-                            <li>도보</li>
-                            <li>힐링</li>
-                            <li>맛집</li>
-                            <li>캠핑</li>
+                            <li name="movelineTheme">가족</li>
+                            <li name="movelineTheme">아이</li>
+                            <li name="movelineTheme">데이트</li>
+                            <li name="movelineTheme">도보</li>
+                            <li name="movelineTheme">힐링</li>
+                            <li name="movelineTheme">맛집</li>
+                            <li name="movelineTheme">캠핑</li>
                         </ul>
                     </div>
                 </div>
@@ -81,7 +79,7 @@
                             <c:if test="${!empty preHashTagList}">
                                 <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
-                                        <a href="list/hashtag/${url}">#${hashtag.MLHashTag}</a>
+                                        <a href="list/hashtag?hashtag=${hashtag.MLHashTag}">#${hashtag.MLHashTag}</a>
                                     </li>
                                 </c:forEach>
                             </c:if>
@@ -110,7 +108,7 @@
 											</div>
 										</c:if>
 
-										<c:if test="${!empty thumbnail}">
+										<c:if test="${!empty moveline.thumbnail}">
 											<div class="thumbnail">
 												<img src="${contextPath}${moveline.thumbnail}" alt=""
 												class="list-thumbnail">

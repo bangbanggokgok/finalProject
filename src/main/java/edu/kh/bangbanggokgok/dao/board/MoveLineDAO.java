@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
@@ -102,6 +103,24 @@ public class MoveLineDAO {
 	 */
 	public List<MoveLineDetail> selectMoveLineMain2() {
 		return sqlSession.selectList("movelineMapper.selectMoveLineMain2");	
+	}
+
+	
+	/** 코스 즐겨찾기
+	 * @param moveLineBookMark
+	 * @return result
+	 */
+	public int bookmarkMoveline(MoveLineBookmark moveLineBookMark) {
+		return sqlSession.insert("movelineMapper.bookmarkMoveline", moveLineBookMark);
+	}
+
+
+	/** 코스 즐겨찾기 목록 조회
+	 * @param moveLineBookMark
+	 * @return result
+	 */
+	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
+		return sqlSession.selectList("movelineMapper.selectBookmarkList", moveLineBookMark);
 	}
 
 	
