@@ -72,8 +72,9 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 
 	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
-		LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMakrNo);
-		model.addAttribute("landMarkDetail", landMarkDetail);
+		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
+		//이미지 담아야함
+		model.addAttribute("landmarkDetail", landmarkDetail);
 		return "landMark/land-detail";
 	}
 

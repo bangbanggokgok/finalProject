@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="area_address">
-          <h2>${landMarkDetail.landMarkName}</h2>
+          <h2>${landmarkDetail.landMarkName}</h2>
           <span>전남 영광군</span>
         </div>
         <!-- <div class="post_area">
@@ -182,6 +182,12 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"
     ></script>
+    <c:if test="${!empty landmarkDetail}">
+      <script>
+        const X = ${landmarkDetail.landMarkX};
+        const Y = ${landmarkDetail.landMarkY};
+      </script>    
+    </c:if>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
   </body>
 </html>
