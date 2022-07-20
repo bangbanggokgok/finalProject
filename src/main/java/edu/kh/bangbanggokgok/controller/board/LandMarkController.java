@@ -70,8 +70,8 @@ public class LandMarkController {
 
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
-	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
 
+	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
 		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		return "landMark/land-detail";
@@ -80,15 +80,13 @@ public class LandMarkController {
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{mode}")
 	public String landWriteForm(@PathVariable String mode,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int landMarkNo, Model model) {
+			@RequestParam(value = "no", required = false, defaultValue = "0") int landMarkNo,
+			Model model) {
 
-		if (mode.equals("update")) {
-
-			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
-
-			detail.setLandMarkContent(Util.newLineClear(detail.getLandMarkContent()));
-
-			detail.setLandMarkContent(mode);
+		if(mode.equals("update")) {
+			LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMarkNo);
+			landMarkDetail.setLandMarkContent(Util.newLineClear(landMarkDetail.getLandMarkContent()));
+			model.addAttribute("landMarkDetail",landMarkDetail);
 		}
 
 		return "landMark/landmarkWrite";
@@ -158,7 +156,7 @@ public class LandMarkController {
 //				message = "게시글 수정 실패";
 //				path = req.getHeader(	"referer");
 //			}
-//			
+//			 	
 //			ra.addFlashAttribute("message", message);
 
 			return "redirect:";// +path;
