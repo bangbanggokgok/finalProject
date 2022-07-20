@@ -101,7 +101,7 @@ public class LandMarkController {
 			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra,
 			@RequestParam(value = "deleteList", required = false) String deleteList) throws IOException {
 
-		logger.debug(deleteList + ""); // 나중
+		logger.debug(deleteList + "");
 		logger.debug(param + "");
 
 		// 회원번호 얻어오기
