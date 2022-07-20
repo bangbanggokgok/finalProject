@@ -216,7 +216,7 @@
 			  
 			  <if test='hashtag != null and hashtag != ""'>
 			  		
-				  WHERE ML_HASH_NAME LIKE '%' || #{hashtag} || '%'
+				  WHERE ML_HASH_NAME LIKE '%' || #{MLHashTag} || '%'
 			  		
 			  </if>
 			  
@@ -237,7 +237,7 @@
 	AND USER_NO = #{userNo}
 	</select>
 	
-	
+	<!-- 코스 테마별 목록 조회 -->
 	
 	
 	

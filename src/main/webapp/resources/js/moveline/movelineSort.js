@@ -129,7 +129,7 @@ function setBookmark(movelineNo){
             type : "GET",
             success : function(result){
                 if(result > 0){
-                    alert("즐겨찾기 등록되었습니다.");
+                    alert("즐겨찾기 목록에 등록되었습니다.");
                 } else { 
                     console.log("이미 등록");
                     alert("이미 즐겨찾기 되어있습니다.");

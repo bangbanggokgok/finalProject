@@ -144,8 +144,18 @@ public class MoveLineController {
 		return result;
 	}
 	
-	
-	
+	// 코스 테마별 목록 조회
+	@GetMapping("/list/theme")
+	public String movelineTheme(@ModelAttribute MoveLine theme,
+								String[] movelineTheme
+								) {
+		
+		theme.setMovelineTheme(String.join(",,", movelineTheme));
+		
+		
+		return null;
+		
+	}
 	
 	
 	

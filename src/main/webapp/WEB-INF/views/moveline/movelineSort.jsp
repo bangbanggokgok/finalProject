@@ -57,13 +57,13 @@
                     <h1>테마별</h1>
                     <div id="courses">
                         <ul class="c-list">
-                            <li>가족</li>
-                            <li>아이</li>
-                            <li>데이트</li>
-                            <li>도보</li>
-                            <li>힐링</li>
-                            <li>맛집</li>
-                            <li>캠핑</li>
+                            <li name="movelineTheme">가족</li>
+                            <li name="movelineTheme">아이</li>
+                            <li name="movelineTheme">데이트</li>
+                            <li name="movelineTheme">도보</li>
+                            <li name="movelineTheme">힐링</li>
+                            <li name="movelineTheme">맛집</li>
+                            <li name="movelineTheme">캠핑</li>
                         </ul>
                     </div>
                 </div>
