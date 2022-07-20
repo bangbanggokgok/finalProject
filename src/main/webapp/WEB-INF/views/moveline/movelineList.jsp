@@ -10,10 +10,13 @@
 	</c:if>
 </c:forEach>
 
-<c:set var="moveline2" value="${map.MovelineBylocation}"/>
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="movelineList" value="${map.movelineList}" />
+
+
+<c:set var="moveline2" value="${map.MovelineBylocation}"/>
 <c:set var="listByHashTag" value="${map.listByHashTag}" />
+<c:set var="listByTheme" value="${map.listByTheme}" />
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -40,8 +43,11 @@
 		<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
 
-		<c:if test="${!empty param.hashtag}">
+		<c:if test="${!empty movelineList}">
             <c:set var="hash" value="${param.hashtag}" />
+        </c:if>
+		<c:if test="${!empty movelineList}">
+            <c:set var="theme" value="${param.theme}" />
         </c:if>
 
 		<section>
@@ -50,6 +56,11 @@
 				<section id="top">
 					<div>
 						<c:choose>
+							<c:when test="${!empty theme}">
+								<h1 id="fist-h1">
+									<a>${theme}</a>
+								</h1>	
+							</c:when>
 							<c:when test="${empty hash}">
 								<h1 id="first-h1">
 									<a>${locationName}</a>
@@ -60,8 +71,8 @@
 									<a>#${hash}</a>
 								</h1>
 							</c:when>
-
 						</c:choose>
+						${listByTheme}
 					</div>
 
 					<div>

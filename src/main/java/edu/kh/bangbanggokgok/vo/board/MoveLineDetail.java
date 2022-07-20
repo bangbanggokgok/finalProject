@@ -47,4 +47,6 @@ public class MoveLineDetail {
 	
 	private List<LandMark> landmarkList;
 	private List<MoveLineHashTag> hashtagList;
+	private List<MoveLineTheme> themeList;
+
 }
