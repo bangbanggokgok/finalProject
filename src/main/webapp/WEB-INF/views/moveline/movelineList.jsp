@@ -45,9 +45,8 @@
 
 		<c:if test="${!empty movelineList}">
             <c:set var="hash" value="${param.hashtag}" />
-        </c:if>
-		<c:if test="${!empty movelineList}">
             <c:set var="theme" value="${param.theme}" />
+            <c:set var="selectAll" value="${param.selectAll}" />
         </c:if>
 
 		<section>
@@ -56,6 +55,11 @@
 				<section id="top">
 					<div>
 						<c:choose>
+							<c:when test="${!empty selectAll}">
+								<h1 id="first-h1">
+									<a>${selectAll}</a>
+								</h1>
+							</c:when>
 							<c:when test="${!empty theme}">
 								<h1 id="fist-h1">
 									<a>${theme}</a>
@@ -72,7 +76,6 @@
 								</h1>
 							</c:when>
 						</c:choose>
-						${listByTheme}
 					</div>
 
 					<div>
@@ -132,13 +135,14 @@
 													</p>
 											</div>
 
-                                        <div class="ml-detail-plus">
-                                            <button type="button" class="btn-bookmark"
-                                                onclick="setBookmark(${moveline.movelineNo});">
-                                                <span class="icon-bookmark">즐겨찾기</span>
-                                            </button>
-                                        </div>
-                                    
+
+											<div class="ml-detail-plus">
+												<button type="button" class="btn-bookmark"
+													onclick="setBookmark(${moveline.movelineNo});">
+													<span class="icon-bookmark">즐겨찾기</span>
+												</button>
+											</div>
+
                                     </li>
                                 </ul>
                             </c:forEach>
@@ -200,7 +204,13 @@
 
 	<script>
 		const contextPath = "${contextPath}";
-	</script>
+
+        // 로그인한 회원 번호
+        const loginUserNo = "${loginUser.userNo}";
+
+    </script>
+
+
 
 	<script src="${contextPath}/resources/js/common/nav.js"></script>
 	<script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
