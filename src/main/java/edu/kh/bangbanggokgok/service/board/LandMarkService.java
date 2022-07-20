@@ -32,6 +32,11 @@ public interface LandMarkService {
 	 */
 	LandMarkDetail selectLandMakrDetail(int landMarkNo);
 	
+	/** 상세 이미지 조회
+	 * @return
+	 */
+	List<String> selectDetailImage();
+	
 	
 	/** 랜드마크 삽입 서비스
 	 * @param detail
