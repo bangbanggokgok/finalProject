@@ -64,12 +64,22 @@ for(let i=0;i<inputImage.length;i++){
 };
 
 function checkSubmit(){
+    const locationList = document.getElementById("locationList")[0];
     const landmarkName =document.getElementById("landmarkName")[0];
     const landMarkContent = document.getElementById("ladnmarkContent")[0];
     const images = document.getElementById("images")[0];
     
 
     if(confirm("랜드마크를 등록 하시겠습니까?")){
+        
+        if(locationList.value.length== ""){
+            alert("지역을 선택해주세요.");
+
+            locationList.value="";
+            locationList.focus();
+            return false;
+        }
+
         if(landmarkName.value.trim().length ==0){
             alert("랜드마크 이름을 입력해주세요.");
 
