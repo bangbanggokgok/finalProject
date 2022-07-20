@@ -200,11 +200,6 @@ public class LandMarkServiceImpl implements LandMarkService{
 //				}
 		return 0;
 	}
-
-	@Override
-	public List<String> selectDetailImage() {
-		return dao.selectImageList();
-	}
 		
 }
 		

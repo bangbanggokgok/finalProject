@@ -21,16 +21,24 @@
     <section id="contents">
       <div class="titleType1">
         <div class="area_tag">
-          <span class="name1">
+          <div class="name1">
             <a href="#">
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
-          </span>
+          </div>
+          <div class="name1">
+            <div class="heart1">
+              <i class="fa-solid fa-heart"></i>
+              <!-- <label id="fa-heart" name="fa-heart"></label> -->
+              <!-- <i class="fa-solid fa-siren"></i> -->
+              <span>찜하기</span>
+            </div>
+          </div>
         </div>
         <div class="area_address">
-          <h2>${landMarkDetail.landMarkName}</h2>
-          <span>${landMarkDetail.landMarkAddress}</span>
+          <h2>${landmarkDetail.landMarkName}</h2>
+          <span>${landmarkDetail.locationName}</span>
         </div>
         <!-- <div class="post_area">
           <button></button>
@@ -51,27 +59,15 @@
           <div class="container-out">
             <div class="container">
               <ul class="slider-container simple-list" id="slider">
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/1.jpg"
-                    alt="first_img"
-                  />
-                </li>
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/2.jpg"
-                    alt="first_img"
-                  />
-                </li>
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/3.jpg"
-                    alt="first_img"
-                  />
-                </li>
+                <c:if test="${!empty landmarkDetail.imageList}">
+                    <li class="slide">
+                      <img
+                        class="slide-img"
+                        src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"
+                        alt="first_img"
+                      />
+                    </li>
+                </c:if>
               </ul>
 
               <a href="javascript:void(0);" id="prev"
@@ -84,8 +80,12 @@
             <!-- end container -->
           </div>
           <div class="second-img">
-            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
-            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
+          <%-- 이부분 수정해야함 --%>
+            <c:if test="${!empty landmarkDetail}">
+              <c:forEach var="images" items="${landmarkDetail.imageList}">
+                <img src="${contextPath}${images.landMarkReName} alt="" />
+              </c:forEach>
+            </c:if>
           </div>
         </section>
         <section id="section2" class="section2" data-num="1">
@@ -98,27 +98,27 @@
               </div>
             </div>
             <div class="detail-content">
-              ${landMarkDetail.landMarkContent}
+              ${landmarkDetail.landMarkContent}
             </div>
             <div id="map" style="margin-top: 20px; width: 100%; height: 300px">
               지도
             </div>
             <table class="information">
               <tr>
-                <td class="info">문의 및 안내</td>
-                <td class="info-1">061-350-4674</td>
-                <td class="info-2 info">주소</td>
-                <td class="info-1">전라남도 영광군 법성면 진내리</td>
+                <%-- <td class="info">문의 및 안내</td> --%>
+                <%-- <td class="info-1">061-350-4674</td> --%>
+                <%-- <td class="info-2 info">주소</td> --%>
+                <%-- <td class="info-1">전라남도 영광군 법성면 진내리</td> --%>
               </tr>
               <tr>
-                <td class="info">휴일</td>
+                <%-- <td class="info">휴일</td>
                 <td class="info-1">연중무휴</td>
                 <td class="info-2 info">주차</td>
-                <td class="info-1">있음</td>
+                <td class="info-1">있음</td> --%>
               </tr>
               <tr>
-                <td class="info">입 장 료</td>
-                <td class="info-1">무료</td>
+                <%-- <td class="info">입 장 료</td>
+                <td class="info-1">무료</td> --%>
               </tr>
             </table>
           </div>
@@ -174,6 +174,12 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"
     ></script>
+    <c:if test="${!empty landmarkDetail}">
+      <script>
+        const X = ${landmarkDetail.landMarkX};
+        const Y = ${landmarkDetail.landMarkY};
+      </script>    
+    </c:if>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
   </body>
 </html>
