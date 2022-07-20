@@ -27,22 +27,32 @@
               <span>인기</span>
             </a>
           </div>
-          <div class="name1">
+          <div class="name1 name1-wrap">
             <div class="heart1">
-              <i class="fa-solid fa-heart"></i>
+              <img
+                class="heart-img"
+                src="${contextPath}/resources/images/landmark/heart.png"
+                alt=""
+              />
+              <img
+                class="redHeart-img"
+                src="${contextPath}/resources/images/landmark/redHeart.png"
+                alt=""
+              />
               <!-- <label id="fa-heart" name="fa-heart"></label> -->
               <!-- <i class="fa-solid fa-siren"></i> -->
               <span>찜하기</span>
             </div>
+            <a class="police" href="#">
+              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" />
+              <span>신고</span>
+            </a>
           </div>
         </div>
         <div class="area_address">
           <h2>${landmarkDetail.landMarkName}</h2>
           <span>${landmarkDetail.locationName}</span>
         </div>
-        <!-- <div class="post_area">
-          <button></button>
-        </div> -->
       </div>
 
       <section id="top_menu">

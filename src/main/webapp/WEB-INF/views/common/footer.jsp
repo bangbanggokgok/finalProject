@@ -6,6 +6,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/scroll-top.css" />
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
       crossorigin="anonymous"
@@ -102,6 +103,7 @@
           </li>
         </ul>
       </div>
+      <a id="back-to-top" href="#">Top</a>
     </footer>
 
     <c:if test="${ !empty message }">
@@ -110,5 +112,6 @@
         </script>
     </c:if> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    
   </body>
 </html>

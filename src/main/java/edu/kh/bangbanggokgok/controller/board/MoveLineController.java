@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.controller.board;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -11,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -144,17 +146,25 @@ public class MoveLineController {
 		return result;
 	}
 	
+	
 	// 코스 테마별 목록 조회
 	@GetMapping("/list/theme")
-	public String movelineTheme(@ModelAttribute MoveLine theme,
-								String[] movelineTheme
+	public String movelineTheme(String theme,
+								Model model,
+								@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+								@RequestParam Map<String, Object> paramMap
 								) {
+
+		Map<String, Object> map = null;
 		
-		theme.setMovelineTheme(String.join(",,", movelineTheme));
+		paramMap.put("cp", cp);
+		paramMap.put("theme", theme);
 		
+		map =  service.selectMovelineTheme(paramMap);
 		
-		return null;
+		model.addAttribute("map",map);
 		
+		return "moveline/movelineList";		
 	}
 	
 	
