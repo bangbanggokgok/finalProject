@@ -64,6 +64,13 @@ public interface MoveLineService {
 	List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark);
 
 
+	/** 코스 테마별 목록 조회
+	 * @param theme
+	 * @return 
+	 */
+	Map<String, Object> selectMovelineTheme(Map<String, Object> paramMap);;
+
+
 
 
 

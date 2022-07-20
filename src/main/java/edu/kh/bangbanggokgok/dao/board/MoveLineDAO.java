@@ -123,6 +123,30 @@ public class MoveLineDAO {
 		return sqlSession.selectList("movelineMapper.selectBookmarkList", moveLineBookMark);
 	}
 
+
+	/** 특정 테마별 전체 수 조회
+	 * @param paramMap
+	 * @return
+	 */
+	public int themeListCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("movelineMapper.themeListCount", paramMap);
+	}
+
+
+	/** 코스 테마별 목록 조회
+	 * @param theme
+	 * @return
+	 */
+	public List<MoveLineList> selectMovelineTheme(Map<String, Object> paramMap, Pagination pagination) {
+		
+		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movelineMapper.selectMovelineTheme", paramMap, rowBounds);
+
+	}
+
 	
 	
 	

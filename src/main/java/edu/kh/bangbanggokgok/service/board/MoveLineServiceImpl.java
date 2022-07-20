@@ -107,6 +107,28 @@ public class MoveLineServiceImpl implements MoveLineService{
 	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
 		return dao.selectBookmarkList(moveLineBookMark);
 	}
+
+
+
+
+	// 코스 테마별 목록 조회
+	@Override
+	public Map<String, Object> selectMovelineTheme(Map<String, Object> paramMap) {
+		
+		int listCount = dao.themeListCount(paramMap);
+		Pagination pagination = new Pagination((int)paramMap.get("cp"), listCount);
+		
+		List<MoveLineList> listByTheme = dao.selectMovelineTheme(paramMap, pagination);
+		
+		System.out.println("themList : " + listByTheme);
+		
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("pagination", pagination);
+		map.put("movelineList", listByTheme);
+		
+		return map;
+	}
+	
 	
 	
 	
