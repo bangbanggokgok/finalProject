@@ -77,14 +77,16 @@ public class LandMarkController {
 	
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{mode}")
-	public String landWriteForm(//@PathVariable("locationNum") int locationType,
-								@PathVariable String mode,
+	public String landWriteForm(@PathVariable String mode,
 								@RequestParam(value="no", required=false, defaultValue = "0") int landMarkNo,
 								Model model) {
 		
 		if(mode.equals("update")) {
 			
 			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
+			
+			detail.setLandMarkContent( Util.newLineClear(detail.getLandMarkContent()) );
+			
 			detail.setLandMarkContent(mode);
 		}
 		
@@ -150,8 +152,7 @@ public class LandMarkController {
 //			
 //			if(result > 0) {
 //				message = "게시글이 수정되었습니다.";
-//				// 현재 : /board/write/{boardCode}
-//				// 목표 : /board/detail/{boardCode}/{boardNo}?cp=10
+//				
 //				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMakrNo();
 //			}else {
 //				message = "게시글 수정 실패";
