@@ -66,8 +66,8 @@ public class LandMarkServiceImpl implements LandMarkService{
 	
 	//랜드마크 상세 조회
 	@Override
-	public LandMarkDetail selectLandMakrDetail(int landMarkNo) {
-		return dao.selectLandMakrDetail(landMarkNo);
+	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
+		return dao.selectLandMakrDetail(landMakrNo);
 	}
 
 	// 게시글,이미지 삽입
@@ -82,16 +82,16 @@ public class LandMarkServiceImpl implements LandMarkService{
 			List<LandMarkIMG> landMarkImageList = new ArrayList<LandMarkIMG>();
 			List<String> reNameList = new ArrayList<String>();
 			
-		
+			// imageList에 담겨있는 파일 정보 중 실제 업로도된 파일만 분류하는 작업
 			for(int i=0 ; i<imageList.size() ; i++) {
 				
-				if( imageList.get(i).getSize() > 0  ) { 
+				if( imageList.get(i).getSize() > 0  ) { // i번째 요소에 업로드된 이미지가 있을 경우
 					
 					// 변경된 파일명 저장
 					String reName = Util.fileRename( imageList.get(i).getOriginalFilename()  );
 					reNameList.add(reName);
 					
-					
+					// BoardImage 객체를 생성하여 값 세팅 후 boardImageList에 추가
 					LandMarkIMG img = new LandMarkIMG();
 					img.setLandMarkNo(landMarkNo); // 게시글 번호
 					img.setLandMarkImageLV(i); // 이미지 순서(파일 레벨)
@@ -102,12 +102,12 @@ public class LandMarkServiceImpl implements LandMarkService{
 			} // for 종료
 			
 			
-			
+			// 분류 작업 종료 후 boardImageList가 비어있지 않은 경우 == 파일이 업로드가 된 경우
 			if( !landMarkImageList.isEmpty()  ) {
 				
 				int result = dao.insertLandMarkImageList(landMarkImageList);
 				
-			
+				// result == 삽입 성공한 행의 개수
 				
 				if(result == landMarkImageList.size()) { // 삽입된 행의 개수와 업로드 이미지 수가 같을 경우  
 					

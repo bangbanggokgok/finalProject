@@ -36,7 +36,7 @@
                         </select>
                         <div style="height:20px;"></div>
                         <label class="title" style="font-weight:bold;">랜드마크 이름</label>
-                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landMarkDetail.landMarkName}">
+                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName">
                     </div>
                 </div>
     
@@ -81,7 +81,7 @@
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
                     <article class="contentArea">
-                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents">${landMarkDetail.landMarkContent}</textarea>
+                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
                     </article>
 
                     <div class="WritingTag">

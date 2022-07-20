@@ -66,27 +66,28 @@ public class LandMarkController {
 	}
 
 	// 랜드마크 상세 조회
-	@GetMapping("/detail/{locationNum}/{landMarkNo}")
-	public String landMarkDetail(@PathVariable("landMarkNo") int landMarkNo, Model model, HttpSession session,
+	@GetMapping("/detail/{locationNum}/{landMakrNo}")
+	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model, HttpSession session,
 			HttpServletRequest req, HttpServletResponse resp) {
 
-		LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMarkNo);
-		model.addAttribute("landMarkDetail",landMarkDetail);
+		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
+		model.addAttribute("landmarkDetail",landmarkDetail);
 		return "landMark/land-detail";
 	}
 	
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{mode}")
 	public String landWriteForm(@PathVariable String mode,
-								@RequestParam(value="no", required=false, defaultValue = "1") int landMarkNo,
+								@RequestParam(value="no", required=false, defaultValue = "0") int landMarkNo,
 								Model model) {
 		
 		if(mode.equals("update")) {
 			
-			LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMarkNo);
+			LandMarkDetail detail = service.selectLandMakrDetail(landMarkNo);
 			
-			model.addAttribute("landMarkDetail",landMarkDetail);
+			detail.setLandMarkContent( Util.newLineClear(detail.getLandMarkContent()) );
 			
+			detail.setLandMarkContent(mode);
 		}
 		
 		return "landMark/landmarkWrite";
@@ -157,7 +158,7 @@ public class LandMarkController {
 //				message = "게시글 수정 실패";
 //				path = req.getHeader(	"referer");
 //			}
-//			 	
+//			
 //			ra.addFlashAttribute("message", message);
 			
 			return "redirect:";//+path; 
