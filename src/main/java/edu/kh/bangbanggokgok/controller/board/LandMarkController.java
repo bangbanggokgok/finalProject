@@ -72,8 +72,8 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 
 	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
-		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
-		model.addAttribute("landmarkDetail", landmarkDetail);
+		LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMakrNo);
+		model.addAttribute("landMarkDetail", landMarkDetail);
 		return "landMark/land-detail";
 	}
 
