@@ -37,7 +37,7 @@
           </div>
         </div>
         <div class="area_address">
-          <h2>숲쟁이공원</h2>
+          <h2>${landMarkDetail.landMarkName}</h2>
           <span>전남 영광군</span>
         </div>
         <!-- <div class="post_area">
@@ -106,14 +106,7 @@
               </div>
             </div>
             <div class="detail-content">
-              조선 중종때 축조된 법성진성의 연장으로 심은 느티나무 등이 300년
-              이상 성장하여 성주변으로 울창하게 이루어진 숲으로 아름다운 꽃이
-              만발한 숲쟁이꽃동산을 거쳐 백제불교최초도래지와 연결된다. 국가지정
-              명승 ''한국의 아름다운 숲''으로 선정되었으며, 매년 국가무형문화재
-              법성포단오제가 이곳에서 열려왔다. 숲쟁이 공원을 걷다가 하늘을
-              올려다보면 푸른 하늘과 느티나무 잎 사이로 들어오는 따사로운 햇살에
-              눈이 부시다. 살랑살랑 불어오는 봄바람에 느티나무잎이 사각사각
-              소리를 내며 이따금 노래하는 새들의 소리가 정겹다.
+              ${landMarkDetail.landMarkContent}
             </div>
             <div id="map" style="margin-top: 20px; width: 100%; height: 300px">
               지도

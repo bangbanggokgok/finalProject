@@ -61,8 +61,8 @@ public class LandMarkDAO {
 	 * @param landMakrNo
 	 * @return detail
 	 */
-	public LandMarkDetail selectLandMakrDetail(int landMakrNo) {
-		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMakrNo);
+	public LandMarkDetail selectLandMakrDetail(int landMarkNo) {
+		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMarkNo);
 	}
 
 	/** 게시글 삽입 DAO
@@ -81,7 +81,7 @@ public class LandMarkDAO {
 	 * @return
 	 */
 	public int insertLandMarkImageList(List<LandMarkIMG> landMarkImageList) {
-		return sqlSession.insert("boardMapper.insertLandMarkImageList", landMarkImageList);
+		return sqlSession.insert("landMarkMapper.insertLandMarkImageList", landMarkImageList);
 	}
 
 
