@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<c:if test="${!empty map.landmarkList}">
+  <c:set var="landmarkList" value="${map.landmarkList}">
+  </c:set>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -134,14 +138,14 @@
         </div>
 
         <ol class="image-list grid-view" id="landMakrList">
-         <c:forEach var="landMark" items="${landmarkList}">
+         <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> <%--이부분은 진국님이 작성하셨나요??넵 음... 일단이건 냅둬두고 다만들고 설명해드림--%>
-              <img src="${contextPath}${landmakrList.landMarkImage}"></img>
+              <img src="${contextPath}${landmark.thumbnail}"></img>
                 <%-- 이부분은 좀 테스트 해봅시다 --%>
               <figcaption class="landMark" id="landMark">
-                <p class="land-Title"></p>
-                <p class="land-content"></p>
+                <p class="land-Title">${landmark.landMarkName}</p>
+                <p class="land-content">${landmark.landMarkContent}</p>
               </figcaption>
             </figure>
           </li>

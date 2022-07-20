@@ -46,17 +46,17 @@ public class LandMarkServiceImpl implements LandMarkService{
 		
 		
 //		int ListCount = dao.getListCount();
-		
-		List<LandMarkIMG> landMakrImage = dao.selectLandMakrIMG();
-		
 //		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 		
+		List<LandMarkIMG> landMakrImage = dao.selectLandMakrIMG();
+		List<LandMark> landMarkList = dao.selectLandMarkList(100);
 		Map<String, Object> map = new HashMap<String, Object>();
 		
-//		map.put("ListCount", ListCount);
 		map.put("landMakrImage", landMakrImage);
+		map.put("landmarkList", landMarkList);
+
+//		map.put("ListCount", ListCount);
 //		map.put("landMarkList", landMarkList);
-		
 		
 		return map;
 	}
