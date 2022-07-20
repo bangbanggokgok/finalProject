@@ -32,7 +32,7 @@
 	<!-- 이미지 정보 조회 resultMap -->
 	<resultMap type="landMarkImage" id="landmarkImage_rm">
 		<id property="landMarkImageNo" column="LN_IMG_NO" />
-		<result property="landMarkRename" column="LM_IMG_RENAME" />
+		<result property="landMarkReName" column="LM_IMG_RENAME" />
 		<result property="landMarkImageLV" column="LM_IMG_LEVEL" />
 		<result property="landMarkNo" column="LM_NO" />
 	</resultMap> 
@@ -102,7 +102,7 @@
 	<select id="selectImageList" resultMap="landmarkImage_rm">
 	SELECT * FROM LAND_IMG
     WHERE LM_NO = #{landMakrNo}
-    ORDER BY LM_IMG_LEVEL;
+    ORDER BY LM_IMG_LEVEL
     </select>
     
 	<!-- 랜드마크 상세 조회 -->
