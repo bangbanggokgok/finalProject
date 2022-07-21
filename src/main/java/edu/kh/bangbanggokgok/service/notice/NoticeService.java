@@ -18,4 +18,11 @@ public interface NoticeService {
 	 */
 	NoticeDetail selectNoticeDetail(int boardNo);
 
+	/** 공지 ajax 조회
+	 * @param cp
+	 * @param list
+	 * @return map
+	 */
+	Map<String, Object> selectNotice(int cp, String list);
+
 }

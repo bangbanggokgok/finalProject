@@ -141,8 +141,8 @@
         <ol class="image-list grid-view" id="landMakrList">
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
-            <figure> <%--이부분은 진국님이 작성하셨나요??넵 음... 일단이건 냅둬두고 다만들고 설명해드림--%>
-              <img src="${contextPath}${landmark.thumbnail}"></img>
+            <figure> 
+            <a href="../landmark-main/detail/${landmark.locationType}/${landmark.landMarkNo}">  <img src="${contextPath}${landmark.thumbnail}"></img></a>
                 <%-- 이부분은 좀 테스트 해봅시다 --%>
               <figcaption class="landMark" id="landMark">
                 <p class="land-Title">${landmark.landMarkName}</p>

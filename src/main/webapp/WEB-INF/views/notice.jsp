@@ -5,6 +5,11 @@
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="noticeList" value="${map.noticeList}" />
 
+<c:set var="anoticeList" value="${result.allNoticeList}"/>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,41 +28,39 @@
     <div class="board">
         <h1>공지사항</h1>
         <div class="list">
-            <span class="category all">전체</span>
-            <span class="category notice">공지</span>
-            <span class="category event">이벤트</span>
+            <span class="category" id="all">전체</span>
+            <span class="category" id="notide"onclick="show_noticePage()">공지</span>
+            <span class="category" id="event">이벤트</span>
         </div>
-        <ul class="noticePage">
 
 
-            <c:choose>
-                    <c:when test="${empty noticeList}">
-                        <li>
-                            <span colspan="5">게시글이 존재하지 않습니다.</span>
-                        </li>
-                    </c:when>
-
-                    <c:otherwise>
-                        <c:forEach var="notice" items="${noticeList}">
-                            <li>
-                                <div class="titleWrapper">
-                                    <div class="noticeBadge">${notice.noticeType}</div>
-                                    <div class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a></div>
-                                    <div class="noticeDate">${notice.noticeCreate}</div>
-                                </div>
-                            </li>
-                        </c:forEach>
-                    </c:otherwise>
-            </c:choose>
-
-            
-        </ul>
+        <div  id="allPage">
+            <ul class="noticePage">
+                <c:forEach var="notice" items="${noticeList}">
+                ${result.map.allNoticeList}
+                    <li>
+                        <div class="titleWrapper">
+                                <c:if test="${notice.noticeType == '공지'}">
+                                    <div class="noticeBadge">공지</div>
+                                </c:if>
+                                <c:if test="${notice.noticeType =='이벤트'}">
+                                    <div class="eventBadge">이벤트</div>
+                                </c:if>
+                            <div class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a></div>
+                            <div class="noticeDate">${notice.noticeCreate}</div>
+                        </div>
+                    </li>
+                </c:forEach>
+            </ul>
+        </div>
+        
 
 
+        
         <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="&cp="/>
+                <c:set var="url" value="${list}&cp="/>
 
 
                 <ul class="pagination">
@@ -91,6 +94,12 @@
                 </ul>
         </div>
     </div>
-</body>
 
+    <script>
+
+        const contextPath = "${contextPath}";
+    </script>
+</body>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="${contextPath}/resources/js/notice.js"></script>
 </html>
