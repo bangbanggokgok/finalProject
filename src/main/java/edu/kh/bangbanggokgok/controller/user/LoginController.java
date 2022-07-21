@@ -74,10 +74,10 @@ public class LoginController {
 		resetAccount.setUserName(name);
 		int result = service.resetPassword(resetAccount,resp);
 		if(result>0) {
-			path = "패스워드 바꿧다고 페이지 넣어야함";
+			path = "user/loginPage/password-change";
 		} else {
 			ra.addFlashAttribute("message","해당 회원은 존재하지 않습니다.");
-			path = "redirect:/uesr/login-page";
+			path = "redirect:/user/login-page";
 		}
 		return path;
 	}

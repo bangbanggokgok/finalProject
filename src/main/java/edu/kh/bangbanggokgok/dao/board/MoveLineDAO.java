@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
+import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
@@ -105,86 +106,88 @@ public class MoveLineDAO {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	/** 특정 해시태그 수 조회 DAO
-//	 * @param mLHashTagNo
-//	 * @return listCount
-//	 */
-//	public int hashTagListCount(int mLHashTagNo) {
-//		return sqlSession.selectOne("movelineMapper.hashTagListCount", mLHashTagNo);
-//	}
-//
-//
-//	/** 특정 해시태그 목록 조회 DAO
-//	 * @param pagination
-//	 * @param mLHashTagNo
-//	 * @return listByHashTag
-//	 */
-//	public List<MoveLineList> selectHashTagList(Pagination pagination, int MLHashTagNo) {
-//		
-//		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
-//		
-//		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-//		
-//		return sqlSession.selectList("movelineMapper.selectHashTagList", MLHashTagNo, rowBounds);
-//	}
-//
-//
-//	public int hashTagListCount(Map<String, Object> paramMap) {
-//		
-//		return sqlSession.selectOne("movelineMapper.hashTagListCount", paramMap);
-//
-//	}
-	
-	
-
-//	/** 코스 메인 조회 서비스 DAO (최신 코스)
-//	 * @return
-//	 */
-//	public List<MoveLineDetail> selectMoveLineMain2(List<MoveLine> lastNo) {
-//		return sqlSession.selectList("movelineMapper.selectMoveLineMain2", lastNo);
-//	}
-
-	/** 
-	 * @param locationNum
-	 * @return list
+	/** 코스 즐겨찾기 목록 조회
+	 * @param moveLineBookMark
+	 * @return result
 	 */
-	/*
-	 * public int selectMovelineBylocation() { return
-	 * sqlSession.selectOne("movelineMapper.selectMovelineBylocation", locationNum);
-	 * }
+	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
+		return sqlSession.selectList("movelineMapper.selectBookmarkList", moveLineBookMark);
+	}
+	
+	
+	/** 코스 즐겨찾기
+	 * @param moveLineBookMark
+	 * @return result
 	 */
+	public int bookmarkMoveline(MoveLineBookmark moveLineBookMark) {
+		return sqlSession.insert("movelineMapper.bookmarkMoveline", moveLineBookMark);
+	}
 
 
-	/** 마지막 코스 번호 조회
+	/** 특정 테마별 전체 수 조회
+	 * @param paramMap
 	 * @return
 	 */
-	/*
-	 * public int selectLastNo() { return
-	 * sqlSession.selectOne("movelineMapper.selectLastNo"); }
+	public int themeListCount(Map<String, Object> paramMap) {
+		return sqlSession.selectOne("movelineMapper.themeListCount", paramMap);
+	}
+
+
+	/** 코스 테마별 목록 조회
+	 * @param theme
+	 * @return
 	 */
+	public List<MoveLineList> selectMovelineTheme(Map<String, Object> paramMap, Pagination pagination) {
+		
+		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movelineMapper.selectMovelineTheme", paramMap, rowBounds);
+
+	}
+
+
+	// 전체 코스 수 조회
+		public int allListCount(Map<String, Object> paramMap) {
+			return sqlSession.selectOne("movelineMapper.allListCount", paramMap);
+		}
+	
+		
+	// 코스 전체 목록 조회
+	public List<MoveLineBookmark> selectAll(Map<String, Object> paramMap, Pagination pagination) {
+		
+		int offset=(pagination.getCurrentPage() -1) * pagination.getLimit();
+		
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		
+		return sqlSession.selectList("movelineMapper.selectAll", rowBounds);
+	}
+
+
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

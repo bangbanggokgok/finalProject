@@ -14,6 +14,11 @@
       type="text/css"
       href="${contextPath}/resources/css/landmark/land-detail.css"
     />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="${contextPath}/resources/css/landmark/land-detail2.css"
+    />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style1.css" /> -->
   </head>
   <body>
@@ -21,20 +26,44 @@
     <section id="contents">
       <div class="titleType1">
         <div class="area_tag">
-          <span class="name1">
+          <div class="name1">
             <a href="#">
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
-          </span>
+          </div>
+          <div class="name1 name1-wrap">
+            <div class="heart1">
+              <img
+                class="heart-img"
+                src="${contextPath}/resources/images/landmark/heart.png"
+                alt=""
+              />
+              <img
+                class="redHeart-img"
+                src="${contextPath}/resources/images/landmark/redHeart.png"
+                alt=""
+              />
+              <!-- <label id="fa-heart" name="fa-heart"></label> -->
+              <!-- <i class="fa-solid fa-siren"></i> -->
+              <span>찜하기</span>
+            </div>
+            <a class="police" href="#">
+              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" />
+              <span>신고</span>
+            </a>
+          </div>
         </div>
+
+        <div class="detailCheckWrap">
+          <a class="detailCheck" href="#">수정</a>
+          <a class="detailCheck" href="#">삭제</a>
+        </div>
+
         <div class="area_address">
-          <h2>숲쟁이공원</h2>
-          <span>전남 영광군</span>
+          <h2>${landmarkDetail.landMarkName}</h2>
+          <span>${landmarkDetail.locationName}</span>
         </div>
-        <!-- <div class="post_area">
-          <button></button>
-        </div> -->
       </div>
 
       <section id="top_menu">
@@ -51,27 +80,15 @@
           <div class="container-out">
             <div class="container">
               <ul class="slider-container simple-list" id="slider">
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/1.jpg"
-                    alt="first_img"
-                  />
-                </li>
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/2.jpg"
-                    alt="first_img"
-                  />
-                </li>
-                <li class="slide">
-                  <img
-                    class="slide-img"
-                    src="${contextPath}/resources/images/randmark/3.jpg"
-                    alt="first_img"
-                  />
-                </li>
+                <c:if test="${!empty landmarkDetail.imageList}">
+                    <li class="slide">
+                      <img
+                        class="slide-img"
+                        src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"
+                        alt="first_img"
+                      />
+                    </li>
+                </c:if>
               </ul>
 
               <a href="javascript:void(0);" id="prev"
@@ -84,8 +101,12 @@
             <!-- end container -->
           </div>
           <div class="second-img">
-            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
-            <img src="${contextPath}/resources/images/randmark/3.jpg" alt="" />
+          <%-- 이부분 수정해야함 --%>
+              <c:if test="${!empty landmarkDetail}">
+              <c:forEach var="images" items="${landmarkDetail.imageList}">
+                <img src="${contextPath}${images.landMarkReName}" />
+              </c:forEach>
+            </c:if>
           </div>
         </section>
         <section id="section2" class="section2" data-num="1">
@@ -93,39 +114,33 @@
             <div class="detail">
               <h3>상세정보</h3>
               <div class="icon-1">
-                <i class="fa-solid fa-chevron-down"></i>
-                <i class="fa-solid fa-angle-up"></i>
+                <i class="fa-solid fa-chevron-down"></i> 
+                <%-- <i style="display:none;"class="fa-solid fa-angle-up"></i> --%>
+                <i class="fa-solid fa-chevron-up"></i>
               </div>
             </div>
             <div class="detail-content">
-              조선 중종때 축조된 법성진성의 연장으로 심은 느티나무 등이 300년
-              이상 성장하여 성주변으로 울창하게 이루어진 숲으로 아름다운 꽃이
-              만발한 숲쟁이꽃동산을 거쳐 백제불교최초도래지와 연결된다. 국가지정
-              명승 ''한국의 아름다운 숲''으로 선정되었으며, 매년 국가무형문화재
-              법성포단오제가 이곳에서 열려왔다. 숲쟁이 공원을 걷다가 하늘을
-              올려다보면 푸른 하늘과 느티나무 잎 사이로 들어오는 따사로운 햇살에
-              눈이 부시다. 살랑살랑 불어오는 봄바람에 느티나무잎이 사각사각
-              소리를 내며 이따금 노래하는 새들의 소리가 정겹다.
+              ${landmarkDetail.landMarkContent}
             </div>
             <div id="map" style="margin-top: 20px; width: 100%; height: 300px">
               지도
             </div>
             <table class="information">
               <tr>
-                <td class="info">문의 및 안내</td>
-                <td class="info-1">061-350-4674</td>
-                <td class="info-2 info">주소</td>
-                <td class="info-1">전라남도 영광군 법성면 진내리</td>
+                <%-- <td class="info">문의 및 안내</td> --%>
+                <%-- <td class="info-1">061-350-4674</td> --%>
+                <%-- <td class="info-2 info">주소</td> --%>
+                <%-- <td class="info-1">전라남도 영광군 법성면 진내리</td> --%>
               </tr>
               <tr>
-                <td class="info">휴일</td>
+                <%-- <td class="info">휴일</td>
                 <td class="info-1">연중무휴</td>
                 <td class="info-2 info">주차</td>
-                <td class="info-1">있음</td>
+                <td class="info-1">있음</td> --%>
               </tr>
               <tr>
-                <td class="info">입 장 료</td>
-                <td class="info-1">무료</td>
+                <%-- <td class="info">입 장 료</td>
+                <td class="info-1">무료</td> --%>
               </tr>
             </table>
           </div>
@@ -181,6 +196,12 @@
       type="text/javascript"
       src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"
     ></script>
+    <c:if test="${!empty landmarkDetail}">
+      <script>
+        const X = ${landmarkDetail.landMarkX};
+        const Y = ${landmarkDetail.landMarkY};
+      </script>    
+    </c:if>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
   </body>
 </html>

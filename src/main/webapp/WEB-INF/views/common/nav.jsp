@@ -34,7 +34,7 @@
             <a href="${contextPath}/moveline-main/list" class="nav-menu">코스</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main" class="nav-menu">랜드마크</a>
+            <a href="${contextPath}/landmark-main/list" class="nav-menu">랜드마크</a>
           </li>
         </ul>
       </div>

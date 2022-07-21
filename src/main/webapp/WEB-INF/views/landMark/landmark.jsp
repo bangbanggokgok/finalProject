@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<c:if test="${!empty map.landmarkList}">
+  <c:set var="landmarkList" value="${map.landmarkList}">
+  </c:set>
+</c:if>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +25,6 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
-    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -98,6 +101,7 @@
       <div class="container">
         <div class="tit">
           <h2 id="zoneTitle">서울</h2>
+          <a class="randWrite" href="">랜드마크 작성하기</a>
         </div>
         <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
@@ -135,14 +139,14 @@
         </div>
 
         <ol class="image-list grid-view" id="landMakrList">
-         <c:forEach var="landMark" items="${landmarkList}">
+         <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
-            <figure> <%--이부분은 진국님이 작성하셨나요??넵 음... 일단이건 냅둬두고 다만들고 설명해드림--%>
-              <img src="${contextPath}${landmakrList.landMarkImage}"></img>
+            <figure> 
+            <a href="../landmark-main/detail/${landmark.locationType}/${landMark.landMarkNo}">  <img src="${contextPath}${landmark.thumbnail}"></img></a>
                 <%-- 이부분은 좀 테스트 해봅시다 --%>
               <figcaption class="landMark" id="landMark">
-                <p class="land-Title"></p>
-                <p class="land-content"></p>
+                <p class="land-Title">${landmark.landMarkName}</p>
+                <p class="land-content">${landmark.landMarkContent}</p>
               </figcaption>
             </figure>
           </li>
@@ -315,7 +319,9 @@
         const contextPath = "${contextPath}"
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/common/scroll-top.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
