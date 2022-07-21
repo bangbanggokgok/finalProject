@@ -19,9 +19,9 @@
     <div class="board">
         <h1>공지사항</h1>
         <div class="list">
-            <span class="category" id="all">전체</span>
-            <span class="category" id="notice">공지</span>
-            <span class="category" id="event">이벤트</span>
+            <div class="category" id="all" value="all"><a href="${contextPath}/notice/list">전체</a></div>
+            <div class="category" id="notice" value="notice">공지</div>
+            <div class="category" id="event" value="event">이벤트</div>
         </div>
 
         <div  id="allPage">
@@ -45,18 +45,11 @@
 
         <div class="pagination-area">
 
-                <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="${list}&cp="/>
-
-
-                <ul id="pagination" class="pagination">
-                    <!-- 첫 페이지로 이동 -->
+                <c:set var="url" value="${list}?cp="/>
+                <ul class="pagination" id="pagination">
                     <li><a href="${url}1">&lt;&lt;</a></li>
-
-                    <!-- 이전 목록 마지막 번호로 이동 -->
                     <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
 
-                    <!-- 범위가 정해진 일반 for문 사용 -->
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
                         <c:choose>
@@ -71,10 +64,7 @@
 
                     </c:forEach>
                     
-                    <!-- 다음 목록 시작 번호로 이동 -->
                     <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-
-                    <!-- 끝 페이지로 이동 -->
                     <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
 
                 </ul>

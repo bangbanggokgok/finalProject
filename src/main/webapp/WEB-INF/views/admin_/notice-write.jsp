@@ -20,35 +20,6 @@
 
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
-	<!-- 관리자 네비 -->
-	<section class="navWrapper">
-		<div class="adminNav">
-			<div class="adminList">Admin</div>
-			<ul class="listWrapper">
-				<li id="adminList">
-					<i class="fal fa-clipboard-list-check">공지사항</i>
-					<div>
-						<a href="#">공지/이벤트 조회</a><br> <a href="#">공지/이벤트 작성</a>
-					</div>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-user-friends">회원관리</i>
-					</a>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-map-marker-question">1:1 문의조회</i> 
-					</a>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-siren-on">신고관리</i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</section>
 
 	<!-- 관리자 메인탭 -->
 	<section class="header">

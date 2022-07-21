@@ -86,4 +86,18 @@
 		WHERE MB_TYPE = 'notice'
 		ORDER BY MB_NO DESC
 	</select>
+	
+	<!-- 이벤트 전체글 수 조회 -->
+	<select id="getEventListCount" resultType="_int">
+		SELECT COUNT(*) FROM MANAGER_BOARD
+		WHERE MB_TYPE = 'event'
+	</select>
+	
+	<!-- 이벤트 목록 조회 -->
+	<select id="selectAllEventList" resultMap="notice_rm">
+		SELECT MB_NO, MB_TITLE, MB_TYPE, TO_CHAR(MB_CREATE_DT, 'YYYY-MM-DD') MB_CREATE_DT
+		FROM MANAGER_BOARD
+		WHERE MB_TYPE = 'event'
+		ORDER BY MB_NO DESC
+	</select>
 </mapper>
