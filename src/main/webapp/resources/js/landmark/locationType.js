@@ -50,11 +50,14 @@ function searchingLocation(locationNum){
                     const li = document.createElement('li');
                     const figure = document.createElement('figure');
                     const img = document.createElement('img');
+                    const a = document.createElement("a");
+                    a.append(img);
+                    a.href("")
                     const figcaption = document.createElement('figcaption');
                     const p1 = document.createElement('p');
                     const p2 = document.createElement('p');
                     li.append(figure);
-                    figure.append(img);
+                    figure.append(a);
                     img.setAttribute("src",contextPath+landMark.thumbnail);
                     figure.append(figcaption);
                     p1.innerText=landMark.landMarkName;
