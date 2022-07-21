@@ -1,33 +1,6 @@
 
 
-// notice.addEventListener("click", function(){ 
-    
-//     let noticePage = document.getElementById("noticePage");
-//     let notice = document.getElementById("notice");
-//     let allPage = document.getElementById("allPage");
 
-//     if(notice.style.display == "none"){
-//         		notice.style.display = "block";
-//         		all.style.display = "none";}
-        		// event.style.display = "block";
-    // $.ajax({
-    //     url : contextPath + "/notice/notice/{list}",
-    //     data : {"noticeType" : notice.value},
-    //     // type : "post",
-    //     success : function(result){
-            
-    //         location.reload();
-    //         $('#allNoticeWrapper').load(location.href+' allNoticeWrapper');
-    //     },
-
-    //     error : function(req, status, error){
-    //         console.log("댓글 등록 실패")
-    //         console.log(req.responseText);
-    //     }
-    // });
-
-// });
-// let noticePage = document.getElementById("noticePage");
 const notice = document.getElementById("notice");
 let allPage = document.getElementById("allPage");
 
@@ -40,19 +13,51 @@ notice.addEventListener("click", function(){
         success : function(result){
             
             if(result != null){
-                console.log(result.allNoticeList[0].noticeNo);
-                noticeList = result.allNoticeList;
+                let noticeList = result.allNoticeList;
+                let paging = result.pagination;
+
                 const noticePage = document.getElementById("noticePage");
+                const pagination = document.getElementById("pagination");
+                
                 noticePage.innerHTML = "";
+                pagination.innerHTML = "";
                 for(let list of noticeList){
-                    console.log(list.noticeType);
-                    // console.log(noticeList[i]);
-                    // const noticeRow = document.createElement("li");
-                    // noticeRow.classList.add("noticeRow");
-                    // titleWrapper.innerText = list.noticeType;
+                    
+                    // 내용
+                    const noticeRow = document.createElement("li");
+                    noticeRow.classList.add("noticeRow");
+                    noticePage.append(noticeRow);
+
+                    const titleWrapper = document.createElement("li");
+                    titleWrapper.classList.add("titleWrapper");
+                    noticeRow.append(titleWrapper);
+
+                    const noticeBadge = document.createElement("span");
+                    noticeBadge.classList.add("noticeBadge");
+                    if(list.noticeType = "notice"){
+                        noticeBadge.innerHTML = "공지";
+                    }
+                    titleWrapper.append(noticeBadge);
+
+                    const noticeTitle = document.createElement("p");
+                    noticeTitle.classList.add("noticeTitle");
+                    noticeTitle.innerHTML = list.noticeTitle;
+                    titleWrapper.append(noticeTitle);
+
+                    const noticeDate = document.createElement("p");
+                    noticeDate.classList.add("noticeDate");
+                    noticeDate.innerHTML = list.noticeCreate;
+                    titleWrapper.append(noticeDate);
                 }
-            
-                alert("성공");
+                // 페이지
+                const startPage = document.createElement("li");
+                pagination.append(startPage);
+
+                const startPageA = document.createElement("a");
+                startPageA.setAttribute("href", "${url}1");
+                startPageA.innerHTML = "&lt;&lt;";
+                startPage.append(startPageA);
+
             } else { 
                 alert("실패.");
             }
@@ -65,33 +70,3 @@ notice.addEventListener("click", function(){
         }
     });
 });
-
-
-// function show_noticePage(){
-//     }
-//     $.ajax({
-//         url : contextPath + "/notice/{list}/1",
-//         data : "",
-//         dataType: "JSON",
-//         success : function(result){
-            
-//             if(result != null){ 
-//                 console.log(result);
-//                 const noticePage = document.getElementById("noticePage");
-//                 noticePage.innerHTML = "";
-
-                
-              
-//                 alert("성공");
-//                 console.log(result);
-//             } else { 
-//                 alert("실패.");
-//             }
-
-//         },
-
-//         error : function(req, status, error){
-//             console.log("예외")
-//             console.log(req.responseText);
-//         }
-//     });

@@ -49,7 +49,7 @@
                 <c:set var="url" value="${list}&cp="/>
 
 
-                <ul class="pagination">
+                <ul id="pagination" class="pagination">
                     <!-- 첫 페이지로 이동 -->
                     <li><a href="${url}1">&lt;&lt;</a></li>
 
