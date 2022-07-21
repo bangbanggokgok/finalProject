@@ -42,7 +42,6 @@ notice.addEventListener("click", function(){
             if(result != null){
                 console.log(result.allNoticeList[0].noticeNo);
                 noticeList = result.allNoticeList;
-                // console.log(noticeList[0]);
                 const noticePage = document.getElementById("noticePage");
                 noticePage.innerHTML = "";
                 for(let list of noticeList){

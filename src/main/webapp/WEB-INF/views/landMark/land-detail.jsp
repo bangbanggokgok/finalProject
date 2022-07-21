@@ -14,11 +14,6 @@
       type="text/css"
       href="${contextPath}/resources/css/landmark/land-detail.css"
     />
-        <link
-      rel="stylesheet"
-      type="text/css"
-      href="${contextPath}/resources/css/landmark/land-detail2.css"
-    />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style1.css" /> -->
   </head>
   <body>

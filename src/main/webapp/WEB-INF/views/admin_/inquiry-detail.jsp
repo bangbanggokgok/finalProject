@@ -21,15 +21,15 @@
 
     <section class="header">
         <section class="pageWrapper">
-            <h1 font-size="24px" class="boardTitle">1:1 문의 답변</h1>
+            <h1 style="font-size:24px" class="boardTitle">1:1 문의 답변</h1>
         </section>
     </section>
 
     <section class="board">
         <section class="navWrapper">
             <div class="adminNav">
+	            <div class="adminList">Admin</div>
                 <ul class="listWrapper">
-                    <div class="adminList">Admin</div>
                     <li id="adminList">
                         <i class="fal fa-clipboard-list-check"></i> 공지사항
                         <div>
@@ -64,11 +64,10 @@
                 </div>
                 
                 <div id="answer">
-                 <c:choose>
-                    <c:when test="${empty detail.questionAnswer}">
-                    
-                        <div class="replyArea">
-                        <textarea class="reply" id="replyContent" placeholder="답변을 입력해주세요."></textarea>
+                <c:choose>
+            	    <c:when test="${empty detail.questionAnswer}">
+            	        <div class="replyArea">
+                        	<textarea class="reply" id="replyContent" placeholder="답변을 입력해주세요."></textarea>
                         </div>
 
                         <section class="submitBar">
@@ -76,7 +75,6 @@
                                 <button type="button" id="addReply" class="submitButton">등록하기</button>
                             </div>
                         </section>
-                    
                     </c:when>
 
                     <c:otherwise>
@@ -96,17 +94,13 @@
         </section>
     </section>
 
-
+</body>
     <script>
-
         const contextPath = "${contextPath}";
         const questionNo = "${detail.questionNo}";
         const questionAnswer = "${detail.questionAnswer}";
         const userNo = "${loginUser.userNo}"
     </script>
-
-
-</body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/admin_/inquiry-detail.js"></script>
 </html>

@@ -13,27 +13,37 @@
 </head>
 <body>
     <div class="adminNav">
+		<div class="adminList">Admin</div>
             <ul class="listWrapper">
-                <div class="adminList">Admin</div>
                 <li id="adminList">
-                    <i class="fal fa-clipboard-list-check"></i> 공지사항
-                    <div>
-                        <a href="${contextPath}/notice/list">공지/이벤트 조회</a><br>
-                        <a href="${contextPath}/admin/notice/write">공지/이벤트 작성</a><br>
-                    </div>
+                <!-- 네비 디자인 이야기 다시합시다. -->
+                    <i class="fal fa-clipboard-list-check">공지사항</i> 
+                    <span>
+                    	<a href="${contextPath}/notice/list">공지/이벤트 조회</a>
+                   	</span>
+                    <span>
+                    	<a href="${contextPath}/admin/notice/write">공지/이벤트 작성</a>
+                   	</span>
                 </li>
                 <li id="adminList">
-                    <a href="${contextPath}/admin/user/list"><i class="fal fa-user-friends"></i> 회원관리</a>
+                    <a href="${contextPath}/admin/user/list">
+                    	<i class="fal fa-user-friends"></i> 회원관리
+                   	</a>
                 </li>
                 <li id="adminList">
-                    <a href="${contextPath}/admin/qna/list"><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
+                    <a href="${contextPath}/admin/qna/list">
+                    	<i class="fal fa-map-marker-question"></i> 1:1 문의조회
+                   	</a>
                 </li>
                 <li id="adminList">
-                    <a href="${contextPath}/admin/report/course/list"><i class="fal fa-siren-on"></i> 신고관리</a>
-                    <a href="${contextPath}/admin/report/reply/list"><i class="fal fa-siren-on"></i> 댓글신고관리</a>
+                    <a href="${contextPath}/admin/report/course/list">
+                    	<i class="fal fa-siren-on"></i> 신고관리
+                   	</a>
+                    <a href="${contextPath}/admin/report/reply/list">
+                    	<i class="fal fa-siren-on"></i> 댓글신고관리
+                   	</a>
                 </li>
             </ul>
-
         </div>
 </body>
 </html>
