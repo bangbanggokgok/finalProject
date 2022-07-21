@@ -49,7 +49,6 @@
             </a>
           </div>
         </div>
-
         <div class="detailCheckWrap">
           <a class="detailCheck" href="#">수정</a>
           <a class="detailCheck" href="#">삭제</a>

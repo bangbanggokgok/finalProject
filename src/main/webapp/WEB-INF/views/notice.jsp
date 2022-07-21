@@ -4,11 +4,7 @@
 
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="noticeList" value="${map.noticeList}" />
-
 <c:set var="anoticeList" value="${result.allNoticeList}"/>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
