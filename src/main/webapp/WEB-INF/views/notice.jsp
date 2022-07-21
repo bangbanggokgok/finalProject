@@ -41,13 +41,20 @@
                     <li>
                         <div class="titleWrapper">
                                 <c:if test="${notice.noticeType == '공지'}">
-                                    <div class="noticeBadge">공지</div>
+                                    <div class="noticeBadge">
+                                    	공지
+                                    </div>
                                 </c:if>
                                 <c:if test="${notice.noticeType =='이벤트'}">
-                                    <div class="eventBadge">이벤트</div>
+                                    <div class="eventBadge">
+                                    	이벤트
+                                    </div>
                                 </c:if>
-                            <div class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a></div>
-                            <div class="noticeDate">${notice.noticeCreate}</div>
+                            <div class="noticeTitle">
+                            	<a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a>
+                           	</div>
+                            <div class="noticeDate">${notice.noticeCreate}
+                            </div>
                         </div>
                     </li>
                 </c:forEach>
