@@ -1,10 +1,10 @@
 function checkSubmit(){
     console.log("함수 동작");
 
-    const locationList = document.getElementById("locationList")[0];
-    const landmarkName =document.getElementById("landmarkName")[0];
-    const landMarkContent = document.getElementById("ladnmarkContent")[0];
-    const images = document.getElementById("images")[0];
+    const locationList = document.getElementById("locations-list");
+    const landmarkName =document.getElementById("title");
+    const landMarkContent = document.getElementById("contents");
+    const images = document.getElementsByName("images");
     
 
     if(!confirm("랜드마크를 등록 하시겠습니까?")){
@@ -13,7 +13,7 @@ function checkSubmit(){
 
        return false;
     }else{
-        if(locationList.value.length== ""){
+        if(locationList.value == ""){
             alert("지역을 선택해주세요.");
 
             locationList.value="";
@@ -36,15 +36,25 @@ function checkSubmit(){
             return false;
         }
 
-        const regExp = /(.*?)\.(jpg|png)$/;
-        if(images.value.length == 0){
+        //const regExp = /(.*?)\.(jpg|png)$/;
+        let flag = true;
+        for(let img of images){
+            if(img.value != ""){
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag){
             alert("랜드마크 사진을 넣어주세요.");
             return false;
         }
-        if(!images.match(regExp)){
+
+
+        /*if(!images.match(regExp)){
             alert("jpg,png 파일만 사용할 수 있습니다.");
             return false;
-         }
+         }*/
          return true;
     }
     };
