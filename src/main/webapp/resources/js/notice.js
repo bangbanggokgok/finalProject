@@ -27,45 +27,35 @@
     // });
 
 // });
-let noticePage = document.getElementById("noticePage");
-let notice = document.getElementById("notice");
+// let noticePage = document.getElementById("noticePage");
+const notice = document.getElementById("notice");
 let allPage = document.getElementById("allPage");
 
-function show_noticePage(){
+notice.addEventListener("click", function(){
 
-    let noticeValue = document.getElementById("noticeValue");
-    console.log(noticeValue.value);
-
-    }
     $.ajax({
-        url : contextPath + "/notice/notice/{list}",
+        url : contextPath + "/notice/{list}/1",
         data : "",
         dataType: "JSON",
         success : function(result){
             
-            if(result != null){ 
-                var map = result[i];
-                for(var key in map){
-                    console.log(this.noticeNo);
-                    console.log(this.noticeType);
-                    console.log(this.noticeTitle);
+            if(result != null){
+                console.log(result.allNoticeList[0].noticeNo);
+                noticeList = result.allNoticeList;
+                // console.log(noticeList[0]);
+                const noticePage = document.getElementById("noticePage");
+                noticePage.innerHTML = "";
+                for(let list of noticeList){
+                    console.log(list.noticeType);
+                    // console.log(noticeList[i]);
+                    // const noticeRow = document.createElement("li");
+                    // noticeRow.classList.add("noticeRow");
+                    // titleWrapper.innerText = list.noticeType;
                 }
-
-                // document.getElementById("allPage").style.display = "none";
-                // location.reload();
-                // $('#allNoticeWrapper').load(location.href+' allNoticeWrapper');
-                
-                // document.getElementById("noticePage").style.display = "block";
-
-                // alert("성공.");
-                $.each(result['key'], function(key, value) {
-                    alert(value.data);
-                });	
-  
-                console.log(result);
+            
+                alert("성공");
             } else { 
                 alert("실패.");
-                console.log(result);
             }
 
         },
@@ -75,3 +65,34 @@ function show_noticePage(){
             console.log(req.responseText);
         }
     });
+});
+
+
+// function show_noticePage(){
+//     }
+//     $.ajax({
+//         url : contextPath + "/notice/{list}/1",
+//         data : "",
+//         dataType: "JSON",
+//         success : function(result){
+            
+//             if(result != null){ 
+//                 console.log(result);
+//                 const noticePage = document.getElementById("noticePage");
+//                 noticePage.innerHTML = "";
+
+                
+              
+//                 alert("성공");
+//                 console.log(result);
+//             } else { 
+//                 alert("실패.");
+//             }
+
+//         },
+
+//         error : function(req, status, error){
+//             console.log("예외")
+//             console.log(req.responseText);
+//         }
+//     });

@@ -73,12 +73,12 @@ public class NoticeController {
 	
 	// 공지 ajax 조회
 	@ResponseBody
-	@GetMapping("/notice/{list}")
-	public Map<String, Object> noticelist(@PathVariable("list") String list, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
+	@GetMapping("/{list}/1")
+	public String noticelist(@PathVariable("list") String list, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
 		
 		Map<String, Object> map = service.selectNotice(cp, list);
-//		return new Gson().toJson(map);
-		return map;
+		return new Gson().toJson(map);
+//		return map;
 	}
 	
 
