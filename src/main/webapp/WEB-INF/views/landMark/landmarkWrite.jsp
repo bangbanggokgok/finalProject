@@ -23,7 +23,7 @@
 
     <section class="board">
         <section class="pageWrapper">
-            <form action="" method="POST" enctype="multipart/form-data" onsubmit="checkSubmit()">
+            <form action="" method="POST" enctype="multipart/form-data" onsubmit="return checkSubmit()">
                 <div class="titleFields">
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
@@ -37,14 +37,28 @@
                         <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landMarkDetail.landMarkName}">
                     </div>
                 </div>
-    
+
+                <c:forEach items="${detail.imageList}" var="boardImage">
+                <c:choose>
+                    <c:when test="${landMarkImage.landMarkImageLV} == 0">
+                        <c:set var="img0"  value="${contextPath}${landMarkImage.landMarkReName}" />
+                    </c:when>
+
+                    <c:when test="${landMarkImage.landMarkImageLV} == 1">
+                        <c:set var="img1"  value="${contextPath}${landMarkImage.landMarkReName}" />
+                    </c:when>
+
+                </c:choose>
+            </c:forEach>
+
+
                 <!-- 업로드 이미지 -->
                 <label class="addImg" style="font-weight:bold;">사진 첨부</label>
                 <div class="img-box">
     
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img0}">
                         </label>
                         <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -124,6 +138,6 @@
     </c:if>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
+    <script src="${contextPath}/resources/js/landmark/landmarkWrite.js"></script>
 </body>
-<script src="${contextPath}/resources/js/landmark/landmarkWrite.js"></script>
 </html>

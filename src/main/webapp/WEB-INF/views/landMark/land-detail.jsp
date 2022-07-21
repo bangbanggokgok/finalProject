@@ -102,9 +102,9 @@
           </div>
           <div class="second-img">
           <%-- 이부분 수정해야함 --%>
-            <c:if test="${!empty landmarkDetail}">
+              <c:if test="${!empty landmarkDetail}">
               <c:forEach var="images" items="${landmarkDetail.imageList}">
-                <img src="${contextPath}${images.landMarkReName} alt="" />
+                <img src="${contextPath}${images.landMarkReName}" />
               </c:forEach>
             </c:if>
           </div>

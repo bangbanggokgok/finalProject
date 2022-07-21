@@ -73,15 +73,17 @@ public class LandMarkController {
 
 	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
 		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
+		
 		//이미지 담아야함
 		model.addAttribute("landmarkDetail", landmarkDetail);
+		
 		return "landMark/land-detail";
 	}
 
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{mode}")
 	public String landWriteForm(@PathVariable String mode,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int landMarkNo,
+			@RequestParam(value = "no", required = false, defaultValue = "1") int landMarkNo,
 			Model model) {
 
 		if(mode.equals("update")) {
@@ -152,17 +154,21 @@ public class LandMarkController {
 //			if(result > 0) {
 //				message = "게시글이 수정되었습니다.";
 //				
-//				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMakrNo();
+//				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMarkNo();
 //			}else {
 //				message = "게시글 수정 실패";
 //				path = req.getHeader(	"referer");
 //			}
 //			 	
 //			ra.addFlashAttribute("message", message);
+			
+			
+			
+			
 
-			return "redirect:";// +path;
-		}
+			return "redirect:";// + path;
 
 	}
 
+}
 }
