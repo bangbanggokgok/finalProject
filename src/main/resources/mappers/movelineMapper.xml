@@ -296,12 +296,24 @@
 		</if>
 	</select> -->
 	
+	<!-- 코스 전체 목록 조회 -->
+	<select id="selectAll" resultMap="MoveLineDetail_rm">
+	SELECT A.*,
+			  (SELECT ML_RENAME FROM ML_IMG
+	           WHERE A.ML_NO = ML_IMG.ML_NO
+	           AND ML_IMG_LEVEL = 0) THUMBNAIL
+	FROM MOVELINE_BOARD A
+	</select>
 	
-	
-	
-	
-	
-	
+	<!-- 전체 코스 수 조회 -->
+	<select id="allListCount" resultType="_int">
+		SELECT COUNT(*)
+		FROM MOVELINE_BOARD
+		
+		WHERE ML_DELETE_DT IS NULL
+		<if test='selectAll != null and selectAll != ""'>
+		</if>
+	</select>
 	
 	
 	

@@ -49,7 +49,7 @@
 		                        </li>
 	                    	</c:forEach>
                     	</c:if>
-                        <li class="location-div">전체</li>
+                        <li class="location-div" id="selectAll">전체</li>
                     </ul>
                 </div> 
         

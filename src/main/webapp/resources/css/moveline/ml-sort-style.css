@@ -172,9 +172,9 @@ h1{
 
 }
 
-.s-pic>img{
+.s-pic img{
     max-width: 350px;
-    min-height: 300px;
+    max-height: 385px;
 }
 
 .s-pic>a{
