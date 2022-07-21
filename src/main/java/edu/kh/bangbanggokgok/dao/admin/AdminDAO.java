@@ -96,7 +96,7 @@ public class AdminDAO {
 		return sqlSession.selectOne("adminMapper.getReportListCount", list);
 	}
 
-	/** 신고 목록 조회 DAO
+	/** 코스 신고 목록 조회 DAO
 	 * @param pagination
 	 * @param list
 	 * @return
@@ -124,8 +124,31 @@ public class AdminDAO {
 		return sqlSession.update("adminMapper.insertAnswer", detail);
 	}
 
+	/** 신고 처리
+	 * @param report
+	 * @return result
+	 */
 	public int updateReport(ReportMoveLine report) {
 		return sqlSession.update("adminMapper.updateReport", report);
+	}
+
+	/** 댓글 신고 수 조회
+	 * @param list
+	 * @return
+	 */
+	public int getReplyReportCount(String list) {
+		return sqlSession.selectOne("adminMapper.getReplyReportCount", list);
+	}
+
+	/** 댓글 신고 목록 조회
+	 * @param pagination
+	 * @param list
+	 * @return
+	 */
+	public List<Question> selectReplyReport(Pagination pagination, String list) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("adminMapper.selectReplyReport", list, rowBounds);
 	}
 	
 	
