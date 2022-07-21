@@ -27,7 +27,6 @@ public class MoveLineDetail {
 	private int MLHashTagNo;
 	private String MLHashTag;
 	
-	
 	private int userNo;
 	private String userName;
 	private String profileImage;
@@ -35,7 +34,6 @@ public class MoveLineDetail {
 	private List<MoveLineImage> imageList;
 	private String thumbnail;
 
-	
 	private int landMarkNo;
 	private int landMarkX;
 	private int landMarkY;
@@ -50,3 +48,5 @@ public class MoveLineDetail {
 	private List<MoveLineTheme> themeList;
 
 }
+
+
