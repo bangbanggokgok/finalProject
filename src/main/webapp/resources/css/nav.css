@@ -176,3 +176,11 @@ a {
     color:white;
     font: bold 15px "arial";
 }
+.admin-btn{
+        border-right: none;
+        display: inline-block;
+        font-size: 15px;
+        padding: 10px;
+        width: 118px;
+        text-align: center;
+}

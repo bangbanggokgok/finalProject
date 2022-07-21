@@ -163,3 +163,20 @@ ul,li,ol{
 .trans{
     transition-timing-function: ease-in;
 }
+
+.admin-btn{
+    border-right:none;
+    display: inline-block;
+    font-size:15px;
+    padding:8px;
+    width:133px;
+    text-align: center;
+}
+.menu-btn{
+    border-right:none;
+    display: inline-block;
+    font-size:15px;
+    padding:8px;
+    width:110px;
+    text-align: center;
+}
