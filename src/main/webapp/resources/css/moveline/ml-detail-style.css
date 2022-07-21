@@ -1,3 +1,8 @@
+html{
+    display: flex;
+    justify-content: center;}
+
+
 /* 전체 화면 */
 #contents{
     width: 1140px;
@@ -82,7 +87,7 @@
 
 #moveline-map-area{
     border: 1px solid #ccc;
-    height: 400px;
+    height: 300px;
 }
 
 #moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
@@ -101,8 +106,9 @@
 
 #moveline-images{
     overflow: hidden;
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
+    text-align: center;
 }
 
 /* 랜드마크 디테일 */
