@@ -37,7 +37,7 @@ public class LandMarkDAO {
 	/** 랜드마크 슬라이드 이미지 조회
 	 * @return
 	 */
-	public List<LandMarkIMG> selectLandMakrIMG() {		
+	public List<LandMarkIMG> selectLandmarkImageList() {		
 		return sqlSession.selectList("landMarkMapper.selectLandMarkIMG");
 	}
 	
@@ -61,7 +61,7 @@ public class LandMarkDAO {
 	 * @param landMakrNo
 	 * @return detail
 	 */
-	public LandMarkDetail selectLandMakrDetail(int landMarkNo) {
+	public LandMarkDetail selectLandmarkDetail(int landMarkNo) {
 		return sqlSession.selectOne("landMarkMapper.selectLandMarkDetail", landMarkNo);
 	}
 

@@ -23,8 +23,8 @@ addReply.addEventListener("click", function(){
 
                 alert("답변이 등록되었습니다.");
 
-                replyContent.value = ""; 
-                location.realod
+                 location.reload();
+                $('#answer').load(location.href+' answer');
 
             } else { 
                 alert("답변 등록에 실패하였습니다.");

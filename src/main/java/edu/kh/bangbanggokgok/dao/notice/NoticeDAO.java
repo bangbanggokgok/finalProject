@@ -30,10 +30,7 @@ public class NoticeDAO {
 	public List<Notice> selectNoticeList(Pagination pagination, String list) {
 		
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
-		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
-		
-//		return sqlSession.selectList("noticeMapper.selectNoticeList", rowBounds);
 		return sqlSession.selectList("noticeMapper.selectNoticeList", list, rowBounds);
 	}
 
@@ -44,6 +41,26 @@ public class NoticeDAO {
 	 */
 	public NoticeDetail selectnoticeDetail(int boardNo) {
 		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", boardNo);
+	}
+
+
+	/** 공지 전체 수 조회
+	 * @return 
+	 */
+	public int getnoticeListCount() {
+		return sqlSession.selectOne("noticeMapper.getNoticeListCount");
+	}
+
+
+	/** 공지 목록 조회 DAO
+	 * @param pagination
+	 * @param list
+	 * @return
+	 */
+	public List<Notice> selectAllNoticeList(Pagination pagination, String list) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("noticeMapper.selectAllNoticeList", list, rowBounds);
 	}
 	
 	

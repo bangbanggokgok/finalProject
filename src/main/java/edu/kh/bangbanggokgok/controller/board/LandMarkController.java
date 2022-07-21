@@ -46,12 +46,8 @@ public class LandMarkController {
 	public String landmarkMainPage(Model model) {
 
 		// 랜드마크 목록 조회 서비스
-		// 게시글 목록 조회
-//		List<LandMark> landMarks = landMarkListPage(100, model);
 		Map<String, Object> map = service.selectAllLandMarkList();
-		
 		model.addAttribute("map", map);
-		// 미리 작성한 비동기 친구에 매개변수 100을 넣으면 서울에있는 랜드마크 검색
 		return "landMark/landmark";
 	}
 
@@ -61,33 +57,30 @@ public class LandMarkController {
 			Model model) {
 
 		// 랜드마크 특정 지역 목록 조회 서비스
-		// 지역 이름 조회
-		// 게시글 목록 조회
 		Map<String, Object> map = service.selectLandMarkList(locationType);
-
 		return new Gson().toJson(map);
 	}
 
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
-
-	public String landMarkDetail(@PathVariable("landMarkNo") int landMakrNo, Model model) {
-		LandMarkDetail landmarkDetail = service.selectLandMakrDetail(landMakrNo);
-		//이미지 담아야함
+	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo, Model model) {
+		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
+		// 이미지 담아야함
 		model.addAttribute("landmarkDetail", landmarkDetail);
+		
 		return "landMark/land-detail";
 	}
 
 	// 게시글 작성 화면 전환
-	@GetMapping("/write/{mode}")
+	@GetMapping("/write/{mode}/{landmarkNo}")
 	public String landWriteForm(@PathVariable String mode,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int landMarkNo,
-			Model model) {
+			@PathVariable("landmarkNo") int landmarkNo, Model model) {
 
-		if(mode.equals("update")) {
-			LandMarkDetail landMarkDetail = service.selectLandMakrDetail(landMarkNo);
-			landMarkDetail.setLandMarkContent(Util.newLineClear(landMarkDetail.getLandMarkContent()));
-			model.addAttribute("landMarkDetail",landMarkDetail);
+		if (mode.equals("update")) {
+			LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
+			landmarkDetail.setLandMarkContent(Util.newLineClear(landmarkDetail.getLandMarkContent()));
+			//xss 처리해야함
+			model.addAttribute("landmarkDetail", landmarkDetail);
 		}
 
 		return "landMark/landmarkWrite";
@@ -122,46 +115,38 @@ public class LandMarkController {
 		String webPath = "/resources/images/landmark/";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 
+		String path = null;
+		String message = null;
+
 		if (mode.equals("insert")) {
 
 			int landMarkNo = service.insertLandMark(detail, imageList, webPath, folderPath);
 
-			String path = null;
-			String message = null;
 			if (landMarkNo > 0) {
-
 				path = "../detail/" + param.get("locationsList") + "/" + landMarkNo;
 				message = "게시글이 등록되었습니다.";
-
 			} else {
 				path = req.getHeader("referer");
 				message = "게시글 삽입 실패";
 			}
-
-			ra.addFlashAttribute("message", message);
-
-			return "redirect:" + path;
-
-		} else {// 수정코드 작성 공간
-
-//			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
-//			
-//			String path = null;
-//			String message = null;
-//			
-//			if(result > 0) {
-//				message = "게시글이 수정되었습니다.";
-//				
-//				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMakrNo();
-//			}else {
-//				message = "게시글 수정 실패";
-//				path = req.getHeader(	"referer");
-//			}
-//			 	
-//			ra.addFlashAttribute("message", message);
-
-			return "redirect:";// +path;
 		}
+
+		if (mode.equals("update")) {
+
+			// 수정코드 작성 공간
+			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
+
+			if(result > 0) {
+				message = "게시글이 수정되었습니다.";
+				path = "../detail/" + param.get("locationNum") + "/" + detail.getLandMarkNo();
+			}else {
+				message = "게시글 수정 실패";
+				path = req.getHeader("referer");
+			}
+		}
+		ra.addFlashAttribute("message", message);
+
+		return "redirect:"+path;
 
 	}
 

@@ -211,3 +211,22 @@ li {
     color: white;
     font-weight: bold;
 }
+
+.category {
+    cursor: pointer;
+}
+.list{
+    margin-bottom: 30px;
+}
+.list > span {
+    margin-right: 20px;
+}
+
+.list > span > a{
+    text-decoration: none;
+}
+
+#course {
+    color: ;
+}
+

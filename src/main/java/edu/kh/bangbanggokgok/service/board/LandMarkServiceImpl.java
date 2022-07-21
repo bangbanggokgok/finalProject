@@ -48,7 +48,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 //		int ListCount = dao.getListCount();
 //		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 		
-		List<LandMarkIMG> landMakrImage = dao.selectLandMakrIMG();
+		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
 		List<LandMark> landMarkList = dao.selectLandMarkList(100);
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -64,8 +64,8 @@ public class LandMarkServiceImpl implements LandMarkService{
 	
 	//랜드마크 상세 조회
 	@Override
-	public LandMarkDetail selectLandMakrDetail(int landMarkNo) {
-		return dao.selectLandMakrDetail(landMarkNo);
+	public LandMarkDetail selectLandmarkDetail(int landMarkNo) {
+		return dao.selectLandmarkDetail(landMarkNo);
 	}
 
 	// 게시글,이미지 삽입
@@ -78,7 +78,6 @@ public class LandMarkServiceImpl implements LandMarkService{
 			List<LandMarkIMG> landMarkImageList = new ArrayList<LandMarkIMG>();
 			List<String> reNameList = new ArrayList<String>();
 			
-		
 			for(int i=0 ; i<imageList.size() ; i++) {
 				
 				if( imageList.get(i).getSize() > 0  ) { 
@@ -151,7 +150,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 //							
 //							
 //							LandMarkIMG img = new LandMarkIMG();
-//							img.setLandMarkNo(landMarkNo);
+//							img.setLandMarkNo(detail.getLandMarkNo());
 //							img.setLandMarkImageLV(i); 
 //							img.setLandMarkReName( webPath + reName );
 //							
@@ -160,14 +159,14 @@ public class LandMarkServiceImpl implements LandMarkService{
 //					} 
 //
 //					
-//					//삭제된 이미지 delete
+//					//삭제된 이미지
 //					if(!deleteList.equals("")) {
 //						Map<String, Object> map = new HashMap<>();
 //						
-//						map.put("boardNo", detail.getLandMakrNo());
+//						map.put("landMarkNo", detail.getLandMarkNo());
 //						map.put("deleteList", deleteList);
 //						
-//						result = dao.deleteBoardImage(map);
+//						result = dao.deleteLandMarkImage(map);
 //					}
 //					
 //					
@@ -189,7 +188,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 //							
 //							for(int i=0 ; i< ladnMarkImageList.size() ; i++) {
 //								
-//								int index = ladnMarkImageList.get(i).getImageLevel();
+//								int index = ladnMarkImageList.get(i).getLandMarkImageLV();
 //								
 //								imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));    
 //							}
