@@ -39,42 +39,42 @@
           <li class="slide">
             <img
               class="slide-img"
-              src="${contextPath}/resources/images/randmark/1.jpg"
+              src="${contextPath}/resources/images/landmark/landmark1.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="${contextPath}/resources/images/randmark/2.jpg"
+              src="${contextPath}/resources/images/landmark/landmark2.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="${contextPath}/resources/images/randmark/3.jpg"
+              src="${contextPath}/resources/images/landmark/landmark3.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="https://images.unsplash.com/photo-1656989177177-73c8c218cbe6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0M3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60"
+              src="${contextPath}/resources/images/landmark/landmark4.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="${contextPath}/resources/images/randmark/4.jpg"
+              src="${contextPath}/resources/images/landmark/landmark5.jpg"
               alt="first_img"
             />
           </li>
           <li class="slide">
             <img
               class="slide-img"
-              src="${contextPath}/resources/images/randmark/5.jpg"
+              src="${contextPath}/resources/images/landmark/landmark6.jpg"
               alt="first_img"
             />
           </li>
