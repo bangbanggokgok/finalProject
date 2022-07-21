@@ -111,6 +111,15 @@ ol {
   display: flex;
   /* border:0.5px solid #bde0fe; */
 }
+.manager-menu {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  display: none;
+}
+.manager-menu.active {
+  display: flex;
+}
 .login-btn {
   /* border:0.5px solid #bde0fe; */
   border-right: none;
