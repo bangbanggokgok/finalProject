@@ -40,11 +40,6 @@ function located(num){
 }
 
 
-
-
-
-
-
 // 썸네일 클릭 시 확대 이벤트 
 // 즉시 실행 함수
 // (function(){
@@ -82,45 +77,12 @@ function located(num){
 // })();
 
 
-// 즐겨찾기
-// (function(){
-//     const bookmarkBtn = document.getElementsByClassName("btn-bookmark");
-
-//     if("bookmarkBtn != null"){
-
-//         bookmarkBtn.addEventListener("click", function(){
-
-//             const pathname = location.pathname;
-            
-//                 let url = pathname.substring(0,  pathname.indexOf("/", 1));
-//                 // /bangbanggokgok
-
-//                 url += "/moveline-main/list/즐겨찾기?코스번호=" + 코스번호;
-
-//                 if(confirm("즐겨찾기 하시겠습니까?")){
-//                     location.href = url;
-//                 }
-
-//         })
-
-//     }
-
-// })
-
-/* function setBookmark(movelineNo){
-    if(confirm("즐겨찾기 하시겠습니까?")){
-        location.href = contextPath + "/moveline-main/list/bookmark?movelineNo=" + movelineNo;
-    }
-} */
-
-// const bookmarkBtn = document.getElementsByClassName("bookmarkBtn")
-
 function setBookmark(movelineNo){
 
-    // if(loginUserNo == ""){
-    //     alert("로그인이 필요합니다.");
-    //     return;
-    // }
+    if(loginUserNo == ""){
+        alert("로그인 후 이용하세요.");
+        return;
+    }
 
     if(confirm("즐겨찾기 하시겠습니까?")){
         $.ajax({
@@ -128,6 +90,7 @@ function setBookmark(movelineNo){
             data : {"movelineNo" : movelineNo},
             type : "GET",
             success : function(result){
+                
                 if(result > 0){
                     alert("즐겨찾기 목록에 등록되었습니다.");
                 } else { 
@@ -144,6 +107,7 @@ function setBookmark(movelineNo){
 }
 
 
+// 테마별 코스 목록 조회
 (function(){
     
     const movelineTheme = document.getElementsByName("movelineTheme");
@@ -156,3 +120,25 @@ function setBookmark(movelineNo){
 })();
 
 
+// 전체 코스 목록 조회
+(function(){
+    
+    const selectAll = document.getElementById("selectAll");
+    
+    selectAll.addEventListener("click", function(){
+        console.log("this.innerText");
+        console.log(this.innerText);
+        location.href = "list/selectAll?selectAll=" + this.innerText;
+    });
+})();
+
+/* function bookmarkValidate(){
+
+
+    
+    if(loginUserNo == ""){
+        alert("로그인이 필요합니다.");
+        return;
+    }
+    return true;
+} */
