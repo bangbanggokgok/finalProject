@@ -43,40 +43,44 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img
-            class="img-back"
-            src="${contextPath}/resources/images/main/Busan.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>부산 여행의 하이라이트! 반짝 반짝 빛나는 부산의 밤!</h5>
-            <p>수 백대의 드론으로 수놓는 밤, 100층 전망대 야경까지!</p>
-          </div>
+            <a href="#">
+                <img
+                class="img-back"
+                src="${contextPath}/resources/images/main/Busan.jpg"
+                class="d-block w-100"/>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>부산 여행의 하이라이트! 반짝 반짝 빛나는 부산의 밤!</h5>
+                    <p>수 백대의 드론으로 수놓는 밤, 100층 전망대 야경까지!</p>
+                </div>
+            </a>
+          
         </div>
         <div class="carousel-item">
-          <img
-            class="img-back"
-            src="${contextPath}/resources/images/main/Cheongwadae.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
-          <div class="carousel-caption d-none d-md-block">
-            <h5>74년 만에 공개된 비밀 정원, 청와대 이야기</h5>
-            <p>활짝 열린 청와대 방방곡곡 숨은 이야기를 찾는 여행</p>
-          </div>
+            <a href="#">
+                <img
+                class="img-back"
+                src="${contextPath}/resources/images/main/Cheongwadae.jpg"
+                class="d-block w-100"
+                alt="..."/>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>74년 만에 공개된 비밀 정원, 청와대 이야기</h5>
+                    <p>활짝 열린 청와대 방방곡곡 숨은 이야기를 찾는 여행</p>
+                </div>
+            </a>
         </div>
         <div class="carousel-item">
-          <img
-            src="${contextPath}/resources/images/main/Gangneung.jpg"
-            class="d-block w-100"
-            alt="..."
-          />
+            <a href="#">
+                <img
+                src="${contextPath}/resources/images/main/Gangneung.jpg"
+                class="d-block w-100"
+                alt="..."/>
 
-          <div class="carousel-caption d-none d-md-block">
-            <h5>올 여름 해수욕장 완전 정복! 내가 바라던 바다</h5>
-            <p>시원한 해수욕장 바람과 즐거운 해수욕을 즐기세요!</p>
-          </div>
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>올 여름 해수욕장 완전 정복! 내가 바라던 바다</h5>
+                    <p>시원한 해수욕장 바람과 즐거운 해수욕을 즐기세요!</p>
+                </div>
+            </a>
+          
         </div>
       </div>
       <a
@@ -105,60 +109,68 @@
 
     <div class="row">
       <div class="col-lg-3 col-md-6 flex">
-        <div class="card" style="width: 18rem">
-          <img
-            src="${contextPath}/resources/images/main/a.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="weight">방방곡곡 다른 경치, 강릉</h3>
-            <p class="card-text">
-              무더운 여름, 시원한 초원의 바람을 맞이하세요.
-            </p>
-          </div>
-        </div>
+        <a href="#">
+            <div class="card" style="width: 18rem">
+                <img
+                src="${contextPath}/resources/images/main/a.jpg"
+                class="card-img-top"
+                alt="..."/>
+                <div class="card-body">
+                    <h3 class="weight">방방곡곡 다른 경치, 강릉</h3>
+                    <p class="card-text">
+                    무더운 여름, 시원한 초원의 바람을 맞이하세요.
+                    </p>
+                </div>
+            </div>
+        </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <div class="card" style="width: 18rem">
-          <img
-            src="${contextPath}/resources/images/main/정동진.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="weight">분위기 맛집, 정동진</h3>
-            <p class="card-text">
-              지친 일상, 복잡한 마음을 떨쳐내고 싶다면 여기!
-            </p>
-          </div>
-        </div>
+        <a href ="#">
+            <div class="card" style="width: 18rem">
+                <img
+                    src="${contextPath}/resources/images/main/정동진.jpg"
+                    class="card-img-top"
+                    alt="..."
+                />
+                <div class="card-body">
+                    <h3 class="weight">분위기 맛집, 정동진</h3>
+                    <p class="card-text">
+                    지친 일상, 복잡한 마음을 떨쳐내고 싶다면 여기!
+                    </p>
+                </div>
+            </div>
+        </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <div class="card" style="width: 18rem">
-          <img
-            src="${contextPath}/resources/images/main/전주.jpg"
-            class="card-img-top img-1"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="weight">전주 한옥마을</h3>
-            <p class="card-text">한옥과 도시의 조화로움을 느껴보세요!</p>
-          </div>
-        </div>
+        <a href ="#">
+            <div class="card" style="width: 18rem">
+                <img
+                    src="${contextPath}/resources/images/main/전주.jpg"
+                    class="card-img-top img-1"
+                    alt="..."
+                />
+                <div class="card-body">
+                    <h3 class="weight">전주 한옥마을</h3>
+                    <p class="card-text">한옥과 도시의 조화로움을 느껴보세요!</p>
+                </div>
+            </div>
+        </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <div class="card" style="width: 18rem">
-          <img
-            src="${contextPath}/resources/images/main/seoul.jpg"
-            class="card-img-top"
-            alt="..."
-          />
-          <div class="card-body">
-            <h3 class="weight">대한민국의 대표, 서울</h3>
-            <p class="card-text">구석구석 숨은 서울을 여행해 보세요!</p>
-          </div>
-        </div>
+        <a href ="#">
+            <div class="card" style="width: 18rem">
+                <img
+                    src="${contextPath}/resources/images/main/seoul.jpg"
+                    class="card-img-top"
+                    alt="..."
+                />
+                <div class="card-body">
+                    <h3 class="weight">대한민국의 대표, 서울</h3>
+                    <p class="card-text">구석구석 숨은 서울을 여행해 보세요!</p>
+                </div>
+            </div>
+        </a>
+
       </div>
     </div>
 
@@ -168,17 +180,21 @@
           지금 바로 자신만의 코스와 랜드마크를 소개해보세요!<br />
         </h2>
         <span class="text-muted">방방곡곡 어디든 GO!</span>
-        <button type="button" class="btn btn-outline-dark">
-          코스 작성하기
-        </button>
-        <button type="button" class="btn btn-outline-dark">
-          랜드마크 작성하기
-        </button>
+        <a href="#">
+            <button type="button" class="btn btn-outline-dark">
+            코스 작성하기
+            </button>
+        </a>
+        <a href="#">
+            <button type="button" class="btn btn-outline-dark">
+            랜드마크 작성하기
+            </button>
+        </a>
         <div class="row cos">
           <div class="col-sm-12 col-md-4 flex">
             <div class="card-1" style="width: 18rem">
               <img
-                src="${contextPath}/resources/images/main/camera.jpg"
+                src="${contextPath}/resources/images/main/jeju.jpg"
                 class="card-img-top img-1"
                 alt="..."
               />
@@ -191,7 +207,7 @@
           <div class="col-sm-12 col-md-4 flex">
             <div class="card-1" style="width: 18rem">
               <img
-                src="${contextPath}/resources/images/main/jeju.jpg"
+                src="${contextPath}/resources/images/main/camera.jpg"
                 class="card-img-top img-1"
                 alt="..."
               />
@@ -233,183 +249,201 @@
 
     <div class="region">
       <div class="d-flex justify-content-around">
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/서울2.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">서울</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/서울2.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">부산</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/서울2.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">대구</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/서울2.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">인천</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/강릉1.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">광주</h5>
-          </div>
-        </div>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/서울.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">서울</h5>
+                </div>
+            </div>
+        </a>
+        
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/부산2.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">부산</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/대구.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">대구</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/인천.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">인천</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/광주.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">광주</h5>
+                </div>
+            </div>
+        </a>
       </div>
 
       <div class="d-flex justify-content-around">
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/인천.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">대전</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/인천.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">울산</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/인천.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">세종</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/대전.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">경기</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/대구.jpg"
-            class="card-img img-2"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">강원</h5>
-          </div>
-        </div>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/대전.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">대전</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/울산.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">울산</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/세종.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">세종</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/경기.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">경기</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/강원.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">강원</h5>
+                </div>
+            </div>
+        </a>
       </div>
       <div class="d-flex justify-content-around">
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">충북</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">충남</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">전북</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">전남</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/Busan2.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">경북</h5>
-          </div>
-        </div>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/충북2.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">충북</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/충남.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">충남</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/전북.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">전북</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/전남.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">전남</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/경북.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">경북</h5>
+                </div>
+            </div>
+        </a>
       </div>
       <div class="d-flex justify-content-center">
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">경남</h5>
-          </div>
-        </div>
-        <div class="card bg-dark text-white">
-          <img
-            src="${contextPath}/resources/images/main/광주.jpg"
-            class="card-img"
-            alt="..."
-          />
-          <div class="card-img-overlay">
-            <h5 class="card-title">제주</h5>
-          </div>
-        </div>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/경남2.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">경남</h5>
+                </div>
+            </div>
+        </a>
+        <a href="#">
+            <div class="card bg-dark text-white">
+                <img
+                src="${contextPath}/resources/images/main/location-image/제주.jpg"
+                class="card-img"
+                alt="..."/>
+                <div class="card-img-overlay">
+                    <h5 class="card-title">제주</h5>
+                </div>
+            </div>
+        </a>
       </div>
     </div>
 
