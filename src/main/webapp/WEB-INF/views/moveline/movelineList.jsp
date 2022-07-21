@@ -116,9 +116,10 @@
 										</c:if>
 										
 											<div class="ml-detail">
-												<div class="title-area">
-													<p class="ml-title">${moveline.movelineTitle}</p>
-												</div>
+												<a href="detail/${movelineNo}">
+													<div class="title-area">
+														<p class="ml-title">${moveline.movelineTitle}</p>
+													</div>
 													<ul class="s-list">
 														<c:forEach var="landmark" items="${moveline.landmarkList}">
 															<c:if test="${!empty landmark}">
@@ -129,10 +130,11 @@
 													<p>
 														<c:forEach var="hashtag" items="${moveline.hashtagList}">
 															<c:if test="${!empty hashtag}">
-																	<span class="hashtags">#${hashtag.MLHashTag}</span>
+																<span class="hashtags">#${hashtag.MLHashTag}</span>
 															</c:if>
 														</c:forEach>
 													</p>
+												</a>
 											</div>
 
 

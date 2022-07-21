@@ -27,8 +27,8 @@
         <section class="board">
             <section class="navWrapper">
                 <div class="adminNav">
+                    <div class="adminList">Admin</div>
                     <ul class="listWrapper">
-                        <div class="adminList">Admin</div>
                         <li id="adminList">
                             <i class="fal fa-clipboard-list-check"></i> 공지사항
                             <div>
@@ -46,9 +46,7 @@
                             <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
                         </li>
                     </ul>
-    
                 </div>
-    
             </section>
     
             <section class="pageWrapper" id="contentWrapper">
@@ -64,37 +62,33 @@
                     </li>
                     
                     <c:forEach var="question" items="${questionList}">
-                    <li>
-                        <div class="wrapper">
-                            <div class="memberNo">${question.questionNo}</div>
-                            <div class="title"><a href="../qna/detail/${question.questionNo}">${question.questionTitle}</a></div>
-                            <div class="writer">${question.userName}</div>
-
-                            <c:choose>
-                                <c:when test="${!empty question.questionAnswer}">
-                                    <div class="situation">답변완료</div>
-                                </c:when>
-
-                                <c:otherwise>
-                                <div class="situation">답변대기</div>       
-                                </c:otherwise>
-                            </c:choose>
-                            <div class="date">${question.createDate}</div>
-
-                        </div>
-                    </li>
+	                    <li>
+	                        <div class="wrapper">
+	                            <div class="memberNo">${question.questionNo}</div>
+	                            <div class="title"><a href="../qna/detail/${question.questionNo}">${question.questionTitle}</a></div>
+	                            <div class="writer">${question.userName}</div>
+	
+	                            <c:choose>
+	                                <c:when test="${!empty question.questionAnswer}">
+	                                    <div class="situation">답변완료</div>
+	                                </c:when>
+	
+	                                <c:otherwise>
+	                                	<div class="situation">답변대기</div>       
+	                                </c:otherwise>
+	                            </c:choose>
+	                            
+	                            <div class="date">${question.createDate}</div>
+	                        </div>
+	                    </li>
                     </c:forEach>
-                    
-                
                 </ul>
-                
             </section>
 
             <div class="pagination-area">
 
                 <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
                 <c:set var="url" value="${list}?cp="/>
-
 
                 <ul class="pagination">
                     <!-- 첫 페이지로 이동 -->
@@ -108,31 +102,34 @@
 
                         <c:choose>
                             <c:when test="${i == pagination.currentPage}">
-                                <li><a class="current">${i}</a></li>
+                                <li>
+                                	<a class="current">${i}</a>
+                               	</li>
                             </c:when>
 
                             <c:otherwise>
-                                <li><a href="${url}${i}">${i}</a></li>        
+                                <li>
+                                	<a href="${url}${i}">${i}</a>
+                               	</li>        
                             </c:otherwise>
                         </c:choose>
 
                     </c:forEach>
                     
                     <!-- 다음 목록 시작 번호로 이동 -->
-                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
+                    <li>
+                    	<a href="${url}${pagination.nextPage}">&gt;</a>
+                    </li>
 
                     <!-- 끝 페이지로 이동 -->
-                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li>
+                    	<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
+                   	</li>
 
                 </ul>
             </div>
         </section>
     </div>
-
-
-
-
-        
 </body>
 
 </html>
