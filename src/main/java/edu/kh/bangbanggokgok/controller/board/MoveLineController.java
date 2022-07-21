@@ -102,7 +102,7 @@ public class MoveLineController {
 		model.addAttribute("map",map);
 		
 		return "moveline/movelineList";
-		
+		aaa
 		
 	}
 		
