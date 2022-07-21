@@ -37,7 +37,7 @@ public interface AdminService {
 	 */
 	Map<String, Object> selectInquiryList(int cp, String list);
 
-	/** 신고 조회
+	/** 코스 신고 조회
 	 * @param cp
 	 * @param list
 	 * @return map
@@ -46,7 +46,7 @@ public interface AdminService {
 
 	/** 문의 상세 조회
 	 * @param questionNo
-	 * @return
+	 * @return result
 	 */
 	QuestionDetail selectQuestionDetail(int questionNo);
 
@@ -56,10 +56,17 @@ public interface AdminService {
 	 */
 	int insertAnswer(QuestionDetail detail);
 
-	/** 신고처리
+	/** 코스 신고처리
 	 * @param report
 	 * @return result
 	 */
 	int updateReport(ReportMoveLine report);
+
+	/** 댓글 신고 조회
+	 * @param cp
+	 * @param list
+	 * @return map
+	 */
+	Map<String, Object> selectReplyReport(int cp, String list);
 
 }

@@ -29,7 +29,8 @@
                     <a href="${contextPath}/admin/qna/list"><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
                 </li>
                 <li id="adminList">
-                    <a href="${contextPath}/admin/report/list"><i class="fal fa-siren-on"></i> 신고관리</a>
+                    <a href="${contextPath}/admin/report/course/list"><i class="fal fa-siren-on"></i> 신고관리</a>
+                    <a href="${contextPath}/admin/report/reply/list"><i class="fal fa-siren-on"></i> 댓글신고관리</a>
                 </li>
             </ul>
 

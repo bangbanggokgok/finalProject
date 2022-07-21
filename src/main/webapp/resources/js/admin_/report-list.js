@@ -3,10 +3,11 @@ const reportFlag = document.getElementById("wait");
 
 reportFlag.addEventListener("click", function(){ 
     // console.log(reportList.reportNo);
-   
+    //"reportNo" : reportNo,
+    
     $.ajax({
         url : contextPath + "/admin/report/situation",
-        data : {"reportNo" : reportNo,
+        data : {
                 "reportFlag" : reportFlag },
         type : "get",
         success : function(result){

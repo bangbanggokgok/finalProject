@@ -132,13 +132,28 @@ public class AdminServiceImpl implements AdminService{
 		return dao.insertAnswer(detail);
 	}
 
-	// 신고 처리
+	// 코스 신고 처리
 	@Override
 	public int updateReport(ReportMoveLine report) {
 		return dao.updateReport(report);
 	}
 
+	// 댓글 신고 조회
+	@Override
+	public Map<String, Object> selectReplyReport(int cp, String list) {
+		int replyReportCount = dao.getReplyReportCount(list);
+		
+		Pagination pagination = new Pagination(cp, replyReportCount);
+		List<Question> replyReport = dao.selectReplyReport(pagination, list);
 
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("replyReport", replyReport);
+		
+		return map;
+	}
+
+	
 	
 	
 	

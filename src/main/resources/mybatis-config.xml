@@ -38,6 +38,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportMoveLine" alias="ReportML"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportReply" alias="ReportReply"/>
 	</typeAliases>
 
 	<!-- sql 작성 파일 매핑 -->

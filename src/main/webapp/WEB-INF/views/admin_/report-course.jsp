@@ -3,6 +3,9 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"  %>
 <c:set var="reportList" value="${map.reportList}" />
 <c:set var="pagination" value="${map.pagination}" />
+
+<%-- <fmt:parseNumber var="reportNo" type="number" value="${reportList.reportNo}"/>
+<fmt:parseNumber var="reportFlag" type="string" value="${reportList.reportFlag}"/> --%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +13,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>신고관리</title>
+    <title>코스 신고관리</title>
 
-    <link rel="stylesheet" href="../../resources/css/admin_/report-list.css">
-    <link rel="stylesheet" href="../../resources/css/admin_/adminNav.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/admin_/report-list.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/admin_/adminNav.css">
 </head>
 
 <body>
-
+    <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
     <section class="navWrapper">
         <div class="adminNav">
             <ul class="listWrapper">
@@ -44,8 +47,11 @@
 
     </section>
     <div class="board">
-        <h1>신고관리</h1>
-        
+        <h1>코스 신고관리</h1>
+        <div class="list">
+            <span class="category course"><a href="${contextPath}/admin/report/course/list">코스</a></span>
+            <span class="category reply"><a href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
+        </div>
         <ul class="noticePage">
             <li>
                 <div class="wrapper">
@@ -59,7 +65,6 @@
             </li>
             
             <c:forEach var="report" items="${reportList}">
-
                 <li>
                     <div class="wrapper">
                         <div class="number">${report.reportNo}</div>
@@ -73,19 +78,12 @@
                             </c:when>
 
                             <c:otherwise>
-                               <div id="wait" class="situation">처리완료</div>       
+                               <div id="complete" class="situation">처리완료</div>       
                             </c:otherwise>
                         </c:choose>
                     </div>
                    
                 </li>
-
-                        <%-- <c:if test="${empty user.secessionDate}">
-                        <div class="noticeTitle">-</div>
-                        </c:if>
-                        <c:if test="${!empty user.secessionDate}">
-                        <div class="noticeTitle">${user.secessionDate}</div>
-                        </c:if> --%>
             </c:forEach>
             
         </ul>
@@ -120,14 +118,13 @@
                 </ul>
         </div>
     
-     <script>
+    <script>
         const contextPath = "${contextPath}";
-        const reportNo = "${reportList.reportNo}";
     </script> 
         <%--const reportNo = "${reportList.reportNo}";
-        const reportFlage = "${reportList.reportFlag}";--%>
+        const reportNo = "${reportList.reportNo}";
+        const reportFlag = "${reportList.reportFlag}";--%>
 </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/admin_/report-list.js"></script>
-    
 </html>
