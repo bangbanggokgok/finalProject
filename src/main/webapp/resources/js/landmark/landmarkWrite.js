@@ -61,11 +61,17 @@ function checkSubmit(){
 
 //  getLng() 위 가로 x
 //  getLat() 경 세로 y
-
 //지도 관련
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
+
+if(!lat){
+    lng = 126.98298720739353;
+    lat = 37.56792412182713;
+    console.log(lat);
+}
+
 var options = { //지도를 생성할 때 필요한 기본 옵션
-    center: new kakao.maps.LatLng(37.56792412182713, 126.98298720739353), //지도의 중심좌표.
+    center: new kakao.maps.LatLng(lat, lng), //지도의 중심좌표.
     level: 2 //지도의 레벨(확대, 축소 정도)
 };
 
@@ -89,7 +95,7 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     marker.setPosition(latlng);
 
     document.getElementsByName("lng")[0].value = latlng.getLng();;
-    document.getElementsByName("lag")[0].value = latlng.getLat();
+    document.getElementsByName("lat")[0].value = latlng.getLat();
     console.log(document.getElementsByName("lng")[0].value);
     console.log(document.getElementsByName("lag")[0].value);
 });
