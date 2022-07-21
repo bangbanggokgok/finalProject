@@ -1,0 +1,357 @@
+
+
+.header {
+    border-bottom: 1px solid rgb(238, 238, 238);
+    margin-top: 75px;
+}
+article, aside, details, figcaption, figure, footer, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    outline: none;
+    font-family: inherit;
+    /* border: 1px solid black; */
+}
+*, ::before, ::after {
+    background-repeat: no-repeat;
+    box-sizing: inherit;
+}
+
+.pageWrapper {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: flex-start;
+    margin: 0px auto;
+    max-width: 808px;
+    width: 100%;
+    padding: 0px 20px;
+    min-height: 1px;
+}
+
+.boardTitle {
+    margin: 50px 0px 20px;
+    line-height: 24px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.board {
+    margin: 24px 0px 58px;
+}
+
+.title {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #1F3A93;
+    margin-top: 20px;
+
+}
+
+
+
+.inputField {
+    width: 7px;
+    height: 24px;
+    opacity: 1;
+    cursor: pointer;
+    transform: rotate(0deg);
+    transition: opacity 0.2s ease 0s, transform 0.5s ease 0s;
+}
+
+.titleInput {
+    width: 100%;
+    border: 1px solid rgb(238, 238, 238);
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 14px 57px 12px 14px;
+    background: rgb(250, 250, 250);
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    margin-bottom: 6px;
+}
+
+.contentField {
+    margin: 16px 0px 0px;
+
+}
+
+.contentLabel {
+    display: block;
+    margin-bottom: 6px;
+    color: #1F3A93;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+.contentArea {
+    position: relative;
+    min-height: 600px;
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    border: 1px solid rgb(238, 238, 238);
+    border-radius: 3px;
+    background: rgb(250, 250, 250);
+}
+
+.content {
+    height: 600px;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 3px;
+    padding: 14px 14px 0px;
+    background: rgb(250, 250, 250);
+    color: rgb(17, 17, 17);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+    border: none;
+}
+
+.submitBar {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 93px;
+    z-index: 200;
+    box-shadow: rgb(0 0 0 / 8%) 0px -10px 30px -10px;
+    background-color: white;
+}
+
+.buttonContainer {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 768px;
+    margin: 13px auto 24px;
+}
+
+.submitButton {
+    background: #1BB3FE;
+    color: rgb(255, 255, 255);
+    display: inline-flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    box-sizing: border-box;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    text-align: center;
+    white-space: nowrap;
+    width: 100%;
+    border-radius: 10px;
+    padding: 16px 22px;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    cursor: pointer;
+}
+
+.submitButton:hover {
+    font-weight: bold;
+}
+
+
+/* 이미지 영역 */
+.img-box{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+
+/* 이미지를 감싸는 div */
+.boardImg{
+    width: 180px;
+    height: 180px;
+    display: inline-block;
+    text-align: center;
+
+    position : relative;
+}
+
+/* 미리보기 영역 */
+.boardImg > label{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* file타입 input */
+.inputImage{ display: none; }
+
+/* 미리보기 이미지 */
+.preview{
+    max-width: 100%;
+    max-height: 100%;
+    /* 지정된 칸 내부에 비율을 변경하지 않고 이미지 배치 */
+}
+
+/* 이미지 미리보기 삭제 */
+.delete-image{
+    position: absolute;
+    top: 0;
+    right: 7px;
+    font-size: 20px;
+    cursor: pointer; 
+    z-index: 1;
+}
+
+
+.fa-plus-circle{
+    color: rgb(146, 146, 146);
+}
+
+.addImg {
+    display: block;
+    margin: 20px 0;
+    color: #1F3A93;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    text-align: left;
+}
+
+/* 태그 */
+.WritingTag {
+    position: relative;
+    width: 100%;
+    min-height: 68px;
+    margin-top: -1px;
+    padding: 0 30px 13px 30px;
+    box-sizing: border-box;
+    border: 1px solid #ebecef;
+    border-top: 0;
+    font-size: 13px;
+    background: rgb(250, 250, 250);
+}
+
+.WritingTag .tag_inner {
+    padding-top: 16px;
+    border-top: 1px solid #ebecef;
+}
+
+.blind {
+    position: absolute;
+    clip: rect(0 0 0 0);
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+}
+
+.WritingTag .tag_input_box {
+    position: relative;
+    float: left;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.WritingTag .tag_input_box .tag_input {
+    width: 300px;
+    margin-top: 8px;
+    font-size: 13px;
+    font-family: "Apple SD Gothic Neo", "맑은 고딕", "Malgun Gothic", 돋움, dotum, sans-serif;
+    border-width: 0px;
+    border-style: initial;
+    border-color: initial;
+    border-image: initial;
+    background: transparent;
+    outline: none;
+}
+
+.WritingTag .layer_auto_tag {
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    z-index: 20;
+    padding: 10px 0;
+    border: 1px solid rgba(0,0,0,.06);
+    border-radius: 6px;
+    box-shadow: 0 1px 12px 0 rgb(0 0 0 / 6%);
+    background-color: #fff;
+    box-sizing: border-box;
+    color: #000;
+    margin-bottom: 7px;
+    padding: 8px 0;
+}
+
+.WritingTag .ToggleSwitchTooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    margin-bottom: 7px;
+}
+
+
+
+
+.optionList{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 24px;
+    color: #1F3A93;
+    margin-top: 20px;
+}
+.optionList > span{
+    font-size: 12px;
+    color: rgba(255, 0, 0, 0.685);
+    margin-left: 10px;
+}
+.addImg > span{
+    font-size: 12px;
+    color: rgba(255, 0, 0, 0.685);
+    margin-left: 10px;
+}
+.landmarkList{
+    width: 400px;
+    height: 40px;
+    margin-top: 8px;
+    margin-right: 3px;
+}
+
+.themeSelect{
+    display: flex;
+    height: 40px;
+}
+.themeSelect > input{
+    size: 20px;
+    zoom: 1.3;
+    cursor: pointer;
+}
+.themeSelect > label{
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    margin: 5px 25px 5px 5px;
+    cursor: pointer;
+}
