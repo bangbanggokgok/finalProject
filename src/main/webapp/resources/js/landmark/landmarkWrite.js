@@ -1,3 +1,54 @@
+function checkSubmit(){
+    console.log("함수 동작");
+
+    const locationList = document.getElementById("locationList")[0];
+    const landmarkName =document.getElementById("landmarkName")[0];
+    const landMarkContent = document.getElementById("ladnmarkContent")[0];
+    const images = document.getElementById("images")[0];
+    
+
+    if(!confirm("랜드마크를 등록 하시겠습니까?")){
+        
+        alert("랜드마크 등록이 취소되었습니다.")
+
+       return false;
+    }else{
+        if(locationList.value.length== ""){
+            alert("지역을 선택해주세요.");
+
+            locationList.value="";
+            locationList.focus();
+            return false;
+        }
+
+        if(landmarkName.value.trim().length ==0){
+            alert("랜드마크 이름을 입력해주세요.");
+
+            landmarkName.value="";
+            landmarkName.focus();
+            return false;
+        }
+        if(landMarkContent.value.trim().length == 0){
+            alert("랜드마크 소개를 입력해주세요.");
+
+            landMarkContent.value="";
+            landMarkContent.focus();
+            return false;
+        }
+
+        const regExp = /(.*?)\.(jpg|png)$/;
+        if(images.value.length == 0){
+            alert("랜드마크 사진을 넣어주세요.");
+            return false;
+        }
+        if(!images.match(regExp)){
+            alert("jpg,png 파일만 사용할 수 있습니다.");
+            return false;
+         }
+         return true;
+    }
+    };
+
 //  getLng() 위 가로 x
 //  getLat() 경 세로 y
 
@@ -63,52 +114,7 @@ for(let i=0;i<inputImage.length;i++){
     });
 };
 
-function checkSubmit(){
-    const locationList = document.getElementById("locationList")[0];
-    const landmarkName =document.getElementById("landmarkName")[0];
-    const landMarkContent = document.getElementById("ladnmarkContent")[0];
-    const images = document.getElementById("images")[0];
-    
 
-    if(confirm("랜드마크를 등록 하시겠습니까?")){
-        
-        if(locationList.value.length== ""){
-            alert("지역을 선택해주세요.");
-
-            locationList.value="";
-            locationList.focus();
-            return false;
-        }
-
-        if(landmarkName.value.trim().length ==0){
-            alert("랜드마크 이름을 입력해주세요.");
-
-            landmarkName.value="";
-            landmarkName.focus();
-            return false;
-        }
-        if(landMarkContent.value.trim().length == 0){
-            alert("랜드마크 소개를 입력해주세요.");
-
-            landMarkContent.value="";
-            landMarkContent.focus();
-            return false;
-        }
-
-        const regExp = /(.*?)\.(jpg|png)$/;
-        if(images.value.length == 0){
-            alert("랜드마크 사진을 넣어주세요.");
-            return false;
-        }
-        if(!images.match(regExp)){
-            alert("jpg,png 파일만 사용할 수 있습니다.");
-            return false;
-         }
-
-
-        return true;
-    }
-    };
 
 
 
