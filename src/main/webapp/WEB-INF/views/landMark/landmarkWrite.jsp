@@ -29,12 +29,14 @@
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
                             <option value="locationNull">지역을 선택해주세요</option>
                             <c:forEach var="locations" items="${LocationList}">
-                                <option value="${locations.locationNum}">${locations.locationName}</option>        
+                                <option value="${locations.locationNum}" 
+                                    <c:if test="${landmarkDetail.locationName == locations.locationName}">selected</c:if>
+                                >${locations.locationName}</option>        
                             </c:forEach>
                         </select>
                         <div style="height:20px;"></div>
                         <label class="title" style="font-weight:bold;">랜드마크 이름</label>
-                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landMarkDetail.landMarkName}">
+                        <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landmarkDetail.landMarkName}">
                     </div>
                 </div>
     
@@ -44,7 +46,7 @@
     
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[0]}">
                         </label>
                         <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -52,7 +54,7 @@
     
                     <div class="boardImg">
                         <label for="img2">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[1]}">
                         </label>
                         <input type="file" class="input-img" id="img2" 
                             name="images" accept="image/*" style="display:none;">
@@ -61,7 +63,7 @@
     
                     <div class="boardImg">
                         <label for="img3">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[2]}">
                         </label>
                         <input type="file" class="input-img" id="img3" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -69,7 +71,7 @@
                     
                     <div class="boardImg">
                         <label for="img4">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[3]}">
                         </label>
                         <input type="file" class="input-img" id="img4" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -80,7 +82,7 @@
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
                     <article class="contentArea">
-                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents">${landMarkDetail.landMarkContent}</textarea>
+                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents">${landmarkDetail.landMarkContent}</textarea>
                     </article>
 
                     <div class="WritingTag">
@@ -96,7 +98,7 @@
                     </div>
                 </div>
                 <input type="text" name="lng" style="display:none;" value="${landmarkDetail.landMarkX}">
-                <input type="text" name="lag" style="display:none;" value="${landmarkDetail.landMarkY}">
+                <input type="text" name="lat" style="display:none;" value="${landmarkDetail.landMarkY}">
                 <input type="hidden" name="deleteList" id="deleteList" value="">
                
                 <div class="addressField">
@@ -118,8 +120,8 @@
     <jsp:include page="/WEB-INF/views/common/footer.jsp"/>
     <c:if test="${!empty landmarkDetail}">
         <script>
-            const lng = landmarkDetail.landMarkX;
-            const lag = landmarkDetail.landMarkY;
+            let lng = ${landmarkDetail.landMarkX};
+            let lat = ${landmarkDetail.landMarkY};
         </script>
     </c:if>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>

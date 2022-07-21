@@ -30,7 +30,7 @@ public interface LandMarkService {
 	 * @param landMakrNo
 	 * @return
 	 */
-	LandMarkDetail selectLandMakrDetail(int landMarkNo);
+	LandMarkDetail selectLandmarkDetail(int landMarkNo);
 	
 	
 	/** 랜드마크 삽입 서비스
