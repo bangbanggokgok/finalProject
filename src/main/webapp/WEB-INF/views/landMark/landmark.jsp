@@ -142,7 +142,6 @@
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> 
-
             <a href="../landmark-main/detail/${landmark.locationType}/${landMark.landMarkNo}">  <img src="${contextPath}${landmark.thumbnail}"></img></a>
                 <%-- 이부분은 좀 테스트 해봅시다 --%>
               <figcaption class="landMark" id="landMark">
