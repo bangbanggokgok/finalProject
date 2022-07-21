@@ -1,4 +1,4 @@
-let navi = document.querySelector(".nav-nav");
+let navi = document.querySelector(".nav-nav1");
 let navin = document.querySelector(".nav-in");
 let toggleBtn = document.querySelector(".ham");
 

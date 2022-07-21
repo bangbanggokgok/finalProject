@@ -29,12 +29,18 @@
       /></a>
 
       <div class="navbarWrap">
-        <ul class="nav-nav">
+        <ul class="nav-nav1">
           <li>
             <a href="${contextPath}/moveline-main/list" class="nav-menu">코스</a>
           </li>
           <li>
             <a href="${contextPath}/landmark-main/list" class="nav-menu">랜드마크</a>
+          </li>
+                    <li>
+            <a href="${contextPath}/landmark-main/list" class="nav-menu">공지사항</a>
+          </li>
+                    <li>
+            <a href="${contextPath}/landmark-main/list" class="nav-menu">문의하기</a>
           </li>
         </ul>
       </div>
