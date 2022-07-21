@@ -26,26 +26,24 @@
 			<div class="adminList">Admin</div>
 			<ul class="listWrapper">
 				<li id="adminList">
-					<i class="fal fa-clipboard-list-check"></i>
-					공지사항 <!--왜 i태그 밖으로? -->
+					<i class="fal fa-clipboard-list-check">공지사항</i>
 					<div>
 						<a href="#">공지/이벤트 조회</a><br> <a href="#">공지/이벤트 작성</a>
 					</div>
 				</li>
 				<li id="adminList">
 					<a href="#">
-						<i class="fal fa-user-friends"></i>회원관리
+						<i class="fal fa-user-friends">회원관리</i>
 					</a>
 				</li>
 				<li id="adminList">
 					<a href="#">
-						<i class="fal fa-map-marker-question"></i> 1:1 문의조회
+						<i class="fal fa-map-marker-question">1:1 문의조회</i> 
 					</a>
 				</li>
 				<li id="adminList">
 					<a href="#">
-						<i class="fal fa-siren-on"></i>
-						신고관리
+						<i class="fal fa-siren-on">신고관리</i>
 					</a>
 				</li>
 			</ul>
@@ -62,7 +60,7 @@
 	<section class="board">
 		<section class="pageWrapper">
 			<!-- 폼태그 액션 주소 필 -->
-			<form action="#" enctype="multipart/form-data" method="POST">
+			<form action="" enctype="multipart/form-data" method="POST">
 				<label class="choice">공지 선택</label>
 				<div id="inputFieldsContainer" onclick="drop_choiceFields()">
 					<div class="inputFields">
@@ -78,17 +76,17 @@
 				<div style="display: none;" id="choiceFieldsContainer">
 					<div class="choiceFeild">
 						<div class="choiceFields" id="notice">
-							<div style="color: #333333;" class="title">공지</div>
-							<input name="noticeType" id="noticeType" type="hidden">
+							<div style="color: #333333;" class="title" onclick="noticeType(0)">공지</div>
 						</div>
 					</div>
 					<div class="choiceFeild">
 						<div class="choiceFields" id="event">
-							<div style="color: #333333" class="title">이벤트</div>
+							<div style="color: #333333" class="title" onclick="noticeType(1)">이벤트</div>
 						</div>
 					</div>
 				</div>
-
+				
+				<input name="noticeType" id="noticeType" type="hidden">
 
 				<div class="titleFields">
 					<div>
@@ -129,36 +127,36 @@
 				<div class="img-box">
 
 					<div class="boardImg">
-						<label for="img1">
-							<img class="preview" src="${img0}">
-							<i class="far fa-plus-circle fa-lg"></i>
+						<label for="img0">
+							<img class="preview" src="">
+							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label>
 						<input type="file" class="inputImage" id="img0" name="images" accept="image/*"> 
 						<span class="delete-image">&times;</span>
 					</div>
 
 					<div class="boardImg">
-						<label for="img2">
-							<img class="preview" src="${img1}">
-							<i class="far fa-plus-circle fa-lg"></i>
+						<label for="img1">
+							<img class="preview" src="">
+							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label>
 						<input type="file" class="inputImage" id="img1" name="images" accept="image/*"> 
 						<span class="delete-image">&times;</span>
 					</div>
 
 					<div class="boardImg">
-						<label for="img3">
-							<img class="preview" src="${img2}">
-							<i class="far fa-plus-circle fa-lg"></i>
+						<label for="img2">
+							<img class="preview" src="">
+							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label> 
 						<input type="file" class="inputImage" id="img2" name="images" accept="image/*"> 
 						<span class="delete-image">&times;</span>
 					</div>
 
 					<div class="boardImg">
-						<label for="img4"> 
-							<img class="preview" src="${img3}">
-							<i class="far fa-plus-circle fa-lg"></i>
+						<label for="img3"> 
+							<img class="preview" src="">
+							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label> 
 						<input type="file" class="inputImage" id="img3" name="images" accept="image/*"> 
 						<span class="delete-image">&times;</span>
@@ -177,7 +175,7 @@
 
 				<section class="submitBar">
 					<div class="buttonContainer">
-						<button type="submit" class="submitButton">등록하기</button>
+						<button class="submitButton">등록하기</button>
 					</div>
 				</section>
 			</form>
