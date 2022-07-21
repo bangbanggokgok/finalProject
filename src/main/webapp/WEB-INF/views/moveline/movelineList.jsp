@@ -116,7 +116,7 @@
 										</c:if>
 										
 											<div class="ml-detail">
-												<a href="detail/${movelineNo}">
+												<a href= "${contextPath}/moveline-main/detail/${movelineNo}?cp=">
 													<div class="title-area">
 														<p class="ml-title">${moveline.movelineTitle}</p>
 													</div>
