@@ -185,3 +185,15 @@ li {
     color: white;
     font-weight: bold;
 }
+
+#all {
+    color: rgb(51, 151, 255);
+    cursor: pointer;
+}
+
+#nocie{
+    color: rgb(51, 151, 255);
+}
+#nociePage{
+    display: none;
+}

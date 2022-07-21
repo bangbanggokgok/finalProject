@@ -39,7 +39,7 @@
                         <input placeholder="이름을 입력해주세요." maxlength="50" class="titleInput" id="title" name="landmarkName" value="${landmarkDetail.landMarkName}">
                     </div>
                 </div>
-
+<%-- 
                 <c:forEach items="${detail.imageList}" var="boardImage">
                 <c:choose>
                     <c:when test="${landMarkImage.landMarkImageLV} == 0">
@@ -52,7 +52,7 @@
 
                 </c:choose>
             </c:forEach>
-
+ --%>
 
                 <!-- 업로드 이미지 -->
                 <label class="addImg" style="font-weight:bold;">사진 첨부</label>
@@ -60,7 +60,12 @@
     
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[0]}">
+                        	<c:if test="${!empty landmarkDetail.imageList[0]}">
+	                            <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"> 
+                        	</c:if>
+							<c:if test="${empty landmarkDetail.imageList[0]}">
+	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
+                        	</c:if>
                         </label>
                         <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -68,7 +73,13 @@
     
                     <div class="boardImg">
                         <label for="img2">
-                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[1]}">
+                        	<c:if test="${!empty landmarkDetail.imageList[1]}">
+	                            <img class="far fa-plus-circle fa-lg preview" 
+	                            src="${contextPath}${landmarkDetail.imageList[1].landMarkReName}"> 
+                        	</c:if>
+							<c:if test="${empty landmarkDetail.imageList[1]}">
+	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
+                        	</c:if>
                         </label>
                         <input type="file" class="input-img" id="img2" 
                             name="images" accept="image/*" style="display:none;">
@@ -77,7 +88,13 @@
     
                     <div class="boardImg">
                         <label for="img3">
-                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[2]}">
+                        	<c:if test="${!empty landmarkDetail.imageList[2]}">
+	                            <img class="far fa-plus-circle fa-lg preview" 
+	                            src="${contextPath}${landmarkDetail.imageList[1].landMarkReName}"> 
+                        	</c:if>
+							<c:if test="${empty landmarkDetail.imageList[2]}">
+	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
+                        	</c:if>
                         </label>
                         <input type="file" class="input-img" id="img3" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -85,7 +102,13 @@
                     
                     <div class="boardImg">
                         <label for="img4">
-                            <img class="far fa-plus-circle fa-lg preview" src="${landmarkDetail.imageList[3]}">
+                        	<c:if test="${!empty landmarkDetail.imageList[3]}">
+	                            <img class="far fa-plus-circle fa-lg preview" 
+	                            src="${contextPath}${landmarkDetail.imageList[1].landMarkReName}"> 
+                        	</c:if>
+							<c:if test="${empty landmarkDetail.imageList[3]}">
+	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
+                        	</c:if>
                         </label>
                         <input type="file" class="input-img" id="img4" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>

@@ -138,22 +138,6 @@ public class AdminController {
 		return "admin_/inquiry-detail";
 	}
 	
-	
-	// 신고 코스 조회
-	@GetMapping("/report/{list}")
-	public String reportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-							 , Model model
-							 , @RequestParam Map<String, Object> paramMap
-							 , Question question, @PathVariable("list") String list) {
-		
-		
-		Map<String, Object> map = service.selectreportList(cp, list);
-		model.addAttribute("map", map);
-		
-		return "admin_/report-list";
-	}
-	
-	
 	// 문의 답변 등록
 	@ResponseBody
 	@PostMapping("/qna/insert")
@@ -161,10 +145,41 @@ public class AdminController {
 		return service.insertAnswer(detail);
 	}
 	
-	// 신고 처리
+	
+	
+	
+	// 코스 신고 조회
+	@GetMapping("/report/course/{list}")
+	public String reportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+							 , Model model
+							 , @RequestParam Map<String, Object> paramMap
+							 , @PathVariable("list") String list) {
+		
+		Map<String, Object> map = service.selectreportList(cp, list);
+		model.addAttribute("map", map);
+		
+		return "admin_/report-course";
+	}
+	
+	// 코스 신고 처리
 	@ResponseBody
 	@GetMapping("/report/situation")
 	public int updateReport(ReportMoveLine report) {
 		return service.updateReport(report);
 	}
+	
+	// 댓글 신고 조회
+	@GetMapping("/report/reply/{list}")
+	public String replyReportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+								 , Model model
+								 , @RequestParam Map<String, Object> paramMap
+								 , @PathVariable("list") String list) {
+		
+		Map<String, Object> map = service.selectReplyReport(cp, list);
+		model.addAttribute("map", map);
+		
+		return "admin_/report-reply";
+	}
+	
+	
 }

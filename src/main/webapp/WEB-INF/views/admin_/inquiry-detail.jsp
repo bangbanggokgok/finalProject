@@ -53,7 +53,7 @@
         </section>
 
         <section class="pageWrapper" id="contentWrapper">
-            <form>
+            <%-- <form> --%>
                 
                 <div class="title">${detail.questionTitle}</div>
 
@@ -63,8 +63,10 @@
                     </div>
                 </div>
                 
+                <div id="answer">
                  <c:choose>
                     <c:when test="${empty detail.questionAnswer}">
+                    
                         <div class="replyArea">
                         <textarea class="reply" id="replyContent" placeholder="답변을 입력해주세요."></textarea>
                         </div>
@@ -74,20 +76,22 @@
                                 <button type="button" id="addReply" class="submitButton">등록하기</button>
                             </div>
                         </section>
+                    
                     </c:when>
 
                     <c:otherwise>
-                        <div class="answer">${detail.managerName}</div>    
+                        <div class="answerName">${detail.managerName}</div>    
                         <div class="answer">${detail.questionAnswer}</div>    
                     </c:otherwise>
                 </c:choose>
+                </div>
                 
-            </form>
-            <div class="sc-fznxKY bjxHni">
+            <%-- </form> --%>
+            <%-- <div class="sc-fznxKY bjxHni">
                 <section class="sc-fzpmMD fpVDsP"></section>
             </div>
                 
-            </form>
+            </form> --%>
             
         </section>
     </section>
