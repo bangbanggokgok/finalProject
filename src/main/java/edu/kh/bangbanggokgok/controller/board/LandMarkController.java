@@ -67,6 +67,7 @@ public class LandMarkController {
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
 		// 이미지 담아야함
 		model.addAttribute("landmarkDetail", landmarkDetail);
+		
 		return "landMark/land-detail";
 	}
 
@@ -128,7 +129,6 @@ public class LandMarkController {
 				path = req.getHeader("referer");
 				message = "게시글 삽입 실패";
 			}
-
 		}
 
 		if (mode.equals("update")) {
@@ -143,11 +143,10 @@ public class LandMarkController {
 				message = "게시글 수정 실패";
 				path = req.getHeader("referer");
 			}
-			 	
 		}
 		ra.addFlashAttribute("message", message);
 
-		return "redirect:";// +path;
+		return "redirect:"+path;
 
 	}
 

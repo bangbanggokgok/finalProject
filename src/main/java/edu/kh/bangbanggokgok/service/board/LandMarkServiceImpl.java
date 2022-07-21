@@ -150,7 +150,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 //							
 //							
 //							LandMarkIMG img = new LandMarkIMG();
-//							img.setLandMarkNo(landMarkNo);
+//							img.setLandMarkNo(detail.getLandMarkNo());
 //							img.setLandMarkImageLV(i); 
 //							img.setLandMarkReName( webPath + reName );
 //							
@@ -159,14 +159,14 @@ public class LandMarkServiceImpl implements LandMarkService{
 //					} 
 //
 //					
-//					//삭제된 이미지 delete
+//					//삭제된 이미지
 //					if(!deleteList.equals("")) {
 //						Map<String, Object> map = new HashMap<>();
 //						
-//						map.put("boardNo", detail.getLandMakrNo());
+//						map.put("landMarkNo", detail.getLandMarkNo());
 //						map.put("deleteList", deleteList);
 //						
-//						result = dao.deleteBoardImage(map);
+//						result = dao.deleteLandMarkImage(map);
 //					}
 //					
 //					
@@ -188,7 +188,7 @@ public class LandMarkServiceImpl implements LandMarkService{
 //							
 //							for(int i=0 ; i< ladnMarkImageList.size() ; i++) {
 //								
-//								int index = ladnMarkImageList.get(i).getImageLevel();
+//								int index = ladnMarkImageList.get(i).getLandMarkImageLV();
 //								
 //								imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));    
 //							}
