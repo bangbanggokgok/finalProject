@@ -14,6 +14,11 @@
       type="text/css"
       href="${contextPath}/resources/css/landmark/land-detail.css"
     />
+        <link
+      rel="stylesheet"
+      type="text/css"
+      href="${contextPath}/resources/css/landmark/land-detail2.css"
+    />
     <!-- <link rel="stylesheet" type="text/css" href="../css/style1.css" /> -->
   </head>
   <body>
@@ -49,6 +54,12 @@
             </a>
           </div>
         </div>
+
+        <div class="detailCheckWrap">
+          <a class="detailCheck" href="#">수정</a>
+          <a class="detailCheck" href="#">삭제</a>
+        </div>
+
         <div class="area_address">
           <h2>${landmarkDetail.landMarkName}</h2>
           <span>${landmarkDetail.locationName}</span>
@@ -103,8 +114,9 @@
             <div class="detail">
               <h3>상세정보</h3>
               <div class="icon-1">
-                <i class="fa-solid fa-chevron-down"></i>
-                <i class="fa-solid fa-angle-up"></i>
+                <i class="fa-solid fa-chevron-down"></i> 
+                <%-- <i style="display:none;"class="fa-solid fa-angle-up"></i> --%>
+                <i class="fa-solid fa-chevron-up"></i>
               </div>
             </div>
             <div class="detail-content">

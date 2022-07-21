@@ -8,7 +8,6 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 
 * {
     outline: none;
-    font-family: inherit;
 }
 *, ::before, ::after {
     background-repeat: no-repeat;
@@ -50,14 +49,14 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 
 .contentArea{
     margin-top: 30px;
-    height: 600px;
+    min-height: 300px;
     border-bottom: 1px solid rgb(209, 209, 209);
     border-top: 1px solid rgb(209, 209, 209);
 }
 
 .content{
     margin-top: 30px;
-    height: 600px;
+    height: 100%;
     width: 100%;
     resize: none;
     border: none;
