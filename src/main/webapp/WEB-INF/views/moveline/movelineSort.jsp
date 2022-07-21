@@ -120,7 +120,7 @@
                                     <c:forEach var="landmark" items="${moveline.landmarkList}">
                                             <ul class="s-list">
                                                 <li><span><a href="">${landmark.landMarkName}</a></span></li>
-                                            </ul>   
+                                            </ul>
                                     </c:forEach>
                                 </div>
                         </c:forEach>
@@ -133,9 +133,6 @@
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     </main>
-
-
-
 
     <script src="${contextPath}/resources/js/common/nav.js"></script>
 

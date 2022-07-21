@@ -190,7 +190,10 @@ public class MoveLineController {
 	}
 	
 	
-	
+	@GetMapping("/detail/{movelineNo}")
+	public String movelineDetail(@PathVariable("movelineNo") int movelineNo) {
+		return null;
+	}
 	
 	
 	

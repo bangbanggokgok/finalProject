@@ -49,10 +49,6 @@ public class AdminController {
 	public String noticeWriteForm(String mode,
 								 @RequestParam(value="no", required=false, defaultValue = "0") int noticeNo,
 								 Model model) {
-
-
-
-
 		return "admin_/notice-write";
 	}
 	
@@ -60,7 +56,7 @@ public class AdminController {
 	// 공지 작성(삽입, 수정)
 	@PostMapping("/notice/write")
 	public String noticeWrite(NoticeDetail detail,
-							@RequestParam(value = "images", required = false) List<MultipartFile> imageList, String mode,
+							@RequestParam(value = "images", required = false) List<MultipartFile> imageList,
 							@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra) throws IOException {
 
 		detail.setUserNo(loginUser.getUserNo());

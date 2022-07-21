@@ -1,182 +1,175 @@
-*{
-    box-sizing: border-box;
-    margin:0;
-    padding:0;
-    font-family: "Nunito", sans-serif;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Nunito", sans-serif;
 }
 /* body{
     background-color: hotpink;
 } */
-a{
-    text-decoration: none;
-    color:black;
-
+a {
+  text-decoration: none;
+  color: black;
 }
-ul,li,ol{
-    list-style: none;
+ul,
+li,
+ol {
+  list-style: none;
 }
-#mainNavbar1{
-    /* background-color:rgb(237, 242, 244,0.6); */
-    font-size: 1.5rem;
-    font-weight: 100;
+#mainNavbar1 {
+  /* background-color:rgb(237, 242, 244,0.6); */
+  font-size: 1.5rem;
+  font-weight: 100;
 }
-.nav{
-    background-color:rgb(237, 242, 244,0.5);
-    display:flex;
-    justify-content: flex-start;
-    /* align-items: center; */
-    padding: 0.5rem 1rem;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1111111110;
+.nav {
+  background-color: rgb(237, 242, 244, 0.5);
+  display: flex;
+  justify-content: flex-start;
+  /* align-items: center; */
+  padding: 0.5rem 1rem;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1111111110;
 }
-.nav.scrolled{
-    /* color:rgb(29, 53, 87,1) */
-    /* background:rgb(0, 187, 249,0.7); */
-    /* background:rgb(25, 130, 196,0.7); */
-    /* background:rgb(0, 119, 182,0.7); */
-    background:rgb(187, 208, 255,0.9);
-    /* background:rgb(238, 155, 0.7);
+.nav.scrolled {
+  /* color:rgb(29, 53, 87,1) */
+  /* background:rgb(0, 187, 249,0.7); */
+  /* background:rgb(25, 130, 196,0.7); */
+  /* background:rgb(0, 119, 182,0.7); */
+  background: rgb(187, 208, 255, 0.9);
+  /* background:rgb(238, 155, 0.7);
     background:rgb(0, 80, 157,0.8); */
 
-    transition: background 500ms;
+  transition: background 500ms;
 }
-.login-btn.color{
-    color:white;
-    /* background-color: #3a86ff; */
+.login-btn.color {
+  color: white;
+  /* background-color: #3a86ff; */
 }
-.login-btn.color:hover{
-    color:black;
+.login-btn.color:hover {
+  color: black;
 }
-.nav-menu.white{
-    color:white;
+.nav-menu.white {
+  color: white;
 }
-.nav-menu.white:hover{
-    background-color: rgb(255, 255, 255,0.5);
-    color:black;
+.nav-menu.white:hover {
+  background-color: rgb(255, 255, 255, 0.5);
+  color: black;
 }
-.signUp-btn.color{
-    color:black;
-    background-color: white;
+.signUp-btn.color {
+  color: black;
+  background-color: white;
 }
-.signUp-btn.color:hover{
-    color:#3a86ff;
+.signUp-btn.color:hover {
+  color: #3a86ff;
 }
-.nav-title{
-    width:150px;
-    margin-top:0.3rem;
-    margin-right:1rem;
-    font-weight: 400;
-    color:#bbd0ff;
+.nav-title {
+  width: 150px;
+  margin-top: 0.3rem;
+  margin-right: 1rem;
+  font-weight: 400;
+  color: #bbd0ff;
 }
-.logo{
-    width:150px;
+.logo {
+  width: 150px;
 }
-.navbarWrap{
-    display:flex;
-    align-items: center;
-    flex-grow:1;
+.navbarWrap {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
 }
-.nav-nav{
-    font-weight: 600;
-    display:flex;
-    transition: margin-left 1s;
-    margin-top:10px;
+.nav-nav1 {
+  font-weight: 600;
+  display: flex;
+  transition: margin-left 1s;
+  margin-top: 10px;
 }
 /* .navbar-nav > li{
     border:1px solid black;
 } */
-.nav-menu{
-    display:inline-block;
-    width:120px;
-    text-align: center;
-    padding:0.5rem;
-    transition-delay: 0.15s;
-    box-shadow: 0 .5rem 1 darkblue
+.nav-menu {
+  display: inline-block;
+  width: 120px;
+  text-align: center;
+  padding: 0.5rem;
+  transition-delay: 0.15s;
+  box-shadow: 0 0.5rem 1 darkblue;
 }
-.nav-menu:hover{
-    background-color:#bbd0ff;
-    color:white;
+.nav-menu:hover {
+  background-color: #bbd0ff;
+  color: white;
 }
-.nav-hover:hover{
-    transition-delay: 0.15s;
-    color:black;
-}
-
-.nav-in{
-    margin-top: 10px;
-    display: flex;
-    /* border:0.5px solid #bde0fe; */
-}
-.login-btn{
-    /* border:0.5px solid #bde0fe; */
-    border-right:none;
-    display: inline-block;
-    /* margin-right:5px; */
-    font-size:15px;
-    padding:10px;
-    width:118px;
-    text-align: center;
-}
-.login-btn:hover{
-    color:#a2d2ff;
-}
-.signUp-btn{
-    display:inline-block;
-    background-color: #a2d2ff;
-    text-align: center;
-    font-size:15px;
-    color:white;
-    width:118px;
-    padding:10px;
-}
-.ham{
-    display:none;
-}
-.cursor{
-    cursor: pointer;
+.nav-hover:hover {
+  transition-delay: 0.15s;
+  color: black;
 }
 
-@media (max-width: 768px){
-    .nav, .nav ul{
-        flex-direction: column;
-        /* justify-content: flex-start; */
-        align-items: flex-start;
-        
-    }
-    .ham{
-        display:inline-block;
-        position: fixed;
-        right:10px;
-        
-    }
-    .nav-nav,.nav-in{
-        display:none;
-        justify-content: center;
-    }
+.nav-in {
+  margin-top: 10px;
+  display: flex;
+  /* border:0.5px solid #bde0fe; */
 }
-.active{
-    display:flex;
+.manager-menu {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  display: none;
 }
-.trans{
-    transition-timing-function: ease-in;
+.manager-menu.active {
+  display: flex;
+}
+.login-btn {
+  /* border:0.5px solid #bde0fe; */
+  border-right: none;
+  display: inline-block;
+  /* margin-right:5px; */
+  font-size: 15px;
+  padding: 10px;
+  width: 118px;
+  text-align: center;
+}
+.login-btn:hover {
+  color: #a2d2ff;
+}
+.signUp-btn {
+  display: inline-block;
+  background-color: #a2d2ff;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+  width: 118px;
+  padding: 10px;
+}
+.ham {
+  display: none;
+}
+.cursor {
+  cursor: pointer;
 }
 
-.admin-btn{
-    border-right:none;
+@media (max-width: 768px) {
+  .nav,
+  .nav ul {
+    flex-direction: column;
+    /* justify-content: flex-start; */
+    align-items: flex-start;
+  }
+  .ham {
     display: inline-block;
-    font-size:15px;
-    padding:8px;
-    width:133px;
-    text-align: center;
+    position: fixed;
+    right: 10px;
+  }
+  .nav-nav1,
+  .nav-in {
+    display: none;
+    justify-content: center;
+  }
 }
-.menu-btn{
-    border-right:none;
-    display: inline-block;
-    font-size:15px;
-    padding:8px;
-    width:110px;
-    text-align: center;
+.active {
+  display: flex;
+}
+.trans {
+  transition-timing-function: ease-in;
 }
