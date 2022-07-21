@@ -1,10 +1,15 @@
 let navi = document.querySelector(".nav-nav1");
 let navin = document.querySelector(".nav-in");
 let toggleBtn = document.querySelector(".ham");
+const managerBtn = document.querySelector(".manager");
+const managerMenu = document.querySelector(".manager-menu");
 
 toggleBtn.addEventListener("click", () => {
   navi.classList.toggle("active");
   navin.classList.toggle("active");
+});
+managerBtn.addEventListener("click", () => {
+  managerMenu.classList.toggle("active");
 });
 
 $(function () {
