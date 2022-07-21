@@ -65,20 +65,17 @@
           </li>
         </c:if>
         <c:if test="${!empty loginUser}">
-        <c:if test="${loginUser.adminFlag == 'Y' }">
-            <li>
-              <p class="menu-btn nav-hover">관리자 메뉴</p>
-            </li>
-	          <li>
-		       	  <a href="${contextPath}/admin/main" class="admin-btn nav-hover">관리자 임시 버튼</a>
-	          </li>
-          	</c:if>
           <li>
             <a href="${contextPath}/myPage/info" class="login-btn nav-hover">내 정보 조회</a>
           </li>
           <li>
             <a href="#" class="signUp-btn nav-hover">로그아웃</a>
           </li>
+        <c:if test="${loginUser.adminFlag == 'Y' }">
+	          <li>
+		       	  <a href="${contextPath}/admin/main">관리자 임시 버튼</a>
+	          </li>
+        </c:if>
         </c:if>
         </ul>
       </div>
