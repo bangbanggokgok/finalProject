@@ -61,7 +61,9 @@
                     <div class="boardImg">
                         <label for="img1">
                         	<c:if test="${!empty landmarkDetail.imageList[0]}">
-	                            <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"> 
+                                <c:if test="${landmarkDetail.imageList[0].landMarkImageLV == 0}">
+	                                <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"> 
+                                </c:if>    
                         	</c:if>
 							<c:if test="${empty landmarkDetail.imageList[0]}">
 	                            <img class="far fa-plus-circle fa-lg preview" src=""> 

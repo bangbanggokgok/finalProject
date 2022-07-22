@@ -97,7 +97,7 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     document.getElementsByName("lng")[0].value = latlng.getLng();;
     document.getElementsByName("lat")[0].value = latlng.getLat();
     console.log(document.getElementsByName("lng")[0].value);
-    console.log(document.getElementsByName("lag")[0].value);
+    console.log(document.getElementsByName("lat")[0].value);
 });
 
 

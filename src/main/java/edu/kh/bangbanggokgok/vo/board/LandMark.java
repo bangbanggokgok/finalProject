@@ -9,8 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class LandMark {
 	private int landMarkNo;
-	private int landMarkX;
-	private int landMarkY;
 	private String landMarkName;
 	private String landMarkContent;
 	private String landMarkAddress;

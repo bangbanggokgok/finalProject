@@ -3,7 +3,7 @@ function searchingLocation(locationNum){
     $.ajax({
         url: "list/"+locationNum,
         type: "GET",
-        data: { "locationNum": locationNum },
+        data: { "locationNum": locationNum},
         dataType: "JSON",
         success:function(map){
             
@@ -52,7 +52,8 @@ function searchingLocation(locationNum){
                     const img = document.createElement('img');
                     const a = document.createElement("a");
                     a.append(img);
-                    a.href("")
+                    // a.href("../landmark-main/detail/"+locationNum+"/"+landMarkNo);
+                    a.setAttribute('href',"../landmark-main/detail/"+locationNum+"/"+landMark.landMarkNo);
                     const figcaption = document.createElement('figcaption');
                     const p1 = document.createElement('p');
                     const p2 = document.createElement('p');
