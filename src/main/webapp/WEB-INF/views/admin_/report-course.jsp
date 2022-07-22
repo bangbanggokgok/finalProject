@@ -21,31 +21,6 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
-    <section class="navWrapper">
-        <div class="adminNav">
-            <ul class="listWrapper">
-                <div class="adminList">Admin</div>
-                <li id="adminList">
-                    <i class="fal fa-clipboard-list-check"></i> 공지사항
-                    <div>
-                        <a href="">공지/이벤트 조회</a><br>
-                        <a href="">공지/이벤트 작성</a>
-                    </div>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-user-friends"></i> 회원관리</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </section>
     <div class="board">
         <h1>코스 신고관리</h1>
         <div class="list">

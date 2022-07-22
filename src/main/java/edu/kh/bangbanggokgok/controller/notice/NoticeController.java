@@ -1,6 +1,5 @@
 package edu.kh.bangbanggokgok.controller.notice;
 
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,15 +10,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
@@ -55,33 +50,23 @@ public class NoticeController {
 							, HttpServletRequest req, HttpServletResponse resp) {
 		
 		NoticeDetail detail = service.selectNoticeDetail(boardNo);
-		
-		
-		if(detail != null) {
-			User loginUser = (User)session.getAttribute("loginUser");
-			
-			String adminFlag = "N";
-			if(loginUser != null) {
-//				adminFlag = loginUser.getAdminFlag();
-			}
-		}
-		
 		model.addAttribute("detail", detail);
-		
 		return "notice/noticeDetail";
 	}
 	
 	// 공지 ajax 조회
 	@ResponseBody
-	@GetMapping("/notice/{list}")
-	public Map<String, Object> noticelist(@PathVariable("list") String list, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp) {
-		
-		Map<String, Object> map = service.selectNotice(cp, list);
-//		return new Gson().toJson(map);
-		return map;
+	@GetMapping("/type/{list}")
+	public String noticelist(@PathVariable("list") String list, @RequestParam(value = "cp", required = false, defaultValue = "1") int cp
+							, @RequestParam("selectType") String selectType) {
+		if (selectType.equals("notice")) {
+			Map<String, Object> map = service.selectNotice(cp, list);
+			return new Gson().toJson(map);
+		} else{
+			Map<String, Object> map = service.selectEvent(cp, list);
+			return new Gson().toJson(map);
+		}
 	}
-	
-
 
 	
 	
