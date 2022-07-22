@@ -3,7 +3,7 @@
 
 
 
-<%-- <c:forEach var="moveline" items="${preMoveLineList}">
+<c:forEach var="moveline" items="${preMoveLineList}">
     <c:if test="${movelineNo == moveline.movelineNo}">
         <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
         <c:set var="landMarkName" value="${moveline.landMarkName}" />
@@ -11,7 +11,7 @@
         <c:set var="locationName" value="${moveline.locationName}" />
         <c:set var="thumbnail" value="${moveline.thumbnail}" />
     </c:if>
-</c:forEach> --%>
+</c:forEach>
 
 
 <!DOCTYPE html>
@@ -88,7 +88,7 @@
                     </div>
                 </div>
 
-                <div class="sample-area">
+                <div class="sample-area" href="${contextPath}/moveline-main/detail/${moveline.movelineNo}?cp=">
                     <c:if test="${!empty preMoveLineList}">
                         <c:forEach var="moveline" items="${preMoveLineList}">
                                 <div class="samples">
@@ -135,7 +135,11 @@
         
     </main>
 
-    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script>
+		const contextPath = "${contextPath}";
+    </script>
+
+    <script src="${contextPath}/resources/js/common/nav.js"></>
 
     <!-- jQuery 라이브러리 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

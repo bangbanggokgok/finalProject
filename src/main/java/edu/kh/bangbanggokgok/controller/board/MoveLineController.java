@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -191,8 +192,15 @@ public class MoveLineController {
 	
 	
 	@GetMapping("/detail/{movelineNo}")
-	public String movelineDetail(@PathVariable("movelineNo") int movelineNo) {
-		return null;
+	public String movelineDetail(
+//								 @RequestParam(value="movelineNo", required=true) int MovelineNo,
+								 @PathVariable("movelineNo") int movelineNo,
+			
+								 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
+								 Model model,
+			                     HttpSession session) {
+		
+		return "moveline/movelineDetail";
 	}
 	
 	
