@@ -72,7 +72,7 @@ public class AdminController {
 			String message = null;
 			
 			if(noticeNo > 0) {
-				path = "../../notice/detail/" + noticeNo;
+				path = "../../../notice/detail/" + noticeNo;
 				message = "등록되었습니다.";
 				
 			}else {

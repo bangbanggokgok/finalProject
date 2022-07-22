@@ -30,7 +30,10 @@
         <section class="pageWrapper" id="contentWrapper">
             <%-- <form> --%>
                 
-                <div class="title">${detail.questionTitle}</div>
+                <div class="title">
+                    <span id="title">${detail.questionTitle}</span>
+                    <span id="createDate">${detail.createDate}</span>
+                </div>
 
                 <div class="contentArea">
                     <div class="content">

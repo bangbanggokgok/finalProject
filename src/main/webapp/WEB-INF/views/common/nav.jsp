@@ -42,6 +42,7 @@
           <li>
             <a href="${contextPath}/landmark-main/list" class="nav-menu">문의하기</a>
           </li>
+          <c:if test="${loginUser.adminFlag == 'Y' }">
           <li>
             <a href="javascript:void(0);" class="nav-menu manager">관리자</a>
             <div class="manager-menu">
@@ -49,9 +50,10 @@
               <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 작성</a>
               <a href="${contextPath}/admin/user/list" class="nav-menu sub-menu">회원관리</a>
               <a href="${contextPath}/admin/qna/list" class="nav-menu sub-menu">1:1문의조회</a>
-              <a href="#" class="${contextPath}/admin/report/course/list">신고관리</a>
+              <a href="${contextPath}/admin/report/course/list" class="nav-menu sub-menu">신고관리</a>
             </div>
           </li>
+          </c:if>
         </ul>
       </div>
       <div>
