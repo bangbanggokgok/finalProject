@@ -11,10 +11,11 @@
 	-->
 	<!-- 랜드마크 목록 조회용 resultMap -->
 	<resultMap type="landMark" id="landMark_rm">
-		<id property="landMarkNo" column="LM_NO" />
-		<result property="landMarkName" column="LM_NAME"/>
-		<result property="landMarkContent" column="LM_CONTENT"/>
-		<result property="thumbnail" column="THUMBNAIL"/>
+		<id 	property="landMarkNo" 		column="LM_NO" 	/>
+		<result property="landMarkName" 	column="LM_NAME"/>
+		<result property="landMarkContent" 	column="LM_CONTENT"/>
+		<result property="thumbnail" 		column="THUMBNAIL"/>
+		<result property="locationType" 	column="LOCATION_TYPE"/>
 	</resultMap>
 	
 	<!-- 랜드마크 상세 조회용 resultMap -->
@@ -27,7 +28,7 @@
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
 		<result property="userName" 		column="USER_NAME" 		/>
-		<result property="locationName"		column="LOCATION_NAME"/>
+		<result property="locationName"		column="LOCATION_NAME"	/>
 		
 		<collection property="imageList" column="LM_NO" 
 			javaType="java.util.ArrayList" ofType="landMarkImage" 
@@ -87,7 +88,7 @@
 		SELECT LM_NO, LM_NAME, LM_CONTENT,
 		(SELECT LM_IMG_RENAME FROM LAND_IMG
 		WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
-		AND LM_IMG_LEVEL = 0) THUMBNAIL
+		AND LM_IMG_LEVEL = 0) THUMBNAIL,LOCATION_TYPE
 		FROM LANDMARK
 		JOIN LOCATIONS USING(LOCATION_TYPE)
 		WHERE LM_FL = 'N'

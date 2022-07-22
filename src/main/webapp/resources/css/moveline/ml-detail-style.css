@@ -8,7 +8,11 @@ html{
     width: 1140px;
     padding: 70px 20px 27px 20px;   
     /* margin-left: 560px; */
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+}
+
+ul{
+    list-style: none;
 }
 
 /* 헤더  */
@@ -90,6 +94,7 @@ html{
 /* 작성된 지역, 코스 총 거리, 테마 */
 #schedule-info{
     padding: 40px 150px 0px;
+    border-bottom: 1px solid #ccc;
 }
 
 .schedule{
@@ -101,9 +106,6 @@ html{
     justify-content: center;
 }
 
-.schedule li{
-    list-style: none;
-}
 
 .schedule>li img{
     width: 150px;
@@ -161,28 +163,38 @@ html{
 #moveline-hashtags{
     margin-top: 20px;
     font-size: 20px;
-    max-height: 150px;
+    max-height: 200px;
     display: flex;
     justify-content: center;
 }
 
+
+#moveline-hashtags li{
+    display: inline-block;
+    margin: 10px 5px;
+}
+
 #moveline-map-area{
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     height: 300px;
 }
 
 #moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
 }
 
 #moveline-content{
+    border-bottom: 1px solid #ccc;
     height: 350px;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 0 20px
 }
 
 /* 코스 이미지 */
 #moveline-images>img{
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
 }
 
 #moveline-images{
@@ -196,43 +208,34 @@ html{
 
 
 /* 랜드마크 디테일 */
-.landmark-detail>div:nth-of-type(2){
-    border: 1px solid #ccc;
-    display: inline-block;
-    text-align: center;
-}
-
-
-.landmark-detail>div:nth-of-type(2)>span{
-    border: 1px solid #ccc;
-    display: inline-block;
-    width: 200px;
-    padding: 10px;
-}
-
-
 .landmark-detail{
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     text-align: center;
     font-size: 30px;
+}
 
+.landmark-detail>ul{
+    display: inline-flex;
+    padding-inline-start: 0;
+    margin: 0px;
 }
 
 .landmark{
-    border: 1px solid #ccc;
-    display: inline-block;
+    /* border-bottom: 1px solid #ccc; */
     width: 200px;
     padding: 10px;
+    padding-inline-start: 0;
 }
 
 .selected-landmark{
     margin: 5px;
 }   
 
+
 /* 랜드마크 이미지 */
 #landmark-images>img{
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     text-align: center;
 }
 
@@ -242,8 +245,12 @@ html{
 }
 
 #landmark-explain{
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     height: 100px;
+    font-size: 20px;
+    padding: 20px 20px;
+    height: auto;
 }
 
 /*  */

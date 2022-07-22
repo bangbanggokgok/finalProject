@@ -50,7 +50,7 @@ public class LandMarkController {
 		model.addAttribute("map", map);
 		return "landMark/landmark";
 	}
-
+	
 	@ResponseBody
 	@GetMapping("/list/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
@@ -72,9 +72,10 @@ public class LandMarkController {
 	}
 
 	// 게시글 작성 화면 전환
-	@GetMapping("/write/{mode}/{landmarkNo}")
+	@GetMapping("/write/{mode}")
 	public String landWriteForm(@PathVariable String mode,
-			@PathVariable("landmarkNo") int landmarkNo, Model model) {
+			@RequestParam(value="landmark-no",required=false,defaultValue="0") int landmarkNo,
+			Model model) {
 
 		if (mode.equals("update")) {
 			LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
