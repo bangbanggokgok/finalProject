@@ -90,7 +90,6 @@ public class LandMarkDAO {
 	public int updateLandmark(LandMarkDetail detail) {
 		return sqlSession.update("landMarkMapper.updateLandmark",detail);
 	}
-
 	
 	public int deleteLandmarkImage(Map<String, Object> map) {
 		return sqlSession.delete("landMarkMapper.deleteLandmarkImage",map);

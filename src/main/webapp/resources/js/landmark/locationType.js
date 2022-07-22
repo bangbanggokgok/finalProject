@@ -1,7 +1,7 @@
 function searchingLocation(locationNum){
     
     $.ajax({
-        url: "list/nsync/"+locationNum,
+        url: "nsync/"+locationNum,
         type: "GET",
         data: { "locationNum": locationNum},
         dataType: "JSON",
@@ -70,7 +70,7 @@ function searchingLocation(locationNum){
                 }
             }
             if(map.landMarkList == ""){
-                ol.innerHTML = "<h1>아직 등록된 랜드마크가 없어요.</h1>"
+                ol.innerHTML = "<h1 style=\"display:flex;justify-content: center;\">아직 등록된 랜드마크가 없어요.</h1>"
             }
             document.getElementById("zoneTitle").innerText = 
                     document.getElementsByClassName("clicked")[0].innerText;

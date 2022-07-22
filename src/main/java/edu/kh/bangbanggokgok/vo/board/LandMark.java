@@ -17,4 +17,5 @@ public class LandMark {
 	private String thumbnail;
 	private String userName;
 	private int locationType;
+	private String locationName;
 }

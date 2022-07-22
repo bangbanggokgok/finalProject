@@ -29,7 +29,7 @@ public class LocationInterceptor implements HandlerInterceptor{
 		ServletContext application = request.getServletContext();
 		if(application.getAttribute("LocationList") == null) {
 			List<Location> locationList = MovelineService.selectLocation();
-			application.setAttribute("LocationList", locationList);
+			application.setAttribute("locationList", locationList);
 		}
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);

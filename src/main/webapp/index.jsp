@@ -247,21 +247,35 @@
       </div>
     </div>
 
+    <c:set var="act" value="5" />
     <div class="region">
-      <div class="d-flex justify-content-around">
-        <a href="landmark-main">
-            <div class="card bg-dark text-white">
-                <img
-                src="${contextPath}/resources/images/main/location-image/서울.jpg"
-                class="card-img"
-                alt="..."/>
-                <div class="card-img-overlay">
-                    <h5 class="card-title">서울</h5>
+      <c:if test="${act >= 16}">
+        <div class="d-flex justify-content-center">
+      </c:if>
+      <c:forEach var="locations" items="${locationList}">
+        <c:if test="${act % 5 == 0}">
+          <div class="d-flex justify-content-around">
+        </c:if>
+            <a href="landmark-main/list/${locations.locationNum}">
+                <div class="card bg-dark text-white">
+                    <img
+                    src="${contextPath}/resources/images/main/location-image/${locations.locationName}.jpg"
+                    class="card-img"
+                    alt="..."/>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title">${locations.locationName}</h5>
+                    </div>
                 </div>
-            </div>
-        </a>
-        
-        <a href="#">
+            </a>
+          <div style="display:none;">${act = act+1}</div>
+        <c:if test="${act % 5 == 0}">
+          </div>
+        </c:if>
+      </c:forEach>
+      <c:if test="${act >= 16}">
+        </div>
+      </c:if>
+        <%-- <a href="#">
             <div class="card bg-dark text-white">
                 <img
                 src="${contextPath}/resources/images/main/location-image/부산2.jpg"
@@ -445,7 +459,7 @@
             </div>
         </a>
       </div>
-    </div>
+    </div> --%>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 

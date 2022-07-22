@@ -16,6 +16,8 @@
 		<result property="landMarkContent" 	column="LM_CONTENT"/>
 		<result property="thumbnail" 		column="THUMBNAIL"/>
 		<result property="locationType" 	column="LOCATION_TYPE"/>
+		<result property="locationName" 	column="LOCATION_NAME"/>
+		
 	</resultMap>
 	
 	<!-- 랜드마크 상세 조회용 resultMap -->
@@ -88,7 +90,7 @@
 		SELECT LM_NO, LM_NAME, LM_CONTENT,
 		(SELECT LM_IMG_RENAME FROM LAND_IMG
 		WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
-		AND LM_IMG_LEVEL = 0) THUMBNAIL,LOCATION_TYPE
+		AND LM_IMG_LEVEL = 0) THUMBNAIL, LOCATION_TYPE , LOCATION_NAME
 		FROM LANDMARK
 		JOIN LOCATIONS USING(LOCATION_TYPE)
 		WHERE LM_FL = 'N'
@@ -170,15 +172,13 @@
 	
 	<update id="updateLandmarkImage">
 		UPDATE LAND_IMG SET
-		LAND_IMG_RENAME = #{landMarkReName}
+		LM_IMG_RENAME = #{landMarkReName}
 		WHERE LM_NO = #{landMarkNo}
 		AND LM_IMG_LEVEL = #{landMarkImageLV}
-		
-		
 	</update>
 	
 	<insert id="insertLandmarkImage">
-		INSERT INTO BOARD_IMG VALUES(
+		INSERT INTO LAND_IMG VALUES(
 				SEQ_LM_IMG_NO.NEXTVAL, #{landMarkNo},#{landMarkReName},#{landMarkImageLV}
 		)
 	</insert>
