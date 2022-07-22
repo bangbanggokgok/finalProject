@@ -50,6 +50,8 @@ public class AdminServiceImpl implements AdminService{
 					img.setNoticeNo(noticeNo);
 					img.setImageLevel(i);
 					img.setImageReName(webPath + reName);
+					
+					noticeImageList.add(img);
 				}
 			}
 			

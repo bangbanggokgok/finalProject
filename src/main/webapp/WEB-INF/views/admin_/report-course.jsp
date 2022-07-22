@@ -49,7 +49,7 @@
                         <div class="date">${report.reportDate}</div>
                         <c:choose>
                             <c:when test="${report.reportFlag == 'N'}">
-                                <div  id="wait" class="situation">처리대기</div>
+                                <div  id="wait" class="situation" value=${report.reportNo}>처리대기</div>
                             </c:when>
 
                             <c:otherwise>
