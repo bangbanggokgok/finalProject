@@ -6,7 +6,7 @@ html{
 /* 전체 화면 */
 #contents{
     width: 1140px;
-    padding: 70px 20px 27px 20px;   
+    padding: 100px 20px 27px 20px;   
     /* margin-left: 560px; */
     /* border: 1px solid #ccc; */
 }
@@ -21,6 +21,9 @@ ul{
     padding-bottom: 10px;
 }
 
+#top-middle{
+    margin-bottom: 30px;
+}
 
 .profileImage{
     width: 40px;
@@ -32,6 +35,26 @@ ul{
     position: relative;
     vertical-align: top;
     margin-bottom: 5px;
+}
+
+#btn-area{
+    font-size: 15px;
+    font-weight: bold;
+    border-color: white;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+#btn-area>button{
+    width: 80px;
+    height: 80px;
+}
+
+#btn-are:hover{
+    cursor: pointer;
+    background-color: #13294b;
+    border-color: #13294b;
+    color: white;
 }
 
 .icon-writer>img{
@@ -88,7 +111,6 @@ ul{
 
 /* 바디 */
 #moveline-area{
-    border: 1px solid #ccc;
 }
 
 /* 작성된 지역, 코스 총 거리, 테마 */
@@ -108,7 +130,7 @@ ul{
 
 
 .schedule>li img{
-    width: 150px;
+    width: 80px;
 }
 
 /* 지역 자리 */
@@ -119,24 +141,25 @@ ul{
 }
 
 .loca2{
-    font-size: 40px;
-    padding: 5px 10px;
+    font-size: 30px;
+    padding: 0 10px;
 }
 
 .distance{
     text-align: center;
-    margin-top: 20px;
+    margin-top: 30px;
 }
 
 .distance>:nth-child(1){
     color: #777;
 }
+
 .distance>:nth-child(2){
     font-size: larger;
 }
 
 .distance>span{
-    margin: 5px;
+    padding: 0 10px;
 }
 
 /* 테마 자리 */
@@ -154,14 +177,14 @@ ul{
 }
 
 .theme2{
-    font-size: 40px;
-    padding: 20px 10px;
+    font-size: 30px;
+    padding: 0px 10px;
 }
 
 
 /* 해시태그 자리 */
 #moveline-hashtags{
-    margin-top: 20px;
+    margin-top: 50px;
     font-size: 20px;
     max-height: 200px;
     display: flex;
@@ -173,10 +196,18 @@ ul{
     display: inline-block;
     margin: 10px 5px;
 }
-
 #moveline-map-area{
-    /* border: 1px solid #ccc; */
-    height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#map{
+    width: 700px;
+    height: 500px;
+    text-align: center;
+    
 }
 
 #moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
@@ -193,8 +224,9 @@ ul{
 
 /* 코스 이미지 */
 #moveline-images>img{
-    width: 400px;
+    width: 600px;
     height: 400px;
+    margin-top: 30px;
 }
 
 #moveline-images{
@@ -209,15 +241,15 @@ ul{
 
 /* 랜드마크 디테일 */
 .landmark-detail{
-    border-bottom: 1px solid #ccc;
     text-align: center;
     font-size: 30px;
+    margin-top: 100px;
+
 }
 
 .landmark-detail>ul{
     display: inline-flex;
     padding-inline-start: 0;
-    margin: 0px;
 }
 
 .landmark{
@@ -227,6 +259,12 @@ ul{
     padding-inline-start: 0;
 }
 
+.landmark:hover{
+    cursor: pointer;
+    background-color: #bbd0ff;
+    color: white;
+}
+
 .selected-landmark{
     margin: 5px;
 }   
@@ -234,9 +272,10 @@ ul{
 
 /* 랜드마크 이미지 */
 #landmark-images>img{
-    width: 400px;
+    width: 600px;
     height: 400px;
     text-align: center;
+    margin-top: 30px;
 }
 
 #landmark-images{

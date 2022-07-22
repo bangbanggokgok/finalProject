@@ -249,7 +249,7 @@
 
     <div class="region">
       <div class="d-flex justify-content-around">
-        <a href="#">
+        <a href="landmark-main">
             <div class="card bg-dark text-white">
                 <img
                 src="${contextPath}/resources/images/main/location-image/서울.jpg"
