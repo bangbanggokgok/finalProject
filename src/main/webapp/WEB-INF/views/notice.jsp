@@ -19,7 +19,7 @@
     <div class="board">
         <h1>공지사항</h1>
         <div class="list">
-            <div class="category" id="all" value="all"><a href="${contextPath}/notice/list">전체</a></div>
+            <div class="category" value="all"><a id="all" href="${contextPath}/notice/list">전체</a></div>
             <div class="category" id="notice" value="notice">공지</div>
             <div class="category" id="event" value="event">이벤트</div>
         </div>

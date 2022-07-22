@@ -138,7 +138,7 @@
                 </div>
                 <input type="text" name="lng" style="display:none;" value="${landmarkDetail.landMarkX}">
                 <input type="text" name="lat" style="display:none;" value="${landmarkDetail.landMarkY}">
-                <input type="hidden" name="deleteList" id="deleteList" value="">
+                <input type="hidden" name="deleteList" id="deleteList" value="ggomsu">
                
                 <div class="addressField">
                     <div id="map" style="width:764px;height:400px;"></div>
@@ -161,6 +161,12 @@
         <script>
             let lng = ${landmarkDetail.landMarkX};
             let lat = ${landmarkDetail.landMarkY};
+        </script>
+    </c:if>
+    <c:if test="${empty landmarkDetail}">
+        <script>
+            lng = 126.98298720739353;
+            lat = 37.56792412182713;
         </script>
     </c:if>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
