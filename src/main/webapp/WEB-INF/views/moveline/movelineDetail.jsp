@@ -49,11 +49,17 @@
                                 <span class="icon-bookmark">즐겨찾기</span>
                             </button>
                         </div>
-                            <div id="btn-area">
-                                <button>수정하기</button>
-                                <button>삭제하기</button>
-                            </div>
-
+                        <c:choose>
+                            <c:when test="${!empty loginUser}"> 
+                                <div id="btn-area">
+                                    <button>수정하기</button>
+                                    <button>삭제하기</button>
+                                </div>
+                            </c:when>
+                            <c:otherwise>
+                                    <button>목록으로</button>
+                            </c:otherwise>
+						</c:choose>
                     </div>
 
                 </div>
