@@ -37,10 +37,10 @@
             <a href="${contextPath}/landmark-main/list" class="nav-menu">랜드마크</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main/list" class="nav-menu">공지사항</a>
+            <a href="${contextPath}/notice/list" class="nav-menu">공지사항</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main/list" class="nav-menu">문의하기</a>
+            <a href="${contextPath}/myPage/inquiry/q_write?cp=1" class="nav-menu">문의하기</a>
           </li>
           <li>
             <a href="javascript:void(0);" class="nav-menu manager">관리자</a>
