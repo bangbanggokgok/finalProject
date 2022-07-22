@@ -48,7 +48,7 @@
 
     font-weight: bold;
     color: white;
-    background-color: #455ba8;
+    background-color: #bbd0ff;
     border: 0;
     border-radius: 3px;
 
@@ -58,8 +58,8 @@
 /* 버튼 hover */
 .reply-btn-area > button:hover{
     background-color: white;
-    border: 2px solid #455ba8;
-    color: #455ba8;
+    border: 2px solid #bbd0ff;
+    color: #bbd0ff;
 }
 
 
@@ -91,8 +91,8 @@
 }
 #addReply:hover{
     cursor: pointer;
-    background-color: #13294b;
-    border-color: #13294b;
+    background-color: #bbd0ff;
+    border-color: #bbd0ff;
     color: white;
 }
 

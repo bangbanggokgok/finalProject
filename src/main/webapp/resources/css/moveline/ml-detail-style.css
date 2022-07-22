@@ -37,26 +37,6 @@ ul{
     margin-bottom: 5px;
 }
 
-#btn-area{
-    font-size: 15px;
-    font-weight: bold;
-    border-color: white;
-    background-color: white;
-    margin-bottom: 10px;
-}
-
-#btn-area>button{
-    width: 80px;
-    height: 80px;
-}
-
-#btn-are:hover{
-    cursor: pointer;
-    background-color: #13294b;
-    border-color: #13294b;
-    color: white;
-}
-
 .icon-writer>img{
     width: 40px;
 }
@@ -83,9 +63,6 @@ ul{
     text-align: center;
 }
 
-#btn-area{
-}
-
 #btn-area>button{
     margin-left: 5px;
     font-size: 15px;
@@ -93,12 +70,13 @@ ul{
     border-color: white;
     background-color: white;
     height: 30px;
+    width: 80px;
 }
 
 #btn-area>button:hover{
     cursor: pointer;
-    background-color: #13294b;
-    border-color: #13294b;
+    background-color: #bbd0ff;
+    border-color: #bbd0ff;
     color: white;
 }
 
