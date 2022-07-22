@@ -33,52 +33,16 @@
     </section>
 
     <section class="board">
-        <section class="navWrapper">
-            <div class="adminNav">
-                <ul class="listWrapper">
-                    <div class="adminList">Admin</div>
-                    <li id="adminList">
-                        <i class="fal fa-clipboard-list-check"></i> 공지사항
-                        <div>
-                            <a href="">공지/이벤트 조회</a><br>
-                            <a href="">공지/이벤트 작성</a>
-                        </div>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-user-friends"></i> 회원관리</a>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </section>
-
         <section class="pageWrapper" id="contentWrapper">
             <form>
-                
-                
                 <div class="title">${detail.noticeTitle}</div>
-
-                <!-- 이미지 조회 -->
                 <c:set var="start" value="0"/>
-                
-
                 <c:if test="${fn:length(detail.imageList) > start}">
-
-                    <!-- 업로드 이미지 영역 -->
                     <div class="img-box">
                         <c:forEach var="i" begin="${start}" end="${fn:length(detail.imageList) -1 }">
-                        
                             <div class="boardImg">
                                 <img src="${contextPath}${detail.imageList[i].imageReName}">
                             </div>
-
                         </c:forEach>
                     </div>
                 </c:if> 

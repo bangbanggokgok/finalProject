@@ -37,8 +37,6 @@ public class NoticeServiceImpl implements NoticeService{
 	// 게시글 상세 조회 서비스 구현
 	@Override
 	public NoticeDetail selectNoticeDetail(int boardNo) {
-		
-		
 		return dao.selectnoticeDetail(boardNo);
 	}
 
@@ -56,6 +54,22 @@ public class NoticeServiceImpl implements NoticeService{
 		map.put("allNoticeList", allNoticeList);
 		return map;
 	}
+
+	// 이벤트 ajax
+	@Override
+	public Map<String, Object> selectEvent(int cp, String list) {
+		int listCount = dao.getEventListCount();
+		
+		Pagination pagination = new Pagination(cp, listCount);
+		
+		List<Notice> allEventList = dao.selectAllEventList(pagination, list);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("allNoticeList", allEventList);
+		return map;
+	}
+	
 	
 	
 }
