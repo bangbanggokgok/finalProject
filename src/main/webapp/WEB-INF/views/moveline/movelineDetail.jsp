@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,15 +8,18 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>코스 디테일</title>
-
+    <link
+	href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
+	rel="stylesheet" />
     <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet" />
     <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/reply-style.css">
 
 </head>
 <body>
     <main>
-
+        
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
         <div id="contents">
@@ -25,7 +31,7 @@
                                 <img src="${contextPath}/resources/images/user.png" alt="">
                             </span>
                         </div>
-                        <span>김*태</span>
+                        <span>최*호</span>
                     </div>
                     
                     <div id="top-middle">
@@ -38,15 +44,16 @@
                                 <span>조회수</span>
                                 <span>213</span>
                             </span> --%>
-                            <button type="button" class="btn-bookmark" onclick="setMookmark();">
+                            <button type="button" class="btn-bookmark"
+													onclick="setBookmark(${moveline.movelineNo});">
                                 <span class="icon-bookmark">즐겨찾기</span>
                             </button>
                         </div>
+                            <div id="btn-area">
+                                <button>수정하기</button>
+                                <button>삭제하기</button>
+                            </div>
 
-                        <div id="btn-area">
-                            <button>수정하기</button>
-                            <button>삭제하기</button>
-                        </div>
                     </div>
 
                 </div>
@@ -61,15 +68,11 @@
                                     <img src="${contextPath}/resources/images/movelineDetail/location.png" alt="">
                                 </span>
                                 <span>
-                                    <div class="loca2">서울</div>
                                     <div class="loca1">지역</div>
+                                    <div class="loca2">서울</div>
                                 </span>
                             </li>
 
-                            <li class="distance">
-                                <span>코스 총 거리</span>
-                                <span>87km</span>
-                            </li>
 
                             <li class="theme-detail">
                                 <span>
@@ -77,13 +80,15 @@
                                 </span>
                                 <span>
                                     <div class="theme2">
-                                       <a>아이</a>
-                                       <a>가족</a>
-                                       <a>힐링</a>
                                     <div class="theme1">테마</div>
+                                       <a>아이</a>
                                 </span>
                             </li>
                         
+                            <li class="distance">
+                                <span>코스 총 거리</span>
+                                <span>87km</span>
+                            </li>
                             <div id="moveline-hashtags">
                                 <ul>
                                     <li>#해시태그1</li>
@@ -146,14 +151,14 @@
                     </div>
 
                     <div id="moveline-map-area">
-                        <div class="moveline-map">지도공간</div>
+                        <div id="map"></div>
                     </div>
 
                 </div>
 
                     <div class="landmark-detail">
                         <ul>
-                            <li class="landmark">롯데타워</li>
+                            <li class="landmark" style="background-color: #bbd0ff; color: white;">롯데타워</li>
                             <li class="landmark">63빌딩</li>
                             <li class="landmark">쌍둥이빌딩</li>
                             <li class="landmark">롯데타워</li>
@@ -162,7 +167,7 @@
                         <div class="selected-landmark">롯데타워</div>
 
                         <ul>
-                            <li class="landmark">사진보기</li>
+                            <li class="landmark" style="background-color: #bbd0ff; color: white;">사진보기</li>
                             <li class="landmark">상세설명</li>
                         </ul>
                     </div>
@@ -192,13 +197,24 @@
     <script>
         const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
-        const movelineNo = "${movelineNo}";
     </script>
 
 
-        <script src="${contextPath}/resources/js/common/nav.js"></script>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
 
+    <script>
+        var container = document.getElementById('map');
+        var options = {
+            center: new kakao.maps.LatLng(33.450701, 126.570667),
+            level: 3
+        };
+
+        var map = new kakao.maps.Map(container, options);
+    </script>
+    <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
 
 </body>
 </html>

@@ -84,7 +84,10 @@ h1{
     cursor: pointer;
     background-color: #bbd0ff;
     color: white;
-    border-color: white;
+}
+
+#locations li>a:hover{
+    color: white;
 }
 
 #locations li{
@@ -92,7 +95,6 @@ h1{
     box-sizing: border-box;
     padding: 12px 0;
     font-size: 24px;
-    font-weight: bold;
 }
 
 

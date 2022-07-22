@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.dao.board;
 
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -84,5 +85,24 @@ public class LandMarkDAO {
 		return sqlSession.insert("landMarkMapper.insertLandMarkImageList", landMarkImageList);
 	}
 
+	
+	
+	public int updateLandmark(LandMarkDetail detail) {
+		return sqlSession.update("landMarkMapper.updateLandmark",detail);
+	}
+
+	
+	public int deleteLandmarkImage(Map<String, Object> map) {
+		return sqlSession.delete("landMarkMapper.deleteLandmarkImage",map);
+	}
+
+	public int updateLandmarkImage(LandMarkIMG img) {
+		return sqlSession.update("landMarkMapper.updateLandmarkImage",img);
+	}
+
+	public int insertLandmarkImage(LandMarkIMG img) {
+		return sqlSession.insert("landMarkMapper.insertLandmarkImage",img);
+	}
+	
 
 }

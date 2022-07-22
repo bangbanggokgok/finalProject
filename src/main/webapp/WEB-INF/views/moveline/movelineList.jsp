@@ -54,6 +54,7 @@
 			<div id="contents">
 				<section id="top">
 					<div>
+						${movelineNo}
 						<c:choose>
 							<c:when test="${!empty selectAll}">
 								<h1 id="first-h1">
@@ -116,7 +117,8 @@
 										</c:if>
 										
 											<div class="ml-detail">
-												<a href= "${contextPath}/moveline-main/detail/${movelineNo}?cp=">
+												<%-- <a href= "detail/${movelineNo}?cp="> --%>
+												<a href= "${contextPath}/moveline-main/detail/${moveline.movelineNo}?cp=">
 													<div class="title-area">
 														<p class="ml-title">${moveline.movelineTitle}</p>
 													</div>
@@ -206,8 +208,6 @@
 
 	<script>
 		const contextPath = "${contextPath}";
-
-        // 로그인한 회원 번호
         const loginUserNo = "${loginUser.userNo}";
 
     </script>
