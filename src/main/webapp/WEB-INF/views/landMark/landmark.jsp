@@ -36,6 +36,7 @@
     <section id="slide1">
       <div class="container">
         <ul class="slider-container simple-list" id="slider">
+        <%-- 인기 이미지 넣기 --%>
           <li class="slide">
             <img
               class="slide-img"
@@ -101,7 +102,7 @@
       <div class="container">
         <div class="tit">
           <h2 id="zoneTitle">서울</h2>
-          <a class="randWrite" href="">랜드마크 작성하기</a>
+          <a class="landWrite" href="write/insert">랜드마크 작성하기</a>
         </div>
         <div class="region-1" id=region>
 		<c:if test="${!empty LocationList}">
@@ -151,164 +152,6 @@
             </figure>
           </li>
           </c:forEach>
-          <%--<li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature1.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>DMZ 평화관광</p>
-                <p>분단의 상처에서 평화와 희망의 장소로 함꼐하는 여행</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature2.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>전통한옥</p>
-                <p>
-                  한국 고유의 전통문화를 체험할 수 있는 한옥 숙박시설을
-                  소개합니다.
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature3.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>두루누비</p>
-                <p>대한민국의 걷기 여행길, 자전거 여행길을 소개합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-           <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>지역명사문화여행</p>
-                <p>남다른 체험 콘텐츠를 가진 15인의 대표 명사와 함꼐하세요!</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature5.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>생태녹색관광</p>
-                <p>아름다운 자연과 즐거운 체험이 있는 생태여행</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature6.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>문화관광축제</p>
-                <p>
-                  365일 축제 중!<br />
-                  함께 떠나는 축제 여행
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature7.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>한국관광의별</p>
-                <p>한 해 동안 가장 빛난 별을 찾아 소개합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature8.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>고캠핑</p>
-                <p>
-                  대한민국 곳곳의 등록 '캠핑장' 정보 모두 확인하고 안전하게
-                  즐기세요!
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature9.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>대한민국 테마여행10선</p>
-                <p>당신의 여행에 10개의 테마를 선사합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature10.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>산업관광</p>
-                <p>
-                  전공 산업부터 예술/문화/첨단 산업까지!<br />
-                  체험 산업관광지
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>휴가문화개선</p>
-                <p>휴가가 있는 일상을 만들어가는 캠페인</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature12.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>비대면 안심관광지</p>
-                <p>
-                  생활 속 거리두기가 가능해 안심하고 여행할 수 있는 힐링여행지!
-                </p>
-              </figcaption>
-            </figure>
-          </li> --%>
         </ol>
       </div>
     </section>

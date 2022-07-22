@@ -32,32 +32,30 @@ import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
 @RequestMapping("/admin")
-@SessionAttributes({"loginUser"})
+@SessionAttributes({ "loginUser" })
 public class AdminController {
 
 	@Autowired
 	private AdminService service;
-	
+
 	@GetMapping("/main")
 	public String main() {
 		return "admin_/main-admin";
 	}
-	
-	
+
 	// 공지 작성
 	@GetMapping("/notice/write")
 	public String noticeWriteForm(String mode,
-								 @RequestParam(value="no", required=false, defaultValue = "0") int noticeNo,
-								 Model model) {
+			@RequestParam(value = "no", required = false, defaultValue = "0") int noticeNo, Model model) {
 		return "admin_/notice-write";
 	}
-	
-	
+
 	// 공지 작성(삽입, 수정)
 	@PostMapping("/notice/write")
 	public String noticeWrite(NoticeDetail detail,
-							@RequestParam(value = "images", required = false) List<MultipartFile> imageList,
-							@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra) throws IOException {
+			@RequestParam(value = "images", required = false) List<MultipartFile> imageList,
+			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra)
+			throws IOException {
 
 		detail.setUserNo(loginUser.getUserNo());
 
@@ -65,117 +63,102 @@ public class AdminController {
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 
 //		if (mode.equals("insert")) {
-			
-			int noticeNo = service.insertNotice(detail, imageList, webPath, folderPath);
 
-			String path = null;
-			String message = null;
-			
-			if(noticeNo > 0) {
-				path = "../../../notice/detail/" + noticeNo;
-				message = "등록되었습니다.";
-				
-			}else {
-				path = req.getHeader("referer");
-				message = "등록 실패";
-			}
-			
-			ra.addFlashAttribute("message", message);
-			
-			return "redirect:" + path;
-			
-			
+		int noticeNo = service.insertNotice(detail, imageList, webPath, folderPath);
+
+		String path = null;
+		String message = null;
+
+		if (noticeNo > 0) {
+			path = "../../notice/detail/" + noticeNo;
+			message = "등록되었습니다.";
+
+		} else {
+			path = req.getHeader("referer");
+			message = "등록 실패";
+		}
+
+		ra.addFlashAttribute("message", message);
+
+		return "redirect:" + path;
+
 //		} else {
 //			
 //			return null;
 //		}
-		
+
 	}
-	
+
 	// 회원 조회
 	@GetMapping("/user/{list}")
-	public String userList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-						 , Model model
-						 , @RequestParam Map<String, Object> paramMap
-						 , User user, @PathVariable("list") String list) {
-		
-		
+	public String userList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
+			@RequestParam Map<String, Object> paramMap, User user, @PathVariable("list") String list) {
+
 		Map<String, Object> map = service.selectUserList(cp, list);
-		
+
 		model.addAttribute("map", map);
-		
+
 		return "admin_/user-list";
 	}
-	
+
 	// 문의 조회
 	@GetMapping("/qna/{list}")
-	public String inquiryList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-							 , Model model
-							 , @RequestParam Map<String, Object> paramMap
-							 , Question question, @PathVariable("list") String list) {
-		
+	public String inquiryList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
+			@RequestParam Map<String, Object> paramMap, Question question, @PathVariable("list") String list) {
+
 		Map<String, Object> map = service.selectInquiryList(cp, list);
 		model.addAttribute("map", map);
-		
+
 		return "admin_/inquiry-list";
 	}
-	
-	
-	//문의 상세 조회
+
+	// 문의 상세 조회
 	@GetMapping("/qna/detail/{questionNo}")
-	public String QuestionDetail(@PathVariable("questionNo") int questionNo
-								, Model model,  @ModelAttribute("loginUser") User loginUser){
-		
+	public String QuestionDetail(@PathVariable("questionNo") int questionNo, Model model,
+			@ModelAttribute("loginUser") User loginUser) {
+
 		QuestionDetail detail = service.selectQuestionDetail(questionNo);
-		
-		detail.setUserNo( loginUser.getUserNo()  );
-		
+
+		detail.setUserNo(loginUser.getUserNo());
+
 		model.addAttribute("detail", detail);
 		return "admin_/inquiry-detail";
 	}
-	
+
 	// 문의 답변 등록
 	@ResponseBody
 	@PostMapping("/qna/insert")
 	public int insertAnswer(QuestionDetail detail) {
 		return service.insertAnswer(detail);
 	}
-	
-	
-	
-	
+
 	// 코스 신고 조회
 	@GetMapping("/report/course/{list}")
-	public String reportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-							 , Model model
-							 , @RequestParam Map<String, Object> paramMap
-							 , @PathVariable("list") String list) {
-		
+	public String reportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
+			@RequestParam Map<String, Object> paramMap, @PathVariable("list") String list) {
+
 		Map<String, Object> map = service.selectreportList(cp, list);
 		model.addAttribute("map", map);
-		
+
 		return "admin_/report-course";
 	}
-	
+
 	// 코스 신고 처리
 	@ResponseBody
 	@GetMapping("/report/situation")
 	public int updateReport(ReportMoveLine report) {
 		return service.updateReport(report);
 	}
-	
+
 	// 댓글 신고 조회
 	@GetMapping("/report/reply/{list}")
-	public String replyReportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp
-								 , Model model
-								 , @RequestParam Map<String, Object> paramMap
-								 , @PathVariable("list") String list) {
-		
+	public String replyReportList(@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
+			@RequestParam Map<String, Object> paramMap, @PathVariable("list") String list) {
+
 		Map<String, Object> map = service.selectReplyReport(cp, list);
 		model.addAttribute("map", map);
-		
+
 		return "admin_/report-reply";
 	}
-	
-	
+
 }
