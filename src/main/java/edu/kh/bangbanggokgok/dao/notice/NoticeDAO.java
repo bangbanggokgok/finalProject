@@ -62,6 +62,21 @@ public class NoticeDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("noticeMapper.selectAllNoticeList", list, rowBounds);
 	}
+
+
+	/** 이벤트 전체 수 조회
+	 * @return result
+	 */
+	public int getEventListCount() {
+		return sqlSession.selectOne("noticeMapper.getEventListCount");
+	}
+
+
+	public List<Notice> selectAllEventList(Pagination pagination, String list) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("noticeMapper.selectAllEventList", list, rowBounds);
+	}
 	
 	
 	

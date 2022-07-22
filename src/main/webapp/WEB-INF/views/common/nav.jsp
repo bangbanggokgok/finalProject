@@ -45,11 +45,11 @@
           <li>
             <a href="javascript:void(0);" class="nav-menu manager">관리자</a>
             <div class="manager-menu">
-              <a href="#" class="nav-menu sub-menu">공지/이벤트 조회</a>
-              <a href="#" class="nav-menu sub-menu">공지/이벤트 작성</a>
-              <a href="#" class="nav-menu sub-menu">회원관리</a>
-              <a href="#" class="nav-menu sub-menu">1:1문의조회</a>
-              <a href="#" class="nav-menu sub-menu">신고관리</a>
+              <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 조회</a>
+              <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 작성</a>
+              <a href="${contextPath}/admin/user/list" class="nav-menu sub-menu">회원관리</a>
+              <a href="${contextPath}/admin/qna/list" class="nav-menu sub-menu">1:1문의조회</a>
+              <a href="#" class="${contextPath}/admin/report/course/list">신고관리</a>
             </div>
           </li>
         </ul>
@@ -71,11 +71,11 @@
           <li>
             <a href="#" class="signUp-btn nav-hover">로그아웃</a>
           </li>
-          	<c:if test="${loginUser.adminFlag == 'Y' }">
+        <c:if test="${loginUser.adminFlag == 'Y' }">
 	          <li>
-		       	<a href="${contextPath}/admin/main">관리자 임시 버튼</a>
+		       	  <a href="${contextPath}/admin/main">관리자 임시 버튼</a>
 	          </li>
-          	</c:if>
+        </c:if>
         </c:if>
         </ul>
       </div>

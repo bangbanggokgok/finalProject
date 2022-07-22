@@ -22,7 +22,7 @@
                     	<a href="${contextPath}/notice/list">공지/이벤트 조회</a>
                    	</span>
                     <span>
-                    	<a href="${contextPath}/admin/notice/write">공지/이벤트 작성</a>
+                    	<a href="${contextPath}/notice/list">공지/이벤트 작성</a>
                    	</span>
                 </li>
                 <li id="adminList">

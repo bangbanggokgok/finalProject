@@ -155,7 +155,7 @@
                     </div>
 
                     <div id="moveline-map-area">
-                        <div class="moveline-map">지도공간</div>
+                        <div class="map">지도공간</div>
                     </div>
 
                 </div>
@@ -202,6 +202,7 @@
         const movelineNo = "${movelineNo}";
     </script>
         <script src="${contextPath}/resources/js/common/nav.js"></script>
+        <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
 
 </body>
 </html>
