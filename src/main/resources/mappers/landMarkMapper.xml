@@ -152,4 +152,27 @@
 		) A   
 	</insert>
 	
+	<update id="updateLandmark" parameterType="LandmarkDetail">
+		UPDATE LANDMARK SET 
+		LM_X = #{landMarkX},
+		LM_Y = #{landMarkY},
+		LM_NAME = #{landMarkName},
+		LM_CONTENT = #{landMarkContent},
+		LOCATION_TYPE = #{locationNum}
+		WHERE LM_NO = #{landMarkNo}
+	</update>
+	
+	<delete id="">
+	
+	</delete>
+	
+	<update id="">
+	
+	</update>
+	
+	<insert id="">
+	
+	</insert>
+	
+	
 </mapper>

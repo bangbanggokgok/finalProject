@@ -51,6 +51,7 @@ public class LandMarkController {
 		return "landMark/landmark";
 	}
 	
+	//비동기 주소 변경예정
 	@ResponseBody
 	@GetMapping("/list/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
@@ -106,7 +107,7 @@ public class LandMarkController {
 		detail.setLandMarkContent(param.get("contents"));
 
 		detail.setLandMarkX(Double.parseDouble(param.get("lng")));
-		detail.setLandMarkY(Double.parseDouble(param.get("lag")));
+		detail.setLandMarkY(Double.parseDouble(param.get("lat")));
 
 		detail.setLandMarkName(Util.XSSHandling(param.get("landmarkName")));
 		detail.setLandMarkContent(Util.XSSHandling(param.get("contents")));
