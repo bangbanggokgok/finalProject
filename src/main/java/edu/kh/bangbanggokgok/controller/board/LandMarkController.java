@@ -53,7 +53,7 @@ public class LandMarkController {
 	
 	//비동기 주소 변경예정
 	@ResponseBody
-	@GetMapping("/list/{locationNum}")
+	@GetMapping("/list/nsync/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
 			Model model) {
 
