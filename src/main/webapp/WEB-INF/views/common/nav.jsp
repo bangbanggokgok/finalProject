@@ -39,9 +39,11 @@
           <li>
             <a href="${contextPath}/notice/list" class="nav-menu">공지사항</a>
           </li>
-          <li>
-            <a href="${contextPath}/myPage/inquiry/q_write?cp=1" class="nav-menu">문의하기</a>
-          </li>
+          <c:if test="${!empty loginUser}">
+            <li>
+              <a href="${contextPath}/myPage/inquiry/q_write?cp=1" class="nav-menu">문의하기</a>
+            </li>
+          </c:if>
           <li>
             <c:if test="${loginUser.adminFlag == 'Y' }">
               <a href="javascript:void(0);" class="nav-menu manager">관리자</a>

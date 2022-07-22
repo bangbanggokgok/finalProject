@@ -67,7 +67,7 @@ $(document).ready(function () {
             data: { "indexFlag": idx },
             dataType: "JSON",
             success: function (result) {
-                console.log(result);
+                // console.log(result);
                 const a = $(".landmark-list")
                 const b = $(".course-list")
                 // 배열의 담긴 게 없을때 
