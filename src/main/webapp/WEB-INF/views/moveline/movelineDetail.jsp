@@ -35,7 +35,7 @@
                     </div>
                     
                     <div id="top-middle">
-                        <h1>사랑하는 연인과 타워 여행 어떠세요?</h1>
+                        <h1>${movelineDetail.movelineTitle}</h1>
                     </div>
 
                     <div id="top-bottom">
@@ -75,7 +75,7 @@
                                 </span>
                                 <span>
                                     <div class="loca1">지역</div>
-                                    <div class="loca2">서울</div>
+                                    <div class="loca2">${movelineDetail.locationName}</div>
                                 </span>
                             </li>
 
@@ -85,7 +85,7 @@
                                     <img src="${contextPath}/resources/images/movelineDetail/theme.png" alt="">
                                 </span>
                                 <span>
-                                    <div class="theme2">
+                                    <div class="theme2"></div>
                                     <div class="theme1">테마</div>
                                        <a>아이</a>
                                 </span>
@@ -118,6 +118,7 @@
 
 
                     <div id="moveline-content">
+                        ${movelineDetail.movelineContent}
                         내용 입력 란
                         내용 입력 란
                         내용 입력 란
@@ -144,23 +145,24 @@
                         내용 입력 란
                         내용 입력 란
                     </div>
+                    
 
+                     <c:if test="${fn:length(movelineDetail.imageList) > start}">
+                        <div id="moveline-images">
 
-                    <div id="moveline-images">
-                        <img src="../../resources/images/lottetower.JPEG" alt="">
-                        <!-- <img src="../../resources/images/lottetower.JPEG" alt="">
-                        <img src="../../resources/images/lottetower.JPEG" alt="">
-                        <img src="../../resources/images/lottetower.JPEG" alt="">
-                        <img src="../../resources/images/lottetower.JPEG" alt=""> -->
-                    <div id="moveline-images">
-                        
-                    </div>
+                            <c:forEach var="i" begin="${start}" end="${fn:length(movelineDetail.imageList) -1 }">
+                            
+                                    <img src="${contextPath}${movelineDetail.imageList[i].imageReName}">
+
+                            </c:forEach>
+                        <div id="moveline-images">
+                    </c:if>
 
                     <div id="moveline-map-area">
                         <div id="map"></div>
                     </div>
-
                 </div>
+
 
                     <div class="landmark-detail">
                         <ul>

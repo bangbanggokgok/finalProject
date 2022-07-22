@@ -191,6 +191,13 @@ public class MoveLineController {
 	}
 	
 	
+	/** 코스 상세 페이지 조회
+	 * @param movelineNo
+	 * @param cp
+	 * @param model
+	 * @param session
+	 * @return list
+	 */
 	@GetMapping("/detail/{movelineNo}")
 	public String movelineDetail(
 								 @PathVariable("movelineNo") int movelineNo,
@@ -198,7 +205,11 @@ public class MoveLineController {
 								 Model model,
 			                     HttpSession session) {
 		
+		List<MoveLineDetail> movelineDetail = service.selectMovelineDetail(movelineNo);
 		
+		
+		model.addAttribute("movelineDetail", movelineDetail);
+		System.out.println("movelineDetail : " + movelineDetail );
 		
 		return "moveline/movelineDetail";
 	}
