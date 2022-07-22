@@ -165,7 +165,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 			if (result > 0) {
 
 				for (LandMarkIMG img : ladnMarkImageList) {
-					result = dao.updateLandmarkImage(img); // 변경명, 원본명, 게시글번호, 레벨
+					result = dao.updateLandmarkImage(img); 
 
 					if (result == 0) {
 

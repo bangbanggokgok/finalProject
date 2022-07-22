@@ -3,154 +3,185 @@
 
 <mapper namespace="landMarkMapper">
 
-   <!-- 지역 조회용 resultMap 
-   <resultMap type="Locations" id="Locations_rm">
-      <id property="locationNum" column="LOCATION_TYPE" />
-      <result property="locationName" column="LOCATION_NAME"/>
-   </resultMap>
-   -->
-   <!-- 랜드마크 목록 조회용 resultMap -->
-   <resultMap type="landMark" id="landMark_rm">
-      <id property="landMarkNo" column="LM_NO" />
-      <result property="landMarkName" column="LM_NAME"/>
-      <result property="landMarkContent" column="LM_CONTENT"/>
-      <result property="thumbnail" column="THUMBNAIL"/>
-   </resultMap>
-   
-   <!-- 랜드마크 상세 조회용 resultMap -->
-   <resultMap type="LandmarkDetail" id="LandmarkDetail_rm">
-      <id    property="landMarkNo"       column="LM_NO"          />
-      <result property="landMarkX"      column="LM_X"         />
-      <result property="landMarkY"      column="LM_Y"         />
-      <result property="landMarkName"    column="LM_NAME"       />
-      <result property="landMarkContent"    column="LM_CONTENT"    />
-      <result property="landMarkAddress"    column="LM_ADDRESS"    />
-      <result property="landMarkCreate"    column="LM_CREATE_DT"    />
-      <result property="userName"       column="USER_NAME"       />
-      <result property="locationName"      column="LOCATION_NAME"   />
-      
-      <collection property="imageList" column="LM_NO" 
-         javaType="java.util.ArrayList" ofType="landMarkImage" 
-         select="selectImageList"/>
-         
-   </resultMap>
-   
-   <!-- 이미지 정보 조회 resultMap -->
-   <resultMap type="landMarkImage" id="landmarkImage_rm">
-      <id      property="landMarkImageNo"    column="LN_IMG_NO"       />
-      <result property="landMarkReName"    column="LM_IMG_RENAME"    />
-      <result property="landMarkImageLV"    column="LM_IMG_LEVEL"    />
-      <result property="landMarkNo"       column="LM_NO"          />
-   </resultMap> 
-   
-   <!-- 랜드마크 메인 슬라이드 이미지 조회 -->
-   <select id="selectLandMarkIMG" resultMap="landmarkImage_rm">
-      SELECT LM_NO, COUNT(USER_NO) AS USER_CT,
-       (SELECT LM_IMG_RENAME FROM LAND_IMG
-      WHERE BOOKMARK_LM.LM_NO = LAND_IMG.LM_NO
-      AND LM_IMG_LEVEL = 0) THUMBNAIL
-       FROM BOOKMARK_LM
-       GROUP BY LM_NO
-       ORDER BY USER_CT DESC
-   </select>
-   
-   <!-- 랜드마크 전체 수 조회 
-   <select id="getListAllCount">
-      SELECT COUNT(*) AS LM_COUNT FROM LANDMARK
-      WHERE LM_FL = 'N'
-   </select>
-   -->
-   
-   <!-- 랜드마크 전체 목록 조회 
-   <select id="selectAllLandMarkList" resultMap="landMark_rm">
-   SELECT LM_NO, LM_NAME, LM_CONTENT,
-   (SELECT LM_IMG_RENAME FROM LAND_IMG
-   WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
-   AND LM_IMG_LEVEL = 0) THUMBNAIL
-   FROM LANDMARK
-   JOIN LOCATIONS USING(LOCATION_TYPE)
-   WHERE LM_FL = 'N'
-   ORDER BY LM_NO DESC
-   </select>
-   -->
-   
-   <!-- 특정 지역의 랜드마크 수 조회 -->
-   <select id="getListCount">
-      SELECT COUNT(*) FROM LANDMARK
-      WHERE LOCATION_TYPE = ${locationNum}
-      AND LM_FL = 'N'
-   </select>
-   
+	<!-- 지역 조회용 resultMap 
+	<resultMap type="Locations" id="Locations_rm">
+		<id property="locationNum" column="LOCATION_TYPE" />
+		<result property="locationName" column="LOCATION_NAME"/>
+	</resultMap>
+	-->
+	<!-- 랜드마크 목록 조회용 resultMap -->
+	<resultMap type="landMark" id="landMark_rm">
+		<id 	property="landMarkNo" 		column="LM_NO" 	/>
+		<result property="landMarkName" 	column="LM_NAME"/>
+		<result property="landMarkContent" 	column="LM_CONTENT"/>
+		<result property="thumbnail" 		column="THUMBNAIL"/>
+		<result property="locationType" 	column="LOCATION_TYPE"/>
+	</resultMap>
+	
+	<!-- 랜드마크 상세 조회용 resultMap -->
+	<resultMap type="LandmarkDetail" id="LandmarkDetail_rm">
+		<id 	property="landMarkNo" 		column="LM_NO" 			/>
+		<result property="landMarkX"		column="LM_X"			/>
+		<result property="landMarkY"		column="LM_Y"			/>
+		<result property="landMarkName" 	column="LM_NAME" 		/>
+		<result property="landMarkContent" 	column="LM_CONTENT" 	/>
+		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
+		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
+		<result property="userName" 		column="USER_NAME" 		/>
+		<result property="locationName"		column="LOCATION_NAME"	/>
+		
+		<collection property="imageList" column="LM_NO" 
+			javaType="java.util.ArrayList" ofType="landMarkImage" 
+			select="selectImageList"/>
+			
+	</resultMap>
+	
+	<!-- 이미지 정보 조회 resultMap -->
+	<resultMap type="landMarkImage" id="landmarkImage_rm">
+		<id		property="landMarkImageNo" 	column="LN_IMG_NO"		 />
+		<result property="landMarkReName" 	column="LM_IMG_RENAME" 	/>
+		<result property="landMarkImageLV" 	column="LM_IMG_LEVEL" 	/>
+		<result property="landMarkNo" 		column="LM_NO" 			/>
+	</resultMap> 
+	
+	<!-- 랜드마크 메인 슬라이드 이미지 조회 -->
+	<select id="selectLandMarkIMG" resultMap="landmarkImage_rm">
+		SELECT LM_NO, COUNT(USER_NO) AS USER_CT,
+    	(SELECT LM_IMG_RENAME FROM LAND_IMG
+		WHERE BOOKMARK_LM.LM_NO = LAND_IMG.LM_NO
+		AND LM_IMG_LEVEL = 0) THUMBNAIL
+    	FROM BOOKMARK_LM
+    	GROUP BY LM_NO
+    	ORDER BY USER_CT DESC
+	</select>
+	
+	<!-- 랜드마크 전체 수 조회 
+	<select id="getListAllCount">
+		SELECT COUNT(*) AS LM_COUNT FROM LANDMARK
+		WHERE LM_FL = 'N'
+	</select>
+	-->
+	
+	<!-- 랜드마크 전체 목록 조회 
+	<select id="selectAllLandMarkList" resultMap="landMark_rm">
+	SELECT LM_NO, LM_NAME, LM_CONTENT,
+	(SELECT LM_IMG_RENAME FROM LAND_IMG
+	WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
+	AND LM_IMG_LEVEL = 0) THUMBNAIL
+	FROM LANDMARK
+	JOIN LOCATIONS USING(LOCATION_TYPE)
+	WHERE LM_FL = 'N'
+	ORDER BY LM_NO DESC
+	</select>
+	-->
+	
+	<!-- 특정 지역의 랜드마크 수 조회 -->
+	<select id="getListCount">
+		SELECT COUNT(*) FROM LANDMARK
+		WHERE LOCATION_TYPE = ${locationNum}
+		AND LM_FL = 'N'
+	</select>
+	
 
-   <!-- 특정 지역의 랜드마크 목록 조회 -->
-   <select id="selectLandMarkList" resultMap="landMark_rm">
-      SELECT LM_NO, LM_NAME, LM_CONTENT,
-      (SELECT LM_IMG_RENAME FROM LAND_IMG
-      WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
-      AND LM_IMG_LEVEL = 0) THUMBNAIL
-      FROM LANDMARK
-      JOIN LOCATIONS USING(LOCATION_TYPE)
-      WHERE LM_FL = 'N'
-      AND LOCATION_TYPE = ${locationNum}
-      ORDER BY LM_NO DESC
-   </select>
-   
-   <!-- 특정 게시글 이미지 목록 조회 -->
-   <select id="selectImageList" resultMap="landmarkImage_rm">
-      SELECT * FROM LAND_IMG
-       WHERE LM_NO = #{landMarkNo}
-       ORDER BY LM_IMG_LEVEL
+	<!-- 특정 지역의 랜드마크 목록 조회 -->
+	<select id="selectLandMarkList" resultMap="landMark_rm">
+		SELECT LM_NO, LM_NAME, LM_CONTENT,
+		(SELECT LM_IMG_RENAME FROM LAND_IMG
+		WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
+		AND LM_IMG_LEVEL = 0) THUMBNAIL,LOCATION_TYPE
+		FROM LANDMARK
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		WHERE LM_FL = 'N'
+		AND LOCATION_TYPE = ${locationNum}
+		ORDER BY LM_NO DESC
+	</select>
+	
+	<!-- 특정 게시글 이미지 목록 조회 -->
+	<select id="selectImageList" resultMap="landmarkImage_rm">
+		SELECT * FROM LAND_IMG
+    	WHERE LM_NO = #{landMakrNo}
+    	ORDER BY LM_IMG_LEVEL
     </select>
     
-   <!-- 랜드마크 상세 조회 -->
-   <select id="selectLandMarkDetail" resultMap="LandmarkDetail_rm">
-       SELECT LM_NO, LM_NAME, LM_CONTENT,LM_X,LM_Y,
-       TO_CHAR(LM_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') LM_CREATE_DT,
-        USER_NAME, USER_NO,LOCATION_NAME
-        FROM LANDMARK
-        JOIN USER_TB USING(USER_NO)
-        JOIN LOCATIONS USING(LOCATION_TYPE)
-        WHERE LM_NO = #{landMarkNo}
-        AND LM_FL = 'N'
+	<!-- 랜드마크 상세 조회 -->
+	<select id="selectLandMarkDetail" resultMap="LandmarkDetail_rm">
+	 	SELECT LM_NO, LM_NAME, LM_CONTENT,LM_X,LM_Y,
+    	TO_CHAR(LM_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') LM_CREATE_DT,
+     	USER_NAME, USER_NO,LOCATION_NAME
+     	FROM LANDMARK
+     	JOIN USER_TB USING(USER_NO)
+     	JOIN LOCATIONS USING(LOCATION_TYPE)
+     	WHERE LM_NO = #{landMakrNo}
+     	AND LM_FL = 'N'
     </select>
-   
-   <!-- 랜드마크삽입 -->
-   
-   <insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
-      
-      <selectKey keyProperty ="landMarkNo" resultType="_int" order="BEFORE">
-         SELECT SEQ_LM_NO.NEXTVAL FROM DUAL
-      </selectKey>
-   
-      INSERT INTO LANDMARK VALUES(
-         #{landMarkNo},
-         #{landMarkX},
-         #{landMarkY},
-         #{landMarkName},
-         #{landMarkContent},
-         #{landMarkAddress},
-         DEFAULT,
-         DEFAULT,
-         #{userNo},
-         #{locationNum}
-      )
-   </insert>
-   
-   <!-- 랜드마크 이미지 삽입 -->
-   <insert id="insertLandMarkImageList" parameterType="list">
-      INSERT INTO LAND_IMG 
-      SELECT SEQ_LM_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
-      
-         <foreach collection="list"  item="img" separator="UNION ALL" >
-             SELECT  
-                    #{img.landMarkNo}         LM_NO,
-                   #{img.landMarkReName}     LM_IMG_RENAME, 
-                    #{img.landMarkImageLV}      LM_IMG_LEVEL
-             FROM DUAL
-         </foreach>
-      ) A   
-   </insert>
-   
+	
+	<!-- 랜드마크삽입 -->
+	
+	<insert id="insertLandMark" parameterType="LandmarkDetail" useGeneratedKeys="true">
+		
+		<selectKey keyProperty ="landMarkNo" resultType="_int" order="BEFORE">
+			SELECT SEQ_LM_NO.NEXTVAL FROM DUAL
+		</selectKey>
+	
+		INSERT INTO LANDMARK VALUES(
+			#{landMarkNo},
+			#{landMarkX},
+			#{landMarkY},
+			#{landMarkName},
+			#{landMarkContent},
+			#{landMarkAddress},
+			DEFAULT,
+			DEFAULT,
+			#{userNo},
+			#{locationNum}
+		)
+	</insert>
+	
+	<!-- 랜드마크 이미지 삽입 -->
+	<insert id="insertLandMarkImageList" parameterType="list">
+		INSERT INTO LAND_IMG 
+		SELECT SEQ_LM_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
+		
+			<foreach collection="list"  item="img" separator="UNION ALL" >
+			    SELECT  
+			        	#{img.landMarkNo}         LM_NO,
+			    		#{img.landMarkReName}     LM_IMG_RENAME, 
+			        	#{img.landMarkImageLV}      LM_IMG_LEVEL
+			    FROM DUAL
+			</foreach>
+		) A   
+	</insert>
+	
+	<update id="updateLandmark" parameterType="LandmarkDetail">
+		UPDATE LANDMARK SET 
+		LM_X = #{landMarkX},
+		LM_Y = #{landMarkY},
+		LM_NAME = #{landMarkName},
+		LM_CONTENT = #{landMarkContent},
+		LOCATION_TYPE = #{locationNum}
+		WHERE LM_NO = #{landMarkNo}
+	</update>
+	
+	<delete id="deleteLandmarkImage">
+		UPDATE LAND_IMG SET
+		WHERE LM_NO = #{landMarkNo}
+		AND LM_IMG_LEVEL IN (#{deleteList})
+	</delete>
+	
+	<update id="updateLandmarkImage">
+		UPDATE LAND_IMG SET
+		LAND_IMG_RENAME = #{landMarkReName}
+		WHERE LM_NO = #{landMarkNo}
+		AND LM_IMG_LEVEL = #{landMarkImageLV}
+		
+		
+	</update>
+	
+	<insert id="insertLandmarkImage">
+		INSERT INTO BOARD_IMG VALUES(
+				SEQ_LM_IMG_NO.NEXTVAL, #{landMarkNo},#{landMarkReName},#{landMarkImageLV}
+		)
+	</insert>
+	
+	
 </mapper>
-
-
