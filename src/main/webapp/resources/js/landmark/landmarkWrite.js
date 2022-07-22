@@ -113,7 +113,7 @@ function checkSubmit() {
 
         return false;
     } else {
-        if (locationList.value == "locationNull") {
+        if (locationList.value === "locationNull") {
             alert("지역을 선택해주세요.");
             locationList.focus();
             return false;
@@ -139,9 +139,7 @@ function checkSubmit() {
         if (images[0].value == "" && deleteList.value == "") {
             return true;
         }
-
-
-
+        
         // let flag = true;
         // for (let img of images) {
         //     if (img.value != "") {

@@ -17,9 +17,13 @@ import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
  * @author user
  *
  */
+/**
+ * @author user
+ *
+ */
 public interface MoveLineService {
 
-	List<String> selectMovelineList();
+//	List<String> selectMovelineList();
 
 	
 	/** 지역 구분 조회 서비스
@@ -82,6 +86,13 @@ public interface MoveLineService {
 	 * @return List
 	 */
 	Map<String, Object> selectAll(Map<String, Object> paramMap);
+
+
+	/** 코스 상세 페이지 조회
+	 * @param movelineNo
+	 * @return List
+	 */
+	List<MoveLineDetail> selectMovelineDetail(int movelineNo);
 
 
 
