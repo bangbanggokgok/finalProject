@@ -88,12 +88,12 @@
                     </div>
                 </div>
 
-                <div class="sample-area" href="${contextPath}/moveline-main/detail/${moveline.movelineNo}?cp=">
-                    <c:if test="${!empty preMoveLineList}">
-                        <c:forEach var="moveline" items="${preMoveLineList}">
+                <div class="sample-area">
+                        <c:if test="${!empty preMoveLineList}">
+                            <c:forEach var="moveline" items="${preMoveLineList}">
                                 <div class="samples">
                                     <div class="s-pic">
-                                        <a href="list/location/${movelineTitle}">
+                                        <a href="${contextPath}/moveline-main/detail/${moveline.movelineNo}">
                                             <strong>${moveline.movelineTitle}</strong>
                                             <ul>
                                                 <li>지역 : ${moveline.locationName}</li>
@@ -102,18 +102,18 @@
                                         </a>
 
                                         <c:if test="${empty moveline.thumbnail}">
-											<div class="thumbnail">
-												<img src="${contextPath}/resources/images/user.png" alt=""
-												class="list-thumbnail">
-											</div>
-										</c:if>
+                                            <div class="thumbnail">
+                                                <img src="${contextPath}/resources/images/user.png" alt=""
+                                                class="list-thumbnail">
+                                            </div>
+                                        </c:if>
 
-										<c:if test="${!empty moveline.thumbnail}">
-											<div class="thumbnail">
-												<img src="${contextPath}${moveline.thumbnail}" alt=""
-												class="list-thumbnail">
-											</div>
-										</c:if>
+                                        <c:if test="${!empty moveline.thumbnail}">
+                                            <div class="thumbnail">
+                                                <img src="${contextPath}${moveline.thumbnail}" alt=""
+                                                class="list-thumbnail">
+                                            </div>
+                                        </c:if>
                                         
                                     </div>
                                     
@@ -123,9 +123,8 @@
                                             </ul>
                                     </c:forEach>
                                 </div>
-                        </c:forEach>
-                    </c:if>
-
+                            </c:forEach>
+                        </c:if>
                     
                 </div>
             </div>

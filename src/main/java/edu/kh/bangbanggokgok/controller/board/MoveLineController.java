@@ -193,12 +193,12 @@ public class MoveLineController {
 	
 	@GetMapping("/detail/{movelineNo}")
 	public String movelineDetail(
-//								 @RequestParam(value="movelineNo", required=true) int MovelineNo,
 								 @PathVariable("movelineNo") int movelineNo,
-			
 								 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
 								 Model model,
 			                     HttpSession session) {
+		
+		
 		
 		return "moveline/movelineDetail";
 	}
