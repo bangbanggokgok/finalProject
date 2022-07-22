@@ -31,7 +31,7 @@
             <li>
                 <div class="wrapper">
                     <div class="number">No.</div>
-                    <div class="course">코스</div>
+                    <div class="course">댓글</div>
                     <div class="reason">사유</div>
                     <div class="reporter">신고한 회원</div>
                     <div class="date">신고일</div>
@@ -85,7 +85,6 @@
     
      <script>
         const contextPath = "${contextPath}";
-        const reportFlag = "${reportList.reportFlag}";
     </script> 
         <%--const reportNo = "${reportList.reportNo}";
         const reportNo = "${reportList.reportNo}";

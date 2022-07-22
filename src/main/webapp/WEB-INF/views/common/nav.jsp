@@ -49,7 +49,7 @@
             </c:if>
             <div class="manager-menu">
               <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 조회</a>
-              <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 작성</a>
+              <a href="${contextPath}/admin/notice/write" class="nav-menu sub-menu">공지/이벤트 작성</a>
               <a href="${contextPath}/admin/user/list" class="nav-menu sub-menu">회원관리</a>
               <a href="${contextPath}/admin/qna/list" class="nav-menu sub-menu">1:1문의조회</a>
               <a href="${contextPath}/admin/report/course/list" class="nav-menu sub-menu">신고관리</a>
