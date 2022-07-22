@@ -42,15 +42,20 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 	// 랜드마크 전체 목록 조회
 	@Override
-	public Map<String, Object> selectAllLandMarkList() {
+	public Map<String, Object> selectAllLandMarkList(int num) {
 
 //		int ListCount = dao.getListCount();
 //		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
-		List<LandMark> landMarkList = dao.selectLandMarkList(100);
+		List<LandMark> landMarkList = dao.selectLandMarkList(num);
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		for(LandMark e : landMarkList) {
+			e.setLandMarkContent(Util.newLineClear(e.getLandMarkContent()));
+			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
+			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
+		}
+		
 		map.put("landMakrImage", landMakrImage);
 		map.put("landmarkList", landMarkList);
 
@@ -185,7 +190,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 			}
 
 		}
-		return 0;
+		return result;
 	}
 
 }

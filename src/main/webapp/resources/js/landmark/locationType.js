@@ -1,7 +1,7 @@
 function searchingLocation(locationNum){
     
     $.ajax({
-        url: "list/nsync/"+locationNum,
+        url: "nsync/"+locationNum,
         type: "GET",
         data: { "locationNum": locationNum},
         dataType: "JSON",
@@ -53,7 +53,7 @@ function searchingLocation(locationNum){
                     const a = document.createElement("a");
                     a.append(img);
                     // a.href("../landmark-main/detail/"+locationNum+"/"+landMarkNo);
-                    a.setAttribute('href',"../landmark-main/detail/"+locationNum+"/"+landMark.landMarkNo);
+                    a.setAttribute('href',"../detail/"+locationNum+"/"+landMark.landMarkNo);
                     const figcaption = document.createElement('figcaption');
                     const p1 = document.createElement('p');
                     const p2 = document.createElement('p');
@@ -70,7 +70,7 @@ function searchingLocation(locationNum){
                 }
             }
             if(map.landMarkList == ""){
-                ol.innerHTML = "<h1>아직 등록된 랜드마크가 없어요.</h1>"
+                ol.innerHTML = "<h1 style=\"display:flex;justify-content: center;\">아직 등록된 랜드마크가 없어요.</h1>"
             }
             document.getElementById("zoneTitle").innerText = 
                     document.getElementsByClassName("clicked")[0].innerText;

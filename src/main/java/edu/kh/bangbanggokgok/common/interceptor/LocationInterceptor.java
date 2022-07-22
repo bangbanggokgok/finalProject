@@ -27,9 +27,9 @@ public class LocationInterceptor implements HandlerInterceptor{
 			throws Exception {
 		
 		ServletContext application = request.getServletContext();
-		if(application.getAttribute("LocationList") == null) {
+		if(application.getAttribute("locationList") == null) {
 			List<Location> locationList = MovelineService.selectLocation();
-			application.setAttribute("LocationList", locationList);
+			application.setAttribute("locationList", locationList);
 		}
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);

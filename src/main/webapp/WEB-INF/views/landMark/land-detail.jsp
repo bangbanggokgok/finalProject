@@ -39,19 +39,21 @@
                 src="${contextPath}/resources/images/landmark/redHeart.png"
                 alt=""
               />
-              <!-- <label id="fa-heart" name="fa-heart"></label> -->
-              <!-- <i class="fa-solid fa-siren"></i> -->
-              <span>찜하기</span>
+              <span style="width:75px; letter-spacing:-3px">즐겨찾기</span>
             </div>
-            <a class="police" href="#">
-              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" />
-              <span>신고</span>
-            </a>
+            <%-- <a class="police" href=""> --%>
+            <div class="report" style="width:170px;">
+              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" style="width: 25px;"/>
+              <span style="letter-spacing:-3px">신고하기</span>
+            </div>
+            <%-- </a> --%>
           </div>
         </div>
         <div class="detailCheckWrap">
-          <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
-          <a class="detailCheck" href="#">삭제</a>
+          <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
+            <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
+            <a class="detailCheck" href="#">삭제</a>
+          </c:if>
         </div>
 
         <div class="area_address">
@@ -73,15 +75,17 @@
         <section id="section1" data-num="0">
           <div class="container-out">
             <div class="container">
-              <ul class="slider-container simple-list" id="slider">
+              <ul class="slider-container simple-list" id="slider" style="overflow:hidden;">
                 <c:if test="${!empty landmarkDetail.imageList}">
+                  <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">
                       <img
                         class="slide-img"
-                        src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"
-                        alt="first_img"
+                        src="${contextPath}${images.landMarkReName}"
+                        alt=""
                       />
                     </li>
+                  </c:forEach>
                 </c:if>
               </ul>
 
@@ -94,12 +98,12 @@
             </div>
             <!-- end container -->
           </div>
-          <div class="second-img">
-          <%-- 이부분 수정해야함 --%>
+          <%-- 세컨드 이미지라인 사용 가능성? --%>
+          <%-- <div class="second-img">
               <c:forEach var="images" items="${landmarkDetail.imageList}">
                 <img src="${contextPath}${images.landMarkReName}" />
               </c:forEach>
-          </div>
+          </div> --%>
         </section>
         <section id="section2" class="section2" data-num="1">
           <div class="container-out">
@@ -139,7 +143,7 @@
           <div class="simg">
             <ul>
               <li class="type2">
-                <a href="" class="reg1">
+                <a href="${contextPath}/landmark-main/write/insert" class="reg1">
                   <span>
                     <i class="fa-solid fa-camera-retro"></i>
                     여러분의 사진을 등록해 보세요.
