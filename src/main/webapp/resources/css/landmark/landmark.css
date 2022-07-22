@@ -163,16 +163,19 @@ cite {
   box-shadow: 4px 5px 12px 0px rgb(19 41 75 / 30%);
   transition: 0.7s;
 }
-.randWrite {
+.landWrite {
   background-color: white;
   color: rgb(23, 17, 17);
-  padding: 6px;
-  margin-top: 15px;
   border: 1px solid #ddd;
+  line-height: 31.2px;
+  text-align: center;
+  width: 150px;
+  border-radius: 12px;
 }
-.randWrite:hover {
+.landWrite:hover {
   border: none;
-  transition-delay: 0.15s;
+  transition-duration: 0.15s;
+  border: 1px solid #ddd;
   background-color: black;
   color: white;
 }
