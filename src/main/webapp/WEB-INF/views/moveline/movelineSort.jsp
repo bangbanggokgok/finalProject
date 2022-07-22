@@ -132,6 +132,7 @@
         </section>
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+        
     </main>
 
     <script src="${contextPath}/resources/js/common/nav.js"></script>
