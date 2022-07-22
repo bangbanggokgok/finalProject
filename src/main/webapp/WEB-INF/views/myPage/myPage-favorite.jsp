@@ -53,8 +53,7 @@
 											<img src="${contextPath}${landmark.thumbnail}">
 										</div>
 										<div class="landmark-text">
-											<!-- 클릭 시 랜드마크 바로가기 -->
-											<h3><a href="#">[ ${landmark.landMarkName} ]</a></h3>
+											<h3><a href="${contextPath}/landmark-main/detail/${landmark.locationType}/${landmark.landMarkNo}">[ ${landmark.landMarkName} ]</a></h3>
 											<div>${landmark.landMarkContent}</div>
 										</div>
 									</div>
@@ -81,7 +80,7 @@
 								<c:forEach var="course" items="${moveLineList}">
 									<div class="course-content">
 										<div class="course-img">
-											<a href="#">
+											<a href="${contextPath}/moveline-main/detail/${course.movelineNo}">
 												<h1>${course.movelineTitle}</h1>
 												<ul>
 													<li>지역 : ${course.locationName}</li>
