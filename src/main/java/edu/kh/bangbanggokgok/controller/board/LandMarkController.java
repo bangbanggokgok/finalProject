@@ -67,7 +67,6 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo, Model model) {
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
-		// 이미지 담아야함
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		
 		return "landMark/land-detail";
@@ -92,7 +91,7 @@ public class LandMarkController {
 	// 게시글 삽입/수정
 	@PostMapping("/write/{mode}")
 	public String landWrite(LandMarkDetail detail, // 제목, 내용
-			@RequestParam(value = "landmark-no",required = false) int landmarkNo,
+			@RequestParam(value = "landmark-no",required = false, defaultValue = "0") int landmarkNo,
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList, // 이미지 리스트
 			@RequestParam Map<String, String> param, @PathVariable String mode,
 			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra,

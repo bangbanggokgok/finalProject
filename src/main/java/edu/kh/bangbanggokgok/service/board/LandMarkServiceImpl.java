@@ -50,7 +50,12 @@ public class LandMarkServiceImpl implements LandMarkService {
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
 		List<LandMark> landMarkList = dao.selectLandMarkList(num);
 		Map<String, Object> map = new HashMap<String, Object>();
-
+		for(LandMark e : landMarkList) {
+			e.setLandMarkContent(Util.newLineClear(e.getLandMarkContent()));
+			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
+			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
+		}
+		
 		map.put("landMakrImage", landMakrImage);
 		map.put("landmarkList", landMarkList);
 

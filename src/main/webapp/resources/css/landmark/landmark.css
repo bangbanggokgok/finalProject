@@ -179,3 +179,8 @@ cite {
   background-color: black;
   color: white;
 }
+
+.land-content{
+  height: 70px;
+  overflow: hidden;
+}

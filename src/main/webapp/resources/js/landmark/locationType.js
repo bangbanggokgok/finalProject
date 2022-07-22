@@ -53,7 +53,7 @@ function searchingLocation(locationNum){
                     const a = document.createElement("a");
                     a.append(img);
                     // a.href("../landmark-main/detail/"+locationNum+"/"+landMarkNo);
-                    a.setAttribute('href',"../landmark-main/detail/"+locationNum+"/"+landMark.landMarkNo);
+                    a.setAttribute('href',"../detail/"+locationNum+"/"+landMark.landMarkNo);
                     const figcaption = document.createElement('figcaption');
                     const p1 = document.createElement('p');
                     const p2 = document.createElement('p');

@@ -29,6 +29,8 @@
 		<result property="landMarkContent" 	column="LM_CONTENT" 	/>
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
+		
+		<result property="userNo" 			column="USER_NO" 		/>
 		<result property="userName" 		column="USER_NAME" 		/>
 		<result property="locationName"		column="LOCATION_NAME"	/>
 		
@@ -113,7 +115,7 @@
      	FROM LANDMARK
      	JOIN USER_TB USING(USER_NO)
      	JOIN LOCATIONS USING(LOCATION_TYPE)
-     	WHERE LM_NO = #{landMakrNo}
+     	WHERE LM_NO = #{landMarkNo}
      	AND LM_FL = 'N'
     </select>
 	
