@@ -24,8 +24,8 @@
     <div class="board">
         <h1>댓글 신고관리</h1>
         <div class="list">
-            <span class="category" id="course"><a href="${contextPath}/admin/report/course/list"> 코스</a></span>
-            <span class="category" id="reply"><a href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
+            <span class="category" ><a href="${contextPath}/admin/report/course/list"> 코스</a></span>
+            <span class="category" ><a id="reply" href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
         </div>
         <ul class="noticePage">
             <li>
@@ -38,7 +38,9 @@
                     <div class="situation">상태</div>
                 </div>
             </li>
-            
+            <c:if test="${empty replyReport}">
+                <span>신고 내역이 없습니다.</span>
+            </c:if>
             <c:forEach var="report" items="${replyReport}">
                 <li>
                     <div class="wrapper">

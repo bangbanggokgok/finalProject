@@ -24,7 +24,7 @@
     <div class="board">
         <h1>코스 신고관리</h1>
         <div class="list">
-            <span class="category course"><a href="${contextPath}/admin/report/course/list">코스</a></span>
+            <span class="category course"><a id="course" href="${contextPath}/admin/report/course/list">코스</a></span>
             <span class="category reply"><a href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
         </div>
         <ul class="noticePage">

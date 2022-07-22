@@ -187,11 +187,14 @@ li {
     font-weight: bold;
 }
 
-#all {
+#all{
     color: rgb(51, 151, 255);
-    cursor: pointer;
 }
 
-#nocie{
+/* #nocie{
     color: rgb(51, 151, 255);
 }
+
+#event{
+    color: rgb(51, 151, 255);
+} */
