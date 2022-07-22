@@ -39,5 +39,10 @@ function q_writeValidate(){
         qContent.style.border = "2px solid #bbd0ff";
         return false;
     }
+
+    if(!confirm("등록된 문의는 수정 또는 삭제가 불가능합니다. 등록 하시겠습니까?")){
+        return false;
+    }
+
     return true;
 }
