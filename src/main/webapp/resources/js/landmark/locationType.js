@@ -1,7 +1,7 @@
 function searchingLocation(locationNum){
     
     $.ajax({
-        url: "list/"+locationNum,
+        url: "list/nsync/"+locationNum,
         type: "GET",
         data: { "locationNum": locationNum},
         dataType: "JSON",
