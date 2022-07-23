@@ -34,24 +34,28 @@
             <a href="${contextPath}/moveline-main/list" class="nav-menu">코스</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main/list" class="nav-menu">랜드마크</a>
+            <a href="${contextPath}/landmark-main/list/100" class="nav-menu">랜드마크</a>
           </li>
           <li>
-            <a href="${contextPath}/landmark-main/list" class="nav-menu">공지사항</a>
+            <a href="${contextPath}/notice/list" class="nav-menu">공지사항</a>
           </li>
-          <li>
-            <a href="${contextPath}/landmark-main/list" class="nav-menu">문의하기</a>
-          </li>
-          <li>
-            <a href="javascript:void(0);" class="nav-menu manager">관리자</a>
-            <div class="manager-menu">
-              <a href="#" class="nav-menu sub-menu">공지/이벤트 조회</a>
-              <a href="#" class="nav-menu sub-menu">공지/이벤트 작성</a>
-              <a href="#" class="nav-menu sub-menu">회원관리</a>
-              <a href="#" class="nav-menu sub-menu">1:1문의조회</a>
-              <a href="#" class="nav-menu sub-menu">신고관리</a>
-            </div>
-          </li>
+          <c:if test="${!empty loginUser}">
+            <li>
+              <a href="${contextPath}/myPage/inquiry/q_write?cp=1" class="nav-menu">문의하기</a>
+            </li>
+          </c:if>
+          <c:if test="${loginUser.adminFlag == 'Y' }">
+            <li>
+              <a href="javascript:void(0);" class="nav-menu manager">관리자</a>
+              <div class="manager-menu">
+                <a href="${contextPath}/notice/list" class="nav-menu sub-menu">공지/이벤트 조회</a>
+                <a href="${contextPath}/admin/notice/write" class="nav-menu sub-menu">공지/이벤트 작성</a>
+                <a href="${contextPath}/admin/user/list" class="nav-menu sub-menu">회원관리</a>
+                <a href="${contextPath}/admin/qna/list" class="nav-menu sub-menu">1:1문의조회</a>
+                <a href="${contextPath}/admin/report/course/list" class="nav-menu sub-menu">신고관리</a>
+              </div>
+            </li>
+          </c:if>
         </ul>
       </div>
       <div>
@@ -69,13 +73,8 @@
             <a href="${contextPath}/myPage/info" class="login-btn nav-hover">내 정보 조회</a>
           </li>
           <li>
-            <a href="#" class="signUp-btn nav-hover">로그아웃</a>
+            <a href="${contextPath}/user/logout" class="signUp-btn nav-hover">로그아웃</a>
           </li>
-          	<c:if test="${loginUser.adminFlag == 'Y' }">
-	          <li>
-		       	<a href="${contextPath}/admin/main">관리자 임시 버튼</a>
-	          </li>
-          	</c:if>
         </c:if>
         </ul>
       </div>

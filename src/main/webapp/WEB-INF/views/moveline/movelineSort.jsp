@@ -3,7 +3,7 @@
 
 
 
-<%-- <c:forEach var="moveline" items="${preMoveLineList}">
+<c:forEach var="moveline" items="${preMoveLineList}">
     <c:if test="${movelineNo == moveline.movelineNo}">
         <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
         <c:set var="landMarkName" value="${moveline.landMarkName}" />
@@ -11,7 +11,7 @@
         <c:set var="locationName" value="${moveline.locationName}" />
         <c:set var="thumbnail" value="${moveline.thumbnail}" />
     </c:if>
-</c:forEach> --%>
+</c:forEach>
 
 
 <!DOCTYPE html>
@@ -89,11 +89,11 @@
                 </div>
 
                 <div class="sample-area">
-                    <c:if test="${!empty preMoveLineList}">
-                        <c:forEach var="moveline" items="${preMoveLineList}">
+                        <c:if test="${!empty preMoveLineList}">
+                            <c:forEach var="moveline" items="${preMoveLineList}">
                                 <div class="samples">
                                     <div class="s-pic">
-                                        <a href="list/location/${movelineTitle}">
+                                        <a href="${contextPath}/moveline-main/detail/${moveline.movelineNo}">
                                             <strong>${moveline.movelineTitle}</strong>
                                             <ul>
                                                 <li>지역 : ${moveline.locationName}</li>
@@ -102,18 +102,18 @@
                                         </a>
 
                                         <c:if test="${empty moveline.thumbnail}">
-											<div class="thumbnail">
-												<img src="${contextPath}/resources/images/user.png" alt=""
-												class="list-thumbnail">
-											</div>
-										</c:if>
+                                            <div class="thumbnail">
+                                                <img src="${contextPath}/resources/images/user.png" alt=""
+                                                class="list-thumbnail">
+                                            </div>
+                                        </c:if>
 
-										<c:if test="${!empty moveline.thumbnail}">
-											<div class="thumbnail">
-												<img src="${contextPath}${moveline.thumbnail}" alt=""
-												class="list-thumbnail">
-											</div>
-										</c:if>
+                                        <c:if test="${!empty moveline.thumbnail}">
+                                            <div class="thumbnail">
+                                                <img src="${contextPath}${moveline.thumbnail}" alt=""
+                                                class="list-thumbnail">
+                                            </div>
+                                        </c:if>
                                         
                                     </div>
                                     
@@ -123,18 +123,22 @@
                                             </ul>
                                     </c:forEach>
                                 </div>
-                        </c:forEach>
-                    </c:if>
-
+                            </c:forEach>
+                        </c:if>
                     
                 </div>
             </div>
         </section>
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+        
     </main>
 
-    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script>
+		const contextPath = "${contextPath}";
+    </script>
+
+    <script src="${contextPath}/resources/js/common/nav.js"></>
 
     <!-- jQuery 라이브러리 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>

@@ -1,74 +1,12 @@
-function checkSubmit(){
-    console.log("함수 동작");
-
-    const locationList = document.getElementById("locations-list");
-    const landmarkName =document.getElementById("title");
-    const landMarkContent = document.getElementById("contents");
-    const images = document.getElementsByName("images");
-    
-
-    if(!confirm("랜드마크를 등록 하시겠습니까?")){
-        
-        alert("랜드마크 등록이 취소되었습니다.")
-
-       return false;
-    }else{
-        if(locationList.value == ""){
-            alert("지역을 선택해주세요.");
-
-            locationList.value="";
-            locationList.focus();
-            return false;
-        }
-
-        if(landmarkName.value.trim().length ==0){
-            alert("랜드마크 이름을 입력해주세요.");
-
-            landmarkName.value="";
-            landmarkName.focus();
-            return false;
-        }
-        if(landMarkContent.value.trim().length == 0){
-            alert("랜드마크 소개를 입력해주세요.");
-
-            landMarkContent.value="";
-            landMarkContent.focus();
-            return false;
-        }
-
-        //const regExp = /(.*?)\.(jpg|png)$/;
-        let flag = true;
-        for(let img of images){
-            if(img.value != ""){
-                flag = false;
-                break;
-            }
-        }
-
-        if(flag){
-            alert("랜드마크 사진을 넣어주세요.");
-            return false;
-        }
-
-
-        /*if(!images.match(regExp)){
-            alert("jpg,png 파일만 사용할 수 있습니다.");
-            return false;
-         }*/
-         return true;
+(function () {
+    if (document.getElementsByClassName("preview")[0].attributes.src.value != "") {
+        document.getElementById("deleteList").value = "";
     }
-    };
-
+})();
 //  getLng() 위 가로 x
 //  getLat() 경 세로 y
 //지도 관련
 var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
-
-if(!lat){
-    lng = 126.98298720739353;
-    lat = 37.56792412182713;
-    console.log(lat);
-}
 
 var options = { //지도를 생성할 때 필요한 기본 옵션
     center: new kakao.maps.LatLng(lat, lng), //지도의 중심좌표.
@@ -97,7 +35,7 @@ kakao.maps.event.addListener(map, 'click', function (mouseEvent) {
     document.getElementsByName("lng")[0].value = latlng.getLng();;
     document.getElementsByName("lat")[0].value = latlng.getLat();
     console.log(document.getElementsByName("lng")[0].value);
-    console.log(document.getElementsByName("lag")[0].value);
+    console.log(document.getElementsByName("lat")[0].value);
 });
 
 
@@ -108,21 +46,22 @@ const deleteImage = document.getElementsByClassName("delete-image");
 const deleteList = document.getElementById("deleteList")
 const deleteSet = new Set();
 
-for(let i=0;i<inputImage.length;i++){
-    inputImage[i].addEventListener("change",function(){
-        if(this.files[0] != undefined){
+for (let i = 0; i < inputImage.length; i++) {
+    inputImage[i].addEventListener("change", function () {
+        if (this.files[0] != undefined) {
             const reader = new FileReader();
             reader.readAsDataURL(this.files[0]);  // 파일 url따오기
-            reader.onload = function(e){      // 적제 완료 시 
-                preview[i].setAttribute("src",e.target.result);
+            deleteList.value = "";
+            reader.onload = function (e) {      // 적제 완료 시 
+                preview[i].setAttribute("src", e.target.result);
                 deleteSet.delete(i);
             }
         } else {
             preview[i].removeAttribute("src");
         }
     });
-    deleteImage[i].addEventListener("click",function(){
-        if(preview[i].getAttribute("src") != ""){
+    deleteImage[i].addEventListener("click", function () {
+        if (preview[i].getAttribute("src") != "") {
             inputImage[i].value = "";
             preview[i].removeAttribute("src");
             deleteSet.add(i);
@@ -158,3 +97,80 @@ for(let i=0;i<inputImage.length;i++){
 //         })
 //     }
 // });
+
+function checkSubmit() {
+    console.log("함수 동작");
+
+    const locationList = document.getElementById("locations-list");
+    const landmarkName = document.getElementById("title");
+    const landmarkContent = document.getElementById("contents");
+    const images = document.getElementsByName("images");
+
+
+    if (!confirm("랜드마크를 등록 하시겠습니까?")) {
+
+        alert("랜드마크 등록이 취소되었습니다.")
+
+        return false;
+
+    } else {
+        if (locationList.value === "locationNull") {
+            alert("지역을 선택해주세요.");
+            locationList.focus();
+            return false;
+        }
+
+        if (landmarkName.value.trim().length == 0) {
+            alert("랜드마크 이름을 입력해주세요.");
+            landmarkName.focus();
+            return false;
+        }
+
+        if (landmarkContent.value.trim().length == 0) {
+            alert("랜드마크 소개를 입력해주세요.");
+            landmarkContent.focus();
+            return false;
+        }
+
+        if (images[0].value == "" && deleteList.value != "") {
+            alert("썸네일 사진을 넣어주세요.");
+            return false;
+        }
+
+        if (document.getElementsByName("lng")[0].value == "") {
+            alert("관련된 지역을 지도에 클릭해주세요.")
+            return false;
+        }
+
+        if (document.getElementsByName("lat")[0].value != "") {
+            if (images[0].value == "" && deleteList.value == "") {
+                return true;
+            }
+        }
+
+        // let flag = true;
+        // for (let img of images) {
+        //     if (img.value != "") {
+        //         flag = false;
+        //         break;
+        //     }
+        // }
+
+        // if (flag && deleteSet.length == 0) {
+        //     return true;
+        // }
+
+        // if (flag) {
+        //     alert("랜드마크 사진을 넣어주세요.");
+        //     return false;
+        // }
+
+
+
+        /*if(!images.match(regExp)){
+            alert("jpg,png 파일만 사용할 수 있습니다.");
+            return false;
+         }*/
+        //  return true;
+    };
+};

@@ -21,49 +21,26 @@
 
 <body>
     <jsp:include page="/WEB-INF/views/common/nav.jsp"/>
-    <section class="navWrapper">
-        <div class="adminNav">
-            <ul class="listWrapper">
-                <div class="adminList">Admin</div>
-                <li id="adminList">
-                    <i class="fal fa-clipboard-list-check"></i> 공지사항
-                    <div>
-                        <a href="">공지/이벤트 조회</a><br>
-                        <a href="">공지/이벤트 작성</a>
-                    </div>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-user-friends"></i> 회원관리</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </section>
     <div class="board">
         <h1>댓글 신고관리</h1>
         <div class="list">
-            <span class="category" id="course"><a href="${contextPath}/admin/report/course/list"> 코스</a></span>
-            <span class="category" id="reply"><a href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
+            <span class="category" ><a href="${contextPath}/admin/report/course/list"> 코스</a></span>
+            <span class="category" ><a id="reply" href="${contextPath}/admin/report/reply/list"> 댓글</a></span>
         </div>
         <ul class="noticePage">
             <li>
                 <div class="wrapper">
                     <div class="number">No.</div>
-                    <div class="course">코스</div>
+                    <div class="course">댓글</div>
                     <div class="reason">사유</div>
                     <div class="reporter">신고한 회원</div>
                     <div class="date">신고일</div>
                     <div class="situation">상태</div>
                 </div>
             </li>
-            
+            <c:if test="${empty replyReport}">
+                <span>신고 내역이 없습니다.</span>
+            </c:if>
             <c:forEach var="report" items="${replyReport}">
                 <li>
                     <div class="wrapper">
@@ -108,7 +85,6 @@
     
      <script>
         const contextPath = "${contextPath}";
-        const reportFlag = "${reportList.reportFlag}";
     </script> 
         <%--const reportNo = "${reportList.reportNo}";
         const reportNo = "${reportList.reportNo}";

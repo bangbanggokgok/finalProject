@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -190,9 +191,27 @@ public class MoveLineController {
 	}
 	
 	
+	/** 코스 상세 페이지 조회
+	 * @param movelineNo
+	 * @param cp
+	 * @param model
+	 * @param session
+	 * @return list
+	 */
 	@GetMapping("/detail/{movelineNo}")
-	public String movelineDetail(@PathVariable("movelineNo") int movelineNo) {
-		return null;
+	public String movelineDetail(
+								 @PathVariable("movelineNo") int movelineNo,
+								 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
+								 Model model,
+			                     HttpSession session) {
+		
+		List<MoveLineDetail> movelineDetail = service.selectMovelineDetail(movelineNo);
+		
+		
+		model.addAttribute("movelineDetail", movelineDetail);
+		System.out.println("movelineDetail : " + movelineDetail );
+		
+		return "moveline/movelineDetail";
 	}
 	
 	

@@ -26,36 +26,14 @@
     </section>
 
     <section class="board">
-        <section class="navWrapper">
-            <div class="adminNav">
-	            <div class="adminList">Admin</div>
-                <ul class="listWrapper">
-                    <li id="adminList">
-                        <i class="fal fa-clipboard-list-check"></i> 공지사항
-                        <div>
-                            <a href="">공지/이벤트 조회</a><br>
-                            <a href="">공지/이벤트 작성</a>
-                        </div>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-user-friends"></i> 회원관리</a>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
-                    </li>
-                    <li id="adminList">
-                        <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
-                    </li>
-                </ul>
-
-            </div>
-
-        </section>
 
         <section class="pageWrapper" id="contentWrapper">
             <%-- <form> --%>
                 
-                <div class="title">${detail.questionTitle}</div>
+                <div class="title">
+                    <span id="title">${detail.questionTitle}</span>
+                    <span id="createDate">${detail.createDate}</span>
+                </div>
 
                 <div class="contentArea">
                     <div class="content">

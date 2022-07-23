@@ -28,7 +28,7 @@
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
                             <option value="locationNull">지역을 선택해주세요</option>
-                            <c:forEach var="locations" items="${LocationList}">
+                            <c:forEach var="locations" items="${locationList}">
                                 <option value="${locations.locationNum}" 
                                     <c:if test="${landmarkDetail.locationName == locations.locationName}">selected</c:if>
                                 >${locations.locationName}</option>        
@@ -61,7 +61,9 @@
                     <div class="boardImg">
                         <label for="img1">
                         	<c:if test="${!empty landmarkDetail.imageList[0]}">
-	                            <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"> 
+                                <c:if test="${landmarkDetail.imageList[0].landMarkImageLV == 0}">
+	                                <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"> 
+                                </c:if>    
                         	</c:if>
 							<c:if test="${empty landmarkDetail.imageList[0]}">
 	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
@@ -136,7 +138,7 @@
                 </div>
                 <input type="text" name="lng" style="display:none;" value="${landmarkDetail.landMarkX}">
                 <input type="text" name="lat" style="display:none;" value="${landmarkDetail.landMarkY}">
-                <input type="hidden" name="deleteList" id="deleteList" value="">
+                <input type="hidden" name="deleteList" id="deleteList" value="ggomsu">
                
                 <div class="addressField">
                     <div id="map" style="width:764px;height:400px;"></div>
@@ -159,6 +161,12 @@
         <script>
             let lng = ${landmarkDetail.landMarkX};
             let lat = ${landmarkDetail.landMarkY};
+        </script>
+    </c:if>
+    <c:if test="${empty landmarkDetail}">
+        <script>
+            lng = 126.98298720739353;
+            lat = 37.56792412182713;
         </script>
     </c:if>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>

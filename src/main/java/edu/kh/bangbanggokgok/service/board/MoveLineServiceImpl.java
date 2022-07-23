@@ -147,12 +147,25 @@ public class MoveLineServiceImpl implements MoveLineService{
 	}
 
 
+//	@Override
+//	public List<String> selectMovelineList() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+
+	// 코스 상세 페이지 조회
 	@Override
-	public List<String> selectMovelineList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<MoveLineDetail> selectMovelineDetail(int movelineNo) {
+		
+		List<MoveLineDetail> selectMovelineDetail = dao.selectMovelineDetail(movelineNo);
+		
+		System.out.println("MovelineDetail : " + selectMovelineDetail);
+		
+		return selectMovelineDetail;
 	}
-	
+
+
 	
 	
 	

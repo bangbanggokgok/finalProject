@@ -25,6 +25,7 @@ div {
 
 .list{
     margin-bottom: 30px;
+    display: flex;
 }
 
 html, body {
@@ -55,7 +56,7 @@ div {
     display: block;
 }
 
-.list > span {
+.list > div {
     margin-right: 20px;
 }
 
@@ -186,14 +187,14 @@ li {
     font-weight: bold;
 }
 
-#all {
+#all{
     color: rgb(51, 151, 255);
-    cursor: pointer;
 }
 
-#nocie{
+/* #nocie{
     color: rgb(51, 151, 255);
 }
-#nociePage{
-    display: none;
-}
+
+#event{
+    color: rgb(51, 151, 255);
+} */

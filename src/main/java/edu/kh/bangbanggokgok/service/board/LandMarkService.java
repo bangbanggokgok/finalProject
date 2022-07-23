@@ -21,9 +21,10 @@ public interface LandMarkService {
 	Map<String, Object> selectLandMarkList(int locationType);
 
 	/** 랜드마크 전체 목록 조회 서비스
+	 * @param num 
 	 * @return
 	 */
-	Map<String, Object> selectAllLandMarkList();
+	Map<String, Object> selectAllLandMarkList(int num);
 	
 	
 	/** 랜드마크 상세조회 서비스
@@ -53,6 +54,13 @@ public interface LandMarkService {
 	 */
 	int updateLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
 			String deleteList) throws IOException;
+
+
+	int landmarkBookmarkInsert(String loginNo, String landmarkNo);
+
+	int landmarkBookmarkDelete(String loginNo, String landmarkNo);
+
+	int landmarkBookmark(String loginNo, String landmarkNo);
 
 	
 }

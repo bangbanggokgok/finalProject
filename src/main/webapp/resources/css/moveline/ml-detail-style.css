@@ -6,9 +6,13 @@ html{
 /* 전체 화면 */
 #contents{
     width: 1140px;
-    padding: 70px 20px 27px 20px;   
+    padding: 100px 20px 27px 20px;   
     /* margin-left: 560px; */
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
+}
+
+ul{
+    list-style: none;
 }
 
 /* 헤더  */
@@ -17,6 +21,9 @@ html{
     padding-bottom: 10px;
 }
 
+#top-middle{
+    margin-bottom: 30px;
+}
 
 .profileImage{
     width: 40px;
@@ -56,9 +63,6 @@ html{
     text-align: center;
 }
 
-#btn-area{
-}
-
 #btn-area>button{
     margin-left: 5px;
     font-size: 15px;
@@ -66,12 +70,13 @@ html{
     border-color: white;
     background-color: white;
     height: 30px;
+    width: 80px;
 }
 
 #btn-area>button:hover{
     cursor: pointer;
-    background-color: #13294b;
-    border-color: #13294b;
+    background-color: #bbd0ff;
+    border-color: #bbd0ff;
     color: white;
 }
 
@@ -80,28 +85,126 @@ html{
     justify-content: space-between;
 }
 
+
+
 /* 바디 */
 #moveline-area{
-    border: 1px solid #ccc;
 }
 
+/* 작성된 지역, 코스 총 거리, 테마 */
+#schedule-info{
+    padding: 40px 150px 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+.schedule{
+    padding: 30px;
+}
+
+.location-detail{
+    display: flex;
+    justify-content: center;
+}
+
+
+.schedule>li img{
+    width: 80px;
+}
+
+/* 지역 자리 */
+.loca1{
+    text-align: center;
+    font-size: 20px;
+    color: #777;
+}
+
+.loca2{
+    font-size: 30px;
+    padding: 0 10px;
+}
+
+.distance{
+    text-align: center;
+    margin-top: 30px;
+}
+
+.distance>:nth-child(1){
+    color: #777;
+}
+
+.distance>:nth-child(2){
+    font-size: larger;
+}
+
+.distance>span{
+    padding: 0 10px;
+}
+
+/* 테마 자리 */
+.theme-detail{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.theme1{
+    text-align: center;
+    font-size: 20px;
+    color: #777;
+
+}
+
+.theme2{
+    font-size: 30px;
+    padding: 0px 10px;
+}
+
+
+/* 해시태그 자리 */
+#moveline-hashtags{
+    margin-top: 50px;
+    font-size: 20px;
+    max-height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+
+#moveline-hashtags li{
+    display: inline-block;
+    margin: 10px 5px;
+}
 #moveline-map-area{
-    border: 1px solid #ccc;
-    height: 300px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#map{
+    width: 700px;
+    height: 500px;
+    text-align: center;
+    
 }
 
 #moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
 }
 
 #moveline-content{
+    border-bottom: 1px solid #ccc;
     height: 350px;
+    margin-top: 20px;
+    font-size: 20px;
+    padding: 0 20px
 }
 
 /* 코스 이미지 */
 #moveline-images>img{
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
+    margin-top: 30px;
 }
 
 #moveline-images{
@@ -111,24 +214,46 @@ html{
     text-align: center;
 }
 
+
+
+
 /* 랜드마크 디테일 */
-#landmark-area{
-    border: 1px solid #ccc;
-
-}
-
 .landmark-detail{
-    border: 1px solid #ccc;
     text-align: center;
     font-size: 30px;
+    margin-top: 100px;
+
 }
+
+.landmark-detail>ul{
+    display: inline-flex;
+    padding-inline-start: 0;
+}
+
+.landmark{
+    /* border-bottom: 1px solid #ccc; */
+    width: 200px;
+    padding: 10px;
+    padding-inline-start: 0;
+}
+
+.landmark:hover{
+    cursor: pointer;
+    background-color: #bbd0ff;
+    color: white;
+}
+
+.selected-landmark{
+    margin: 5px;
+}   
 
 
 /* 랜드마크 이미지 */
 #landmark-images>img{
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
     text-align: center;
+    margin-top: 30px;
 }
 
 #landmark-images{
@@ -137,8 +262,12 @@ html{
 }
 
 #landmark-explain{
-    border: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #ccc;
     height: 100px;
+    font-size: 20px;
+    padding: 20px 20px;
+    height: auto;
 }
 
 /*  */

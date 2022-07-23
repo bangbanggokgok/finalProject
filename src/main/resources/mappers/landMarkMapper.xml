@@ -11,10 +11,13 @@
 	-->
 	<!-- 랜드마크 목록 조회용 resultMap -->
 	<resultMap type="landMark" id="landMark_rm">
-		<id property="landMarkNo" column="LM_NO" />
-		<result property="landMarkName" column="LM_NAME"/>
-		<result property="landMarkContent" column="LM_CONTENT"/>
-		<result property="thumbnail" column="THUMBNAIL"/>
+		<id 	property="landMarkNo" 		column="LM_NO" 	/>
+		<result property="landMarkName" 	column="LM_NAME"/>
+		<result property="landMarkContent" 	column="LM_CONTENT"/>
+		<result property="thumbnail" 		column="THUMBNAIL"/>
+		<result property="locationType" 	column="LOCATION_TYPE"/>
+		<result property="locationName" 	column="LOCATION_NAME"/>
+		
 	</resultMap>
 	
 	<!-- 랜드마크 상세 조회용 resultMap -->
@@ -26,6 +29,8 @@
 		<result property="landMarkContent" 	column="LM_CONTENT" 	/>
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
+		
+		<result property="userNo" 			column="USER_NO" 		/>
 		<result property="userName" 		column="USER_NAME" 		/>
 		<result property="locationName"		column="LOCATION_NAME"	/>
 		
@@ -87,7 +92,7 @@
 		SELECT LM_NO, LM_NAME, LM_CONTENT,
 		(SELECT LM_IMG_RENAME FROM LAND_IMG
 		WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
-		AND LM_IMG_LEVEL = 0) THUMBNAIL
+		AND LM_IMG_LEVEL = 0) THUMBNAIL, LOCATION_TYPE , LOCATION_NAME
 		FROM LANDMARK
 		JOIN LOCATIONS USING(LOCATION_TYPE)
 		WHERE LM_FL = 'N'
@@ -110,7 +115,7 @@
      	FROM LANDMARK
      	JOIN USER_TB USING(USER_NO)
      	JOIN LOCATIONS USING(LOCATION_TYPE)
-     	WHERE LM_NO = #{landMakrNo}
+     	WHERE LM_NO = #{landMarkNo}
      	AND LM_FL = 'N'
     </select>
 	
@@ -150,5 +155,53 @@
 			</foreach>
 		) A   
 	</insert>
+	
+	<update id="updateLandmark" parameterType="LandmarkDetail">
+		UPDATE LANDMARK SET 
+		LM_X = #{landMarkX},
+		LM_Y = #{landMarkY},
+		LM_NAME = #{landMarkName},
+		LM_CONTENT = #{landMarkContent},
+		LOCATION_TYPE = #{locationNum}
+		WHERE LM_NO = #{landMarkNo}
+	</update>
+	
+	<delete id="deleteLandmarkImage">
+		UPDATE LAND_IMG SET
+		WHERE LM_NO = #{landMarkNo}
+		AND LM_IMG_LEVEL IN (#{deleteList})
+	</delete>
+	
+	<update id="updateLandmarkImage">
+		UPDATE LAND_IMG SET
+		LM_IMG_RENAME = #{landMarkReName}
+		WHERE LM_NO = #{landMarkNo}
+		AND LM_IMG_LEVEL = #{landMarkImageLV}
+	</update>
+	
+	<insert id="insertLandmarkImage">
+		INSERT INTO LAND_IMG VALUES(
+				SEQ_LM_IMG_NO.NEXTVAL, #{landMarkNo},#{landMarkReName},#{landMarkImageLV}
+		)
+	</insert>
+	
+	<!-- 따로 배열형태 실험해봐야함 -->
+	<select id="landmarkBookmark" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOOKMARK_LM
+		WHERE USER_NO = #{loginNo}
+		AND LM_NO = #{landmarkNo}
+	</select>
+	
+	<insert id="insertLandBookmark">
+		INSERT INTO BOOKMARK_LM
+		VALUES (#{loginNo},#{landmarkNo})
+	</insert>
+	
+	<delete id="deleteLandBookmark">
+		DELETE FROM BOOKMARK_LM
+		WHERE USER_NO = #{loginNo}
+		AND LM_NO = #{landmarkNo}
+	</delete>
 	
 </mapper>

@@ -20,35 +20,6 @@
 
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
-	<!-- 관리자 네비 -->
-	<section class="navWrapper">
-		<div class="adminNav">
-			<div class="adminList">Admin</div>
-			<ul class="listWrapper">
-				<li id="adminList">
-					<i class="fal fa-clipboard-list-check">공지사항</i>
-					<div>
-						<a href="#">공지/이벤트 조회</a><br> <a href="#">공지/이벤트 작성</a>
-					</div>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-user-friends">회원관리</i>
-					</a>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-map-marker-question">1:1 문의조회</i> 
-					</a>
-				</li>
-				<li id="adminList">
-					<a href="#">
-						<i class="fal fa-siren-on">신고관리</i>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</section>
 
 	<!-- 관리자 메인탭 -->
 	<section class="header">
@@ -128,7 +99,7 @@
 
 					<div class="boardImg">
 						<label for="img0">
-							<img class="preview" src="">
+							<img class="preview" src="${img0}">
 							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label>
 						<input type="file" class="inputImage" id="img0" name="images" accept="image/*"> 
@@ -137,7 +108,7 @@
 
 					<div class="boardImg">
 						<label for="img1">
-							<img class="preview" src="">
+							<img class="preview" src="${img1}">
 							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label>
 						<input type="file" class="inputImage" id="img1" name="images" accept="image/*"> 
@@ -146,7 +117,7 @@
 
 					<div class="boardImg">
 						<label for="img2">
-							<img class="preview" src="">
+							<img class="preview" src="${img2}">
 							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label> 
 						<input type="file" class="inputImage" id="img2" name="images" accept="image/*"> 
@@ -155,7 +126,7 @@
 
 					<div class="boardImg">
 						<label for="img3"> 
-							<img class="preview" src="">
+							<img class="preview" src="${img3}">
 							<%-- <i class="far fa-plus-circle fa-lg"></i> --%>
 						</label> 
 						<input type="file" class="inputImage" id="img3" name="images" accept="image/*"> 

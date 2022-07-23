@@ -36,6 +36,7 @@
     <section id="slide1">
       <div class="container">
         <ul class="slider-container simple-list" id="slider">
+        <%-- 인기 이미지 넣기 --%>
           <li class="slide">
             <img
               class="slide-img"
@@ -100,17 +101,25 @@
     <section class="gallery">
       <div class="container">
         <div class="tit">
-          <h2 id="zoneTitle">서울</h2>
-          <a class="randWrite" href="">랜드마크 작성하기</a>
+          <h2 id="zoneTitle">
+            <c:forEach var="locations" items="${locationList}">
+              <c:if test="${map.hihi == locations.locationNum}">
+                ${locations.locationName}
+              </c:if>
+            </c:forEach>
+          </h2>
+          <a class="landWrite" href="${contextPath}/landmark-main/write/insert">랜드마크 작성하기</a>
         </div>
-        <div class="region-1" id=region>
-		<c:if test="${!empty LocationList}">
-			<c:forEach var="locations" items="${LocationList}">
-				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+        <div class="region-1" id="region">
+		<c:if test="${!empty locationList}">
+			<c:forEach var="locations" items="${locationList}">
+				  <c:if test="${map.hihi != locations.locationNum}">
+            <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+          </c:if>
+				  <c:if test="${map.hihi == locations.locationNum}">
+            <span class="region-detail clicked" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+          </c:if>
 			</c:forEach>
-		</c:if>
-		<c:if test="${empty LocationList}">
-			비어있음
 		</c:if>
         </div>
         <div class="toolbar">
@@ -139,11 +148,13 @@
         </div>
 
         <ol class="image-list grid-view" id="landMakrList">
+        <c:if test="${!empty landmarkList}">
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> 
-            <a href="../landmark-main/detail/${landmark.locationType}/${landmark.landMarkNo}">  <img src="${contextPath}${landmark.thumbnail}"></img></a>
-                <%-- 이부분은 좀 테스트 해봅시다 --%>
+            <a href="../detail/${landmark.locationType}/${landmark.landMarkNo}">
+              <img src="${contextPath}${landmark.thumbnail}"/>
+            </a>
               <figcaption class="landMark" id="landMark">
                 <p class="land-Title">${landmark.landMarkName}</p>
                 <p class="land-content">${landmark.landMarkContent}</p>
@@ -151,164 +162,10 @@
             </figure>
           </li>
           </c:forEach>
-          <%--<li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature1.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>DMZ 평화관광</p>
-                <p>분단의 상처에서 평화와 희망의 장소로 함꼐하는 여행</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature2.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>전통한옥</p>
-                <p>
-                  한국 고유의 전통문화를 체험할 수 있는 한옥 숙박시설을
-                  소개합니다.
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature3.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>두루누비</p>
-                <p>대한민국의 걷기 여행길, 자전거 여행길을 소개합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-           <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature4.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>지역명사문화여행</p>
-                <p>남다른 체험 콘텐츠를 가진 15인의 대표 명사와 함꼐하세요!</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature5.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>생태녹색관광</p>
-                <p>아름다운 자연과 즐거운 체험이 있는 생태여행</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature6.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>문화관광축제</p>
-                <p>
-                  365일 축제 중!<br />
-                  함께 떠나는 축제 여행
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature7.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>한국관광의별</p>
-                <p>한 해 동안 가장 빛난 별을 찾아 소개합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature8.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>고캠핑</p>
-                <p>
-                  대한민국 곳곳의 등록 '캠핑장' 정보 모두 확인하고 안전하게
-                  즐기세요!
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature9.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>대한민국 테마여행10선</p>
-                <p>당신의 여행에 10개의 테마를 선사합니다.</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature10.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>산업관광</p>
-                <p>
-                  전공 산업부터 예술/문화/첨단 산업까지!<br />
-                  체험 산업관광지
-                </p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature11.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>휴가문화개선</p>
-                <p>휴가가 있는 일상을 만들어가는 캠페인</p>
-              </figcaption>
-            </figure>
-          </li>
-          <li>
-            <figure>
-              <img
-                src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/unsplash_nature12.jpg"
-                alt=""
-              />
-              <figcaption>
-                <p>비대면 안심관광지</p>
-                <p>
-                  생활 속 거리두기가 가능해 안심하고 여행할 수 있는 힐링여행지!
-                </p>
-              </figcaption>
-            </figure>
-          </li> --%>
+        </c:if>
+        <c:if test="${empty landmarkList}">
+          <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
+        </c:if>
         </ol>
       </div>
     </section>

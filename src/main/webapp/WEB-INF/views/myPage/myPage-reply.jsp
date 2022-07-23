@@ -52,7 +52,7 @@
 		                            <tr>
 	                                <td>${myReply.rowNo}</td>
 	                                <td>
-	                                    <a href="#">${myReply.movelineTitle}</a>
+	                                    <a href="${contextPath}/moveline-main/detail/${myReply.movelineNo}">${myReply.movelineTitle}</a>
 	                                </td>
 	                                <td>${myReply.replyContent}</td>
 	                                <td>${myReply.movelineWriter}</td>

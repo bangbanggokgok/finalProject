@@ -165,6 +165,16 @@ public class MoveLineDAO {
 	}
 
 
+	/** 코스 상세 페이지 조회
+	 * @param movelineNo
+	 * @return list
+	 */
+	public List<MoveLineDetail> selectMovelineDetail(int movelineNo) {
+		
+		return sqlSession.selectList("movelineMapper.selectMovelineDetail", movelineNo);
+	}
+
+
 	
 
 	

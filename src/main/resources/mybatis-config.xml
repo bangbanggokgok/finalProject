@@ -37,8 +37,6 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag" alias="MoveLineHashTag"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.hashTag.LandmarkHashTag" alias="LandmarkHashtag"/>
 
-		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
-		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportMoveLine" alias="ReportML"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.admin.ReportReply" alias="ReportReply"/>
 	</typeAliases>

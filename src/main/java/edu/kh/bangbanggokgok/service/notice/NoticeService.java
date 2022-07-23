@@ -25,4 +25,11 @@ public interface NoticeService {
 	 */
 	Map<String, Object> selectNotice(int cp, String list);
 
+	/** 이벤트 ajax 조회
+	 * @param cp
+	 * @param list
+	 * @return
+	 */
+	Map<String, Object> selectEvent(int cp, String list);
+
 }

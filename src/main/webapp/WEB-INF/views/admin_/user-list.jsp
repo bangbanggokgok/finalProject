@@ -19,32 +19,6 @@
 <body>
     <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
-    <section class="navWrapper">
-        <div class="adminNav">
-            <ul class="listWrapper">
-                <div class="adminList">Admin</div>
-                <li id="adminList">
-                    <i class="fal fa-clipboard-list-check"></i> 공지사항
-                    <div>
-                        <a href="">공지/이벤트 조회</a><br>
-                        <a href="">공지/이벤트 작성</a>
-                    </div>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-user-friends"></i> 회원관리</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-map-marker-question"></i> 1:1 문의조회</a>
-                </li>
-                <li id="adminList">
-                    <a href=""><i class="fal fa-siren-on"></i> 신고관리</a>
-                </li>
-            </ul>
-
-        </div>
-
-    </section>
-
     <div class="board">
         <h1>회원관리</h1>
         <div class="list">
@@ -84,18 +58,11 @@
 
         <div class="pagination-area">
 
-                <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
                 <c:set var="url" value="${list}?cp="/>
-
-
                 <ul class="pagination">
-                    <!-- 첫 페이지로 이동 -->
                     <li><a href="${url}1">&lt;&lt;</a></li>
-
-                    <!-- 이전 목록 마지막 번호로 이동 -->
                     <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
 
-                    <!-- 범위가 정해진 일반 for문 사용 -->
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
                         <c:choose>
@@ -110,10 +77,7 @@
 
                     </c:forEach>
                     
-                    <!-- 다음 목록 시작 번호로 이동 -->
                     <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-
-                    <!-- 끝 페이지로 이동 -->
                     <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
 
                 </ul>
@@ -121,7 +85,6 @@
         
     </div>
 
-    
 </body>
 
 </html>
