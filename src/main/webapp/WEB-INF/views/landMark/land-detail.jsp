@@ -29,17 +29,22 @@
           </div>
           <div class="name1 name1-wrap">
             <div class="heart1">
+            <%-- <c:if test="${checkBookmark == 0}"> --%>
               <img
-                class="heart-img"
+                class="heart-img hide"
                 src="${contextPath}/resources/images/landmark/heart.png"
                 alt=""
               />
+            <%-- </c:if> --%>
+            <%-- <c:if test="${checkBookmark != 0}"> --%>
               <img
-                class="redHeart-img"
+                class="redHeart-img hide"
                 src="${contextPath}/resources/images/landmark/redHeart.png"
                 alt=""
               />
+            <%-- </c:if> --%>
               <span style="width:75px; letter-spacing:-3px">즐겨찾기</span>
+              <input class="bookmarkValue"type="hidden" value = "${checkBookmark}">
             </div>
             <%-- <a class="police" href=""> --%>
             <div class="report" style="width:170px;">

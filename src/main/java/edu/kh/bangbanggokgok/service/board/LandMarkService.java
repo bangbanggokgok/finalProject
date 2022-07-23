@@ -55,9 +55,12 @@ public interface LandMarkService {
 	int updateLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
 			String deleteList) throws IOException;
 
-	int landmarkBookmark(String loginNo, String landmarkNo);
+
+	int landmarkBookmarkInsert(String loginNo, String landmarkNo);
 
 	int landmarkBookmarkDelete(String loginNo, String landmarkNo);
+
+	int landmarkBookmark(String loginNo, String landmarkNo);
 
 	
 }
