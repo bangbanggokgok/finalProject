@@ -25,6 +25,12 @@
               <img class="slide-img" src="${contextPath}/${moveLineImg}" alt="first_img">
             </li>
           </c:forEach>
+          <c:forEach var="landmarkImage" items="${landmarkImage}">
+              <li class="slide" id="landmark-images">
+                <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
+                <img clas="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
+              </li>
+          </c:forEach>
         </ul>
 
         <p class="pager">

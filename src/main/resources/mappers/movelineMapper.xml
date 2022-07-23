@@ -114,8 +114,6 @@
 		<result property="landMarkFL" 		column="LM_FL" 			/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
 		<result property="landmarkIndex" 	column="LM_INDEX" 	/>
-		
-	  
 		<collection property="hashtagList" column="ML_NO"
 	  javaType="java.util.ArrayList" ofType="MoveLineHashTag" select="selectHashTagList2"/>
 		 
