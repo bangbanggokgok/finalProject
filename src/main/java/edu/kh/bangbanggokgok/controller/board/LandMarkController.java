@@ -65,9 +65,20 @@ public class LandMarkController {
 
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
-	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo, Model model) {
+	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo,
+			Model model,
+			@ModelAttribute("loginUser") User user) {
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
+		
+//		북마크 확인용 변수 전환
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		String sUserNo = Integer.toString(user.getUserNo());
+		
+		int checkBookmark = service.landmarkBookmark(sUserNo,sLandmarkNo);
+		
 		model.addAttribute("landmarkDetail", landmarkDetail);
+//		북마크 속성삽입
+		model.addAttribute("checkBookmark", checkBookmark);
 		
 		return "landMark/land-detail";
 	}
@@ -81,7 +92,6 @@ public class LandMarkController {
 		if (mode.equals("update")) {
 			LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
 			landmarkDetail.setLandMarkContent(Util.newLineClear(landmarkDetail.getLandMarkContent()));
-			//xss 처리해야함
 			model.addAttribute("landmarkDetail", landmarkDetail);
 		}
 
@@ -157,15 +167,17 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmark")
 	public int landmarkBookmark(@PathVariable("landMarkNo") String landmarkNo,
 			@RequestParam("userNo") String loginNo) {
+		int result = service.landmarkBookmark(loginNo,landmarkNo);
 		
-		return service.landmarkBookmark(loginNo,landmarkNo);
+		if(result > 0 ) result = 3; // 있으면 1 - 3으로 전환
+		if(result == 0) result = service.landmarkBookmarkInsert(loginNo, landmarkNo);
+		return result;
 	}
 	
 	@ResponseBody
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmarkDelete")
 	public int landmarkBookmarkDelete(@PathVariable("landMarkNo") String landmarkNo,
 			@RequestParam("userNo") String loginNo) {
-		
 		return service.landmarkBookmarkDelete(loginNo,landmarkNo);
 	}
 }

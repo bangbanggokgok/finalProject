@@ -201,15 +201,15 @@ public class LandMarkServiceImpl implements LandMarkService {
 		infoB.put("loginNo", loginNo);
 		infoB.put("landmarkNo", landmarkNo);
 		
-		int result = dao.landmarkBookmark(infoB);
-		
-//		즐겨찾기 목록이 있음
-		if(result > 0)	result = 3;
-		
-//		즐겨찾기 목록이 없음
-		if(result == 0) result = dao.insertLandBookmark(infoB);
-		
-		return result;
+		return dao.landmarkBookmark(infoB);
+	}
+	
+	@Override
+	public int landmarkBookmarkInsert(String loginNo, String landmarkNo) {
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("landmarkNo", landmarkNo);
+		return dao.insertLandBookmark(infoB);
 	}
 
 	@Override
