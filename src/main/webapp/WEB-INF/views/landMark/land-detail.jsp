@@ -53,6 +53,7 @@
           <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
             <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
             <a class="detailCheck" href="#">삭제</a>
+            <%-- 삭제남음 --%>
           </c:if>
         </div>
 
@@ -194,10 +195,13 @@
     ></script>
     <c:if test="${!empty landmarkDetail}">
       <script>
+        const landmarkNo = ${landmarkDetail.landMarkNo}
+        const userNo = ${loginUser.userNo};
         const X = ${landmarkDetail.landMarkX};
         const Y = ${landmarkDetail.landMarkY};
       </script>    
     </c:if>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
+    <script src="${contextPath}/resources/js/landmark/temp.js"></script>
   </body>
 </html>

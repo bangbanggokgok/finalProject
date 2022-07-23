@@ -185,5 +185,23 @@
 		)
 	</insert>
 	
+	<!-- 따로 배열형태 실험해봐야함 -->
+	<select id="landmarkBookmark" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOOKMARK_LM
+		WHERE USER_NO = #{loginNo}
+		AND LM_NO = #{landmarkNo}
+	</select>
+	
+	<insert id="insertLandBookmark">
+		INSERT INTO BOOKMARK_LM
+		VALUES (#{loginNo},#{landmarkNo})
+	</insert>
+	
+	<delete id="deleteLandBookmark">
+		DELETE FROM BOOKMARK_LM
+		WHERE USER_NO = #{loginNo}
+		AND LM_NO = #{landmarkNo}
+	</delete>
 	
 </mapper>
