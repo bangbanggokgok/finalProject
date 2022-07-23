@@ -34,6 +34,8 @@ public class MoveLineDetail {
 	private List<MoveLineImage> imageList;
 	private String thumbnail;
 
+	private int landmarkIndex;
+	
 	private int landMarkNo;
 	private int landMarkX;
 	private int landMarkY;
