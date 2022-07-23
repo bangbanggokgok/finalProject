@@ -5,6 +5,21 @@
 
 	<!-- ================================== resultMap ========================================== -->
 	
+	<!-- 랜드마크 이미지 조회용 resultMap -->
+	<resultMap  type="LandMarkImage" 		id="LandMarkIMG_rm">
+		<id		property="landMarkImageNo"	column="LM_IMG_NO"/>
+		<id		property="landMarkNo"		column="LM_NO"/>
+		<id		property="landMarkReName"	column="LM_IMG_RENAME"/>
+		<id		property="landMarkImageLV"	column="LM_IMG_LEVEL"/>
+	</resultMap>
+	
+<!-- 	<resultMap type="MoveLineImage"			id="MoveLineImage_rm">
+		<id		property="landMarkImageNo"	column="ML_IMG_NO"/>
+		<id		property="landMarkNo"		column="ML_RENAME"/>
+		<id		property="landMarkReName"	column="ML_IMG_LEVEL"/>
+		<id		property="landMarkImageLV"	column="LM_NO"/>
+	</resultMap> -->
+	
 	<!--  -->
 	<resultMap 	type="MoveLineTheme" 		id="MoveLineTheme_rm"		>
 		<id 	property="movelineNo" 		column="ML_NO" 				/>
@@ -98,10 +113,7 @@
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkFL" 		column="LM_FL" 			/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
-		
-		<!-- <collection property="hashtagList" column="ML_NO"
-	  javaType="java.util.ArrayList" ofType="MoveLineHashTag" select="selectHashTagList2"/> -->
-	  
+		<result property="landmarkIndex" 	column="LM_INDEX" 	/>
 		<collection property="hashtagList" column="ML_NO"
 	  javaType="java.util.ArrayList" ofType="MoveLineHashTag" select="selectHashTagList2"/>
 		 
@@ -139,7 +151,7 @@
 
 	<!--  -->
 	<select id="selectLandMarkList" resultMap="landMark_rm">
-		SELECT LM_NO, LM_NAME, LM_X, LM_Y, LM_INDEX
+		SELECT LM_NO, LM_NAME, LM_X, LM_Y, LM_INDEX, LM_CONTENT, LM_ADDRESS
 		FROM LANDMARK
 		JOIN COORDINATE USING(LM_NO)
 		WHERE LM_FL ='N'
@@ -318,13 +330,59 @@
 	
 	<!-- 코스 상세 페이지 조회 -->
 	<select id="selectMovelineDetail" resultMap="MoveLineDetail_rm">
-		SELECT * FROM MOVELINE_BOARD
+		SELECT 
+			ML_NO, ML_TITLE, ML_CONTENT, ML_THEME,
+			LOCATION_NAME, USER_NAME,
+			TO_CHAR(ML_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_CREATE_DT,
+			TO_CHAR(ML_UPDATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_UPDATE_DT
+		FROM MOVELINE_BOARD
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		JOIN USER_TB USING(USER_NO)
+		WHERE ML_NO = #{movelineNo}
+		AND ML_DELETE_DT IS NULL
 	</select>
 	
+	<!-- 코스 상세 페이지 - 랜드마크 상세 -->
+	<select id="selectLandMarkDetail" resultMap="MoveLineDetail_rm">
+		SELECT LM_NAME, LM_ADDRESS, LM_INDEX
+		FROM LANDMARK
+		JOIN COORDINATE A USING(LM_NO)
+		LEFT OUTER JOIN MOVELINE_BOARD B
+		ON B.ML_NO = A.ML_NO
+		WHERE B.ML_NO = #{movelineNo}
+	</select>
 	
-	
-	
-	
-	
+	<!-- 코스 상세 페이지 - 랜드마크 이미지 -->
+	<select id="selectLandmarkImage" resultMap="LandMarkIMG_rm">
+		SELECT *
+		FROM
+			(SELECT *
+			FROM LAND_IMG
+			JOIN COORDINATE USING(LM_NO)
+			
+		JOIN MOVELINE_BOARD USING(ML_NO)
+		WHERE ML_NO = #{movelineNo})
+	</select>
+   
+   <!-- 코스 상세 페이지 - 코스 이미지 -->
+   <select id="selectMovelineImage" resultMap="MoveLineImage_rm">
+   		SELECT * FROM ML_IMG
+   		WHERE ML_NO = #{movelineNo}
+   		
+   </select>
+   
+   <!-- 코스 상세 페이지 - 코스 해시태그 -->
+   <select id="selectMovelineHashtag" resultMap="hashTag_rm">
+   		SELECT *
+		FROM MOVELINE_HASH
+		JOIN MOVELINE_BOARD USING(ML_NO)
+		WHERE ML_NO = #{movelineNo}
+   </select>
+   
+   
+   
+   
+   
+   
    
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,9 +25,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.board.MoveLineService;
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
+import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
+import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.User;
 
@@ -41,14 +47,23 @@ public class MoveLineController {
 	
 	// 코스 구분 페이지 조회
 	@GetMapping("/list")
-//	@ResponseBody
 	public String moveLineSort(Model model) {
 		
-//		List<MoveLineDetail> list = service.selectMoveLineMain();
-//		List<MoveLineDetail> list2 = service.selectMoveLineMain2();
-		
-//		return new Gson().toJson(list);
 		return "moveline/movelineSort";
+	}
+	
+	
+	
+	@GetMapping("/goToList")
+	public String goToList(@RequestHeader("referer") String referer,
+							Model model,
+							RedirectAttributes ra) {
+		
+	   String path = null;
+		
+		path = referer;
+		
+		return "redirect:" + path;
 	}
 	
 	
@@ -203,13 +218,33 @@ public class MoveLineController {
 								 @PathVariable("movelineNo") int movelineNo,
 								 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
 								 Model model,
-			                     HttpSession session) {
+			                     HttpSession session
+			                     ) {
 		
-		List<MoveLineDetail> movelineDetail = service.selectMovelineDetail(movelineNo);
 		
+		MoveLineDetail movelineDetail = service.selectMovelineDetail(movelineNo);
 		
+		Map<String, Object> map = null;
+		List<MoveLineImage> movelineImage = service.selectMovelineImage(movelineNo);
+		List<LandMarkDetail> landmarkDetail = service.selectLandmarkDetail(movelineNo);
+		List<LandMarkIMG> landmarkImage = service.selectLandmarkImage(movelineNo);
+		List<MoveLineHashTag> movelineHashtag = service.selectMovelineHashtag(movelineNo);
+		
+//		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(movelineNo);
+		
+//		MoveLineDetail detailHash = service.selectDetailHash(movelineNo);
+//		MoveLineDetail detailIndex = service.selectDetailIndex(movelineNo);
 		model.addAttribute("movelineDetail", movelineDetail);
-		System.out.println("movelineDetail : " + movelineDetail );
+		model.addAttribute("movelineImage", movelineImage);
+		model.addAttribute("movelineHashtag", movelineHashtag);
+		
+		
+		model.addAttribute("landmarkDetail", landmarkDetail);
+		model.addAttribute("landmarkImage", landmarkImage);
+		
+		System.out.println("movelineDetail : " + movelineDetail);
+		System.out.println("landmarkDetail : " + landmarkDetail.size());
+		System.out.println("landmarkImageDetail : " + landmarkImage.size());
 		
 		return "moveline/movelineDetail";
 	}

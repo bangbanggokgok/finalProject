@@ -1,5 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+<%-- <c:forEach var="landmark" items="${landmarkDetail}">
+    <c:if test="${landMarkNo == landmark.landmarkList}">
+        <c:set var="landMarkName" value="${landmark.landMarkName}" />
+        <c:set var="landMarkContent" value="${landmark.landMarkContent}" />
+        <c:set var="landMarkAddress" value="${landmark.landMarkAddress}" />
+        <c:set var="landmarkIndex" value="${landmark.landmarkIndex}" />
+    </c:if>
+</c:forEach> --%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -8,13 +19,12 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>코스 디테일</title>
-    <link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
-	rel="stylesheet" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css">
+
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
+
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/moveline/reply-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
 
 </head>
 <body>
@@ -31,7 +41,7 @@
                                 <img src="${contextPath}/resources/images/user.png" alt="">
                             </span>
                         </div>
-                        <span>최*호</span>
+                        <span>${movelineDetail.userName}</span>
                     </div>
                     
                     <div id="top-middle">
@@ -51,13 +61,16 @@
                         </div>
                         <c:choose>
                             <c:when test="${!empty loginUser}"> 
-                                <div id="btn-area">
+                                <div class="btn-area">
                                     <button>수정하기</button>
                                     <button>삭제하기</button>
                                 </div>
                             </c:when>
                             <c:otherwise>
-                                    <button>목록으로</button>
+                                <div class="btn-area">
+                                    <button type="button" id="goToList"><a href="${contextPath}/moveline-main/goToList">목록으로</a></button>
+                                    
+                                </div>
                             </c:otherwise>
 						</c:choose>
                     </div>
@@ -85,9 +98,10 @@
                                     <img src="${contextPath}/resources/images/movelineDetail/theme.png" alt="">
                                 </span>
                                 <span>
-                                    <div class="theme2"></div>
                                     <div class="theme1">테마</div>
-                                       <a>아이</a>
+                                    <div class="theme2">
+                                       <a>${movelineDetail.movelineTheme}</a>
+                                    </div>
                                 </span>
                             </li>
                         
@@ -97,20 +111,10 @@
                             </li>
                             <div id="moveline-hashtags">
                                 <ul>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
-                                    <li>#해시태그1</li>
+                                    <c:forEach var="movelineHashtag" items="${movelineHashtag}">
+                                            <c:set var="MLHashTag" value="${movelineHashtag.MLHashTag}"/>
+                                                <li>#${MLHashTag}</li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </ul>
@@ -119,57 +123,23 @@
 
                     <div id="moveline-content">
                         ${movelineDetail.movelineContent}
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
-                        내용 입력 란
                     </div>
+                    <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
-
-                     <c:if test="${fn:length(movelineDetail.imageList) > start}">
-                        <div id="moveline-images">
-
-                            <c:forEach var="i" begin="${start}" end="${fn:length(movelineDetail.imageList) -1 }">
-                            
-                                    <img src="${contextPath}${movelineDetail.imageList[i].imageReName}">
-
-                            </c:forEach>
-                        <div id="moveline-images">
-                    </c:if>
-
                     <div id="moveline-map-area">
                         <div id="map"></div>
                     </div>
+
+
                 </div>
 
 
                     <div class="landmark-detail">
                         <ul>
-                            <li class="landmark" style="background-color: #bbd0ff; color: white;">롯데타워</li>
-                            <li class="landmark">63빌딩</li>
-                            <li class="landmark">쌍둥이빌딩</li>
-                            <li class="landmark">롯데타워</li>
+                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                            <c:set var="landMarkName" value="${landmarkDetail.landMarkName}"/>
+                                <li class="landmark">${landMarkName}</li>
+                            </c:forEach>
                         </ul>
                         
                         <div class="selected-landmark">롯데타워</div>
@@ -180,17 +150,20 @@
                         </ul>
                     </div>
 
-
                     <div id="landmark-images">
-                        <img src="${contextPath}/resources/images/landmark/landmark6.jpg" alt="">
-                        <!-- <img src="../../resources/images/landmark/20220720112338_11538.gif" alt="">
-                        <img src="../../resources/images/landmark/1.jpg" alt="">
-                        <img src="../../resources/images/landmark/20220720114302_94946.png" alt=""> -->
+                    <%-- <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include> --%>
+                        <c:forEach var="landmarkImage" items="${landmarkImage}">
+                            <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
+                            <img class="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
+                        </c:forEach>
                     </div>
 
                     <div id="landmark-explain">
-                        랜드마크 상세설명 누르면 사진 사라지고 그 자리에 설명 노출
-                        (랜드마크 사진보기와 스와핑)
+                        <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                            <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+                            <li class="landmark">${landMarkContent}</li>
+                        </c:forEach>
+                        
                     </div>
                 
                 <!-- 댓글 -->
@@ -208,8 +181,6 @@
     </script>
 
 
-    <script src="${contextPath}/resources/js/common/nav.js"></script>
-    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
 
@@ -222,7 +193,12 @@
 
         var map = new kakao.maps.Map(container, options);
     </script>
+
+    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
+    
 
 </body>
 </html>

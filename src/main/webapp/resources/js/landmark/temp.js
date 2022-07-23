@@ -17,7 +17,7 @@ $(".heart1").click(() => {
             success: function (result) {
                 result = result * 1
                 if (result == '1') {
-                    alert("해당 랜드마크를 즐겨찾기 목록에 추가되었습니다.");
+                    alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
                     $(".heart-img").toggleClass("hide");
                     $(".redHeart-img").toggleClass("hide");
                     $(".bookmarkValue").val('1');
@@ -32,7 +32,7 @@ $(".heart1").click(() => {
                 data: { "userNo": userNo },
                 type: "get",
                 success: function (result) {
-                    alert("해당 랜드마크를 즐겨찾기 목록에서 삭제되었습니다.");
+                    alert("해당 랜드마크를 즐겨찾기 목록에서 삭제하였습니다.");
                     $(".heart-img").toggleClass("hide");
                     $(".redHeart-img").toggleClass("hide");
                     $(".bookmarkValue").val('0');
