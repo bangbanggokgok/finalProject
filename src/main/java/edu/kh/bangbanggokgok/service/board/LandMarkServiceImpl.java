@@ -186,11 +186,39 @@ public class LandMarkServiceImpl implements LandMarkService {
 						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
 					}
 				}
-
 			}
-
 		}
 		return result;
 	}
+
+	@Override
+	public int landmarkBookmark(String loginNo, String landmarkNo) {
+		
+//		인트형 배열로 실험해봐야함
+//		int[] infoA = {loginNo,landmarkNo};
+		
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("landmarkNo", landmarkNo);
+		
+		int result = dao.landmarkBookmark(infoB);
+		
+//		즐겨찾기 목록이 있음
+		if(result > 0)	result = 3;
+		
+//		즐겨찾기 목록이 없음
+		if(result == 0) result = dao.insertLandBookmark(infoB);
+		
+		return result;
+	}
+
+	@Override
+	public int landmarkBookmarkDelete(String loginNo, String landmarkNo) {
+		Map<String, String> infoA = new HashMap<String, String>();
+		infoA.put("loginNo", loginNo);
+		infoA.put("landmarkNo", landmarkNo);
+		return dao.landmarkBookmarkDelete(infoA);
+	}
+
 
 }

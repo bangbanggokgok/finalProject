@@ -98,7 +98,6 @@ public class LandMarkController {
 			@RequestParam(value = "deleteList", required = false) String deleteList) throws IOException {
 
 		logger.debug(deleteList + ""); // 나중
-		logger.debug(param + "");
 
 		// 회원번호 얻어오기
 		detail.setUserName(loginUser.getUserName());
@@ -154,4 +153,19 @@ public class LandMarkController {
 
 	}
 
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmark")
+	public int landmarkBookmark(@PathVariable("landMarkNo") String landmarkNo,
+			@RequestParam("userNo") String loginNo) {
+		
+		return service.landmarkBookmark(loginNo,landmarkNo);
+	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmarkDelete")
+	public int landmarkBookmarkDelete(@PathVariable("landMarkNo") String landmarkNo,
+			@RequestParam("userNo") String loginNo) {
+		
+		return service.landmarkBookmarkDelete(loginNo,landmarkNo);
+	}
 }
