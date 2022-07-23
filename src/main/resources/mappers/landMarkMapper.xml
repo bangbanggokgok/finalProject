@@ -27,7 +27,7 @@
 		<result property="landMarkAddress" 	column="LM_ADDRESS" 	/>
 		<result property="landMarkCreate" 	column="LM_CREATE_DT" 	/>
 		<result property="userName" 		column="USER_NAME" 		/>
-		<result property="locationName"		column="LOCATION_NAME"/>
+		<result property="locationName"		column="LOCATION_NAME"	/>
 		
 		<collection property="imageList" column="LM_NO" 
 			javaType="java.util.ArrayList" ofType="landMarkImage" 
