@@ -68,9 +68,9 @@ const $down = document.querySelector(".fa-chevron-down");
 const $up = document.querySelector(".fa-chevron-up");
 const $content = document.querySelector(".detail-content");
 const $contentsDetail = document.querySelector("#contents-detail");
-const $heart = document.querySelector(".heart1");
-const $heartShape = document.querySelector(".heart-img");
-const $redHeartShape = document.querySelector(".redHeart-img");
+// const $heart = document.querySelector(".heart1");
+// const $heartShape = document.querySelector(".heart-img");
+// const $redHeartShape = document.querySelector(".redHeart-img");
 
 $detail.addEventListener("click", function () {
   $down.classList.toggle("d-none");
@@ -78,11 +78,11 @@ $detail.addEventListener("click", function () {
   $content.classList.toggle("active");
   $contentsDetail.classList.toggle("width");
 });
-$heart.addEventListener("click", function () {
-  $heartShape.classList.toggle("none");
-  $redHeartShape.classList.toggle("active");
-  $redHeartShape.classList.toggle("none");
-});
+// $heart.addEventListener("click", function () {
+//   $heartShape.classList.toggle("none");
+//   $redHeartShape.classList.toggle("active");
+//   $redHeartShape.classList.toggle("none");
+// });
 
 $(function () {
   $(document).scroll(function () {

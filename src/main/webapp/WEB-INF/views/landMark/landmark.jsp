@@ -101,17 +101,25 @@
     <section class="gallery">
       <div class="container">
         <div class="tit">
-          <h2 id="zoneTitle">서울</h2>
-          <a class="landWrite" href="write/insert">랜드마크 작성하기</a>
+          <h2 id="zoneTitle">
+            <c:forEach var="locations" items="${locationList}">
+              <c:if test="${map.hihi == locations.locationNum}">
+                ${locations.locationName}
+              </c:if>
+            </c:forEach>
+          </h2>
+          <a class="landWrite" href="${contextPath}/landmark-main/write/insert">랜드마크 작성하기</a>
         </div>
-        <div class="region-1" id=region>
-		<c:if test="${!empty LocationList}">
-			<c:forEach var="locations" items="${LocationList}">
-				 <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+        <div class="region-1" id="region">
+		<c:if test="${!empty locationList}">
+			<c:forEach var="locations" items="${locationList}">
+				  <c:if test="${map.hihi != locations.locationNum}">
+            <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+          </c:if>
+				  <c:if test="${map.hihi == locations.locationNum}">
+            <span class="region-detail clicked" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+          </c:if>
 			</c:forEach>
-		</c:if>
-		<c:if test="${empty LocationList}">
-			비어있음
 		</c:if>
         </div>
         <div class="toolbar">
@@ -140,11 +148,13 @@
         </div>
 
         <ol class="image-list grid-view" id="landMakrList">
+        <c:if test="${!empty landmarkList}">
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> 
-            <a href="../landmark-main/detail/${landmark.locationType}/${landmark.landMarkNo}">  <img src="${contextPath}${landmark.thumbnail}"></img></a>
-                <%-- 이부분은 좀 테스트 해봅시다 --%>
+            <a href="../detail/${landmark.locationType}/${landmark.landMarkNo}">
+              <img src="${contextPath}${landmark.thumbnail}"/>
+            </a>
               <figcaption class="landMark" id="landMark">
                 <p class="land-Title">${landmark.landMarkName}</p>
                 <p class="land-content">${landmark.landMarkContent}</p>
@@ -152,6 +162,10 @@
             </figure>
           </li>
           </c:forEach>
+        </c:if>
+        <c:if test="${empty landmarkList}">
+          <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
+        </c:if>
         </ol>
       </div>
     </section>

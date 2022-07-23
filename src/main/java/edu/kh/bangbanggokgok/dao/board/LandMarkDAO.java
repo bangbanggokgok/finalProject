@@ -90,7 +90,6 @@ public class LandMarkDAO {
 	public int updateLandmark(LandMarkDetail detail) {
 		return sqlSession.update("landMarkMapper.updateLandmark",detail);
 	}
-
 	
 	public int deleteLandmarkImage(Map<String, Object> map) {
 		return sqlSession.delete("landMarkMapper.deleteLandmarkImage",map);
@@ -102,6 +101,19 @@ public class LandMarkDAO {
 
 	public int insertLandmarkImage(LandMarkIMG img) {
 		return sqlSession.insert("landMarkMapper.insertLandmarkImage",img);
+	}
+
+
+	public int landmarkBookmark(Map<String, String> infoB) {
+		return sqlSession.selectOne("landMarkMapper.landmarkBookmark", infoB);
+	}
+
+	public int insertLandBookmark(Map<String, String> infoB) {
+		return sqlSession.insert("landMarkMapper.insertLandBookmark", infoB);
+	}
+
+	public int landmarkBookmarkDelete(Map<String, String> infoA) {
+		return sqlSession.delete("landMarkMapper.deleteLandBookmark",infoA);
 	}
 	
 

@@ -119,8 +119,7 @@ $(document).ready(function () {
                             courseContent.append(courseImg);
 
                             const courseInfo = document.createElement("a");
-                            // 링크 걸기
-                            courseInfo.setAttribute("href", "#");
+                            courseInfo.setAttribute("href", contextPath + "/moveline-main/detail/" + course.movelineNo);
 
                             const courseTitle = document.createElement("h1");
                             courseTitle.innerText = course.movelineTitle;

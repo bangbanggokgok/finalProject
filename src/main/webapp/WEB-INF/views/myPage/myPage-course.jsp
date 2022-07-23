@@ -42,7 +42,7 @@
 						<c:forEach var="moveline" items="${movelineList}">
 							<div class="course-content">
 								<div class="course-img">
-									<a href="#">
+									<a href="${contextPath}/moveline-main/detail/${moveline.movelineNo}">
 										<h1>${moveline.movelineTitle}</h1>
 										<ul>
 											<li>지역 : ${moveline.locationName}</li>

@@ -42,16 +42,17 @@ public class LandMarkController {
 	@Autowired
 	private LandMarkService service;
 
-	@GetMapping("/list")
-	public String landmarkMainPage(Model model) {
+	@GetMapping("/list/{locationNum}")
+	public String landmarkMainPage(Model model,
+			@PathVariable("locationNum") int num) {
 
 		// 랜드마크 목록 조회 서비스
-		Map<String, Object> map = service.selectAllLandMarkList();
+		Map<String, Object> map = service.selectAllLandMarkList(num);
+		map.put("hihi", num);
 		model.addAttribute("map", map);
 		return "landMark/landmark";
 	}
 	
-	//비동기 주소 변경예정
 	@ResponseBody
 	@GetMapping("/list/nsync/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
@@ -64,10 +65,20 @@ public class LandMarkController {
 
 	// 랜드마크 상세 조회
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
-	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo, Model model) {
+	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo,
+			Model model,
+			@ModelAttribute("loginUser") User user) {
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
-		// 이미지 담아야함
+		
+//		북마크 확인용 변수 전환
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		String sUserNo = Integer.toString(user.getUserNo());
+		
+		int checkBookmark = service.landmarkBookmark(sUserNo,sLandmarkNo);
+		
 		model.addAttribute("landmarkDetail", landmarkDetail);
+//		북마크 속성삽입
+		model.addAttribute("checkBookmark", checkBookmark);
 		
 		return "landMark/land-detail";
 	}
@@ -81,7 +92,6 @@ public class LandMarkController {
 		if (mode.equals("update")) {
 			LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
 			landmarkDetail.setLandMarkContent(Util.newLineClear(landmarkDetail.getLandMarkContent()));
-			//xss 처리해야함
 			model.addAttribute("landmarkDetail", landmarkDetail);
 		}
 
@@ -91,13 +101,13 @@ public class LandMarkController {
 	// 게시글 삽입/수정
 	@PostMapping("/write/{mode}")
 	public String landWrite(LandMarkDetail detail, // 제목, 내용
+			@RequestParam(value = "landmark-no",required = false, defaultValue = "0") int landmarkNo,
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList, // 이미지 리스트
 			@RequestParam Map<String, String> param, @PathVariable String mode,
 			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra,
 			@RequestParam(value = "deleteList", required = false) String deleteList) throws IOException {
 
 		logger.debug(deleteList + ""); // 나중
-		logger.debug(param + "");
 
 		// 회원번호 얻어오기
 		detail.setUserName(loginUser.getUserName());
@@ -135,6 +145,7 @@ public class LandMarkController {
 
 		if (mode.equals("update")) {
 
+			detail.setLandMarkNo(landmarkNo);
 			// 수정코드 작성 공간
 			int result = service.updateLandMark(detail, imageList, webPath, folderPath, deleteList);
 
@@ -152,4 +163,21 @@ public class LandMarkController {
 
 	}
 
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmark")
+	public int landmarkBookmark(@PathVariable("landMarkNo") String landmarkNo,
+			@RequestParam("userNo") String loginNo) {
+		int result = service.landmarkBookmark(loginNo,landmarkNo);
+		
+		if(result > 0 ) result = 3; // 있으면 1 - 3으로 전환
+		if(result == 0) result = service.landmarkBookmarkInsert(loginNo, landmarkNo);
+		return result;
+	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmarkDelete")
+	public int landmarkBookmarkDelete(@PathVariable("landMarkNo") String landmarkNo,
+			@RequestParam("userNo") String loginNo) {
+		return service.landmarkBookmarkDelete(loginNo,landmarkNo);
+	}
 }
