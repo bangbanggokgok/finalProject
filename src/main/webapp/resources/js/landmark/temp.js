@@ -20,7 +20,7 @@ $(".heart1").click(() => {
                     alert("해당 랜드마크를 즐겨찾기 목록에 추가되었습니다.");
                     $(".heart-img").toggleClass("hide");
                     $(".redHeart-img").toggleClass("hide");
-                    $(".bookmarkValue").val("1")
+                    $(".bookmarkValue").val('1');
                 };
             }
         });
@@ -35,7 +35,7 @@ $(".heart1").click(() => {
                     alert("해당 랜드마크를 즐겨찾기 목록에서 삭제되었습니다.");
                     $(".heart-img").toggleClass("hide");
                     $(".redHeart-img").toggleClass("hide");
-                    $(".bookmarkValue").val("0")
+                    $(".bookmarkValue").val('0');
                 }
             })
         }

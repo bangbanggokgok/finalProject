@@ -44,7 +44,7 @@
               />
             <%-- </c:if> --%>
               <span style="width:75px; letter-spacing:-3px">즐겨찾기</span>
-              <input class="bookmarkValue"type="hidden" value = "${checkBookmark}">
+              <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
             </div>
             <%-- <a class="police" href=""> --%>
             <div class="report" style="width:170px;">
