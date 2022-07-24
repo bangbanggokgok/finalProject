@@ -26,23 +26,15 @@
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
+            <%-- <div class="rankPoint">
+              <input class="point" type="hidden" name="landmarkRank" value="">
+              <input class="point-check" type="hidden" name="rankCheck" value="${rankCheck}">
+            </div> --%>
           </div>
           <div class="name1 name1-wrap">
             <div class="heart1">
-            <%-- <c:if test="${checkBookmark == 0}"> --%>
-              <img
-                class="heart-img hide"
-                src="${contextPath}/resources/images/landmark/heart.png"
-                alt=""
-              />
-            <%-- </c:if> --%>
-            <%-- <c:if test="${checkBookmark != 0}"> --%>
-              <img
-                class="redHeart-img hide"
-                src="${contextPath}/resources/images/landmark/redHeart.png"
-                alt=""
-              />
-            <%-- </c:if> --%>
+              <img class="heart-img hide" src="${contextPath}/resources/images/landmark/heart.png" alt=""/>
+              <img class="redHeart-img hide" src="${contextPath}/resources/images/landmark/redHeart.png" alt=""/>
               <span style="width:75px; letter-spacing:-3px">즐겨찾기</span>
               <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
             </div>
@@ -99,11 +91,7 @@
                 <c:if test="${!empty landmarkDetail.imageList}">
                   <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">
-                      <img
-                        class="slide-img"
-                        src="${contextPath}${images.landMarkReName}"
-                        alt="first_img"
-                      />
+                      <img class="slide-img" src="${contextPath}${images.landMarkReName}" alt="" />
                     </li>
                   </c:forEach>
                 </c:if>
