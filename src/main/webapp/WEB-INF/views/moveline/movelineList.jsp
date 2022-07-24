@@ -2,9 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-
-<c:forEach var="location" items="${LocationList}">
+<c:forEach var="location" items="${locationList}">
 	<c:if test="${locationNum == location.locationNum}">
 		<c:set var="locationName" value="${location.locationName}" />
 	</c:if>
@@ -54,7 +52,6 @@
 			<div id="contents">
 				<section id="top">
 					<div>
-						${movelineNo}
 						<c:choose>
 							<c:when test="${!empty selectAll}">
 								<h1 id="first-h1">
@@ -81,7 +78,7 @@
 
 					<div>
 						<c:if test="${!empty loginUser}">
-							<button id="write-btn">작성하기</button>
+							<button id="write-btn" onclick="location.href='${contextPath}/moveline-main/list/write?cp=${pagination.currentPage}'">작성하기</button>
 						</c:if>
 					</div>
 				</section>
@@ -90,9 +87,9 @@
 				<c:choose>
 					<c:when test="${empty movelineList}">
 						<!-- 목록 조회 결과가 비어있다면 -->
-						<tr>
-							<th colspan="5">등록된 코스가 없습니다.</th>
-						</tr>
+						<ul>
+							<li id="emptyList" colspan="5">등록된 코스가 없습니다.</li>
+						</ul>
 					</c:when>
 
 					<c:otherwise>
@@ -193,7 +190,7 @@
 
 						<!-- 끝 페이지로 이동 -->
 						<li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
-
+						
 					</ul>
 				</div>
 			</div>
@@ -203,13 +200,12 @@
 
 	<div class="modal">
 		<span id="modal-close">&times;</span> <img id="modal-image"
-			src="/comm/resources/images/user.png">
+			src="">
 	</div>
 
 	<script>
 		const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
-
     </script>
 
 

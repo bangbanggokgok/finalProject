@@ -3,7 +3,7 @@
 
 
 
-<c:forEach var="moveline" items="${preMoveLineList}">
+<%-- <c:forEach var="moveline" items="${preMoveLineList}">
     <c:if test="${movelineNo == moveline.movelineNo}">
         <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
         <c:set var="landMarkName" value="${moveline.landMarkName}" />
@@ -11,7 +11,7 @@
         <c:set var="locationName" value="${moveline.locationName}" />
         <c:set var="thumbnail" value="${moveline.thumbnail}" />
     </c:if>
-</c:forEach>
+</c:forEach> --%>
 
 
 <!DOCTYPE html>
@@ -133,6 +133,11 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
         
     </main>
+
+    <div class="modal">
+		<span id="modal-close">&times;</span> <img id="modal-image"
+			src="/comm/resources/images/user.png">
+	</div>
 
     <script>
 		const contextPath = "${contextPath}";
