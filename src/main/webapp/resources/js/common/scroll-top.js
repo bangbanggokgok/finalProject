@@ -12,7 +12,6 @@ offset = docHeight / 4;
 
 window.addEventListener("scroll", function () {
 scrollPos = docElem.scrollTop;
-console.log(scrollPos);
 
 btt.className = scrollPos > offset ? "visible" : "";
 });
