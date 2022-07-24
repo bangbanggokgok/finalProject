@@ -25,31 +25,22 @@ public class LandMarkServiceImpl implements LandMarkService {
 	@Autowired
 	private LandMarkDAO dao;
 
-	// 랜드마크 특정 지역 목록 조회
-	@Override
-	public Map<String, Object> selectLandMarkList(int locationType) {
-
-//		int ListCount = dao.getListCount(locationType);
-
-		List<LandMark> landMarkList = dao.selectLandMarkList(locationType);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("ListCount",ListCount);
-		map.put("landMarkList", landMarkList);
-
-		return map;
-	}
 
 	// 랜드마크 전체 목록 조회
 	@Override
-	public Map<String, Object> selectAllLandMarkList() {
+	public Map<String, Object> selectAllLandMarkList(int num) {
 
 //		int ListCount = dao.getListCount();
 //		List<LandMark> landMarkList = dao.selectAllLandMarkList();
 
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
-		List<LandMark> landMarkList = dao.selectLandMarkList(100);
+		List<LandMark> landMarkList = dao.selectLandMarkList(num);
 		Map<String, Object> map = new HashMap<String, Object>();
+		for (LandMark e : landMarkList) {
+			e.setLandMarkContent(Util.newLineClear(e.getLandMarkContent()));
+			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
+			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
+		}
 
 		map.put("landMakrImage", landMakrImage);
 		map.put("landmarkList", landMarkList);
@@ -147,8 +138,8 @@ public class LandMarkServiceImpl implements LandMarkService {
 					ladnMarkImageList.add(img);
 				}
 			}
-			
-			if(deleteList.equals("ggomsu")) {
+
+			if (deleteList.equals("ggomsu")) {
 				deleteList = "";
 			}
 
@@ -165,7 +156,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 			if (result > 0) {
 
 				for (LandMarkIMG img : ladnMarkImageList) {
-					result = dao.updateLandmarkImage(img); // 변경명, 원본명, 게시글번호, 레벨
+					result = dao.updateLandmarkImage(img);
 
 					if (result == 0) {
 
@@ -181,11 +172,95 @@ public class LandMarkServiceImpl implements LandMarkService {
 						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
 					}
 				}
-
 			}
-
 		}
-		return 0;
+		return result;
+	}
+
+	@Override
+	public int landmarkBookmark(String loginNo, String landmarkNo) {
+
+//		인트형 배열로 실험해봐야함
+//		int[] infoA = {loginNo,landmarkNo};
+
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("landmarkNo", landmarkNo);
+
+		return dao.landmarkBookmark(infoB);
+	}
+
+	@Override
+	public int landmarkBookmarkInsert(String loginNo, String landmarkNo) {
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("landmarkNo", landmarkNo);
+		return dao.insertLandBookmark(infoB);
+	}
+
+	@Override
+	public int landmarkBookmarkDelete(String loginNo, String landmarkNo) {
+		Map<String, String> infoA = new HashMap<String, String>();
+		infoA.put("loginNo", loginNo);
+		infoA.put("landmarkNo", landmarkNo);
+		return dao.landmarkBookmarkDelete(infoA);
+	}
+
+	@Override
+	public double rankLandmark(int landmarkNo) {
+		String result = dao.rankLandmark(landmarkNo);
+		if (result == null)
+			result = "0";
+		return Double.parseDouble(result);
+	}
+
+	@Override
+	public int addPointCheck(int landmarkNo, int userNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("landmarkNo", landmarkNo);
+		map.put("userNo", userNo);
+		return dao.addPointChcek(map);
+	}
+
+	@Override
+	public double insertRankPoint(String rankPoint, String userNo, int landmarkNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		map.put("sLandmarkNo", sLandmarkNo);
+		map.put("userNo", userNo);
+		map.put("rankPoint", rankPoint);
+
+		if (dao.insertRankPoint(map) > 0) {
+			return rankLandmark(landmarkNo);
+		}
+
+		return -100;
+	}
+
+	@Override
+	public double deleteRankPoint(String userNo, int landmarkNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		map.put("sLandmarkNo", sLandmarkNo);
+		map.put("userNo", userNo);
+
+		if (dao.deleteRankPoint(map) > 0) {
+			return rankLandmark(landmarkNo);
+		}
+
+		return -100;
+	}
+
+
+	@Override
+	public int getListCount(int locationType) {
+		return dao.getListCount(locationType);
+	}
+
+	@Override
+	public List<LandMark> selectLandMarkList(int locationType) {
+		
+		return dao.selectLandMarkPagination(locationType);
 	}
 
 }

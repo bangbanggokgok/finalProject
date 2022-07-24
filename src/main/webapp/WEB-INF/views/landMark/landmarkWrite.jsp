@@ -28,7 +28,7 @@
                     <div>
                         <select name="locationsList" id="locations-list" style="width:400px;height:40px;">
                             <option value="locationNull">지역을 선택해주세요</option>
-                            <c:forEach var="locations" items="${LocationList}">
+                            <c:forEach var="locations" items="${locationList}">
                                 <option value="${locations.locationNum}" 
                                     <c:if test="${landmarkDetail.locationName == locations.locationName}">selected</c:if>
                                 >${locations.locationName}</option>        

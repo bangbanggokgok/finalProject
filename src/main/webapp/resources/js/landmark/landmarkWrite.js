@@ -112,8 +112,9 @@ function checkSubmit() {
         alert("랜드마크 등록이 취소되었습니다.")
 
         return false;
+
     } else {
-        if (locationList.value == "locationNull") {
+        if (locationList.value === "locationNull") {
             alert("지역을 선택해주세요.");
             locationList.focus();
             return false;
@@ -136,11 +137,16 @@ function checkSubmit() {
             return false;
         }
 
-        if (images[0].value == "" && deleteList.value == "") {
-            return true;
+        if (document.getElementsByName("lng")[0].value == "") {
+            alert("관련된 지역을 지도에 클릭해주세요.")
+            return false;
         }
 
-
+        if (document.getElementsByName("lat")[0].value != "") {
+            if (images[0].value == "" && deleteList.value == "") {
+                return true;
+            }
+        }
 
         // let flag = true;
         // for (let img of images) {

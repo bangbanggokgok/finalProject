@@ -26,32 +26,44 @@
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
+            <%-- <div class="rankPoint">
+              <input class="point" type="hidden" name="landmarkRank" value="">
+              <input class="point-check" type="hidden" name="rankCheck" value="${rankCheck}">
+            </div> --%>
           </div>
           <div class="name1 name1-wrap">
             <div class="heart1">
-              <img
-                class="heart-img"
-                src="${contextPath}/resources/images/landmark/heart.png"
-                alt=""
-              />
-              <img
-                class="redHeart-img"
-                src="${contextPath}/resources/images/landmark/redHeart.png"
-                alt=""
-              />
-              <!-- <label id="fa-heart" name="fa-heart"></label> -->
-              <!-- <i class="fa-solid fa-siren"></i> -->
-              <span>찜하기</span>
+              <img class="heart-img hide" src="${contextPath}/resources/images/landmark/heart.png" alt=""/>
+              <img class="redHeart-img hide" src="${contextPath}/resources/images/landmark/redHeart.png" alt=""/>
+              <span style="width:75px; letter-spacing:-3px">즐겨찾기</span>
+              <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
             </div>
-            <a class="police" href="#">
-              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" />
-              <span>신고</span>
-            </a>
+            <%-- <a class="police" href=""> --%>
+            <div class="report" style="width:170px;">
+              <img src="${contextPath}/resources/images/landmark/신고.png" alt="" style="width: 25px;"/>
+              <span style="letter-spacing:-3px">신고하기</span>
+            </div>
+            <%-- </a> --%>
           </div>
         </div>
         <div class="detailCheckWrap">
-          <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
-          <a class="detailCheck" href="#">삭제</a>
+          <span class="star">
+            ★★★★★
+            <span class="rate">★★★★★</span>
+            <input id="rate" type="range" onmouseover="mouseAction(${rankLandmark/2})" 
+            oninput="submitRankPoint(this.value)" value="0" step="1" min="0" max="10"/>
+          </span>
+
+          <div class="rank-text"> ${rankLandmark/2} / 5 </div>
+          <input type="hidden" class="add-check" value="${addPointCheck}">
+
+          <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
+          <div class="detail-in-wrap">
+            <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
+            <a class="detailCheck" href="#">삭제</a>
+          </div>
+            <%-- 삭제남음 --%>
+          </c:if>
         </div>
 
         <div class="area_address">
@@ -73,15 +85,13 @@
         <section id="section1" data-num="0">
           <div class="container-out">
             <div class="container">
-              <ul class="slider-container simple-list" id="slider">
+              <ul class="slider-container simple-list" id="slider" style="overflow:hidden;">
                 <c:if test="${!empty landmarkDetail.imageList}">
+                  <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">
-                      <img
-                        class="slide-img"
-                        src="${contextPath}${landmarkDetail.imageList[0].landMarkReName}"
-                        alt="first_img"
-                      />
+                      <img class="slide-img" src="${contextPath}${images.landMarkReName}" alt="" />
                     </li>
+                  </c:forEach>
                 </c:if>
               </ul>
 
@@ -94,12 +104,12 @@
             </div>
             <!-- end container -->
           </div>
-          <div class="second-img">
-          <%-- 이부분 수정해야함 --%>
+          <%-- 세컨드 이미지라인 사용 가능성? --%>
+          <%-- <div class="second-img">
               <c:forEach var="images" items="${landmarkDetail.imageList}">
                 <img src="${contextPath}${images.landMarkReName}" />
               </c:forEach>
-          </div>
+          </div> --%>
         </section>
         <section id="section2" class="section2" data-num="1">
           <div class="container-out">
@@ -139,7 +149,7 @@
           <div class="simg">
             <ul>
               <li class="type2">
-                <a href="" class="reg1">
+                <a href="${contextPath}/landmark-main/write/insert" class="reg1">
                   <span>
                     <i class="fa-solid fa-camera-retro"></i>
                     여러분의 사진을 등록해 보세요.
@@ -157,43 +167,24 @@
         </section> -->
       </main>
     </section>
-
 	<jsp:include page="/WEB-INF/views/common/footer.jsp" />
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      type="text/javascript"
-      src="${contextPath}/resources/js/landmark/jquery-1.9.1.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="${contextPath}/resources/js/common/nav.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="${contextPath}/resources/js/landmark/scroll_menu.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="${contextPath}/resources/js/landmark/script.js"
-    ></script>
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"
-    ></script>
     <c:if test="${!empty landmarkDetail}">
       <script>
-        const X = ${landmarkDetail.landMarkX};
-        const Y = ${landmarkDetail.landMarkY};
+        const landmarkNo = "${landmarkDetail.landMarkNo}"
+        const userNo = "${loginUser.userNo}"
+        const X = "${landmarkDetail.landMarkX}"
+        const Y = "${landmarkDetail.landMarkY}"
+        const rate = "${rankLandmark}"
       </script>    
     </c:if>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/landmark/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/common/nav.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/landmark/scroll_menu.js" ></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/landmark/script.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"></script>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
+    <script src="${contextPath}/resources/js/landmark/temp.js"></script>
   </body>
 </html>

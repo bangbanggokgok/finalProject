@@ -3,12 +3,19 @@ package edu.kh.bangbanggokgok.service.board;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
+import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 
+/**
+ * @author user
+ *
+ */
 /**
  * @author user
  *
@@ -19,7 +26,7 @@ import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
  */
 public interface MoveLineService {
 
-	List<String> selectMovelineList();
+//	List<String> selectMovelineList();
 
 	
 	/** 지역 구분 조회 서비스
@@ -84,7 +91,44 @@ public interface MoveLineService {
 	Map<String, Object> selectAll(Map<String, Object> paramMap);
 
 
+	/** 코스 상세 페이지 조회 - 단건
+	 * @param movelineNo
+	 * @return movelineDetail
+	 */
+	MoveLineDetail selectMovelineDetail(int movelineNo);
 
+
+	/** 코스 상세 페이지 - 랜드마크 상세
+	 * @param movelineNo
+	 * @return List
+	 */
+	List<LandMarkDetail> selectLandmarkDetail(int movelineNo);
+
+
+	/** 코스 상세 페이지 - 랜드마크 이미지 리스트
+	 * @param movelineNo
+	 * @return List
+	 */
+	List<LandMarkIMG> selectLandmarkImage(int movelineNo);
+
+
+	/** 코스 상세 페이지 - 코스 이미지 리스트
+	 * @param movelineNo
+	 * @return List
+	 */
+	List<MoveLineImage> selectMovelineImage(int movelineNo);
+
+
+	/** 코스 상세 페이지 - 코스 해시태그 리스트
+	 * @param movelineNo
+	 * @return List
+	 */
+	List<MoveLineHashTag> selectMovelineHashtag(int movelineNo);
+
+
+	
+	
+	
 
 
 
