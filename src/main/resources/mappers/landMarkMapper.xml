@@ -204,4 +204,20 @@
 		AND LM_NO = #{landmarkNo}
 	</delete>
 	
+	<select id="rankLandmark" resultType="double">
+		SELECT AVG(RATE)
+		FROM LANDMARK_RATE
+		WHERE LM_NO = #{landmarkNo}
+	</select>
+	
+	<insert id="insertRankPoint">
+		INSERT LANDMARK_RATE
+		VALUES (#{sLandmarkNo},#{userNo},#{rankPoint})
+	</insert>
+	
+	<delete id="deleteRankPoint">
+		DELETE FROM LANDMARK_RATE
+		WHERE USER_NO = #{userNo}
+		AND LM_NO = #{sLandmarkNo}
+	</delete>
 </mapper>

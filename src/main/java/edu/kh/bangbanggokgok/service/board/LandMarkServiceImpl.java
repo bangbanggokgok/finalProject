@@ -50,12 +50,12 @@ public class LandMarkServiceImpl implements LandMarkService {
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
 		List<LandMark> landMarkList = dao.selectLandMarkList(num);
 		Map<String, Object> map = new HashMap<String, Object>();
-		for(LandMark e : landMarkList) {
+		for (LandMark e : landMarkList) {
 			e.setLandMarkContent(Util.newLineClear(e.getLandMarkContent()));
 			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
 			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
 		}
-		
+
 		map.put("landMakrImage", landMakrImage);
 		map.put("landmarkList", landMarkList);
 
@@ -152,8 +152,8 @@ public class LandMarkServiceImpl implements LandMarkService {
 					ladnMarkImageList.add(img);
 				}
 			}
-			
-			if(deleteList.equals("ggomsu")) {
+
+			if (deleteList.equals("ggomsu")) {
 				deleteList = "";
 			}
 
@@ -170,7 +170,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 			if (result > 0) {
 
 				for (LandMarkIMG img : ladnMarkImageList) {
-					result = dao.updateLandmarkImage(img); 
+					result = dao.updateLandmarkImage(img);
 
 					if (result == 0) {
 
@@ -193,17 +193,17 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 	@Override
 	public int landmarkBookmark(String loginNo, String landmarkNo) {
-		
+
 //		인트형 배열로 실험해봐야함
 //		int[] infoA = {loginNo,landmarkNo};
-		
+
 		Map<String, String> infoB = new HashMap<String, String>();
 		infoB.put("loginNo", loginNo);
 		infoB.put("landmarkNo", landmarkNo);
-		
+
 		return dao.landmarkBookmark(infoB);
 	}
-	
+
 	@Override
 	public int landmarkBookmarkInsert(String loginNo, String landmarkNo) {
 		Map<String, String> infoB = new HashMap<String, String>();
@@ -220,5 +220,38 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return dao.landmarkBookmarkDelete(infoA);
 	}
 
+	@Override
+	public double rankLandmark(int landmarkNo) {
+		return dao.rankLandmark(landmarkNo);
+	}
+
+	@Override
+	public double insertRankPoint(String rankPoint, String userNo, int landmarkNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		map.put("sLandmarkNo", sLandmarkNo);
+		map.put("userNo", userNo);
+		map.put("rankPoint", rankPoint);
+		
+		if(dao.insertRankPoint(map) > 0 ) {
+			return dao.rankLandmark(landmarkNo);
+		}
+		
+		return -100;
+	}
+
+	@Override
+	public double deleteRankPoint(String userNo, int landmarkNo) {
+		Map<String, String> map = new HashMap<String, String>();
+		String sLandmarkNo = Integer.toString(landmarkNo);
+		map.put("sLandmarkNo", sLandmarkNo);
+		map.put("userNo", userNo);
+		
+		if(dao.deleteRankPoint(map) > 0) {
+			return dao.rankLandmark(landmarkNo);
+		}
+		
+		return -100;
+	}
 
 }
