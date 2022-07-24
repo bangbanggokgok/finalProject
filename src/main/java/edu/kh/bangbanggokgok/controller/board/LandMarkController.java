@@ -67,8 +67,17 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo,
 			Model model,
-			@RequestParam(value="userNo",required=false,defaultValue = "0") int userNo) {
+			HttpSession session) {
+		
+//		랜드마크 조회
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
+		
+//		비로그인 판별
+		User loginUser = (User)session.getAttribute("loginUser");
+		int userNo = 0 ;
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
 		
 //		북마크 확인용 변수 전환
 		String sLandmarkNo = Integer.toString(landmarkNo);
@@ -76,9 +85,14 @@ public class LandMarkController {
 		
 		int checkBookmark = service.landmarkBookmark(sUserNo,sLandmarkNo);
 		
+		double rankLandmark = service.rankLandmark(landmarkNo);
+		
+//		디테일 속성삽입
 		model.addAttribute("landmarkDetail", landmarkDetail);
 //		북마크 속성삽입
 		model.addAttribute("checkBookmark", checkBookmark);
+//		랜드마크 평균점수삽입
+		model.addAttribute("rankLandmark", rankLandmark);
 		
 		return "landMark/land-detail";
 	}
@@ -180,4 +194,20 @@ public class LandMarkController {
 			@RequestParam("userNo") String loginNo) {
 		return service.landmarkBookmarkDelete(loginNo,landmarkNo);
 	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/insert-landmark-rankPoint")
+	public double insertLandmarkRankPoint(@RequestParam("rankPoint") String rankPoint,
+			@RequestParam("userNo") String userNo,
+			@PathVariable("landMarkNo") int landmarkNo) {
+		return service.insertRankPoint(rankPoint,userNo,landmarkNo);
+	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/delet-landmark-rankPoint")
+	public double deleteLandmarkRankPoint(@RequestParam("userNo") String userNo,
+			@PathVariable("landMarkNo") int landmarkNo) {
+		return service.deleteRankPoint(userNo,landmarkNo);
+	}
+	
 }

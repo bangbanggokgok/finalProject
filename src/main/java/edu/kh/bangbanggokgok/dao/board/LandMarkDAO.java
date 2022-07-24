@@ -115,6 +115,20 @@ public class LandMarkDAO {
 	public int landmarkBookmarkDelete(Map<String, String> infoA) {
 		return sqlSession.delete("landMarkMapper.deleteLandBookmark",infoA);
 	}
+
+	public double rankLandmark(int landmarkNo) {
+		return sqlSession.selectOne("landMarkMapper.rankLandmark",landmarkNo);
+	}
+
+	public int insertRankPoint(Map<String, String> map) {
+		return sqlSession.insert("landMarkMapper.insertRankPoint",map);
+	}
+
+	public int deleteRankPoint(Map<String, String> map) {
+		return sqlSession.delete("landMarkMapper.deleteRankPoint",map);
+	}
+	
+	
 	
 
 }

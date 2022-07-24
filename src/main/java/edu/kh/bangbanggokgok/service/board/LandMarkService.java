@@ -62,5 +62,11 @@ public interface LandMarkService {
 
 	int landmarkBookmark(String loginNo, String landmarkNo);
 
+	double rankLandmark(int landmarkNo);
+
+	double insertRankPoint(String rankPoint, String userNo, int landmarNo);
+
+	double deleteRankPoint(String userNo, int landmarNo);
+
 	
 }
