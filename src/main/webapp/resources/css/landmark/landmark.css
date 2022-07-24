@@ -14,6 +14,9 @@ body {
 #slide1 {
   margin-top: 6em;
 }
+.slide1 {
+  margin-top: 6em;
+}
 .slide-img {
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
@@ -92,6 +95,22 @@ cite {
   -webkit-transition: all 0.3s ease-in;
   transition: all 0.3s ease-in;
 }
+.prev,
+.next {
+  position: absolute;
+  top: 53%;
+  left: 50%;
+  transform: translateY(-50%);
+  z-index: 999999;
+  display: inline-block;
+  height: 5em;
+  width: 5em;
+  border-radius: 50%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
 .fa-angle-right {
   font-size: 40px;
   color: white;
@@ -102,18 +121,40 @@ cite {
 }
 
 #prev {
-  margin-left: -480px;
+  margin-left: -400px;
   opacity: 0.6;
 }
+.prev {
+  margin-left: -400px;
+  opacity: 0.6;
+}
+
+
 #next {
-  margin-left: 390px; /* 380px */
+  margin-left: 380px; /* 380px */
+  opacity: 0.6;
+}
+.next {
+  margin-left: 380px; /* 380px */
   opacity: 0.6;
 }
 #prev:hover {
+  cursor: pointer;
+  color: white;
+  opacity: 1;
+}
+.prev:hover {
+  cursor: pointer;
   color: white;
   opacity: 1;
 }
 #next:hover {
+  cursor: pointer;
+  color: white;
+  opacity: 1;
+}
+.next:hover {
+  cursor: pointer;
   color: white;
   opacity: 1;
 }

@@ -42,8 +42,8 @@
                 <div id="location-area">
                     <h1 class="location-sort">지역별</h1>
                     <ul id="locations">
-                    	<c:if test="${!empty LocationList}">
-	                    	<c:forEach var="location" items="${LocationList}">
+                    	<c:if test="${!empty locationList}">
+	                    	<c:forEach var="location" items="${locationList}">
 		                        <li class="location-div">
 		                        	<a href="list/location/${location.locationNum}">${location.locationName}</a>
 		                        </li>

@@ -63,7 +63,7 @@ ul{
     text-align: center;
 }
 
-#btn-area>button{
+.btn-area>button{
     margin-left: 5px;
     font-size: 15px;
     font-weight: bold;
@@ -73,7 +73,7 @@ ul{
     width: 80px;
 }
 
-#btn-area>button:hover{
+.btn-area>button:hover{
     cursor: pointer;
     background-color: #bbd0ff;
     border-color: #bbd0ff;
@@ -179,6 +179,8 @@ ul{
     display: flex;
     justify-content: center;
     margin-top: 50px;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 50px;
 }
 
 #map{
@@ -270,4 +272,6 @@ ul{
     height: auto;
 }
 
-/*  */
+
+
+

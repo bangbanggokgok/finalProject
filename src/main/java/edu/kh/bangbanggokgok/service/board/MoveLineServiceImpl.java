@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.board.MoveLineDAO;
+import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
@@ -19,6 +21,7 @@ import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.board.MoveLineList;
 import edu.kh.bangbanggokgok.vo.board.Pagination;
 import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
+import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 
 @Service
 public class MoveLineServiceImpl implements MoveLineService{
@@ -154,18 +157,43 @@ public class MoveLineServiceImpl implements MoveLineService{
 //	}
 
 
-	// 코스 상세 페이지 조회
+	// 코스 상세 페이지 - 단건
 	@Override
-	public List<MoveLineDetail> selectMovelineDetail(int movelineNo) {
+	public MoveLineDetail selectMovelineDetail(int movelineNo) {
 		
-		List<MoveLineDetail> selectMovelineDetail = dao.selectMovelineDetail(movelineNo);
-		
-		System.out.println("MovelineDetail : " + selectMovelineDetail);
-		
-		return selectMovelineDetail;
+		return dao.selectMovelineDetail(movelineNo);
+	}
+	
+	// 코스 상세 페이지 - 랜드마크 상세
+	@Override
+	public List<LandMarkDetail> selectLandmarkDetail(int movelineNo) {
+		return dao.selectLandmarkDetail(movelineNo);
 	}
 
+	// 코스 상세 페이지 - 랜드마크 이미지 리스트
+	@Override
+	public List<LandMarkIMG> selectLandmarkImage(int movelineNo) {
+		return dao.selectLandmarkImage(movelineNo);
+	}
 
+	// 코스 상세 페이지 - 코스 이미지 리스트
+	@Override
+	public List<MoveLineImage> selectMovelineImage(int movelineNo) {
+		return dao.selectMovelineImage(movelineNo);
+	}
+
+	// 코스 상세 페이지 - 코스 해시태그 리스트
+	@Override
+	public List<MoveLineHashTag> selectMovelineHashtag(int movelineNo) {
+		return dao.selectMovelineHashtag(movelineNo);
+	}
+
+	
+	
+
+	
+	
+	
 	
 	
 	
