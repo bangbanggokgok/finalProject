@@ -27,8 +27,9 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
     <script>
       window.onload=function(){
+        const num = 1;
         const locationNum = 100;
-        searchingLocation();
+        loadLocation(locationNum, num);
       };
     </script>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
@@ -120,10 +121,10 @@
 		<c:if test="${!empty locationList}">
 			<c:forEach var="locations" items="${locationList}">
 				  <c:if test="${map.hihi != locations.locationNum}">
-            <span class="region-detail" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+            <span class="region-detail" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 				  <c:if test="${map.hihi == locations.locationNum}">
-            <span class="region-detail clicked" onclick="searchingLocation(${locations.locationNum})">${locations.locationName}</span>
+            <span class="region-detail clicked" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 			</c:forEach>
 		</c:if>
@@ -173,6 +174,8 @@
           <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
         </c:if> --%>
         </ol>
+        <div class="pagination">
+        </div>
       </div>
     </section>
 
@@ -181,6 +184,7 @@
         const locationType = "${locations.locationNum}"
         const contextPath = "${contextPath}"
         const landMarkHtml = $('.test')
+        const pagination = $('.pagination')
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
