@@ -80,14 +80,32 @@
               <span>찜하기</span>
             </div>
             <a class="police" href="#">
-              <img src="../../resources/images/landmark/신고.png" alt="" />
+              <img
+                style="width: 25px"
+                src="../../resources/images/landmark/신고.png"
+                alt=""
+              />
               <span>신고</span>
             </a>
           </div>
         </div>
         <div class="detailCheckWrap">
-          <a class="detailCheck" href="#">수정</a>
-          <a class="detailCheck" href="#">삭제</a>
+          <span class="star">
+            ★★★★★
+            <span>★★★★★</span>
+            <input
+              type="range"
+              oninput="drawStar(this)"
+              value="1"
+              step="1"
+              min="0"
+              max="10"
+            />
+          </span>
+          <div>
+            <a class="detailCheck" href="#">수정</a>
+            <a class="detailCheck" href="#">삭제</a>
+          </div>
         </div>
 
         <div class="area_address">
