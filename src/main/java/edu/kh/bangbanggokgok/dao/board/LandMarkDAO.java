@@ -116,7 +116,7 @@ public class LandMarkDAO {
 		return sqlSession.delete("landMarkMapper.deleteLandBookmark",infoA);
 	}
 
-	public double rankLandmark(int landmarkNo) {
+	public String rankLandmark(int landmarkNo) {
 		return sqlSession.selectOne("landMarkMapper.rankLandmark",landmarkNo);
 	}
 
@@ -126,6 +126,10 @@ public class LandMarkDAO {
 
 	public int deleteRankPoint(Map<String, String> map) {
 		return sqlSession.delete("landMarkMapper.deleteRankPoint",map);
+	}
+
+	public int addPointChcek(Map<String, Integer> map) {
+		return sqlSession.selectOne("landMarkMapper.selectAddPoint",map);
 	}
 	
 	

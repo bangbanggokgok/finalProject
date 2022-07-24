@@ -222,7 +222,18 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 	@Override
 	public double rankLandmark(int landmarkNo) {
-		return dao.rankLandmark(landmarkNo);
+		String result = dao.rankLandmark(landmarkNo);
+		if (result == null)
+			result = "0";
+		return Double.parseDouble(result);
+	}
+
+	@Override
+	public int addPointCheck(int landmarkNo, int userNo) {
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("landmarkNo", landmarkNo);
+		map.put("userNo", userNo);
+		return dao.addPointChcek(map);
 	}
 
 	@Override
@@ -232,11 +243,11 @@ public class LandMarkServiceImpl implements LandMarkService {
 		map.put("sLandmarkNo", sLandmarkNo);
 		map.put("userNo", userNo);
 		map.put("rankPoint", rankPoint);
-		
-		if(dao.insertRankPoint(map) > 0 ) {
-			return dao.rankLandmark(landmarkNo);
+
+		if (dao.insertRankPoint(map) > 0) {
+			return rankLandmark(landmarkNo);
 		}
-		
+
 		return -100;
 	}
 
@@ -246,11 +257,11 @@ public class LandMarkServiceImpl implements LandMarkService {
 		String sLandmarkNo = Integer.toString(landmarkNo);
 		map.put("sLandmarkNo", sLandmarkNo);
 		map.put("userNo", userNo);
-		
-		if(dao.deleteRankPoint(map) > 0) {
-			return dao.rankLandmark(landmarkNo);
+
+		if (dao.deleteRankPoint(map) > 0) {
+			return rankLandmark(landmarkNo);
 		}
-		
+
 		return -100;
 	}
 

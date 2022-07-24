@@ -204,14 +204,14 @@
 		AND LM_NO = #{landmarkNo}
 	</delete>
 	
-	<select id="rankLandmark" resultType="double">
+	<select id="rankLandmark" resultType="string">
 		SELECT AVG(RATE)
 		FROM LANDMARK_RATE
 		WHERE LM_NO = #{landmarkNo}
 	</select>
 	
 	<insert id="insertRankPoint">
-		INSERT LANDMARK_RATE
+		INSERT INTO LANDMARK_RATE
 		VALUES (#{sLandmarkNo},#{userNo},#{rankPoint})
 	</insert>
 	
@@ -220,4 +220,12 @@
 		WHERE USER_NO = #{userNo}
 		AND LM_NO = #{sLandmarkNo}
 	</delete>
+	
+	<select id="selectAddPoint" resultType="_int">
+		SELECT COUNT(*)
+		FROM LANDMARK_RATE
+		WHERE USER_NO = #{userNo}
+		AND LM_NO = #{landmarkNo}
+	</select>
+	
 </mapper>
