@@ -12,10 +12,11 @@ function searchingLocation(locationNum) {
             
             if(landMarkList.length > 0){
                 $.each(landMarkList, function(key, value){      
+                    
                     changeLandMarkList += '<ol class="image-list grid-view" id="landMakrList">';
                     changeLandMarkList += '<li class="land-row">';    
                     changeLandMarkList += '<figure>';
-                    changeLandMarkList += '<a="../detail/'+value.locationType+'/'+value.landMarkNo+'">';
+                    changeLandMarkList += '<a href="../detail/'+value.locationType+'/'+value.landMarkNo+'">';
                     changeLandMarkList += '<img src="'+contextPath+value.thumbnail+'">';
                     changeLandMarkList += '</a>';
                     changeLandMarkList += '<figcaption class="landMark">';
@@ -30,6 +31,7 @@ function searchingLocation(locationNum) {
                 changeLandMarkList += '<h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>'
             }
             $(landMarkHtml).html(changeLandMarkList)
+            console.log(changeLandMarkList);
         }
     })
 }
