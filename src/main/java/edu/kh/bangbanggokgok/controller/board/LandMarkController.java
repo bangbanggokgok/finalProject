@@ -67,12 +67,12 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo,
 			Model model,
-			@ModelAttribute("loginUser") User user) {
+			@RequestParam(value="userNo",required=false,defaultValue = "0") int userNo) {
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
 		
 //		북마크 확인용 변수 전환
 		String sLandmarkNo = Integer.toString(landmarkNo);
-		String sUserNo = Integer.toString(user.getUserNo());
+		String sUserNo = Integer.toString(userNo);
 		
 		int checkBookmark = service.landmarkBookmark(sUserNo,sLandmarkNo);
 		
