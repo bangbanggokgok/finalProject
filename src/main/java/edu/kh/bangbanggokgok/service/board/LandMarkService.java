@@ -68,5 +68,7 @@ public interface LandMarkService {
 
 	double deleteRankPoint(String userNo, int landmarNo);
 
+	int addPointCheck(int landmarkNo, int userNo);
+
 	
 }

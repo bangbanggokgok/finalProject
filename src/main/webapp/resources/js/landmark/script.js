@@ -84,13 +84,9 @@ $detail.addEventListener("click", function () {
 //   $redHeartShape.classList.toggle("none");
 // });
 
-$(function () {
-  $(document).scroll(function () {
-    var $nav = $("#top_menu");
-    $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-  });
-});
-
-const drawStar = (target) => {
-  document.querySelector(`.star span`).style.width = `${target.value * 10}%`;
-};
+// $(function () {
+//   $(document).scroll(function () {
+//     var $nav = $("#top_menu");
+//     $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+//   });
+// });
