@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.controller.board;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -56,10 +57,41 @@ public class LandMarkController {
 	@ResponseBody
 	@GetMapping("/list/nsync/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
-			Model model) {
-
+								   @RequestParam(value = "page", defaultValue="1", required= false) int page,
+								   Model model) {
+		
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		
+		int limit = 10;
+		
+		int listCount = service.getListCount(locationType);
+		
+		int maxpage = ( listCount  + limit -1) / limit;
+		
+		int startpage = ((page - 1)/10) * 10 + 1;
+		
+		int endpage = startpage + 10 - 1;
+		
+		 if (endpage > maxpage)
+	         endpage = maxpage;
+		
+		LandMark landMark = new LandMark();
+		landMark.setLimit(limit);
+		landMark.setPage(page);
+		landMark.setStartpage(startpage);
+		landMark.setEndpage(endpage);
+		landMark.setMaxpage(maxpage);
+		
 		// 랜드마크 특정 지역 목록 조회 서비스
-		Map<String, Object> map = service.selectLandMarkList(locationType);
+		List<LandMark> landMarkList = service.selectLandMarkList(locationType);
+		
+		map.put("listCount", listCount);
+		map.put("landMarkList", landMarkList);
+		map.put("page", page);
+		map.put("startpage", startpage);
+		map.put("endpage", endpage);
+		
 		return new Gson().toJson(map);
 	}
 
@@ -67,18 +99,32 @@ public class LandMarkController {
 	@GetMapping("/detail/{locationNum}/{landMarkNo}")
 	public String landMarkDetail(@PathVariable("landMarkNo") int landmarkNo,
 			Model model,
-			@ModelAttribute("loginUser") User user) {
+			HttpSession session) {
+		
+//		랜드마크 조회
 		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
+		
+//		비로그인 판별
+		User loginUser = (User)session.getAttribute("loginUser");
+		int userNo = 0 ;
+		if(loginUser != null) {
+			userNo = loginUser.getUserNo();
+		}
 		
 //		북마크 확인용 변수 전환
 		String sLandmarkNo = Integer.toString(landmarkNo);
-		String sUserNo = Integer.toString(user.getUserNo());
+		String sUserNo = Integer.toString(userNo);
 		
 		int checkBookmark = service.landmarkBookmark(sUserNo,sLandmarkNo);
 		
+		double rankLandmark = service.rankLandmark(landmarkNo);
+		
+//		디테일 속성삽입
 		model.addAttribute("landmarkDetail", landmarkDetail);
 //		북마크 속성삽입
 		model.addAttribute("checkBookmark", checkBookmark);
+//		랜드마크 평균점수삽입
+		model.addAttribute("rankLandmark", rankLandmark);
 		
 		return "landMark/land-detail";
 	}
@@ -180,4 +226,20 @@ public class LandMarkController {
 			@RequestParam("userNo") String loginNo) {
 		return service.landmarkBookmarkDelete(loginNo,landmarkNo);
 	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/insert-landmark-rankPoint")
+	public double insertLandmarkRankPoint(@RequestParam("rankPoint") String rankPoint,
+			@RequestParam("userNo") String userNo,
+			@PathVariable("landMarkNo") int landmarkNo) {
+		return service.insertRankPoint(rankPoint,userNo,landmarkNo);
+	}
+	
+	@ResponseBody
+	@GetMapping("/detail/{locationNum}/{landMarkNo}/delet-landmark-rankPoint")
+	public double deleteLandmarkRankPoint(@RequestParam("userNo") String userNo,
+			@PathVariable("landMarkNo") int landmarkNo) {
+		return service.deleteRankPoint(userNo,landmarkNo);
+	}
+	
 }

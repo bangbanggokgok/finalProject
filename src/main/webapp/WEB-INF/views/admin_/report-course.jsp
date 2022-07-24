@@ -95,7 +95,6 @@
     
     <script>
         const contextPath = "${contextPath}";
-        // const reportNo = "${reportList.reportNo}"
     </script> 
         <%--const reportNo = "${reportList.reportNo}";
         const reportNo = "${reportList.reportNo}";

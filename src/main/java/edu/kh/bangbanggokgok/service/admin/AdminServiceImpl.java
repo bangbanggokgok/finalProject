@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.admin.AdminDAO;
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
+import edu.kh.bangbanggokgok.vo.admin.ReportReply;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.NoticeImage;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
@@ -109,7 +110,7 @@ public class AdminServiceImpl implements AdminService{
 		int reportListCount = dao.getReportListCount(list);
 		
 		Pagination pagination = new Pagination(cp, reportListCount);
-		List<Question> reportList = dao.selectReportList(pagination, list);
+		List<ReportMoveLine> reportList = dao.selectReportList(pagination, list);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pagination", pagination);
@@ -146,7 +147,7 @@ public class AdminServiceImpl implements AdminService{
 		int replyReportCount = dao.getReplyReportCount(list);
 		
 		Pagination pagination = new Pagination(cp, replyReportCount);
-		List<Question> replyReport = dao.selectReplyReport(pagination, list);
+		List<ReportReply> replyReport = dao.selectReplyReport(pagination, list);
 
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("pagination", pagination);
@@ -155,7 +156,32 @@ public class AdminServiceImpl implements AdminService{
 		return map;
 	}
 
-	
+	// 활동 회원 조회
+	@Override
+	public Map<String, Object> selectSignUpUser(int cp, String list) {
+		int signUpUserCount = dao.getSignUpUserCount(list);
+		Pagination pagination = new Pagination(cp, signUpUserCount);
+		List<User> signUpUser = dao.selectSignUpUser(pagination, list);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("userList", signUpUser);
+		return map;
+	}
+
+	// 탈퇴 회원 조회
+	@Override
+	public Map<String, Object> selectSecession(int cp, String list) {
+		int secessionCount = dao.getSecessionCount(list);
+		Pagination pagination = new Pagination(cp, secessionCount);
+		List<User> secessionUser = dao.selectSecessionUser(pagination, list);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("pagination", pagination);
+		map.put("userList", secessionUser);
+		return map;
+	}
+
 	
 	
 	

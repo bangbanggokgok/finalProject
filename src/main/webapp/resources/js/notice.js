@@ -4,7 +4,7 @@ const all = document.getElementById("all");
 
 $(".list div").click(function () {
     let selectType = $(this).attr("value");
-    console.log(selectType);
+    // console.log(selectType);
 
     if(selectType === 'notice'){
         notice.style.color = "rgb(51, 151, 255)";
@@ -26,9 +26,10 @@ $(".list div").click(function () {
 
 $(document).ready(function () {
     $(".list div").click(function () {
-        
         let selectType = $(this).attr("value");
-       
+        console.log(list);
+        let url = list;
+        // let url = list;
         // if(selectType = 'notice'){
         //     notice.style.color = "rgb(51, 151, 255)";
         //     event.style.color = "black";
@@ -45,11 +46,10 @@ $(document).ready(function () {
             data : {"selectType" : selectType},
             dataType: "JSON",
             success : function(result){
-                console.log();
+                console.log(result);
                 if(result != null){
                     let noticeList = result.allNoticeList;
                     let paging = result.pagination;
-                    let listEL = '${list}';
 
                     const noticePage = document.getElementById("noticePage");
                     const pagination = document.getElementById("pagination");
@@ -91,21 +91,21 @@ $(document).ready(function () {
                     pagination.append(startPage);
 
                     const startPageA = document.createElement("a");
-                    startPageA.setAttribute("href", "type/"+ listEL +"?cp=1");
+                    startPageA.setAttribute("href",  "type/" +url + "?cp=1");
                     startPageA.innerHTML = "&lt;&lt;";
                     startPage.append(startPageA);
 
                     const prevPage = document.createElement("li");
-                    startPage.after(prevPage);
+                    pagination.append(prevPage);
 
                     const prevPageA = document.createElement("a");
-                    prevPageA.setAttribute("href", "${list}?cp=" + paging.prePAge);
+                    prevPageA.setAttribute("href", "/type/"+ url + paging.startPage);
                     prevPageA.innerHTML = "&lt;";
                     prevPage.append(prevPageA);
 
                     for(let i=paging.startPage; i <= paging.endPage; i++){
 
-                        if(i == paging.currentPAge){
+                        if(i === paging.currentPage){
                             const current = document.createElement("li");
                             pagination.append(current);
 
@@ -122,22 +122,22 @@ $(document).ready(function () {
                             liA.innerHTML = i;
                             li.append(liA);
                         }
-                        const nextPage = document.createElement("li");
-                        pagination.append(nextPage);
-
-                        const nextPageA = document.createElement("a");
-                        nextPageA.setAttribute("href", "type/${list}?cp=" + paging.nextPage);
-                        nextPageA.innerHTML = "&gt";
-                        nextPage.append(nextPageA);
-
-                        const maxPage = document.createElement("li");
-                        pagination.append(maxPage);
-
-                        const maxPageA = document.createElement("a");
-                        maxPageA.setAttribute("href", "type/${list}?cp=" + paging.maxPage);
-                        maxPageA.innerHTML = "&gt;&gt;";
-                        maxPage.append(maxPageA)
                     }
+                    const nextPage = document.createElement("li");
+                    pagination.append(nextPage);
+
+                    const nextPageA = document.createElement("a");
+                    nextPageA.setAttribute("href", "type/${list}?cp=" + paging.nextPage);
+                    nextPageA.innerHTML = "&gt";
+                    nextPage.append(nextPageA);
+
+                    const maxPage = document.createElement("li");
+                    pagination.append(maxPage);
+
+                    const maxPageA = document.createElement("a");
+                    maxPageA.setAttribute("href", "type/${list}?cp=" + paging.maxPage);
+                    maxPageA.innerHTML = "&gt;&gt;";
+                    maxPage.append(maxPageA)
 
 
                 } else { 
@@ -150,6 +150,6 @@ $(document).ready(function () {
                 console.log("예외")
                 console.log(req.responseText);
             }
-        });
+        })
     })
 });
