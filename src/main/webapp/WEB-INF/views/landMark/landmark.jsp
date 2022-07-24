@@ -153,7 +153,7 @@
           <li class='land-row'>
             <figure> 
             <a href="../detail/${landmark.locationType}/${landmark.landMarkNo}">
-              <img src="${contextPath}${landmark.thumbnail}"/>
+              <img class=land-img src="${contextPath}${landmark.thumbnail}"/>
             </a>
               <figcaption class="landMark" id="landMark">
                 <p class="land-Title">${landmark.landMarkName}</p>
