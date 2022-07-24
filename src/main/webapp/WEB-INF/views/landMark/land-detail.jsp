@@ -55,9 +55,23 @@
           </div>
         </div>
         <div class="detailCheckWrap">
+            <span class="star">
+            ★★★★★
+            <span>★★★★★</span>
+            <input
+              type="range"
+              oninput="drawStar(this)"
+              value="1"
+              step="1"
+              min="0"
+              max="10"
+            />
+          </span>
           <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
+          <div class="detail-in-wrap">
             <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
             <a class="detailCheck" href="#">삭제</a>
+          </div>
             <%-- 삭제남음 --%>
           </c:if>
         </div>
