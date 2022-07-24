@@ -47,18 +47,16 @@
           </div>
         </div>
         <div class="detailCheckWrap">
-            <span class="star">
+          <span class="star">
             ★★★★★
-            <span>★★★★★</span>
-            <input
-              type="range"
-              oninput="drawStar(this)"
-              value="1"
-              step="1"
-              min="0"
-              max="10"
-            />
+            <span class="rate">★★★★★</span>
+            <input id="rate" type="range" onmouseover="mouseAction(${rankLandmark/2})" 
+            oninput="submitRankPoint(this.value)" value="0" step="1" min="0" max="10"/>
           </span>
+
+          <div class="rank-text"> ${rankLandmark/2} / 5 </div>
+          <input type="hidden" class="add-check" value="${addPointCheck}">
+
           <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
           <div class="detail-in-wrap">
             <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
@@ -176,6 +174,7 @@
         const userNo = "${loginUser.userNo}"
         const X = "${landmarkDetail.landMarkX}"
         const Y = "${landmarkDetail.landMarkY}"
+        const rate = "${rankLandmark}"
       </script>    
     </c:if>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
