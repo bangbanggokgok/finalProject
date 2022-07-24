@@ -95,14 +95,14 @@
         <section id="section1" data-num="0">
           <div class="container-out">
             <div class="container">
-              <ul class="slider-container simple-list" id="slider" style="overflow:hidden;">
+              <ul class="slider-container simple-list" id="slider">
                 <c:if test="${!empty landmarkDetail.imageList}">
                   <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">
                       <img
                         class="slide-img"
                         src="${contextPath}${images.landMarkReName}"
-                        alt=""
+                        alt="first_img"
                       />
                     </li>
                   </c:forEach>

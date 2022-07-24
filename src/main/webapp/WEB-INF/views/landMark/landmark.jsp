@@ -126,9 +126,9 @@
           <div class="search-wrapper">
             <div class="search">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="랜드마크 검색" />
+              <input class='abc' type="search" placeholder="랜드마크 검색" />
             </div>
-            <!-- <div class="counter">게시글 수: <span>12</span></div> -->
+             <div class="counter">게시글 수: <span>12</span></div> 
           </div>
           <ul class="view-options">
             <li class="zoom">
