@@ -2,23 +2,21 @@
 const reportFlag = document.getElementById("wait");
 
 
-reportFlag.addEventListener("click", function(){ 
-    console.log('${reportList.reportNo}');
-    let selectType = $(this).attr("value");
-    console.log(selectType);
-
+$("#wait").click(function () {
+    
+    let reportNo = $(this).attr("value");
+    console.log(reportNo);
     $.ajax({
         url : contextPath + "/admin/report/situation",
-        data : "",
+        data : {"reportNo" : reportNo },
         type : "get",
         success : function(result){
             
             if(result > 0){ 
-
                 alert("처리 되었습니다.");
 
-                
-
+                location.reload();
+                $('.noticePage').load(location.href+' noticePage');
             } else { 
                 alert("처리 실패.");
                 console.log(result);
