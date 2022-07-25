@@ -10,7 +10,6 @@
   </c:set>
 </c:if>
 <c:if test="${locations.locationNum == 100}">
-  console.log('gg');
 </c:if>
 
 <%-- <c:set var="locationNum" value="${locations.locationNum}" /> --%>
@@ -35,28 +34,25 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
-    <%-- <script>
+      <script>
       window.onload=function(){
 
         const num = 1;
         let locationNum = 100;
         let ismainchecked = localStorage.getItem("ismaincheck") || 'false'
-        console.log(ismainchecked);
         if(ismainchecked == 'true'){
-          console.log('dd');
           locationNum = localStorage.getItem("locationNum");
         }
         loadLocation(locationNum, num);
       };
-<<<<<<< HEAD
-    </script> --%>
-=======
       window.onbeforeunload = function () {
-        console.log('ee');
-        localStorage.clear();
+        let link =  document.location.href;
+        let cureenthref = link.slice(-3);
+        if(cureenthref == '100'){
+          localStorage.clear();
+        }
       };
     </script>
->>>>>>> e40b918 (페이지네이션, 링크 수정)
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"

@@ -1,8 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<<<<<<< HEAD
-<jsp:forward page="main"/>
-=======
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -307,4 +304,3 @@
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
 </html>
->>>>>>> e40b918 (페이지네이션, 링크 수정)
