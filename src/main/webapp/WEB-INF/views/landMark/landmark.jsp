@@ -66,9 +66,9 @@
       <div class="container">
         <ul class="slider-container simple-list" id="slider">
         <%-- 인기 이미지 넣기 --%>
-          <li class="slide slideHtml">
-        </li>
-          <%-- <li class="slide">
+          <%-- <li class="slide slideHtml">
+        </li> --%>
+          <li class="slide">
             <img
               class="slide-img"
               src="${contextPath}/resources/images/landmark/landmark2.jpg"
@@ -102,7 +102,7 @@
               src="${contextPath}/resources/images/landmark/landmark6.jpg"
               alt="first_img"
             />
-          </li>  --%>
+          </li> 
         </ul>
         <p class="pager">
           <!-- <span data-idx="0">1</span>

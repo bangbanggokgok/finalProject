@@ -84,9 +84,9 @@ function loadLocation(locationNum, num) {
             let endpage = map.endpage;
             let landMarkList = map.landMarkList;
 
-            let slideList = map.rankLandMarkList;
-            let i = 0;
-            let slide = '';
+            // let slideList = map.rankLandMarkList;
+            // let i = 0;
+            // let slide = '';
             
             if(landMarkList.length > 0){
                 
@@ -127,14 +127,14 @@ function loadLocation(locationNum, num) {
                 }
 
              }
-             for(i; i <= 5; i++ ){
-                slide += '<li class="slide">';    
-                slide += '<img class="slide-img" alt="first_img" src="'+contextPath+slideList[i].thumbnail+'">';
-                slide += '</li>';
-             }
+            //  for(i; i <= 5; i++ ){
+                // slide += '<li class="slide">';    
+                // slide += '<img class="slide-img" alt="first_img" src="'+contextPath+slideList[i].thumbnail+'">';
+                // slide += '</li>';
+            //  }
              $(landMarkHtml).html(changeLandMarkList)
              $(pagination).html(paginBtn)
-             $(slideHtml).html(slide)
+            //  $(slideHtml).html(slide)
         }
     })
 }
