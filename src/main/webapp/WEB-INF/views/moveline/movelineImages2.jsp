@@ -17,24 +17,24 @@
 </head>
 <body>
   <section class="slide1">
-      <div class="container">
-          <ul class="slider-container simple-list" class="slider">
+      <div class="container2">
+          <ul class="slider-container2 simple-list2" class="slider2">
             <c:forEach var="landmarkImage" items="${landmarkImage}">
-              <li class="slide" id="landmark-images">
+              <li class="slide2" id="landmark-images">
                 <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
-                <img clas="slide-img" src="${contextPath}/${landmarkImage}" alt="">
+                <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="">
               </li>
             </c:forEach>
           </ul>
 
-          <p class="pager">
+          <p class="pager2">
           </p>
 
-          <a class="prev">
-            <li class="fa-solid fa-angle-left"></li>
+          <a class="prev2">
+            <li class="fa-solid fa-angle-left2"></li>
           </a>
-            <li class="fa-solid fa-angle-right"></li>
-          <a class="next">
+            <li class="fa-solid fa-angle-right2"></li>
+          <a class="next2">
           </a>
       </div>
   </section>

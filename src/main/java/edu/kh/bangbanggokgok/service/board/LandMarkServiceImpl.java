@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.board.LandMarkDAO;
@@ -25,20 +26,6 @@ public class LandMarkServiceImpl implements LandMarkService {
 	@Autowired
 	private LandMarkDAO dao;
 
-	// 랜드마크 특정 지역 목록 조회
-	@Override
-	public Map<String, Object> selectLandMarkList(int locationType) {
-
-//		int ListCount = dao.getListCount(locationType);
-
-		List<LandMark> landMarkList = dao.selectLandMarkList(locationType);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("ListCount",ListCount);
-		map.put("landMarkList", landMarkList);
-
-		return map;
-	}
 
 	// 랜드마크 전체 목록 조회
 	@Override
@@ -49,7 +36,9 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
 		List<LandMark> landMarkList = dao.selectLandMarkList(num);
+
 		Map<String, Object> map = new HashMap<String, Object>();
+
 		for (LandMark e : landMarkList) {
 			e.setLandMarkContent(Util.newLineClear(e.getLandMarkContent()));
 			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
@@ -125,6 +114,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return landMarkNo;
 	}
 
+//	사진 및 내용 다중 수정
 	@Transactional(rollbackFor = { Exception.class })
 	@Override
 	public int updateLandMark(LandMarkDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
@@ -191,6 +181,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return result;
 	}
 
+//	랜드마크 북마크 조회
 	@Override
 	public int landmarkBookmark(String loginNo, String landmarkNo) {
 
@@ -204,6 +195,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return dao.landmarkBookmark(infoB);
 	}
 
+//	랜드마크 북마크 삽입
 	@Override
 	public int landmarkBookmarkInsert(String loginNo, String landmarkNo) {
 		Map<String, String> infoB = new HashMap<String, String>();
@@ -212,6 +204,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return dao.insertLandBookmark(infoB);
 	}
 
+//	랜드마크 북마크 삭제
 	@Override
 	public int landmarkBookmarkDelete(String loginNo, String landmarkNo) {
 		Map<String, String> infoA = new HashMap<String, String>();
@@ -220,6 +213,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return dao.landmarkBookmarkDelete(infoA);
 	}
 
+//	랜드마크 별점 조회
 	@Override
 	public double rankLandmark(int landmarkNo) {
 		String result = dao.rankLandmark(landmarkNo);
@@ -228,6 +222,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return Double.parseDouble(result);
 	}
 
+//	랜드마크 별점내역 여부 확인
 	@Override
 	public int addPointCheck(int landmarkNo, int userNo) {
 		Map<String, Integer> map = new HashMap<String, Integer>();
@@ -236,6 +231,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return dao.addPointChcek(map);
 	}
 
+//	랜드마크 별점 추가
 	@Override
 	public double insertRankPoint(String rankPoint, String userNo, int landmarkNo) {
 		Map<String, String> map = new HashMap<String, String>();
@@ -251,6 +247,7 @@ public class LandMarkServiceImpl implements LandMarkService {
 		return -100;
 	}
 
+//	랜드마크 별점 삭제
 	@Override
 	public double deleteRankPoint(String userNo, int landmarkNo) {
 		Map<String, String> map = new HashMap<String, String>();
@@ -263,6 +260,18 @@ public class LandMarkServiceImpl implements LandMarkService {
 		}
 
 		return -100;
+	}
+
+
+	@Override
+	public int getListCount(int locationType) {
+		return dao.getListCount(locationType);
+	}
+
+	@Override
+	public List<LandMark> selectLandMarkList(int locationType) {
+		
+		return dao.selectLandMarkPagination(locationType);
 	}
 
 }

@@ -22,7 +22,7 @@
                             <img src="${contextPath}${reply.profileImage}">
                         </c:if>
 
-                        <span>${reply.memberNickname}</span>
+                        <span>${reply.userName}</span>
                         <span class="reply-date">(${reply.createDate})</span>
                     </p>
                     
@@ -33,6 +33,9 @@
                         <div class="reply-btn-area">
 
                             <button onclick="showInsertReply(${reply.replyNo}, this)">답글</button>
+                            <c:if test="${loginUser.userNo != movelineDetail.userNo}">
+                                <button onclick="reportReply(${reply.replyNo}, this)">신고</button>
+                            </c:if>
                             <%-- 로그인한 회원의 댓글이 경우인 경우 --%>
                             <c:if test="${loginUser.userNo == reply.userNo}">
                                     <button onclick="showUpdateReply(${reply.replyNo}, this);">수정</button>     

@@ -29,6 +29,7 @@
 		<typeAlias type="edu.kh.bangbanggokgok.vo.image.MoveLineImage" alias="MoveLineImage"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineBookmark" alias="MoveLineBookmark"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.board.MoveLineTheme" alias="MoveLineTheme"/>
+		<typeAlias type="edu.kh.bangbanggokgok.vo.reply.Reply" alias="Reply"/>
 		
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.User" alias="User"/>
 		<typeAlias type="edu.kh.bangbanggokgok.vo.user.MyReply" alias="MyReply"/>
@@ -53,6 +54,7 @@
 		<mapper resource="/mappers/adminMapper.xml"/>
 		<mapper resource="/mappers/movelineMapper.xml"/>
 		<mapper resource="/mappers/hashTagMapper.xml"/>
+		<mapper resource="/mappers/replyMapper.xml"/>
 		
 	</mappers>
 
