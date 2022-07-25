@@ -74,5 +74,8 @@ public interface LandMarkService {
 
 	int getListCount(int locationType);
 
+	List<LandMark> rankLandMarkList(int locationType);
+
+
 	
 }
