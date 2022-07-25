@@ -404,7 +404,7 @@ body {
   height: 100%;
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
-  object-fit: cover;
+  object-fit: fill;
   /* height:50%; */
   /* position: absolute; */
 }
