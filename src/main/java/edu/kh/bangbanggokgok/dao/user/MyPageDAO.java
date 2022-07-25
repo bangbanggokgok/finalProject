@@ -63,6 +63,10 @@ public class MyPageDAO {
 	public List<LandMark> favoriteLandmark(int userNo) {
 		return sqlSession.selectList("myPageMapper.favoriteLandmark",userNo);
 	}
+	public List<LandMark> favoriteLandmark(Map<String, Integer> map) {
+		return sqlSession.selectList("myPageMapper.favoriteLandmarkForMoveline",map);
+	}
+	
 	public List<MoveLine> favoriteMoveline(int userNo) {
 		return sqlSession.selectList("myPageMapper.favoriteMoveline",userNo);
 	}

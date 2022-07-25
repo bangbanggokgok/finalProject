@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+                        <%-- onchange="connectLocation(this.value);" --%>
 
 <head>
     <meta charset="UTF-8">
@@ -30,44 +31,26 @@
             <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()">
                 <div class="titleFields">
                     <div>
+                    
                         <label class="title" for="title">코스 제목</label>
                         <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" id="title" name="courseName" value="${movelineTitle}">
                         
                         <!-- 지역 리스트 조회 필요-->
                         <label class="optionList">지역 선택</label>
 
-                        <select name="locationsList" id="locations-list" 
-                        onchange="connectLocation(this.value);"
-                        style="width:400px;height:40px;">
-
-                        <option value="locationNull" selected disabled>지역을 선택해주세요.</option>
+                        <select name="locationsValue" id="locations-list" style="width:250px;height:40px;margin-bottom:20px;">
+                            <option value="locationNull">지역을 선택해주세요.</option>
                             <c:forEach var="locations" items="${locationList}">
-                                <option value="${locations.locationName}">${locations.locationName}</option>        
+                                <option value="${locations.locationNum}">${locations.locationName}</option>        
                             </c:forEach>
                         </select>
-
-                        <%-- 안됨 --%>
-                        <%-- <c:forEach var="landmarkList" items="${landmarkList}">
-                            <c:set var="landmarkName" value="${landmarkList.landMarkName}"/>
-                            ${landmarkName}
-                        </c:forEach> --%>
                         
                         <!-- 랜드마크 리스트 조회 -->
-                        <label class="optionList">랜드마크 담기<span>(최소 2개, 최대 8개)</span></label> 
-                        <select class="landmarkList" name="landmarkList" id="landmark-list1">
-                            <!-- 랜드마크 리스트 가져와서 담기 -->
-                            <c:forEach var="list" items="${landmarkList}">
-                                <c:set var="landmarkName" value="${list.landMarkName}"/>
-                                <option value="landmarkNull" selected disabled>랜드마크1</option>
-                                <option value="${landmarkName}">${landmarkName}</option>        
-                            </c:forEach>
-                        </select>
-
-                        
-
-
-
-                        
+                        <button class="optionList modalTest" type="button" id="bookmarkList" >즐겨찾는 랜드마크 목록</button> 
+                        <div class="landmark-list" >
+                        <%-- <div class="landmark"><div> --%>
+                            <h2>아직 추가된 랜드마크가 없어요.</h2>
+                        </div>
                         <div>
                             <label class="optionList">테마 선택<span>(중복 체크 가능)</span></label>
                             <div class="themeSelect">
@@ -143,8 +126,6 @@
                         </div>
                     </div>
                 </div>
-
-                
                 <section class="submitBar">
                     <div class="buttonContainer">
                         <div id="clickLatlng"></div>
@@ -157,13 +138,23 @@
             </div>
         </section>
     </section>
+    <div class="all">
+        <div class="modal all-modal-opacity unstaged">
+            <div class="mod-top all-modal-opacity unstaged"> <%-- div:first-child --%>
+                <div class="name-data all-modal-opacity unstaged"></div>
+            </div>
+            <button class="close all-modal-opacity unstaged"><img src="${contextPath}/resources/images/loginPage/800px-Letter_x_negative.png" class="all-modal-opacity" alt=""></button>
+            <div class="mod-bot all-modal-opacity unstaged"> <%-- div:last-child --%>
+                <div class="landmark-data all-modal-opacity unstaged"> </div>
+            </div>
+        </div>
+    </div>
 	<script>
         const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
     </script>
     
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
-
 </body>
 <script src="${contextPath}/resources/js/moveline/movelineWrite.js"></script>
 </html>
