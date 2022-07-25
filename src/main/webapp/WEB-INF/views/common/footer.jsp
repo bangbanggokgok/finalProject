@@ -106,7 +106,7 @@
       <a id="back-to-top" href="#">Top</a>
     </footer>
 
-    <c:if test="${ !empty message }">
+    <c:if test="${!empty message}">
         <script>
             alert("${message}");
         </script>

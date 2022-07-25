@@ -78,7 +78,6 @@ function curculateRank(a) {
 function submitRankPoint(inputValue) {
     if (userNo != 0) {
         const checkAdd = document.getElementsByClassName("add-check")[0];
-        console.log(checkAdd);
         const rankText = document.getElementsByClassName("rank-text")[0];
         // const rate = document.getElementsByClassName("rate")[0];
         const idRate = document.getElementById("rate")
@@ -88,15 +87,15 @@ function submitRankPoint(inputValue) {
                 data: {
                     "rankPoint": inputValue,
                     "userNo": userNo
-                },
+                    },
                 type: "get",
                 success: function (result) {
                     if (result != -100) {
                         alert("별점이 추가 되었습니다.");
                         rankText.innerText = "";
-                        rankText.innerText = result / 2 + "/ 5";
-                        idRate.setAttribute("onmouseover","mouseAction("+result+"/2)");
-                        mouseAction(result/2);
+                        rankText.innerText = (result / 2).toFixed(1) + " / 5";
+                        idRate.setAttribute("onmouseover", "mouseAction(" + result.toFixed(1) + " / 2)");
+                        mouseAction((result / 2).toFixed(1));
                         checkAdd.value = 1;
                     }
                 }
@@ -108,15 +107,15 @@ function submitRankPoint(inputValue) {
                     url: landmarkNo + "/delet-landmark-rankPoint",
                     data: {
                         "userNo": userNo
-                    },
+                        },
                     type: "get",
                     success: function (result) {
                         if (result != -100) {
                             alert("별점이 삭제 되었습니다.");
                             rankText.innerText = "";
-                            rankText.innerText = result / 2 + "/ 5";
-                            idRate.setAttribute("onmouseover","mouseAction("+result+"/2)");
-                            mouseAction(result/2);
+                            rankText.innerText = (result / 2).toFixed(1) + " / 5";
+                            idRate.setAttribute("onmouseover", "mouseAction(" + result.toFixed(1) + " / 2)");
+                            mouseAction((result / 2).toFixed(1));
                             checkAdd.value = 0;
                         };
                     }
