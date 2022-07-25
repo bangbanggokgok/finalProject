@@ -36,6 +36,11 @@
                    	</a>
                 </li>
                 <li id="adminList">
+                    <a href="${contextPath}/report/moveline">
+                    	<i class="fal fa-map-marker-question"></i> 코스 신고하기
+                   	</a>
+                </li>
+                <li id="adminList">
                     <a href="${contextPath}/admin/report/course/list">
                     	<i class="fal fa-siren-on"></i> 신고관리
                    	</a>
