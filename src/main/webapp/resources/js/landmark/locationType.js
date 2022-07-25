@@ -18,7 +18,8 @@ function searchingLocation(locationNum, num) {
             
             if(landMarkList.length > 0){
                 
-                const cutlandMarkList = chunk(landMarkList, 10);
+                const cutlandMarkList = chunk(landMarkList, 9);
+               
 
                 $.each(cutlandMarkList[num - 1], function(key, value){      
                     
@@ -78,7 +79,7 @@ function loadLocation(locationNum, num) {
             
             if(landMarkList.length > 0){
                 
-                const cutlandMarkList = chunk(landMarkList, 10);
+                const cutlandMarkList = chunk(landMarkList, 9);
                 $.each(cutlandMarkList[0], function(key, value){      
                     
                     changeLandMarkList += '<ol class="image-list grid-view" id="landMakrList">';
