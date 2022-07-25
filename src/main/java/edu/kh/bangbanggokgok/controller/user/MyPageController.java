@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.bangbanggokgok.service.board.LandMarkService;
 import edu.kh.bangbanggokgok.service.user.MyPageService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
@@ -38,8 +40,16 @@ public class MyPageController {
 	private MyPageService service;
 
 	@GetMapping("/info")
-	public String info(@ModelAttribute("loginUser") User loginUser
-			,Model model) {
+	public String info(Model model,
+			HttpSession session,
+			RedirectAttributes ra) {
+		
+		User loginUser = (User)session.getAttribute("loginUser");
+		
+		if(loginUser == null) {
+			return redirectHome(ra);
+		}
+		
 		List<LandMark> landmarkList = service.favoriteLandmark(loginUser.getUserNo());
 		model.addAttribute("landmarkList", landmarkList);
 		return "myPage/myPage-favorite";
@@ -205,6 +215,11 @@ public class MyPageController {
 			moveLineList = service.favoriteMoveline(loginUser.getUserNo());
 			return new Gson().toJson(moveLineList);
 		}
+	}
+	
+	public String redirectHome(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "로그인 후 이용 바람");
+		return "redirect:/user/login-page";
 	}
 
 }

@@ -37,7 +37,6 @@ public class MoveLineMainInterceptor implements HandlerInterceptor{
 			
 			List<MoveLineHashTag> preHashTagList = MovelineService.selectMoveLineMain();
 			
-			
 			application.setAttribute("preHashTagList", preHashTagList);
 		}
 		

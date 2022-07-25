@@ -1,3 +1,27 @@
+const register = document.getElementById("register");
+const secession = document.getElementById("secession");
+const all = document.getElementById("all");
+
+
+$(".list div").click(function () {
+    let selectType = $(this).attr("value");
+    // console.log(selectType);
+
+    if(selectType === 'register'){
+        register.style.color = "rgb(51, 151, 255)";
+        secession.style.color = "black";
+        all.style.color = "black";
+    } else if(selectType === 'secession'){
+        secession.style.color = "rgb(51, 151, 255)";
+        register.style.color = "black";
+        all.style.color = "black"
+    } else{
+        all.style.color = "rgb(51, 151, 255)";
+        secession.style.color = "black";
+        register.style.color = "black";
+    }
+});
+
 $(".list div").click(function () {
     let selectUser = $(this).attr("value");
     // console.log(list);

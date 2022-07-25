@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.admin.AdminDAO;
+import edu.kh.bangbanggokgok.exception.InsertFailException;
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.admin.ReportReply;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
@@ -67,6 +68,8 @@ public class AdminServiceImpl implements AdminService{
 						
 					}
 					
+				} else {
+					throw new InsertFailException();
 				}
 			}
 		}

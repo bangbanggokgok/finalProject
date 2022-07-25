@@ -56,7 +56,7 @@
                 <c:if test="${fn:contains(loginUser.adminFlag, 'Y')}">
                 <section class="submitBar">
                     <div class="buttonContainer">
-                        <button type="button" disabled="" class="submitButton">수정하기</button>
+                        <button type="button" class="submitButton" onclick="location.href='../update?${detail.noticeNo}'">수정하기</button>
                     </div>
                 </section>
                 </c:if>

@@ -21,7 +21,7 @@
     <div class="board">
         <h1>회원관리</h1>
         <div class="list">
-            <div class="category"><a href="${contextPath}/admin/user/list">전체</a></div>
+            <div class="category"><a id="all" href="${contextPath}/admin/user/list">전체</a></div>
             <div class="category" id="register" value="register">활동회원</div>
             <div class="category" id="secession" value="secession">탈퇴회원</div>
         </div>

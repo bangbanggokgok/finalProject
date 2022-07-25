@@ -26,7 +26,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
 
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.service.admin.AdminService;
+import edu.kh.bangbanggokgok.service.notice.NoticeService;
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.question.Question;
@@ -40,6 +42,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService service;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@GetMapping("/main")
 	public String main() {
@@ -47,9 +52,17 @@ public class AdminController {
 	}
 
 	// 공지 작성
-	@GetMapping("/notice/write")
-	public String noticeWriteForm(String mode,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int noticeNo, Model model) {
+	@GetMapping("/notice/{mode}")
+	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false, defaultValue="0") int noticeNo) {
+		
+		if(mode.equals("update")) { // 수정
+			NoticeDetail detail = noticeService.selectNoticeDetail(noticeNo);
+			
+			detail.setNoticeContent(Util.newLineClear(detail.getNoticeContent()));
+			
+			model.addAttribute("detail", detail);
+		}
+		
 		return "admin_/notice-write";
 	}
 
