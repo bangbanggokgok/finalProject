@@ -63,10 +63,12 @@ function mouseAction(rankPoint) {
         // width = 160px
         const widthValue = (value * 10) + "%"
         $(".rate").css("width", widthValue);
+        $(".cursor-rate").text(value/2);
     };
 
     document.getElementById("rate").addEventListener("mouseout", function () {
         $(".rate").css("width", (rankPoint * 2) * 10 + "%");
+        $(".cursor-rate").text(0);
     });
 };
 
@@ -75,10 +77,12 @@ function curculateRank(a) {
     return (b + 1);
 };
 
-function submitRankPoint(inputValue) {
+function submitRankPoint() {
     if (userNo != 0) {
         const checkAdd = document.getElementsByClassName("add-check")[0];
         const rankText = document.getElementsByClassName("rank-text")[0];
+        const inputValue = document.getElementsByClassName("cursor-rate")[0].innerText * 2;
+        console.log(inputValue);
         // const rate = document.getElementsByClassName("rate")[0];
         const idRate = document.getElementById("rate")
         if (checkAdd.value == 0) {

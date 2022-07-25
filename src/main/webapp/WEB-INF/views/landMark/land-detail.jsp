@@ -48,10 +48,13 @@
               ★★★★★
               <span class="rate">★★★★★</span>
               <input id="rate" type="range" onmouseover="mouseAction(${rankLandmark/2})" 
-              oninput="submitRankPoint(this.value)" value="0" step="1" min="0" max="10"/>
+              onclick="submitRankPoint()" value="0" step="1" min="0" max="10"/>
             </span>
-            <div class="rank-text"> ${rankLandmark/2} / 5 </div>
-            <input type="hidden" class="add-check" value="${addPointCheck}">
+            <div style="display: flex; justify-content: space-around;">
+              <div class="cursor-rate" style="width:60px;">0</div>
+              <div class="rank-text"> ${rankLandmark/2} / 5 </div>
+              <input type="hidden" class="add-check" value="${addPointCheck}">
+            </div>
           </div>
           <div>
             <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
