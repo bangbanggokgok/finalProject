@@ -16,25 +16,41 @@
     ></script>
 </head>
 <body>
-  <section class="slide1">
+  <section class="slide3">
       <div class="container2">
-          <ul class="slider-container2 simple-list2" class="slider2">
+          <ul class="slider-container2 simple-list" class="slider2">
+
             <c:forEach var="landmarkImage" items="${landmarkImage}">
               <li class="slide2" id="landmark-images">
                 <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
-                <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="">
+                <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
               </li>
             </c:forEach>
+            
+            <%-- 코스 사진으로 테스트 --%>
+            <%-- <c:forEach var="moveLineImg" items="${movelineImage}">
+              <li class="slide2" id="landmark-images">
+                <c:set var="moveLineImg" value="${moveLineImg.movelineRename}"/>
+                <img class="slide-img2" src="${contextPath}/${moveLineImg}" alt="first_img">
+              </li>
+            </c:forEach> --%>
           </ul>
+
+          <%-- <c:forEach var="moveLineImg" items="${movelineImage}">
+            <li class="slide2" id="landmark-images">
+              <c:set var="moveLineImg" value="${moveLineImg.movelineRename}"/>
+              <img class="slide-img" src="${contextPath}/${moveLineImg}" alt="first_img">
+            </li>
+          </c:forEach> --%>
 
           <p class="pager2">
           </p>
 
           <a class="prev2">
-            <li class="fa-solid fa-angle-left2"></li>
+            <li class="fa-solid fa-angle-left"></li>
           </a>
-            <li class="fa-solid fa-angle-right2"></li>
           <a class="next2">
+            <li class="fa-solid fa-angle-right"></li>
           </a>
       </div>
   </section>

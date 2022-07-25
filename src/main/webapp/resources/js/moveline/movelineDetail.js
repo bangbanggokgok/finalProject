@@ -1,43 +1,32 @@
 const landmark = document.getElementsByClassName("landmark");
 const selected = document.getElementsByClassName("selected-landmark");
 
+for(let i=0 ; i<landmark.length ; i++){
+    landmark[i].addEventListener("click", function(){
 
-if (typeof landmark === 'object' && landmark !== null && 'addEventListener' in landmark) {
-    landmark.addEventListener('click', function onClick() {
-      console.log('landmark clicked');
-    });
-  }
-
-for(let land of landmark){
-    land.addEventListener("click", function(){
-    
-        console.log("clicked");
-        selected.value = "";
-    
+        alert("clicked");
+        
         $.ajax({
-            url : contextPath + "/detail/setLandmarkName",
-            data : {"landmarkNo" : landMarkNo },
+            url : contextPath + "/detail/setLandmarkImages/",
+            data : {"landmarkNo" : landmarkNo },
             type : "get",
-            success : function(landmarkName){
-    
+            success : function(result){
+        
                 if(result > 0){
                     alert("특정 랜드마크 조회 성공");
-    
+        
                 } else {
                     alert("특정 랜드마크 조회 실패");
                 }
-    
+        
             },
-    
+        
             error : function(req, status, error){
                 console.log("실패")
                 console.log(req.responseText);
             }
         });
-        
-        return true;
-    })
-
+    });
 }
 
 
@@ -65,10 +54,7 @@ for(let land of landmark){
 
 function deleteMoveline(movelineNo){
 
-    if( confirm("정말로 삭제 하시겠습니까?") ){
-    }else{
-        location.href = url;
-    }
+
 
     $.ajax({
         url : contextPath + "/moveline-main/detail/delete",
@@ -76,15 +62,17 @@ function deleteMoveline(movelineNo){
         type : "GET",
         success : function(result){
 
-            if(result > 0){
-                alert("코스를 삭제하였습니다.");
-                // alert(message);
-                let url = contextPath + "/moveline-main/list"
-                location.href = url;
-            }else{
+            // if(result > 0){
+            //     alert("코스를 삭제하였습니다.");
+            //     // alert(message);
+            //     let url = contextPath + "/moveline-main/list"
+            //     location.href = url;
+            // }else{
 
-                alert("코스를 삭제하지 못하였습니다.");
-                // alert(message);
+            //     alert("코스를 삭제하지 못하였습니다.");
+            //     // alert(message);
+            // }
+            if( confirm("정말로 삭제 하시겠습니까?") ){
             }
         
         },

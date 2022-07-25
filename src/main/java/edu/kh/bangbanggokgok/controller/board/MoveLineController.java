@@ -282,15 +282,22 @@ public class MoveLineController {
 	}
 	
 	
-	// 랜드마크 이름 조회 - 상세 페이지 랜드마크 이름 정렬용
-	@GetMapping("/detail/setLandmarkName")
-	public String setLandmarkName(@RequestParam (value="landmarkNo", required=true ) int landmarkNo) {
+	// 특정 랜드마크 이미지 세팅 목록 조회
+	@GetMapping("/detail/setLandmarkImages/{landmarkNo}")
+	public String setLandmarkImages(@PathVariable("landMarkNo") int landMarkNo,
+			 						Model model,
+									@RequestParam(value="cp", required=false, defaultValue="1") int cp
+									) {
 		
-		String landmarkName = service.setLandmarkName(landmarkNo);
+		List<LandMarkIMG> setLandmarkImages = service.setLandmarkImages(landMarkNo);
 		
-		System.out.println("landmarkName : " + landmarkName);
+		System.out.println("setLandmarkImages.size() : " + setLandmarkImages);
 		
-		return landmarkName;
+		model.addAttribute("landmarkImageList", setLandmarkImages);
+
+		String path = null;
+		
+		return "redirect:" + path;
 	}
 	
 	
@@ -298,38 +305,33 @@ public class MoveLineController {
 	// 게시글 삭제
 	@GetMapping("/detail/delete")
 	public String deleteMoveline(
-//								@PathVariable("movelineNo") int movelineNo,
+//								 @PathVariable("movelineNo") int movelineNo,
 			   					 @RequestHeader("referer") String referer,
 			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
-			   					 RedirectAttributes ra,
-			   					 Model model
+			   					 RedirectAttributes ra
 			   					 ) {
-		int result = 0;
 		
-		result = service.deleteMoveline(movelineNo);
-		  
-		System.out.println("deleteMoveline : " + movelineNo);
+		int result = service.deleteMoveline(movelineNo);
 		
-//		String message = null;
-//		String path = null;
-//		   
-//		if(result > 0) {
-//			
-//			System.out.println("result : " + result);
-//			
-//			message = "코스를 삭제했습니다.";
-//			path = "moveline-main/list";
-//			   
-//		} else {
-//			   
-//			message = "코스 삭제가 실패했습니다.";
-//			path = referer;
-//			   
-//		}
-//		   
-//		ra.addFlashAttribute("message",message);
+		String message = null;
 		String path = null;
-		path = "moveline-main/list";
+		   
+		if(result > 0) {
+			
+			System.out.println("result : " + result);
+			
+			message = "코스를 삭제했습니다.";
+			path = "/moveline-main/list";
+			   
+		} else {
+			   
+			message = "코스 삭제가 실패했습니다.";
+		    path = referer;
+			   
+		}
+		   
+		ra.addFlashAttribute("message",message);
+		
 		return "redirect:" + path;
 		}
 	

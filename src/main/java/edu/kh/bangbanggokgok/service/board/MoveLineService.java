@@ -25,6 +25,10 @@ import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
  * @author user
  *
  */
+/**
+ * @author user
+ *
+ */
 public interface MoveLineService {
 
 //	List<String> selectMovelineList();
@@ -146,6 +150,13 @@ public interface MoveLineService {
 	 * @return
 	 */
 	int deleteMoveline(int movelineNo);
+
+
+	/** 특정 랜드마크 이미지 세팅 목록 조회 서비스
+	 * @param landMarkNo
+	 * @return list
+	 */
+	List<LandMarkIMG> setLandmarkImages(int landMarkNo);
 
 
 

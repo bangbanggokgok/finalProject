@@ -237,6 +237,14 @@ public class MoveLineDAO {
 		return sqlSession.update("movelineMapper.deleteMoveline", movelineNo);
 	}
 
+	/** 특정 랜드마크 이미지 세팅 목록 조회 DAO
+	 * @param landMarkNo
+	 * @return list
+	 */
+	public List<LandMarkIMG> setLandmarkImages(int landMarkNo) {
+		return sqlSession.selectList("movelineMapper.setLandmarkImages",landMarkNo);
+	}
+
 
 	
 

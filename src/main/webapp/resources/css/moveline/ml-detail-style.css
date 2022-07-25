@@ -260,8 +260,8 @@ ul{
 
 /* 랜드마크 이미지 */
 #landmark-images>img{
-    width: 600px;
-    height: 400px;
+    width: 100%;
+    height: 100%;
     text-align: center;
     margin-top: 30px;
 }
