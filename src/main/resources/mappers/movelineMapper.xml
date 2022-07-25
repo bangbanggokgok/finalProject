@@ -226,6 +226,7 @@
 		      ORDER BY ML_NO DESC) A
 		      
 		WHERE LOCATION_TYPE = #{locationNum}
+		AND ML_DELETE_DT IS NULL
 	</select>
 	
 	
@@ -314,6 +315,7 @@
 		           WHERE A.ML_NO = ML_IMG.ML_NO
 		           AND ML_IMG_LEVEL = 0) THUMBNAIL
 		FROM MOVELINE_BOARD A
+		WHERE ML_DELETE_DT IS NULL
 	</select>
 	
 	<!-- 전체 코스 수 조회 -->
@@ -332,7 +334,7 @@
 	<select id="selectMovelineDetail" resultMap="MoveLineDetail_rm">
 		SELECT 
 			ML_NO, ML_TITLE, ML_CONTENT, ML_THEME,
-			LOCATION_NAME, USER_NAME,
+			LOCATION_NAME, USER_NAME, USER_NO,
 			TO_CHAR(ML_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_CREATE_DT,
 			TO_CHAR(ML_UPDATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_UPDATE_DT
 		FROM MOVELINE_BOARD
@@ -344,7 +346,7 @@
 	
 	<!-- 코스 상세 페이지 - 랜드마크 상세 -->
 	<select id="selectLandMarkDetail" resultMap="MoveLineDetail_rm">
-		SELECT LM_NAME, LM_ADDRESS, LM_INDEX
+		SELECT LM_NAME, LM_ADDRESS, LM_INDEX, LM_NO
 		FROM LANDMARK
 		JOIN COORDINATE A USING(LM_NO)
 		LEFT OUTER JOIN MOVELINE_BOARD B
@@ -379,10 +381,20 @@
 		WHERE ML_NO = #{movelineNo}
    </select>
    
+   <!-- 특정 지역에 따른 랜드마크 조회 -->
+   <select id="connectLocation" resultMap="MoveLineDetail_rm">
+   		SELECT *
+		FROM LANDMARK
+		JOIN LOCATIONS USING(LOCATION_TYPE)
+		WHERE LOCATION_NAME = #{locationName}
+   </select>
    
    
-   
-   
-   
+   <!-- 코스 삭제 -->
+   <delete id="deleteMoveline">
+		UPDATE MOVELINE_BOARD SET 
+        ML_DELETE_DT = SYSDATE
+        WHERE ML_NO = #{movelineNo}
+	</delete>
    
 </mapper>

@@ -31,7 +31,7 @@
 	<section class="board">
 		<section class="pageWrapper">
 			<!-- 폼태그 액션 주소 필 -->
-			<form action="" enctype="multipart/form-data" method="POST">
+			<form action="insert" enctype="multipart/form-data" method="POST">
 				<label class="choice">공지 선택</label>
 				<div id="inputFieldsContainer" onclick="drop_choiceFields()">
 					<div class="inputFields">

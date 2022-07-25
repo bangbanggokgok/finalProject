@@ -3,6 +3,7 @@ package edu.kh.bangbanggokgok.service.board;
 import java.util.List;
 import java.util.Map;
 
+import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
@@ -124,6 +125,29 @@ public interface MoveLineService {
 	 * @return List
 	 */
 	List<MoveLineHashTag> selectMovelineHashtag(int movelineNo);
+
+
+	/** 클릭된 랜드마크 이름 세팅
+	 * @param landmarkNo
+	 * @return landmarkName
+	 */
+	String setLandmarkName(int landmarkNo);
+
+
+	/** 특정 지역에 따른 랜드마크 조회
+	 * @param locationName
+	 * @return
+	 */
+	List<LandMark> connectLocation(String locationName);
+
+
+	/** 게시글 삭제 서비스
+	 * @param movelineNo
+	 * @return
+	 */
+	int deleteMoveline(int movelineNo);
+
+
 
 
 	

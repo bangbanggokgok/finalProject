@@ -93,3 +93,55 @@ function mlWriteValidation(){
     }
     return true;
 }
+
+
+
+// 선택 된 지역에 해당하는 랜드마크 조회
+function connectLocation(value){
+    
+    alert("clicked");
+    // const locationName = getAttribute.value;
+    // const locationName = btn.parentElement.previousElementSibling.value;
+
+
+    $.ajax({
+        url : contextPath + "/moveline-main/list/write/connectLocation",
+        data : {"locationName" : value},
+        type : "GET",
+        success : function(landmarkList){
+            if(landmarkList.length != null){
+                alert("지역-랜드마크 조회 성공");
+
+                // const lm = document.getElementsByClassName("landmarkList");
+                
+                // for(var i in landmarkList.landMarkName){
+
+                //     const option = document.createElement("option");
+                //     option.innerText = land.landMarkName;
+                //     lm.append(option);
+                //     const pathname = location.pathname;
+    
+                //     let url = pathname.substring(0,  pathnazme.indexOf("/", 1))
+    
+                //     url = "/moveline-main/list/write"
+    
+                //     var lmName = landmarkList.landMarkName[i];
+                    
+                // }
+
+                // location.href = url;
+                return true;
+            }else{
+                alert("지역-랜드마크 조회 실패");
+            }
+            return true;
+        
+        },
+        error : function(req, status, error){
+            console.log("즐겨찾기 등록 실패");
+            console.log(req.responseText);
+        }
+
+    });
+
+}

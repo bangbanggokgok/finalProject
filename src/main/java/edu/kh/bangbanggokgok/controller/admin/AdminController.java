@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.controller.admin;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.google.gson.Gson;
+
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.service.admin.AdminService;
+import edu.kh.bangbanggokgok.service.notice.NoticeService;
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.question.Question;
@@ -37,6 +42,9 @@ public class AdminController {
 
 	@Autowired
 	private AdminService service;
+	
+	@Autowired
+	private NoticeService noticeService;
 
 	@GetMapping("/main")
 	public String main() {
@@ -44,15 +52,23 @@ public class AdminController {
 	}
 
 	// 공지 작성
-	@GetMapping("/notice/write")
-	public String noticeWriteForm(String mode,
-			@RequestParam(value = "no", required = false, defaultValue = "0") int noticeNo, Model model) {
+	@GetMapping("/notice/{mode}")
+	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false, defaultValue="0") int noticeNo) {
+		
+		if(mode.equals("update")) { // 수정
+			NoticeDetail detail = noticeService.selectNoticeDetail(noticeNo);
+			
+			detail.setNoticeContent(Util.newLineClear(detail.getNoticeContent()));
+			
+			model.addAttribute("detail", detail);
+		}
+		
 		return "admin_/notice-write";
 	}
 
 	// 공지 작성(삽입, 수정)
-	@PostMapping("/notice/write")
-	public String noticeWrite(NoticeDetail detail,
+	@PostMapping("/notice/{mode}")
+	public String noticeWrite(NoticeDetail detail,  @PathVariable String mode,
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList,
 			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra)
 			throws IOException {
@@ -62,12 +78,12 @@ public class AdminController {
 		String webPath = "/resources/images/notice";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 
-//		if (mode.equals("insert")) {
+		String path = null;
+		String message = null;
+		if (mode.equals("insert")) {
 
 		int noticeNo = service.insertNotice(detail, imageList, webPath, folderPath);
 
-		String path = null;
-		String message = null;
 
 		if (noticeNo > 0) {
 			path = "../../notice/detail/" + noticeNo;
@@ -82,10 +98,10 @@ public class AdminController {
 
 		return "redirect:" + path;
 
-//		} else {
-//			
-//			return null;
-//		}
+		} else {
+			
+			return null;
+		}
 
 	}
 
@@ -119,7 +135,7 @@ public class AdminController {
 
 		QuestionDetail detail = service.selectQuestionDetail(questionNo);
 
-		detail.setUserNo(loginUser.getUserNo());
+//		detail.setUserNo(loginUser.getUserNo());
 
 		model.addAttribute("detail", detail);
 		return "admin_/inquiry-detail";
@@ -161,4 +177,21 @@ public class AdminController {
 		return "admin_/report-reply";
 	}
 
+	// 회원 상태별 조회
+	@ResponseBody
+	@GetMapping("/user/situation/{list}")
+	public String userSituation(@PathVariable("list") String list,
+								@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+								@RequestParam("selectUser") String selectUser) {
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		if (selectUser.equals("register")) {
+			map = service.selectSignUpUser(cp, list);
+		} else {
+			map = service.selectSecession(cp, list);
+		}
+		return new Gson().toJson(map);
+	}
+		
+	
 }

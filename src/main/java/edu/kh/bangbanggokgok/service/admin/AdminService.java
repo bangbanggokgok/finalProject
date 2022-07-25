@@ -69,4 +69,19 @@ public interface AdminService {
 	 */
 	Map<String, Object> selectReplyReport(int cp, String list);
 
+	/** 활동회원 조회
+	 * @param cp
+	 * @param list
+	 * @return
+	 */	
+	Map<String, Object> selectSignUpUser(int cp, String list);
+
+	/** 탈퇴회원 조회
+	 * @param cp
+	 * @param list
+	 * @return
+	 */
+	Map<String, Object> selectSecession(int cp, String list);
+
+
 }
