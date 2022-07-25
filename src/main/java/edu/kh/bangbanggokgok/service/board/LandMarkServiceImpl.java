@@ -36,7 +36,9 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
 		List<LandMark> landMarkList = dao.selectLandMarkList(num);
-
+		
+		
+		
 		Map<String, Object> map = new HashMap<String, Object>();
 
 		for (LandMark e : landMarkList) {
@@ -44,12 +46,8 @@ public class LandMarkServiceImpl implements LandMarkService {
 			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
 			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
 		}
-
 		map.put("landMakrImage", landMakrImage);
 		map.put("landmarkList", landMarkList);
-
-//		map.put("ListCount", ListCount);
-//		map.put("landMarkList", landMarkList);
 
 		return map;
 	}
@@ -273,5 +271,12 @@ public class LandMarkServiceImpl implements LandMarkService {
 		
 		return dao.selectLandMarkPagination(locationType);
 	}
+
+	@Override
+	public List<LandMark> rankLandMarkList(int locationType) {
+		return dao.rankLandMarkList(locationType);
+	}
+	
+
 
 }
