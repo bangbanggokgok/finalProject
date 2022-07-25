@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/moveline/reply-style.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/landmarkImageList.css" />
 
 </head>
 <body>
@@ -100,7 +101,7 @@
                                 <c:when test="${loginUser.userNo != movelineDetail.userNo}">
                                     <c:if test="${!empty loginUser}">
                                         <div class="btn-area">
-                                            <button type="button" id="goToList">신고하기</button>
+                                            <button type="button" id="reportMoveline" onclick="reportMoveline(${movelineNo})">신고하기</button>
                                         </div>
                                     </c:if>
                                 </c:when>
@@ -191,17 +192,15 @@
                             <li class="landmark">상세설명</li>
                         </ul>
                     </div>
-
-                    <div id="landmark-images">
-                    <%-- <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include> --%>
-                            <img class="slide-img" src="${contextPath}/resources/images/landmark/대왕암공원1.jpg" alt="first_img">
+                    <div id="landmark-images2">
+                        <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
+                            <%-- <img class="slide-img" src="${contextPath}/resources/images/landmark/대왕암공원1.jpg" alt="first_img"> --%>
 
                         <%-- <c:forEach var="landmarkImage" items="${landmarkImage}">
                             <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
                             <img class="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
                         </c:forEach> --%>
                     </div>
-
                     <div id="landmark-explain">
                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
@@ -210,9 +209,9 @@
                         
                     </div>
                 
+            </form>
                 <!-- 댓글 -->
                 <jsp:include page="/WEB-INF/views/moveline/movelineReply.jsp"/>
-            </form>
         </div>
 
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
@@ -243,6 +242,7 @@
     </script>
 
     <%-- <script src="${contextPath}/resources/js/moveline/temp.js"></script> --%>
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>

@@ -108,29 +108,23 @@ function connectLocation(value){
         url : contextPath + "/moveline-main/list/write/connectLocation",
         data : {"locationName" : value},
         type : "GET",
+        dataType : "JSON",
         success : function(landmarkList){
+            console.log(landmarkList)
             if(landmarkList.length != null){
                 alert("지역-랜드마크 조회 성공");
-
-                // const lm = document.getElementsByClassName("landmarkList");
                 
-                // for(var i in landmarkList.landMarkName){
+                const select = document.getElementById("landmark-list1");
 
-                //     const option = document.createElement("option");
-                //     option.innerText = land.landMarkName;
-                //     lm.append(option);
-                //     const pathname = location.pathname;
-    
-                //     let url = pathname.substring(0,  pathnazme.indexOf("/", 1))
-    
-                //     url = "/moveline-main/list/write"
-    
-                //     var lmName = landmarkList.landMarkName[i];
-                    
-                // }
+                for(let landmark of landmarkList){
+                    const option = document.createElement("landmark");
+                    landmark.value = landmark.landMarkNo;
+                    landmark.innerText = landmark.landMarkName;
 
-                // location.href = url;
-                return true;
+                    select.append(option);
+                }
+
+
             }else{
                 alert("지역-랜드마크 조회 실패");
             }

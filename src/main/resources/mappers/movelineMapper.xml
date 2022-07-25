@@ -191,6 +191,7 @@
 			 ORDER BY ML_NO DESC) A
 						
 		WHERE ROWNUM &lt;= 3
+		AND ML_DELETE_DT IS NULL
 	</select>
 					
 	

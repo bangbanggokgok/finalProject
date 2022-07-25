@@ -69,6 +69,7 @@ public class MoveLineController {
 	
 	
 	// 특정 지역에 따른 랜드마크 조회
+	@ResponseBody
 	@GetMapping("/list/write/connectLocation")
 	public String connectLocation(@RequestParam(value="locationName", required=true) String locationName,
 								  LandMark landmark,
@@ -76,14 +77,10 @@ public class MoveLineController {
 								  HttpServletRequest req,
 								  RedirectAttributes ra) {
 		
-		System.out.println("locationName : " + locationName);
 		
 		List<LandMark> landmarkList =  service.connectLocation(locationName);
-		model.addAttribute("landmarkList", landmarkList);
 		
-		System.out.println("landmarkList : " + landmarkList.size());
-		
-		return "moveline/movelineWrite";
+		return new Gson().toJson(landmarkList);
 	}
 	
 	@GetMapping("/goToList")
@@ -337,5 +334,14 @@ public class MoveLineController {
 		}
 	
 	
+	
+	
+//	@GetMapping("/detail/report")
+//	public String reportMoveline(@RequestParam(value="movelineNo", required=true) int movelineNo
+//								) {
+//		
+//		
+//		
+//	}
 	
 }

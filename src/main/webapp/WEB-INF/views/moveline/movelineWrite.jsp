@@ -61,6 +61,7 @@
                                 <option value="landmarkNull" selected disabled>랜드마크1</option>
                                 <option value="${landmarkName}">${landmarkName}</option>        
                             </c:forEach>
+                            ${list.landMarkName}
                         </select>
 
                         
