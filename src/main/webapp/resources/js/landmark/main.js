@@ -51,6 +51,7 @@ rangeInput.addEventListener("input", function () {
 //검색키워드로 필터 적용
 const captions = document.querySelectorAll(
   ".image-list figcaption p:first-child"
+  // image-list figcaption p:first-child
 );
 const myArray = [];
 let counter = 1;
@@ -63,9 +64,8 @@ for (const caption of captions) {
 }
 // console.log(myArray);
 
-const searchInput = document.querySelector('input[type="search"]');
+const searchInput = document.querySelector(".abc");
 const photosCounter = document.querySelector(".toolbar .counter span");
-
 searchInput.addEventListener("keyup", keyupHandler);
 //keyup : 키보드 눌르고 때는 순간
 //keydown : 사용자가 키보드 눌렀을 떄 한번만 작동

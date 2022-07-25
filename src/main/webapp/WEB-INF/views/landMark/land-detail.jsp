@@ -86,7 +86,7 @@
         <section id="section1" data-num="0">
           <div class="container-out">
             <div class="container">
-              <ul class="slider-container simple-list" id="slider"">
+              <ul class="slider-container simple-list" id="slider">
                 <c:if test="${!empty landmarkDetail.imageList}">
                   <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">

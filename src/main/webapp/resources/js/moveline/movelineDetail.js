@@ -96,3 +96,31 @@ function deleteMoveline(movelineNo){
     });
 
 }
+
+
+// 코스 신고
+function reportMoveline(movelineNo){
+
+    if( confirm("정말로 신고 하시겠습니까?") ){
+
+        $.ajax({
+            url : contextPath + "/moveline-main/detail/report",
+            data : {"movelineNo" : movelineNo},
+            type : "GET",
+            success: function(result){
+                if(result > 0){
+                    alert("신고 되었습니다");
+                    selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
+                }else{
+                    alert("신고 실패");
+                }
+            },
+
+            error : function(req, status, error){
+                console.log("실패")
+                console.log(req.responseText);
+            }
+
+        });
+    }
+}

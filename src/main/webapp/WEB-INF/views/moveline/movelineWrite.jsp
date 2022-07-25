@@ -31,7 +31,6 @@
             <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()">
                 <div class="titleFields">
                     <div>
-                    
                         <label class="title" for="title">코스 제목</label>
                         <input placeholder="제목을 입력해주세요." maxlength="50" class="titleInput" id="title" name="courseName" value="${movelineTitle}">
                         
