@@ -26,10 +26,6 @@
               <i class="fa-solid fa-ranking-star"></i>
               <span>인기</span>
             </a>
-            <%-- <div class="rankPoint">
-              <input class="point" type="hidden" name="landmarkRank" value="">
-              <input class="point-check" type="hidden" name="rankCheck" value="${rankCheck}">
-            </div> --%>
           </div>
           <div class="name1 name1-wrap">
             <div class="heart1">
@@ -47,23 +43,28 @@
           </div>
         </div>
         <div class="detailCheckWrap">
-          <span class="star">
-            ★★★★★
-            <span class="rate">★★★★★</span>
-            <input id="rate" type="range" onmouseover="mouseAction(${rankLandmark/2})" 
-            oninput="submitRankPoint(this.value)" value="0" step="1" min="0" max="10"/>
-          </span>
-
-          <div class="rank-text"> ${rankLandmark/2} / 5 </div>
-          <input type="hidden" class="add-check" value="${addPointCheck}">
-
-          <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
-          <div class="detail-in-wrap">
-            <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
-            <a class="detailCheck" href="#">삭제</a>
+          <div>
+            <span class="star">
+              ★★★★★
+              <span class="rate">★★★★★</span>
+              <input id="rate" type="range" onmouseover="mouseAction(${rankLandmark/2})" 
+              onclick="submitRankPoint()" value="0" step="1" min="0" max="10"/>
+            </span>
+            <div style="display: flex; justify-content: space-around;">
+              <div class="cursor-rate" style="width:60px;">0</div>
+              <div class="rank-text"> ${rankLandmark/2} / 5 </div>
+              <input type="hidden" class="add-check" value="${addPointCheck}">
+            </div>
           </div>
-            <%-- 삭제남음 --%>
-          </c:if>
+          <div>
+            <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
+              <div class="detail-in-wrap">
+                <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
+                <a class="detailCheck" href="#">삭제</a>
+              </div>
+              <%-- 삭제남음 --%>
+            </c:if>
+          </div>
         </div>
 
         <div class="area_address">
@@ -85,7 +86,7 @@
         <section id="section1" data-num="0">
           <div class="container-out">
             <div class="container">
-              <ul class="slider-container simple-list" id="slider" style="overflow:hidden;">
+              <ul class="slider-container simple-list" id="slider">
                 <c:if test="${!empty landmarkDetail.imageList}">
                   <c:forEach var="images" items="${landmarkDetail.imageList}">
                     <li class="slide">

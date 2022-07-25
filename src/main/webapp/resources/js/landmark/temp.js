@@ -63,10 +63,12 @@ function mouseAction(rankPoint) {
         // width = 160px
         const widthValue = (value * 10) + "%"
         $(".rate").css("width", widthValue);
+        $(".cursor-rate").text(value/2);
     };
 
     document.getElementById("rate").addEventListener("mouseout", function () {
         $(".rate").css("width", (rankPoint * 2) * 10 + "%");
+        $(".cursor-rate").text(0);
     });
 };
 
@@ -75,11 +77,12 @@ function curculateRank(a) {
     return (b + 1);
 };
 
-function submitRankPoint(inputValue) {
+function submitRankPoint() {
     if (userNo != 0) {
         const checkAdd = document.getElementsByClassName("add-check")[0];
-        console.log(checkAdd);
         const rankText = document.getElementsByClassName("rank-text")[0];
+        const inputValue = document.getElementsByClassName("cursor-rate")[0].innerText * 2;
+        console.log(inputValue);
         // const rate = document.getElementsByClassName("rate")[0];
         const idRate = document.getElementById("rate")
         if (checkAdd.value == 0) {
@@ -88,16 +91,16 @@ function submitRankPoint(inputValue) {
                 data: {
                     "rankPoint": inputValue,
                     "userNo": userNo
-                },
+                    },
                 type: "get",
                 success: function (result) {
                     if (result != -100) {
-                        alert("별점이 추가 되었습니다.");
                         rankText.innerText = "";
-                        rankText.innerText = result / 2 + "/ 5";
-                        idRate.setAttribute("onmouseover","mouseAction("+result+"/2)");
-                        mouseAction(result/2);
+                        rankText.innerText = (result / 2).toFixed(1) + " / 5";
+                        idRate.setAttribute("onmouseover", "mouseAction(" + result.toFixed(1) + " / 2)");
+                        mouseAction((result / 2).toFixed(1));
                         checkAdd.value = 1;
+                        alert("별점이 추가 되었습니다.");
                     }
                 }
             });
@@ -108,16 +111,16 @@ function submitRankPoint(inputValue) {
                     url: landmarkNo + "/delet-landmark-rankPoint",
                     data: {
                         "userNo": userNo
-                    },
+                        },
                     type: "get",
                     success: function (result) {
                         if (result != -100) {
-                            alert("별점이 삭제 되었습니다.");
                             rankText.innerText = "";
-                            rankText.innerText = result / 2 + "/ 5";
-                            idRate.setAttribute("onmouseover","mouseAction("+result+"/2)");
-                            mouseAction(result/2);
+                            rankText.innerText = (result / 2).toFixed(1) + " / 5";
+                            idRate.setAttribute("onmouseover", "mouseAction(" + result.toFixed(1) + " / 2)");
+                            mouseAction((result / 2).toFixed(1));
                             checkAdd.value = 0;
+                            alert("별점이 삭제 되었습니다.");
                         };
                     }
                 });

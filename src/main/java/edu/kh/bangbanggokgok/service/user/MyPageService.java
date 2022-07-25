@@ -55,4 +55,8 @@ public interface MyPageService {
 	 */
 	List<MyMoveline> selectMyMovelineList(int userNo);
 
+	
+	
+	List<LandMark> favoriteLandmark(int userNo,int locationNum);
+	
  }

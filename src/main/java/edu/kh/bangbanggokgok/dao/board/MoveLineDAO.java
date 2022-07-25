@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
@@ -211,6 +212,29 @@ public class MoveLineDAO {
 	 */
 	public List<MoveLineHashTag> selectMovelineHashtag(int movelineNo) {
 		return sqlSession.selectList("movelineMapper.selectMovelineHashtag", movelineNo);
+	}
+
+
+	/** 클릭된 랜드마크 이름 세팅
+	 * @param landmarkNo
+	 * @return landmarkName
+	 */
+	public String setLandmarkName(int landmarkNo) {
+		return sqlSession.selectOne("movelineMapper.selectLandmarkName");
+	}
+
+
+	/** 특정 지역에 따른 랜드마크 조회
+	 * @param locationName
+	 * @return
+	 */
+	public List<LandMark> connectLocation(String locationName) {
+		return sqlSession.selectList("movelineMapper.connectLocation", locationName);
+	}
+
+
+	public int deleteMoveline(int movelineNo) {
+		return sqlSession.update("movelineMapper.deleteMoveline", movelineNo);
 	}
 
 

@@ -20,7 +20,6 @@
                 $slideHeight = $slide[i].offsetHeight;
            }
         }
-        console.log($slideHeight);
 
         $slideWrap.style.height = $slideHeight +'px';
         $slideContainer.style.height = $slideHeight +'px';
