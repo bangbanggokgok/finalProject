@@ -6,7 +6,7 @@ $(".list div").click(function () {
     let selectType = $(this).attr("value");
     // console.log(selectType);
 
-    if(selectType === 'notice'){
+    if(selectType === 'register'){
         notice.style.color = "rgb(51, 151, 255)";
         event.style.color = "black";
         all.style.color = "black";

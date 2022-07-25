@@ -38,7 +38,7 @@ public class AdminDAO {
 	 * @return result
 	 */
 	public int insertNoticeImageList(List<NoticeImage> noticeImageList) {
-		return sqlSession.insert("adminMaaper.insertNoticeImageList", noticeImageList);
+		return sqlSession.insert("adminMapper.insertNoticeImageList", noticeImageList);
 	}
 
 	
