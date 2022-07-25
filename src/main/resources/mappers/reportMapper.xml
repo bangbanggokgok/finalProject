@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="reportMapper">
+	<!-- 코스 신고용 resultMap -->
+	<resultMap type="ReportML" id="reportML_rm">
+		<id property="reportNo" column="REPORT_NO"/>
+		<result property="reportReason" column="REPORT_REASON"/>
+		<result property="reportFlag" column="REPORT_FL"/>
+		<result property="reportDate" column="REPORT_DATE"/>
+		<result property="moveLineNo" column="ML_NO"/>
+		<result property="moveLineTitle" column="ML_TITLE"/>
+		<result property="userName" column="USER_NAME"/>
+		<result property="userNo" column="USER_NO"/>
+	</resultMap>
+	
+	
+	<insert id="reportML">
+		INSERT INTO REPORT_ML VALUES(	
+			SEQ_ML_NO.NEXTVAL, #{reportReason}, 'N', SYSDATE, #{moveLineNo}, #{userNo})
+	</insert>
+</mapper>
