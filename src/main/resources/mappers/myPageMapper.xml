@@ -126,4 +126,14 @@
  		ORDER BY ML_NO
  	</select>
  	
+ 	<select id="favoriteLandmarkForMoveline" resultMap="landMark_rm">
+ 		SELECT LM_NO, LM_NAME, LM_IMG_RENAME
+		FROM BOOKMARK_LM A
+		JOIN LANDMARK USING(LM_NO)
+		JOIN LAND_IMG USING(LM_NO)
+		WHERE A.USER_NO = #{userNo}
+		AND LOCATION_TYPE = #{locationNum}
+		AND LM_IMG_LEVEL = 0
+ 	</select>
+ 	
 </mapper>

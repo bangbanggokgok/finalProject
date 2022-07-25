@@ -25,13 +25,13 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
-    <script>
+    <%-- <script>
       window.onload=function(){
         const num = 1;
         const locationNum = 100;
         loadLocation(locationNum, num);
       };
-    </script>
+    </script> --%>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -121,10 +121,10 @@
 		<c:if test="${!empty locationList}">
 			<c:forEach var="locations" items="${locationList}">
 				  <c:if test="${map.hihi != locations.locationNum}">
-            <span class="region-detail" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
+            <span class="region-detail" onclick="searchingLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 				  <c:if test="${map.hihi == locations.locationNum}">
-            <span class="region-detail clicked" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
+            <span class="region-detail clicked" onclick="searchingLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 			</c:forEach>
 		</c:if>
@@ -133,9 +133,9 @@
           <div class="search-wrapper">
             <div class="search">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input type="search" placeholder="랜드마크 검색" />
+              <input class='abc' type="search" placeholder="랜드마크 검색" />
             </div>
-            <!-- <div class="counter">게시글 수: <span>12</span></div> -->
+             <div class="counter">게시글 수: <span>12</span></div> 
           </div>
           <ul class="view-options">
             <li class="zoom">

@@ -47,9 +47,8 @@ function findEmail() {
         }
     });
 };
-// 이메일찾는 함수
-// 모달 실험해야함
 
+// 이메일찾는 함수
 function login() {
 
     if ($.trim($("input[name=email]").val()).length == 0) {
