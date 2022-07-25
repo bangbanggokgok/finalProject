@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
 <%-- <c:forEach var="landmark" items="${landmarkDetail}">
     <c:if test="${landMarkNo == landmark.landmarkList}">
         <c:set var="landMarkName" value="${landmark.landMarkName}" />
@@ -22,8 +21,8 @@
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet" />
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css">
-    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/reply-style.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-detail-style.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/reply-style.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
 
 </head>
@@ -48,33 +47,68 @@
                         <h1>${movelineDetail.movelineTitle}</h1>
                     </div>
 
-                    <div id="top-bottom">
+
+                    <div id="top-bottom-area">
                         <div>
-                            <%-- <span>
-                                <span>조회수</span>
-                                <span>213</span>
-                            </span> --%>
-                            <button type="button" class="btn-bookmark"
-													onclick="setBookmark(${moveline.movelineNo});">
+                            <button type="button" class="btn-bookmark" onclick="setBookmark(${movelineNo});">
                                 <span class="icon-bookmark">즐겨찾기</span>
                             </button>
                         </div>
-                        <c:choose>
-                            <c:when test="${!empty loginUser}"> 
-                                <div class="btn-area">
-                                    <button>수정하기</button>
-                                    <button>삭제하기</button>
-                                </div>
-                            </c:when>
-                            <c:otherwise>
-                                <div class="btn-area">
-                                    <button type="button" id="goToList"><a href="${contextPath}/moveline-main/goToList">목록으로</a></button>
-                                    
-                                </div>
-                            </c:otherwise>
-						</c:choose>
-                    </div>
+                        <div id="top-bottom">
+                        
+                            <%-- <div class="name1 name1-wrap">
+                                <div class="heart1">
+                                    <input class="" type="hidden" id="${movelineNo}" value=${movelineNo}>
 
+                                    <img
+                                        class="heart-img hide"
+                                        src="${contextPath}/resources/images/landmark/heart.png"
+                                        alt=""
+                                    />
+                                    <img
+                                        class="redHeart-img hide"
+                                        src="${contextPath}/resources/images/landmark/redHeart.png"
+                                        alt=""
+                                    />
+                                    <span style="width:75px; letter-spacing:-3px"></span>
+                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
+                                </div>
+                            </div> --%>
+                                
+                                <%-- <c:if test="${empty param.cp}">
+                                    <!-- 파라미터에 cp가 없을 경우 1 -->
+                                    <c:set var="cp" value="1" />
+                                </c:if>
+
+                                <c:if test="${!empty param.cp}">
+                                    <!-- 파라미터에 cp가 있을 경우 param.cp -->
+                                    <c:set var="cp" value="${param.cp}" />
+                                </c:if> --%>
+
+                            <c:choose>
+                                <c:when test="${loginUser.userNo == movelineDetail.userNo}">
+
+                                    <c:if test="${!empty loginUser}"> 
+                                        <div class="btn-area">
+                                            <button>수정하기</button>
+                                            <button id="deleteBtn" onclick="deleteMoveline(${movelineNo});">삭제하기</button>
+                                        </div>
+                                    </c:if>
+                                </c:when>
+                            </c:choose>
+                            <c:choose>
+                                <c:when test="${loginUser.userNo != movelineDetail.userNo}">
+                                    <c:if test="${!empty loginUser}">
+                                        <div class="btn-area">
+                                            <button type="button" id="goToList">신고하기</button>
+                                        </div>
+                                    </c:if>
+                                </c:when>
+                            </c:choose>
+                                    <%-- <button type="button" id="goToList">목록으로</button> --%>
+
+                        </div>
+                    </div>
                 </div>
                 
                 <div id="moveline-area">
@@ -123,6 +157,8 @@
 
                     <div id="moveline-content">
                         ${movelineDetail.movelineContent}
+                        ${movelineDetail.userNo}
+                        ${loginUserNo}
                     </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
@@ -134,28 +170,36 @@
                 </div>
 
 
+                        <%-- <c:forEach var="landmarkDetail" items="landmarkDetail">
+                            <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}">
+                        </c:forEach> --%>
                     <div class="landmark-detail">
                         <ul>
-                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                            <c:set var="landMarkName" value="${landmarkDetail.landMarkName}"/>
-                                <li class="landmark">${landMarkName}</li>
+                            <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                                <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
+                                    <li class="landmark" id="${landmarkDetail.landMarkNo}">${landmarkName}${landmarkDetail.landMarkNo}</li>
                             </c:forEach>
                         </ul>
-                        
-                        <div class="selected-landmark">롯데타워</div>
+                            <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                                <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
+                                    <div class="selected-landmark">${landMarkName}</div>
+                            </c:forEach>
+                        <div class="selected-landmark">${landMarkName}</div>
 
                         <ul>
-                            <li class="landmark" style="background-color: #bbd0ff; color: white;">사진보기</li>
+                            <li class="landmark">사진보기</li>
                             <li class="landmark">상세설명</li>
                         </ul>
                     </div>
 
                     <div id="landmark-images">
                     <%-- <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include> --%>
-                        <c:forEach var="landmarkImage" items="${landmarkImage}">
+                            <img class="slide-img" src="${contextPath}/resources/images/landmark/대왕암공원1.jpg" alt="first_img">
+
+                        <%-- <c:forEach var="landmarkImage" items="${landmarkImage}">
                             <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
                             <img class="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
-                        </c:forEach>
+                        </c:forEach> --%>
                     </div>
 
                     <div id="landmark-explain">
@@ -175,11 +219,15 @@
 
     </main>
 
+    <div class="modal">
+		<span id="modal-close">&times;</span> <img id="modal-image"
+			src="">
+	</div>
+
     <script>
         const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
     </script>
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
@@ -194,10 +242,12 @@
         var map = new kakao.maps.Map(container, options);
     </script>
 
+    <%-- <script src="${contextPath}/resources/js/moveline/temp.js"></script> --%>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
     
 
 </body>

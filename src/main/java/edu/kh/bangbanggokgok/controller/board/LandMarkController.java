@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.controller.board;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,10 +56,39 @@ public class LandMarkController {
 	@ResponseBody
 	@GetMapping("/list/nsync/{locationNum}")
 	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
-			Model model) {
+			@RequestParam(value = "page", defaultValue = "1", required = false) int page, Model model) {
+
+		Map<String, Object> map = new HashMap<String, Object>();
+
+		int limit = 10;
+
+		int listCount = service.getListCount(locationType);
+
+		int maxpage = (listCount + limit - 1) / limit;
+
+		int startpage = ((page - 1) / 10) * 10 + 1;
+
+		int endpage = startpage + 10 - 1;
+
+		if (endpage > maxpage)
+			endpage = maxpage;
+
+		LandMark landMark = new LandMark();
+		landMark.setLimit(limit);
+		landMark.setPage(page);
+		landMark.setStartpage(startpage);
+		landMark.setEndpage(endpage);
+		landMark.setMaxpage(maxpage);
 
 		// 랜드마크 특정 지역 목록 조회 서비스
-		Map<String, Object> map = service.selectLandMarkList(locationType);
+		List<LandMark> landMarkList = service.selectLandMarkList(locationType);
+
+		map.put("listCount", listCount);
+		map.put("landMarkList", landMarkList);
+		map.put("page", page);
+		map.put("startpage", startpage);
+		map.put("endpage", endpage);
+
 		return new Gson().toJson(map);
 	}
 
@@ -92,7 +122,7 @@ public class LandMarkController {
 		model.addAttribute("checkBookmark", checkBookmark);
 //		랜드마크 평균점수삽입
 		model.addAttribute("rankLandmark", rankLandmark);
-//		점수 삽입판단
+//		점수 삽입 판단
 		model.addAttribute("addPointCheck", addPointCheck);
 
 		return "landMark/land-detail";
@@ -101,16 +131,14 @@ public class LandMarkController {
 	// 게시글 작성 화면 전환
 	@GetMapping("/write/{mode}")
 	public String landWriteForm(@PathVariable String mode,
-			@RequestParam(value = "landmark-no", required = false, defaultValue = "0") int landmarkNo,
-			Model model,
-			HttpSession session,
-			RedirectAttributes ra) {
+			@RequestParam(value = "landmark-no", required = false, defaultValue = "0") int landmarkNo, Model model,
+			HttpSession session, RedirectAttributes ra) {
 
-		User loginUser = (User)session.getAttribute("loginUser");
-		if(loginUser == null) {
+		User loginUser = (User) session.getAttribute("loginUser");
+		if (loginUser == null) {
 			return redirectHome(ra);
 		}
-		
+
 		if (mode.equals("update")) {
 			LandMarkDetail landmarkDetail = service.selectLandmarkDetail(landmarkNo);
 			landmarkDetail.setLandMarkContent(Util.newLineClear(landmarkDetail.getLandMarkContent()));
@@ -190,37 +218,38 @@ public class LandMarkController {
 	@ResponseBody
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmark")
 	public int landmarkBookmark(@PathVariable("landMarkNo") String landmarkNo, @RequestParam("userNo") String loginNo) {
+
 		int result = service.landmarkBookmark(loginNo, landmarkNo);
 
-		//이미 있는 북마크 
+		// 이미 있는 북마크
 		if (result > 0) {
 			result = 3; // 있으면 1 - 3으로 전환
 		}
-		
-		//없을 경우 삽입
+
+		// 없을 경우 삽입
 		if (result == 0) {
 			result = service.landmarkBookmarkInsert(loginNo, landmarkNo);
 		}
 		return result;
 	}
 
-	//북마크 삭제
+	// 북마크 삭제
 	@ResponseBody
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/landmarkBookmarkDelete")
-	public double landmarkBookmarkDelete(@PathVariable("landMarkNo") String landmarkNo,
+	public int landmarkBookmarkDelete(@PathVariable("landMarkNo") String landmarkNo,
 			@RequestParam("userNo") String loginNo) {
 		return service.landmarkBookmarkDelete(loginNo, landmarkNo);
 	}
 
-	//별점 삽입
+	// 별점 삽입
 	@ResponseBody
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/insert-landmark-rankPoint")
 	public double insertLandmarkRankPoint(@RequestParam("rankPoint") String rankPoint,
 			@RequestParam("userNo") String userNo, @PathVariable("landMarkNo") int landmarkNo) {
 		return service.insertRankPoint(rankPoint, userNo, landmarkNo);
 	}
-	
-	//별점 삭제
+
+	// 별점 삭제
 	@ResponseBody
 	@GetMapping("/detail/{locationNum}/{landMarkNo}/delet-landmark-rankPoint")
 	public double deleteLandmarkRankPoint(@RequestParam("userNo") String userNo,
@@ -228,9 +257,9 @@ public class LandMarkController {
 		return service.deleteRankPoint(userNo, landmarkNo);
 	}
 
-	
 	public String redirectHome(RedirectAttributes ra) {
 		ra.addFlashAttribute("message", "로그인 후 이용 바람");
 		return "redirect:/user/login-page";
 	}
+
 }

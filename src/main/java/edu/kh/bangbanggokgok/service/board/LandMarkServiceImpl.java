@@ -26,20 +26,6 @@ public class LandMarkServiceImpl implements LandMarkService {
 	@Autowired
 	private LandMarkDAO dao;
 
-	// 랜드마크 특정 지역 목록 조회
-	@Override
-	public Map<String, Object> selectLandMarkList(int locationType) {
-
-//		int ListCount = dao.getListCount(locationType);
-
-		List<LandMark> landMarkList = dao.selectLandMarkList(locationType);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-//		map.put("ListCount",ListCount);
-		map.put("landMarkList", landMarkList);
-
-		return map;
-	}
 
 	// 랜드마크 전체 목록 조회
 	@Override
@@ -274,6 +260,18 @@ public class LandMarkServiceImpl implements LandMarkService {
 		}
 
 		return -100;
+	}
+
+
+	@Override
+	public int getListCount(int locationType) {
+		return dao.getListCount(locationType);
+	}
+
+	@Override
+	public List<LandMark> selectLandMarkList(int locationType) {
+		
+		return dao.selectLandMarkPagination(locationType);
 	}
 
 }

@@ -225,3 +225,22 @@ cite {
   height: 70px;
   overflow: hidden;
 }
+.pagination{
+  display: flex;
+  justify-content: center;
+}
+.pagination > a{
+  width: 30px;
+  height: 30px;
+  border: 1px solid;
+  text-align: center;
+  line-height: 30px;
+  text-decoration: none;
+  color: gray;
+  background-color: #f4f4f9;
+}
+.selectpage{
+  color: #fff !important; 
+  background-color: #13294b !important;
+  font-weight: bold;
+}

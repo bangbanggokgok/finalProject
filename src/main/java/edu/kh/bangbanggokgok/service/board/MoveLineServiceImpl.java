@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.kh.bangbanggokgok.dao.board.MoveLineDAO;
+import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
 import edu.kh.bangbanggokgok.vo.board.Location;
@@ -188,9 +189,28 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.selectMovelineHashtag(movelineNo);
 	}
 
-	
-	
+	// 클릭된 랜드마크 이름 세팅
+	@Override
+	public String setLandmarkName(int landmarkNo) {
+		return dao.setLandmarkName(landmarkNo);
+	}
 
+	// 특정 지역에 따른 랜드마크 조회
+	@Override
+	public List<LandMark> connectLocation(String locationName) {
+		return dao.connectLocation(locationName);
+	}
+
+
+	// 게시글 삭제 서비스 구현
+	@Override
+	public int deleteMoveline(int movelineNo) {
+		return dao.deleteMoveline(movelineNo);
+	}
+
+	
+	
+	
 	
 	
 	

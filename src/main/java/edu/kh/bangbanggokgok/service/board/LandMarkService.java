@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.Location;
 
@@ -19,7 +20,7 @@ public interface LandMarkService {
 	 * @param locationType
 	 * @return map
 	 */
-	Map<String, Object> selectLandMarkList(int locationType);
+	List<LandMark> selectLandMarkList(int locationType);
 
 	/** 랜드마크 전체 목록 조회 서비스
 	 * @param num 
@@ -70,6 +71,8 @@ public interface LandMarkService {
 	double deleteRankPoint(String userNo, int landmarNo);
 
 	int addPointCheck(int landmarkNo, int userNo);
+
+	int getListCount(int locationType);
 
 	
 }

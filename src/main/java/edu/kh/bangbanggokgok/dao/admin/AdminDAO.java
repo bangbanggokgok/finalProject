@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
+import edu.kh.bangbanggokgok.vo.admin.ReportReply;
 import edu.kh.bangbanggokgok.vo.notice.NoticeDetail;
 import edu.kh.bangbanggokgok.vo.notice.NoticeImage;
 import edu.kh.bangbanggokgok.vo.notice.Pagination;
@@ -28,7 +29,6 @@ public class AdminDAO {
 	public int insertNotice(NoticeDetail detail) {
 		
 		int result = sqlSession.insert("adminMapper.insertNotice", detail);
-		
 		if (result > 0) result = detail.getNoticeNo();
 		return result;
 	}
@@ -101,7 +101,7 @@ public class AdminDAO {
 	 * @param list
 	 * @return
 	 */
-	public List<Question> selectReportList(Pagination pagination, String list) {
+	public List<ReportMoveLine> selectReportList(Pagination pagination, String list) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
@@ -145,10 +145,44 @@ public class AdminDAO {
 	 * @param list
 	 * @return
 	 */
-	public List<Question> selectReplyReport(Pagination pagination, String list) {
+	public List<ReportReply> selectReplyReport(Pagination pagination, String list) {
 		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("adminMapper.selectReplyReport", list, rowBounds);
+	}
+
+	/** 활동 회원 수 조회
+	 * @param list
+	 * @return
+	 */
+	public int getSignUpUserCount(String list) {
+		return sqlSession.selectOne("adminMapper.getSignUpUserCount", list);
+	}
+
+
+	/** 활동 회원 목록 조회
+	 * @param pagination
+	 * @param list
+	 * @return
+	 */
+	public List<User> selectSignUpUser(Pagination pagination, String list) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("adminMapper.selectSignUpUser", list, rowBounds);
+	}
+
+	/** 탈퇴 회원 수 조회
+	 * @param list
+	 * @return
+	 */
+	public int getSecessionCount(String list) {
+		return sqlSession.selectOne("adminMapper.getSecessionCount", list);
+	}
+
+	public List<User> selectSecessionUser(Pagination pagination, String list) {
+		int offset = (pagination.getCurrentPage() - 1) * pagination.getLimit();
+		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
+		return sqlSession.selectList("adminMapper.selectSecessionUser", list, rowBounds);
 	}
 	
 	

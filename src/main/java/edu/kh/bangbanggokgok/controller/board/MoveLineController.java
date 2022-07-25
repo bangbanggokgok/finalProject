@@ -25,13 +25,17 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.google.gson.Gson;
 
 import edu.kh.bangbanggokgok.service.board.MoveLineService;
+import edu.kh.bangbanggokgok.service.reply.ReplyService;
+import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
+import edu.kh.bangbanggokgok.vo.board.Location;
 import edu.kh.bangbanggokgok.vo.board.MoveLine;
 import edu.kh.bangbanggokgok.vo.board.MoveLineBookmark;
 import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
+import edu.kh.bangbanggokgok.vo.reply.Reply;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.User;
 
@@ -44,6 +48,9 @@ public class MoveLineController {
 	@Autowired
 	private MoveLineService service;
 	
+	@Autowired
+	private ReplyService replyService;
+	
 	
 	// 코스 구분 페이지 조회
 	@GetMapping("/list")
@@ -53,17 +60,44 @@ public class MoveLineController {
 	}
 	
 	
+	// 코스 작성 페이지 조회
+	@GetMapping("/list/write")
+	public String movelineWrite(Model model) {
+		
+		return "moveline/movelineWrite";
+	}
+	
+	
+	// 특정 지역에 따른 랜드마크 조회
+	@GetMapping("/list/write/connectLocation")
+	public String connectLocation(@RequestParam(value="locationName", required=true) String locationName,
+								  LandMark landmark,
+								  Model model,
+								  HttpServletRequest req,
+								  RedirectAttributes ra) {
+		
+		System.out.println("locationName : " + locationName);
+		
+		List<LandMark> landmarkList =  service.connectLocation(locationName);
+		model.addAttribute("landmarkList", landmarkList);
+		
+		System.out.println("landmarkList : " + landmarkList.size());
+		
+		return "moveline/movelineWrite";
+	}
 	
 	@GetMapping("/goToList")
 	public String goToList(@RequestHeader("referer") String referer,
 							Model model,
-							RedirectAttributes ra) {
+							RedirectAttributes ra,
+							HttpServletRequest req) {
 		
-	   String path = null;
+		String path = null;
 		
 		path = referer;
+		path = req.getHeader("referer");
 		
-		return "redirect:" + path;
+		return path;
 	}
 	
 	
@@ -108,7 +142,7 @@ public class MoveLineController {
 			
 			) {
 		
-		Map<String, Object> map = null;
+		Map<String, Object> map = null;	
 		
 		paramMap.put("cp", cp);
 		paramMap.put("MLHashTag", MLHashTag);
@@ -230,27 +264,77 @@ public class MoveLineController {
 		List<LandMarkIMG> landmarkImage = service.selectLandmarkImage(movelineNo);
 		List<MoveLineHashTag> movelineHashtag = service.selectMovelineHashtag(movelineNo);
 		
-//		LandMarkDetail landmarkDetail = service.selectLandmarkDetail(movelineNo);
-		
-//		MoveLineDetail detailHash = service.selectDetailHash(movelineNo);
-//		MoveLineDetail detailIndex = service.selectDetailIndex(movelineNo);
 		model.addAttribute("movelineDetail", movelineDetail);
 		model.addAttribute("movelineImage", movelineImage);
 		model.addAttribute("movelineHashtag", movelineHashtag);
-		
-		
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		model.addAttribute("landmarkImage", landmarkImage);
 		
-		System.out.println("movelineDetail : " + movelineDetail);
-		System.out.println("landmarkDetail : " + landmarkDetail.size());
-		System.out.println("landmarkImageDetail : " + landmarkImage.size());
+		List<Reply> rList = replyService.selectReplyList(movelineNo);
+   	 	model.addAttribute("rList", rList);
+		
+	   	 User loginUser = (User)session.getAttribute("loginUser");
+	     
+	     int UserNo = 0;
+	     
+	     if(loginUser != null) {
+	    	 UserNo = loginUser.getUserNo();
+	     }
 		
 		return "moveline/movelineDetail";
 	}
 	
 	
+	// 랜드마크 이름 조회 - 상세 페이지 랜드마크 이름 정렬용
+	@GetMapping("/detail/setLandmarkName")
+	public String setLandmarkName(@RequestParam (value="landmarkNo", required=true ) int landmarkNo) {
+		
+		String landmarkName = service.setLandmarkName(landmarkNo);
+		
+		System.out.println("landmarkName : " + landmarkName);
+		
+		return landmarkName;
+	}
 	
+	
+	
+	// 게시글 삭제
+	@GetMapping("/detail/delete")
+	public String deleteMoveline(
+//								@PathVariable("movelineNo") int movelineNo,
+			   					 @RequestHeader("referer") String referer,
+			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
+			   					 RedirectAttributes ra,
+			   					 Model model
+			   					 ) {
+		int result = 0;
+		
+		result = service.deleteMoveline(movelineNo);
+		  
+		System.out.println("deleteMoveline : " + movelineNo);
+		
+//		String message = null;
+//		String path = null;
+//		   
+//		if(result > 0) {
+//			
+//			System.out.println("result : " + result);
+//			
+//			message = "코스를 삭제했습니다.";
+//			path = "moveline-main/list";
+//			   
+//		} else {
+//			   
+//			message = "코스 삭제가 실패했습니다.";
+//			path = referer;
+//			   
+//		}
+//		   
+//		ra.addFlashAttribute("message",message);
+		String path = null;
+		path = "moveline-main/list";
+		return "redirect:" + path;
+		}
 	
 	
 	
