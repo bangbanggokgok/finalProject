@@ -45,7 +45,7 @@ public class LoginController {
 		if (result != null) {
 			model.addAttribute("loginUser", result);
 			ra.addFlashAttribute("message", "로그인 성공");
-			path = "redirect:/";
+			path = "redirect:/main";
 		} else {
 			ra.addFlashAttribute("message", "실패");
 			path = "redirect:/user/login-page";
@@ -85,7 +85,9 @@ public class LoginController {
 	
 	// 로그아웃
 	@GetMapping("logout")
-	public String logout(SessionStatus status) {
+	public String logout(SessionStatus status,
+			RedirectAttributes ra) {
+		ra.addFlashAttribute("message","로그아웃 성공");
 		status.setComplete();
 		return "redirect:/";
 	}
