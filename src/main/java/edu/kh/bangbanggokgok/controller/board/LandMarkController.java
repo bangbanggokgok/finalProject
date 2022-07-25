@@ -60,7 +60,7 @@ public class LandMarkController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		int limit = 10;
+		int limit = 9;
 
 		int listCount = service.getListCount(locationType);
 
