@@ -41,13 +41,13 @@ function loadLocation(locationNum, pageNo) {
                     //     </ul>
                     //   </div>
                 }
-
+                // 페이지관련 로직
                 const paginationUl = document.createElement("ul");
                 for(let i = 0;i<map.pagination.endPage;i++){
                     let j = i+1
                     const pageNumber = document.createElement("li");
                     const a = document.createElement("a");
-                    a.innerText = j
+                    a.innerText = j;
                     a.setAttribute("onclick", "loadLocation(" + locationNum + "," + j + ")");
                     a.setAttribute("style", "cursor:pointer;");
                     pageNumber.append(a);
