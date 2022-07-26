@@ -18,6 +18,8 @@ public class LandMark {
 	private String userName;
 	private int locationType;
 	private String locationName;
+	private double landmarkX;
+	private double landmarkY;
 	private int limit;
 	private int page;
 	private int startpage;

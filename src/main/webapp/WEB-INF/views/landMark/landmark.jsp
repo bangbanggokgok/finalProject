@@ -155,7 +155,7 @@
         </div>
 
         <ol class="image-list grid-view test" id="landMakrList">
-        <%-- <c:if test="${!empty landmarkList}">
+        <c:if test="${!empty landmarkList}">
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> 
@@ -172,7 +172,7 @@
         </c:if>
         <c:if test="${empty landMarkList}">
           <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
-        </c:if> --%>
+        </c:if>
         </ol>
         <div class="pagination">
         </div>
