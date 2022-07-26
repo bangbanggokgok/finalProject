@@ -32,6 +32,8 @@ public class MoveLineDetail {
 	private String profileImage;
 
 	private List<MoveLineImage> imageList;
+	private List<LandMarkIMG> landmarkImageList;
+	
 	private String thumbnail;
 
 	private int landmarkIndex;

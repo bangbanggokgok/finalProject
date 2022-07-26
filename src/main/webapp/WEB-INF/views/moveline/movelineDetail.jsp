@@ -8,8 +8,25 @@
         <c:set var="landMarkContent" value="${landmark.landMarkContent}" />
         <c:set var="landMarkAddress" value="${landmark.landMarkAddress}" />
         <c:set var="landmarkIndex" value="${landmark.landmarkIndex}" />
+        <c:set var="landMarkNo" value="${landmark.landMarkNo}"/>
     </c:if>
 </c:forEach> --%>
+<%-- <c:forEach var="i" begin="${landmarkDetail.landMarkNo}">
+    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo[i]}"/>
+</c:forEach> --%>
+
+
+<%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+	<c:if test="${landMarkNo == landmarkDetail.landMarkNo}">
+		<c:set var="landmarkName" value="${landmarkDetail.landmarkName}" />
+		<c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
+	</c:if>
+</c:forEach> --%>
+
+<%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}"/>
+</c:forEach> --%>
+
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -17,7 +34,7 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>코스 디테일</title>
+   <title>코스 디테일${landMarkNo}</title>
 
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700" rel="stylesheet" />
 
@@ -167,49 +184,34 @@
                         <div id="map"></div>
                     </div>
 
-
                 </div>
 
-
-                        <%-- <c:forEach var="landmarkDetail" items="landmarkDetail">
-                            <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}">
-                        </c:forEach> --%>
-                    <div class="landmark-detail">
-                        <ul>
-                            <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                                <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
-                                    <li class="landmark" id="${landmarkDetail.landMarkNo}">${landmarkName}${landmarkDetail.landMarkNo}</li>
-                            </c:forEach>
-                        </ul>
-                            <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                                <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
-                                    <div class="selected-landmark">${landMarkName}</div>
-                            </c:forEach>
-                        <div class="selected-landmark">${landMarkName}</div>
-
-                        <ul>
-                            <li class="landmark">사진보기</li>
-                            <li class="landmark">상세설명</li>
-                        </ul>
-                    </div>
-                    <div id="landmark-images2">
-                        <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
-                            <%-- <img class="slide-img" src="${contextPath}/resources/images/landmark/대왕암공원1.jpg" alt="first_img"> --%>
-
-                        <%-- <c:forEach var="landmarkImage" items="${landmarkImage}">
-                            <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
-                            <img class="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
-                        </c:forEach> --%>
-                    </div>
-                    <div id="landmark-explain">
+                <div class="landmark-detail">
+                    <ul>
                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                            <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
+                            <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                            <li class="landmark">${landMarkContent}</li>
+                                <li class="landmark" id="${landmarkNo}" value="${landMarkContent}">${landmarkName}${landmarkNo}</li>
                         </c:forEach>
-                        
-                    </div>
+                    </ul>
+
+                    <ul>
+                        <li class="showImage">사진보기</li>
+                        <li class="showContent">상세설명</li>
+                    </ul>
+                </div>
+                    <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
+
+                <%-- <div id="landmark-explain">
+                    <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                        <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+                        <li class="landmark">${landMarkContent}</li>
+                    </c:forEach>
+                </div> --%>
                 
             </form>
+            
                 <!-- 댓글 -->
                 <jsp:include page="/WEB-INF/views/moveline/movelineReply.jsp"/>
         </div>
@@ -241,14 +243,14 @@
         var map = new kakao.maps.Map(container, options);
     </script>
 
-    <%-- <script src="${contextPath}/resources/js/moveline/temp.js"></script> --%>
-    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
-    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
+    
+
+</body>
+    <script src="${contextPath}/resources/js/moveline/temp.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    
-
-</body>
+    <%-- <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script> --%>
+    <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 </html>

@@ -404,7 +404,7 @@ body {
   height: 100%;
   image-rendering: -webkit-optimize-contrast;
   transform: translateZ(0);
-  object-fit: fill;
+  object-fit: cover;
   /* height:50%; */
   /* position: absolute; */
 }
@@ -573,7 +573,7 @@ cite {
   align-items: center;
 }
 
-.rank-text{
+.rank-text {
   display: flex;
   justify-content: center;
   align-items: center;
