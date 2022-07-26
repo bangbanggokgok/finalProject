@@ -525,6 +525,9 @@ body::-webkit-scrollbar {
     padding: 15px;
 }
 
+.landmark-data{
+    width: 700px;
+}
 .land-img {
     width: 50px;
     height: 50px;
