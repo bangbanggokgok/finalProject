@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
+import edu.kh.bangbanggokgok.vo.admin.ReportReply;
 
 @Repository
 public class ReportDAO {
@@ -17,5 +18,13 @@ public class ReportDAO {
 	 */
 	public int reportML(ReportMoveLine report) {
 		return sqlSession.insert("reportMapper.reportML", report);
+	}
+
+	/** 댓글 신고 DAO
+	 * @param report
+	 * @return result
+	 */
+	public int reportReply(ReportReply report) {
+		return sqlSession.insert("reportMapper.reportReply", report);
 	}
 }

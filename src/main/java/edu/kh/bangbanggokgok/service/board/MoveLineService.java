@@ -163,7 +163,7 @@ public interface MoveLineService {
 	 * @param landmarkNo
 	 * @return
 	 */
-	List<LandMark> setLandmarkContent(int landMarkNo);
+	String setLandmarkContent(int landmarkNo);
 
 
 

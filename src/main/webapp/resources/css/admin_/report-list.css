@@ -83,9 +83,7 @@ li {
 }
 
 .number {
-    margin-left: 0px;
-    margin-right: 21px;
-    width: 48px;
+    width: 40px;
     height: 20px;
     line-height: 20px;
     border-radius: 5px;
@@ -102,7 +100,7 @@ li {
     flex: 1 1 auto;
     display: inline;
     height: 20px;
-    width: 60px;
+    width: 100px;
     text-align: center;
 }
 
@@ -111,7 +109,7 @@ li {
     flex: 1 1 auto;
     display: inline;
     height: 20px;
-    width: 60px;
+    width: 30px;
     text-align: center; 
 }
 
@@ -120,7 +118,7 @@ li {
     flex: 1 1 auto;
     display: inline;
     height: 20px;
-    width: 60px;
+    width: 50px;
     text-align: center;
 }
 
@@ -129,7 +127,7 @@ li {
     flex: 1 1 auto;
     display: inline;
     height: 20px;
-    width: 300px;
+    width: 50px;
     text-align: center;
 }
 
@@ -138,16 +136,7 @@ li {
     flex: 1 1 auto;
     display: inline;
     height: 20px;
-    width: 60px;
-    text-align: center;
-}
-
-.date {
-    -webkit-box-flex: 1;
-    flex: 1 1 auto;
-    display: inline;
-    height: 20px;
-    width: 80px;
+    width: 30px;
     text-align: center;
 }
 
@@ -232,4 +221,17 @@ li {
 
 #reply {
     color: rgb(51, 151, 255);
+}
+
+#wait{
+    color: rgb(51, 151, 255); 
+}
+
+.reply {
+    -webkit-box-flex: 1;
+    flex: 1 1 auto;
+    display: inline;
+    height: 20px;
+    width: 100px;
+    text-align: center;
 }

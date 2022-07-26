@@ -1,6 +1,7 @@
 const landmark = document.getElementsByClassName("landmark");
 const selected = document.getElementsByClassName("selected-landmark");
 const showContent = document.querySelector(".showContent");
+const container2 = document.querySelector(".container2");
 
 let landmarkNo;
 
@@ -96,17 +97,218 @@ for (let i = 0; i < landmark.length; i++) {
     });
 }
 
+
+    
+
+
+
+
+
+
+
+
+
+
 // 상세설명 비동기
 showContent.addEventListener("click", function () {
 
     alert(landmarkNo)
+    
+    $.ajax({
+        url: contextPath + "/moveline-main/detail/setLandmarkContent",
+        data: { "landmarkNo": landmarkNo },
+        type: "get",
+        dataType: "JSON",
+        success: function (landmarkContent) {
+            
+            const entire = document.getElementById("entire"); // 상세설명 내용 제거
 
+            console.log(landmarkContent)
+
+            entire.innerHTML = "";
+
+            const contentArea = document.createElement("div");
+            contentArea.setAttribute("id", "landmark-explain");
+
+            const inputContent = document.createElement("li");
+            inputContent.classList.add(".landmark");
+            inputContent.innerHTML = landmarkContent;
+            console.log(landmarkContent);
+            entire.append(contentArea);
+            contentArea.append(inputContent);
+
+        }
+    })
 });
 
-$(".showContent").bind("click", function () {
-    var oData = test($(this).parent().parent()); //이넘이 자신 상위에 상위 요소 가지고 옴.
-    test(oData);
-});
+// showImage.addEventListener("click", function () {
+//     alert(landmarkNo)
+//     landmarkNo = this.getAttribute("class");
+
+//     // landmarkNo = this.getAttribute("id");
+//     // var click_val = $("#id").val();
+//     // alert(click_val);
+
+//     // alert(this.getAttribute("id")); 
+//     // alert(this.getAttribute("value")); 
+
+//     $.ajax({
+//         url: contextPath + "/moveline-main/detail/setLandmarkImages",
+//         data: { "landmarkNo": landmarkNo },
+//         type: "get",
+//         dataType: "JSON",
+//         success: function (landmarkImageList) {
+
+//             alert(landmarkImageList);
+//             // alert(landmarkContentList);
+
+//             console.log("size : " + landmarkImageList[0].landMarkReName);
+//             const test1 = document.getElementById("test1"); // 사진 아래 제거
+//             const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
+//             test1.innerHTML = "";
+//             test2.innerHTML = "";
+
+//             test1.style.left = "0%";
+
+//             let leftSize = 0;
+
+//             // 행
+//             for (let simpleList of landmarkImageList) {
+//                 console.log("reName Log : " + simpleList.landMarkReName);
+//                 const slide2 = document.createElement("li");
+//                 slide2.setAttribute("id", "landmark-images");
+//                 slide2.classList.add("slide2");
+
+//                 slide2.style.left = (leftSize)  + "%";
+//                 leftSize += 100;
+
+//                 const slideImg2 = document.createElement("img");
+//                 slideImg2.setAttribute("src", contextPath + simpleList.landMarkReName);
+
+//                 test1.append(slide2);
+//                 slide2.append(slideImg2);
+//             }
+
+
+//             let pager = document.querySelector(".pager2");
+//             pager.innerHTML = "";
+
+//             for (let i= 0 ; i<landmarkImageList.length ; i++) {
+//                 const span = document.createElement("span");
+//                 span.setAttribute("data-index", i);
+//                 span.innerText = i+1;
+
+//                 if(i == 0){
+//                     span.classList.add("active");
+//                 }
+//                 pager.append(span);
+
+//                 pager.addEventListener('click',function(event){ 
+//                     var pagerNum2 = event.target.innerText - 1;
+//                     goToSlide2(pagerNum2);
+//                 });
+//             }
+
+
+//             $pager2 = document.querySelector('.pager2');
+//             $slide2 = document.querySelectorAll('.slide2');
+//             $currentIndex2 = 0;
+//             $slideCount2 = $slide2.length;
+//             $pagerBtn2 = document.querySelectorAll('.pager2 span');
+//             // for(let content of landMarkContent){
+//             //     console.log("content log : " + content.landMarkContent)
+
+//             // }
+
+
+
+//         },
+
+//         error: function (req, status, error) {
+//             console.log("실패")
+//             console.log(req.responseText);
+//         }
+//     });
+// });
+
+
+
+// showContent.addEventListener("click", function () {
+
+//     $.ajax({
+//         url: contextPath + "/moveline-main/detail/setLandmarkImages",
+//         data: { "landmarkNo": landmarkNo },
+//         type: "get",
+//         dataType: "JSON",
+//         success: function (landmarkContent) {
+            
+//             console.log("size : " + landmarkImageList[0].landMarkReName);
+//                     const test1 = document.getElementById("test1"); // 사진 아래 제거
+//                     const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
+//                     test1.innerHTML = "";
+//                     test2.innerHTML = "";
+
+//                     test1.style.left = "0%";
+
+//                     let leftSize = 0;
+
+//                     // 행
+//                     for (let simpleList of landmarkImageList) {
+//                         console.log("reName Log : " + simpleList.landMarkReName);
+//                         const slide2 = document.createElement("li");
+//                         slide2.setAttribute("id", "landmark-images");
+//                         slide2.classList.add("slide2");
+
+//                         slide2.style.left = (leftSize)  + "%";
+//                         leftSize += 100;
+
+//                         const slideImg2 = document.createElement("img");
+//                         slideImg2.setAttribute("src", contextPath + simpleList.landMarkReName);
+
+//                         test1.append(slide2);
+//                         slide2.append(slideImg2);
+//                     }
+
+
+//                     let pager = document.querySelector(".pager2");
+//                     pager.innerHTML = "";
+
+//                     for (let i= 0 ; i<landmarkImageList.length ; i++) {
+//                         const span = document.createElement("span");
+//                         span.setAttribute("data-index", i);
+//                         span.innerText = i+1;
+
+//                         if(i == 0){
+//                             span.classList.add("active");
+//                         }
+//                         pager.append(span);
+
+//                         pager.addEventListener('click',function(event){ 
+//                             var pagerNum2 = event.target.innerText - 1;
+//                             goToSlide2(pagerNum2);
+//                         });
+//                     }
+
+
+//                     $pager2 = document.querySelector('.pager2');
+//                     $slide2 = document.querySelectorAll('.slide2');
+//                     $currentIndex2 = 0;
+//                     $slideCount2 = $slide2.length;
+//                     $pagerBtn2 = document.querySelectorAll('.pager2 span');
+//                     // for(let content of landMarkContent){
+//                     //     console.log("content log : " + content.landMarkContent)
+
+//                     // }
+
+     
+//         }
+//     })
+// });
+
+// $(".showContent").bind("click", function () {
+//     var oData = test($(this).parent().parent()); //이넘이 자신 상위에 상위 요소 가지고 옴.
+//     test(oData);
+// });
 
 
 
