@@ -20,9 +20,4 @@ public class LandMark {
 	private String locationName;
 	private double landmarkX;
 	private double landmarkY;
-	private int limit;
-	private int page;
-	private int startpage;
-	private int endpage;
-	private int maxpage;
 }

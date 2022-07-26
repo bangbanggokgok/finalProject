@@ -41,8 +41,6 @@
 		ORDER BY MB_IMG_LEVEL
 	</select>
 	
-	
-	
 	<!-- 공지사항 전체 게시글 수 조회 -->
 	<select id="getListCount" resultType="_int">
 		SELECT COUNT(*) FROM MANAGER_BOARD

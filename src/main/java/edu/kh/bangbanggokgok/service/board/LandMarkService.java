@@ -5,11 +5,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
-import edu.kh.bangbanggokgok.vo.board.Location;
+import edu.kh.bangbanggokgok.vo.board.Pagination2;
 
 
 public interface LandMarkService {
@@ -20,7 +19,7 @@ public interface LandMarkService {
 	 * @param locationType
 	 * @return map
 	 */
-	List<LandMark> selectLandMarkList(int locationType);
+	List<LandMark> selectLandMarkList(int locationType, int pageNo);
 
 	/** 랜드마크 전체 목록 조회 서비스
 	 * @param num 
@@ -72,7 +71,10 @@ public interface LandMarkService {
 
 	int addPointCheck(int landmarkNo, int userNo);
 
-	int getListCount(int locationType);
+//	int getListCount(int locationType);
 
+	List<LandMark> rankLandMarkList(int locationType);
+
+	int selectLandmarkCount(int locationType);
 	
 }

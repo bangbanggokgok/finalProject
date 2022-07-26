@@ -265,6 +265,8 @@ public class MoveLineController {
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		model.addAttribute("landmarkImage", landmarkImage);
 
+		System.out.println("landmarkDetail.landmarkContent" + landmarkDetail);
+		
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
 
@@ -279,6 +281,34 @@ public class MoveLineController {
 		return "moveline/movelineDetail";
 	}
 
+	
+	
+	// 특정 랜드마크 이미지 세팅 목록 조회
+	@ResponseBody
+	@GetMapping("/detail/setLandmarkImages")
+	public String setLandmarkImages(
+//									@PathVariable("landMarkNo") int landMarkNo,
+			 						Model model,
+									@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+									@RequestParam(value="landmarkNo", required=true) int landmarkNo,
+									HttpServletRequest req,
+									RedirectAttributes ra
+									) {
+		
+		System.out.println("landmarkNo");
+		
+		List<LandMarkIMG> landmarkImageList = service.setLandmarkImages(landmarkNo);
+		
+		List<LandMark> landmarkContentList =  service.setLandmarkContent(landmarkNo);
+		
+		model.addAttribute("landmarkContentList", landmarkContentList);
+
+		System.out.println("landmarkContentList size : " + landmarkContentList.size());
+		System.out.println("landmarkImageList size : " + landmarkImageList.size());
+		return new Gson().toJson(landmarkImageList);
+
+	}
+	
 	// 랜드마크 이름 조회 - 상세 페이지 랜드마크 이름 정렬용
 	@GetMapping("/detail/setLandmarkName")
 	public String setLandmarkName(@RequestParam(value = "landmarkNo", required = true) int landmarkNo) {
@@ -288,42 +318,48 @@ public class MoveLineController {
 		System.out.println("landmarkName : " + landmarkName);
 
 		return landmarkName;
+
 	}
 
-	// 게시글 삭제
+	// 코스 삭제
 	@GetMapping("/detail/delete")
 	public String deleteMoveline(
-//								@PathVariable("movelineNo") int movelineNo,
+//								 @PathVariable("movelineNo") int movelineNo,
 			   					 @RequestHeader("referer") String referer,
 			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
-			   					 RedirectAttributes ra,
-			   					 Model model) {
+		   					 RedirectAttributes ra
+			   					 ) {
+		
+		//int result = service.deleteMoveline(movelineNo);
+
+			   					 //RedirectAttributes ra,
+			   					 //Model model) {
 		int result = 0;
 		
 		result = service.deleteMoveline(movelineNo);
 		  
 //		System.out.println("deleteMoveline : " + movelineNo);
+
 		
-//		String message = null;
-//		String path = null;
-//		   
-//		if(result > 0) {
-//			
-//			System.out.println("result : " + result);
-//			
-//			message = "코스를 삭제했습니다.";
-//			path = "moveline-main/list";
-//			   
-//		} else {
-//			   
-//			message = "코스 삭제가 실패했습니다.";
-//			path = referer;
-//			   
-//		}
-//		   
-//		ra.addFlashAttribute("message",message);
+		String message = null;
 		String path = null;
-		path = "moveline-main/list";
+		   
+		if(result > 0) {
+			
+			System.out.println("result : " + result);
+			
+			message = "코스를 삭제했습니다.";
+			path = "/moveline-main";
+			   
+		} else {
+			   
+			message = "코스 삭제가 실패했습니다.";
+		    path = referer;
+			   
+		}
+		   
+		ra.addFlashAttribute("message",message);
+		
 		return "redirect:" + path;
 	}
 
