@@ -156,7 +156,7 @@ public interface MoveLineService {
 	 * @param landMarkNo
 	 * @return list
 	 */
-	List<LandMarkIMG> setLandmarkImages(int landMarkNo);
+	List<LandMarkDetail> setLandmarkImages(int landMarkNo);
 
 
 	/** 특정 랜드마크 내용 세팅 목록 조회 서비스

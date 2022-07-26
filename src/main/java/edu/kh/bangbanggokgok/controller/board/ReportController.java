@@ -27,15 +27,23 @@ public class ReportController {
 	private ReportService service;
 	
 	@GetMapping("/moveline/{movelineNo}")
+
 	public String reportML(@PathVariable("movelineNo") int movelineNo) {
 		return "moveline/movelineReport";
 	}
 	
 	@PostMapping("/moveline/{movelineNo}")
 	public String reportML(@PathVariable("movelineNo") int movelineNo,
+
 						@RequestParam(value="report" , required=false) String reportReason,
-						@ModelAttribute("loginUser") User loginUser, ReportMoveLine report
-						,HttpServletRequest req, RedirectAttributes ra) {
+						@ModelAttribute("loginUser") User loginUser,
+						ReportMoveLine report,
+						HttpServletRequest req, RedirectAttributes ra) {
+
+		
+		System.out.println("insert controller : " + movelineNo);
+		
+
 		report.setMoveLineNo(movelineNo);
 		report.setUserNo(loginUser.getUserNo());
 		report.setReportReason(reportReason);
@@ -46,6 +54,7 @@ public class ReportController {
 		String path = null;
 		if(result > 0) {
 			path = "../../moveline-main/detail/" + movelineNo;
+			message = "신고 완료";
 			message = "코스신고 완료";
 		}else {
 			path = req.getHeader("referer");

@@ -57,7 +57,7 @@
 				</div>
 				<section class="submitBar">
 					<div class="buttonContainer">
-						<button class="submitButton">제출하기</button>
+						<button class="submitButton" onclick="location.href='${contextPath}/report/insert/${movelineNo}'">제출하기</button>
 					</div>
 				</section>
 			</form>

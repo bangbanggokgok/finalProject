@@ -26,6 +26,13 @@
                 <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
               </li>
             </c:forEach>
+            
+              <div id="landmark-explain" style="display:none">
+                <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                    <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+                    <li class="landmark">${landMarkContent}</li>
+                </c:forEach>
+              </div>
           </ul>
 
           <p class="pager2">
