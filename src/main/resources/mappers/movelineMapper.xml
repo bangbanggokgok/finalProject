@@ -347,7 +347,7 @@
 	
 	<!-- 코스 상세 페이지 - 랜드마크 상세 -->
 	<select id="selectLandMarkDetail" resultMap="MoveLineDetail_rm">
-		SELECT LM_NAME, LM_ADDRESS, LM_INDEX, LM_NO
+		SELECT LM_NAME, LM_ADDRESS, LM_INDEX, LM_NO, LM_CONTENT
 		FROM LANDMARK
 		JOIN COORDINATE A USING(LM_NO)
 		LEFT OUTER JOIN MOVELINE_BOARD B
@@ -400,7 +400,13 @@
 	
 	<!-- 특정 랜드마크 이미지 세팅 목록 조회 -->
    	<select id="setLandmarkImages" resultMap="LandMarkIMG_rm">
-   		SELECT * FROM LANDMARK_IMG
+   		SELECT * FROM LAND_IMG
+   		WHERE LM_NO = #{landMarkNo}
+   	</select>
+   
+	<!-- 특정 랜드마크 이미지 세팅 목록 조회 -->
+   	<select id="setLandmarkContent" resultMap="landMark_rm">
+   		SELECT * FROM LANDMARK
    		WHERE LM_NO = #{landMarkNo}
    	</select>
    

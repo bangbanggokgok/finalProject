@@ -265,6 +265,8 @@ public class MoveLineController {
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		model.addAttribute("landmarkImage", landmarkImage);
 
+		System.out.println("landmarkDetail.landmarkContent" + landmarkDetail);
+		
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
 
@@ -282,21 +284,28 @@ public class MoveLineController {
 	
 	
 	// 특정 랜드마크 이미지 세팅 목록 조회
-	@GetMapping("/detail/setLandmarkImages/{landmarkNo}")
-	public String setLandmarkImages(@PathVariable("landMarkNo") int landMarkNo,
+	@ResponseBody
+	@GetMapping("/detail/setLandmarkImages")
+	public String setLandmarkImages(
+//									@PathVariable("landMarkNo") int landMarkNo,
 			 						Model model,
-									@RequestParam(value="cp", required=false, defaultValue="1") int cp
+									@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+									@RequestParam(value="landmarkNo", required=true) int landmarkNo,
+									HttpServletRequest req,
+									RedirectAttributes ra
 									) {
 		
-		List<LandMarkIMG> setLandmarkImages = service.setLandmarkImages(landMarkNo);
+		System.out.println("landmarkNo");
 		
-		System.out.println("setLandmarkImages.size() : " + setLandmarkImages);
+		List<LandMarkIMG> landmarkImageList = service.setLandmarkImages(landmarkNo);
 		
-		model.addAttribute("landmarkImageList", setLandmarkImages);
+		List<LandMark> landmarkContentList =  service.setLandmarkContent(landmarkNo);
+		
+		model.addAttribute("landmarkContentList", landmarkContentList);
 
-		String path = null;
-		
-		return "redirect:" + path;
+		System.out.println("landmarkContentList size : " + landmarkContentList.size());
+		System.out.println("landmarkImageList size : " + landmarkImageList.size());
+		return new Gson().toJson(landmarkImageList);
 
 	}
 	
@@ -312,7 +321,7 @@ public class MoveLineController {
 
 	}
 
-	// 게시글 삭제
+	// 코스 삭제
 	@GetMapping("/detail/delete")
 	public String deleteMoveline(
 //								 @PathVariable("movelineNo") int movelineNo,
@@ -340,7 +349,7 @@ public class MoveLineController {
 			System.out.println("result : " + result);
 			
 			message = "코스를 삭제했습니다.";
-			path = "/moveline-main/list";
+			path = "/moveline-main";
 			   
 		} else {
 			   

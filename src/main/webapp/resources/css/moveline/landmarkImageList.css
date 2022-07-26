@@ -15,7 +15,7 @@ body {
   margin-top: 6em;
 }
 .slide3 {
-  margin-top: 6em;
+  /* margin-top: 6em; */
 }
 .slide-img2 {
   image-rendering: -webkit-optimize-contrast;

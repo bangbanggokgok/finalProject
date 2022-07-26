@@ -18,7 +18,7 @@
 <body>
   <section class="slide3">
       <div class="container2">
-          <ul class="slider-container2 simple-list" class="slider2">
+          <ul class="slider-container2 simple-list slider2" id="test1">
 
             <c:forEach var="landmarkImage" items="${landmarkImage}">
               <li class="slide2" id="landmark-images">
@@ -26,22 +26,7 @@
                 <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
               </li>
             </c:forEach>
-            
-            <%-- 코스 사진으로 테스트 --%>
-            <%-- <c:forEach var="moveLineImg" items="${movelineImage}">
-              <li class="slide2" id="landmark-images">
-                <c:set var="moveLineImg" value="${moveLineImg.movelineRename}"/>
-                <img class="slide-img2" src="${contextPath}/${moveLineImg}" alt="first_img">
-              </li>
-            </c:forEach> --%>
           </ul>
-
-          <%-- <c:forEach var="moveLineImg" items="${movelineImage}">
-            <li class="slide2" id="landmark-images">
-              <c:set var="moveLineImg" value="${moveLineImg.movelineRename}"/>
-              <img class="slide-img" src="${contextPath}/${moveLineImg}" alt="first_img">
-            </li>
-          </c:forEach> --%>
 
           <p class="pager2">
           </p>
@@ -53,7 +38,20 @@
             <li class="fa-solid fa-angle-right"></li>
           </a>
       </div>
+
+      <div id="landmark-explain">
+          <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+              <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+              <li class="landmark">${landMarkContent}</li>
+          </c:forEach>
+      </div>
+
+
   </section>
 
 </body>
+
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+
+
 </html>

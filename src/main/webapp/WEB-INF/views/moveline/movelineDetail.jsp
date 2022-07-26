@@ -191,42 +191,27 @@
                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
-                                <li class="landmark" ${landmarkNo}>${landmarkName}${landmarkNo}</li>
+                            <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+                                <li class="landmark" id="${landmarkNo}" value="${landMarkContent}">${landmarkName}${landmarkNo}</li>
                         </c:forEach>
                     </ul>
-                    <%-- onclick="setLandmarkImages(${landmarkDetail.landMarkNo});" --%>
-                        <%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                            <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
-                                <div class="selected-landmark">${landmarkName}</div>
-                        </c:forEach> --%>
 
                     <ul>
-                        <li class="landmark">사진보기</li>
-                        <li class="landmark">상세설명</li>
+                        <li class="showImage">사진보기</li>
+                        <li class="showContent">상세설명</li>
                     </ul>
                 </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
-                        <%-- <img class="slide-img" src="${contextPath}/resources/images/landmark/대왕암공원1.jpg" alt="first_img"> --%>
 
-                    <%-- <c:forEach var="landmarkImage" items="${landmarkImage}">
-                        <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
-                            <img class="slide-img" src="${contextPath}/${landmarkImage}" alt="first_img">
-                    </c:forEach> --%>
-
-                <%-- <c:if test="${fn:length(landmarkDetail.landmarkImageList) > start}">
-                    <c:forEach var="i" begin="${start}" end="${fn:length(landmarkDetail.landmarkImageList) -1 }">
-                        <img class="slide-img" src="${contextPath}${landmarkDetail.landmarkImageList[i].landMarkReName}" alt="first_img">
-                    </c:forEach>
-                </c:if> --%>
-
-                <div id="landmark-explain">
+                <%-- <div id="landmark-explain">
                     <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                         <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
                         <li class="landmark">${landMarkContent}</li>
                     </c:forEach>
-                </div>
+                </div> --%>
                 
             </form>
+            
                 <!-- 댓글 -->
                 <jsp:include page="/WEB-INF/views/moveline/movelineReply.jsp"/>
         </div>
@@ -266,6 +251,6 @@
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <%-- <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script> --%>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 </html>

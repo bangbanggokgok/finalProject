@@ -86,30 +86,30 @@
    
    //clearInterval(대상)
    // 자동 슬라이드 함수 
-   function startAutoSlide2(){
-        $timer2 = setInterval(function(){
-        //goToSlide(숫자); 0, 1, 2, 3,....5, 0
-        // ci 0번 4초  1, ci 1 4초 2, .... ,ci 5 4초 , ni  0
+//    function startAutoSlide2(){
+//         $timer2 = setInterval(function(){
+//         //goToSlide(숫자); 0, 1, 2, 3,....5, 0
+//         // ci 0번 4초  1, ci 1 4초 2, .... ,ci 5 4초 , ni  0
     
-        var nextIdx2 =($currentIndex2 + 1) % $slideCount2; // 나눈 나머지 
-        goToSlide2(nextIdx2);
-       },4000);
-   }
-   startAutoSlide2();
+//         var nextIdx2 =($currentIndex2 + 1) % $slideCount2; // 나눈 나머지 
+//         goToSlide2(nextIdx2);
+//        },4000);
+//    }
+//    startAutoSlide2();
 
-   function stopAutoSlide2(){
-        clearInterval($timer2);
-   }
+//    function stopAutoSlide2(){
+//         clearInterval($timer2);
+//    }
 
    /*
    $slideWrap에 마우스가 들어오면 할일, 나가면 할일
    */
-   $slideWrap2.addEventListener('mouseenter',function(){
-        stopAutoSlide2();
-   });
-   $slideWrap2.addEventListener('mouseleave',function(){
-        startAutoSlide2();
-   });
+//    $slideWrap2.addEventListener('mouseenter',function(){
+//         stopAutoSlide2();
+//    });
+//    $slideWrap2.addEventListener('mouseleave',function(){
+//         startAutoSlide2();
+//    });
 
    //pager로 슬라이드 이동하기 
    for(var x = 0; x < $pagerBtn2.length; x++){
