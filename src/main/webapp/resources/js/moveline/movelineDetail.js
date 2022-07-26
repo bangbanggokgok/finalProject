@@ -1,59 +1,94 @@
 const landmark = document.getElementsByClassName("landmark");
 const selected = document.getElementsByClassName("selected-landmark");
-const showContent = document.getElementById("showContent");
+const showContent = document.querySelector(".showContent");
 
-
+let landmarkNo;
 
 // 특정 랜드마크 이미지 세팅
-for(let i=0 ; i<landmark.length ; i++){
-    landmark[i].addEventListener("click", function(){
+for (let i = 0; i < landmark.length; i++) {
+    landmark[i].addEventListener("click", function () {
 
+        landmarkNo = this.getAttribute("id");
 
         // var click_val = $("#id").val();
         // alert(click_val);
 
         // alert(this.getAttribute("id")); 
         // alert(this.getAttribute("value")); 
-        
+
         $.ajax({
-            url : contextPath + "/moveline-main/detail/setLandmarkImages",
-            data : {"landmarkNo" : this.getAttribute("id") },
-            type : "get",
-            dataType : "JSON",
-            success : function(landmarkImageList){
+            url: contextPath + "/moveline-main/detail/setLandmarkImages",
+            data: { "landmarkNo": this.getAttribute("id") },
+            type: "get",
+            dataType: "JSON",
+            success: function (landmarkImageList) {
 
-            alert(landmarkImageList);
-            alert(landmarkContentList);
+                alert(landmarkImageList);
+                // alert(landmarkContentList);
 
-            console.log("size : " + landmarkImageList[0].landMarkReName);
-               const test1 = document.getElementById("test1"); // 사진 아래 제거
-               const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
-               test1.innerHTML = "";
-               test2.innerHTML = "";
-               
-               // 행
-               for(let simpleList of landmarkImageList){
+                console.log("size : " + landmarkImageList[0].landMarkReName);
+                const test1 = document.getElementById("test1"); // 사진 아래 제거
+                const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
+                test1.innerHTML = "";
+                test2.innerHTML = "";
+
+                test1.style.left = "0%";
+
+                let leftSize = 0;
+
+                // 행
+                for (let simpleList of landmarkImageList) {
                     console.log("reName Log : " + simpleList.landMarkReName);
                     const slide2 = document.createElement("li");
                     slide2.setAttribute("id", "landmark-images");
                     slide2.classList.add("slide2");
-                    
-                    
+
+                    slide2.style.left = (leftSize)  + "%";
+                    leftSize += 100;
+
                     const slideImg2 = document.createElement("img");
-                    slideImg2.setAttribute("src", contextPath+simpleList.landMarkReName);
-                    
+                    slideImg2.setAttribute("src", contextPath + simpleList.landMarkReName);
+
                     test1.append(slide2);
                     slide2.append(slideImg2);
                 }
 
-                for(let content of landMarkContent){
-                    console.log("content log : " + content.landMarkContent)
 
+                let pager = document.querySelector(".pager2");
+                pager.innerHTML = "";
+
+                for (let i= 0 ; i<landmarkImageList.length ; i++) {
+                    const span = document.createElement("span");
+                    span.setAttribute("data-index", i);
+                    span.innerText = i+1;
+
+                    if(i == 0){
+                        span.classList.add("active");
+                    }
+                    pager.append(span);
+
+                    pager.addEventListener('click',function(event){ 
+                        var pagerNum2 = event.target.innerText - 1;
+                        goToSlide2(pagerNum2);
+                    });
                 }
 
+
+                $pager2 = document.querySelector('.pager2');
+                $slide2 = document.querySelectorAll('.slide2');
+                $currentIndex2 = 0;
+                $slideCount2 = $slide2.length;
+                $pagerBtn2 = document.querySelectorAll('.pager2 span');
+                // for(let content of landMarkContent){
+                //     console.log("content log : " + content.landMarkContent)
+
+                // }
+
+
+
             },
-        
-            error : function(req, status, error){
+
+            error: function (req, status, error) {
                 console.log("실패")
                 console.log(req.responseText);
             }
@@ -62,20 +97,16 @@ for(let i=0 ; i<landmark.length ; i++){
 }
 
 // 상세설명 비동기
-// showContent.addEventListener("click",function(){
-    
-//     var click_val = $("#id").val();
+showContent.addEventListener("click", function () {
 
+    alert(landmarkNo)
 
+});
 
-//     alert(click_val)
-
-// });
-
-// $(".showContent").bind("click", function() {
-//     var oData = test($(this).parent().parent()); //이넘이 자신 상위에 상위 요소 가지고 옴.
-//     test(oData);
-// });
+$(".showContent").bind("click", function () {
+    var oData = test($(this).parent().parent()); //이넘이 자신 상위에 상위 요소 가지고 옴.
+    test(oData);
+});
 
 
 
@@ -86,7 +117,7 @@ for(let i=0 ; i<landmark.length ; i++){
 
 
 //     console.log("deleteBtn clicked");
-    
+
 //     if(deleteBtn != null){
 //         deleteBtn.addEventListener("click", function(){
 
@@ -102,32 +133,32 @@ for(let i=0 ; i<landmark.length ; i++){
 // })();
 
 // 코스 삭제
-function deleteMoveline(movelineNo){
+function deleteMoveline(movelineNo) {
 
-    if( confirm("정말로 삭제 하시겠습니까?") ){
-    } else { 
+    if (confirm("정말로 삭제 하시겠습니까?")) {
+    } else {
         return
     }
 
     $.ajax({
-        url : contextPath + "/moveline-main/detail/delete",
-        data : {"movelineNo" : movelineNo},
-        type : "GET",
-        success : function(result){
+        url: contextPath + "/moveline-main/detail/delete",
+        data: { "movelineNo": movelineNo },
+        type: "GET",
+        success: function (result) {
 
             console.log("result 값 넘어옴");
 
-            if(result > 0){
+            if (result > 0) {
                 alert("코스를 삭제하였습니다.");
                 // alert(message);
                 let url = contextPath + "/moveline-main/list"
                 location.href = url;
-            }else{
+            } else {
                 alert("코스를 삭제하지 못하였습니다.");
                 // alert(message);
             }
         },
-        error : function(req, status, error){
+        error: function (req, status, error) {
             console.log("코스 삭제 실패");
             console.log(req.responseText);
         }
@@ -136,24 +167,24 @@ function deleteMoveline(movelineNo){
 
 
 // 코스 신고
-function reportMoveline(movelineNo){
+function reportMoveline(movelineNo) {
 
-    if( confirm("정말로 신고 하시겠습니까?") ){
+    if (confirm("정말로 신고 하시겠습니까?")) {
 
         $.ajax({
-            url : contextPath + "/moveline-main/detail/report",
-            data : {"movelineNo" : movelineNo},
-            type : "GET",
-            success: function(result){
-                if(result > 0){
+            url: contextPath + "/moveline-main/detail/report",
+            data: { "movelineNo": movelineNo },
+            type: "GET",
+            success: function (result) {
+                if (result > 0) {
                     alert("신고 되었습니다");
                     selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
-                }else{
+                } else {
                     alert("신고 실패");
                 }
             },
 
-            error : function(req, status, error){
+            error: function (req, status, error) {
                 console.log("실패")
                 console.log(req.responseText);
             }
