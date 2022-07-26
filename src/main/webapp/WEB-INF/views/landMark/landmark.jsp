@@ -4,15 +4,14 @@
   <c:set var="landmarkList" value="${map.landmarkList}">
   </c:set>
 </c:if>
-
+<c:if test="${!empty map.pagination}">
+  <c:set var="pagination" value="${map.pagination}"/>
+</c:if>
 <c:if test="${!empty map.rankLandMarkList}">
   <c:set var="rankLandMarkList" value="${map.rankLandMarkList}">
   </c:set>
 </c:if>
-<c:if test="${locations.locationNum == 100}">
-</c:if>
 
-<%-- <c:set var="locationNum" value="${locations.locationNum}" /> --%>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -34,7 +33,7 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/landmark.css" />
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
-      <script>
+      <%-- <script>
       window.onload=function(){
 
         const num = 1;
@@ -52,7 +51,7 @@
           localStorage.clear();
         }
       };
-    </script>
+      </script> --%>
     <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
@@ -105,12 +104,6 @@
           </li> 
         </ul>
         <p class="pager">
-          <!-- <span data-idx="0">1</span>
-                      <span data-idx="1">2</span>
-                      <span data-idx="2">3</span>
-                      <span data-idx="3">4</span>
-                      <span data-idx="4">5</span>
-                      <span data-idx="5">6</span> -->
         </p>
 
         <a href="#" id="prev">
@@ -138,10 +131,10 @@
 		<c:if test="${!empty locationList}">
 			<c:forEach var="locations" items="${locationList}">
 				  <c:if test="${map.hihi != locations.locationNum}">
-            <span class="region-detail" onclick="searchingLocation(${locations.locationNum},1)">${locations.locationName}</span>
+            <span class="region-detail" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 				  <c:if test="${map.hihi == locations.locationNum}">
-            <span class="region-detail clicked" onclick="searchingLocation(${locations.locationNum},1)">${locations.locationName}</span>
+            <span class="region-detail clicked" onclick="loadLocation(${locations.locationNum},1)">${locations.locationName}</span>
           </c:if>
 			</c:forEach>
 		</c:if>
@@ -152,7 +145,7 @@
               <i class="fa-solid fa-magnifying-glass"></i>
               <input class='abc' type="search" placeholder="랜드마크 검색" />
             </div>
-             <div class="counter">게시글 수: <span>12</span></div> 
+             <%-- <div class="counter">게시글 수: <span>12</span></div>  --%>
           </div>
           <ul class="view-options">
             <li class="zoom">
@@ -172,7 +165,7 @@
         </div>
 
         <ol class="image-list grid-view landMarkHtml" id="landMakrList">
-        <%-- <c:if test="${!empty landmarkList}">
+        <c:if test="${!empty landmarkList}">
          <c:forEach var="landmark" items="${landmarkList}">
           <li class='land-row'>
             <figure> 
@@ -186,13 +179,21 @@
             </figure>
           </li>
           </c:forEach>
+          
         </c:if>
         <c:if test="${empty landmarkList}">
           <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
-        </c:if> --%>
+        </c:if>
         </ol>
-        <div class="pagination">
-        </div>
+        <c:if test="${!empty landmarkList}">
+          <div class="pagination-list">
+            <ul class="pagination">
+              <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                    <li><a onclick="loadLocation(${map.hihi},${i})" style="cursor: pointer;">${i}</a></li>  
+              </c:forEach>
+            </ul>
+          </div>
+        </c:if>
       </div>
     </section>
 
@@ -200,9 +201,6 @@
     <script>
         const locationType = "${locations.locationNum}"
         const contextPath = "${contextPath}"
-        const landMarkHtml = $('.landMarkHtml')
-        const pagination = $('.pagination')
-        const slideHtml = $('.slideHtml')
     </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
