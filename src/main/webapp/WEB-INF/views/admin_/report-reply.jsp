@@ -31,11 +31,9 @@
             <li>
                 <div class="wrapper">
                     <div class="number">No.</div>
-                    <div class="course">댓글</div>
+                    <div class="reply">댓글</div>
                     <div class="reason">사유</div>
                     <div class="reporter">신고한 회원</div>
-                    <div class="date">신고일</div>
-                    <div class="situation">상태</div>
                 </div>
             </li>
             <c:if test="${empty replyReport}">
@@ -45,6 +43,7 @@
                 <li>
                     <div class="wrapper">
                         <div class="number">${report.reportNo}</div>
+                        <div class="reply"><a href="${contextPath}/moveline-main/detail/${report.movelineNo}">${report.replyContent}</a></div>
                         <div class="reason">${report.reportReason}</div>
                         <div class="reporter">${report.userName}</div>
                     </div>
