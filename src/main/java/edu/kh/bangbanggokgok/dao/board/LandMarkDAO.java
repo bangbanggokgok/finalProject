@@ -121,10 +121,15 @@ public class LandMarkDAO {
 
 
 
-	public List<LandMark> selectLandMarkPagination(int locationType) {
-	
+	public List<LandMark> selectLandMarkPagination(int locationType) {	
 		return sqlSession.selectList("landMarkMapper.selectlandMarkPagination", locationType);
 	}
+	
+
+	public List<LandMark> rankLandMarkList(int locationType) {
+		return sqlSession.selectList("landMarkMapper.rankLandMarkList", locationType);
+	}
+
 	
 	
 

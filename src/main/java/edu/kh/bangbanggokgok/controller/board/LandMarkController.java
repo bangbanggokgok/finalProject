@@ -48,6 +48,7 @@ public class LandMarkController {
 
 		// 랜드마크 목록 조회 서비스
 		Map<String, Object> map = service.selectAllLandMarkList(num);
+		
 		map.put("hihi", num);
 		model.addAttribute("map", map);
 		return "landMark/landmark";
@@ -72,17 +73,19 @@ public class LandMarkController {
 
 		if (endpage > maxpage)
 			endpage = maxpage;
-
+		
 		LandMark landMark = new LandMark();
 		landMark.setLimit(limit);
 		landMark.setPage(page);
 		landMark.setStartpage(startpage);
 		landMark.setEndpage(endpage);
 		landMark.setMaxpage(maxpage);
+		
+		List<LandMark> rankLandMarkList = service.rankLandMarkList(locationType);
 
 		// 랜드마크 특정 지역 목록 조회 서비스
 		List<LandMark> landMarkList = service.selectLandMarkList(locationType);
-
+		map.put("rankLandMarkList", rankLandMarkList);
 		map.put("listCount", listCount);
 		map.put("landMarkList", landMarkList);
 		map.put("page", page);

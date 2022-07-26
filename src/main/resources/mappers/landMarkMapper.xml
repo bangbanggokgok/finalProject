@@ -48,7 +48,7 @@
 		<result property="landMarkNo" 		column="LM_NO" 			/>
 	</resultMap> 
 	
-	<!-- 랜드마크 메인 슬라이드 이미지 조회 -->
+	<!-- 랜드마크 이미지 조회 -->
 	<select id="selectLandMarkIMG" resultMap="landmarkImage_rm">
 		SELECT LM_NO, COUNT(USER_NO) AS USER_CT,
     	(SELECT LM_IMG_RENAME FROM LAND_IMG
@@ -240,6 +240,19 @@
 		WHERE USER_NO = #{userNo}
 		AND LM_NO = #{landmarkNo}
 	</select>
-
+	
+	<select id="rankLandMarkList" resultMap="landMark_rm">
+	SELECT LM_NO, LOCATION_TYPE,
+    (SELECT LM_IMG_RENAME FROM LAND_IMG
+	WHERE LANDMARK.LM_NO = LAND_IMG.LM_NO
+	AND LM_IMG_LEVEL = 0) THUMBNAIL
+    FROM LANDMARK
+    WHERE ROWNUM &lt; 7
+    AND LOCATION_TYPE = ${locationNum}
+    GROUP BY LM_NO, LOCATION_TYPE
+    ORDER BY COUNT(USER_NO) DESC
+	</select>
+		
+	
 	
 </mapper>
