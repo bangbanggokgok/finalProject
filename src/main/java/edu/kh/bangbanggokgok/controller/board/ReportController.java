@@ -15,6 +15,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.kh.bangbanggokgok.service.board.ReportService;
 import edu.kh.bangbanggokgok.vo.admin.ReportMoveLine;
+import edu.kh.bangbanggokgok.vo.admin.ReportReply;
 import edu.kh.bangbanggokgok.vo.user.User;
 
 @Controller
@@ -26,23 +27,23 @@ public class ReportController {
 	private ReportService service;
 	
 	@GetMapping("/moveline/{movelineNo}")
-	public String reportML(@PathVariable("movelineNo") int movelineNo
-			//@RequestParam(value="movelineNo", required=true, defaultValue = "1") int moveLineNo
-			) {
+
+	public String reportML(@PathVariable("movelineNo") int movelineNo) {
 		return "moveline/movelineReport";
 	}
 	
-	@GetMapping("/insert/{movelineNo}")
-	public String reportML(
-			//@RequestParam(value="moveLineNo", required=true, defaultValue = "1") int moveLineNo,
+	@PostMapping("/moveline/{movelineNo}")
+	public String reportML(@PathVariable("movelineNo") int movelineNo,
+
 						@RequestParam(value="report" , required=false) String reportReason,
 						@ModelAttribute("loginUser") User loginUser,
 						ReportMoveLine report,
-						@PathVariable("movelineNo") int movelineNo
-						,HttpServletRequest req, RedirectAttributes ra) {
+						HttpServletRequest req, RedirectAttributes ra) {
+
 		
 		System.out.println("insert controller : " + movelineNo);
 		
+
 		report.setMoveLineNo(movelineNo);
 		report.setUserNo(loginUser.getUserNo());
 		report.setReportReason(reportReason);
@@ -54,9 +55,41 @@ public class ReportController {
 		if(result > 0) {
 			path = "../../moveline-main/detail/" + movelineNo;
 			message = "신고 완료";
+			message = "코스신고 완료";
 		}else {
 			path = req.getHeader("referer");
-			message = "신고 실패";
+			message = "코스신고 실패";
+		}
+		ra.addFlashAttribute("message", message);
+		return "redirect:" + path;
+	}
+	
+	@GetMapping("/reply/{movelineNo}/{replyNo}")
+	public String reportReply(@PathVariable("movelineNo") int movelineNo, @PathVariable("replyNo") int replyNo) {
+		return "moveline/movelineReplyReport";
+	}
+	
+	@PostMapping("reply/{movelineNo}/{replyNo}")
+	public String reportReply(@PathVariable("movelineNo") int movelineNo,
+							@PathVariable("replyNo") int replyNo,
+							@RequestParam(value="report" , required=false) String reportReason,
+							@ModelAttribute("loginUser") User loginUser, ReportReply report,
+							HttpServletRequest req, RedirectAttributes ra) {
+			
+		report.setReplyNo(replyNo);
+		report.setUserNo(loginUser.getUserNo());
+		report.setReportReason(reportReason);
+		
+		int result = service.reportReply(report);
+		
+		String message = null;
+		String path = null;
+		if(result > 0) {
+			path = "../../../moveline-main/detail/" + movelineNo;
+			message = "댓글신고 완료";
+		}else {
+			path = req.getHeader("referer");
+			message = "댓글신고 실패";
 		}
 		ra.addFlashAttribute("message", message);
 		return "redirect:" + path;

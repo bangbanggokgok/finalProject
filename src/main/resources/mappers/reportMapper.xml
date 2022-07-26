@@ -18,4 +18,9 @@
 		INSERT INTO REPORT_ML VALUES(	
 			SEQ_ML_NO.NEXTVAL, #{reportReason}, 'N', SYSDATE, #{moveLineNo}, #{userNo})
 	</insert>
+	
+	<insert id="reportReply">
+		INSERT INTO REPORT_REPLY VALUES(	
+		SEQ_REPORT_NO.NEXTVAL, #{replyNo}, #{userNo}, #{reportReason})
+	</insert>
 </mapper>

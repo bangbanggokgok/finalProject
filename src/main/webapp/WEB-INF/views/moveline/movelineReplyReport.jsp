@@ -19,13 +19,13 @@
 
 	<section class="header">
 		<section class="pageWrapper">
-			<h1 style="font-size: 24px;" class="boardTitle">코스 신고</h1>
+			<h1 style="font-size: 24px;" class="boardTitle">댓글 신고</h1>
 		</section>
 	</section>
 
 	<section class="board">
 		<section class="pageWrapper">
-			<form action="${movelineNo}" enctype="multipart/form-data" method="POST">
+			<form action="${replyNo}" enctype="multipart/form-data" method="POST">
 				<label class="choice">신고사유 선택</label>
                 <table>
                     <tbody>
@@ -57,7 +57,7 @@
 				</div>
 				<section class="submitBar">
 					<div class="buttonContainer">
-						<button class="submitButton" onclick="location.href='${contextPath}/report/insert/${movelineNo}'">제출하기</button>
+						<button class="submitButton">제출하기</button>
 					</div>
 				</section>
 			</form>
