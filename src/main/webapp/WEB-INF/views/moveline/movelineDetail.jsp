@@ -186,29 +186,32 @@
 
                 </div>
 
+                <div id="land-start">랜드마크</div>
+
                 <div class="landmark-detail">
                     <ul>
                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                                <li class="landmark" id="${landmarkNo}" value="${landMarkContent}">${landmarkName}${landmarkNo}</li>
+                                <li class="landmark" id="${landmarkNo}" value="${landMarkContent}">${landmarkName}</li>
                         </c:forEach>
                     </ul>
-
+                    
                     <ul>
-                        <li class="showImage">사진보기</li>
-                        <li class="showContent">상세설명</li>
+                        <li class="showImage" >사진보기</li>
+                        <li class="showContent" id="${landmarkNo}">상세설명</li>
                     </ul>
                 </div>
-                    <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
 
-                <%-- <div id="landmark-explain">
+                <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
+
+                <div id="landmark-explain" style="display:none">
                     <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                         <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
                         <li class="landmark">${landMarkContent}</li>
                     </c:forEach>
-                </div> --%>
+                </div>
                 
             </form>
             
@@ -251,6 +254,6 @@
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    <%-- <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script> --%>
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 </html>
