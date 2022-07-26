@@ -9,7 +9,7 @@ let landmarkNo;
 for (let i = 0; i < landmark.length; i++) {
     landmark[i].addEventListener("click", function () {
 
-        landmarkNo = this.getAttribute("id");
+        landmarkNo = this.getAttribute("value");
 
         // var click_val = $("#id").val();
         // alert(click_val);
@@ -19,7 +19,7 @@ for (let i = 0; i < landmark.length; i++) {
 
         $.ajax({
             url: contextPath + "/moveline-main/detail/setLandmarkImages",
-            data: { "landmarkNo": this.getAttribute("id") },
+            data: { "landmarkNo": this.getAttribute("value") },
             type: "get",
             dataType: "JSON",
             success: function (landmarkImageList) {
@@ -29,9 +29,9 @@ for (let i = 0; i < landmark.length; i++) {
 
                 console.log("size : " + landmarkImageList[0].landMarkReName);
                 const test1 = document.getElementById("test1"); // 사진 아래 제거
-                const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
+                // const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
                 test1.innerHTML = "";
-                test2.innerHTML = "";
+                // test2.innerHTML = "";
 
                 test1.style.left = "0%";
 
@@ -122,10 +122,14 @@ showContent.addEventListener("click", function () {
         success: function (landmarkContent) {
             
             const entire = document.getElementById("entire"); // 상세설명 내용 제거
+            entire.innerHTML = "";
 
             console.log(landmarkContent)
 
-            entire.innerHTML = "";
+            const test1 = document.createElement("ul");
+            test1.setAttribute("id", "test1")
+            test1.classList.add(".slider-container2",".simple-list",".slider2")
+
 
             const contentArea = document.createElement("div");
             contentArea.setAttribute("id", "landmark-explain");
@@ -133,15 +137,46 @@ showContent.addEventListener("click", function () {
             const inputContent = document.createElement("li");
             inputContent.classList.add(".landmark");
             inputContent.innerHTML = landmarkContent;
+
             console.log(landmarkContent);
-            entire.append(contentArea);
+
+            entire.append(test1);
+            test1.append(contentArea);
             contentArea.append(inputContent);
 
         }
     })
 });
 
+
+
 // showImage.addEventListener("click", function () {
+//     alert(landmarkNo)
+//     landmarkNo = this.getAttribute("class");
+
+//     // landmarkNo = this.getAttribute("id");
+//     // var click_val = $("#id").val();
+//     // alert(click_val);
+
+//     // alert(this.getAttribute("id")); 
+//     // alert(this.getAttribute("value")); 
+
+//     $.ajax({
+//         url: contextPath + "/moveline-main/detail/setLandmarkImages",
+//         data: { "landmarkNo": landmarkNo },
+//         type: "get",
+//         dataType: "JSON",
+//         success: function (landmarkImageList) {
+
+//             const entire = document.getElementById("entire"); // 상세설명 내용 제거
+//             entire.innerHTML = "";
+
+
+//         }
+//     });
+// });    
+
+//     showImage.addEventListener("click", function () {
 //     alert(landmarkNo)
 //     landmarkNo = this.getAttribute("class");
 

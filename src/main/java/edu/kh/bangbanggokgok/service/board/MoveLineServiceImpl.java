@@ -210,7 +210,7 @@ public class MoveLineServiceImpl implements MoveLineService{
 
 	// 특정 랜드마크 이미지 세팅 목록 조회 구현
 	@Override
-	public List<LandMarkIMG> setLandmarkImages(int landMarkNo) {
+	public List<LandMarkDetail> setLandmarkImages(int landMarkNo) {
 		return dao.setLandmarkImages(landMarkNo);
 	}
 

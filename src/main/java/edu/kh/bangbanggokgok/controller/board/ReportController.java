@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,17 +25,25 @@ public class ReportController {
 	@Autowired
 	private ReportService service;
 	
-	@GetMapping("/moveline")
-	public String reportML(@RequestParam(value="movelineNo", required=true, defaultValue = "1") int moveLineNo) {
+	@GetMapping("/moveline/{movelineNo}")
+	public String reportML(@PathVariable("movelineNo") int movelineNo
+			//@RequestParam(value="movelineNo", required=true, defaultValue = "1") int moveLineNo
+			) {
 		return "moveline/movelineReport";
 	}
 	
-	@PostMapping("/moveline/insert")
-	public String reportML(@RequestParam(value="moveLineNo", required=true, defaultValue = "1") int moveLineNo,
+	@GetMapping("/insert/{movelineNo}")
+	public String reportML(
+			//@RequestParam(value="moveLineNo", required=true, defaultValue = "1") int moveLineNo,
 						@RequestParam(value="report" , required=false) String reportReason,
-						@ModelAttribute("loginUser") User loginUser, ReportMoveLine report
+						@ModelAttribute("loginUser") User loginUser,
+						ReportMoveLine report,
+						@PathVariable("movelineNo") int movelineNo
 						,HttpServletRequest req, RedirectAttributes ra) {
-		report.setMoveLineNo(moveLineNo);
+		
+		System.out.println("insert controller : " + movelineNo);
+		
+		report.setMoveLineNo(movelineNo);
 		report.setUserNo(loginUser.getUserNo());
 		report.setReportReason(reportReason);
 		
@@ -43,7 +52,7 @@ public class ReportController {
 		String message = null;
 		String path = null;
 		if(result > 0) {
-			path = "../../moveline-main/detail/" + moveLineNo;
+			path = "../../moveline-main/detail/" + movelineNo;
 			message = "신고 완료";
 		}else {
 			path = req.getHeader("referer");

@@ -229,15 +229,16 @@ ul{
     width: 100%;
     margin-top:150px;
     font-size: 45px;
-    color: green;
-    border-top: 2px solid green;
+    color: #333;
     padding: 20px;
+    letter-spacing: -1px;
+
 }
 
 .landmark-detail{
     text-align: center;
     font-size: 25px;
-    border-top: 2px solid green;
+    border-top: 2px solid #333;;
 
 }
 
@@ -248,7 +249,7 @@ ul{
     justify-content: center;
 }
 
-.landmark, .showImage, .showContent{
+.landmark, .showImage{
     line-height: 100px;
     width: 300px;
 }
@@ -296,9 +297,12 @@ ul{
 }
 
 .showImage, .showContent{
-    width: 200px;
-    padding: 10px;
+    width: 150px;
+    padding: 20px;
     padding-inline-start: 0;
+    background-color: white;
+    border-style: none;
+    
 }
 
 .showImage, .showContent:hover{
