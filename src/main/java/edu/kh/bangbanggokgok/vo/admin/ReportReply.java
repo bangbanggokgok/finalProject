@@ -11,5 +11,8 @@ public class ReportReply {
 	private int reportNo;
 	private int replyNo;
 	private int userNo;
+	private String userName;
 	private String reportReason;
+	private String replyContent;
+	private int movelineNo;
 }
