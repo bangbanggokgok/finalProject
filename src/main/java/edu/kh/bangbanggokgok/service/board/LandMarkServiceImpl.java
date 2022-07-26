@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.codehaus.plexus.util.dag.DAG;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,6 +20,8 @@ import edu.kh.bangbanggokgok.exception.InsertFailException;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
 import edu.kh.bangbanggokgok.vo.board.LandMarkIMG;
+import edu.kh.bangbanggokgok.vo.board.Pagination;
+import edu.kh.bangbanggokgok.vo.board.Pagination2;
 
 @Service
 public class LandMarkServiceImpl implements LandMarkService {
@@ -29,15 +32,13 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 	// 랜드마크 전체 목록 조회
 	@Override
-	public Map<String, Object> selectAllLandMarkList(int num) {
+	public Map<String, Object> selectAllLandMarkList(int locationNum) {
 
-//		int ListCount = dao.getListCount();
-//		List<LandMark> landMarkList = dao.selectAllLandMarkList();
-
-		List<LandMarkIMG> landMakrImage = dao.selectLandmarkImageList();
-		List<LandMark> landMarkList = dao.selectLandMarkList(num);
+		List<LandMarkIMG> landMarkImage = dao.selectLandmarkImageList();
 		
+		Pagination2 pagination = new Pagination2(1, dao.selectLandmarkCount(locationNum));
 		
+		List<LandMark> landMarkList = dao.selectLandMarkList(pagination,locationNum);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
@@ -46,8 +47,10 @@ public class LandMarkServiceImpl implements LandMarkService {
 			e.setLandMarkContent(Util.XSSClear(e.getLandMarkContent()));
 			e.setLandMarkName(Util.XSSClear(e.getLandMarkName()));
 		}
-		map.put("landMakrImage", landMakrImage);
+		
+		map.put("landMarkImage", landMarkImage);
 		map.put("landmarkList", landMarkList);
+		map.put("pagination", pagination);
 
 		return map;
 	}
@@ -262,21 +265,24 @@ public class LandMarkServiceImpl implements LandMarkService {
 
 
 	@Override
-	public int getListCount(int locationType) {
-		return dao.getListCount(locationType);
-	}
-
-	@Override
-	public List<LandMark> selectLandMarkList(int locationType) {
-		
-		return dao.selectLandMarkPagination(locationType);
-	}
-
-	@Override
 	public List<LandMark> rankLandMarkList(int locationType) {
 		return dao.rankLandMarkList(locationType);
 	}
+//
+//	@Override
+//	public int getListCount(int locationType) {
+//		return dao.getListCount(locationType);
+//	}
+//
+	@Override
+	public List<LandMark> selectLandMarkList(int locationType, int pageNo) {
+		Pagination2 pagination = new Pagination2(pageNo,dao.selectLandmarkCount(locationType));
+		return dao.selectLandMarkList(pagination,locationType);
+	}
 	
-
+	@Override
+	public int selectLandmarkCount(int locationType) {
+		return dao.selectLandmarkCount(locationType);
+	};
 
 }

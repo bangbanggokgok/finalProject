@@ -159,46 +159,32 @@
       <div class="col-lg-3 col-md-6 flex">
         <a href ="#">
             <div class="card" style="width: 18rem">
-                <img
-                    src="${contextPath}/resources/images/main/seoul.jpg"
-                    class="card-img-top"
-                    alt="..."
-                />
+                <img src="${contextPath}/resources/images/main/seoul.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h3 class="weight">대한민국의 대표, 서울</h3>
                     <p class="card-text">구석구석 숨은 서울을 여행해 보세요!</p>
                 </div>
             </div>
         </a>
-
       </div>
     </div>
 
     <div class="row featurette">
       <div class="col-md-7">
         <h2 class="featurette-heading">
-          지금 바로 자신만의 코스와 랜드마크를 소개해보세요!<br />
+          지금 바로 자신만의 코스와 랜드마크를 소개해보세요!<br/>
         </h2>
         <span class="text-muted">방방곡곡 어디든 GO!</span>
-        <%-- 무브라인 관련 작성 주소로 바꿔야함 --%>
         <a href="moveline-main/write/insert">
-            <button type="button" class="btn btn-outline-dark">
-            코스 작성하기
-            </button>
+            <button type="button" class="btn btn-outline-dark">코스 작성하기</button>
         </a>
         <a href="landmark-main/write/insert">
-            <button type="button" class="btn btn-outline-dark">
-            랜드마크 작성하기
-            </button>
+            <button type="button" class="btn btn-outline-dark">랜드마크 작성하기</button>
         </a>
         <div class="row cos">
           <div class="col-sm-12 col-md-4 flex">
             <div class="card-1" style="width: 18rem">
-              <img
-                src="${contextPath}/resources/images/main/jeju.jpg"
-                class="card-img-top img-1"
-                alt="..."
-              />
+              <img src="${contextPath}/resources/images/main/jeju.jpg" class="card-img-top img-1" alt="..."/>
               <div class="card-body">
                 <h3 class="weight">Step 1.</h3>
                 <p class="card-text">여행할 여행지를 정해보세요!</p>
@@ -207,11 +193,7 @@
           </div>
           <div class="col-sm-12 col-md-4 flex">
             <div class="card-1" style="width: 18rem">
-              <img
-                src="${contextPath}/resources/images/main/camera.jpg"
-                class="card-img-top img-1"
-                alt="..."
-              />
+              <img src="${contextPath}/resources/images/main/camera.jpg" class="card-img-top img-1" alt="..."/>
               <div class="card-body">
                 <h3 class="weight">Step 2.</h3>
                 <p class="card-text">예쁜 경치를 찍어주세요!</p>
@@ -220,11 +202,7 @@
           </div>
           <div class="col-sm-12 col-md-4 flex">
             <div class="card-1" style="width: 18rem">
-              <img
-                src="${contextPath}/resources/images/main/전주.jpg"
-                class="card-img-top img-1"
-                alt="..."
-              />
+              <img src="${contextPath}/resources/images/main/전주.jpg" class="card-img-top img-1" alt="..."/>
               <div class="card-body">
                 <h3 class="weight">Step 3.</h3>
                 <p class="card-text">방방곡곡에 여러분의 사진을 올려주세요!</p>
@@ -279,16 +257,6 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script> -->
-    <%-- <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script> --%>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"

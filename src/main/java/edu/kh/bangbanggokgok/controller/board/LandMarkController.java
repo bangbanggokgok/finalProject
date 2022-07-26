@@ -31,8 +31,8 @@ import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.service.board.LandMarkService;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
+import edu.kh.bangbanggokgok.vo.board.Pagination2;
 import edu.kh.bangbanggokgok.vo.user.User;
-import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @SessionAttributes("loginUser")
@@ -44,54 +44,35 @@ public class LandMarkController {
 	private LandMarkService service;
 
 	@GetMapping("/list/{locationNum}")
-	public String landmarkMainPage(Model model, @PathVariable("locationNum") int num) {
+	public String landmarkMainPage(Model model, @PathVariable("locationNum") int locationNum) {
 
 		// 랜드마크 목록 조회 서비스
-		Map<String, Object> map = service.selectAllLandMarkList(num);
+		Map<String, Object> map = service.selectAllLandMarkList(locationNum);
 		
-		map.put("hihi", num);
+		map.put("hihi", locationNum);
 		model.addAttribute("map", map);
 		return "landMark/landmark";
 	}
 
 	@ResponseBody
 	@GetMapping("/list/nsync/{locationNum}")
-	public String landMarkListPage(@RequestParam(value = "locationNum", defaultValue = "100") int locationType,
-			@RequestParam(value = "page", defaultValue = "1", required = false) int page, Model model) {
+	public String landMarkListPage(
+			@RequestParam("locationNum") int locationType,
+			@RequestParam(value = "pageNo", defaultValue = "1", required = false) int pageNo,
+			Model model) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
-
-		int limit = 9;
-
-		int listCount = service.getListCount(locationType);
-
-		int maxpage = (listCount + limit - 1) / limit;
-
-		int startpage = ((page - 1) / 10) * 10 + 1;
-
-		int endpage = startpage + 10 - 1;
-
-		if (endpage > maxpage)
-			endpage = maxpage;
-		
-		LandMark landMark = new LandMark();
-		landMark.setLimit(limit);
-		landMark.setPage(page);
-		landMark.setStartpage(startpage);
-		landMark.setEndpage(endpage);
-		landMark.setMaxpage(maxpage);
 		
 		List<LandMark> rankLandMarkList = service.rankLandMarkList(locationType);
-
+		
 		// 랜드마크 특정 지역 목록 조회 서비스
-		List<LandMark> landMarkList = service.selectLandMarkList(locationType);
+		List<LandMark> landMarkList = service.selectLandMarkList(locationType,pageNo);
+		
+		Pagination2 pagination = new Pagination2(pageNo, service.selectLandmarkCount(locationType));
 		map.put("rankLandMarkList", rankLandMarkList);
-		map.put("listCount", listCount);
 		map.put("landMarkList", landMarkList);
-		map.put("page", page);
-		map.put("startpage", startpage);
-		map.put("endpage", endpage);
-
+		map.put("pagination", pagination);
+		
 		return new Gson().toJson(map);
 	}
 

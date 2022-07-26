@@ -4,8 +4,8 @@
 
 	<resultMap type="LandMark" 				id="landMark_rm">
 		<id 	property="landMarkNo" 		column="LM_NO" />
-		<result property="landMarkX" 		column="LM_X"/>
-		<result property="landMarkY" 		column="LM_Y"/>
+		<result property="landmarkX" 		column="LM_X"/>
+		<result property="landmarkY" 		column="LM_Y"/>
 		<result property="landMarkName" 	column="LM_NAME"/>
 		<result property="landMarkContent"	column="LM_CONTENT"/>
 		<result property="landMarkAddress"	column="LM_ADDRESS"/>
@@ -127,7 +127,7 @@
  	</select>
  	
  	<select id="favoriteLandmarkForMoveline" resultMap="landMark_rm">
- 		SELECT LM_NO, LM_NAME, LM_IMG_RENAME
+ 		SELECT LM_NO, LM_NAME, LM_IMG_RENAME, LM_X , LM_Y
 		FROM BOOKMARK_LM A
 		JOIN LANDMARK USING(LM_NO)
 		JOIN LAND_IMG USING(LM_NO)

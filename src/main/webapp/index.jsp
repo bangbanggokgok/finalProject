@@ -257,7 +257,7 @@
         <c:if test="${act % 5 == 0}">
           <div class="d-flex justify-content-around">
         </c:if>
-            <a href="javascript:void(0);" onclick=movelocation(${locations.locationNum})>
+            <a href="landmark-main/list/${locations.locationNum}">
                 <div class="card bg-dark text-white">
                     <img
                     src="${contextPath}/resources/images/main/location-image/${locations.locationName}.jpg"
@@ -278,17 +278,6 @@
       </c:if>
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
-
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script> -->
-    <%-- <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script> --%>
     <script
       src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
       integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
