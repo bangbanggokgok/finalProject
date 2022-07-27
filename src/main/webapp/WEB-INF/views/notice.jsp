@@ -21,6 +21,7 @@
         <div class="list">
             <div class="category" value="all"><a id="all" href="${contextPath}/notice/list">전체</a></div>
             <div class="category" id="notice" value="notice">공지</div>
+            <%-- <div class="category" id="notice" value="notice" onclick="loadLocation()">공지</div> --%>
             <div class="category" id="event" value="event">이벤트</div>
         </div>
 

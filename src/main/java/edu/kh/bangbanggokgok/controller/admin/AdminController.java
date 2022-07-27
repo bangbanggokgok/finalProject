@@ -70,7 +70,8 @@ public class AdminController {
 	@PostMapping("/notice/{mode}")
 	public String noticeWrite(NoticeDetail detail,  @PathVariable String mode,
 			@RequestParam(value = "images", required = false) List<MultipartFile> imageList,
-			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra)
+			@ModelAttribute("loginUser") User loginUser, HttpServletRequest req, RedirectAttributes ra,
+			@RequestParam(value="deleteList", required = false) String deleteList)
 			throws IOException {
 
 		detail.setUserNo(loginUser.getUserNo());
@@ -78,9 +79,9 @@ public class AdminController {
 		String webPath = "/resources/images/notice";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 
-		String path = null;
-		String message = null;
 		if (mode.equals("insert")) {
+			String path = null;
+			String message = null;
 
 		int noticeNo = service.insertNotice(detail, imageList, webPath, folderPath);
 
@@ -98,9 +99,22 @@ public class AdminController {
 
 		return "redirect:" + path;
 
-		} else {
+		} else { // 수정
 			
-			return null;
+			int result = service.updateNotice(detail, imageList, webPath, folderPath, deleteList);
+			
+			String path = null;
+			String message = null;
+			if(result > 0) {
+				message = "공지가 수정되었습니다.";
+				path = "../../notice/detail/" + detail.getNoticeNo();
+			}else {
+				message = "공지 수정 실패";
+				path = req.getHeader("referer");
+			}
+			
+			
+			return "redirect:" + path;
 		}
 
 	}

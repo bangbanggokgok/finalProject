@@ -18,7 +18,7 @@
 <body>
   <section class="slide3">
       <div class="container2" id="entire">
-          <ul class="slider-container2 simple-list slider2" id="test1">
+          <ul class="slider-container2 simple-list slider2" id="test1" style="visibility:hidden">
 
             <c:forEach var="landmarkImage" items="${landmarkImage}">
               <li class="slide2" id="landmark-images">
@@ -30,17 +30,18 @@
             
           </ul>
 
-          <p class="pager2">
+          <p class="pager2" style="visibility:hidden">
           </p>
 
-          <a class="prev2">
+          <a class="prev2" style="visibility:hidden">
             <li class="fa-solid fa-angle-left"></li>
           </a>
-          <a class="next2">
+          <a class="next2" style="visibility:hidden">
             <li class="fa-solid fa-angle-right"></li>
           </a>
-          
+          <div style="visibility:hidden">
           <li class="landContent"></li>
+          </div>
       </div>
 
   </section>
