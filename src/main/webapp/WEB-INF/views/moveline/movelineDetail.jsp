@@ -55,7 +55,7 @@
                     <div id="top-top">
                         <div class="profileImage">
                             <span class="icon-writer">
-                                <img src="${contextPath}/resources/images/user.png" alt="">
+                                <img src="${contextPath}${movelineDetail.profileImage}" alt="">
                             </span>
                         </div>
                         <span>${movelineDetail.userName}</span>
