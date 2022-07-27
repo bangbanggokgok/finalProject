@@ -17,7 +17,7 @@
 </head>
 <body>
   <section class="slide3">
-      <div class="container2">
+      <div class="container2" id="entire">
           <ul class="slider-container2 simple-list slider2" id="test1">
 
             <c:forEach var="landmarkImage" items="${landmarkImage}">
@@ -26,6 +26,13 @@
                 <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
               </li>
             </c:forEach>
+            
+              <div id="landmark-explain" style="display:none">
+                <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+                    <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
+                    <li class="landmark">${landMarkContent}</li>
+                </c:forEach>
+              </div>
           </ul>
 
           <p class="pager2">
@@ -39,19 +46,11 @@
           </a>
       </div>
 
-      <div id="landmark-explain">
-          <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-              <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-              <li class="landmark">${landMarkContent}</li>
-          </c:forEach>
-      </div>
-
-
   </section>
 
 </body>
 
-    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <%-- <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script> --%>
 
 
 </html>

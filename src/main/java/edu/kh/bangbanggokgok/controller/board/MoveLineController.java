@@ -284,11 +284,32 @@ public class MoveLineController {
 	
 	
 	// 특정 랜드마크 이미지 세팅 목록 조회
+//	@ResponseBody
+//	@GetMapping("/detail/setLandmarkImages")
+//	public String setLandmarkImages(
+////									@PathVariable("landMarkNo") int landMarkNo,
+//			 						Model model,
+//									@RequestParam(value="cp", required=false, defaultValue="1") int cp,
+//									@RequestParam(value="landmarkNo", required=true) int landmarkNo,
+//									HttpServletRequest req,
+//									RedirectAttributes ra
+//									) {
+//		
+//		System.out.println("landmarkNo");
+//		
+//		List<LandMarkIMG> landmarkImageList = service.setLandmarkImages(landmarkNo);
+//		
+//		System.out.println("landmarkImageList size : " + landmarkImageList.size());
+//		
+//		return new Gson().toJson(landmarkImageList);
+//
+//	}
+	
 	@ResponseBody
 	@GetMapping("/detail/setLandmarkImages")
 	public String setLandmarkImages(
 //									@PathVariable("landMarkNo") int landMarkNo,
-			 						Model model,
+									Model model,
 									@RequestParam(value="cp", required=false, defaultValue="1") int cp,
 									@RequestParam(value="landmarkNo", required=true) int landmarkNo,
 									HttpServletRequest req,
@@ -297,17 +318,35 @@ public class MoveLineController {
 		
 		System.out.println("landmarkNo");
 		
-		List<LandMarkIMG> landmarkImageList = service.setLandmarkImages(landmarkNo);
+		List<LandMarkDetail> landmarkImageList = service.setLandmarkImages(landmarkNo);
 		
-		List<LandMark> landmarkContentList =  service.setLandmarkContent(landmarkNo);
-		
-		model.addAttribute("landmarkContentList", landmarkContentList);
-
-		System.out.println("landmarkContentList size : " + landmarkContentList.size());
 		System.out.println("landmarkImageList size : " + landmarkImageList.size());
+		
 		return new Gson().toJson(landmarkImageList);
-
+		
 	}
+	
+	
+	
+	@ResponseBody
+	@GetMapping("/detail/setLandmarkContent")
+	public String setLandmarkContent(Model model,
+									 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
+								     @RequestParam(value="landmarkNo", required=true) int landmarkNo,
+									 HttpServletRequest req,
+									 RedirectAttributes ra) {
+		
+		System.out.println("landmarkNo");
+		
+		String landmarkContent =  service.setLandmarkContent(landmarkNo);
+
+		System.out.println("landmarkContent : " + landmarkContent);
+
+		return new Gson().toJson(landmarkContent);
+		
+	}
+	
+	
 	
 	// 랜드마크 이름 조회 - 상세 페이지 랜드마크 이름 정렬용
 	@GetMapping("/detail/setLandmarkName")

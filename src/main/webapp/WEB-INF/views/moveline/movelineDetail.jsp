@@ -114,15 +114,15 @@
                                     </c:if>
                                 </c:when>
                             </c:choose>
-                            <c:choose>
+                            <%-- <c:choose>
                                 <c:when test="${loginUser.userNo != movelineDetail.userNo}">
                                     <c:if test="${!empty loginUser}">
-                                        <div class="btn-area">
-                                            <button type="button" id="reportMoveline" onclick="reportMoveline(${movelineNo})">신고하기</button>
-                                        </div>
                                     </c:if>
                                 </c:when>
-                            </c:choose>
+                            </c:choose> --%>
+                                        <div class="btn-area">
+                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
+                                        </div>
                                     <%-- <button type="button" id="goToList">목록으로</button> --%>
 
                         </div>
@@ -186,24 +186,30 @@
 
                 </div>
 
+                <div id="land-start">랜드마크</div>
+
                 <div class="landmark-detail">
                     <ul>
                         <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                                <li class="landmark" id="${landmarkNo}" value="${landMarkContent}">${landmarkName}${landmarkNo}</li>
+                                <li class="landmark" value="${landmarkNo}" value="${landMarkContent}">${landmarkName}</li>
                         </c:forEach>
                     </ul>
-
+                    
                     <ul>
-                        <li class="showImage">사진보기</li>
-                        <li class="showContent">상세설명</li>
+                        <%-- <li class="showImage" >사진보기</li> --%>
+                        <jsp:include page="/WEB-INF/views/moveline/modal.jsp"></jsp:include>
+
+                        
+                        
                     </ul>
                 </div>
-                    <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
 
-                <%-- <div id="landmark-explain">
+                
+
+                <%-- <div id="landmark-explain" style="display:none">
                     <c:forEach var="landmarkDetail" items="${landmarkDetail}">
                         <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
                         <li class="landmark">${landMarkContent}</li>
@@ -251,6 +257,6 @@
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    <%-- <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script> --%>
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
 </html>

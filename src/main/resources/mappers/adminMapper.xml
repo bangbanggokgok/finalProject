@@ -54,7 +54,10 @@
 		<id property="reportNo" column="REPORT_NO"/>
 		<result property="replyNo" column="REPLY_NO"/>
 		<result property="userNo" column="USER_NO"/>
+		<result property="userName" column="USER_NAME"/>
 		<result property="reportReason" column="REPORT_REASON"/>
+		<result property="replyContent" column="REPLY_CONTENT"/>
+		<result property="movelineNo" column="ML_NO"/>
 	</resultMap>
 
 
@@ -162,7 +165,7 @@
 	
 	<!-- 댓글신고 목록 조회 -->
 	<select id="selectReplyReport" resultMap="reportReply_rm">
-		SELECT REPORT_NO, REPLY_NO, R.USER_NO, REPORT_REASON, ML_NO
+		SELECT REPORT_NO, REPLY_NO, R.USER_NO, REPORT_REASON, ML_NO, REPLY_CONTENT, USER_NAME
 		FROM REPORT_REPLY R
 		LEFT JOIN USER_TB U ON(R.USER_NO = U.USER_NO)
 		JOIN REPLY USING(REPLY_NO)

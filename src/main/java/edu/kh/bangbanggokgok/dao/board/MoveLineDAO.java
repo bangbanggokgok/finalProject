@@ -241,7 +241,7 @@ public class MoveLineDAO {
 	 * @param landMarkNo
 	 * @return list
 	 */
-	public List<LandMarkIMG> setLandmarkImages(int landMarkNo) {
+	public List<LandMarkDetail> setLandmarkImages(int landMarkNo) {
 		return sqlSession.selectList("movelineMapper.setLandmarkImages",landMarkNo);
 	}
 
@@ -250,8 +250,8 @@ public class MoveLineDAO {
 	 * @param landMarkNo 
 	 * @return list
 	 */
-	public List<LandMark> setLandmarkContent(int landMarkNo) {
-		return sqlSession.selectList("movelineMapper.setLandmarkContent",landMarkNo);
+	public String setLandmarkContent(int landmarkNo) {
+		return sqlSession.selectOne("movelineMapper.setLandmarkContent",landmarkNo);
 	}
 
 

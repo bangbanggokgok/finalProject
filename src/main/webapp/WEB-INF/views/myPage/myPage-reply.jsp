@@ -67,8 +67,8 @@
                     <c:set var="url" value="reply?cp="/>
 
                     <ul class="pagination">
-                        <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
-                        <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
+                        <li><a href="${url}1">&lt;&lt;</a></li>
+                        <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
 
                         <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
                             <c:choose>
@@ -77,13 +77,13 @@
                                 </c:when>
 
                                 <c:otherwise>
-                                    <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                    <li><a href="${url}${i}">${i}</a></li>        
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         
-                        <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
-                        <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+                        <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
+                        <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
                     </ul>
                 </div>
             </section>

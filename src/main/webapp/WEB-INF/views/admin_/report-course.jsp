@@ -43,7 +43,7 @@
                 <li>
                     <div class="wrapper">
                         <div class="number">${report.reportNo}</div>
-                        <div class="course">${report.moveLineTitle}</div>
+                        <div class="course"><a href="${contextPath}/moveline-main/detail/${report.moveLineNo}">${report.moveLineTitle}</a></div>
                         <div class="reason">${report.reportReason}</div>
                         <div class="reporter">${report.userName}</div>
                         <div class="date">${report.reportDate}</div>

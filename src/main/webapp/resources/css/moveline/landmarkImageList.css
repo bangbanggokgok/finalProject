@@ -13,9 +13,12 @@ body {
 }
 #slide3 {
   margin-top: 6em;
+  margin-bottom: 100px;
 }
 .slide3 {
   /* margin-top: 6em; */
+  margin-bottom: 100px;
+
 }
 .slide-img2 {
   image-rendering: -webkit-optimize-contrast;
