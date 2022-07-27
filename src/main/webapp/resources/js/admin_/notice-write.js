@@ -88,3 +88,33 @@ for(let i=0 ; i<inputImage.length ; i++){
         }
     });
 };
+
+
+
+function noticeValidation(){
+    const titleInput = document.getElementsByClassName("titleInput")[0];
+    const content = document.getElementsByClassName("content")[0];
+    const title = document.getElementById("title");
+    const notice = document.getElementsByClassName("title")[1];
+    const event = document.getElementsByClassName("title")[2];
+    const a = document.getElementsByName("noticeType")[0];
+
+    if(a.value.length == 0){
+        alert("타입을 선택해주세요.");
+        return false
+    }
+
+    if(titleInput.value.trim().length == 0){
+        alert("제목을 입력해주세요.");
+        titleInput.value = "";
+        titleInput.focus();
+        return false;
+    }
+
+    if(content.value.trim().length == 0){
+        alert("내용을 입력해주세요.");
+        content.focus();
+        return false;
+    }
+    return true;
+}

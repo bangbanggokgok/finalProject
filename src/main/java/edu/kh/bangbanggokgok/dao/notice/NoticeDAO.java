@@ -39,8 +39,8 @@ public class NoticeDAO {
 	 * @param boardNo
 	 * @return
 	 */
-	public NoticeDetail selectnoticeDetail(int boardNo) {
-		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", boardNo);
+	public NoticeDetail selectnoticeDetail(int noticeNo) {
+		return sqlSession.selectOne("noticeMapper.selectNoticeDetail", noticeNo);
 	}
 
 

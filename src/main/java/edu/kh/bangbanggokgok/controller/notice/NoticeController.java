@@ -44,12 +44,12 @@ public class NoticeController {
 	}
 
 	// 공지 상세 조회
-	@GetMapping("/detail/{boardNo}")
-	public String boardDetail(@PathVariable("boardNo") int boardNo,
+	@GetMapping("/detail/{noticeNo}")
+	public String boardDetail(@PathVariable("noticeNo") int noticeNo,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model, HttpSession session,
 			HttpServletRequest req, HttpServletResponse resp) {
 
-		NoticeDetail detail = service.selectNoticeDetail(boardNo);
+		NoticeDetail detail = service.selectNoticeDetail(noticeNo);
 		model.addAttribute("detail", detail);
 		return "notice/noticeDetail";
 	}

@@ -1,6 +1,7 @@
 package edu.kh.bangbanggokgok.dao.admin;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.RowBounds;
 import org.mybatis.spring.SqlSessionTemplate;
@@ -184,7 +185,37 @@ public class AdminDAO {
 		RowBounds rowBounds = new RowBounds(offset, pagination.getLimit());
 		return sqlSession.selectList("adminMapper.selectSecessionUser", list, rowBounds);
 	}
+
+	/** 공지 수정 DAO
+	 * @param detail
+	 * @return result
+	 */
+	public int updateNotice(NoticeDetail detail) {
+		return sqlSession.update("adminMapper.updateNotice", detail);
+	}
+
+	/** 공지 이미지 삭제
+	 * @param map
+	 * @return result
+	 */
+	public int deleteNoticeImage(Map<String, Object> map) {
+		return sqlSession.delete("adminMapper.deleteNoticeImage", map);
+	}
+
+	/** 공지 이미지 1개 수정
+	 * @param img
+	 * @return result
+	 */
+	public int updateNoticeImage(NoticeImage img) {
+		return sqlSession.update("adminMapper.updateNoticeImage", img);
+	}
 	
+	/** 공지 이미지 1개 삽입
+	 * @param img
+	 */
+	public int insertNoticeImage(NoticeImage img) {
+		return sqlSession.insert("adminMapper.insertNoticeImage", img);
+	}
 	
 
 }
