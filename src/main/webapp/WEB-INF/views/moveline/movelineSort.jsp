@@ -134,16 +134,13 @@
         
     </main>
 
-    <div class="modal">
-		<span id="modal-close">&times;</span> <img id="modal-image"
-			src="/comm/resources/images/user.png">
-	</div>
+
 
     <script>
 		const contextPath = "${contextPath}";
     </script>
 
-    <script src="${contextPath}/resources/js/common/nav.js"></>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
 
     <!-- jQuery 라이브러리 추가 -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
