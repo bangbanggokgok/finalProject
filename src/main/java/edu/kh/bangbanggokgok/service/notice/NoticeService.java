@@ -16,7 +16,7 @@ public interface NoticeService {
 	 * @param boardNo
 	 * @return
 	 */
-	NoticeDetail selectNoticeDetail(int boardNo);
+	NoticeDetail selectNoticeDetail(int noticeNo);
 
 	/** 공지 ajax 조회
 	 * @param cp

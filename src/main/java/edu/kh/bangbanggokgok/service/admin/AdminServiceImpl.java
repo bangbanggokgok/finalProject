@@ -9,6 +9,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.common.Util;
@@ -77,6 +78,71 @@ public class AdminServiceImpl implements AdminService{
 		return noticeNo;
 	}
 
+	// 게시글 수정
+	@Transactional(rollbackFor = {Exception.class})
+	@Override
+	public int updateNotice(NoticeDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
+			String deleteList) throws IOException{
+		
+		detail.setNoticeTitle(Util.XSSHandling(detail.getNoticeTitle()));
+		detail.setNoticeContent(Util.XSSHandling(detail.getNoticeContent()));
+		detail.setNoticeContent(Util.newLineHandling(detail.getNoticeContent()));
+		
+		int result = dao.updateNotice(detail);
+		
+		if(result > 0) {
+			List<NoticeImage> noticeImageList = new ArrayList<NoticeImage>();
+			List<String> reNameList = new ArrayList<String>();
+			
+			for(int i=0; i<imageList.size(); i++) {
+				if(imageList.get(i).getSize() > 0) {
+					String reName = Util.fileRename(imageList.get(i).getOriginalFilename());
+					reNameList.add(reName);
+					
+					NoticeImage img = new NoticeImage();
+					img.setNoticeNo(detail.getNoticeNo());
+					img.setImageLevel(i);
+					img.setImageReName(webPath + reName);
+					
+					noticeImageList.add(img);
+				}
+			}
+			
+			if(!deleteList.equals("")) {
+				Map<String, Object> map = new HashMap<>();
+				
+				map.put("noticeNo", detail.getNoticeNo());
+				map.put("deleteList", deleteList);
+				
+				result = dao.deleteNoticeImage(map);
+			}
+			
+			if(result > 0) {
+				for(NoticeImage img : noticeImageList) {
+					result = dao.updateNoticeImage(img);
+					
+					if(result == 0) {
+						result = dao.insertNoticeImage(img);
+					}
+				}
+				
+				if(!noticeImageList.isEmpty() && result != 0) {
+					for(int i=0; i<noticeImageList.size(); i++) {
+						int index = noticeImageList.get(i).getImageLevel();
+						imageList.get(index).transferTo(new File(folderPath + reNameList.get(i)));
+					}
+				}
+				
+				
+				
+			}
+			
+		}
+		
+		
+		return result;
+	}
+	
 	// 회원 조회
 	@Override
 	public Map<String, Object> selectUserList(int cp, String list) {
@@ -106,6 +172,7 @@ public class AdminServiceImpl implements AdminService{
 		
 		return map;
 	}
+
 
 	// 신고 조회
 	@Override
