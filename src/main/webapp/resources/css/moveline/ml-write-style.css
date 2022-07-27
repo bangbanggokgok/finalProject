@@ -528,6 +528,7 @@ body::-webkit-scrollbar {
     scrollbar-width: none;
     flex-direction: column;
 }
+
 ::-webkit-scrollbar {
     display: none;
 }
