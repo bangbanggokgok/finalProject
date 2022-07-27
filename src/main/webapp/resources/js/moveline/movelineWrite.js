@@ -178,7 +178,7 @@ function listSelect(result) {
         landmarkBox.classList.add("landmark-box")
 
         const checkBox = document.createElement("input");
-        checkBox.setAttribute("type", "checkbox");
+        checkBox.setAttribute("type", "hidden");
         checkBox.setAttribute("value", landmark.landMarkNo);
         checkBox.classList.add("checkBox")
 
@@ -190,7 +190,13 @@ function listSelect(result) {
         const span = document.createElement("span");
         span.innerText = landmark.landMarkName;
         landmarkName.append(span);
-        landmarkName.classList.add("land-namd-div")
+        landmarkName.classList.add("land-name-div")
+        const addButton = document.createElement("button");
+        addButton.classList.add("add-button");
+        addButton.setAttribute("type","button")
+        addButton.setAttribute("onclick","addFunction(this)");
+        addButton.innerText = "추가하기";
+
         const hiddenY = document.createElement("input");
         const hiddenX = document.createElement("input");
         hiddenX.value = landmark.landmarkX;
@@ -198,7 +204,7 @@ function listSelect(result) {
         hiddenX.setAttribute("type", "hidden");
         hiddenY.setAttribute("type", "hidden");
 
-        landmarkBox.append(checkBox, img, landmarkName, hiddenY, hiddenX);
+        landmarkBox.append(checkBox, img, landmarkName, addButton, hiddenY, hiddenX);
 
         $(".modal").children('div:eq(1)').children("div:eq(0)").append(landmarkBox);
     };
@@ -234,6 +240,41 @@ $(".modalTest").eq(0).click(() => {
     }
 });
 
+let landmarkIndexArray = [];
+let ggomsu = 0
+function addFunction(e){
+    const listBookmark = document.getElementsByClassName("landmark-list")[0];
+    if(ggomsu == 0){
+        listBookmark.innerHTML = "";
+    }
+    toggleControll(true,e);
+    const landmarkBox = document.createElement("div");
+    landmarkBox.classList.add("landmark-box");
+    landmarkBox.append(e.parentElement);
+    listBookmark.innerHTML += landmarkBox.innerHTML;
+    toggleControll(false,e)
+
+    $(".land-name-div > span").addClass("href-link");
+    modalAnimation();
+    $(".href-link").on("click", (e) => {
+    const link = e.currentTarget.parentNode.previousSibling.previousSibling.value; // landmark PK
+    window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
+        , e.currentTarget.innerText);
+    });
+    ggomsu++;
+};
+
+function toggleControll(boolean,e){
+    if(boolean){
+        e.innerText = "제거하기"
+    } else {
+        e.innerHTML = "추가하기"
+    }
+    e.classList.toggle("add-button");
+    e.classList.toggle("remove-button");
+};
+
+
 function modalAnimation() {
     //스크롤홀딩
     $('body').css('overflow', 'auto');
@@ -253,45 +294,45 @@ function modalAnimation() {
 
 $('.close').eq(0).click(modalAnimation);
 
-function selectLandmarkValue() {
+// function selectLandmarkValue() {
 
-    const tempObj = {};
-    for (let i = 0; i < $(".checkBox:checked").length; i++) {
-        tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
-    };
+//     const tempObj = {};
+//     for (let i = 0; i < $(".checkBox:checked").length; i++) {
+//         tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
+//     };
 
-    if (tempObj == "") {
-        alert("등록할 랜드마크를 골라주세요");
-        return
-    }
+//     if (tempObj == "") {
+//         alert("등록할 랜드마크를 골라주세요");
+//         return
+//     }
 
-    if (tempObj != "") {
-        const list = document.getElementsByClassName("landmark-list")[0];
-        list.innerHTML = ""
-        let number = 1;
-        for (let key in tempObj) {
-            const landmarkBox = document.createElement("div");
-            landmarkBox.classList.add("landmark-box", "hover-action");
+//     if (tempObj != "") {
+//         const list = document.getElementsByClassName("landmark-list")[0];
+//         list.innerHTML = ""
+//         let number = 1;
+//         for (let key in tempObj) {
+//             const landmarkBox = document.createElement("div");
+//             landmarkBox.classList.add("landmark-box", "hover-action");
 
-            const sequenceDiv = document.createElement("div");
-            sequenceDiv.innerHTML = "<div class=" + "sequence" + ">" + number + "</div>";
-            number++;
-            landmarkBox.innerHTML = sequenceDiv.innerHTML + $(tempObj[key]).html();
-            list.append(landmarkBox);
-        };
-        $(".checkBox").css("display", "none");
-        $(".land-namd-div > span").addClass("href-link");
-        modalAnimation();
-    };
+//             const sequenceDiv = document.createElement("div");
+//             sequenceDiv.innerHTML = "<div class=" + "sequence" + ">" + number + "</div>";
+//             number++;
+//             landmarkBox.innerHTML = sequenceDiv.innerHTML + $(tempObj[key]).html();
+//             list.append(landmarkBox);
+//         };
+//         $(".checkBox").css("display", "none");
+//         $(".land-namd-div > span").addClass("href-link");
+//         modalAnimation();
+//     };
 
-    $(".href-link").on("click", (e) => {
-        const link = e.currentTarget.parentNode.previousSibling.previousSibling.value;
-        window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
-            , e.currentTarget.innerText);
-    });
-    hoverEvent();
-    // mouseEvent();
-};
+//     $(".href-link").on("click", (e) => {
+//         const link = e.currentTarget.parentNode.previousSibling.previousSibling.value;
+//         window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
+//             , e.currentTarget.innerText);
+//     });
+//     hoverEvent();
+//     mouseEvent();
+// };
 
 function hoverEvent(){
     $(".hover-action").hover(
