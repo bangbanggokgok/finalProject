@@ -1,6 +1,6 @@
 const imageList = document.querySelector(".image-list");
 const btns = document.querySelectorAll(".view-options button");
-const imageListItems = document.querySelectorAll(".image-list li");
+let imageListItems = document.querySelectorAll(".image-list li");
 const active = "active";
 const listView = "list-view";
 const gridView = "grid-view";
@@ -64,18 +64,17 @@ rangeInput.addEventListener("input", function () {
 // }
 // console.log(myArray);
 
-
 let myArrayList = [];
 let counter = 1;
 
-(listSelectLandmark)();
+listSelectLandmark();
 
-function listSelectLandmark(){
+function listSelectLandmark() {
   const captions = document.querySelectorAll(
     ".image-list figcaption p:first-child"
     // image-list figcaption p:first-child
   );
-  myArrayList = [];
+  // myArrayList = [];
   for (let caption of captions) {
     myArrayList.push({
       id: counter++,
@@ -83,7 +82,6 @@ function listSelectLandmark(){
     });
   }
 }
-
 
 function loadLocation(locationNum, pageNo) {
   $.ajax({
@@ -95,6 +93,7 @@ function loadLocation(locationNum, pageNo) {
     },
     dataType: "JSON",
     success: function (map) {
+      imageListItems = [];
       const ol = document.getElementById("landMakrList");
       ol.innerHTML = "";
       const pageList = document.getElementsByClassName("pagination-list")[0];
@@ -118,6 +117,7 @@ function loadLocation(locationNum, pageNo) {
           figcaption.append(p1);
           figcaption.append(p2);
           ol.append(li);
+          imageListItems.push(li);
           //          <div class="pagination-list">
           //     <ul class="pagination">
           //       <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
@@ -145,7 +145,6 @@ function loadLocation(locationNum, pageNo) {
         paginationUl.classList.add("pagination");
         pageList.append(paginationUl);
         document.getElementsByClassName("container")[1].append(pageList);
-        
       }
 
       if (map.landMarkList == "") {
@@ -157,40 +156,41 @@ function loadLocation(locationNum, pageNo) {
 
       listSelectLandmark();
 
+      keyupHandler();
+
       document.getElementById("zoneTitle").innerText =
         document.getElementsByClassName("clicked")[0].innerText;
     },
   });
-};
-
+}
 
 const searchInput = document.querySelector(".abc");
-const photosCounter = document.querySelector(".toolbar .counter span");
+// const photosCounter = document.querySelector(".toolbar .counter span");
 searchInput.addEventListener("keyup", keyupHandler);
 //keyup : 키보드 눌르고 때는 순간
 //keydown : 사용자가 키보드 눌렀을 떄 한번만 작동
 //keypress : 사용자가 키보드 눌렀을 떄 계속 작동
 
 function keyupHandler() {
-  for (const item of imageListItems) {
+  for (let item of imageListItems) {
     item.classList.add(dNone);
   }
-  const keywords = this.value;
+  // const keywords = this.value;
 
-  const filteredArray = myArrayList.filter((el) =>
-    el.text.toLowerCase().includes(keywords.toLowerCase())
-  );
-  console.log(filteredArray);
+  // const filteredArray = myArrayList.filter((el) =>
+  //   el.text.toLowerCase().includes(keywords.toLowerCase())
+  // );
+  // console.log(filteredArray);
 
-  if (filteredArray.length > 0) {
-    for (const el of filteredArray) {
-      //.image-list li:nth-child(2)
-      //.image-list li:nth-child(el.id)
-      document
-        .querySelector(`.image-list li:nth-child(${el.id})`)
-        .classList.remove(dNone);
-    }
-  }
+  // if (filteredArray.length > 0) {
+  //   for (const el of filteredArray) {
+  //     //.image-list li:nth-child(2)
+  //     //.image-list li:nth-child(el.id)
+  //     document
+  //       .querySelector(`.image-list li:nth-child(${el.id})`)
+  //       .classList.remove(dNone);
+  //   }
+  // }
   // photosCounter.textContent = filteredArray.length;
 }
 

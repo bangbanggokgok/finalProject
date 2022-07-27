@@ -146,7 +146,7 @@
             <div class="mod-bot all-modal-opacity unstaged"> <%-- div:last-child --%>
                 <div class="landmark-data all-modal-opacity unstaged">
                 </div>
-                <button class="landmark-select-button" type="button" onclick="selectLandmarkValue()">등록하기</button>
+                <%-- <button class="landmark-select-button" type="button" onclick="selectLandmarkValue()">등록하기</button> --%>
             </div>
         </div>
     </div>
