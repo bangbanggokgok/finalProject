@@ -38,6 +38,7 @@
         
         // 슬라이드 이동 함수 
         function goToSlide2(idx){
+            console.log(idx);
             $slideContainer2.classList.add('animated');
             $slideContainer2.style.left = -100 * idx + '%';
             $currentIndex2 = idx;        
