@@ -319,10 +319,15 @@ public class MoveLineController {
 		System.out.println("landmarkNo");
 		
 		List<LandMarkDetail> landmarkImageList = service.setLandmarkImages(landmarkNo);
+		String landmarkContent =  service.setLandmarkContent(landmarkNo);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("landmarkImageList", landmarkImageList);
+		map.put("landmarkContent", landmarkContent);
 		
 		System.out.println("landmarkImageList size : " + landmarkImageList.size());
 		
-		return new Gson().toJson(landmarkImageList);
+		return new Gson().toJson(map);
 		
 	}
 	

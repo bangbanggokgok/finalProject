@@ -209,12 +209,6 @@
 
                 
 
-                <%-- <div id="landmark-explain" style="display:none">
-                    <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                        <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                        <li class="landmark">${landMarkContent}</li>
-                    </c:forEach>
-                </div> --%>
                 
             </form>
             

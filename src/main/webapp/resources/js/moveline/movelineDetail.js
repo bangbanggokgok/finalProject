@@ -22,8 +22,11 @@ for (let i = 0; i < landmark.length; i++) {
             data: { "landmarkNo": this.getAttribute("value") },
             type: "get",
             dataType: "JSON",
-            success: function (landmarkImageList) {
+            success: function (map) {
+                const landmarkImageList = map.landmarkImageList;
+                const landmarkContent = map.landmarkContent;
 
+                alert(landmarkContent);
                 // alert(landmarkImageList);
                 // alert(landmarkContentList);
 
@@ -59,6 +62,13 @@ for (let i = 0; i < landmark.length; i++) {
                     test1.append(slide2);
                     slide2.append(slideImg2);
                 }
+
+                const content = document.createElement("li");
+                content.classList.add("landmarkContent");
+                content.innerText(landmarkContent);
+                test1.append(content);
+
+
 
 
                 let pager = document.createElement("p");
@@ -108,7 +118,7 @@ for (let i = 0; i < landmark.length; i++) {
 
 
                 $pager2 = document.querySelector('.pager2');
-                $slide2 = document.querySelectorAll('.slide2');
+                $slide2 = document.querySelectorAll('.slide2Plus');
                 $currentIndex2 = 0;
                 $slideCount2 = $slide2.length;
                 $pagerBtn2 = document.querySelectorAll('.pager2 span');
@@ -147,8 +157,6 @@ for (let i = 0; i < landmark.length; i++) {
                        goToSlide2($currentIndex2 + 1);
                    }
                 });
-
-
 
             },
 
