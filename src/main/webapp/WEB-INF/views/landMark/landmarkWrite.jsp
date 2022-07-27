@@ -169,7 +169,6 @@
             lat = 37.56792412182713;
         </script>
     </c:if>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
     <script src="${contextPath}/resources/js/landmark/landmarkWrite.js"></script>
 </body>

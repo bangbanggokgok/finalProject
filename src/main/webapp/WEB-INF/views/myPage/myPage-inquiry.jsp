@@ -58,7 +58,7 @@
                                         <tr>
                                             <td>${question.rowNo}</td>
                                             <td>
-                                                <a href="inquiry/detail/${question.questionNo}?cp=${pagination.currentPage}${sURL}">${question.questionTitle}</a>
+                                                <a href="inquiry/detail/${question.questionNo}?cp=${pagination.currentPage}">${question.questionTitle}</a>
                                             </td>
                                             <td>${question.createDate}</td>
                                             <c:if test="${!empty question.questionAnswer}">
@@ -80,8 +80,8 @@
                     <c:set var="url" value="inquiry?cp="/>
 
                     <ul class="pagination">
-                        <li><a href="${url}1${sURL}">&lt;&lt;</a></li>
-                        <li><a href="${url}${pagination.prevPage}${sURL}">&lt;</a></li>
+                        <li><a href="${url}1">&lt;&lt;</a></li>
+                        <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
 
                         <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
                             <c:choose>
@@ -90,13 +90,13 @@
                                 </c:when>
 
                                 <c:otherwise>
-                                    <li><a href="${url}${i}${sURL}">${i}</a></li>        
+                                    <li><a href="${url}${i}">${i}</a></li>        
                                 </c:otherwise>
                             </c:choose>
                         </c:forEach>
                         
-                        <li><a href="${url}${pagination.nextPage}${sURL}">&gt;</a></li>
-                        <li><a href="${url}${pagination.maxPage}${sURL}">&gt;&gt;</a></li>
+                        <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
+                        <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
                     </ul>
                 </div>
             </section>
@@ -105,8 +105,6 @@
 
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        
     <script src="${contextPath}/resources/js/myPage/myPage.js"></script>
     
 </body>

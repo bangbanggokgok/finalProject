@@ -404,9 +404,9 @@
    		WHERE LM_NO = #{landMarkNo}
    	</select>
    
-	<!-- 특정 랜드마크 이미지 세팅 목록 조회 -->
-   	<select id="setLandmarkContent" resultMap="landMark_rm">
-   		SELECT * FROM LANDMARK
+	<!-- 특정 랜드마크 내용 세팅 목록 조회 -->
+   	<select id="setLandmarkContent" resultType="String">
+   		SELECT LM_CONTENT FROM LANDMARK
    		WHERE LM_NO = #{landMarkNo}
    	</select>
    

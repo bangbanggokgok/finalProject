@@ -13,28 +13,7 @@
     </c:if>
 </c:forEach> --%>
 
-
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>코스 구분 페이지</title>
-   <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-sort-style.css">
-
-   <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
-      rel="stylesheet"
-    />
-
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css" />
-    <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
-
-    <script src="https://kit.fontawesome.com/243327ab3a.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    <main>
+        <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-sort-style.css">
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
         <section>
@@ -133,21 +112,9 @@
         <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
         
     </main>
-
-    <div class="modal">
-		<span id="modal-close">&times;</span> <img id="modal-image"
-			src="/comm/resources/images/user.png">
-	</div>
-
     <script>
 		const contextPath = "${contextPath}";
     </script>
-
-    <script src="${contextPath}/resources/js/common/nav.js"></>
-
-    <!-- jQuery 라이브러리 추가 -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
     <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
 </body>
 </html>

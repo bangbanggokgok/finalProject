@@ -18,6 +18,8 @@
       crossorigin="anonymous"
     /> -->
     <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css"/>
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/scroll-top.css" />
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
       crossorigin="anonymous"
@@ -80,10 +82,5 @@
       </div>
       <span class="cursor ham"><i class="fa-solid fa-bars"></i></span>
     </nav>
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-      crossorigin="anonymous"
-    ></script>
-    <script src="${contextPath}/resources/js/common/nav.js"></script>
+
 
