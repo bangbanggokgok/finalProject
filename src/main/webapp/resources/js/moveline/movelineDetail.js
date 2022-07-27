@@ -63,10 +63,7 @@ for (let i = 0; i < landmark.length; i++) {
                     slide2.append(slideImg2);
                 }
 
-                const content = document.createElement("li");
-                content.classList.add("landmarkContent");
-                content.innerText(landmarkContent);
-                test1.append(content);
+               
 
 
 
@@ -110,10 +107,13 @@ for (let i = 0; i < landmark.length; i++) {
 
                 next2.append(right);
                 
-                entire.append(prev2, next2);
-
                 
                 
+                const content3 = document.createElement("p");
+                content3.classList.add("landmarkContent");
+                content3.innerText=landmarkContent;
+                
+                entire.append(prev2, next2, content3);
 
 
 

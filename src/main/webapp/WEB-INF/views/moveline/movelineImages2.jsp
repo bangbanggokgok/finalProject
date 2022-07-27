@@ -26,7 +26,7 @@
                 <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
               </li>
             </c:forEach>
-            <li class="landmark"></li>
+            
             
           </ul>
 
@@ -39,6 +39,8 @@
           <a class="next2">
             <li class="fa-solid fa-angle-right"></li>
           </a>
+          
+          <li class="landContent"></li>
       </div>
 
   </section>
