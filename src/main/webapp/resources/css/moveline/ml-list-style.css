@@ -1,307 +1,303 @@
-li{
-    list-style: none;
+li {
+  list-style: none;
 }
-
 
 /* 전체 화면 */
-#contents{
-    width: 1140px;
-    padding: 70px 20px 27px 20px;
-    /* margin-left: 560px; */
-
+#contents {
+  width: 1140px;
+  padding: 70px 20px 27px 20px;
+  /* margin-left: 560px; */
 }
 
-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* emptyList */
-#emptyList{
-    display: flex;
-    justify-content: center;
-    font-size: 20px;
-    color: #ccc;
-    font-style: oblique;
-    padding-top: 20%;
-    height: 500px;
+#emptyList {
+  display: flex;
+  justify-content: center;
+  font-size: 20px;
+  color: #ccc;
+  font-style: oblique;
+  padding-top: 20%;
+  height: 500px;
 }
 
 /* 맨위 */
-#top{
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
+#top {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
 }
 
-#first-h1{
-    margin-top: 20px;
-    margin-bottom: 10px;
+#first-h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-h1{
-    font-size: 30px;
+h1 {
+  font-size: 30px;
 }
 
-#write-btn{
-    font-size: 15px;
-    font-weight: bold;
-    margin-top: 60px;
-    border-color: white;
-    background-color: white;
-    margin-bottom: 10px;
-    width: 70px;
-    height: 50px;
+#write-btn {
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 60px;
+  border-color: white;
+  background-color: white;
+  margin-bottom: 10px;
+  width: 70px;
+  height: 50px;
 }
 
-#write-btn:hover{
-    cursor: pointer;
-    background-color: #13294b;
-    border-color: #13294b;
-    color: white;
+#write-btn:hover {
+  cursor: pointer;
+  background-color: #13294b;
+  border-color: #13294b;
+  color: white;
 }
 
-.ml-title{
-    font-size: 22px;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    width: 800px;
+.ml-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 800px;
 }
 
-.ml-title:hover{
-    cursor: pointer;
+.ml-title:hover {
+  cursor: pointer;
 }
 
-.title-area{
-    width: 800px;
-
+.title-area {
+  width: 800px;
 }
 
-.detail-list{
-    width: 100%;
-    padding-left: 0;
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px solid #ddd;
-    box-sizing: border-box;
-    float: none !important;
+.detail-list {
+  width: 100%;
+  padding-left: 0;
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  float: none !important;
 
-    padding: 10px 10px
+  padding: 10px 10px;
 }
 
 /* 썸네일 */
-.thumbnail{
-    
-    position: absolute;
-    left: 0;
-    top: 20px;
+.thumbnail {
+  position: absolute;
+  left: 0;
+  top: 20px;
 }
 
-.thumbnail:hover{
-    cursor: pointer;
+.thumbnail:hover {
+  cursor: pointer;
 }
 
-div>img{
-    max-width: 200px;
-    max-height: 150px;
+div > img {
+  max-width: 200px;
+  max-height: 150px;
 }
-
 
 /* 코스 디테일 */
-.ml-detail{
-    padding-left: 220px;
-    min-height: 160px;
+.ml-detail {
+  padding-left: 220px;
+  min-height: 160px;
 }
 
-.ml-title:hover{
-
-    cursor: pointer;
-
+.ml-title:hover {
+  cursor: pointer;
 }
 
-.landmarks{
-    border: 1px solid #13294b;
-    border-radius: 20px;
-    background-color: #13294b;
-    color: white;
-    padding: 3px 12px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    display: inline-block;
-
+.landmarks {
+  border: 1px solid #13294b;
+  border-radius: 20px;
+  background-color: #13294b;
+  color: white;
+  padding: 3px 12px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  display: inline-block;
 }
 
-.hashtags{
-    margin-right: 10px;
-    margin-bottom: 5px;
-    margin-top: 10px;
-    display: inline-block;
-
+.hashtags {
+  margin-right: 10px;
+  margin-bottom: 5px;
+  margin-top: 10px;
+  display: inline-block;
 }
 
 /* 즐겨찾기, 조회수, 작성자 영역 */
-.ml-detail-plus{
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin-top: 10px;
+.ml-detail-plus {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 10px;
 }
 
-.btn-bookmark{
-    border: 0 none;
-    margin-top: 0;
-    background-color: transparent;
+.btn-bookmark {
+  border: 0 none;
+  margin-top: 0;
+  background-color: transparent;
 }
 
-.icon-bookmark{
-    display: inline-block;
-    text-indent: -9999px;
-    width: 25px;
-    height: 25px;
-    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat;
+.icon-bookmark {
+  display: inline-block;
+  /* text-indent: -9999px; */
+  width: 25px;
+  height: 25px;
+  /* background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat; */
+}
+.bookmarkOn {
+  display: none;
+}
+.bookmarkOn.active {
+  display: inline-block;
+}
+.bookmarkOff.d-none {
+  display: none;
 }
 
-.icon-bookmark:hover{
-    cursor: pointer;
+.icon-bookmark:hover {
+  cursor: pointer;
 }
-
-
 
 /* 페이지네이션(Pagination */
-.pagination{
-    padding: 0;
-    margin-top: 50px;
-    list-style: none;
+.pagination {
+  padding: 0;
+  margin-top: 50px;
+  list-style: none;
 
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
-.pagination>li{
-    width: 20px;
-    margin: 0 6px;
-    text-align: center;
-    color: #13294b;
+.pagination > li {
+  width: 20px;
+  margin: 0 6px;
+  text-align: center;
+  color: #13294b;
 }
 
-.pagination a{
-    width: 100%;
-    height: 100%;
-    display: block;
-    letter-spacing: 1px;
-    text-decoration: none;
-    font-size: 20px;
-    color: black;
+.pagination a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  letter-spacing: 1px;
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
 }
 
 /* 현재 페이지 번호 */
-.pagination .current{
-    background-color: #13294b;
-    color: white;
-    border-radius: 50%;
-    font-weight: bold;
+.pagination .current {
+  background-color: #13294b;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
 }
 
 /* 게시글 목록 없을 시 */
-tr{
-    text-align: center;
+tr {
+  text-align: center;
 }
-
-
 
 /**********************************************/
 /* modal : 화면내에 html 요소를 이용해서 만드는 분할 창 */
-.modal{
-    background-color: rgba(0, 0, 0, 0.4);
+.modal {
+  background-color: rgba(0, 0, 0, 0.4);
 
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 
-    z-index: 50;
+  z-index: 50;
 
-    display: none;
+  display: none;
 }
 
-.modal.show { /* 클래스로 modal, show를 동시에 가진 요소 선택 */
-    display: flex;
+.modal.show {
+  /* 클래스로 modal, show를 동시에 가진 요소 선택 */
+  display: flex;
 
-    animation-name: show; /* @keyframes  show 적용 */
-    animation-duration: 0.5s;  /* 애니메이션 수행 시간 */
+  animation-name: show; /* @keyframes  show 적용 */
+  animation-duration: 0.5s; /* 애니메이션 수행 시간 */
 }
 
-.modal.hide{
-    animation-name: hide; /* @keyframes  show 적용 */
-    animation-duration: 0.5s;  /* 애니메이션 수행 시간 */
+.modal.hide {
+  animation-name: hide; /* @keyframes  show 적용 */
+  animation-duration: 0.5s; /* 애니메이션 수행 시간 */
 }
 
 #modal-image {
-    background-color: white;
-    margin: auto;
-    border-radius: 10px;
-    max-width: 100%;
-    max-height: 100%;
+  background-color: white;
+  margin: auto;
+  border-radius: 10px;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 /* 닫기 버튼 */
 #modal-close {
-    position: absolute;
-    top: 100px;
-    right: 40px;
+  position: absolute;
+  top: 100px;
+  right: 40px;
 
-    color: white;
-    font-size: 50px;
-    font-weight: bold;
+  color: white;
+  font-size: 50px;
+  font-weight: bold;
 
-    transition-duration: 0.2s;
-    cursor: pointer;
+  transition-duration: 0.2s;
+  cursor: pointer;
 }
 
-#modal-close:hover{
-    transform: scale(1.2);
+#modal-close:hover {
+  transform: scale(1.2);
 }
-
-
 
 /* @keyframes : 
 애니메이션 중간중간의 특정 지점들을 거칠 수 있는 키프레임들을 설정함으로써
 CSS 애니메이션 과정의 중간 절차를 제어할 수 있게 합니다.  */
 @keyframes show {
-    from {opacity: 0;}
-    to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes hide {
-    from {opacity: 1;}
-    to {opacity: 0;}
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
-
-
-
-
-
 /* 색상반전 */
-.user.two{
-    border:2px solid blue;
-    filter:invert();
-  }
-  
-  /* 블러effect 0~px단위로 */
-  .user.three{
-    border:2px solid blue;
-    filter:blur(10px); 
-  }
+.user.two {
+  border: 2px solid blue;
+  filter: invert();
+}
 
+/* 블러effect 0~px단위로 */
+.user.three {
+  border: 2px solid blue;
+  filter: blur(10px);
+}
 
-
-.icon-bookmark{
-    -webkit-filter: opacity(.5) drop-shadow(0 0 0 red);
-    filter: opacity(.5) drop-shadow(0 0 0 red);
-};
+.icon-bookmark {
+  -webkit-filter: opacity(0.5) drop-shadow(0 0 0 red);
+  filter: opacity(0.5) drop-shadow(0 0 0 red);
+}
