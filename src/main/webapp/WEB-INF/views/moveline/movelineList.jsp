@@ -16,30 +16,9 @@
 <c:set var="listByHashTag" value="${map.listByHashTag}" />
 <c:set var="listByTheme" value="${map.listByTheme}" />
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>코스 목록 조회 페이지</title>
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/moveline/ml-list-style.css">
-
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
-	rel="stylesheet" />
-
-<link rel="stylesheet"
-	href="${contextPath}/resources/css/common/nav.css" />
-
-</head>
-<body>
-
 	<main>
-
 		<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
-
+		<link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-list-style.css">
 
 		<c:if test="${!empty movelineList}">
             <c:set var="hash" value="${param.hashtag}" />
@@ -198,22 +177,13 @@
 				</div>
 			</div>
 		</section>
+		<div class="modal">
+			<span id="modal-close">&times;</span> <img id="modal-image" src="">
+		</div>
 		<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	</main>
-
-	<div class="modal">
-		<span id="modal-close">&times;</span> <img id="modal-image"
-			src="">
-	</div>
-
 	<script>
 		const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
     </script>
-
-
-
-	<script src="${contextPath}/resources/js/common/nav.js"></script>
 	<script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
-</body>
-</html>

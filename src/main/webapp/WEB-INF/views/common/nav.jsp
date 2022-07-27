@@ -18,6 +18,8 @@
       crossorigin="anonymous"
     /> -->
     <link rel="stylesheet" href="${contextPath}/resources/css/common/nav.css"/>
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
+    <link rel="stylesheet" href="${contextPath}/resources/css/common/scroll-top.css" />
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
       crossorigin="anonymous"

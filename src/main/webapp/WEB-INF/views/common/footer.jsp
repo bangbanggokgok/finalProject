@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    <link
-      href="https://fonts.googleapis.com/css?family=Nunito:200,300,400,700"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/footer.css" />
-    <link rel="stylesheet" href="${contextPath}/resources/css/common/scroll-top.css" />
-    <script
-      src="https://kit.fontawesome.com/243327ab3a.js"
-      crossorigin="anonymous"
-    ></script>
-  </head>
-  <body>
     <footer class="foot">
       <div class="foot_in">
         <div class="foot-content">
