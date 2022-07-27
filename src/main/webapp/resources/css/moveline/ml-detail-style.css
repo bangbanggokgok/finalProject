@@ -1,335 +1,330 @@
-html{
-    display: flex;
-    justify-content: center;}
-
-
-/* 전체 화면 */
-#contents{
-    width: 1140px;
-    padding: 100px 20px 27px 20px;   
-    /* margin-left: 560px; */
-    /* border: 1px solid #ccc; */
+html {
+  display: flex;
+  justify-content: center;
 }
 
-ul{
-    list-style: none;
+/* 전체 화면 */
+#contents {
+  width: 1140px;
+  padding: 100px 20px 27px 20px;
+  /* margin-left: 560px; */
+  /* border: 1px solid #ccc; */
+}
+
+ul {
+  list-style: none;
 }
 
 /* 헤더  */
-#top1{
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 10px;
+#top1 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
 }
 
-#top-middle{
-    margin-bottom: 30px;
+#top-middle {
+  margin-bottom: 30px;
 }
 
-.profileImage{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    vertical-align: top;
-    margin-bottom: 5px;
-    padding-left: 15px;
+.profileImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  vertical-align: top;
+  margin-bottom: 5px;
+  padding-left: 15px;
 }
 
-.icon-writer>img{
-    width: 40px;
+.icon-writer > img {
+  width: 40px;
 }
 
-.btn-bookmark{
-    border: 0 none;
-    margin-top: 0;
-    background-color: transparent;
+.btn-bookmark {
+  border: 0 none;
+  margin-top: 0;
+  background-color: transparent;
 }
 
-.icon-bookmark{
-    display: inline-block;
-    text-indent: -9999px;
-    width: 25px;
-    height: 25px;
-    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat;
+.icon-bookmark {
+  display: inline-block;
+  /* text-indent: -9999px; */
+  width: 25px;
+  height: 25px;
+  /* background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat; */
+}
+.bookmarkOn {
+  display: none;
+}
+.bookmarkOn.active {
+  display: inline-block;
+}
+.bookmarkOff.d-none {
+  display: none;
+}
+.icon-bookmark:hover {
+  cursor: pointer;
 }
 
-.icon-bookmark:hover{
-    cursor: pointer;
+#top-middle {
+  text-align: center;
 }
 
-#top-middle{
-    text-align: center;
+.btn-area > button {
+  margin-left: 5px;
+  font-size: 15px;
+  font-weight: bold;
+  border-color: white;
+  background-color: white;
+  height: 30px;
+  width: 80px;
 }
 
-.btn-area>button{
-    margin-left: 5px;
-    font-size: 15px;
-    font-weight: bold;
-    border-color: white;
-    background-color: white;
-    height: 30px;
-    width: 80px;
+.btn-area > button:hover {
+  cursor: pointer;
+  background-color: #bbd0ff;
+  border-color: #bbd0ff;
+  color: white;
 }
 
-.btn-area>button:hover{
-    cursor: pointer;
-    background-color: #bbd0ff;
-    border-color: #bbd0ff;
-    color: white;
+#top-bottom-area {
+  display: flex;
+  justify-content: space-between;
 }
 
-#top-bottom-area{
-    display: flex;
-    justify-content: space-between;
+#top-bottom {
+  display: flex;
+  justify-content: end;
 }
-
-#top-bottom{
-    display: flex;
-    justify-content: end;
-}
-
-
 
 /* 바디 */
-#moveline-area{
+#moveline-area {
 }
 
 /* 작성된 지역, 코스 총 거리, 테마 */
-#schedule-info{
-    padding: 40px 150px 0px;
-    border-bottom: 1px solid #ccc;
+#schedule-info {
+  padding: 40px 150px 0px;
+  border-bottom: 1px solid #ccc;
 }
 
-.schedule{
-    padding: 30px;
+.schedule {
+  padding: 30px;
 }
 
-.location-detail{
-    display: flex;
-    justify-content: center;
+.location-detail {
+  display: flex;
+  justify-content: center;
 }
 
-
-.schedule>li img{
-    width: 80px;
+.schedule > li img {
+  width: 80px;
 }
 
 /* 지역 자리 */
-.loca1{
-    text-align: center;
-    font-size: 20px;
-    color: #777;
+.loca1 {
+  text-align: center;
+  font-size: 20px;
+  color: #777;
 }
 
-.loca2{
-    font-size: 30px;
-    padding: 0 10px;
+.loca2 {
+  font-size: 30px;
+  padding: 0 10px;
 }
 
-.distance{
-    text-align: center;
-    margin-top: 30px;
+.distance {
+  text-align: center;
+  margin-top: 30px;
 }
 
-.distance>:nth-child(1){
-    color: #777;
+.distance > :nth-child(1) {
+  color: #777;
 }
 
-.distance>:nth-child(2){
-    font-size: larger;
+.distance > :nth-child(2) {
+  font-size: larger;
 }
 
-.distance>span{
-    padding: 0 10px;
+.distance > span {
+  padding: 0 10px;
 }
 
 /* 테마 자리 */
-.theme-detail{
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
+.theme-detail {
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
 }
 
-.theme1{
-    text-align: center;
-    font-size: 20px;
-    color: #777;
-
+.theme1 {
+  text-align: center;
+  font-size: 20px;
+  color: #777;
 }
 
-.theme2{
-    font-size: 30px;
-    padding: 0px 10px;
+.theme2 {
+  font-size: 30px;
+  padding: 0px 10px;
 }
-
 
 /* 해시태그 자리 */
-#moveline-hashtags{
-    margin-top: 50px;
-    font-size: 20px;
-    max-height: 200px;
-    display: flex;
-    justify-content: center;
+#moveline-hashtags {
+  margin-top: 50px;
+  font-size: 20px;
+  max-height: 200px;
+  display: flex;
+  justify-content: center;
 }
 
-
-#moveline-hashtags li{
-    display: inline-block;
-    margin: 10px 5px;
+#moveline-hashtags li {
+  display: inline-block;
+  margin: 10px 5px;
 }
-#moveline-map-area{
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    margin-top: 50px;
-    padding-bottom: 50px;
-}
-
-#map{
-    width: 700px;
-    height: 500px;
-    text-align: center;
-    
+#moveline-map-area {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  padding-bottom: 50px;
 }
 
-#moveline-content, #moveline-hashtags, #moveline-images, #moveline-map{
-    /* border: 1px solid #ccc; */
+#map {
+  width: 700px;
+  height: 500px;
+  text-align: center;
 }
 
-#moveline-content{
-    border-bottom: 1px solid #ccc;
-    height: 350px;
-    margin-top: 20px;
-    font-size: 20px;
-    padding: 0 20px
+#moveline-content,
+#moveline-hashtags,
+#moveline-images,
+#moveline-map {
+  /* border: 1px solid #ccc; */
+}
+
+#moveline-content {
+  border-bottom: 1px solid #ccc;
+  height: 350px;
+  margin-top: 20px;
+  font-size: 20px;
+  padding: 0 20px;
 }
 
 /* 코스 이미지 */
-#moveline-images>img{
-    width: 600px;
-    height: 400px;
-    margin-top: 30px;
+#moveline-images > img {
+  width: 600px;
+  height: 400px;
+  margin-top: 30px;
 }
 
-#moveline-images{
-    overflow: hidden;
-    /* display: flex;
+#moveline-images {
+  overflow: hidden;
+  /* display: flex;
     justify-content: center; */
-    text-align: center;
+  text-align: center;
 }
-
-
-
 
 /* 랜드마크 디테일 */
-#land-start{
-    width: 100%;
-    margin-top:150px;
-    font-size: 45px;
-    color: #333;
-    padding: 20px;
-    letter-spacing: -1px;
-
+#land-start {
+  width: 100%;
+  margin-top: 150px;
+  font-size: 45px;
+  color: #333;
+  padding: 20px;
+  letter-spacing: -1px;
 }
 
-.landmark-detail{
-    text-align: center;
-    font-size: 25px;
-    border-top: 2px solid #333;;
-
+.landmark-detail {
+  text-align: center;
+  font-size: 25px;
+  border-top: 2px solid #333;
 }
 
-.landmark-detail>ul{
-    width: 100%;
-    display: flex;
-    padding-inline-start: 0;
-    justify-content: center;
+.landmark-detail > ul {
+  width: 100%;
+  display: flex;
+  padding-inline-start: 0;
+  justify-content: center;
 }
 
-.landmark, .showImage{
-    line-height: 100px;
-    width: 300px;
+.landmark,
+.showImage {
+  line-height: 100px;
+  width: 300px;
 }
 
-.landmark{
-    border-bottom: 1px solid #ccc;
-    width: 200px;
-    padding: 10px;
-    padding-inline-start: 0;
+.landmark {
+  border-bottom: 1px solid #ccc;
+  width: 200px;
+  padding: 10px;
+  padding-inline-start: 0;
 }
 
-.landmark:hover{
-    cursor: pointer;
-    background-color: #bbd0ff;
-    color: white;
+.landmark:hover {
+  cursor: pointer;
+  background-color: #bbd0ff;
+  color: white;
 }
 
-.selected-landmark{
-    margin: 5px;
-}   
-
+.selected-landmark {
+  margin: 5px;
+}
 
 /* 랜드마크 이미지 */
-#landmark-images>img{
-    width: 100%;
-    height: 100%;
-    text-align: center;
+#landmark-images > img {
+  width: 100%;
+  height: 100%;
+  text-align: center;
 }
 
-#landmark-images{
-    display: flex;
-    justify-content: center;
+#landmark-images {
+  display: flex;
+  justify-content: center;
 }
 
-#landmark-explain{
-    border: 2px solid #ccc;
-    height: 100px;
-    font-size: 20px;
-    padding: 20px 20px;
-    margin-left: 110px;
-    width: 80%;
-    /* margin: 100px; */
-    min-height: 500px;
-    max-height: 700px;
+#landmark-explain {
+  border: 2px solid #ccc;
+  height: 100px;
+  font-size: 20px;
+  padding: 20px 20px;
+  margin-left: 110px;
+  width: 80%;
+  /* margin: 100px; */
+  min-height: 500px;
+  max-height: 700px;
 }
 
-.showImage, .showContent{
-    width: 150px;
-    padding: 20px;
-    padding-inline-start: 0;
-    background-color: white;
-    border-style: none;
-    
+.showImage,
+.showContent {
+  width: 150px;
+  padding: 20px;
+  padding-inline-start: 0;
+  background-color: white;
+  border-style: none;
 }
 
-.showImage, .showContent:hover{
-    cursor: pointer;
-    background-color: #bbd0ff;
-    color: white;
+.showImage,
+.showContent:hover {
+  cursor: pointer;
+  background-color: #bbd0ff;
+  color: white;
 }
 
-
-
-#showContent{
-    position: absolute;
-    width: 100%;
-    /* height: 500px; */
-    /* padding: 0 10%; */
-    box-sizing: border-box;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    overflow: hidden;
-    visibility: hidden
-
+#showContent {
+  position: absolute;
+  width: 100%;
+  /* height: 500px; */
+  /* padding: 0 10%; */
+  box-sizing: border-box;
+  top: 50%;
+  transform: translateY(-50%);
+  text-align: center;
+  overflow: hidden;
+  visibility: hidden;
 }
 
-
-  
-  /* .heart1 {
+/* .heart1 {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -353,11 +348,11 @@ ul{
     height: 25px;
   }
    */
-  /* .redHeart-img.active {
+/* .redHeart-img.active {
     display: block;
     width:25px; 
   } */
-  
-  /* .hide {
+
+/* .hide {
     display: none;
   } */

@@ -69,7 +69,11 @@
                     <div id="top-bottom-area">
                         <div>
                             <button type="button" class="btn-bookmark" onclick="setBookmark(${movelineNo});">
-                                <span class="icon-bookmark">즐겨찾기</span>
+                                <span class="icon-bookmark">
+                                    <img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
+                                    <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
+                                </span>
+                             
                             </button>
                         </div>
                         <div id="top-bottom">
