@@ -91,7 +91,7 @@ function keyupHandler() {
         .classList.remove(dNone);
     }
   }
-  photosCounter.textContent = filteredArray.length;
+  // photosCounter.textContent = filteredArray.length;
 }
 
 var region = document.getElementsByClassName("region-detail");
