@@ -83,5 +83,17 @@ public interface AdminService {
 	 */
 	Map<String, Object> selectSecession(int cp, String list);
 
+	/** 공지 수정
+	 * @param detail
+	 * @param imageList
+	 * @param webPath
+	 * @param folderPath
+	 * @param deleteList
+	 * @return result
+	 * @throws IOException
+	 */
+	int updateNotice(NoticeDetail detail, List<MultipartFile> imageList, String webPath, String folderPath,
+			String deleteList) throws IOException;
+
 
 }

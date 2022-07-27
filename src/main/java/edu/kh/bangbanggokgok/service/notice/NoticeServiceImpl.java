@@ -36,8 +36,8 @@ public class NoticeServiceImpl implements NoticeService{
 
 	// 게시글 상세 조회 서비스 구현
 	@Override
-	public NoticeDetail selectNoticeDetail(int boardNo) {
-		return dao.selectnoticeDetail(boardNo);
+	public NoticeDetail selectNoticeDetail(int noticeNo) {
+		return dao.selectnoticeDetail(noticeNo);
 	}
 
 	// 공지 ajax

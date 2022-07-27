@@ -31,7 +31,7 @@
 	<section class="board">
 		<section class="pageWrapper">
 			<!-- 폼태그 액션 주소 필 -->
-			<form action="insert" enctype="multipart/form-data" method="POST">
+			<form action="insert" enctype="multipart/form-data" method="POST" onsubmit="return noticeValidation()">
 				<label class="choice">공지 선택</label>
 				<div id="inputFieldsContainer" onclick="drop_choiceFields()">
 					<div class="inputFields">
@@ -62,7 +62,7 @@
 				<div class="titleFields">
 					<div>
 						<label class="title">제목</label> 
-						<input placeholder="제목을 입력해주세요." maxlength="50" 
+						<input placeholder="제목을 입력해주세요." maxlength="20" 
 						class="titleInput" name="noticeTitle">
 					</div>
 				</div>
