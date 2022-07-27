@@ -213,12 +213,6 @@
 
                 
 
-                <%-- <div id="landmark-explain" style="display:none">
-                    <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-                        <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                        <li class="landmark">${landMarkContent}</li>
-                    </c:forEach>
-                </div> --%>
                 
             </form>
             
@@ -230,7 +224,10 @@
 
     </main>
 
-    
+    <div class="modal">
+		<span id="modal-close">&times;</span> <img id="modal-image"
+			src="">
+	</div>
 
     <script>
         const contextPath = "${contextPath}";
