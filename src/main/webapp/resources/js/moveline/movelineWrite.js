@@ -241,18 +241,22 @@ $(".modalTest").eq(0).click(() => {
 });
 
 let landmarkIndexArray = [];
-let ggomsu = 0
+let addGgomsu = 0
 function addFunction(e){
     const listBookmark = document.getElementsByClassName("landmark-list")[0];
-    if(ggomsu == 0){
+    
+    if(addGgomsu == 0){
         listBookmark.innerHTML = "";
     }
+
+    addGgomsu++;
+
     toggleControll(true,e);
     const landmarkBox = document.createElement("div");
     landmarkBox.classList.add("landmark-box");
     landmarkBox.append(e.parentElement);
     listBookmark.innerHTML += landmarkBox.innerHTML;
-    toggleControll(false,e)
+    toggleControll(false,e);
 
     $(".land-name-div > span").addClass("href-link");
     modalAnimation();
@@ -261,19 +265,27 @@ function addFunction(e){
     window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
         , e.currentTarget.innerText);
     });
-    ggomsu++;
 };
+
+function removeFunction(c){
+    $(c).remove();
+    if($(".landmark-list").children().text() == ""){
+        $(".landmark-list").html("<h2>아직 추가된 랜드마크가 없어요.</h2>")
+    }
+}
 
 function toggleControll(boolean,e){
     if(boolean){
         e.innerText = "제거하기"
+        e.setAttribute("onclick","removeFunction("+"index"+addGgomsu+")")
+        e.parentElement.id = "index"+addGgomsu;
     } else {
-        e.innerHTML = "추가하기"
+        e.innerHTML = "추가하기";
+        e.setAttribute("onclick","addFunction(this)");
     }
     e.classList.toggle("add-button");
     e.classList.toggle("remove-button");
 };
-
 
 function modalAnimation() {
     //스크롤홀딩
