@@ -17,10 +17,10 @@
 
 
 <%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-	<c:if test="${landMarkNo == landmarkDetail.landMarkNo}">
-		<c:set var="landmarkName" value="${landmarkDetail.landmarkName}" />
-		<c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
-	</c:if>
+   <c:if test="${landMarkNo == landmarkDetail.landMarkNo}">
+      <c:set var="landmarkName" value="${landmarkDetail.landmarkName}" />
+      <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
+   </c:if>
 </c:forEach> --%>
 
 <%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
@@ -198,7 +198,7 @@
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                                <li class="landmark" value="${landmarkNo}" value="${landMarkContent}">${landmarkName}</li>
+                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" value="${landMarkContent}">${landmarkName}</button>
                         </c:forEach>
                     </ul>
                     
@@ -225,9 +225,9 @@
     </main>
 
     <div class="modal">
-		<span id="modal-close">&times;</span> <img id="modal-image"
-			src="">
-	</div>
+      <span id="modal-close">&times;</span> <img id="modal-image"
+         src="">
+   </div>
 
     <script>
         const contextPath = "${contextPath}";
