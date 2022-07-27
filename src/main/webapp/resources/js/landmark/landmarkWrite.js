@@ -69,7 +69,10 @@ for (let i = 0; i < inputImage.length; i++) {
     });
 };
 
-
+let validateMapDiv = false;
+document.getElementById("map").addEventListener("click",function(){
+    validateMapDiv = true;
+})
 
 
 
@@ -99,13 +102,11 @@ for (let i = 0; i < inputImage.length; i++) {
 // });
 
 function checkSubmit() {
-    console.log("함수 동작");
 
     const locationList = document.getElementById("locations-list");
     const landmarkName = document.getElementById("title");
     const landmarkContent = document.getElementById("contents");
     const images = document.getElementsByName("images");
-
 
     if (!confirm("랜드마크를 등록 하시겠습니까?")) {
 
@@ -137,16 +138,16 @@ function checkSubmit() {
             return false;
         }
 
-        if (document.getElementsByName("lng")[0].value == "") {
+        if (!validateMapDiv) {
             alert("관련된 지역을 지도에 클릭해주세요.")
             return false;
         }
 
-        if (document.getElementsByName("lat")[0].value != "") {
-            if (images[0].value == "" && deleteList.value == "") {
-                return true;
-            }
-        }
+        // if (document.getElementsByName("lat")[0].value != "") {
+        //     if (images[0].value == "" && deleteList.value == "") {
+        //         return true;
+        //     }
+        // }
 
         // let flag = true;
         // for (let img of images) {
