@@ -523,10 +523,10 @@ body::-webkit-scrollbar {
     border-radius: 30px;
     margin: 15px 0 20px 0;
     padding: 15px;
-    flex-direction: column;
     overflow: scroll;
     max-height: 500px;
     scrollbar-width: none;
+    flex-direction: column;
 }
 ::-webkit-scrollbar {
     display: none;
@@ -542,8 +542,14 @@ body::-webkit-scrollbar {
     height: 50px;
 }
 
-.land-namd-div {
+.land-name-div {
     width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.land-name-div > *{
+    font-size: 20px;
 }
 .checkBox{
     width: 20px;
@@ -604,4 +610,32 @@ body::-webkit-scrollbar {
 .href-link:hover{
     transition-duration: 120ms;
     color: #1BB3FE;
+}
+
+.add-button,.remove-button{
+    width: 90px;
+    height: 30px;
+    font-size: 16px;
+    letter-spacing: -2px;
+}
+
+.add-button{
+    background-color: #1BB3FE;
+    color: white;
+    border: 2px solid #bbd0ff;
+    border-radius: 3px;
+}
+
+.remove-button{
+    background-color: #fe370bda;
+    color: white;
+    border: 2px solid #ff783ade;
+    border-radius: 3px;
+}
+
+.add-button:hover,.remove-button:hover{
+    transition-duration: 120ms;
+    transform: translate(0, -3px);
+    box-shadow: 2px 2px 3px 1px rgba(43, 42, 42, 0.413);
+    cursor: pointer;
 }
