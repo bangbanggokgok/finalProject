@@ -12,26 +12,21 @@
         
     </head>
     <body>
-        <main>
-            <div id="container">
-                <button type="button" id="btn-modal">사진</button>
-                <button type="button" class="showContent" value="${landmarkNo}" id="btn-modal2">상세설명</button>
-                <div id="lorem-ipsum"></div>
-            </div>
-            <div id="modal" class="modal-overlay">
-                <div class="modal-window">
-                    <div class="title">
-                        <h2>모달</h2>
+            <div id="lorem-ipsum2"></div>
+            <main>
+            <div id="modal2" class="modal-overlay2">
+                <div class="modal-window2">
+                    <div class="title2">
+                        <h2>상세</h2>
                     </div>
-                    <div class="close-area">X</div>
-                    <div class="content">
+                    <div class="close-area2">X</div>
+                    <div class="content2">
                         <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>
                     </div>
                 </div>
-        </div>
+            </div>
     </main>
 
 </body>
 <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
 </html>
-
