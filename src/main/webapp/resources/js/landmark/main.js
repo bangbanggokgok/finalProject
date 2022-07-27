@@ -177,7 +177,7 @@ function keyupHandler() {
   }
   const keywords = this.value;
 
-  const filteredArray = myArray.filter((el) =>
+  const filteredArray = myArrayList.filter((el) =>
     el.text.toLowerCase().includes(keywords.toLowerCase())
   );
   console.log(filteredArray);
