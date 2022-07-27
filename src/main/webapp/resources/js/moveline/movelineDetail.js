@@ -28,12 +28,17 @@ for (let i = 0; i < landmark.length; i++) {
                 // alert(landmarkContentList);
 
                 console.log("size : " + landmarkImageList[0].landMarkReName);
-                const test1 = document.getElementById("test1"); // 사진 아래 제거
+                const entire = document.getElementById("entire"); // 사진 아래 제거
                 // const test2 = document.getElementById("landmark-explain"); // 상세설명 내용 제거
-                test1.innerHTML = "";
+                entire.innerHTML = "";
                 // test2.innerHTML = "";
 
-                test1.style.left = "0%";
+                // test1.style.left = "0%";
+                const test1 = document.createElement("ul");
+                test1.classList.add("slider-container2", "simple-list", "slider2");
+                test1.setAttribute("id", "test1");
+
+                entire.append(test1);
 
                 let leftSize = 0;
 
@@ -48,6 +53,7 @@ for (let i = 0; i < landmark.length; i++) {
                     leftSize += 100;
 
                     const slideImg2 = document.createElement("img");
+                    slideImg2.classList.add("slide-img2");
                     slideImg2.setAttribute("src", contextPath + simpleList.landMarkReName);
 
                     test1.append(slide2);
@@ -55,8 +61,12 @@ for (let i = 0; i < landmark.length; i++) {
                 }
 
 
-                let pager = document.querySelector(".pager2");
-                pager.innerHTML = "";
+                let pager = document.createElement("p");
+                pager.classList.add("pager2");
+
+                entire.append(pager);
+
+
 
                 for (let i= 0 ; i<landmarkImageList.length ; i++) {
                     const span = document.createElement("span");
@@ -68,11 +78,33 @@ for (let i = 0; i < landmark.length; i++) {
                     }
                     pager.append(span);
 
-                    pager.addEventListener('click',function(event){ 
+                    span.addEventListener('click',function(event){ 
                         var pagerNum2 = event.target.innerText - 1;
                         goToSlide2(pagerNum2);
                     });
                 }
+
+                const prev2 = document.createElement("a");
+                prev2.classList.add("prev2");
+
+                const left= document.createElement("li");
+                left.classList.add("fa-solid", "fa-angle-left");
+
+                prev2.append(left);
+
+                const next2 = document.createElement("a");
+                next2.classList.add("next2");
+
+                const right = document.createElement("li");
+                right.classList.add("fa-solid", "fa-angle-right");
+
+                next2.append(right);
+
+                entire.append(prev2, next2);
+
+                
+                
+
 
 
                 $pager2 = document.querySelector('.pager2');
@@ -80,10 +112,41 @@ for (let i = 0; i < landmark.length; i++) {
                 $currentIndex2 = 0;
                 $slideCount2 = $slide2.length;
                 $pagerBtn2 = document.querySelectorAll('.pager2 span');
+
+                $slideContainer2 = document.querySelector('.slider-container2');
+
+
+
+
+
                 // for(let content of landMarkContent){
                 //     console.log("content log : " + content.landMarkContent)
 
                 // }
+
+                prev2.addEventListener('click',function(){            
+                    //goToSlide($currentIndex - 1);
+        
+                    if($currentIndex2 == 0){
+                        //$navPrev.classList.add('disabled');
+                        goToSlide2($slideCount2 - 1);
+                    }else{
+                        //$navPrev.classList.remove('disabled');
+                        goToSlide2($currentIndex2 - 1);
+                    } 
+                });
+        
+                next2.addEventListener('click',function(){
+                    //goToSlide($currentIndex + 1);
+        
+                   if($currentIndex2 == $slideCount2 - 1){
+                       // $navNext.classList.add('disabled');
+                       goToSlide2(0);
+                   }else{
+                       // $navNext.classList.remove('disabled');
+                       goToSlide2($currentIndex2 + 1);
+                   }
+                });
 
 
 
