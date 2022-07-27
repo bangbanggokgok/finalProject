@@ -226,7 +226,10 @@
 
     </main>
 
-    
+    <div class="modal">
+		<span id="modal-close">&times;</span> <img id="modal-image"
+			src="">
+	</div>
 
     <script>
         const contextPath = "${contextPath}";

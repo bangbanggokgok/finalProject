@@ -24,7 +24,7 @@ for (let i = 0; i < landmark.length; i++) {
             dataType: "JSON",
             success: function (landmarkImageList) {
 
-                alert(landmarkImageList);
+                // alert(landmarkImageList);
                 // alert(landmarkContentList);
 
                 console.log("size : " + landmarkImageList[0].landMarkReName);
@@ -47,8 +47,8 @@ for (let i = 0; i < landmark.length; i++) {
                     console.log("reName Log : " + simpleList.landMarkReName);
                     const slide2 = document.createElement("li");
                     slide2.setAttribute("id", "landmark-images");
-                    slide2.classList.add("slide2");
-
+                    // slide2.classList.add("slide2");
+                    slide2.classList.add("slide2Plus");
                     slide2.style.left = (leftSize)  + "%";
                     leftSize += 100;
 
@@ -99,7 +99,7 @@ for (let i = 0; i < landmark.length; i++) {
                 right.classList.add("fa-solid", "fa-angle-right");
 
                 next2.append(right);
-
+                
                 entire.append(prev2, next2);
 
                 
@@ -175,7 +175,7 @@ for (let i = 0; i < landmark.length; i++) {
 // 상세설명 비동기
 showContent.addEventListener("click", function () {
 
-    alert(landmarkNo)
+    // alert(landmarkNo)
     
     $.ajax({
         url: contextPath + "/moveline-main/detail/setLandmarkContent",
