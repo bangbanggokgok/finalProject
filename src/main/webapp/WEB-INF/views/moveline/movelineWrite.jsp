@@ -50,7 +50,7 @@
                         <%-- <div class="landmark"><div> --%>
                             <h2>아직 추가된 랜드마크가 없어요.</h2>
                         </div>
-                        <div>
+                        <%-- <div>
                             <label class="optionList">테마 선택<span>(중복 체크 가능)</span></label>
                             <div class="themeSelect">
                                 <input type="checkbox" name="themeSelect" id="theme1"><label for="theme1">가족</label>
@@ -61,8 +61,8 @@
                                 <input type="checkbox" name="themeSelect" id="theme6"><label for="theme6">맛집</label>
                                 <input type="checkbox" name="themeSelect" id="theme7"><label for="theme7">캠핑</label>
                             </div>
-                        </div>
-
+                        </div> --%>
+                        <div id="map" style="width:750px;height:350px;"></div>
                     </div>
                 </div>
     
@@ -105,7 +105,7 @@
                     
                     <input type="hidden" name="deleteList" id="deleteList" value="">
                 </div>
-
+                 
 
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
@@ -157,5 +157,12 @@
     
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
-<script src="${contextPath}/resources/js/moveline/movelineWrite.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $( function() {
+            $( ".landmark-list" ).sortable();
+        } );
+    </script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineWrite.js"></script>
 </html>
