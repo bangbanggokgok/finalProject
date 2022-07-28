@@ -255,12 +255,17 @@ public class MoveLineDAO {
 	}
 
 	public int movelineBookmark(Map<String, String> infoB) {
-		return sqlSession.insert("movelineMapper.movelineBookmark", infoB);
+		return sqlSession.selectOne("movelineMapper.movelineBookmark", infoB);
 	}
 
 
 	public int movelineBookmarkInsert(Map<String, String> infoB) {
 		return sqlSession.insert("movelineMapper.movelineBookmarkInsert", infoB);
+	}
+
+
+	public int movelineBookmarkDelete(Map<String, String> infoA) {
+		return sqlSession.delete("movelineMapper.movelineBookmarkDelete", infoA);
 	}
 
 

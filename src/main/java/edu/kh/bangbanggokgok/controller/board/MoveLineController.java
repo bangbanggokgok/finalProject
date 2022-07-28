@@ -369,11 +369,11 @@ public class MoveLineController {
 	
 	
 	@ResponseBody
-	@GetMapping("/list/bookmarkSet")
+	@GetMapping("/list/bookmarkSet/{movelineNo}")
 	public int movelineBookmarkSet(@PathVariable("movelineNo") String movelineNo, @RequestParam("userNo") String loginNo) {
 
 		int result = service.movelineBookmark(loginNo, movelineNo);
-
+		System.out.println("movelineNo : " + movelineNo);
 		System.out.println("result bookmark : " + result);
 		
 		// 이미 있는 북마크
@@ -388,6 +388,14 @@ public class MoveLineController {
 		return result;
 	}
 	
+	// 북마크 삭제
+		@ResponseBody
+		@GetMapping("/list/bookmarkDelete/{movelineNo}")
+		public int movelineBookmarkDelete(@PathVariable("movelineNo") String movelineNo,
+				@RequestParam("userNo") String loginNo) {
+			System.out.println("movelineNo2 : " + movelineNo);
+			return service.movelineBookmarkDelete(loginNo, movelineNo);
+		}
 	
 	
 }
