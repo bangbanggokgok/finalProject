@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -245,5 +246,31 @@ public class LandMarkController {
 		ra.addFlashAttribute("message", "로그인 후 이용 바람");
 		return "redirect:/user/login-page";
 	}
-
+	
+	// 랜드마크 삭제
+	@GetMapping("/detail/delete")
+	public String deleteLandmark(@RequestParam(value = "landmark-no", required = false, defaultValue = "0") int landmarkNo,			
+								 RedirectAttributes ra, @RequestHeader("referer") String referer){
+		
+		int result = service.deleteLandmark(landmarkNo);
+		
+		String path = null;
+		String message = null;
+		
+		if(result > 0) {
+			message = "삭제되었습니다.";
+			
+			path = "/landmark-main/list/100";
+			
+		} else {
+			message = "삭제 실패";
+			path = referer;
+		}
+		
+		ra.addFlashAttribute("message", message);
+		
+		return "redirect:" + path;
+		
+	}
+	
 }

@@ -142,4 +142,8 @@ public class LandMarkDAO {
 		return sqlSession.selectOne("landMarkMapper.selectLandmarkCount", locationNum);
 	}
 
+	public int deleteLandmark(int landmarkNo) {
+		return sqlSession.update("landMarkMapper.deleteLandmark", landmarkNo);
+	}
+
 }
