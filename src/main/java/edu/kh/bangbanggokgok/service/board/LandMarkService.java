@@ -77,4 +77,10 @@ public interface LandMarkService {
 
 	int selectLandmarkCount(int locationType);
 	
+	/** 랜드마크 삭제
+	 * @param landmarkNo
+	 * @return
+	 */
+	int deleteLandmark(int landmarkNo);
+	
 }
