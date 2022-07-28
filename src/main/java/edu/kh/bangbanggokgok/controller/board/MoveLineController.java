@@ -107,14 +107,8 @@ public class MoveLineController {
 		return path;
 	}
 
-	/**
-	 * 특정 지역 코스 목록 조회
-	 * 
-	 * @param model
-	 * @param locationNum
-	 * @param cp
-	 * @return map
-	 */
+
+	//특정 지역 코스 목록 조회
 	@GetMapping("/list/location/{locationNum}")
 	public String moveLineLocation(Model model, @PathVariable("locationNum") int locationNum,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
@@ -129,15 +123,7 @@ public class MoveLineController {
 		return "moveline/movelineList";
 	}
 
-	/**
-	 * 특정 해시태그 목록 조회
-	 * 
-	 * @param model
-	 * @param cp
-	 * @param MLHashTag
-	 * @param paramMap
-	 * @return
-	 */
+	 // 특정 해시태그 목록 조회
 	@GetMapping("/list/hashtag")
 	public String movelineHashTag(
 //			@PathVariable("MLHashTag") String MLHashTag,
@@ -160,43 +146,34 @@ public class MoveLineController {
 		return "moveline/movelineList";
 	}
 
-	/**
-	 * 코스 즐겨찾기
-	 * 
-	 * @param moveLineBookMark
-	 * @param MovelineNo
-	 * @param paramMap
-	 * @param loginUser
-	 * @param req
-	 * @param ra
-	 * @return result
-	 */
-	@GetMapping("/list/bookmark")
-	@ResponseBody
-	public int bookmarkMoveline(MoveLineBookmark moveLineBookMark,
-			@RequestParam(value = "movelineNo", required = true) int MovelineNo,
-			@RequestParam Map<String, Object> paramMap, @ModelAttribute("loginUser") User loginUser,
-			HttpServletRequest req, RedirectAttributes ra) {
 
-		moveLineBookMark.setUserNo(loginUser.getUserNo());
-		moveLineBookMark.setMovelineNo(MovelineNo);
-
-		List<MoveLineBookmark> moveLineBookMark1 = service.selectBookmarkList(moveLineBookMark);
-
-		int result = 0;
-
-		if (moveLineBookMark1.size() == 0) {
-
-			result = service.movelineBookmark(moveLineBookMark);
-
-		} else {
-
-			result = 0;
-
-		}
-
-		return result;
-	}
+	// 코스 즐겨찾기
+//	@GetMapping("/list/bookmarkSet")
+//	@ResponseBody
+//	public int bookmarkMoveline(MoveLineBookmark moveLineBookMark,
+//			@RequestParam(value = "movelineNo", required = true) int MovelineNo,
+//			@RequestParam Map<String, Object> paramMap, @ModelAttribute("loginUser") User loginUser,
+//			HttpServletRequest req, RedirectAttributes ra) {
+//
+//		moveLineBookMark.setUserNo(loginUser.getUserNo());
+//		moveLineBookMark.setMovelineNo(MovelineNo);
+//
+//		List<MoveLineBookmark> moveLineBookMark1 = service.selectBookmarkList(moveLineBookMark);
+//
+//		int result = 0;
+//
+//		if (moveLineBookMark1.size() == 0) {
+//
+//			result = service.movelineBookmark(moveLineBookMark);
+//
+//		} else {
+//
+//			result = 0;
+//
+//		}
+//
+//		return result;
+//	}
 
 	// 코스 테마별 목록 조회
 	@GetMapping("/list/theme")
@@ -237,15 +214,8 @@ public class MoveLineController {
 		return "moveline/movelineList";
 	}
 
-	/**
-	 * 코스 상세 페이지 조회
-	 * 
-	 * @param movelineNo
-	 * @param cp
-	 * @param model
-	 * @param session
-	 * @return list
-	 */
+
+	// 코스 상세 페이지 조회
 	@GetMapping("/detail/{movelineNo}")
 	public String movelineDetail(@PathVariable("movelineNo") int movelineNo,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
@@ -270,13 +240,22 @@ public class MoveLineController {
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
 
+		// 비로그인 판별
 		User loginUser = (User) session.getAttribute("loginUser");
-
-		int UserNo = 0;
-
+		int userNo = 0;
 		if (loginUser != null) {
-			UserNo = loginUser.getUserNo();
+			userNo = loginUser.getUserNo();
 		}
+		
+		// 북마크 확인용 변수 전환
+		String sMovelineNo = Integer.toString(movelineNo);
+		String sUserNo = Integer.toString(userNo);
+		
+		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
+		
+		model.addAttribute("checkBookmark", checkBookmark);
+		
+		
 
 		return "moveline/movelineDetail";
 	}
@@ -330,27 +309,6 @@ public class MoveLineController {
 		return new Gson().toJson(map);
 		
 	}
-	
-	
-	
-	@ResponseBody
-	@GetMapping("/detail/setLandmarkContent")
-	public String setLandmarkContent(Model model,
-									 @RequestParam(value="cp", required=false, defaultValue="1") int cp,
-								     @RequestParam(value="landmarkNo", required=true) int landmarkNo,
-									 HttpServletRequest req,
-									 RedirectAttributes ra) {
-		
-		System.out.println("landmarkNo");
-		
-		String landmarkContent =  service.setLandmarkContent(landmarkNo);
-
-		System.out.println("landmarkContent : " + landmarkContent);
-
-		return new Gson().toJson(landmarkContent);
-		
-	}
-	
 	
 	
 	// 랜드마크 이름 조회 - 상세 페이지 랜드마크 이름 정렬용
@@ -410,13 +368,34 @@ public class MoveLineController {
 	}
 	
 	
+	@ResponseBody
+	@GetMapping("/list/bookmarkSet/{movelineNo}")
+	public int movelineBookmarkSet(@PathVariable("movelineNo") String movelineNo, @RequestParam("userNo") String loginNo) {
+
+		int result = service.movelineBookmark(loginNo, movelineNo);
+		System.out.println("movelineNo : " + movelineNo);
+		System.out.println("result bookmark : " + result);
+		
+		// 이미 있는 북마크
+		if (result > 0) {
+			result = 3; // 있으면 1 - 3으로 전환
+		}
+
+		// 없을 경우 삽입
+		if (result == 0) {
+			result = service.movelineBookmarkInsert(loginNo, movelineNo);
+		}
+		return result;
+	}
 	
-//	@GetMapping("/detail/report")
-//	public String reportMoveline(@RequestParam(value="movelineNo", required=true) int movelineNo
-//								) {
-//		
-//		
-//		
-//	}
+	// 북마크 삭제
+		@ResponseBody
+		@GetMapping("/list/bookmarkDelete/{movelineNo}")
+		public int movelineBookmarkDelete(@PathVariable("movelineNo") String movelineNo,
+				@RequestParam("userNo") String loginNo) {
+			System.out.println("movelineNo2 : " + movelineNo);
+			return service.movelineBookmarkDelete(loginNo, movelineNo);
+		}
+	
 	
 }

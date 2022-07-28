@@ -98,18 +98,18 @@ public class MoveLineServiceImpl implements MoveLineService{
 	}
 
 	
-	// 코스 즐겨찾기
-	@Override
-	public int movelineBookmark(MoveLineBookmark moveLineBookMark) {
-		return dao.bookmarkMoveline(moveLineBookMark);
-	}
-
-	
-	// 코스 즐겨찾기 목록 조회
-	@Override
-	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
-		return dao.selectBookmarkList(moveLineBookMark);
-	}
+//	// 코스 즐겨찾기
+//	@Override
+//	public int movelineBookmark(MoveLineBookmark moveLineBookMark) {
+//		return dao.bookmarkMoveline(moveLineBookMark);
+//	}
+//
+//	
+//	// 코스 즐겨찾기 목록 조회
+//	@Override
+//	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
+//		return dao.selectBookmarkList(moveLineBookMark);
+//	}
 
 
 	// 코스 테마별 목록 조회
@@ -218,6 +218,34 @@ public class MoveLineServiceImpl implements MoveLineService{
 	@Override
 	public String setLandmarkContent(int landmarkNo) {
 		return dao.setLandmarkContent(landmarkNo);
+	}
+
+	
+	// 코스 즐겨찾기 조회
+	@Override
+	public int movelineBookmark(String loginNo, String movelineNo) {
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("movelineNo", movelineNo);
+		return dao.movelineBookmark(infoB);
+	}
+
+	// 코스 즐겨찾기 추가
+	@Override
+	public int movelineBookmarkInsert(String loginNo, String movelineNo) {
+		Map<String, String> infoB = new HashMap<String, String>();
+		infoB.put("loginNo", loginNo);
+		infoB.put("movelineNo", movelineNo);
+		return dao.movelineBookmarkInsert(infoB);
+	}
+
+
+	@Override
+	public int movelineBookmarkDelete(String loginNo, String movelineNo) {
+		Map<String, String> infoA = new HashMap<String, String>();
+		infoA.put("loginNo", loginNo);
+		infoA.put("movelineNo", movelineNo);
+		return dao.movelineBookmarkDelete(infoA);
 	}
 
 	

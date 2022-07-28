@@ -7,6 +7,8 @@
 //   bookmarkOff.classList.toggle("d-none");
 // });
 
+
+// 지역 구분 세팅
 function located(num) {
   $.ajax({
     url: "moveline-main/list",
@@ -68,6 +70,11 @@ function located(num) {
         location.href = "list/selectAll?selectAll=" + this.innerText;
     });
 })();
+
+
+
+
+
 
 /* function bookmarkValidate(){
 

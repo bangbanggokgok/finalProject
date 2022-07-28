@@ -254,6 +254,20 @@ public class MoveLineDAO {
 		return sqlSession.selectOne("movelineMapper.setLandmarkContent",landmarkNo);
 	}
 
+	public int movelineBookmark(Map<String, String> infoB) {
+		return sqlSession.selectOne("movelineMapper.movelineBookmark", infoB);
+	}
+
+
+	public int movelineBookmarkInsert(Map<String, String> infoB) {
+		return sqlSession.insert("movelineMapper.movelineBookmarkInsert", infoB);
+	}
+
+
+	public int movelineBookmarkDelete(Map<String, String> infoA) {
+		return sqlSession.delete("movelineMapper.movelineBookmarkDelete", infoA);
+	}
+
 
 	
 

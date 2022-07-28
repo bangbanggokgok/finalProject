@@ -73,14 +73,14 @@ public interface MoveLineService {
 	 * @param moveLineBookMark
 	 * @return result
 	 */
-	int movelineBookmark(MoveLineBookmark moveLineBookMark);
+	// int movelineBookmark(MoveLineBookmark moveLineBookMark);
 
 
 	/** 코스 즐겨찾기 목록 조회
 	 * @param moveLineBookMark
 	 * @return result
 	 */
-	List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark);
+	// List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark);
 
 
 	/** 코스 테마별 목록 조회
@@ -164,6 +164,27 @@ public interface MoveLineService {
 	 * @return
 	 */
 	String setLandmarkContent(int landmarkNo);
+
+
+	/** 코스 즐겨찾기 조회
+	 * @param sUserNo
+	 * @param sLandmarkNo
+	 * @return
+	 */
+	int movelineBookmark(String userNo, String movelineNo);
+
+
+	/** 코스 즐겨찾기 추가
+	 * @param loginNo
+	 * @param movelineNo
+	 * @return
+	 */
+	int movelineBookmarkInsert(String loginNo, String movelineNo);
+
+
+	int movelineBookmarkDelete(String loginNo, String movelineNo);
+
+	
 
 
 
