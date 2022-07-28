@@ -283,6 +283,11 @@ public class LandMarkServiceImpl implements LandMarkService {
 	@Override
 	public int selectLandmarkCount(int locationType) {
 		return dao.selectLandmarkCount(locationType);
+	}
+
+	@Override
+	public int deleteLandmark(int landmarkNo) {
+		return dao.deleteLandmark(landmarkNo);
 	};
 
 }
