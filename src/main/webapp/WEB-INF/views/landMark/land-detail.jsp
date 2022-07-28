@@ -60,7 +60,7 @@
             <c:if test="${loginUser.userNo == landmarkDetail.userNo}">
               <div class="detail-in-wrap">
                 <a class="detailCheck" href="${contextPath}/landmark-main/write/update?landmark-no=${landmarkDetail.landMarkNo}">수정</a>
-                <a class="detailCheck" href="#">삭제</a>
+                <a class="detailCheck" href="${contextPath}/landmark-main/detail/delete?landmark-no=${landmarkDetail.landMarkNo}">삭제</a>
               </div>
               <%-- 삭제남음 --%>
             </c:if>
