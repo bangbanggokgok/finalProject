@@ -27,7 +27,7 @@
 
   (() => {
     if ($(".bookmarkValue").val() == 0) {
-        $(".heart-img").toggleClass("hide");
+        $(".bookmarkOff").toggleClass("hide");
     }
 
     if ($(".bookmarkValue").val() == 1) {
@@ -43,14 +43,14 @@ $(".btn-bookmark").click(() => {
   }
 
       if (userNo != 0) {
+        
           if ($(".bookmarkValue").val() == 0) {
+            alert(movelineNo);
               $.ajax({
-                  url: movelineNo + "/bookmarkSet",
+                  url: contextPath + "/moveline-main/list/bookmarkSet" + movelineNo,
                   data: { "userNo": userNo },
                   type: "get",
                   success: function (result) {
-
-                    alert("result1 : " + result);
                       result = result * 1
                       if (result == '1') {
                           alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
@@ -64,7 +64,7 @@ $(".btn-bookmark").click(() => {
           if ($(".bookmarkValue").val() != 0) {
               if (confirm("즐겨찾기를 삭제하시겠습니까?")) {
                   $.ajax({
-                      url: contextPath + "/moveline-main/list/bookmarkDelete",
+                      url: contextPath + "/moveline-main/list/bookmarkDelete" + movelineNo,
                       data: { "userNo": userNo },
                       type: "get",
                       success: function (result) {

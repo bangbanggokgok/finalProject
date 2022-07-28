@@ -181,6 +181,9 @@ public interface MoveLineService {
 	 */
 	int movelineBookmarkInsert(String loginNo, String movelineNo);
 
+
+	int movelineBookmarkDelete(String loginNo, String movelineNo);
+
 	
 
 
