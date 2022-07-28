@@ -62,7 +62,7 @@
                     </div>
                     
                     <div id="top-middle">
-                        <h1>${movelineDetail.movelineTitle}</h1>
+                        <h1>${movelineDetail.movelineTitle} ${movelineNo}</h1>
                     </div>
 
 
@@ -113,7 +113,7 @@
                                     <c:if test="${!empty loginUser}"> 
                                         <div class="btn-area">
                                             <button>수정하기</button>
-                                            <button id="deleteBtn" onclick="deleteMoveline(${movelineNo});">삭제하기</button>
+                                            <button id="deleteBtn" value="${movelineNo}">삭제하기</button>
                                         </div>
                                     </c:if>
                                 </c:when>
@@ -253,7 +253,7 @@
     <script src="${contextPath}/resources/js/moveline/temp.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/reply.js"></script>
-    <script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
     <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>

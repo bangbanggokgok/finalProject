@@ -186,5 +186,5 @@
 		const contextPath = "${contextPath}";
         const loginUserNo = "${loginUser.userNo}";
     </script>
-	<script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
-	<script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
+	<script src="${contextPath}/resources/js/moveline/movelineList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
