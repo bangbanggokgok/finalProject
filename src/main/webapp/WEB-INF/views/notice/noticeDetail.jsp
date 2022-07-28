@@ -12,7 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/noticeDetail.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/notice/noticeDetail.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/adminNav.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
@@ -56,6 +56,7 @@
                 <c:if test="${fn:contains(loginUser.adminFlag, 'Y')}">
                 <section class="submitBar">
                     <div class="buttonContainer">
+                        <%-- <button type="button" class="submitButton" onclick="location.href='../../admin/notice/update?noticeNo=${detail.noticeNo}'">수정하기</button> --%>
                         <button type="button" class="submitButton" onclick="location.href='../../admin/notice/update?noticeNo=${detail.noticeNo}'">수정하기</button>
                     </div>
                 </section>

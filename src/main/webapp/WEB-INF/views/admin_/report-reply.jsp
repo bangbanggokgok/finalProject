@@ -17,6 +17,7 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/report-list.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/adminNav.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 
 <body>
@@ -55,11 +56,9 @@
     <div class="pagination-area">
 
                 <c:set var="url" value="${list}?cp="/>
-
-                <ul class="pagination">
-                    <li><a href="${url}1">&lt;&lt;</a></li>
-
-                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                <ul class="pagination" id="pagination">
+                    <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
+                    <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
@@ -75,9 +74,8 @@
 
                     </c:forEach>
                     
-                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-
-                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="${url}${pagination.nextPage}"><i class="fal fa-angle-right"></i></a></li>
+                    <li><a href="${url}${pagination.maxPage}"><i class="fal fa-angle-double-right"></i></a></li>
 
                 </ul>
         </div>

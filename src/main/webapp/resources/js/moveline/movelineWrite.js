@@ -174,6 +174,7 @@ function listSelect(result) {
     $('body').css('overflow', 'hidden');
 
     for (let landmark of result) {
+
         const landmarkBox = document.createElement("div");
         landmarkBox.classList.add("landmark-box")
 
@@ -206,6 +207,22 @@ function listSelect(result) {
 
         landmarkBox.append(checkBox, img, landmarkName, addButton, hiddenY, hiddenX);
 
+        const idNumber = landmark.landMarkNo+"";
+        if(landmarkIndexArray.get(idNumber) == landmarkBox.innerHTML){
+            // const black = document.createElement("div")
+            addButton.setAttribute("disabled","disabled");
+            addButton.innerText = "이미 추가됨";
+            addButton.classList.toggle("add-button");
+            addButton.classList.toggle("no-button");
+            landmarkBox.style.backgroundColor = "rgba(0, 0, 0, 0.24)"
+            // black.classList.add("black");
+            // black.style.width = landmarkBox.offsetWidth;
+            // black.style.height = landmarkBox.offsetHeight;
+            // black.style.top = landmarkBox.offsetTop;
+            // black.style.left = landmarkBox.offsetLeft;
+            // landmarkBox.append(black);
+        }
+       
         $(".modal").children('div:eq(1)').children("div:eq(0)").append(landmarkBox);
     };
 };
@@ -240,10 +257,17 @@ $(".modalTest").eq(0).click(() => {
     }
 });
 
-let landmarkIndexArray = [];
-let addGgomsu = 0
+let landmarkIndexArray = new Map();
+let addGgomsu = 0;
+let mapCenterX = 0;
+let mapCenterY = 0;
+let landCount = 0;
+
 function addFunction(e){
     const listBookmark = document.getElementsByClassName("landmark-list")[0];
+    const idNumber = ""+e.previousSibling.previousSibling.previousSibling.value;
+    //유효성
+    landmarkIndexArray.set(idNumber, e.parentElement.innerHTML);
     
     if(addGgomsu == 0){
         listBookmark.innerHTML = "";
@@ -251,11 +275,28 @@ function addFunction(e){
 
     addGgomsu++;
 
+    //이벤트용 div
+    const useEventDiv = document.createElement("div");
+    useEventDiv.classList.add("use-event-div");
+    
+    //복사토글
     toggleControll(true,e);
     const landmarkBox = document.createElement("div");
-    landmarkBox.classList.add("landmark-box");
     landmarkBox.append(e.parentElement);
-    listBookmark.innerHTML += landmarkBox.innerHTML;
+    listBookmark.height += 94;
+    
+    //색인 삽입
+    const controllIndex = document.createElement("div");
+    controllIndex.classList.add("controll-index");
+    e.parentElement.append(controllIndex);
+    
+    useEventDiv.innerHTML = "<div class="+"\"use-event-div\">"+landmarkBox.innerHTML+"</div>";
+    
+    //복사
+    listBookmark.innerHTML += useEventDiv.innerHTML;
+    //튤팁 색인삭제
+    $(landmarkBox).remove('.controll-index');
+    //원본리셋
     toggleControll(false,e);
 
     $(".land-name-div > span").addClass("href-link");
@@ -265,15 +306,127 @@ function addFunction(e){
     window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
         , e.currentTarget.innerText);
     });
+
+    mapCenterX += e.nextSibling.value;
+    mapCenterY += e.nextSibling.nextSibling.value;
+    landCount++;
+    // landmarkIndexArray e.currentTarget.parentElement;
+
+    mapOption = {
+        center: new kakao.maps.LatLng(mapCenterX/landCount, mapCenterY/landCount), // 지도의 중심좌표
+        level: 2, // 지도의 확대 레벨
+        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+    }; 
+
+    var marker = new kakao.maps.Marker({
+    position: new kakao.maps.LatLng(e.nextSibling.value, e.nextSibling.nextSibling.value), // 마커의 좌표
+    map: map // 마커를 표시할 지도 객체
+    });
+
+    var infowindow = new kakao.maps.InfoWindow({
+    content : '<div style="padding:5px;">'+e.previousSibling.firstChild.innerText+'</div>' // 인포윈도우에 표시할 내용
+    });
+    infowindow.open(map, marker);
+
+    lineDraw(e.nextSibling.value,e.nextSibling.nextSibling.value)
+
 };  
+
+var linePath = [];
+
+function lineDraw(x,y){
+
+    linePath.push(new kakao.maps.LatLng(x, y));
+
+    var polyline = new kakao.maps.Polyline({
+        path: linePath, // 선을 구성하는 좌표배열 입니다
+        strokeWeight: 5, // 선의 두께 입니다
+        strokeColor: '#FFAE00', // 선의 색깔입니다
+        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        strokeStyle: 'solid' // 선의 스타일입니다
+    });
+    
+    // 지도에 선을 표시합니다 
+    polyline.setMap(map);  
+}
+
+
+// 망작
+// const height = $(".landmark-list").eq(0).height()
+// const test = document.getElementsByClassName("landmark-list")[0];
+// $('.controll-index').mousedown(function(event){
+    
+//     const cursorIndex = $(this).parent();
+//     // document.body.append(a);
+//     document.body.append(cursorIndex);
+//     cursorIndex.css("position","inherit")
+//     // a.css("zIndex" , "1000");
+//     $(".landmark-list").eq(0).height(height);
+//     // onmouseenter="mouseEnter()" onmousemove="mouseMove()"
+//     test.onmousemove = (e)=>{
+//         console.log(cursorIndex);
+//         console.log(e.offsetY);
+//         cursorIndex.css("top",e.offsetY)
+//     }
+
+//     $('.controll-index').on("mousemove", function(event){
+//         // function moveAt(offsetX, offsetY) {
+            
+//         // }
+//         // moveAt(cursorX, cursorY);
+        
+//         event.preventDefault();
+//     });
+
+//     $('.controll-index').on("mouseup", function(event){
+//         event.preventDefault();
+//         if (event.target.className == "use-event-div") {
+//             // dragged.parentNode.removeChild(dragged);
+//             // event.target.appendChild(dragged);
+//         }
+//         // endEvent(test);
+//     });
+// });
+
+// function endEvent(target){
+    //     target.removeAttribute("onmouseenter","mouseEnter()");
+    //     target.removeAttribute("onmousemove","mouseMove()");
+// }
+
+// function mouseEnter(){
+    
+// }
+
+// function mouseMove(e){
+//     console.log();
+//     console.log();
+// }
+
 
 function removeFunction(c){
     $(c).remove();
     if($(".landmark-list").children().text() == ""){
         $(".landmark-list").html("<h2>아직 추가된 랜드마크가 없어요.</h2>")
-    addGgomsu = 0 ;
+        addGgomsu = 0 ;
+    } else {
+        $(".landmark-list").height -= 94;
     }
-}
+    console.log(c.firstChild.value);
+
+    landmarkIndexArray.set(c.firstChild.value+"","");
+    mapCenterX -= c.lastChild.previousSibling.previousSibling.value;
+    mapCenterY -= c.lastChild.previousSibling.value;
+    landCount--;
+    
+    mapOption = {
+        center: new kakao.maps.LatLng(mapCenterX/landCount, mapCenterY/landCount), // 지도의 중심좌표
+        level: 2, // 지도의 확대 레벨
+        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+    }; 
+
+};
+
+
 
 function toggleControll(boolean,e){
     if(boolean){
@@ -307,24 +460,69 @@ function modalAnimation() {
 
 $('.close').eq(0).click(modalAnimation);
 
+
+var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+
+mapOption = {
+    center: new kakao.maps.LatLng(37.563023, 126.95410), // 지도의 중심좌표
+    level: 2, // 지도의 확대 레벨
+    mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+}; 
+
+var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+
+// 마커 위에 표시할 인포윈도우를 생성한다
+// var infowindow = new kakao.maps.InfoWindow({
+//     content : '<div style="padding:5px;">인포윈도우 :D</div>' // 인포윈도우에 표시할 내용
+// });
+// // 인포윈도우를 지도에 표시한다
+// infowindow.open(map, marker);
+// // 지도에 선을 표시한다 
+// var polyline = new kakao.maps.Polyline({
+//     map: map, // 선을 표시할 지도 객체 
+//     path: [ // 선을 구성하는 좌표 배열
+//         new kakao.maps.LatLng(37.57338, 126.97744),
+//         new kakao.maps.LatLng(37.5638, 126.97744),
+//         new kakao.maps.LatLng(37.55189, 126.90744)
+//     ],
+//     strokeWeight: 3, // 선의 두께
+//     strokeColor: '#FF0000', // 선 색
+//     strokeOpacity: 0.9, // 선 투명도
+//     strokeStyle: 'solid' // 선 스타일
+// });	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function selectLandmarkValue() {
-
-//     const tempObj = {};
-//     for (let i = 0; i < $(".checkBox:checked").length; i++) {
-//         tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
-//     };
-
-//     if (tempObj == "") {
-//         alert("등록할 랜드마크를 골라주세요");
-//         return
-//     }
-
-//     if (tempObj != "") {
-//         const list = document.getElementsByClassName("landmark-list")[0];
-//         list.innerHTML = ""
-//         let number = 1;
-//         for (let key in tempObj) {
-//             const landmarkBox = document.createElement("div");
+    
+    //     const tempObj = {};
+    //     for (let i = 0; i < $(".checkBox:checked").length; i++) {
+        //         tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
+        //     };
+        
+        //     if (tempObj == "") {
+            //         alert("등록할 랜드마크를 골라주세요");
+            //         return
+            //     }
+            
+            //     if (tempObj != "") {
+                //         const list = document.getElementsByClassName("landmark-list")[0];
+                //         list.innerHTML = ""
+                //         let number = 1;
+                //         for (let key in tempObj) {
+                    //             const landmarkBox = document.createElement("div");
 //             landmarkBox.classList.add("landmark-box", "hover-action");
 
 //             const sequenceDiv = document.createElement("div");
@@ -347,75 +545,104 @@ $('.close').eq(0).click(modalAnimation);
 //     mouseEvent();
 // };
 
-function hoverEvent(){
-    $(".hover-action").hover(
-        (event)=>{
-            const a = event.currentTarget;
-            $(a).css("transition-duration","120ms");
-            $(a).css("transform","translate(0, -3px)");
-            $(a).css("box-shadow","5px 5px 7px 1px rgba(43, 42, 42, 0.413)");
-        },
-        (event)=>{
-            const a = event.currentTarget;
-            $(a).css("transition-duration","none");
-            $(a).css("transform","none");
-            $(a).css("box-shadow","none");
-        });
-}
-
-
-// 망작
-// function mouseEvent(){
-//     const height = $(".landmark-list").eq(0).height()
-//     const mainSpace = $(".landmark-list").eq(0);
+// function hoverEvent(){
+//     $(".hover-action").hover(
+//         (event)=>{
+//             const a = event.currentTarget;
+//             $(a).css("transition-duration","120ms");
+//             $(a).css("transform","translate(0, -3px)");
+//             $(a).css("box-shadow","5px 5px 7px 1px rgba(43, 42, 42, 0.413)");
+//         },
+//         (event)=>{
+//             const a = event.currentTarget;
+//             $(a).css("transition-duration","none");
+//             $(a).css("transform","none");
+//             $(a).css("box-shadow","none");
+//         });
+//     }
     
-//     $(".hover-action").mousedown((event)=>{
-//         // $(".hover-action").css("pointer-events","none");
-//         const tempDiv = document.createElement("div");
+    
+    // 망작
+    // function mouseEvent(){
+        //     const height = $(".landmark-list").eq(0).height()
+        //     const mainSpace = $(".landmark-list").eq(0);
         
-//         tempDiv.classList.add("landmark-box");
-//         tempDiv.classList.add("black-box");
-//         mainSpace.append(tempDiv);
-
-//         const landmarkBox = event.currentTarget;
-        
-//         $(".hover-action").unbind("mouseenter mouseleave");
-//         $(".landmark-list").eq(0).height(height);
-
-//         landmarkBox.style.position = 'absolute';
-//         landmarkBox.style.zIndex = "1000";
-//         landmarkBox.style.width = "615.6px";
-
-//         document.body.append(landmarkBox);
-
-//         moveAt(event.pageX, event.pageY);
-        
-//         document.addEventListener('mousemove', onMouseMove);
-        
-//         function onMouseMove(event) {
+        //     $(".hover-action").mousedown((event)=>{
+            //         // $(".hover-action").css("pointer-events","none");
+            //         const tempDiv = document.createElement("div");
+            
+            //         tempDiv.classList.add("landmark-box");
+            //         tempDiv.classList.add("black-box");
+            //         mainSpace.append(tempDiv);
+            
+            //         const landmarkBox = event.currentTarget;
+            
+            //         $(".hover-action").unbind("mouseenter mouseleave");
+            //         $(".landmark-list").eq(0).height(height);
+            
+            //         landmarkBox.style.position = 'absolute';
+            //         landmarkBox.style.zIndex = "1000";
+            //         landmarkBox.style.width = "615.6px";
+            
+            //         document.body.append(landmarkBox);
+            
+            //         moveAt(event.pageX, event.pageY);
+            
+            //         document.addEventListener('mousemove', onMouseMove);
+            
+            //         function onMouseMove(event) {
 //             moveAt(event.pageX, event.pageY);
 //         }
 
 //         function moveAt(pageX, pageY) {
-//             landmarkBox.style.left = pageX - landmarkBox.offsetWidth / 2 + 'px';
-//             landmarkBox.style.top = pageY - landmarkBox.offsetHeight / 2 + 'px';
-//         }
-        
-        
-//         // landmarkBox.ondragstart = function() {
-//             //     return false;
-//             // };
-            
-//         });
-
-//         $(".hover-action").mousedown((event)=>{
-//             // const landmarkBox = event.currentTarget;
-//             document.removeEventListener('mousemove', onMouseMove);
-//             function onMouseMove(event) {
-//                 moveAt(event.pageX, event.pageY);
-//             }
-//             // landmarkBox.removeEventListener("onmouseup");
-//         })
-        
-// };
+    //             landmarkBox.style.left = pageX - landmarkBox.offsetWidth / 2 + 'px';
+    //             landmarkBox.style.top = pageY - landmarkBox.offsetHeight / 2 + 'px';
+    //         }
     
+    
+    //         // landmarkBox.ondragstart = function() {
+        //             //     return false;
+        //             // };
+        
+        //         });
+        
+        //         $(".hover-action").mousedown((event)=>{
+            //             // const landmarkBox = event.currentTarget;
+            //             document.removeEventListener('mousemove', onMouseMove);
+            //             function onMouseMove(event) {
+                //                 moveAt(event.pageX, event.pageY);
+                //             }
+                //             // landmarkBox.removeEventListener("onmouseup");
+                //         })
+                
+                // };
+                
+                
+// 망작
+// $('.controll-index').mousedown((e)=>{
+//     $($(e.currentTarget).parent()).css("position",'relative');
+//     $(".landmark-list").height(height);
+//     // console.log($(".landmark-list").height()); 리스트의 높이 // 1칸당 94
+//     // console.log(e.offsetY); 인덱스의 클릭 위치
+//     const abc = e.currentTarget.parentElement;
+
+// 망작
+// $('.controll-index').mousedown((e)=>{
+//     console.log("마우스다운");
+// });
+
+// $('.controll-index').on({
+//     'dragstart':(startE)=>{
+//         $(".landmark-list").height(height);
+//         // e.orignalEvent.dataTransfer.setData("text",e.target.id);
+//         console.log("드래그시작");
+//         console.log(startE.offsetY);
+//     },
+//     'dragend':(endE)=>{
+//         console.log("끝");
+//     }
+// });
+
+// $('.controll-index').mouseup((e)=>{
+//     console.log("마우스업")
+// });

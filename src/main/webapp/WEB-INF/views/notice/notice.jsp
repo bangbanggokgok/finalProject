@@ -11,7 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>공지사항</title>
 
-    <link rel="stylesheet" href="${contextPath}/resources/css/notice.css">
+    <link rel="stylesheet" href="${contextPath}/resources/css/notice/notice.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+</head>
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
@@ -20,9 +22,9 @@
         <h1>공지사항</h1>
         <div class="list">
             <div class="category" value="all"><a id="all" href="${contextPath}/notice/list">전체</a></div>
-            <div class="category" id="notice" value="notice">공지</div>
-            <%-- <div class="category" id="notice" value="notice" onclick="loadLocation()">공지</div> --%>
-            <div class="category" id="event" value="event">이벤트</div>
+            <%-- <div class="category" id="notice" value="notice">공지</div> --%>
+            <div class="category" id="notice" value="notice" onclick="noticeType()">공지</div>
+            <div class="category" id="event" value="event" onclick="noticeType()">이벤트</div>
         </div>
 
         <div  id="allPage">
@@ -48,8 +50,8 @@
 
                 <c:set var="url" value="${list}?cp="/>
                 <ul class="pagination" id="pagination">
-                    <li><a href="${url}1">&lt;&lt;</a></li>
-                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                    <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
+                    <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
@@ -65,8 +67,8 @@
 
                     </c:forEach>
                     
-                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="${url}${pagination.nextPage}"><i class="fal fa-angle-right"></i></a></li>
+                    <li><a href="${url}${pagination.maxPage}"><i class="fal fa-angle-double-right"></i></a></li>
 
                 </ul>
         </div>
@@ -74,9 +76,8 @@
 
     <script>
         const contextPath = "${contextPath}";
-        const list = "${list}";
     </script>
 </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="${contextPath}/resources/js/notice.js"></script>
+    <script src="${contextPath}/resources/js/notice/notice.js"></script>
 </html>
