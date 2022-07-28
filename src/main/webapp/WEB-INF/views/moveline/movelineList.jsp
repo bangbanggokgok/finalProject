@@ -116,12 +116,12 @@
 											</div>
 
 
-											<div class="ml-detail-plus">
-												<button type="button" class="btn-bookmark"
+											<div class="ml-detail-plus2">
+												<button type="button" class="btn-bookmark2"
 													onclick="setBookmark(${moveline.movelineNo});">
-													<span class="icon-bookmark">
-														<img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
-                                    					<img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
+													<span class="icon-bookmark2">
+														<img class='bookmarkOff2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
+                                    					<img class='bookmarkOn2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
 													</span>
 												</button>
 											</div>
@@ -187,3 +187,4 @@
         const loginUserNo = "${loginUser.userNo}";
     </script>
 	<script src="${contextPath}/resources/js/moveline/movelineSort.js"></script>
+	<script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>

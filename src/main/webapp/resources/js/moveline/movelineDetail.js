@@ -401,59 +401,73 @@ for (let i = 0; i < landmark.length; i++) {
 // 코스 삭제
 function deleteMoveline(movelineNo) {
   if (confirm("정말로 삭제 하시겠습니까?")) {
+
+    $.ajax({
+      url: contextPath + "/moveline-main/detail/delete",
+      data: { movelineNo: movelineNo },
+      type: "GET",
+      success: function (result) {
+        console.log("result 값 넘어옴");
+  
+        if (result > 0) {
+          alert("코스를 삭제하였습니다.");
+          // alert(message);
+          let url = contextPath + "/moveline-main/list";
+          location.href = url;
+        } else {
+          alert("코스를 삭제하지 못하였습니다.");
+          // alert(message);
+        }
+      },
+      error: function (req, status, error) {
+        console.log("코스 삭제 실패");
+        console.log(req.responseText);
+      },
+    });
+
   } else {
     return;
   }
 
-  $.ajax({
-    url: contextPath + "/moveline-main/detail/delete",
-    data: { movelineNo: movelineNo },
-    type: "GET",
-    success: function (result) {
-      console.log("result 값 넘어옴");
-
-      if (result > 0) {
-        alert("코스를 삭제하였습니다.");
-        // alert(message);
-        let url = contextPath + "/moveline-main/list";
-        location.href = url;
-      } else {
-        alert("코스를 삭제하지 못하였습니다.");
-        // alert(message);
-      }
-    },
-    error: function (req, status, error) {
-      console.log("코스 삭제 실패");
-      console.log(req.responseText);
-    },
-  });
+  
 }
 
 // 코스 신고
-function reportMoveline(movelineNo) {
-  if (confirm("정말로 신고 하시겠습니까?")) {
-    $.ajax({
-      url: contextPath + "/moveline-main/detail/report",
-      data: { movelineNo: movelineNo },
-      type: "GET",
-      success: function (result) {
-        if (result > 0) {
-          alert("신고 되었습니다");
-          selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
-        } else {
-          alert("신고 실패");
-        }
-      },
+// function reportMoveline(movelineNo) {
+//   if (confirm("정말로 신고 하시겠습니까?")) {
+//     $.ajax({
+//       url: contextPath + "/moveline-main/detail/report",
+//       data: { movelineNo: movelineNo },
+//       type: "GET",
+//       success: function (result) {
+//         if (result > 0) {
+//           alert("신고 되었습니다");
+//           selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
+//         } else {
+//           alert("신고 실패");
+//         }
+//       },
 
-      error: function (req, status, error) {
-        console.log("실패");
-        console.log(req.responseText);
-      },
-    });
-  }
+//       error: function (req, status, error) {
+//         console.log("실패");
+//         console.log(req.responseText);
+//       },
+//     });
+//   }
+// }
+//즐겨찾기 버튼 js - 목록페이지
+const bookmarkBtn2 = document.querySelectorAll('.btn-bookmark2'); 
+const bookmarkOn2 = document.querySelector(".bookmarkOn2");
+const bookmarkOff2 = document.querySelector(".bookmarkOff2");
+
+for(let i of bookmarkBtn2){
+  i.addEventListener('click', () =>{
+ bookmarkOn2.classList.toggle('active');
+ bookmarkOff2.classList.toggle('d-none');
+  });
 }
 
-//즐겨찾기 버튼 js
+//즐겨찾기 버튼 js - 상세페이지
 const bookmarkBtn = document.querySelector(".btn-bookmark");
 const bookmarkOn = document.querySelector(".bookmarkOn");
 const bookmarkOff = document.querySelector(".bookmarkOff");
@@ -462,3 +476,4 @@ bookmarkBtn.addEventListener("click", () => {
   bookmarkOn.classList.toggle("active");
   bookmarkOff.classList.toggle("d-none");
 });
+
