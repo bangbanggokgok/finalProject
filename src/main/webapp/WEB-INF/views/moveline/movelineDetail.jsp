@@ -68,45 +68,17 @@
 
                     <div id="top-bottom-area">
                         <div>
-                            <button type="button" class="btn-bookmark" onclick="setBookmark(${movelineNo});">
+                            <button type="button" class="btn-bookmark">
                                 <span class="icon-bookmark">
                                     <img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
                                     <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
+                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
                                 </span>
                              
                             </button>
                         </div>
                         <div id="top-bottom">
                         
-                            <%-- <div class="name1 name1-wrap">
-                                <div class="heart1">
-                                    <input class="" type="hidden" id="${movelineNo}" value=${movelineNo}>
-
-                                    <img
-                                        class="heart-img hide"
-                                        src="${contextPath}/resources/images/landmark/heart.png"
-                                        alt=""
-                                    />
-                                    <img
-                                        class="redHeart-img hide"
-                                        src="${contextPath}/resources/images/landmark/redHeart.png"
-                                        alt=""
-                                    />
-                                    <span style="width:75px; letter-spacing:-3px"></span>
-                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
-                                </div>
-                            </div> --%>
-                                
-                                <%-- <c:if test="${empty param.cp}">
-                                    <!-- 파라미터에 cp가 없을 경우 1 -->
-                                    <c:set var="cp" value="1" />
-                                </c:if>
-
-                                <c:if test="${!empty param.cp}">
-                                    <!-- 파라미터에 cp가 있을 경우 param.cp -->
-                                    <c:set var="cp" value="${param.cp}" />
-                                </c:if> --%>
-
                             <c:choose>
                                 <c:when test="${loginUser.userNo == movelineDetail.userNo}">
 
@@ -118,12 +90,6 @@
                                     </c:if>
                                 </c:when>
                             </c:choose>
-                            <%-- <c:choose>
-                                <c:when test="${loginUser.userNo != movelineDetail.userNo}">
-                                    <c:if test="${!empty loginUser}">
-                                    </c:if>
-                                </c:when>
-                            </c:choose> --%>
                                         <div class="btn-area">
                                             <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
                                         </div>
@@ -134,7 +100,14 @@
                 </div>
                 
                 <div id="moveline-area">
-
+                <c:choose>
+                    <c:when test="${!empty movelineDetail.updateDate}"> 
+                        <div class="date">수정일 : ${movelineDetail.updateDate}</div>
+                    </c:when>
+                    <c:when test="${!empty movelineDetail.createDate}"> 
+                        <div class="date">작성일 : ${movelineDetail.createDate}</div>
+                    </c:when>
+                </c:choose>
                     <div id="schedule-info">
                         <ul class="schedule">
 
@@ -166,10 +139,11 @@
                                 <span>87km</span>
                             </li>
                             <div id="moveline-hashtags">
+                                <div>태그</div>
                                 <ul>
                                     <c:forEach var="movelineHashtag" items="${movelineHashtag}">
                                             <c:set var="MLHashTag" value="${movelineHashtag.MLHashTag}"/>
-                                                <li>#${MLHashTag}</li>
+                                                <a href="../list/hashtag?hashtag=${MLHashTag}">#${MLHashTag}</a>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -231,7 +205,7 @@
 
     <script>
         const contextPath = "${contextPath}";
-        const loginUserNo = "${loginUser.userNo}";
+        const userNo = "${loginUser.userNo}"
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
