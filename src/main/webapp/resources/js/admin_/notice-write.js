@@ -86,11 +86,17 @@ for(let i=0 ; i<inputImage.length ; i++){
             inputImage[i].value = "";
             deleteSet.add(i);
         }
+        console.log(deleteImage[i]);
+        console.log(deleteSet);
     });
 };
 
 
 
+
+
+
+// 유효성 검사
 function noticeValidation(){
     const titleInput = document.getElementsByClassName("titleInput")[0];
     const content = document.getElementsByClassName("content")[0];
@@ -116,5 +122,8 @@ function noticeValidation(){
         content.focus();
         return false;
     }
+    deleteList.value = Array.from(deleteSet);
     return true;
 }
+
+
