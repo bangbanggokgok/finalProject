@@ -11,11 +11,21 @@
 <c:set var="pagination" value="${map.pagination}" />
 <c:set var="movelineList" value="${map.movelineList}" />
 
-
 <c:set var="moveline2" value="${map.MovelineBylocation}"/>
 <c:set var="listByHashTag" value="${map.listByHashTag}" />
 <c:set var="listByTheme" value="${map.listByTheme}" />
 
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   
+</head>
+<body>
 	<main>
 		<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 		<link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-list-style.css">
@@ -115,17 +125,15 @@
 												</a>
 											</div>
 
-
 											<div class="ml-detail-plus2">
-												<button type="button" class="btn-bookmark2"
-													onclick="setBookmark(${moveline.movelineNo});">
+												<button type="button" class="btn-bookmark2">
 													<span class="icon-bookmark2">
 														<img class='bookmarkOff2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
-                                    					<img class='bookmarkOn2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
+														<img class='bookmarkOn2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
+														<input class="bookmarkValue2" type="hidden" value = "${checkBookmark}" id="${moveline.movelineNo}">${moveline.movelineNo}
 													</span>
 												</button>
 											</div>
-
                                     </li>
                                 </ul>
                             </c:forEach>
@@ -182,9 +190,13 @@
 		</div>
 		<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 	</main>
+
 	<script>
 		const contextPath = "${contextPath}";
-        const loginUserNo = "${loginUser.userNo}";
+        const userNo = "${loginUser.userNo}";
+        // const movelineNo = "${moveline.movelineNo}";
     </script>
+</body>
+
+	<script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
 	<script src="${contextPath}/resources/js/moveline/movelineList.js"></script>
-    <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>

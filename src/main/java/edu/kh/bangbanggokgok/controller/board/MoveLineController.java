@@ -235,11 +235,6 @@ public class MoveLineController {
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		model.addAttribute("landmarkImage", landmarkImage);
 
-		System.out.println("landmarkDetail.landmarkContent" + landmarkDetail);
-		
-		List<Reply> rList = replyService.selectReplyList(movelineNo);
-		model.addAttribute("rList", rList);
-
 		// 비로그인 판별
 		User loginUser = (User) session.getAttribute("loginUser");
 		int userNo = 0;
@@ -254,6 +249,14 @@ public class MoveLineController {
 		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
 		
 		model.addAttribute("checkBookmark", checkBookmark);
+		
+		
+		System.out.println("landmarkDetail.landmarkContent" + landmarkDetail);
+		
+		List<Reply> rList = replyService.selectReplyList(movelineNo);
+		model.addAttribute("rList", rList);
+
+		
 		
 		
 

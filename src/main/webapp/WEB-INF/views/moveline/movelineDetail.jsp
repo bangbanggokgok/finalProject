@@ -72,7 +72,7 @@
                                 <span class="icon-bookmark">
                                     <img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
                                     <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
-                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark} value="${movelineNo}">
+                                    <input class="bookmarkValue" type="hidden" value = "${checkBookmark}" value="${movelineNo}">
                                 </span>
                              
                             </button>
@@ -90,10 +90,10 @@
                                     </c:if>
                                 </c:when>
                             </c:choose>
-                                        <div class="btn-area">
-                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
-                                        </div>
-                                    <button type="button" id="goToList">목록으로</button>
+                            <div class="btn-area">
+                                <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
+                            </div>
+                        <%-- <button type="button" id="goToList">목록으로</button> --%>
 
                         </div>
                     </div>
@@ -225,11 +225,11 @@
     
 
 </body>
-    <script src="${contextPath}/resources/js/moveline/temp.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
-    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
+    <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
-    <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
 </html>

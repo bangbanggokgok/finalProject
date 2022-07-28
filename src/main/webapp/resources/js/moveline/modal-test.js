@@ -1,10 +1,10 @@
 const modal2 = document.getElementById("modal2")
 
 
-const loremIpsum2 = document.getElementById("lorem-ipsum2")
-fetch()
-    .then(response => response.text())
-    .then(result => loremIpsum2.innerHTML = result)
+// const loremIpsum2 = document.getElementById("lorem-ipsum2")
+// fetch("https://baconipsum.com/api/?type=all-meat&paras=200&format=html")
+//     .then(response => response.text())
+//     .then(result => loremIpsum2.innerHTML = result)
 
 function modalOn() {
     modal2.style.display = "flex"

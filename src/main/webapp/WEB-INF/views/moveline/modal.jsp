@@ -31,5 +31,5 @@
     </main>
 
 </body>
-<script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
+<%-- <script src="${contextPath}/resources/js/moveline/modal-test.js"></script> --%>
 </html>
