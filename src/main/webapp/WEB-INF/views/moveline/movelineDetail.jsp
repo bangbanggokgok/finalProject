@@ -72,7 +72,7 @@
                                 <span class="icon-bookmark">
                                     <img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
                                     <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
-                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
+                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark} value="${movelineNo}">
                                 </span>
                              
                             </button>
@@ -93,7 +93,7 @@
                                         <div class="btn-area">
                                             <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
                                         </div>
-                                    <%-- <button type="button" id="goToList">목록으로</button> --%>
+                                    <button type="button" id="goToList">목록으로</button>
 
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                 <span>87km</span>
                             </li>
                             <div id="moveline-hashtags">
-                                <div>태그</div>
+                                <div></div>
                                 <ul>
                                     <c:forEach var="movelineHashtag" items="${movelineHashtag}">
                                             <c:set var="MLHashTag" value="${movelineHashtag.MLHashTag}"/>
@@ -206,6 +206,7 @@
     <script>
         const contextPath = "${contextPath}";
         const userNo = "${loginUser.userNo}"
+        const movelineNo = "${movelineDetail.movelineNo}"
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
