@@ -21,7 +21,6 @@
 <body>
 	<jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
-	<!-- 관리자 메인탭 -->
 	<section class="header">
 		<section class="pageWrapper">
 			<h1 style="font-size: 24px;" class="boardTitle">공지사항</h1>
@@ -30,7 +29,6 @@
 
 	<section class="board">
 		<section class="pageWrapper">
-			<!-- 폼태그 액션 주소 필 -->
 			<form action="insert" enctype="multipart/form-data" method="POST" onsubmit="return noticeValidation()">
 				<label class="choice">공지 선택</label>
 				<div id="inputFieldsContainer" onclick="drop_choiceFields()">
@@ -42,8 +40,6 @@
 					</div>
 				</div>
 
-				<!-- select - option 태그로 수정 하는 건? -->
-				<!-- select - option 은 별로 안 이뻐서? -->
 				<div style="display: none;" id="choiceFieldsContainer">
 					<div class="choiceFeild">
 						<div class="choiceFields" id="notice">

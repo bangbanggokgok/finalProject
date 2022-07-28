@@ -99,7 +99,9 @@ public class AdminController {
 
 		return "redirect:" + path;
 
-		} else { // 수정
+		} 
+		
+		if (mode.equals("update")) { // 수정
 			
 			int result = service.updateNotice(detail, imageList, webPath, folderPath, deleteList);
 			
@@ -116,6 +118,7 @@ public class AdminController {
 			
 			return "redirect:" + path;
 		}
+		return null;
 
 	}
 

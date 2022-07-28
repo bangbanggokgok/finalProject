@@ -40,7 +40,7 @@ public class NoticeController {
 
 		model.addAttribute("map", map);
 
-		return "notice";
+		return "notice/notice";
 	}
 
 	// 공지 상세 조회
