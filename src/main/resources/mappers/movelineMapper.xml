@@ -254,17 +254,17 @@
 	
 	
 	<!-- 코스 즐겨찾기 -->
-	<insert id="bookmarkMoveline">
+	<!-- <insert id="bookmarkMoveline">
 		INSERT INTO BOOKMARK_ML VALUES
 		(#{userNo}, #{movelineNo})
-	</insert>
+	</insert> -->
 	
 	<!-- 코스 즐겨찾기 목록 조회 -->
-	<select id="selectBookmarkList" resultMap="MoveLineBookmark_rm">
+	<!-- <select id="selectBookmarkList" resultMap="MoveLineBookmark_rm">
 		SELECT * FROM BOOKMARK_ML
 		WHERE ML_NO = #{movelineNo}
 		AND USER_NO = #{userNo}
-	</select>
+	</select> -->
 	
 	
 	<!-- 특정 코스 테마 전체 수 조회 -->
@@ -336,8 +336,8 @@
 		SELECT 
 			ML_NO, ML_TITLE, ML_CONTENT, ML_THEME,
 			LOCATION_NAME, USER_NAME, USER_NO, USER_PROFILE,
-			TO_CHAR(ML_CREATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_CREATE_DT,
-			TO_CHAR(ML_UPDATE_DT, 'YYYY"년" MM"월" DD"일" HH24:MI:SS') ML_UPDATE_DT
+			TO_CHAR(ML_CREATE_DT, 'YYYY"년" MM"월" DD"일"') ML_CREATE_DT,
+			TO_CHAR(ML_UPDATE_DT, 'YYYY"년" MM"월" DD"일"') ML_UPDATE_DT
 		FROM MOVELINE_BOARD
 		JOIN LOCATIONS USING(LOCATION_TYPE)
 		JOIN USER_TB USING(USER_NO)
@@ -409,6 +409,26 @@
    		SELECT LM_CONTENT FROM LANDMARK
    		WHERE LM_NO = #{landMarkNo}
    	</select>
+   	
+   	<!-- 코스 즐겨찾기  -->
+   	<select id="movelineBookmark" resultType="_int">
+		SELECT COUNT(*)
+		FROM BOOKMARK_ML
+		WHERE USER_NO = #{loginNo}
+		AND ML_NO = #{movelineNo}
+	</select>
+   
+   <insert id="movelineBookmarkInsert">
+		INSERT INTO BOOKMARK_ML
+		VALUES (#{loginNo},#{movelineNo})
+	</insert>
+	
+	<delete id="movelineBookmarkDelete">
+		DELETE FROM BOOKMARK_ML
+		WHERE USER_NO = #{loginNo}
+		AND ML_NO = #{movelineNo}
+	</delete>
+   
    
    
    
