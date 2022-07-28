@@ -195,9 +195,7 @@ li {
 
 /* 현재 페이지 번호 */
 .pagination .current{
-    background-color: #455ba8;
-    border-radius: 50%;
-    color: white;
+    color: rgb(51, 151, 255); 
     font-weight: bold;
 }
 

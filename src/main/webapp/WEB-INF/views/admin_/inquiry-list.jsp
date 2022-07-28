@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/inquiry-list.css">
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/adminNav.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 
 <body>
@@ -51,7 +52,7 @@
 	                                </c:when>
 	
 	                                <c:otherwise>
-	                                	<div class="situation">답변대기</div>       
+	                                	<div class="situation" id="wait">답변대기</div>       
 	                                </c:otherwise>
 	                            </c:choose>
 	                            
@@ -64,44 +65,27 @@
 
             <div class="pagination-area">
 
-                <!-- 페이지네이션 a태그에 사용될 공통 주소를 저장한 변수 선언 -->
-                <c:set var="url" value="${list}?cp="/>
+               <c:set var="url" value="${list}?cp="/>
+                <ul class="pagination" id="pagination">
+                    <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
+                    <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 
-                <ul class="pagination">
-                    <!-- 첫 페이지로 이동 -->
-                    <li><a href="${url}1">&lt;&lt;</a></li>
-
-                    <!-- 이전 목록 마지막 번호로 이동 -->
-                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
-
-                    <!-- 범위가 정해진 일반 for문 사용 -->
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
                         <c:choose>
                             <c:when test="${i == pagination.currentPage}">
-                                <li>
-                                	<a class="current">${i}</a>
-                               	</li>
+                                <li><a class="current">${i}</a></li>
                             </c:when>
 
                             <c:otherwise>
-                                <li>
-                                	<a href="${url}${i}">${i}</a>
-                               	</li>        
+                                <li><a href="${url}${i}">${i}</a></li>        
                             </c:otherwise>
                         </c:choose>
 
                     </c:forEach>
                     
-                    <!-- 다음 목록 시작 번호로 이동 -->
-                    <li>
-                    	<a href="${url}${pagination.nextPage}">&gt;</a>
-                    </li>
-
-                    <!-- 끝 페이지로 이동 -->
-                    <li>
-                    	<a href="${url}${pagination.maxPage}">&gt;&gt;</a>
-                   	</li>
+                    <li><a href="${url}${pagination.nextPage}"><i class="fal fa-angle-right"></i></a></li>
+                    <li><a href="${url}${pagination.maxPage}"><i class="fal fa-angle-double-right"></i></a></li>
 
                 </ul>
             </div>

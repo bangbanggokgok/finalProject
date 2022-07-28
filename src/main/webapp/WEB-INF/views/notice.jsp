@@ -12,6 +12,8 @@
     <title>공지사항</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/notice.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
+</head>
 </head>
 <body>
     <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
@@ -48,8 +50,8 @@
 
                 <c:set var="url" value="${list}?cp="/>
                 <ul class="pagination" id="pagination">
-                    <li><a href="${url}1">&lt;&lt;</a></li>
-                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                    <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
+                    <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
@@ -65,8 +67,8 @@
 
                     </c:forEach>
                     
-                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="${url}${pagination.nextPage}"><i class="fal fa-angle-right"></i></a></li>
+                    <li><a href="${url}${pagination.maxPage}"><i class="fal fa-angle-double-right"></i></a></li>
 
                 </ul>
         </div>

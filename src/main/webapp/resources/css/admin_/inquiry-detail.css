@@ -97,6 +97,7 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 
 .submitButton {
     background: #1BB3FE;
+    border: none;
     color: rgb(255, 255, 255);
     display: inline-flex;
     -webkit-box-pack: center;
