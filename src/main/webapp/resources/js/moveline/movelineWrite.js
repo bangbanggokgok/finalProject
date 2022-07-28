@@ -265,12 +265,13 @@ function addFunction(e){
     window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
         , e.currentTarget.innerText);
     });
-};
+};  
 
 function removeFunction(c){
     $(c).remove();
     if($(".landmark-list").children().text() == ""){
         $(".landmark-list").html("<h2>아직 추가된 랜드마크가 없어요.</h2>")
+    addGgomsu = 0 ;
     }
 }
 
