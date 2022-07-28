@@ -246,6 +246,11 @@
 	    ORDER BY COUNT(USER_NO) DESC
 	</select>
 	
+	<update id="deleteLandmark">
+		UPDATE LANDMARK SET
+		LM_FL = 'Y'
+		WHERE LM_NO = #{landmarkNo}
+	</update>
 		
 	
 	

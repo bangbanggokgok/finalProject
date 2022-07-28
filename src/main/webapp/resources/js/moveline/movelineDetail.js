@@ -2,7 +2,10 @@ const landmark = document.getElementsByClassName("landmark");
 const selected = document.getElementsByClassName("selected-landmark");
 const showContent = document.querySelector(".showContent");
 const container2 = document.querySelector(".container2");
+const deleteBtn = document.getElementById("deleteBtn");
 
+
+let movelineNo;
 let landmarkNo;
 
 // 특정 랜드마크 이미지 + 내용 세팅
@@ -399,61 +402,114 @@ for (let i = 0; i < landmark.length; i++) {
 // })();
 
 // 코스 삭제
-function deleteMoveline(movelineNo) {
-  if (confirm("정말로 삭제 하시겠습니까?")) {
-  } else {
-    return;
+// function deleteMoveline(movelineNo) {
+//   if (confirm("정말로 삭제 하시겠습니까?")) {
+//   } else {
+//     return;
+//   }
+
+//     $.ajax({
+//       url: contextPath + "/moveline-main/detail/delete",
+//       data: { movelineNo: movelineNo },
+//       type: "GET",
+//       success: function (result) {
+//         console.log("result 값 넘어옴");
+  
+//         if (result > 0) {
+//           alert("코스를 삭제하였습니다.");
+//           // alert(message);
+//           let url = contextPath + "/moveline-main/list";
+//           location.href = url;
+//         } else {
+//           alert("코스를 삭제하지 못하였습니다.");
+//           // alert(message);
+//         }
+//       },
+//       error: function (req, status, error) {
+//         console.log("코스 삭제 실패");
+//         console.log(req.responseText);
+//       },
+//     });
+// }
+
+
+
+
+(function(){
+
+  const deleteBtn = document.getElementById("deleteBtn");
+
+  if(deleteBtn != null){ // 버튼이 화면에 존재할 때
+    deleteBtn.addEventListener("click", function(){
+      movelineNo = this.getAttribute("value");
+
+          alert(movelineNo);
+          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo
+
+          if( confirm("정말로 삭제 하시겠습니까?") ){
+              location.href = url; // get방식으로 url에 요청
+              if (result > 0) {
+                // alert("코스를 삭제하였습니다.");
+                alert(message);
+                let url = contextPath + "/moveline-main/list";
+                location.href = url;
+              } else {
+                // alert("코스를 삭제하지 못하였습니다.");
+                alert(message);
+              }
+          }
+      });
   }
+})();
 
-  $.ajax({
-    url: contextPath + "/moveline-main/detail/delete",
-    data: { movelineNo: movelineNo },
-    type: "GET",
-    success: function (result) {
-      console.log("result 값 넘어옴");
+// const deleteBtn = document.getElementById("deleteBtn");
 
-      if (result > 0) {
-        alert("코스를 삭제하였습니다.");
-        // alert(message);
-        let url = contextPath + "/moveline-main/list";
-        location.href = url;
-      } else {
-        alert("코스를 삭제하지 못하였습니다.");
-        // alert(message);
-      }
-    },
-    error: function (req, status, error) {
-      console.log("코스 삭제 실패");
-      console.log(req.responseText);
-    },
-  });
-}
+// function deleteMoveline(movelineNo) {
+
+//     deleteBtn.addEventListener("click", function(){
+
+//           alert(movelineNo);
+
+//           let url = contextPath + "/moveline-main/detail/delete"+ movelineNo
+
+//           if( confirm("정말로 삭제 하시겠습니까?") ){
+//               location.href = url; // get방식으로 url에 요청
+//           }
+
+//       });
+//   }
+
+
+
+
+
 
 // 코스 신고
-function reportMoveline(movelineNo) {
-  if (confirm("정말로 신고 하시겠습니까?")) {
-    $.ajax({
-      url: contextPath + "/moveline-main/detail/report",
-      data: { movelineNo: movelineNo },
-      type: "GET",
-      success: function (result) {
-        if (result > 0) {
-          alert("신고 되었습니다");
-          selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
-        } else {
-          alert("신고 실패");
-        }
-      },
+// function reportMoveline(movelineNo) {
+//   if (confirm("정말로 신고 하시겠습니까?")) {
+//     $.ajax({
+//       url: contextPath + "/moveline-main/detail/report",
+//       data: { movelineNo: movelineNo },
+//       type: "GET",
+//       success: function (result) {
+//         if (result > 0) {
+//           alert("신고 되었습니다");
+//           selectReplyList(); // 목록을 다시 조회해서 삭제된 글을 제거
+//         } else {
+//           alert("신고 실패");
+//         }
+//       },
 
-      error: function (req, status, error) {
-        console.log("실패");
-        console.log(req.responseText);
-      },
-    });
-  }
-}
+//       error: function (req, status, error) {
+//         console.log("실패");
+//         console.log(req.responseText);
+//       },
+//     });
+//   }
+// }
 
-//즐겨찾기 버튼 js
+
+//즐겨찾기 버튼 js - 상세페이지
 const bookmarkBtn = document.querySelector(".btn-bookmark");
 const bookmarkOn = document.querySelector(".bookmarkOn");
 const bookmarkOff = document.querySelector(".bookmarkOff");
@@ -462,3 +518,4 @@ bookmarkBtn.addEventListener("click", () => {
   bookmarkOn.classList.toggle("active");
   bookmarkOff.classList.toggle("d-none");
 });
+

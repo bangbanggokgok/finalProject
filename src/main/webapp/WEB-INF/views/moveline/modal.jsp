@@ -12,7 +12,9 @@
         
     </head>
     <body>
+        <div id="container2">
             <div id="lorem-ipsum2"></div>
+        </div>
             <main>
             <div id="modal2" class="modal-overlay2">
                 <div class="modal-window2">
@@ -25,6 +27,7 @@
                     </div>
                 </div>
             </div>
+        </div>
     </main>
 
 </body>
