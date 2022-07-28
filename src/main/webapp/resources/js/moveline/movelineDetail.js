@@ -161,6 +161,50 @@ for (let i = 0; i < landmark.length; i++) {
   });
 }
 
+
+
+// 코스 삭제 (주소 처리 미완)
+(function(){
+
+  const deleteBtn = document.getElementById("deleteBtn");
+
+  if(deleteBtn != null){ // 버튼이 화면에 존재할 때
+    deleteBtn.addEventListener("click", function(){
+      movelineNo = this.getAttribute("value");
+
+          alert(movelineNo);
+          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo
+
+          if( confirm("정말로 삭제 하시겠습니까?") ){
+              location.href = url; // get방식으로 url에 요청
+              if (result > 0) {
+                // alert("코스를 삭제하였습니다.");
+                alert(message);
+                let url = contextPath + "/moveline-main/list";
+                location.href = url;
+              } else {
+                // alert("코스를 삭제하지 못하였습니다.");
+                alert(message);
+              }
+          }
+      });
+  }
+})();
+
+
+//즐겨찾기 버튼 js - 상세페이지
+const bookmarkBtn = document.querySelector(".btn-bookmark");
+const bookmarkOn = document.querySelector(".bookmarkOn");
+const bookmarkOff = document.querySelector(".bookmarkOff");
+
+bookmarkBtn.addEventListener("click", () => {
+  bookmarkOn.classList.toggle("active");
+  bookmarkOff.classList.toggle("d-none");
+});
+
+
+
+
 // 상세설명 비동기
 // showContent.addEventListener("click", function () {
 //   // alert(landmarkNo)
@@ -435,32 +479,6 @@ for (let i = 0; i < landmark.length; i++) {
 
 
 
-(function(){
-
-  const deleteBtn = document.getElementById("deleteBtn");
-
-  if(deleteBtn != null){ // 버튼이 화면에 존재할 때
-    deleteBtn.addEventListener("click", function(){
-      movelineNo = this.getAttribute("value");
-
-          alert(movelineNo);
-          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo
-
-          if( confirm("정말로 삭제 하시겠습니까?") ){
-              location.href = url; // get방식으로 url에 요청
-              if (result > 0) {
-                // alert("코스를 삭제하였습니다.");
-                alert(message);
-                let url = contextPath + "/moveline-main/list";
-                location.href = url;
-              } else {
-                // alert("코스를 삭제하지 못하였습니다.");
-                alert(message);
-              }
-          }
-      });
-  }
-})();
 
 // const deleteBtn = document.getElementById("deleteBtn");
 
@@ -508,14 +526,4 @@ for (let i = 0; i < landmark.length; i++) {
 //   }
 // }
 
-
-//즐겨찾기 버튼 js - 상세페이지
-const bookmarkBtn = document.querySelector(".btn-bookmark");
-const bookmarkOn = document.querySelector(".bookmarkOn");
-const bookmarkOff = document.querySelector(".bookmarkOff");
-
-bookmarkBtn.addEventListener("click", () => {
-  bookmarkOn.classList.toggle("active");
-  bookmarkOff.classList.toggle("d-none");
-});
 

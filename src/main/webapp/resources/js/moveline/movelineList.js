@@ -34,7 +34,7 @@
     }
   })();
 
-  //즐겨찾기 버튼 js - 목록페이지
+//즐겨찾기 버튼 js - 목록페이지
 const bookmarkBtn2 = document.querySelectorAll('.btn-bookmark2'); 
 const bookmarkOn2 = document.querySelector(".bookmarkOn2");
 const bookmarkOff2 = document.querySelector(".bookmarkOff2");

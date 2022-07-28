@@ -17,33 +17,32 @@
 </head>
 <body>
   <section class="slide3">
-      <div class="container2" id="entire">
-          <ul class="slider-container2 simple-list slider2" id="test1" style="visibility:hidden">
+    <div class="container2" id="entire">
+        <ul class="slider-container2 simple-list slider2" id="test1" style="visibility:hidden">
 
-            <c:forEach var="landmarkImage" items="${landmarkImage}">
-              <li class="slide2" id="landmark-images">
-                <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
-                <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
-              </li>
-            </c:forEach>
-            
-            
-          </ul>
+          <c:forEach var="landmarkImage" items="${landmarkImage}">
+            <li class="slide2" id="landmark-images">
+              <c:set var="landmarkImage" value="${landmarkImage.landMarkReName}"/>
+              <img class="slide-img2" src="${contextPath}/${landmarkImage}" alt="first_img">
+            </li>
+          </c:forEach>
+          
+          
+        </ul>
 
-          <p class="pager2" style="visibility:hidden">
-          </p>
+        <p class="pager2" style="visibility:hidden">
+        </p>
 
-          <a class="prev2" style="visibility:hidden">
-            <li class="fa-solid fa-angle-left"></li>
-          </a>
-          <a class="next2" style="visibility:hidden">
-            <li class="fa-solid fa-angle-right"></li>
-          </a>
-          <div style="visibility:hidden">
-          <li class="landContent"></li>
-          </div>
-      </div>
-
+        <a class="prev2" style="visibility:hidden">
+          <li class="fa-solid fa-angle-left"></li>
+        </a>
+        <a class="next2" style="visibility:hidden">
+          <li class="fa-solid fa-angle-right"></li>
+        </a>
+        <div style="visibility:hidden">
+        <li class="landContent"></li>
+        </div>
+    </div>
   </section>
 
 </body>
