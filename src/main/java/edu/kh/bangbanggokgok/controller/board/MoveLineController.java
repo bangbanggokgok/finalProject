@@ -366,24 +366,18 @@ public class MoveLineController {
 	}
 
 	// 코스 삭제
-	@GetMapping("/detail/delete")
+	@GetMapping("/detail/delete/{movelineNo}")
 	public String deleteMoveline(
-//								 @PathVariable("movelineNo") int movelineNo,
-			   					 @RequestHeader("referer") String referer,
-			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
-		   					 RedirectAttributes ra
+								 @PathVariable("movelineNo") int movelineNo,
+								 @RequestHeader("referer") String referer,
+//			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
+			   					 RedirectAttributes ra
 			   					 ) {
 		
-		//int result = service.deleteMoveline(movelineNo);
-
-			   					 //RedirectAttributes ra,
-			   					 //Model model) {
-		int result = 0;
 		
-		result = service.deleteMoveline(movelineNo);
+		System.out.println("movelineNo : " + movelineNo);
+		int result = service.deleteMoveline(movelineNo);
 		  
-//		System.out.println("deleteMoveline : " + movelineNo);
-
 		
 		String message = null;
 		String path = null;
@@ -393,7 +387,7 @@ public class MoveLineController {
 			System.out.println("result : " + result);
 			
 			message = "코스를 삭제했습니다.";
-			path = "/moveline-main";
+			path = "/moveline-main/list";
 			   
 		} else {
 			   

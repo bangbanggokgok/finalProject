@@ -27,7 +27,9 @@
     position: relative;
     top: 0;
     padding: 10px;
+    margin: 50px;
 }
+
 #modal2 .title2 {
     padding-left: 10px;
     display: inline;
@@ -57,7 +59,7 @@
 
 
 /* 버튼 */
-#btn-modal2{
+.btn-modal2{
     border-style: none;
     width: 150px;
     padding-inline-start: 0;
@@ -67,7 +69,7 @@
 }
 
 
-#btn-modal2:hover{
+.btn-modal2:hover{
     cursor: pointer;
     background-color: #bbd0ff;
     color: white;
