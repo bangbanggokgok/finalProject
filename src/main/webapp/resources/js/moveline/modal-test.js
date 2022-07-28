@@ -35,7 +35,7 @@ modal2.addEventListener("click", e => {
         modalOff()
     }
 })
-window2.addEventListener("keyup", e => {
+window.addEventListener("keyup", e => {
     if(isModalOn() && e.key === "Escape") {
         modalOff()
     }
