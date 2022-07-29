@@ -6,8 +6,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Modal</title>
-        <link rel="stylesheet" href="${contextPath}/resources/css/moveline/modal.css" />
+    <title>Modal</title>
+    <link rel="stylesheet" href="${contextPath}/resources/css/moveline/modal.css" />
             
         
     </head>
@@ -16,7 +16,7 @@
             <div id="lorem-ipsum2"></div>
         </div>
             <main>
-            <div id="modal2" class="modal-overlay2">
+            <div id="modal2" class="modal-overlay2" style="margin-left: 50px;">
                 <div class="modal-window2">
                         <div class="title2">
                             <h2>상세</h2>

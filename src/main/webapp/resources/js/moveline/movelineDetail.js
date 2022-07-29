@@ -1,6 +1,6 @@
 const landmark = document.getElementsByClassName("landmark");
 const selected = document.getElementsByClassName("selected-landmark");
-const showContent = document.querySelector(".showContent");
+const showContent = document.querySelectorAll(".showContent");
 const container2 = document.querySelector(".container2");
 const deleteBtn = document.getElementById("deleteBtn");
 const goToList = document.getElementById("goToList");
