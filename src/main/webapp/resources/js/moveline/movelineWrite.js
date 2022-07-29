@@ -31,22 +31,6 @@ for (let i = 0; i < inputImage.length; i++) {
     });
 }
 
-
-// 랜드마크 선택
-// const landmarkList = document.getElementsByClassName("landmarkList");
-
-// for (let list of landmarkList) {
-//     list.addEventListener("change", function () {
-
-//         if (list.value != "landmarkNull") {
-//             this.nextElementSibling.style.display = "block";
-//         } else {
-//             this.nextElementSibling.style.display = "none";
-//             this.nextElementSibling.value = "landmarkNull";
-//         }
-//     });
-// }
-
 // 유효성 검사
 function mlWriteValidation() {
     const titleInput = document.getElementsByClassName("titleInput")[0];
@@ -92,62 +76,6 @@ function mlWriteValidation() {
     }
     return true;
 }
-
-// 선택 된 지역에 해당하는 랜드마크 조회
-// function connectLocation(value){
-
-//     alert("clicked");
-//     // const locationName = getAttribute.value;
-//     // const locationName = btn.parentElement.previousElementSibling.value;
-
-
-//     $.ajax({
-//         url : contextPath + "/moveline-main/list/write/connectLocation",
-//         data : {"locationName" : value},
-//         type : "GET",
-//         success : function(landmarkList){
-//             if(landmarkList.length != null){
-//                 alert("지역-랜드마크 조회 성공");
-
-//                 // const lm = document.getElementsByClassName("landmarkList");
-
-//                 // for(var i in landmarkList.landMarkName){
-
-//                 //     const option = document.createElement("option");
-//                 //     option.innerText = land.landMarkName;
-//                 //     lm.append(option);
-//                 //     const pathname = location.pathname;
-
-//                 //     let url = pathname.substring(0,  pathnazme.indexOf("/", 1))
-
-//                 //     url = "/moveline-main/list/write"
-
-//                 //     var lmName = landmarkList.landMarkName[i];
-
-//                 // }
-
-//                 // location.href = url;
-//                 return true;
-//             }else{
-//                 alert("지역-랜드마크 조회 실패");
-//             }
-//             return true;
-
-//         },
-//         error : function(req, status, error){
-//             console.log("즐겨찾기 등록 실패");
-//             console.log(req.responseText);
-//         }
-
-//     });
-
-// };
-
-
-
-
-
-
 
 let bookmarkList = "";
 
@@ -209,18 +137,11 @@ function listSelect(result) {
 
         const idNumber = landmark.landMarkNo+"";
         if(landmarkIndexArray.get(idNumber) == landmarkBox.innerHTML){
-            // const black = document.createElement("div")
             addButton.setAttribute("disabled","disabled");
             addButton.innerText = "이미 추가됨";
             addButton.classList.toggle("add-button");
             addButton.classList.toggle("no-button");
             landmarkBox.style.backgroundColor = "rgba(0, 0, 0, 0.24)"
-            // black.classList.add("black");
-            // black.style.width = landmarkBox.offsetWidth;
-            // black.style.height = landmarkBox.offsetHeight;
-            // black.style.top = landmarkBox.offsetTop;
-            // black.style.left = landmarkBox.offsetLeft;
-            // landmarkBox.append(black);
         }
        
         $(".modal").children('div:eq(1)').children("div:eq(0)").append(landmarkBox);
@@ -270,6 +191,7 @@ var markers = [];
 var infowindows = [];
 let linePath = [];
 var polylines = [];
+var polyline = null;
 
 function addFunction(e){
     const listBookmark = document.getElementsByClassName("landmark-list")[0];
@@ -326,14 +248,9 @@ function addFunction(e){
         mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
     }; 
 
-    marker = new kakao.maps.Marker({
-        position: new kakao.maps.LatLng(e.nextSibling.value, e.nextSibling.nextSibling.value), // 마커의 좌표
-        map: map // 마커를 표시할 지도 객체
-    });
+    marker = createMarker(e.nextSibling.value,e.nextSibling.nextSibling.value);
 
-    infowindow = new kakao.maps.InfoWindow({
-        content : '<div style="padding:5px;">'+e.previousSibling.firstChild.innerText+'</div>' // 인포윈도우에 표시할 내용
-    });
+    infowindow = createInfowindow(e.previousSibling.firstChild.innerText);
 
     infowindow.open(map, marker);
 
@@ -344,27 +261,37 @@ function addFunction(e){
     setMarkers(map)
 };  
 
+function createMarker(x,y){
+    return new kakao.maps.Marker({
+        position: new kakao.maps.LatLng(x, y), // 마커의 좌표
+        map: map // 마커를 표시할 지도 객체
+    });
+};
+
+function createInfowindow(title){
+    return new kakao.maps.InfoWindow({
+        content : '<div style="padding:5px;text-align:center;">'+title+'</div>' // 인포윈도우에 표시할 내용
+    });
+};
 
 function lineDraw(x,y){
-    linePath.push(new kakao.maps.LatLng(x, y));
-
+    if(polyline) polyline.setMap(null);
+    if(x!=null){
+        linePath.push(new kakao.maps.LatLng(x, y));
+    }
+    
     polyline = new kakao.maps.Polyline({
         path: linePath, // 선을 구성하는 좌표배열 입니다
         strokeWeight: 5, // 선의 두께 입니다
-        strokeColor: '#FFAE00', // 선의 색깔입니다
-        strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+        strokeColor: '#1BB3FE', // 선의 색깔입니다
+        strokeOpacity: 1, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
         strokeStyle: 'solid' // 선의 스타일입니다
     });
+    polyline.setMap(map)
+    //polylines.push(polyline);
     // 지도에 선을 표시합니다 
-    polylines.push(polyline);
+    
 }
-
-$(document).on( 'dragstart','.use-event-div', function(){
-        console.log(1)
-});
-$(document).on('dragend','.use-event-div',  function(){
-        console.log(2)
-});
 
 function removeFunction(c){
     
@@ -392,25 +319,36 @@ function removeFunction(c){
         center: new kakao.maps.LatLng(mapCenterX/landCount, mapCenterY/landCount), // 지도의 중심좌표
         level: 2, // 지도의 확대 레벨
         mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-    }; 
+    };
     setMarkers(null,l);
 };
 
-function setMarkers(map,l) {
+function setMarkers(value,l) {
+    console.log('setMarkers', map)
     for (var i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
-        infowindows[i].setMap(map);
-        polylines[i].setMap(map);
-
-        console.log(markers);
-        console.log(infowindows);
-        console.log(polylines);
+        markers[i].setMap(null);
+        infowindows[i].setMap(null);
+        //polylines[i].setMap(null);
     }
     if(l){
         markers.splice(l,1);
         infowindows.splice(l,1);
-        polylines.splice(l,1);
+       //polylines.splice(l,1);
+        linePath.splice(l,1);
+        // delete markers[l]
+        // delete infowindows[l]
+        // delete polylines[l]
+        // delete linePath[l]
     }
+    for (var i = 0; i < markers.length; i++) {
+        markers[i].setMap(map);
+        infowindows[i].setMap(map);
+        //polylines[i].setMap(map);
+    }
+    console.log(markers);
+    console.log(infowindows);
+    //console.log(polylines);
+    lineDraw()
 }
 
 
@@ -457,29 +395,6 @@ mapOption = {
 }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); 
-
-
-
-
-// 마커 위에 표시할 인포윈도우를 생성한다
-// var infowindow = new kakao.maps.InfoWindow({
-//     content : '<div style="padding:5px;">인포윈도우 :D</div>' // 인포윈도우에 표시할 내용
-// });
-// // 인포윈도우를 지도에 표시한다
-// infowindow.open(map, marker);
-// // 지도에 선을 표시한다 
-// var polyline = new kakao.maps.Polyline({
-//     map: map, // 선을 표시할 지도 객체 
-//     path: [ // 선을 구성하는 좌표 배열
-//         new kakao.maps.LatLng(37.57338, 126.97744),
-//         new kakao.maps.LatLng(37.5638, 126.97744),
-//         new kakao.maps.LatLng(37.55189, 126.90744)
-//     ],
-//     strokeWeight: 3, // 선의 두께
-//     strokeColor: '#FF0000', // 선 색
-//     strokeOpacity: 0.9, // 선 투명도
-//     strokeStyle: 'solid' // 선 스타일
-// });	
 
 // $(document).on('.use-event-div',{
 //     'dragstart':function(){

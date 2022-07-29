@@ -49,8 +49,9 @@
         
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
+        ${listURL}
+
         <div id="contents">
-            <form action="">
                 <div id="top1">
                     <div id="top-top">
                         <div class="profileImage">
@@ -71,8 +72,8 @@
                             <button type="button" class="btn-bookmark">
                                 <span class="icon-bookmark">
                                     <img class='bookmarkOff' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
-                                    <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기ofn">
-                                    <input class="bookmarkValue" type="hidden" value = ${checkBookmark} value="${movelineNo}">
+                                    <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기on">
+                                    <input class="bookmarkValue" type="hidden" value = "${checkBookmark}" id="${movelineNo}">
                                 </span>
                              
                             </button>
@@ -84,16 +85,16 @@
 
                                     <c:if test="${!empty loginUser}"> 
                                         <div class="btn-area">
-                                            <button>수정하기</button>
-                                            <button id="deleteBtn" value="${movelineNo}">삭제하기</button>
+                                            <button type="button" onclick="location.href='${contextPath}/moveline-main/list/write?cp=${pagination.currentPage}'">수정하기</button>
+                                            <button id="deleteBtn" type="button" value="${movelineNo}">삭제하기</button>
+                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
                                         </div>
                                     </c:if>
                                 </c:when>
                             </c:choose>
-                                        <div class="btn-area">
-                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
-                                        </div>
-                                    <button type="button" id="goToList">목록으로</button>
+                            <div class="btn-area">
+                            </div>
+                        <button type="button" id="goToList">목록으로</button>
 
                         </div>
                     </div>
@@ -164,7 +165,10 @@
 
                 </div>
 
-                <div id="land-start">랜드마크</div>
+
+                <div id="land-start">랜드마크
+                    <span><img src="${contextPath}/resources/images/movelineDetail/여행일러스트.jpg" style="width:100px;"></span>
+                </div>
 
                 <div class="landmark-detail">
                     <ul>
@@ -172,23 +176,18 @@
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" value="${landMarkContent}">${landmarkName}</button>
+                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" name="${landMarkContent}">${landmarkName}</button>
                         </c:forEach>
                     </ul>
                     
                     <ul>
-                        <%-- <li class="showImage" >사진보기</li> --%>
                         <jsp:include page="/WEB-INF/views/moveline/modal.jsp"></jsp:include>
-
-                        
-                        
                     </ul>
                 </div>
 
                 
 
                 
-            </form>
             
                 <!-- 댓글 -->
                 <jsp:include page="/WEB-INF/views/moveline/movelineReply.jsp"/>
@@ -205,8 +204,8 @@
 
     <script>
         const contextPath = "${contextPath}";
-        const userNo = "${loginUser.userNo}"
-        const movelineNo = "${movelineDetail.movelineNo}"
+        const userNo = "${loginUser.userNo}";
+        const movelineNo = "${movelineDetail.movelineNo}";
     </script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -225,11 +224,11 @@
     
 
 </body>
-    <script src="${contextPath}/resources/js/moveline/temp.js"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
-    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
+    <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
-    <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
-    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
+    <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
 </html>
