@@ -93,8 +93,8 @@
                                 </c:when>
                             </c:choose>
                             <div class="btn-area">
+                                <button type="button" id="goToList">목록으로</button>
                             </div>
-                        <button type="button" id="goToList">목록으로</button>
 
                         </div>
                     </div>

@@ -67,7 +67,7 @@ function selectReplyList(){
                 replyRow.append(replyWriter, replyContent);
 
                 // 로그인이 되어있는 경우 답글 버튼 추가
-                if(loginUserNo != ""){
+                if(userNo != ""){
                     
                     // 버튼 영역
                     const replyBtnArea = document.createElement("div");
@@ -82,7 +82,7 @@ function selectReplyList(){
                     replyBtnArea.append(childReplyBtn);
 
                     // 로그인한 회원번호와 댓글 작성자의 회원번호가 같을 때만 버튼 추가
-                    if( loginUserNo == reply.userNo   ){
+                    if( userNo == reply.userNo   ){
     
     
                         // 수정 버튼
@@ -134,7 +134,7 @@ const replyContent = document.getElementById("replyContent");
 addReply.addEventListener("click", function(){ // 댓글 등록 버튼이 클릭이 되었을 때
 
     // 1) 로그인이 되어있나? -> 전역변수 loginUserNo 이용
-    if(loginUserNo == ""){ // 로그인 X
+    if(userNo == ""){ // 로그인 X
         alert("로그인 후 이용해주세요.");
         return;
     }
@@ -152,7 +152,7 @@ addReply.addEventListener("click", function(){ // 댓글 등록 버튼이 클릭
     $.ajax({
         url : contextPath + "/reply/insert",
         data : {"replyContent" : replyContent.value,
-                "userNo" : loginUserNo,
+                "userNo" : userNo,
                 "movelineNo" : movelineNo },
         type : "post",
         success : function(result){
@@ -436,7 +436,7 @@ function insertChildReply(parentReplyNo, btn){
         // "{K:V K:V K:V}" -> JSON 형태의 문자열 (참고용)
 
         url : contextPath + "/reply/insert",
-        data : {"userNo" : loginUserNo, // Key 부분 작성시 "" 권장
+        data : {"userNo" : userNo, // Key 부분 작성시 "" 권장
                 "movelineNo" : movelineNo,
                 "parentReplyNo" : parentReplyNo,
                 "replyContent" : replyContent},
