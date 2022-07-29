@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
@@ -408,5 +409,48 @@ public class MoveLineController {
 			return path;
 		}
 	}
-
+	
+	
+	// 여기부터 
+//	@PostMapping("/{mode}/moveline-content")
+//	public String movelineInsert(@RequestParam Map<String, String> param, @RequestParam("indexValue") int[] indexArray,
+//			@ModelAttribute("loginUser") User loginUser, @PathVariable("mode") String mode, Model model,
+//			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL,
+//			HttpServletRequest req,
+//			@RequestParam(value = "images", required = false) List<MultipartFile> imageList) {
+//
+//		String webPath = "/resources/images/moveline/";
+//		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+//		
+//		String message = "";
+//		String path = "";
+//		
+//		if (mode.equals("insert")) {
+//
+//			int movelineNumber = service.insertMoveline(param, imageList, loginUser.getUserNo(), webPath);
+//			
+//			int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
+//
+//		
+//		if (movelineIndexInsert > 0) {
+//			
+//			return movelineDetail(movelineNumber, 1, model, session, listURL);
+//			
+//		} else {
+//			
+//			message = "실패";
+//			path = "redirect:/movline-main";
+//			ra.addFlashAttribute(message);
+//			return path;
+//		}
+//		
+//	
+//		// 해시태그 추가, 코스 사진, 테마 추가
+//		// int theRest = service.insertTheRest(param,loginUser.getUserNo());
+//	
+//		}
+//		return folderPath;
+//		
+//		
+//	}
 }
