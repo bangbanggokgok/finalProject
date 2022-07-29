@@ -168,7 +168,7 @@ public interface MoveLineService {
 
 	/** 코스 즐겨찾기 조회
 	 * @param sUserNo
-	 * @param sLandmarkNo
+	 * @param	 sLandmarkNo
 	 * @return
 	 */
 	int movelineBookmark(String userNo, String movelineNo);
@@ -180,6 +180,15 @@ public interface MoveLineService {
 	 * @return
 	 */
 	int movelineBookmarkInsert(String loginNo, String movelineNo);
+
+
+	int movelineBookmarkDelete(String loginNo, String movelineNo);
+
+
+	int insertMoveline(Map<String, String> param, int userNo);
+
+
+	int insertIndex(int[] indexArray, int movelineNumber);
 
 	
 

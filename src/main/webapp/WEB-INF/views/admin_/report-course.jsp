@@ -41,7 +41,7 @@
             </li>
             
             <c:forEach var="report" items="${reportList}">
-                <li>
+                <li class="reportList">
                     <div class="wrapper">
                         <div class="number">${report.reportNo}</div>
                         <div class="course"><a href="${contextPath}/moveline-main/detail/${report.moveLineNo}">${report.moveLineTitle}</a></div>
@@ -50,7 +50,7 @@
                         <div class="date">${report.reportDate}</div>
                         <c:choose>
                             <c:when test="${report.reportFlag == 'N'}">
-                                <div  id="wait" class="situation" value=${report.reportNo}>처리대기</div>
+                                <div  id="wait" class="situation" value="${report.reportNo}">처리대기</div>
                             </c:when>
 
                             <c:otherwise>
@@ -94,9 +94,6 @@
     <script>
         const contextPath = "${contextPath}";
     </script> 
-        <%--const reportNo = "${reportList.reportNo}";
-        const reportNo = "${reportList.reportNo}";
-        const reportFlag = "${reportList.reportFlag}";--%>
 </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/admin_/report-list.js"></script>

@@ -255,12 +255,32 @@ public class MoveLineDAO {
 	}
 
 	public int movelineBookmark(Map<String, String> infoB) {
-		return sqlSession.insert("movelineMapper.movelineBookmark", infoB);
+		return sqlSession.selectOne("movelineMapper.movelineBookmark", infoB);
 	}
 
 
 	public int movelineBookmarkInsert(Map<String, String> infoB) {
 		return sqlSession.insert("movelineMapper.movelineBookmarkInsert", infoB);
+	}
+
+
+	public int movelineBookmarkDelete(Map<String, String> infoA) {
+		return sqlSession.delete("movelineMapper.movelineBookmarkDelete", infoA);
+	}
+
+
+	public int insertMoveline(Map<String, String> param) {
+		int result = sqlSession.insert("movelineMapper.insertMoveline",param);
+		if(result>0) {
+			return Integer.parseInt(param.get("movelineNo"));
+		}
+		return 0;
+	}
+
+
+	public int insertIndex(Map<String, Integer> indexParam) {
+		// TODO Auto-generated method stub
+		return sqlSession.insert("movelineMapper.insertIndex",indexParam);
 	}
 
 

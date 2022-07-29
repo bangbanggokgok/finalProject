@@ -239,24 +239,36 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.movelineBookmarkInsert(infoB);
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public int movelineBookmarkDelete(String loginNo, String movelineNo) {
+		Map<String, String> infoA = new HashMap<String, String>();
+		infoA.put("loginNo", loginNo);
+		infoA.put("movelineNo", movelineNo);
+		return dao.movelineBookmarkDelete(infoA);
+	}
+
+
+	@Override
+	public int insertMoveline(Map<String, String> param, int userNo) {
+		param.put("userNo", Integer.toString(userNo));
+		return dao.insertMoveline(param);
+	}
+
+
+	@Override
+	public int insertIndex(int[] indexArray, int movelineNumber) {
+		Map<String, Integer> indexParam = new HashMap<String, Integer>();
+		indexParam.put("movelineNo", movelineNumber);
+		int result = 0;
+		for(int i=0;i<indexArray.length;i++) {
+			indexParam.put("landmarkNo",indexArray[i]);
+			indexParam.put("indexNo", i);
+			result += dao.insertIndex(indexParam);
+		}
+		return result;
+	}
+
 	
 	
 	

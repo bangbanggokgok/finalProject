@@ -140,19 +140,19 @@ div > img {
   right: 0;
   margin-top: 10px;
 }
-.ml-detail-plus {
+/* .ml-detail-plus {
   display: inline-block;
   position: absolute;
   top: 0;
   right: 0;
   margin-top: 10px;
-}
+} */
 
-.btn-bookmark {
+/* .btn-bookmark {
   border: 0 none;
   margin-top: 0;
   background-color: transparent;
-}
+} */
 
 .btn-bookmark2 {
   border: 0 none;
@@ -160,42 +160,38 @@ div > img {
   background-color: transparent;
 }
 
-.icon-bookmark {
+/* .icon-bookmark {
   display: inline-block;
-  /* text-indent: -9999px; */
   width: 25px;
   height: 25px;
-  /* background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat; */
-}
+} */
 .icon-bookmark2 {
   display: inline-block;
-  /* text-indent: -9999px; */
   width: 25px;
   height: 25px;
-  /* background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_mpost03.png) 0 0 / 100% 100% no-repeat; */
 }
-.bookmarkOn {
+/* .bookmarkOn {
   display: none;
-}
+} */
 .bookmarkOn2 {
   display: none;
 }
-.bookmarkOn.active {
+/* .bookmarkOn.active {
   display: inline-block;
-}
+} */
 .bookmarkOn2.active {
   display: inline-block;
 }
-.bookmarkOff.d-none {
+/* .bookmarkOff.d-none {
   display: none;
-}
+} */
 .bookmarkOff2.d-none {
   display: none;
 }
 
-.icon-bookmark:hover {
+/* .icon-bookmark:hover {
   cursor: pointer;
-}
+} */
 .icon-bookmark2:hover {
   cursor: pointer;
 }
