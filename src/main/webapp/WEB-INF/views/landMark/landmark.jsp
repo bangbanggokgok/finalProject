@@ -185,6 +185,7 @@
           <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
         </c:if>
         </ol>
+
         <div class="pagination-list">
           <c:if test="${!empty landmarkList}">
             <ul class="pagination">
@@ -192,9 +193,10 @@
                     <li><a onclick="loadLocation(${map.hihi},${i})" style="cursor: pointer;">${i}</a></li>  
               </c:forEach>
             </ul>
-          </div>
-        </c:if>
+          </c:if>
+        </div>
       </div>
+
     </section>
 
 	<jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>

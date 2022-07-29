@@ -50,7 +50,7 @@
                         <%-- <div class="landmark"><div> --%>
                             <h2>아직 추가된 랜드마크가 없어요.</h2>
                         </div>
-                        <%-- <div>
+                        <div>
                             <label class="optionList">테마 선택<span>(중복 체크 가능)</span></label>
                             <div class="themeSelect">
                                 <input type="checkbox" name="themeSelect" id="theme1"><label for="theme1">가족</label>
@@ -61,19 +61,51 @@
                                 <input type="checkbox" name="themeSelect" id="theme6"><label for="theme6">맛집</label>
                                 <input type="checkbox" name="themeSelect" id="theme7"><label for="theme7">캠핑</label>
                             </div>
-                        </div> --%>
+                        </div>
                         <div id="map" style="width:750px;height:350px;"></div>
                     </div>
                 </div>
     
 
                 <!-- 업로드 이미지 -->
-<%--                 <label class="addImg" style="font-weight:bold;">사진 첨부<span>(1장 필수)</span></label>
+                <label class="addImg" style="font-weight:bold;">사진 첨부<span>(1장 필수)</span></label>
                 <div class="img-box">
-    
+
+                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
+                    <c:choose>
+                        <c:when test="${moveLineImg.movelineLevel == 0}">
+                            <c:set var="img0"  value="${contextPath}${moveLineImg.movelineRename}" />
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
+
+                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
+                    <c:choose>
+                        <c:when test="${moveLineImg.movelineLevel == 1}">
+                            <c:set var="img1"  value="${contextPath}${moveLineImg.movelineRename}" />
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
+
+                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
+                    <c:choose>
+                        <c:when test="${moveLineImg.movelineLevel == 2}">
+                            <c:set var="img2"  value="${contextPath}${moveLineImg.movelineRename}" />
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
+                
+                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
+                    <c:choose>
+                        <c:when test="${moveLineImg.movelineLevel == 3}">
+                            <c:set var="img3"  value="${contextPath}${moveLineImg.movelineRename}" />
+                        </c:when>
+                    </c:choose>
+                </c:forEach>
+
                     <div class="boardImg">
                         <label for="img0">
-                            <img class="far fa-plus-circle fa-lg preview" src="">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img0}">
                         </label>
                         <input type="file" class="input-img" id="img0" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -81,7 +113,7 @@
 
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg preview" src="">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
                         </label>
                         <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -89,7 +121,7 @@
     
                     <div class="boardImg">
                         <label for="img2">
-                            <img class="far fa-plus-circle fa-lg preview" src="">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img2}">
                         </label>
                         <input type="file" class="input-img" id="img2" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -97,7 +129,7 @@
                     
                     <div class="boardImg">
                         <label for="img3">
-                            <img class="far fa-plus-circle fa-lg preview" src="">
+                            <img class="far fa-plus-circle fa-lg preview" src="${img3}">
                         </label>
                         <input type="file" class="input-img" id="img3" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
@@ -105,7 +137,9 @@
                     
                     <input type="hidden" name="deleteList" id="deleteList" value="">
                 </div>
-                  --%>
+
+
+                 
 
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
