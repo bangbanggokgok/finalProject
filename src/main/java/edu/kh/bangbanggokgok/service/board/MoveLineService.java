@@ -184,6 +184,12 @@ public interface MoveLineService {
 
 	int movelineBookmarkDelete(String loginNo, String movelineNo);
 
+
+	int insertMoveline(Map<String, String> param, int userNo);
+
+
+	int insertIndex(int[] indexArray, int movelineNumber);
+
 	
 
 

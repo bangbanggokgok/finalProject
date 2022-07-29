@@ -28,7 +28,7 @@
 
     <section class="board">
         <section class="pageWrapper"> 
-            <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()">
+            <form>
                 <div class="titleFields">
                     <div>
                         <label class="title" for="title">코스 제목</label>
@@ -68,7 +68,7 @@
     
 
                 <!-- 업로드 이미지 -->
-                <label class="addImg" style="font-weight:bold;">사진 첨부<span>(1장 필수)</span></label>
+<%--                 <label class="addImg" style="font-weight:bold;">사진 첨부<span>(1장 필수)</span></label>
                 <div class="img-box">
     
                     <div class="boardImg">
@@ -105,7 +105,7 @@
                     
                     <input type="hidden" name="deleteList" id="deleteList" value="">
                 </div>
-                 
+                  --%>
 
                 <div class="contentField">
                     <label class="contentLabel">상세정보</label>
@@ -128,7 +128,7 @@
                 <section class="submitBar">
                     <div class="buttonContainer">
                         <div id="clickLatlng"></div>
-                        <button class="submitButton">등록하기</button>
+                        <button type="button" id="postSubmit" class="submitButton">등록하기</button>
                     </div>
                 </section>
             </form>
@@ -162,6 +162,7 @@
         $( function() {
             $( ".landmark-list" ).sortable();
         } );
+        const contextPath = ${contextPath};
     </script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f20849e53010080fd527a7640414c916&libraries=services,clusterer,drawing"></script>
     <script src="${contextPath}/resources/js/moveline/movelineWrite.js"></script>
