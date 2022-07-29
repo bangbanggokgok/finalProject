@@ -185,8 +185,8 @@
           <h1 style="display:flex;justify-content: center;">아직 등록된 랜드마크가 없어요.</h1>
         </c:if>
         </ol>
-        <c:if test="${!empty landmarkList}">
-          <div class="pagination-list">
+        <div class="pagination-list">
+          <c:if test="${!empty landmarkList}">
             <ul class="pagination">
               <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
                     <li><a onclick="loadLocation(${map.hihi},${i})" style="cursor: pointer;">${i}</a></li>  
