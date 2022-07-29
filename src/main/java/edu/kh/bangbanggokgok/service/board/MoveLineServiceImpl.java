@@ -10,7 +10,9 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import edu.kh.bangbanggokgok.common.Util;
 import edu.kh.bangbanggokgok.dao.board.MoveLineDAO;
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
@@ -248,13 +250,12 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.movelineBookmarkDelete(infoA);
 	}
 
-
+	// 작동 됨 - 코스 사진, 해시태그, 테마 제외 값
 	@Override
 	public int insertMoveline(Map<String, String> param, int userNo) {
 		param.put("userNo", Integer.toString(userNo));
 		return dao.insertMoveline(param);
 	}
-
 
 	@Override
 	public int insertIndex(int[] indexArray, int movelineNumber) {
@@ -269,6 +270,41 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return result;
 	}
 
+	
+	// 여기부터
+//	@Override
+//	public int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, int userNo, String webPath) {
+//		param.put("userNo", Integer.toString(userNo));
+//		
+//		int movelineNumber = dao.insertMoveline(param);
+//		
+//		if (movelineNumber > 0) {
+//			
+//			List<MoveLineImage> MoveLineImageList = new ArrayList<MoveLineImage>();
+//			List<String> reNameList = new ArrayList<String>();
+//
+//			for (int i = 0; i < imageList.size(); i++) {
+//
+//				if (imageList.get(i).getSize() > 0) {
+//
+//					// 변경된 파일명 저장
+//					String reName = Util.fileRename(imageList.get(i).getOriginalFilename());
+//					reNameList.add(reName);
+//
+//					MoveLineImage img = new MoveLineImage();
+//					img.setMovelineNo(movelineNumber); // 게시글 번호
+//					img.setMovelineLevel(i); // 이미지 순서(파일 레벨)
+//					img.setMovelineRename(webPath + reName); // 웹 접근 경로 + 변경된 파일명
+//
+//					MoveLineImageList.add(img);
+//				}
+//			}
+//			
+//		return dao.insertTheRest(param);
+//	}
+
+	
+	
 	
 	
 	

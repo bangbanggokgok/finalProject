@@ -284,6 +284,15 @@ public class MoveLineDAO {
 	}
 
 
+	public int insertTheRest(Map<String, String> param) {
+		int result = sqlSession.insert("movelineMapper.insertTheRest",param);
+		if(result>0) {
+			return Integer.parseInt(param.get("movelineNo"));
+		}
+		return 0;
+	}
+
+
 	
 
 	
