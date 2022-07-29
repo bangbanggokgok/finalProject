@@ -43,7 +43,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="#">
+            <a href="/bangbanggokgok/landmark-main/detail/101/231">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Busan.jpg"
@@ -56,20 +56,20 @@
           
         </div>
         <div class="carousel-item">
-            <a href="#">
+            <a href="/bangbanggokgok/landmark-main/detail/100/236">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Cheongwadae.jpg"
                 class="d-block w-100"
                 alt="..."/>
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>74년 만에 공개된 비밀 정원, 청와대 이야기</h5>
-                    <p>활짝 열린 청와대 방방곡곡 숨은 이야기를 찾는 여행</p>
+                    <h5>도심 속 전통을 느낄 수 있는 북촌의 이야기</h5>
+                    <p>바쁜 일상 속 한옥에서 숨쉬는 여행</p>
                 </div>
             </a>
         </div>
         <div class="carousel-item">
-            <a href="#">
+            <a href="/bangbanggokgok/landmark-main/detail/103/270">
                 <img
                 src="${contextPath}/resources/images/main/Gangneung.jpg"
                 class="d-block w-100"
