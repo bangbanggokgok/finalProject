@@ -205,5 +205,6 @@
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/common/scroll-top.js"></script>
     <script src="${contextPath}/resources/js/landmark/main.js"></script>
+    <script src="${contextPath}/resources/js/landmark/locationType.js"></script>
   </body>
 </html>
