@@ -13,7 +13,9 @@ function loadLocation(locationNum, pageNo) {
       const pageList = document.getElementsByClassName("pagination-list")[0];
       pageList.innerHTML = "";
       if (map.landMarkList != "") {
+
         for (let landMark of map.landMarkList) {
+           
           const li = document.createElement("li");
           const figure = document.createElement("figure");
           const img = document.createElement("img");
@@ -25,7 +27,7 @@ function loadLocation(locationNum, pageNo) {
           figure.append(a);
           a.setAttribute(
             "href",
-            "../detail/'+value.locationType+'/'+value.landMarkNo+'"
+            "../detail/"+landMark.locationType+'/'+landMark.landMarkNo
           );
           a.append(img);
           img.setAttribute("src", contextPath + landMark.thumbnail);
