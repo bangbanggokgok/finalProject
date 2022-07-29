@@ -10,8 +10,10 @@ function loadLocation(locationNum, pageNo) {
     success: function (map) {
       const ol = document.getElementById("landMakrList");
       ol.innerHTML = "";
-      const pageList = document.getElementsByClassName("pagination-list")[0];
-      pageList.innerHTML = "";
+      if(document.getElementsByClassName("pagination-list")[0]){
+        const pageList = document.getElementsByClassName("pagination-list")[0];
+        pageList.innerHTML = "";
+      }
       if (map.landMarkList != "") {
 
         for (let landMark of map.landMarkList) {
