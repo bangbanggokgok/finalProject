@@ -193,16 +193,17 @@ ul {
 #moveline-hashtags a {
   display: inline-block;
   margin: 10px 5px;
-  border: 2px solid #333;
-  border-radius: 50px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
   padding: 5px;
+  color: #777;
 }
 #moveline-map-area {
   text-align: center;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
   padding-bottom: 50px;
+  padding-top: 50px;
 }
 
 #map {
@@ -243,7 +244,7 @@ ul {
 /* 랜드마크 디테일 */
 #land-start {
   width: 100%;
-  margin-top: 150px;
+  margin-top: 80px;
   font-size: 45px;
   color: #333;
   padding: 20px;

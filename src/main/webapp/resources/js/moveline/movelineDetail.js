@@ -3,6 +3,7 @@ const selected = document.getElementsByClassName("selected-landmark");
 const showContent = document.querySelector(".showContent");
 const container2 = document.querySelector(".container2");
 const deleteBtn = document.getElementById("deleteBtn");
+const goToList = document.getElementById("goToList");
 
 
 // let movelineNo;
@@ -169,11 +170,23 @@ for (let i = 0; i < landmark.length; i++) {
   const deleteBtn = document.getElementById("deleteBtn");
   if(deleteBtn != null){ // 버튼이 화면에 존재할 때
     deleteBtn.addEventListener("click", function(){
-          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo
+          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo;
 
           if( confirm("정말로 삭제 하시겠습니까?") ){
               location.href = url; // get방식으로 url에 요청
           }
+      });
+  }
+})();
+
+// 목록으로
+(function(){
+  
+  const goToList = document.getElementById("goToList");
+  if(goToList != null){
+    goToList.addEventListener("click", function(){
+          let url = contextPath + "/moveline-main/detail/goToList";
+          location.href = url;
       });
   }
 })();
