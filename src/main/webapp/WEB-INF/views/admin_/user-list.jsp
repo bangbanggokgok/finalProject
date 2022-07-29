@@ -13,6 +13,7 @@
     <title>회원관리</title>
 
     <link rel="stylesheet" href="${contextPath}/resources/css/admin_/user-list.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" />
 </head>
 
 <body>
@@ -21,14 +22,14 @@
     <div class="board">
         <h1>회원관리</h1>
         <div class="list">
-            <div class="category"><a id="all" href="${contextPath}/admin/user/list">전체</a></div>
+            <span class="category"><a id="all" href="${contextPath}/admin/user/list">전체</a></span>
             <div class="category" id="register" value="register">활동회원</div>
             <div class="category" id="secession" value="secession">탈퇴회원</div>
         </div>
 
         <div>
             <div class="titleWrapper">
-                <div class="memberNo">No.</div>
+                <div class="userNo">No.</div>
                 <div class="title">닉네임</div>
                 <div class="title">아이디</div>
                 <div class="title">가입날짜</div>
@@ -60,8 +61,8 @@
 
                 <c:set var="url" value="${list}?cp="/>
                 <ul class="pagination" id="pagination">
-                    <li><a href="${url}1">&lt;&lt;</a></li>
-                    <li><a href="${url}${pagination.prevPage}">&lt;</a></li>
+                    <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
+                    <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 
                     <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
 
@@ -77,8 +78,8 @@
 
                     </c:forEach>
                     
-                    <li><a href="${url}${pagination.nextPage}">&gt;</a></li>
-                    <li><a href="${url}${pagination.maxPage}">&gt;&gt;</a></li>
+                    <li><a href="${url}${pagination.nextPage}"><i class="fal fa-angle-right"></i></a></li>
+                    <li><a href="${url}${pagination.maxPage}"><i class="fal fa-angle-double-right"></i></a></li>
 
                 </ul>
         </div>

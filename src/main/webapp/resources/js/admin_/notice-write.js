@@ -86,8 +86,6 @@ for(let i=0 ; i<inputImage.length ; i++){
             inputImage[i].value = "";
             deleteSet.add(i);
         }
-        console.log(deleteImage[i]);
-        console.log(deleteSet);
     });
 };
 

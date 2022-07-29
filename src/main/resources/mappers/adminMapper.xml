@@ -223,7 +223,7 @@
 	<delete id="deleteNoticeImage">
 		DELETE FROM MANAGER_BOARD_IMG
 		WHERE MB_NO = ${noticeNo}
-		AND IMG_LEVEL IN (${deleteList})
+		AND MB_IMG_LEVEL IN (${deleteList})
 	</delete>
 	
 	<!-- 공지 이미지 1개 수정 -->
