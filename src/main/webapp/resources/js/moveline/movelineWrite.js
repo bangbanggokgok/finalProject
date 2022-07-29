@@ -53,20 +53,20 @@ function mlWriteValidation() {
         return false;
     }
 
-    if (landmarkList1.value == "landmarkNull" || landmarkList2.value == "landmarkNull") {
-        alert("랜드마크는 최소 2개 이상 선택해주세요.");
-        return false;
-    }
+    // if (landmarkList1.value == "landmarkNull" || landmarkList2.value == "landmarkNull") {
+    //     alert("랜드마크는 최소 2개 이상 선택해주세요.");
+    //     return false;
+    // }
 
-    if (themeSelect.length == 0) {
-        alert("테마를 선택해주세요.");
-        return false;
-    }
+    // if (themeSelect.length == 0) {
+    //     alert("테마를 선택해주세요.");
+    //     return false;
+    // }
 
-    if (img0.value == "") {
-        alert("사진을 1장 이상 첨부해주세요.");
-        return false;
-    }
+    // if (img0.value == "") {
+    //     alert("사진을 1장 이상 첨부해주세요.");
+    //     return false;
+    // }
 
     if (content.value.trim().length == 0) {
         alert("내용을 입력해주세요.");
@@ -290,8 +290,11 @@ function lineDraw(x,y){
     polyline.setMap(map)
     //polylines.push(polyline);
     // 지도에 선을 표시합니다 
-    
-}
+};
+
+$(document).on('.landmark-list > .use-event-div','dragstart',function(){
+    console.log(1);
+});
 
 function removeFunction(c){
     
@@ -302,7 +305,7 @@ function removeFunction(c){
     const l = array.indexOf(c.id);
     // console.log(c);
     // console.log(document.getElementsByClassName("landmark-box"));
-    $(c).remove();
+    $(c.parentElement).remove();
     if($(".landmark-list").children().text() == ""){
         $(".landmark-list").html("<h2>아직 추가된 랜드마크가 없어요.</h2>")
         addGgomsu = 0 ;
@@ -324,33 +327,30 @@ function removeFunction(c){
 };
 
 function setMarkers(value,l) {
-    console.log('setMarkers', map)
+    // console.log('setMarkers', map)
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
         infowindows[i].setMap(null);
         //polylines[i].setMap(null);
     }
-    if(l){
+    if(!isNaN(l)){
         markers.splice(l,1);
         infowindows.splice(l,1);
-       //polylines.splice(l,1);
         linePath.splice(l,1);
-        // delete markers[l]
-        // delete infowindows[l]
-        // delete polylines[l]
-        // delete linePath[l]
+        // console.log("markers : " + marker, "infowindows : " + infowindows);
+        // console.log("linepath : " + linePath);
+        // polylines.splice(l,1);
     }
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(map);
         infowindows[i].setMap(map);
-        //polylines[i].setMap(map);
+        // polylines[i].setMap(map);
     }
     console.log(markers);
     console.log(infowindows);
-    //console.log(polylines);
+    // console.log(polylines);
     lineDraw()
 }
-
 
 
 function toggleControll(boolean,e){
@@ -385,6 +385,47 @@ function modalAnimation() {
 
 $('.close').eq(0).click(modalAnimation);
 
+//  action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()"
+
+document.getElementById("postSubmit").addEventListener("click",function(){
+    
+    if(mlWriteValidation()){
+        
+        const formTag = document.getElementsByTagName("form")[0]
+        formTag.setAttribute("action", contextPath + "/moveline-main/write/moveline-content");
+        formTag.setAttribute("enctype","multipart/form-data");
+        formTag.setAttribute("method","post")
+        //이거질문
+        const landmarkList = document.getElementsByClassName("landmark-list")[0];
+
+        if(landmarkList.childElementCount === 1){
+            
+            let message;
+            
+            if(landmarkList.firstChild.tagName == 'DIV'){
+                message = "랜드마크가 하나 밖에 없어요 !";
+            }
+            if(landmarkList.firstChild.tagName != 'DIV'){
+                message = "랜드마크를 추가해주세요 !";
+            }
+
+            alert(message);
+            return;
+        }
+        
+        if(landmarkList.childElementCount > 1){
+            for(let i = 0 ; i<landmarkList.children.length ; i++){
+                const indexValue = document.createElement("input");
+                indexValue.setAttribute("type","hidden");
+                indexValue.setAttribute("name","indexValue");
+                indexValue.setAttribute("value",landmarkList.children[i].children[0].firstChild.value);
+                formTag.append(indexValue);
+            }
+        };
+        formTag.submit();
+    };
+});
+
 
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 
@@ -395,6 +436,8 @@ mapOption = {
 }; 
 
 var map = new kakao.maps.Map(mapContainer, mapOption); 
+
+
 
 // $(document).on('.use-event-div',{
 //     'dragstart':function(){

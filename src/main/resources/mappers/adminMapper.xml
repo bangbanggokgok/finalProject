@@ -214,6 +214,7 @@
 	<update id="updateNotice">
 		UPDATE MANAGER_BOARD SET
 		MB_TITLE = #{noticeTitle},
+		MB_TYPE = #{noticeType},
 		MB_CONTENT = #{noticeContent}
 		WHERE MB_NO = #{noticeNo}
 	</update>
@@ -221,14 +222,14 @@
 	<!-- 공지 이미지 삭제 -->
 	<delete id="deleteNoticeImage">
 		DELETE FROM MANAGER_BOARD_IMG
-		WHERE MB_NO = #{noticeNo}
-		AND IMG_LEVEL IN (#{deleteList})
+		WHERE MB_NO = ${noticeNo}
+		AND MB_IMG_LEVEL IN (${deleteList})
 	</delete>
 	
 	<!-- 공지 이미지 1개 수정 -->
 	<update id="updateNoticeImage">
 		UPDATE MANAGER_BOARD_IMG SET
-		MB_IMG_RENAME = #{imgeReName}
+		MB_IMG_RENAME = #{imageReName}
 		WHERE MB_NO = #{noticeNo}
 		AND MB_IMG_LEVEL = #{imageLevel}
 	</update>

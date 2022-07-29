@@ -29,11 +29,23 @@
 
 	<section class="board">
 		<section class="pageWrapper">
-			<form action="insert" enctype="multipart/form-data" method="POST" onsubmit="return noticeValidation()">
+			<form action="" enctype="multipart/form-data" method="POST" onsubmit="return noticeValidation()">
 				<label class="choice">공지 선택</label>
 				<div id="inputFieldsContainer" onclick="drop_choiceFields()">
 					<div class="inputFields">
-						<div style="color: #333333;" class="title" id="title">선택</div>
+						<div style="color: #333333;" class="title" id="title">
+						<c:choose>
+						<c:when test="${empty detail.noticeType}">
+						선택
+						</c:when>
+						<c:when test="${detail.noticeType == 'notice'}">
+						공지
+						</c:when>
+						<c:when test="${detail.noticeType == 'event'}">
+						이벤트
+						</c:when>
+						</c:choose>
+						</div>
 						<div id="inputField">
 							<i class='fal fa-angle-down'></i>
 						</div>
@@ -53,13 +65,13 @@
 					</div>
 				</div>
 				
-				<input name="noticeType" id="noticeType" type="hidden">
+				<input name="noticeType" id="noticeType" type="hidden" value="${detail.noticeType}">
 
 				<div class="titleFields">
 					<div>
 						<label class="title">제목</label> 
 						<input placeholder="제목을 입력해주세요." maxlength="20" 
-						class="titleInput" name="noticeTitle">
+						class="titleInput" name="noticeTitle" value="${detail.noticeTitle}">
 					</div>
 				</div>
 				
@@ -136,7 +148,7 @@
 					<label class="contentLabel">내용</label>
 					<article class="contentArea">
 						<textarea placeholder="내용을 입력해주세요." class="content"
-							name="noticeContent"></textarea>
+							name="noticeContent">${detail.noticeContent}</textarea>
 					</article>
 				</div>
 
@@ -145,6 +157,12 @@
 						<button class="submitButton">등록하기</button>
 					</div>
 				</section>
+
+
+
+            	<input type="hidden" name="noticeNo" value="${empty param.noticeNo ? 0 : param.noticeNo}">
+            
+            	<input type="hidden" name="deleteList" id="deleteList" value="">
 			</form>
 			
 			<div class="sc-fznxKY bjxHni">

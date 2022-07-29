@@ -38,7 +38,7 @@
                                 <c:if test="${notice.noticeType =='이벤트'}">
                                     <span class="eventBadge">이벤트</span>
                                 </c:if>
-                            <p class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}${sURL}">${notice.noticeTitle}</a></p>
+                            <p class="noticeTitle"><a href="../notice/detail/${notice.noticeNo}?cp=${pagination.currentPage}">${notice.noticeTitle}</a></p>
                             <p class="noticeDate">${notice.noticeCreate}</p>
                         </li>
                     </li>
