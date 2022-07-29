@@ -91,6 +91,10 @@ for(let i=0 ; i<inputImage.length ; i++){
 
 
 
+
+
+
+// 유효성 검사
 function noticeValidation(){
     const titleInput = document.getElementsByClassName("titleInput")[0];
     const content = document.getElementsByClassName("content")[0];
@@ -116,5 +120,8 @@ function noticeValidation(){
         content.focus();
         return false;
     }
+    deleteList.value = Array.from(deleteSet);
     return true;
 }
+
+
