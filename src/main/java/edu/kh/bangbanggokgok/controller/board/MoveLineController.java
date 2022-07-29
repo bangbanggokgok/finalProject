@@ -92,16 +92,17 @@ public class MoveLineController {
 		return new Gson().toJson(landmarkList);
 	}
 
-	@GetMapping("/goToList")
-	public String goToList(@RequestHeader("referer") String referer, Model model, RedirectAttributes ra,
+	// 목록으로
+	@GetMapping("/detail/goToList")
+	public String goToList(RedirectAttributes ra, HttpSession session, @RequestHeader("referer") String referer,
 			HttpServletRequest req) {
 
-		String path = null;
+		String path = (String) session.getAttribute("listURL");
 
-		path = referer;
-		path = req.getHeader("referer");
+		session.removeAttribute("listURL");
 
-		return path;
+		return "redirect:" + path;
+
 	}
 
 	// 특정 지역 코스 목록 조회
@@ -212,12 +213,11 @@ public class MoveLineController {
 	// 코스 상세 페이지 조회
 	@GetMapping("/detail/{movelineNo}")
 	public String movelineDetail(@PathVariable("movelineNo") int movelineNo,
-			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model,
-			HttpSession session) {
+			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp, Model model, HttpSession session,
+			@RequestHeader("referer") String listURL) {
 
 		MoveLineDetail movelineDetail = service.selectMovelineDetail(movelineNo);
 
-		Map<String, Object> map = null;
 		List<MoveLineImage> movelineImage = service.selectMovelineImage(movelineNo);
 		List<LandMarkDetail> landmarkDetail = service.selectLandmarkDetail(movelineNo);
 		List<LandMarkIMG> landmarkImage = service.selectLandmarkImage(movelineNo);
@@ -229,8 +229,8 @@ public class MoveLineController {
 		model.addAttribute("landmarkDetail", landmarkDetail);
 		model.addAttribute("landmarkImage", landmarkImage);
 
-		List<Reply> rList = replyService.selectReplyList(movelineNo);
-		model.addAttribute("rList", rList);
+		// 이전 목록 주소를 세션에 추가(삭제 시 이용)
+		session.setAttribute("listURL", listURL);
 
 		// 비로그인 판별
 		User loginUser = (User) session.getAttribute("loginUser");
@@ -246,6 +246,9 @@ public class MoveLineController {
 		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
 
 		model.addAttribute("checkBookmark", checkBookmark);
+
+		List<Reply> rList = replyService.selectReplyList(movelineNo);
+		model.addAttribute("rList", rList);
 
 		return "moveline/movelineDetail";
 	}
@@ -311,7 +314,7 @@ public class MoveLineController {
 	@GetMapping("/detail/delete/{movelineNo}")
 	public String deleteMoveline(@PathVariable("movelineNo") int movelineNo, @RequestHeader("referer") String referer,
 //			   					 @RequestParam(value="movelineNo", required=true) int movelineNo,
-			RedirectAttributes ra) {
+			RedirectAttributes ra, HttpSession session) {
 
 		System.out.println("movelineNo : " + movelineNo);
 		int result = service.deleteMoveline(movelineNo);
@@ -326,6 +329,15 @@ public class MoveLineController {
 			message = "코스를 삭제했습니다.";
 			path = "/moveline-main/list";
 
+			String listURL = (String) session.getAttribute("listURL");
+
+			if (listURL == null) {
+				path = "/moveline-main/list";
+			} else {
+				path = listURL;
+				session.removeAttribute("listURL");
+			}
+
 		} else {
 
 			message = "코스 삭제가 실패했습니다.";
@@ -334,7 +346,6 @@ public class MoveLineController {
 		}
 
 		ra.addFlashAttribute("message", message);
-
 		return "redirect:" + path;
 	}
 
@@ -378,7 +389,7 @@ public class MoveLineController {
 	@PostMapping("/{mode}/moveline-content")
 	public String movelineInsert(@RequestParam Map<String, String> param, @RequestParam("indexValue") int[] indexArray,
 			@ModelAttribute("loginUser") User loginUser, @PathVariable("mode") String mode, Model model,
-			HttpSession session, RedirectAttributes ra) {
+			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL) {
 
 		int movelineNumber = service.insertMoveline(param, loginUser.getUserNo());
 
@@ -386,9 +397,9 @@ public class MoveLineController {
 		String message = "";
 		String path = "";
 		if (movelineIndexInsert > 0) {
-			
-			return movelineDetail(movelineNumber, 1, model, session);
-		
+
+			return movelineDetail(movelineNumber, 1, model, session, listURL);
+
 		} else {
 
 			message = "실패";

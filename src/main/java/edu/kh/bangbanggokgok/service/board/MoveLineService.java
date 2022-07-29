@@ -168,7 +168,7 @@ public interface MoveLineService {
 
 	/** 코스 즐겨찾기 조회
 	 * @param sUserNo
-	 * @param sLandmarkNo
+	 * @param	 sLandmarkNo
 	 * @return
 	 */
 	int movelineBookmark(String userNo, String movelineNo);

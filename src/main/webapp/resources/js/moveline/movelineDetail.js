@@ -3,10 +3,11 @@ const selected = document.getElementsByClassName("selected-landmark");
 const showContent = document.querySelector(".showContent");
 const container2 = document.querySelector(".container2");
 const deleteBtn = document.getElementById("deleteBtn");
+const goToList = document.getElementById("goToList");
 
 
-let movelineNo;
-let landmarkNo;
+// let movelineNo;
+// let landmarkNo;
 
 // 특정 랜드마크 이미지 + 내용 세팅
 for (let i = 0; i < landmark.length; i++) {
@@ -165,42 +166,96 @@ for (let i = 0; i < landmark.length; i++) {
 
 // 코스 삭제 (주소 처리 미완)
 (function(){
-
+  
   const deleteBtn = document.getElementById("deleteBtn");
-
   if(deleteBtn != null){ // 버튼이 화면에 존재할 때
     deleteBtn.addEventListener("click", function(){
-      movelineNo = this.getAttribute("value");
-
-          alert(movelineNo);
-          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo
+          let url = contextPath + "/moveline-main/detail/delete/"+ movelineNo;
 
           if( confirm("정말로 삭제 하시겠습니까?") ){
               location.href = url; // get방식으로 url에 요청
-              if (result > 0) {
-                // alert("코스를 삭제하였습니다.");
-                alert(message);
-                let url = contextPath + "/moveline-main/list";
-                location.href = url;
-              } else {
-                // alert("코스를 삭제하지 못하였습니다.");
-                alert(message);
-              }
           }
       });
   }
 })();
 
+// 목록으로
+(function(){
+  
+  const goToList = document.getElementById("goToList");
+  if(goToList != null){
+    goToList.addEventListener("click", function(){
+          let url = contextPath + "/moveline-main/detail/goToList";
+          location.href = url;
+      });
+  }
+})();
 
-//즐겨찾기 버튼 js - 상세페이지
-const bookmarkBtn = document.querySelector(".btn-bookmark");
-const bookmarkOn = document.querySelector(".bookmarkOn");
-const bookmarkOff = document.querySelector(".bookmarkOff");
 
-bookmarkBtn.addEventListener("click", () => {
-  bookmarkOn.classList.toggle("active");
-  bookmarkOff.classList.toggle("d-none");
-});
+// //즐겨찾기 버튼 js - 상세페이지
+// const bookmarkBtn = document.querySelector(".btn-bookmark");
+// const bookmarkOn = document.querySelector(".bookmarkOn");
+// const bookmarkOff = document.querySelector(".bookmarkOff");
+
+// bookmarkBtn.addEventListener("click", () => {
+//   bookmarkOn.classList.toggle("active");
+//   bookmarkOff.classList.toggle("d-none");
+// });
+
+
+// (() => {
+//     if ($(".bookmarkValue").val() == 0) {
+//         $(".bookmarkOff").toggleClass("hide");
+//     }
+
+//     if ($(".bookmarkValue").val() == 1) {
+//         $(".bookmarkOn").toggleClass("hide");
+//     }
+// })();
+
+
+// $(".btn-bookmark").click(() => {
+//   if (userNo == "") {
+//     alert("로그인 후 이용하세요.");
+//     return;
+//   }
+
+//       if (userNo != 0) {
+        
+//           if ($(".bookmarkValue").val() == 0) {
+//               $.ajax({
+//                   url: contextPath + "/moveline-main/list/bookmarkSet/" + movelineNo,
+//                   data: { "userNo": userNo },
+//                   type: "get",
+//                   success: function (result) {
+//                       result = result * 1
+//                       if (result == '1') {
+//                           alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
+//                           $(".bookmarkOn").toggleClass("hide");
+//                           $(".bookmarkOff").toggleClass("hide");
+//                           $(".bookmarkValue").val('1');
+//                       };
+//                   }
+//               });
+//           }
+//           if ($(".bookmarkValue").val() != 0) {
+//               if (confirm("즐겨찾기를 삭제하시겠습니까?")) {
+//                   $.ajax({
+//                       url: contextPath + "/moveline-main/list/bookmarkDelete/" + movelineNo,
+//                       data: { "userNo": userNo },
+//                       type: "get",
+//                       success: function (result) {
+//                           alert("해당 랜드마크를 즐겨찾기 목록에서 삭제하였습니다.");
+//                           $(".bookmarkOn").toggleClass("hide");
+//                           $(".bookmarkOff").toggleClass("hide");
+//                           $(".bookmarkValue").val('0');
+//                       }
+//                   })
+//               }
+//           }
+//       }
+//   });
+
 
 
 
