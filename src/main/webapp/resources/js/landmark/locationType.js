@@ -17,11 +17,17 @@ function loadLocation(locationNum, pageNo) {
           const li = document.createElement("li");
           const figure = document.createElement("figure");
           const img = document.createElement("img");
+          const a = document.createElement("a");
           const figcaption = document.createElement("figcaption");
           const p1 = document.createElement("p");
           const p2 = document.createElement("p");
           li.append(figure);
-          figure.append(img);
+          figure.append(a);
+          a.setAttribute(
+            "href",
+            "../detail/'+value.locationType+'/'+value.landMarkNo+'"
+          );
+          a.append(img);
           img.setAttribute("src", contextPath + landMark.thumbnail);
           figure.append(figcaption);
           p1.innerText = landMark.landMarkName;
