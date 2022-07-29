@@ -92,7 +92,7 @@
                         <label for="img3">
                         	<c:if test="${!empty landmarkDetail.imageList[2]}">
 	                            <img class="far fa-plus-circle fa-lg preview" 
-	                            src="${contextPath}${landmarkDetail.imageList[1].landMarkReName}"> 
+	                            src="${contextPath}${landmarkDetail.imageList[2].landMarkReName}"> 
                         	</c:if>
 							<c:if test="${empty landmarkDetail.imageList[2]}">
 	                            <img class="far fa-plus-circle fa-lg preview" src=""> 
@@ -106,7 +106,7 @@
                         <label for="img4">
                         	<c:if test="${!empty landmarkDetail.imageList[3]}">
 	                            <img class="far fa-plus-circle fa-lg preview" 
-	                            src="${contextPath}${landmarkDetail.imageList[1].landMarkReName}"> 
+	                            src="${contextPath}${landmarkDetail.imageList[3].landMarkReName}"> 
                         	</c:if>
 							<c:if test="${empty landmarkDetail.imageList[3]}">
 	                            <img class="far fa-plus-circle fa-lg preview" src=""> 

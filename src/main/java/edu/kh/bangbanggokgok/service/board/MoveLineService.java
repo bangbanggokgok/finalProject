@@ -1,7 +1,10 @@
 package edu.kh.bangbanggokgok.service.board;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.kh.bangbanggokgok.vo.board.LandMark;
 import edu.kh.bangbanggokgok.vo.board.LandMarkDetail;
@@ -189,6 +192,8 @@ public interface MoveLineService {
 
 
 	int insertIndex(int[] indexArray, int movelineNumber);
+
+//	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, int userNo, String webPath);
 
 	
 
