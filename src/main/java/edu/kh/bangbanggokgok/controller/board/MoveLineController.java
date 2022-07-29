@@ -40,6 +40,7 @@ import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 import edu.kh.bangbanggokgok.vo.reply.Reply;
 import edu.kh.bangbanggokgok.vo.user.MyMoveline;
 import edu.kh.bangbanggokgok.vo.user.User;
+import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
 @RequestMapping("moveline-main/*")
@@ -96,9 +97,8 @@ public class MoveLineController {
 	public String goToList(RedirectAttributes ra, HttpSession session, @RequestHeader("referer") String referer,
 			HttpServletRequest req) {
 
-		
 		String path = (String) session.getAttribute("listURL");
-		
+
 		session.removeAttribute("listURL");
 
 		return "redirect:" + path;
@@ -247,8 +247,6 @@ public class MoveLineController {
 
 		model.addAttribute("checkBookmark", checkBookmark);
 
-		System.out.println("landmarkDetail.landmarkContent" + landmarkDetail);
-
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
 
@@ -329,6 +327,7 @@ public class MoveLineController {
 			System.out.println("result : " + result);
 
 			message = "코스를 삭제했습니다.";
+			path = "/moveline-main/list";
 
 			String listURL = (String) session.getAttribute("listURL");
 
@@ -384,8 +383,30 @@ public class MoveLineController {
 	@GetMapping("/list/bookmarkDelete/{movelineNo}")
 	public int movelineBookmarkDelete(@PathVariable("movelineNo") String movelineNo,
 			@RequestParam("userNo") String loginNo) {
-		System.out.println("movelineNo2 : " + movelineNo);
 		return service.movelineBookmarkDelete(loginNo, movelineNo);
+	}
+
+	@PostMapping("/{mode}/moveline-content")
+	public String movelineInsert(@RequestParam Map<String, String> param, @RequestParam("indexValue") int[] indexArray,
+			@ModelAttribute("loginUser") User loginUser, @PathVariable("mode") String mode, Model model,
+			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL) {
+
+		int movelineNumber = service.insertMoveline(param, loginUser.getUserNo());
+
+		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
+		String message = "";
+		String path = "";
+		if (movelineIndexInsert > 0) {
+
+			return movelineDetail(movelineNumber, 1, model, session, listURL);
+
+		} else {
+
+			message = "실패";
+			path = "redirect:/movline-main";
+			ra.addFlashAttribute(message);
+			return path;
+		}
 	}
 
 }

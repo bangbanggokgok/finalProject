@@ -53,7 +53,7 @@ public class AdminController {
 
 	// 공지 작성
 	@GetMapping("/notice/{mode}")
-	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false, defaultValue="0") int noticeNo) {
+	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false) int noticeNo) {
 		
 		if(mode.equals("update")) { // 수정
 			NoticeDetail detail = noticeService.selectNoticeDetail(noticeNo);
@@ -99,9 +99,7 @@ public class AdminController {
 
 		return "redirect:" + path;
 
-		} 
-		
-		if (mode.equals("update")) { // 수정
+		} else { // 수정
 			
 			int result = service.updateNotice(detail, imageList, webPath, folderPath, deleteList);
 			
@@ -118,7 +116,6 @@ public class AdminController {
 			
 			return "redirect:" + path;
 		}
-		return null;
 
 	}
 
