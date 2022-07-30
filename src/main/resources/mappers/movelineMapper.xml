@@ -440,8 +440,18 @@
 		<selectKey keyProperty="movelineNo" resultType="string" order="BEFORE">
 			SELECT SEQ_ML_NO.NEXTVAL FROM DUAL
 		</selectKey>
-		INSERT INTO MOVELINE_BOARD VALUES
-		(#{movelineNo},#{courseName},#{contents},DEFAULT,DEFAULT,DEFAULT,#{userNo},#{locationsValue},DEFAULT,DEFAULT)
+		INSERT INTO MOVELINE_BOARD VALUES(
+		#{movelineNo},
+		#{courseName},
+		#{contents},
+		DEFAULT,
+		DEFAULT,
+		#{themeSelect},
+		#{userNo},
+		#{locationsValue},
+		DEFAULT,
+		DEFAULT
+		)
 	</insert>
 	
 	<insert id="insertIndex">
@@ -449,7 +459,32 @@
 		VALUES(#{movelineNo},#{landmarkNo},#{indexNo})
 	</insert>
 	
+	<insert id="insertHash" parameterType="list">
+		INSERT INTO MOVELINE_HASH
+		SELECT SEQ_ML_HASH_NO.NEXTVAL HASH_NO,  A.* FROM(
+		
+			<foreach collection="list"  item="hash" separator="UNION ALL" >
+			    SELECT  
+			        	#{MLHashTag}      ML_HASH_NAME
+			        	#{hash.movelineNo}         ML_NO
+			    FROM DUAL
+			</foreach>
+		) A
+	</insert>
 	
+	<insert id="insertMovelineImageList" parameterType="list">
+		INSERT INTO ML_IMG 
+		SELECT SEQ_ML_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
+		
+			<foreach collection="list"  item="img" separator="UNION ALL" >
+			    SELECT  
+			    		#{img.movelineRename}     ML_IMG_RENAME, 
+			        	#{img.movelineLevel}      ML_IMG_LEVEL,
+			        	#{img.movelineNo}         ML_NO
+			    FROM DUAL
+			</foreach>
+		) A
+	</insert>
 	
 	
 	<!-- 여기부터 -->
@@ -477,36 +512,34 @@
 	
 	</insert> -->
 	
-	<!-- <insert id="insertMoveline" useGeneratedKeys="true">
-		<selectKey keyProperty="movelineNo" resultType="string" order="BEFORE">
-			SELECT SEQ_ML_NO.NEXTVAL FROM DUAL
-		</selectKey>
-			INSERT ALL
-			INTO MOVELINE_BOARD(
+<!-- 	<insert id="insertMoveline" resultType="_int">
+		INSERT ALL
+		
+		INTO MOVELINE_BOARD(
 			ML_NO, ML_TITLE, ML_CONTENT,
 			ML_CREATE_DT, ML_UPDATE_DT,
 			ML_THEME, USER_NO, LOCATION_TYPE, ML_UPDATE_DT, READ_COUNT
 			)
-			VALUES(#{movelineNo}, #{courseName}, #{contents}, DEFAULT, DEFAULT, #{themeSelect}, #{userNo}, #{locationsValue}, DEFAULT, DEFAULT)
-			
-			INTO MOVELINE_HASH(
+		VALUES(#{movelineNo}, #{courseName}, #{contents}, DEFAULT, DEFAULT, #{themeSelect}, #{userNo}, #{locationsValue}, DEFAULT, DEFAULT)
+		
+		INTO MOVELINE_HASH(
 			ML_HASH_NO, ML_HASH_NAME, ML_NO
 			)
-			VALUES (SEQ.ML_HASH_NO_NEXTVAL, #{hashTag}, #{movelineNo})
-		
-			INTO ML_IMG(
+		VALUES (SEQ.ML_HASH_NO_NEXTVAL, #{hashTag}, #{movelineNo})
+	
+		INTO ML_IMG(
 			ML_IMG_NO, ML_RENAME, ML_IMG_LEVEL, ML_NO
 			)
-			VALUES (SEQ.ML_IMG_NO_NEXTVAL, #{movelineRename}, #{img.movelineLevel}, #{movelineNo})
-		
-			INTO COORDINATE(
+		VALUES (SEQ.ML_IMG_NO_NEXTVAL, #{movelineRename}, #{img.movelineLevel}, #{movelineNo})
+	
+		INTO COORDINATE(
 			ML_NO, LM_NO, LM_INDEX
 			)
-			VALUES(#{movelineNo},#{landmarkNo},#{indexNo})
+		VALUES(#{movelineNo},#{landmarkNo},#{indexNo})
 
-			SELECT * FROM DUAL;
-		</insert> -->
-	
+		SELECT * FROM DUAL;
+	</insert>
+ -->
 	
 	
 	

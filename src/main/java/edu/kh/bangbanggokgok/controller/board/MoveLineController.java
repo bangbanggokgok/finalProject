@@ -1,5 +1,6 @@
 package edu.kh.bangbanggokgok.controller.board;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -387,70 +388,74 @@ public class MoveLineController {
 		return service.movelineBookmarkDelete(loginNo, movelineNo);
 	}
 
-	@PostMapping("/{mode}/moveline-content")
-	public String movelineInsert(@RequestParam Map<String, String> param, @RequestParam("indexValue") int[] indexArray,
-			@ModelAttribute("loginUser") User loginUser, @PathVariable("mode") String mode, Model model,
-			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL) {
-
-		int movelineNumber = service.insertMoveline(param, loginUser.getUserNo());
-
-		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
-		String message = "";
-		String path = "";
-		if (movelineIndexInsert > 0) {
-
-			return movelineDetail(movelineNumber, 1, model, session, listURL);
-
-		} else {
-
-			message = "실패";
-			path = "redirect:/movline-main";
-			ra.addFlashAttribute(message);
-			return path;
-		}
-	}
-	
-	
-	// 여기부터 
 //	@PostMapping("/{mode}/moveline-content")
 //	public String movelineInsert(@RequestParam Map<String, String> param, @RequestParam("indexValue") int[] indexArray,
 //			@ModelAttribute("loginUser") User loginUser, @PathVariable("mode") String mode, Model model,
-//			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL,
-//			HttpServletRequest req,
-//			@RequestParam(value = "images", required = false) List<MultipartFile> imageList) {
+//			HttpSession session, RedirectAttributes ra, @RequestHeader("referer") String listURL) {
 //
-//		String webPath = "/resources/images/moveline/";
-//		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
-//		
+//		int movelineNumber = service.insertMoveline(param, loginUser.getUserNo());
+//
+//		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
 //		String message = "";
 //		String path = "";
-//		
-//		if (mode.equals("insert")) {
-//
-//			int movelineNumber = service.insertMoveline(param, imageList, loginUser.getUserNo(), webPath);
-//			
-//			int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
-//
-//		
 //		if (movelineIndexInsert > 0) {
-//			
+//
 //			return movelineDetail(movelineNumber, 1, model, session, listURL);
-//			
+//
 //		} else {
-//			
+//
 //			message = "실패";
 //			path = "redirect:/movline-main";
 //			ra.addFlashAttribute(message);
 //			return path;
 //		}
-//		
-//	
-//		// 해시태그 추가, 코스 사진, 테마 추가
-//		// int theRest = service.insertTheRest(param,loginUser.getUserNo());
-//	
-//		}
-//		return folderPath;
-//		
-//		
 //	}
+	
+	
+	// 여기부터 
+	@PostMapping("/{mode}/moveline-content")
+	public String movelineInsert(@RequestParam Map<String, String> param,
+								 @RequestParam("indexValue") int[] indexArray,
+								 @ModelAttribute("loginUser") User loginUser,
+								 @RequestHeader("referer") String listURL,
+								 @PathVariable("mode") String mode,
+								 Model model,
+								 HttpSession session, RedirectAttributes ra,
+								 HttpServletRequest req,
+								 @RequestParam(value = "images", required = false) List<MultipartFile> imageList
+//								 @RequestParam(value = "hashTag", required = false) List<MoveLineHashTag> hashList
+								 
+		)throws IOException {
+		
+		String webPath = "/resources/images/moveline/";
+		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
+		
+		String message = "";
+		String path = "";
+		
+		System.out.println("param.size() : " + param.size());
+		System.out.println("param.size : " + param);
+//		if(int i=0; i<param.getTheme_arr[]; i++) {
+//			System.out.println("param.size : " + param.theme_arr[i]);
+//		}
+
+		int movelineNumber = service.insertMoveline(param, imageList,  loginUser.getUserNo(), webPath, folderPath);
+		System.out.println("insert 1 : " + param);
+		
+		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
+		System.out.println("insert 2 : " + param);
+
+		if (movelineIndexInsert > 0) {
+			
+			System.out.println("movelineIndexInsert : " + movelineIndexInsert);
+			return movelineDetail(movelineNumber, 1, model, session, listURL);
+			
+		} else {
+			
+			message = "실패";
+			path = "redirect:/movline-mani";
+			ra.addFlashAttribute(message);
+			return path;
+		}
+	}
 }
