@@ -278,13 +278,14 @@ public class MoveLineServiceImpl implements MoveLineService{
 	@Override
 	public int insertMoveline(Map<String, String> param,
 							  List<MultipartFile> imageList,
-//							  List<MoveLineHashTag> hashList,
+							  String hashList,
 							  int userNo, String webPath,
 							  String folderPath) throws IOException{
 		
 		param.put("userNo", Integer.toString(userNo));
 		
 		int movelineNumber = dao.insertMoveline(param);
+		
 		
 //		if(movelineNumber > 0) {
 //			
@@ -347,6 +348,18 @@ public class MoveLineServiceImpl implements MoveLineService{
 	
 					throw new InsertFailException();
 				}
+			}
+			
+			System.out.println("hashList : " + hashList);
+			String[] hashArr = hashList.split("#");
+			System.out.println("hashArr : " + hashArr[1]);
+			
+			for (int i = 1; i < hashArr.length; i++) {
+				Map<String, Object> hash = new HashMap<String, Object>();
+				hash.put("MLHashTag", hashArr[i]);
+				hash.put("movelineNo", movelineNumber);
+				
+				int result = dao.insertHashTag(hash);
 			}
 		}
 	
