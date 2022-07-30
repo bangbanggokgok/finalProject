@@ -20,6 +20,7 @@ function loadLocation(locationNum, pageNo) {
           const a = document.createElement("a");
           const figcaption = document.createElement("figcaption");
           const p1 = document.createElement("p");
+          p1.classList.add("land-Title");
           const p2 = document.createElement("p");
           li.append(figure);
           figure.append(a);
@@ -44,6 +45,88 @@ function loadLocation(locationNum, pageNo) {
           //     </ul>
           //   </div>
         }
+
+        // const imageList = document.querySelector(".image-list");
+        // const btns = document.querySelectorAll(".view-options button");
+        const imageListItems = document.querySelectorAll(".image-list li");
+        // const active = "active";
+        // const listView = "list-view";
+        // const gridView = "grid-view";
+        const dNone = "d-none";
+        // const regions = document.querySelectorAll(".region-detail");
+        // const zoneTitle = document.querySelector("#zoneTitle");
+        // const pageBtn = document.querySelectorAll(".page-btn");
+        const pageBtn = document.querySelectorAll(".page-btn");
+
+        for (let page of pageBtn) {
+          page.addEventListener("click", () => {
+            page.classList.add("red");
+          });
+        }
+        //검색키워드로 필터 적용
+        const captions = document.querySelectorAll(
+          ".image-list figcaption p:first-child"
+          // image-list figcaption p:first-child
+        );
+        const myArray = [];
+        let counter = 1;
+        for (const caption of captions) {
+          myArray.push({
+            id: counter++,
+            text: caption.textContent,
+          });
+        }
+        // console.log(myArray);
+        const searchInput = document.querySelector(".abc");
+        const photosCounter = document.querySelector(".toolbar .counter span");
+        searchInput.addEventListener("keyup", keyupHandler);
+        //keyup : 키보드 눌르고 때는 순간
+        //keydown : 사용자가 키보드 눌렀을 떄 한번만 작동
+        //keypress : 사용자가 키보드 눌렀을 떄 계속 작동
+        function keyupHandler() {
+          for (const item of imageListItems) {
+            item.classList.add(dNone);
+          }
+          const keywords = this.value;
+          const filteredArray = myArray.filter((el) =>
+            el.text.toLowerCase().includes(keywords.toLowerCase())
+          );
+          console.log(filteredArray);
+          if (filteredArray.length > 0) {
+            for (const el of filteredArray) {
+              //.image-list li:nth-child(2)
+              //.image-list li:nth-child(el.id)
+              document
+                .querySelector(`.image-list li:nth-child(${el.id})`)
+                .classList.remove(dNone);
+            }
+          }
+          photosCounter.textContent = filteredArray.length;
+          // photosCounter.textContent = filteredArray.length;
+        }
+
+        // var region = document.getElementsByClassName("region-detail");
+        // function handleClick(event) {
+        //   // console.log(event.target);
+        //   // console.log(this);
+        //   // 콘솔창을 보면 둘다 동일한 값이 나온다
+        //   // console.log(event.target.classList);
+        //   if (event.target.classList[1] === "clicked") {
+        //     event.target.classList.remove("clicked");
+        //   } else {
+        //     for (var i = 0; i < region.length; i++) {
+        //       region[i].classList.remove("clicked");
+        //     }
+        //     event.target.classList.add("clicked");
+        //   }
+        // }
+        // function init() {
+        //   for (var i = 0; i < region.length; i++) {
+        //     region[i].addEventListener("click", handleClick);
+        //   }
+        // }
+        // init();
+
         // 페이지관련 로직
         const paginationUl = document.createElement("ul");
         for (let i = 0; i < map.pagination.endPage; i++) {

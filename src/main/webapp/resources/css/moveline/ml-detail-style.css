@@ -372,9 +372,9 @@ ul {
     width:25px; 
   } */
 
-/* .hide {
-    display: none;
-  } */
+.hide {
+    display: none !important;
+  }
 
 
   /* 즐겨찾기, 조회수, 작성자 영역 */
@@ -428,6 +428,12 @@ ul {
   display: inline-block;
 } */
 .bookmarkOff.d-none {
+  display: none;
+}
+.bookmarkOn.hide {
+  display: none;
+}
+.bookmarkOff.hide {
   display: none;
 }
 /* .bookmarkOff2.d-none {

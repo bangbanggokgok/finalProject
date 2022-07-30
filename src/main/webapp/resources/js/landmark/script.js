@@ -84,9 +84,9 @@ $detail.addEventListener("click", function () {
 //   $redHeartShape.classList.toggle("none");
 // });
 
-// $(function () {
-//   $(document).scroll(function () {
-//     var $nav = $("#top_menu");
-//     $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
-//   });
-// });
+$(function () {
+  $(document).scroll(function () {
+    var $nav = $("#top_menu");
+    $nav.toggleClass("scrolled", $(this).scrollTop() > $nav.height());
+  });
+});
