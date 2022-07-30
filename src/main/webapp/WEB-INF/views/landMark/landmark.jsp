@@ -65,29 +65,29 @@
         <%-- 인기 이미지 넣기 --%>
           <%-- <li class="slide slideHtml">
         </li> --%>
-          <li class="slide">
+          <%-- <li class="slide">
             <a href="#">
               <img
               class="slide-img"
-              src="${contextPath}/resources/images/landmark/DDP3.jpg"
+              src="${contextPath}/resources/images/landmark/a1.jpg"
               alt="first_img"
               />
             </a>
-          </li>
-          <li class="slide">
-            <a href="#">
-              <img
-              class="slide-img"
-              src="${contextPath}/resources/images/landmark/경복궁4.jpg"
-              alt="first_img"
-              />
-            </a>
-          </li>
+          </li> --%>
           <li class="slide">
             <a href="#">
               <img
               class="slide-img"
               src="${contextPath}/resources/images/landmark/별마당.jpg"
+              alt="first_img"
+              />
+            </a>
+          </li>
+          <li class="slide">
+            <a href="#">
+              <img
+              class="slide-img"
+              src="${contextPath}/resources/images/landmark/a3.jpg"
               alt="first_img"
               />
             </a>
@@ -186,7 +186,7 @@
           <c:if test="${!empty landmarkList}">
             <ul class="pagination">
               <c:forEach var="i" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
-                    <li><a onclick="loadLocation(${map.hihi},${i})" style="cursor: pointer;">${i}</a></li>  
+                    <li><a class='page-btn' onclick="loadLocation(${map.hihi},${i})" style="cursor: pointer;">${i}</a></li>  
               </c:forEach>
             </ul>
           </c:if>

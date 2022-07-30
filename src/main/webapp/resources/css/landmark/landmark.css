@@ -9,6 +9,15 @@
 body {
   /* background-color: black; */
   /* margin-top: 5em; */
+  background: linear-gradient(
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 255, 255, 0.3)
+    ),
+    url(../../../resources/images/main/cloud1.jpg) no-repeat center;
+  image-rendering: -webkit-optimize-contrast;
+  /* transform: translateZ(0); */
+  /* backface-visibility: hidden; */
+  /* background-size: 100% 100%; */
   font: 20px/1.5 "Helvetica", Arial, sans-serif;
 }
 #slide1 {
@@ -129,7 +138,6 @@ cite {
   opacity: 0.6;
 }
 
-
 #next {
   margin-left: 380px; /* 380px */
   opacity: 0.6;
@@ -198,8 +206,10 @@ cite {
 .region-detail:hover {
   cursor: pointer;
   padding: 5px;
-  background: #13294b;
-  color: #fff;
+  font-weight: bold;
+  border-bottom: 3px solid #ddd;
+  /* background: #13294b; */
+  color: #ddd;
   border-radius: 30px;
   box-shadow: 4px 5px 12px 0px rgb(19 41 75 / 30%);
   transition: 0.7s;
@@ -217,19 +227,19 @@ cite {
   border: none;
   transition-duration: 0.15s;
   border: 1px solid #ddd;
-  background-color: black;
+  background-color: #98f5e1;
   color: white;
 }
 
-.land-content{
+.land-content {
   height: 70px;
   overflow: hidden;
 }
-.pagination{
+.pagination {
   display: flex;
   justify-content: center;
 }
-.pagination > a{
+.pagination > a {
   width: 30px;
   height: 30px;
   border: 1px solid;
@@ -239,13 +249,13 @@ cite {
   color: gray;
   background-color: #f4f4f9;
 }
-.selectpage{
-  color: #fff !important; 
+.selectpage {
+  color: #fff !important;
   background-color: #13294b !important;
   font-weight: bold;
 }
 
-.pagination-list{
+.pagination-list {
   display: flex;
   justify-content: center;
   align-items: center;
