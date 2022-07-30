@@ -367,6 +367,19 @@ public class MoveLineServiceImpl implements MoveLineService{
 	}
 
 
+//	// 즐겨찾기용
+//	@Override
+//	public List<MoveLineBookmark> bookmarkCheck() {
+//
+//		
+//		
+//		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
+//
+//		model.addAttribute("checkBookmark", checkBookmark);
+//		
+//		return null;
+//	}
+
 
 
 

@@ -177,6 +177,7 @@ public class MoveLineController {
 	@GetMapping("/list/theme")
 	public String movelineTheme(String theme, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
+			HttpSession session,
 			@RequestParam Map<String, Object> paramMap) {
 
 		Map<String, Object> map = null;
@@ -185,6 +186,21 @@ public class MoveLineController {
 		paramMap.put("theme", theme);
 
 		map = service.selectMovelineTheme(paramMap);
+		
+//		// 비로그인 판별
+//		User loginUser = (User) session.getAttribute("loginUser");
+//		int userNo = 0;
+//		if (loginUser != null) {
+//			userNo = loginUser.getUserNo();
+//		}
+//		// 북마크 확인용 변수 전환
+//		String sMovelineNo = Integer.toString(movelineNo);
+//		String sUserNo = Integer.toString(userNo);
+//
+//		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
+//
+//		model.addAttribute("checkBookmark", checkBookmark);
+		
 
 		model.addAttribute("map", map);
 
