@@ -179,7 +179,7 @@ public interface MoveLineService {
 
 	int insertIndex(int[] indexArray, int movelineNumber);
 
-	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, int userNo, String webPath, String folderPath) throws IOException;
+	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, String hashList, int userNo, String webPath, String folderPath) throws IOException;
 
 	
 
