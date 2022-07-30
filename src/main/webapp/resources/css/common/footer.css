@@ -4,11 +4,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #ddd;
+  /* border-top: 1px solid #ddd; */
   width: 100%;
   margin-top: 60px;
   padding-bottom: 10px;
-  background: #f7f7f7;
+  /* background: #f7f7f7; */
+  background: rgb(187, 208, 255, 0.3);
   box-sizing: border-box;
 }
 .foot_in {
@@ -90,7 +91,7 @@
   color: #00bbf9;
 }
 .sns-list li:nth-of-type(4):hover {
-  color: #405de6;
+  color: #b72b99;
 }
 .sns-list li:nth-of-type(5):hover {
   color: #d90429;
@@ -99,7 +100,9 @@
 .btn_menu li {
   cursor: pointer;
 }
-
+.fa-face-laugh-wink {
+  color: antiquewhite;
+}
 @media (max-width: 768px) {
   .foot_in {
     display: none;
