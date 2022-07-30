@@ -347,8 +347,7 @@
 
 	<!-- 코스 상세 페이지 - 랜드마크 상세 -->
 	<select id="selectLandMarkDetail" resultMap="MoveLineDetail_rm">
-		SELECT LM_NAME,
-		LM_ADDRESS, LM_INDEX, LM_NO, LM_CONTENT
+		SELECT *
 		FROM LANDMARK
 		JOIN COORDINATE A USING(LM_NO)
 		LEFT OUTER JOIN MOVELINE_BOARD B
@@ -446,7 +445,7 @@
 		#{contents},
 		DEFAULT,
 		DEFAULT,
-		#{themeSelect},
+		#{themeList},
 		#{userNo},
 		#{locationsValue},
 		DEFAULT,
@@ -460,16 +459,14 @@
 	</insert>
 	
 	<insert id="insertHash" parameterType="list">
-		INSERT INTO MOVELINE_HASH
-		SELECT SEQ_ML_HASH_NO.NEXTVAL HASH_NO,  A.* FROM(
-		
-			<foreach collection="list"  item="hash" separator="UNION ALL" >
-			    SELECT  
-			        	#{MLHashTag}      ML_HASH_NAME
-			        	#{hash.movelineNo}         ML_NO
-			    FROM DUAL
-			</foreach>
-		) A
+		<selectKey keyProperty="hashTagNo" resultType="string" order="BEFORE">
+			SELECT SEQ_ML_HASH_NO.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO MOVELINE_HASH VALUES(
+		#{hashTagNo},
+		#{MLHashTag},
+		#{movelineNo}
+		)
 	</insert>
 	
 	<insert id="insertMovelineImageList" parameterType="list">

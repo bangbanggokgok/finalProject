@@ -53,13 +53,13 @@
                         <div>
                             <label class="optionList">테마 선택<span>(중복 체크 가능)</span></label>
                             <div class="themeSelect">
-                                <input type="checkbox" name="themeSelect" id="theme1"><label for="theme1">가족</label>
-                                <input type="checkbox" name="themeSelect" id="theme2"><label for="theme2">아이</label>
-                                <input type="checkbox" name="themeSelect" id="theme3"><label for="theme3">데이트</label>
-                                <input type="checkbox" name="themeSelect" id="theme4"><label for="theme4">도보</label>
-                                <input type="checkbox" name="themeSelect" id="theme5"><label for="theme5">힐링</label>
-                                <input type="checkbox" name="themeSelect" id="theme6"><label for="theme6">맛집</label>
-                                <input type="checkbox" name="themeSelect" id="theme7"><label for="theme7">캠핑</label>
+                                <input type="checkbox" name="themeSelect" id="theme1" value="가족"><label for="theme1">가족</label>
+                                <input type="checkbox" name="themeSelect" id="theme2" value="아이"><label for="theme2">아이</label>
+                                <input type="checkbox" name="themeSelect" id="theme3" value="데이트"><label for="theme3">데이트</label>
+                                <input type="checkbox" name="themeSelect" id="theme4" value="도보"><label for="theme4">도보</label>
+                                <input type="checkbox" name="themeSelect" id="theme5" value="힐링"><label for="theme5">힐링</label>
+                                <input type="checkbox" name="themeSelect" id="theme6" value="맛집"><label for="theme6">맛집</label>
+                                <input type="checkbox" name="themeSelect" id="theme7" value="캠핑"><label for="theme7">캠핑</label>
                             </div>
                         </div>
                         <div id="map" style="width:750px;height:350px;"></div>
@@ -139,7 +139,7 @@
                             </div>
                         </div>
 
-                        <jsp:include page="/WEB-INF/views/moveline/hash.jsp"></jsp:include>
+                        <!-- <jsp:include page="/WEB-INF/views/moveline/hash.jsp"></jsp:include> -->
 
                     </div>
                     <section class="submitBar">

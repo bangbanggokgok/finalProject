@@ -251,6 +251,10 @@ public class MoveLineController {
 
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
+		
+		
+//		session.setAttribute("landMarkX", landmarkDetail.get(0).getUserName());
+		
 
 		return "moveline/movelineDetail";
 	}
@@ -422,8 +426,9 @@ public class MoveLineController {
 								 Model model,
 								 HttpSession session, RedirectAttributes ra,
 								 HttpServletRequest req,
-								 @RequestParam(value = "images", required = false) List<MultipartFile> imageList
-//								 @RequestParam(value = "hashTag", required = false) List<MoveLineHashTag> hashList
+								 @RequestParam(value = "images", required = false) List<MultipartFile> imageList,
+								 @RequestParam("hashTag") String hashList
+//								 @RequestParam(value = "hashTag", required = false) List<MoveLineHashTag> hashList 
 								 
 		)throws IOException {
 		
@@ -435,12 +440,15 @@ public class MoveLineController {
 		
 		System.out.println("param.size() : " + param.size());
 		System.out.println("param.size : " + param);
+		
 //		if(int i=0; i<param.getTheme_arr[]; i++) {
 //			System.out.println("param.size : " + param.theme_arr[i]);
 //		}
 
-		int movelineNumber = service.insertMoveline(param, imageList,  loginUser.getUserNo(), webPath, folderPath);
+		int movelineNumber = service.insertMoveline(param, imageList, hashList, loginUser.getUserNo(), webPath, folderPath);
 		System.out.println("insert 1 : " + param);
+		
+		
 		
 		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);
 		System.out.println("insert 2 : " + param);

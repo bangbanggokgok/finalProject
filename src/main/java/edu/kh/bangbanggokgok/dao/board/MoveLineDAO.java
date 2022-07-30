@@ -298,12 +298,8 @@ public class MoveLineDAO {
 	}
 
 
-	public int insertHashTag(List<MoveLineHashTag> moveLineHashTag) {
-		
-		System.out.println("moveLineHashTag : " + moveLineHashTag);
-		System.out.println("moveLineHashTag.size(): " + moveLineHashTag.size());
-		
-		return sqlSession.insert("movelineMapper.insertHash", moveLineHashTag);
+	public int insertHashTag(Map<String, Object> param) {
+		return sqlSession.insert("movelineMapper.insertHash", param);
 	}
 
 
