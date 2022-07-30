@@ -1,4 +1,3 @@
-
 // document.body.addEventListener("scroll", () => {
 //   if(this.scrolltop()>navback.height()){
 
@@ -19,7 +18,7 @@
   });
 })();
 
-(()=>{
+(() => {
   const navi = document.getElementsByClassName(".nav-nav1")[0];
   const navin = document.getElementsByClassName(".nav-in")[0];
   // const navback = docuemnt.querySelector("#mainNavbar1");
@@ -31,8 +30,8 @@ toggleBtn.addEventListener("click", () => {
   $(".nav-nav1").toggleClass("active");
   $(".nav-in").toggleClass("active");
   // navin.classList.toggle("active");
-  const managerMenu = document.querySelector(".manager-menu");
-  managerBtn.addEventListener("click", () => {
-    managerMenu.classList.toggle("active");
-  });
+});
+const managerMenu = document.querySelector(".manager-menu");
+managerBtn.addEventListener("click", () => {
+  managerMenu.classList.toggle("active");
 });
