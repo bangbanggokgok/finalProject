@@ -387,8 +387,45 @@ $('.close').eq(0).click(modalAnimation);
 
 //  action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()"
 
+// $('#btnChk').click(function() {
+//     var gSize = "";$("input[name=themeSelect]:checked").each(function() {
+//         if(gSize == ""){
+//             gSize = $(this).val();
+//         } else {
+//             gSize = gSize + "," + $(this).val();
+//         }});
+//     $('#gSize').val(gSize);
+// });
+
+
+// $("input[name=themeSelect]:checked").each(function() {
+//     var theme = $(this).val();
+//     console.log(theme);
+//   });
+
 document.getElementById("postSubmit").addEventListener("click",function(){
     
+    var gSize = "";
+
+    $("input[name=themeSelect]:checked").each(function() {
+        if(theme == ""){
+            theme = $(this).val();
+        } else {
+            theme = theme + "," + $(this).val();
+            console.log(theme);
+
+        }});
+    $('#theme').val(theme);
+
+
+
+    // var theme_arr = [];
+    // $("input[name='themeSelec't]:checked").each(function(){
+    //     var theme = $(this).val();
+    //     theme_arr.push(theme);
+    // })
+
+
     if(mlWriteValidation()){
         
         const formTag = document.getElementsByTagName("form")[0]

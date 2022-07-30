@@ -323,7 +323,7 @@ div {
 
 #contents-detail > section:not(.section2) {
   padding: 0;
-  height: 100vh;
+  height: 60vh;
 }
 
 #contents-detail > section h2 {

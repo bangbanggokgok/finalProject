@@ -13,4 +13,6 @@ public class MoveLineHashTag {
 
 	private int MLHashTagNo;
 	private String MLHashTag;
+	private int movelineNo;
+
 }

@@ -201,7 +201,7 @@ summary {
 
 /* 이미지 영역 */
 .img-box {
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     margin-bottom: 50px;
 }
