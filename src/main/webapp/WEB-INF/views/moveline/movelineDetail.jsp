@@ -159,8 +159,8 @@
                     </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
-                    <div id="moveline-map-area">
-                        <div id="map"></div>
+                    <div id="moveline-map-area" class="landmark-list">
+                        <div id="map" class="landmark-list"></div>
                     </div>
 
                 </div>
@@ -208,22 +208,19 @@
         const movelineNo = "${movelineDetail.movelineNo}";
     </script>
 
+</body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943&libraries=services,clusterer,drawing"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
 
     <script>
-        var container = document.getElementById('map');
-        var options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3
-        };
-
-        var map = new kakao.maps.Map(container, options);
+        $( function() {
+            $( ".landmark-list" ).sortable();
+        } );
+        const contextPath = ${contextPath};
     </script>
 
-    
-
-</body>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
@@ -231,4 +228,5 @@
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
+    <script src="${contextPath}/resources/js/moveline/detailMap.js"></script>
 </html>

@@ -423,16 +423,23 @@ public class MoveLineController {
 								 HttpSession session, RedirectAttributes ra,
 								 HttpServletRequest req,
 								 @RequestParam(value = "images", required = false) List<MultipartFile> imageList
+//								 @RequestParam(value = "hashTag", required = false) List<MoveLineHashTag> hashList
+								 
 		)throws IOException {
-
+		
 		String webPath = "/resources/images/moveline/";
 		String folderPath = req.getSession().getServletContext().getRealPath(webPath);
 		
 		String message = "";
 		String path = "";
 		
+		System.out.println("param.size() : " + param.size());
+		System.out.println("param.size : " + param);
+//		if(int i=0; i<param.getTheme_arr[]; i++) {
+//			System.out.println("param.size : " + param.theme_arr[i]);
+//		}
 
-		int movelineNumber = service.insertMoveline(param, imageList, loginUser.getUserNo(), webPath, folderPath);
+		int movelineNumber = service.insertMoveline(param, imageList,  loginUser.getUserNo(), webPath, folderPath);
 		System.out.println("insert 1 : " + param);
 		
 		int movelineIndexInsert = service.insertIndex(indexArray, movelineNumber);

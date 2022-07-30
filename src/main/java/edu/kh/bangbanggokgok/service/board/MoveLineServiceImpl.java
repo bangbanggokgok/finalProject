@@ -244,7 +244,7 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.movelineBookmarkInsert(infoB);
 	}
 
-
+	// 코스 즐겨찾기 삭제
 	@Override
 	public int movelineBookmarkDelete(String loginNo, String movelineNo) {
 		Map<String, String> infoA = new HashMap<String, String>();
@@ -278,11 +278,30 @@ public class MoveLineServiceImpl implements MoveLineService{
 	@Override
 	public int insertMoveline(Map<String, String> param,
 							  List<MultipartFile> imageList,
+//							  List<MoveLineHashTag> hashList,
 							  int userNo, String webPath,
 							  String folderPath) throws IOException{
+		
 		param.put("userNo", Integer.toString(userNo));
 		
 		int movelineNumber = dao.insertMoveline(param);
+		
+//		if(movelineNumber > 0) {
+//			
+//			for(int i = 0; i < hashList.size(); i++) {
+//				
+//				List<MoveLineHashTag> MoveLineHashTag = new ArrayList<MoveLineHashTag>();
+//				
+//				MoveLineHashTag hash = new MoveLineHashTag();
+//				
+//				hash.setMovelineNo(movelineNumber);
+//				
+//				int insertHash = dao.insertHashTag(MoveLineHashTag);
+//				
+//				System.out.println("hashtag : " + insertHash);
+//			}
+//			
+//		}
 		
 		System.out.println("movelineNumber : " + movelineNumber);
 		

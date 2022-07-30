@@ -459,6 +459,19 @@
 		VALUES(#{movelineNo},#{landmarkNo},#{indexNo})
 	</insert>
 	
+	<insert id="insertHash" parameterType="list">
+		INSERT INTO MOVELINE_HASH
+		SELECT SEQ_ML_HASH_NO.NEXTVAL HASH_NO,  A.* FROM(
+		
+			<foreach collection="list"  item="hash" separator="UNION ALL" >
+			    SELECT  
+			        	#{MLHashTag}      ML_HASH_NAME
+			        	#{hash.movelineNo}         ML_NO
+			    FROM DUAL
+			</foreach>
+		) A
+	</insert>
+	
 	<insert id="insertMovelineImageList" parameterType="list">
 		INSERT INTO ML_IMG 
 		SELECT SEQ_ML_IMG_NO.NEXTVAL IMG_NO,  A.* FROM(
