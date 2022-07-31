@@ -23,9 +23,9 @@
                     <ul id="locations">
                     	<c:if test="${!empty locationList}">
 	                    	<c:forEach var="location" items="${locationList}">
-		                        <li class="location-div">
-		                        	<a href="list/location/${location.locationNum}">${location.locationName}</a>
-		                        </li>
+		                        
+		                        	<a href="list/location/${location.locationNum}"><li class="location-div">${location.locationName}</li></a>
+		                        
 	                    	</c:forEach>
                     	</c:if>
                         <li class="location-div" id="selectAll">전체</li>
