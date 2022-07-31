@@ -157,9 +157,9 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <a href ="#">
+        <a href ="moveline-main/list/location/100">
             <div class="card" style="width: 18rem">
-                <img src="${contextPath}/resources/images/main/seoul.jpg" class="card-img-top" alt="..." />
+                <img src="moveline-main/resources/images/main/seoul.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">
                     <h3 class="weight">대한민국의 대표, 서울</h3>
                     <p class="card-text">구석구석 숨은 서울을 여행해 보세요!</p>
