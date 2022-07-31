@@ -351,9 +351,9 @@ public class MoveLineServiceImpl implements MoveLineService{
 				}
 			}
 			
-			System.out.println("hashList : " + hashList);
+//			System.out.println("hashList : " + hashList);
 			String[] hashArr = hashList.split("#");
-			System.out.println("hashArr : " + hashArr[1]);
+//			System.out.println("hashArr : " + hashArr[1]);
 			
 			for (int i = 1; i < hashArr.length; i++) {
 				Map<String, Object> hash = new HashMap<String, Object>();

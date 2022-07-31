@@ -546,45 +546,45 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 //     console.log();
 // }
 
-// function selectLandmarkValue() {
+function selectLandmarkValue() {
     
-    //     const tempObj = {};
-    //     for (let i = 0; i < $(".checkBox:checked").length; i++) {
-        //         tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
-        //     };
+        const tempObj = {};
+        for (let i = 0; i < $(".checkBox:checked").length; i++) {
+                tempObj[$(".checkBox:checked").eq(i).val()] = $(".checkBox:checked").eq(i).parent();
+            };
         
-        //     if (tempObj == "") {
-            //         alert("등록할 랜드마크를 골라주세요");
-            //         return
-            //     }
+            if (tempObj == "") {
+                    alert("등록할 랜드마크를 골라주세요");
+                    return
+                }
             
-            //     if (tempObj != "") {
-                //         const list = document.getElementsByClassName("landmark-list")[0];
-                //         list.innerHTML = ""
-                //         let number = 1;
-                //         for (let key in tempObj) {
-                    //             const landmarkBox = document.createElement("div");
-//             landmarkBox.classList.add("landmark-box", "hover-action");
+                if (tempObj != "") {
+                        const list = document.getElementsByClassName("landmark-list")[0];
+                        list.innerHTML = ""
+                        let number = 1;
+                        for (let key in tempObj) {
+                                const landmarkBox = document.createElement("div");
+            landmarkBox.classList.add("landmark-box", "hover-action");
 
-//             const sequenceDiv = document.createElement("div");
-//             sequenceDiv.innerHTML = "<div class=" + "sequence" + ">" + number + "</div>";
-//             number++;
-//             landmarkBox.innerHTML = sequenceDiv.innerHTML + $(tempObj[key]).html();
-//             list.append(landmarkBox);
-//         };
-//         $(".checkBox").css("display", "none");
-//         $(".land-namd-div > span").addClass("href-link");
-//         modalAnimation();
-//     };
+            const sequenceDiv = document.createElement("div");
+            sequenceDiv.innerHTML = "<div class=" + "sequence" + ">" + number + "</div>";
+            number++;
+            landmarkBox.innerHTML = sequenceDiv.innerHTML + $(tempObj[key]).html();
+            list.append(landmarkBox);
+        };
+        $(".checkBox").css("display", "none");
+        $(".land-namd-div > span").addClass("href-link");
+        modalAnimation();
+    };
 
-//     $(".href-link").on("click", (e) => {
-//         const link = e.currentTarget.parentNode.previousSibling.previousSibling.value;
-//         window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
-//             , e.currentTarget.innerText);
-//     });
-//     hoverEvent();
-//     mouseEvent();
-// };
+    $(".href-link").on("click", (e) => {
+        const link = e.currentTarget.parentNode.previousSibling.previousSibling.value;
+        window.open("http://localhost:8080/bangbanggokgok/landmark-main/detail/" + linkLocation + "/" + link
+            , e.currentTarget.innerText);
+    });
+    hoverEvent();
+    mouseEvent();
+};
 
 // function hoverEvent(){
 //     $(".hover-action").hover(
