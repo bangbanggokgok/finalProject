@@ -1,12 +1,9 @@
-const register = document.getElementById("register");
-const secession = document.getElementById("secession");
-const all = document.getElementById("all");
-
 
 $(".list div").click(function () {
+    let register = document.getElementsByClassName("register")[0];
+    let secession = document.getElementsByClassName("secession")[0];
+    let all = document.getElementById("all");
     let selectType = $(this).attr("value");
-    // console.log(selectType);
-
     if(selectType === 'register'){
         register.style.color = "rgb(51, 151, 255)";
         secession.style.color = "black";
@@ -22,26 +19,22 @@ $(".list div").click(function () {
     }
 });
 
-$(".list div").click(function () {
+$(document).on("click",".type",function(){
     let selectUser = $(this).attr("value");
-    // console.log(list);
-    // let url = list;
-    console.log("selectUser : " + selectUser);
+    let cp = $(this).attr("id");
     $.ajax({
         url : contextPath + "/admin/user/situation/{list}",
-        data : {"selectUser" : selectUser},
+        data : {"selectUser" : selectUser, "cp":cp},
         dataType: "JSON",
         success : function(result){
             if(result != null){
-                console.log(result);
                 const userPage = document.getElementById("userPage");
-                const pagination = document.getElementById("pagination");
+                const pageList = document.getElementsByClassName("pagination-area")[0];
                 userPage.innerHTML = "";
-                pagination.innerHTML = "";
+                pageList.innerHTML = "";
 
-                let user = result.userList;
-                let paging = result.pagination;
-                let url = list;
+                const user = result.userList;
+                const paging = result.pagination;
                 for(let list of user){
                     const li = document.createElement("li");
                     userPage.append(li);
@@ -80,58 +73,83 @@ $(".list div").click(function () {
                     contentWrapper.append(secessionDate);
                 }
                  // 페이지
-                 const startPage = document.createElement("li");
-                 pagination.append(startPage);
 
-                 const startPageA = document.createElement("a");
-                 startPageA.setAttribute("href",  "type/" +url + "?cp=1");
-                 startPageA.innerHTML = "&lt;&lt;";
-                 startPage.append(startPageA);
+                const paginationUl = document.createElement("ul");
+                pageList.append(paginationUl);
+                paginationUl.classList.add("pagination");
 
-                 const prevPage = document.createElement("li");
-                 pagination.append(prevPage);
+                const startPage = document.createElement("li");
+                startPage.classList.add("type");
+                
+                startPage.setAttribute("id", paging.startPage);
+                paginationUl.append(startPage);
 
-                 const prevPageA = document.createElement("a");
-                 prevPageA.setAttribute("href", "/type/"+ url + paging.startPage);
-                 prevPageA.innerHTML = "&lt;";
-                 prevPage.append(prevPageA);
+                const startPageA = document.createElement("div");
+                startPageA.innerHTML = "<i class='fal fa-angle-double-left'></i>";
 
-                 for(let i=paging.startPage; i <= paging.endPage; i++){
+                startPage.append(startPageA);
 
-                     if(i === paging.currentPage){
-                         const current = document.createElement("li");
-                         pagination.append(current);
+                const prevPage = document.createElement("li");
+                prevPage.classList.add("type");
+                prevPage.setAttribute("id", paging.prevPage);
+                paginationUl.append(prevPage);
 
-                         const currentA = document.createElement("a");
-                         currentA.classList.add("current");
-                         currentA.innerHTML = i;
-                         current.append(currentA);
-                     } else{
-                         const li = document.createElement("li");
-                         pagination.append(li);
+                const prevPageA = document.createElement("div");
+                prevPageA.innerHTML = "<i class='fal fa-angle-left'></i>";
+                prevPage.append(prevPageA);
 
-                         const liA = document.createElement("a");
-                         liA.setAttribute("href", "type/${list}?cp=" + i);
-                         liA.innerHTML = i;
-                         li.append(liA);
-                     }
-                 }
-                 const nextPage = document.createElement("li");
-                 pagination.append(nextPage);
+                const a = document.createElement("div");
+                for(let i = paging.startPage;i<=paging.endPage;i++){
+                    
+                    const pageNumber = document.createElement("li");
+                    a.innerText = i;
 
-                 const nextPageA = document.createElement("a");
-                 nextPageA.setAttribute("href", "type/${list}?cp=" + paging.nextPage);
-                 nextPageA.innerHTML = "&gt";
-                 nextPage.append(nextPageA);
+                    pageNumber.append(a);
+                    paginationUl.append(pageNumber);
 
-                 const maxPage = document.createElement("li");
-                 pagination.append(maxPage);
+                    a.classList.add("type");
 
-                 const maxPageA = document.createElement("a");
-                 maxPageA.setAttribute("href", "type/${list}?cp=" + paging.maxPage);
-                 maxPageA.innerHTML = "&gt;&gt;";
-                 maxPage.append(maxPageA)
+                    
+                    a.setAttribute("id", i);
+                    if(i=== paging.currentPage){
+                        a.classList.add("current");
+                    }
+                }
+                
+                const nextPage = document.createElement("li");
+                nextPage.classList.add("type");
+                nextPage.setAttribute("id", paging.nextPage);
+                paginationUl.append(nextPage);
 
+                const nextPageA = document.createElement("div");
+                nextPageA.innerHTML = "<i class='fal fa-angle-right'></i>";
+                nextPage.append(nextPageA);
+
+                const endPage = document.createElement("li");
+                endPage.classList.add("type");
+                endPage.setAttribute("id", paging.endPage);
+                
+                paginationUl.append(endPage);
+
+                const endPageA = document.createElement("div");
+                endPageA.innerHTML = "<i class='fal fa-angle-double-right'></i>";
+                endPage.append(endPageA);
+                console.log(selectUser=="register");
+                console.log(result.pagination);
+                if(selectUser == "register"){
+                    startPage.setAttribute("value", "register");
+                    prevPage.setAttribute("value", "register");
+                    a.setAttribute("value", "register");
+                    nextPage.setAttribute("value", "register");
+                    endPage.setAttribute("value", "register");
+                }else{
+                    startPage.setAttribute("value", "secession");
+                    prevPage.setAttribute("value", "secession");
+                    a.setAttribute("value", "secession");
+                    nextPage.setAttribute("value", "secession");
+                    endPage.setAttribute("value", "secession");
+                }
+                console.log(startPage);
             } else { 
                 alert("실패.");
             }

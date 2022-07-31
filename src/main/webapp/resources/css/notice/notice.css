@@ -129,10 +129,6 @@ li {
     box-sizing: inherit;
 }
 
-.category {
-    cursor: pointer;
-}
-
 .eventBadge {
     margin-left: 0px;
     margin-right: 21px;
@@ -187,4 +183,8 @@ li {
 
 #all{
     color: rgb(51, 151, 255);
+}
+
+.type{
+    cursor: pointer;
 }

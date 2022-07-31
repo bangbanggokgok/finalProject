@@ -59,7 +59,7 @@ public class NoticeController {
 	@GetMapping("/type/{list}")
 	public String noticelist(@PathVariable("list") String list,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
-			@RequestParam("selectType") String selectType) {
+			@RequestParam(value = "selectType") String selectType) {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
