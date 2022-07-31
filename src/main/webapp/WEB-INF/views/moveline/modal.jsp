@@ -12,15 +12,15 @@
         
     </head>
     <body>
-        <div id="container2" style='height:100%;'>
+        <div id="container2">
             <div id="lorem-ipsum2"></div>
         </div>
             <main>
             <div id="modal2" class="modal-overlay2">
                 <div class="modal-window2">
                         <div class="title2">
-                            <h2>상세</h2>
-                        </div>  
+                            <h2></h2>
+                        </div>
                     <div class="close-area2">X</div>
                     <div class="content2">
                         <jsp:include page="/WEB-INF/views/moveline/movelineImages2.jsp"></jsp:include>

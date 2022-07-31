@@ -43,13 +43,18 @@ body {
   /* height:300px; */
   left: 0;
 }
+/* 
+.container2>div{
+  display: flex;
+  justify-self: center;
+} */
 
 .slide2 {
   position: absolute;
   width: 100%;
   padding: 0 10%;
   box-sizing: border-box;
-  top: 50%;
+  /* top: 50%; */
   transform: translateY(-50%);
   text-align: center;
   overflow: hidden;
@@ -260,4 +265,6 @@ cite {
 
 .landmarkContent {
   margin-top: 550px;
+  display: flex;
+  justify-content: center;
 }

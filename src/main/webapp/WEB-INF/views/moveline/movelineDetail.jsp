@@ -2,30 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%-- <c:forEach var="landmark" items="${landmarkDetail}">
-    <c:if test="${landMarkNo == landmark.landmarkList}">
-        <c:set var="landMarkName" value="${landmark.landMarkName}" />
-        <c:set var="landMarkContent" value="${landmark.landMarkContent}" />
-        <c:set var="landMarkAddress" value="${landmark.landMarkAddress}" />
-        <c:set var="landmarkIndex" value="${landmark.landmarkIndex}" />
-        <c:set var="landMarkNo" value="${landmark.landMarkNo}"/>
-    </c:if>
-</c:forEach> --%>
-<%-- <c:forEach var="i" begin="${landmarkDetail.landMarkNo}">
-    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo[i]}"/>
-</c:forEach> --%>
-
-
-<!-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-    <c:set var="landmarkName" value="${landmarkDetail.landMarkName}" />
-    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
-</c:forEach>  -->
-
-<%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}"/>
-</c:forEach> --%>
-
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -59,7 +35,7 @@
                     </div>
                     
                     <div id="top-middle">
-                        <h1>${movelineDetail.movelineTitle} ${movelineNo}</h1>
+                        <h1>${movelineDetail.movelineTitle}</h1>
                     </div>
 
 
@@ -151,8 +127,6 @@
 
                     <div id="moveline-content">
                         ${movelineDetail.movelineContent}
-                        ${movelineDetail.userNo}
-                        ${loginUserNo}
                     </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
@@ -164,7 +138,6 @@
 
 
                 <div id="land-start">랜드마크
-                    <%-- <span><img src="${contextPath}/resources/images/movelineDetail/여행일러스트.jpg" style="width:100px;"></span> --%>
                 </div>
 
                 <div class="landmark-detail">
@@ -173,9 +146,9 @@
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                            <c:set var="landMarkX" value="${landmarkDetail.landMarkX}"/>
-                            <c:set var="landMarkY" value="${landmarkDetail.landMarkY}"/>
-                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" name="${landMarkContent}">${landmarkName} ${landMarkX}</button>
+                            <%-- <c:set var="landMarkX" value="${landmarkDetail.landMarkX}"/>
+                            <c:set var="landMarkY" value="${landmarkDetail.landMarkY}"/> --%>
+                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" name="${landMarkContent}">${landmarkName}</button>
                         </c:forEach>
                     </ul>
                     
@@ -295,6 +268,20 @@
 
             // 지도에 선을 표시합니다 
             polyline.setMap(map);  
+
+            function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+                function deg2rad(deg) {
+                    return deg * (Math.PI/180)
+                }
+
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2-lat1);  // deg2rad below
+                var dLon = deg2rad(lng2-lng1);
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var d = R * c; // Distance in km
+                return d;
+            }
         } );
         // const contextPath = ${contextPath};
     </script>
@@ -302,9 +289,9 @@
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
-    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
+    <script src="${contextPath}/resources/js/moveline/reply.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
     <script src="${contextPath}/resources/js/moveline/detailMap.js"></script>
 </html>
