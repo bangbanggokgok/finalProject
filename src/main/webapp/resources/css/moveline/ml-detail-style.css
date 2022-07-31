@@ -290,7 +290,7 @@ ul {
 
 .landmark-detail > ul:nth-child(1) {
   width: 100%;
-  /* height: 100px; */
+  height: 100px;
   margin-bottom: -50px;
   display: flex;
   justify-content: center;

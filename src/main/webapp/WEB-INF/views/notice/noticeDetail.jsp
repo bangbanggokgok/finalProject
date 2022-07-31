@@ -72,5 +72,5 @@
     </section>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
-
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
 </html>
