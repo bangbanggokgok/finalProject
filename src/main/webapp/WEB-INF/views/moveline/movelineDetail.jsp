@@ -282,6 +282,35 @@
                 var d = R * c; // Distance in km
                 return d;
             }
+
+            function displayCircleDot(position, distance) {
+
+                // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
+                var circleOverlay = new kakao.maps.CustomOverlay({
+                    content: '<span class="dot"></span>',
+                    position: position,
+                    zIndex: 1
+                });
+
+                // 지도에 표시합니다
+                circleOverlay.setMap(map);
+
+                if (distance > 0) {
+                    // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
+                    var distanceOverlay = new kakao.maps.CustomOverlay({
+                        content: '<div class="dotOverlay">거리 <span class="number">' + distance + '</span>m</div>',
+                        position: position,
+                        yAnchor: 1,
+                        zIndex: 2
+                    });
+
+                    // 지도에 표시합니다
+                    distanceOverlay.setMap(map);
+                }
+
+                // 배열에 추가합니다
+                dots.push({circle:circleOverlay, distance: distanceOverlay});
+            }
         } );
         // const contextPath = ${contextPath};
     </script>
