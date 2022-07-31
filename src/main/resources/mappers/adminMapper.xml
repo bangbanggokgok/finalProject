@@ -35,6 +35,7 @@
 		<result property="userNo" column="USER_NO"/>
 		<result property="questionAnswer" column="Q_ANSWER"/>
 		<result property="managerName" column="USER_NAME" />
+		<result property="userProfile" column="USER_PROFILE" />
 	</resultMap>
 	
 	<!-- 코스 신고 조회용 resultMap -->
@@ -140,7 +141,7 @@
 	
 	<!-- 문의 상세 조회 -->
 	<select id="selectQuestionDetail" resultMap="inquiryDetail_rm">
-		SELECT Q_NO, Q_TITLE, Q_CONTENT, Q_ANSWER, TO_CHAR(Q_DATE, 'YYYY-MM-DD') Q_DATE,  USER_NAME, MANAGER_NO 
+		SELECT Q_NO, Q_TITLE, Q_CONTENT, Q_ANSWER, TO_CHAR(Q_DATE, 'YYYY-MM-DD') Q_DATE,  USER_NAME, MANAGER_NO, USER_PROFILE 
 		FROM QUESTION Q
 		LEFT JOIN USER_TB U ON(Q.MANAGER_NO = U.USER_NO)
 		WHERE Q_NO = #{questionNo}
