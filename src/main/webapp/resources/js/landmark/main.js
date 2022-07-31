@@ -7,6 +7,7 @@ const gridView = "grid-view";
 const dNone = "d-none";
 const regions = document.querySelectorAll(".region-detail");
 const zoneTitle = document.querySelector("#zoneTitle");
+
 for (let region of regions) {
   region.addEventListener("click", () => {
     zoneTitle.innerText = region.innerText;
@@ -80,7 +81,7 @@ function keyupHandler() {
         .classList.remove(dNone);
     }
   }
-  photosCounter.textContent = filteredArray.length;
+  // photosCounter.textContent = filteredArray.length;
   // photosCounter.textContent = filteredArray.length;
 }
 

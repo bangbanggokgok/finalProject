@@ -43,7 +43,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="#">
+            <a href="/FinalProject/landmark-main/detail/101/231">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Busan.jpg"
@@ -56,7 +56,7 @@
           
         </div>
         <div class="carousel-item">
-            <a href="#">
+            <a href="/FinalProject/landmark-main/detail/100/236">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Cheongwadae.jpg"
@@ -69,10 +69,10 @@
             </a>
         </div>
         <div class="carousel-item">
-            <a href="#">
+            <a href="/FinalProject/landmark-main/detail/103/270">
                 <img
                 src="${contextPath}/resources/images/main/Gangneung.jpg"
-                class="d-block w-100"
+                class="d-block w-100 img-back"
                 alt="..."/>
 
                 <div class="carousel-caption d-none d-md-block">
@@ -179,7 +179,7 @@
             <button type="button" class="btn btn-outline-dark">코스 작성하기</button>
         </a>
         <a href="landmark-main/write/insert">
-            <button type="button" class="btn btn-outline-dark">랜드마크 작성하기</button>
+            <button type="button" class="btn land-btn btn-outline-dark">랜드마크 작성하기</button>
         </a>
         <div class="row cos">
           <div class="col-sm-12 col-md-4 flex">
@@ -211,9 +211,9 @@
           </div>
         </div>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 col-sm-12">
         <div class="embed-responsive embed-responsive-16by9">
-          <iframe
+          <iframe class='ifr-video'
             width="560"
             height="315"
             src="https://www.youtube.com/embed/xRbPAVnqtcs"
@@ -254,7 +254,6 @@
       <c:if test="${act >= 16}">
         </div>
       </c:if>
-
     <jsp:include page="/WEB-INF/views/common/footer.jsp" />
 
     <script
@@ -267,6 +266,6 @@
       integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s"
       crossorigin="anonymous"
     ></script>
-    <script src="${contextPath}/resources/js/common/scroll-top.js"></script>
+    <%-- <script src="${contextPath}/resources/js/common/scroll-top.js"></script> --%>
   </body>
 </html>

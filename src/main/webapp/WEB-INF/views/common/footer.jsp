@@ -34,14 +34,14 @@
             </li>
           </ul>
         </div>
-        <ul class="btn_menu">
+        <%-- <ul class="btn_menu">
           <li>개인정보처리방침</li>
           <li>이용약관</li>
           <li>저작권정책</li>
           <li>고객서비스현장</li>
           <li>Q&A</li>
           <li></li>
-        </ul>
+        </ul> --%>
         <ul class="ft_address"></ul>
       </div>
       <div class="footer_pcLogo">
@@ -50,10 +50,11 @@
             <i class="fa-solid fa-building"></i>
             방방곡곡
           </span>
-          <span>tel : 02-1100-1100</span>
-          <span>address : 서울 특별시 종로구 홍지동 125번지 </span>
+          <span>Member : 김성태 김은진 윤진국 유다슬 임동현 박상민</span>
+          <span>Tel : 02-2022-0801</span>
+          <span>Address : KH 정보교육원 종로지점 </span>
         </div>
-        <ul class="logo_list">
+        <%-- <ul class="logo_list">
           <li>
             <a href="http://api.visitkorea.or.kr/" target="_blank" title="새창"
               ><img
@@ -89,7 +90,7 @@
                 alt="문화체육관광부"
             /></a>
           </li>
-        </ul>
+        </ul> --%>
       </div>
       <a id="back-to-top" href="#">Top</a>
     </footer>
@@ -101,5 +102,6 @@
     </c:if> 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
+    <script src="${contextPath}/resources/js/common/scroll-top.js"></script>
   </body>
 </html>

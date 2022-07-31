@@ -218,10 +218,11 @@ div {
 }
 
 .detail-content {
+  border: 1px solid #ddd;
   font-size: 15px;
   display: none;
   padding: 10px;
-  background-color: rgb(128, 128, 128, 0.1);
+  /* background-color: rgb(128, 128, 128, 0.1); */
 }
 
 .detail-content.active {
@@ -274,7 +275,7 @@ div {
   display: flex;
   position: fixed;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 78px;
   height: 114px;
   /* width: 1170px; */
   top: 0;
@@ -323,7 +324,7 @@ div {
 
 #contents-detail > section:not(.section2) {
   padding: 0;
-  height: 100vh;
+  height: 60vh;
 }
 
 #contents-detail > section h2 {
@@ -337,6 +338,7 @@ div {
 }
 
 #section2 {
+  margin-top: 60px;
   height: 100%;
 }
 

@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>scroll_menu</title>
+    <title>방방곡곡</title>
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
       crossorigin="anonymous"
@@ -181,10 +181,10 @@
     <%-- <script type="text/javascript" src="${contextPath}/resources/js/landmark/jquery-1.9.1.min.js" ></script> --%>
     <%-- <script type="text/javascript" src="${contextPath}/resources/js/landmark/jquery.easing.1.3.min.js"></script> --%>
     <script type="text/javascript" src="${contextPath}/resources/js/common/nav.js"></script>
-    <script type="text/javascript" src="${contextPath}/resources/js/landmark/scroll_menu.js" ></script>
     <script type="text/javascript" src="${contextPath}/resources/js/landmark/script.js"></script>
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=eb5f070eb82d10474481251b6a63927e"></script>
     <script src="${contextPath}/resources/js/landmark/location.js"></script>
     <script src="${contextPath}/resources/js/landmark/temp.js"></script>
+    <script type="text/javascript" src="${contextPath}/resources/js/landmark/scroll_menu.js" ></script>
   </body>
 </html>
