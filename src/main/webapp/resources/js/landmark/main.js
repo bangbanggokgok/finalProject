@@ -81,7 +81,7 @@ function keyupHandler() {
         .classList.remove(dNone);
     }
   }
-  photosCounter.textContent = filteredArray.length;
+  // photosCounter.textContent = filteredArray.length;
   // photosCounter.textContent = filteredArray.length;
 }
 
