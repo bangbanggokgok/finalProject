@@ -325,14 +325,19 @@ ul {
 
 /* 랜드마크 이미지 */
 #landmark-images > img {
-  width: 100%;
+  /* width: 20%; */
   height: 100%;
   text-align: center;
 }
 
+.container2 {
+  display: flex;
+  flex-wrap: wrap;
+}
 #landmark-images {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 
 #landmark-explain {
