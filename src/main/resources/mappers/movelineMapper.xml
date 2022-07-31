@@ -136,6 +136,7 @@
 		SELECT *
 		FROM MOVELINE_BOARD
 		WHERE ML_THEME = #{theme}
+		AND ML_DELETE_DT IS NULL
 	</select>
 
 	<!-- -->
@@ -178,10 +179,12 @@
 		SELECT ML_HASH_NAME
 		FROM (SELECT *
 		FROM MOVELINE_HASH
-		ORDER BY DBMS_RANDOM.RANDOM())
+		ORDER BY DBMS_RANDOM.RANDOM()) A
+		JOIN MOVELINE_BOARD USING(ML_NO)
 
 		WHERE ROWNUM <![CDATA[<]]>=
 		10
+		AND ML_DELETE_DT IS NULL
 	</select>
 
 
@@ -296,6 +299,7 @@
 		<if test='theme != null and theme != ""'>
 			WHERE ML_THEME LIKE '%' || #{theme} || '%'
 		</if>
+		AND ML_DELETE_DT IS NULL
 	</select>
 
 	<!-- 코스 테마별 목록 조회 -->

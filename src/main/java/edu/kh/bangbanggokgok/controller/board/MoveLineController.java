@@ -234,6 +234,29 @@ public class MoveLineController {
 
 		MoveLineDetail movelineDetail = service.selectMovelineDetail(movelineNo);
 
+
+		// 마스킹 처리
+		
+		// 첫 글자
+		String fstName = movelineDetail.getUserName().substring(0,1);
+				
+		// 중간 글자
+		String midName = movelineDetail.getUserName().substring(1, movelineDetail.getUserName().length()-1);
+		
+		String userName2 = "";
+		for(int i=-0; i<userName2.length(); i++) {
+			userName2 += "*";
+		}
+		
+		// 마지막 글자
+		String lastName = movelineDetail.getUserName().substring(movelineDetail.getUserName().length()-1,movelineDetail.getUserName().length());
+		
+		String userName = fstName + midName + lastName;
+
+		movelineDetail.setUserName(userName);
+
+		System.out.println("userName : " + userName);
+		
 		List<MoveLineImage> movelineImage = service.selectMovelineImage(movelineNo);
 		List<LandMarkDetail> landmarkDetail = service.selectLandmarkDetail(movelineNo);
 		List<LandMarkIMG> landmarkImage = service.selectLandmarkImage(movelineNo);
@@ -248,6 +271,7 @@ public class MoveLineController {
 		// 이전 목록 주소를 세션에 추가(삭제 시 이용)
 		session.setAttribute("listURL", listURL);
 		
+		// 저장된 double형 좌표값 그대로 보내기
 		String gsontext = new Gson().toJson(landmarkDetail);
 		
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
