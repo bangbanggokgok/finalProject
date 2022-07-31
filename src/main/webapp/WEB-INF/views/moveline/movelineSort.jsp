@@ -36,7 +36,6 @@
                     <h1>테마별</h1>
                     <div id="courses">
                         <ul class="c-list">
-                            <input type="hidden" id="${movelineNo}">
                             <li name="movelineTheme" class="movelineTheme">가족</li>
                             <li name="movelineTheme" class="movelineTheme">아이</li>
                             <li name="movelineTheme" class="movelineTheme">데이트</li>

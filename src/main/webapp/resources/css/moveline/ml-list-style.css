@@ -133,7 +133,7 @@ div > img {
 }
 
 /* 즐겨찾기, 조회수, 작성자 영역 */
-/* .ml-detail-plus2 {
+.ml-detail-plus2 {
   display: inline-block;
   position: absolute;
   top: 0;
@@ -200,7 +200,7 @@ div > img {
 }
 .bookmarkOff2.hide {
   display: none;
-} */
+}
 /* 페이지네이션(Pagination */
 .pagination {
   padding: 0;

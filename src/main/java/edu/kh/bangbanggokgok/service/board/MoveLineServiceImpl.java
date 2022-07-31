@@ -285,7 +285,8 @@ public class MoveLineServiceImpl implements MoveLineService{
 		param.put("userNo", Integer.toString(userNo));
 		
 		int movelineNumber = dao.insertMoveline(param);
-		
+//		movelineNumber.setLandMarkX(Double.parseDouble(param.get("lng")));
+//		movelineNumber.setLandMarkY(Double.parseDouble(param.get("lat")));
 		
 //		if(movelineNumber > 0) {
 //			
