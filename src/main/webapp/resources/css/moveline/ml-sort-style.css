@@ -1,54 +1,54 @@
 /* 전체 화면 */
-#contents{
-    width: 1140px;
-    padding: 70px 20px 27px 20px;
-    /* margin-left: 560px; */
+#contents {
+  width: 1140px;
+  padding: 70px 20px 27px 20px;
+  /* margin-left: 560px; */
 }
-section{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-div{
-    box-sizing: border-box;
+section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-li{
-    list-style: none;
+div {
+  box-sizing: border-box;
 }
 
-a{
-    text-decoration: none;
-    color: black;
+li {
+  list-style: none;
 }
 
-h1{
-    border-bottom: 1px solid #CCC;
-    padding-bottom: 10px;
-    margin-left: 12px;
-    margin-right: 12px;
-    font-size: 30px;
+a {
+  text-decoration: none;
+  color: black;
+}
+
+h1 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+  margin-left: 12px;
+  margin-right: 12px;
+  font-size: 30px;
 }
 
 /* 지역별 */
-#location-area{
-    margin-top: 30px;
-    display: inline-block;
-    width: 100%;
-    position: relative;
-    width: 100%;
-    margin-top: 24px;
+#location-area {
+  margin-top: 30px;
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  width: 100%;
+  margin-top: 24px;
 }
 
-#locations{
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center;
-    margin-left: 65px;
+#locations {
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+  margin-left: 65px;
 }
-.location-div{
-    /* border: 1px solid #bbd0ff;
+.location-div {
+  /* border: 1px solid #bbd0ff;
     width: 6.25%;
     display: flex;
     justify-content: center;
@@ -58,183 +58,181 @@ h1{
     height: 40px;
     font-size: 24px; */
 
-    float: left;
-    width: 11.1%;
-    box-sizing: border-box;
-    text-align: center;
+  float: left;
+  width: 11.1%;
+  box-sizing: border-box;
+  text-align: center;
 }
 
-.location-div:hover{
-    box-shadow: 5px 5px 7px 1px rgb(68 68 68 / 8%);
-    transition-duration: 120ms;
-    background-color: #bbd0ff;
+.location-div:hover {
+  box-shadow: 5px 5px 7px 1px rgb(68 68 68 / 8%);
+  transition-duration: 120ms;
+  background-color: #bbd0ff;
 }
-.location-div:focus-within{
-    color: #ccc;
-}
-
-#locations li{
-    float: left;
-    font-size: 24px;
-    text-align: center;
-    width: 15%;
+.location-div:focus-within {
+  color: #ccc;
 }
 
-#locations li:hover{
-    cursor: pointer;
-    background-color: #bbd0ff;
-    color: white;
+#locations li {
+  float: left;
+  font-size: 24px;
+  text-align: center;
+  width: 15%;
 }
 
-#locations li>a:hover{
-    color: white;
+#locations li:hover {
+  cursor: pointer;
+  background-color: #bbd0ff;
+  color: white;
 }
 
-#locations li{
-    color: black;
-    box-sizing: border-box;
-    padding: 12px 0;
-    font-size: 24px;
+#locations li > a:hover {
+  color: white;
 }
 
+#locations li {
+  color: black;
+  box-sizing: border-box;
+  padding: 12px 0;
+  font-size: 24px;
+}
 
 /* 코스별 */
-#course-area{
-    margin-top: 50px;
+#course-area {
+  margin-top: 50px;
 }
 
-#courses{
-    font-size: 22px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+#courses {
+  font-size: 22px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.c-list li{
-    float: left;
-    border-radius: 20px;
-    width: 100px;
-    line-height: 100px;
-    text-align: center;
-    margin: 30px 20px;
-    background-color: #bbd0ff;
-    color: white;
+.c-list li {
+  float: left;
+  border-radius: 20px;
+  width: 100px;
+  line-height: 100px;
+  text-align: center;
+  margin: 30px 20px;
+  background-color: #bbd0ff;
+  color: white;
 }
 
-.c-list li:hover{
-    cursor: pointer;
-    background-color: white;
-    color: black;
-    
+.c-list li:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
 /* 해시태그별 */
-#hashTag-area{
-    margin-top: 50px;
-    display: inline-block;
-    width: 100%;
+#hashTag-area {
+  margin-top: 50px;
+  display: inline-block;
+  width: 100%;
 }
 
-#tags{
-    display: flex;
+#tags {
+  display: flex;
 }
 
-.t-list li{
-    float: left;
-    text-align: center;
-    margin: 20px 20px;
-    font-size: 20px;
-    font-weight: bold;
+.t-list li {
+  float: left;
+  text-align: center;
+  margin: 20px 20px;
+  font-size: 20px;
+  font-weight: bold;
 }
-
 
 /* 샘플 영역 */
-.sample-area{
-    border-top: 1px solid #ccc;
-    margin-top: 50px;
-    display: flex;
-    justify-content: space-around;
-
+.sample-area {
+  border-top: 1px solid #ccc;
+  margin-top: 50px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.samples{
-    border: 1px solid #ccc;
-    margin-top: 20px;
-    width: 350px;
-    /* position: absolute; */
-    display: inline-block;
+.samples {
+  border: 1px solid #ccc;
+  margin-top: 20px;
+  width: 350px;
+  /* position: absolute; */
+  display: inline-block;
 }
 
-.s-pic{
-    border: 1px solid #ccc;
-    overflow: hidden;   
-    position: relative;
-    height: 260px;
-
+.s-pic {
+  border: 1px solid #ccc;
+  overflow: hidden;
+  position: relative;
+  height: 235px;
 }
 
-.s-pic img{
-    max-width: 350px;
-    max-height: 385px;
+.s-pic img {
+  /* max-width: 350px; */
+  width: 100%;
+  max-height: 385px;
 }
 
-.s-pic>a{
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 100;
-    background: rgba(0,0,0,0.3);
-    box-sizing: border-box;
-    padding: 20px 20px;
+.s-pic > a {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  padding: 20px 20px;
 }
 
-.s-pic strong{
-    overflow: hidden;
-    display: -webkit-box;
-    height: 70px;
-    color: #fff;
-    margin-bottom: 7px;
-    font-weight: 700;
-    line-height: 1.2;
-    text-overflow: ellipsis;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    font-size: 25px;
+.s-pic strong {
+  overflow: hidden;
+  display: -webkit-box;
+  height: 70px;
+  color: #fff;
+  margin-bottom: 7px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  font-size: 25px;
 }
 
-.s-pic ul{
-    width: 120px;
-    padding: 0;
-    margin-top: 100px;
+.s-pic ul {
+  width: 120px;
+  padding: 0;
+  margin-top: 85px;
 }
 
-.s-pic li{
-    color: #fff;
-    width: 100%;
-    overflow: hidden;
-    display: inline-block;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+.s-pic li {
+  color: #fff;
+  width: 100%;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.s-list span{
-    display: block;
-    margin-top: 20px;
-    margin-left: -4px;
-    padding-left: 30px;
-    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_leftobj.png) 0 50% no-repeat;
-    background-size: 18px;
-    color: #000;
-    font-size: 22px;
-    font-weight: bold;
+.s-list span {
+  display: block;
+  margin-top: 20px;
+  margin-left: -4px;
+  padding-left: 30px;
+  background: url(https://cdn.visitkorea.or.kr/resources/images/sub/ico_leftobj.png)
+    0 50% no-repeat;
+  background-size: 18px;
+  color: #000;
+  font-size: 22px;
+  font-weight: bold;
 }
 
-.s-list>li{
-    background: url(https://cdn.visitkorea.or.kr/resources/images/sub/line_leftobj.png) 0 0 repeat-y;
-    background-size: 5px;
-    padding: 10px 0;
-    margin-left: 20px;
+.s-list > li {
+  background: url(https://cdn.visitkorea.or.kr/resources/images/sub/line_leftobj.png)
+    0 0 repeat-y;
+  background-size: 5px;
+  padding: 10px 0;
+  margin-left: 20px;
 }
