@@ -181,9 +181,6 @@ public interface MoveLineService {
 
 	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, String hashList, int userNo, String webPath, String folderPath) throws IOException;
 
-	// 코스 목록 즐겨찾기 확인용
-//	List<MoveLineBookmark> bookmarkCheck();
-
 	
 
 

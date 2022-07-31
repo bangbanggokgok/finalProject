@@ -71,7 +71,6 @@
                                     <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기on">
                                     <input class="bookmarkValue" type="hidden" value = "${checkBookmark}" id="${movelineNo}">
                                 </span>
-                             
                             </button>
                         </div>
                         <div id="top-bottom">
