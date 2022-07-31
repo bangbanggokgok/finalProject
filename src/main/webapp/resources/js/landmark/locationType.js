@@ -101,7 +101,7 @@ function loadLocation(locationNum, pageNo) {
                 .classList.remove(dNone);
             }
           }
-          photosCounter.textContent = filteredArray.length;
+          // photosCounter.textContent = filteredArray.length;
           // photosCounter.textContent = filteredArray.length;
         }
 
