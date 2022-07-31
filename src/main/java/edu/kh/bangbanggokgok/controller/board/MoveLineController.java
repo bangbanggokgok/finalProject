@@ -1,6 +1,8 @@
 package edu.kh.bangbanggokgok.controller.board;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +27,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 
 import edu.kh.bangbanggokgok.service.board.MoveLineService;
 import edu.kh.bangbanggokgok.service.reply.ReplyService;
@@ -177,7 +181,6 @@ public class MoveLineController {
 	@GetMapping("/list/theme")
 	public String movelineTheme(String theme, Model model,
 			@RequestParam(value = "cp", required = false, defaultValue = "1") int cp,
-			HttpSession session,
 			@RequestParam Map<String, Object> paramMap) {
 
 		Map<String, Object> map = null;
@@ -186,21 +189,6 @@ public class MoveLineController {
 		paramMap.put("theme", theme);
 
 		map = service.selectMovelineTheme(paramMap);
-		
-//		// 비로그인 판별
-//		User loginUser = (User) session.getAttribute("loginUser");
-//		int userNo = 0;
-//		if (loginUser != null) {
-//			userNo = loginUser.getUserNo();
-//		}
-//		// 북마크 확인용 변수 전환
-//		String sMovelineNo = Integer.toString(movelineNo);
-//		String sUserNo = Integer.toString(userNo);
-//
-//		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
-//
-//		model.addAttribute("checkBookmark", checkBookmark);
-		
 
 		model.addAttribute("map", map);
 
@@ -240,7 +228,7 @@ public class MoveLineController {
 		List<LandMarkDetail> landmarkDetail = service.selectLandmarkDetail(movelineNo);
 		List<LandMarkIMG> landmarkImage = service.selectLandmarkImage(movelineNo);
 		List<MoveLineHashTag> movelineHashtag = service.selectMovelineHashtag(movelineNo);
-
+		
 		model.addAttribute("movelineDetail", movelineDetail);
 		model.addAttribute("movelineImage", movelineImage);
 		model.addAttribute("movelineHashtag", movelineHashtag);
@@ -249,6 +237,14 @@ public class MoveLineController {
 
 		// 이전 목록 주소를 세션에 추가(삭제 시 이용)
 		session.setAttribute("listURL", listURL);
+		
+		String gsontext = new Gson().toJson(landmarkDetail);
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		Type listType = new TypeToken<ArrayList<LandMarkDetail>>(){}.getType();
+		List<LandMarkDetail> list = gson.fromJson(gsontext, listType);
+		
+		model.addAttribute("landMarkJson", list);
 
 		// 비로그인 판별
 		User loginUser = (User) session.getAttribute("loginUser");
@@ -268,7 +264,10 @@ public class MoveLineController {
 		List<Reply> rList = replyService.selectReplyList(movelineNo);
 		model.addAttribute("rList", rList);
 		
+//		model.addAttribute("landTestMarkY", list.get(0).getLandMarkY());
 		
+//		System.out.println("landX : " + landmarkDetail.get(0).getLandMark());
+//		System.out.println("landY : " + landmarkDetail.get(0).getLandMarkY());
 //		session.setAttribute("landMarkX", landmarkDetail.get(0).getUserName());
 		
 

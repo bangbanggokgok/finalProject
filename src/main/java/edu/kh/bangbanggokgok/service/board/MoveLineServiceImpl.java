@@ -285,7 +285,8 @@ public class MoveLineServiceImpl implements MoveLineService{
 		param.put("userNo", Integer.toString(userNo));
 		
 		int movelineNumber = dao.insertMoveline(param);
-		
+//		movelineNumber.setLandMarkX(Double.parseDouble(param.get("lng")));
+//		movelineNumber.setLandMarkY(Double.parseDouble(param.get("lat")));
 		
 //		if(movelineNumber > 0) {
 //			
@@ -365,21 +366,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 	
 		return movelineNumber;
 	}
-
-
-//	// 즐겨찾기용
-//	@Override
-//	public List<MoveLineBookmark> bookmarkCheck() {
-//
-//		
-//		
-//		int checkBookmark = service.movelineBookmark(sUserNo, sMovelineNo);
-//
-//		model.addAttribute("checkBookmark", checkBookmark);
-//		
-//		return null;
-//	}
-
 
 
 

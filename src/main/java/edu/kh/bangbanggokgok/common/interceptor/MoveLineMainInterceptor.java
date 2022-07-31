@@ -53,22 +53,6 @@ public class MoveLineMainInterceptor implements HandlerInterceptor{
 		}
 		
 		return HandlerInterceptor.super.preHandle(request, response, handler);
-		
-		
-//		// 코스 목록 - 즐겨찾기용
-//		if(application.getAttribute("bookmarkCheck") == null) {
-//			
-//			List<MoveLineBookmark> bookmarkCheck = MovelineService.bookmarkCheck();
-//			
-//			application.setAttribute("preMoveLineList", bookmarkCheck);
-//		}
-//		
-//		return HandlerInterceptor.super.preHandle(request, response, handler);
-//		
-		
-		
-		
-		
 	}
 
 }

@@ -39,8 +39,8 @@ public class MoveLineDetail {
 	private int landmarkIndex;
 	
 	private int landMarkNo;
-	private int landMarkX;
-	private int landMarkY;
+	private double landMarkX;
+	private double landMarkY;
 	private String landMarkName;
 	private String landMarkContent;
 	private String landMarkAddress;

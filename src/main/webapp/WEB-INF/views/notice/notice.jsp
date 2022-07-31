@@ -22,8 +22,8 @@
         <h1>공지사항</h1>
         <div class="list">
             <div class="category" value="all"><a id="all" href="${contextPath}/notice/list">전체</a></div>
-            <div class="category type" id="notice" value="notice" onclick="noticeType()">공지</div>
-            <div class="category type" id="event" value="event" onclick="noticeType()">이벤트</div>
+            <div class="category type" id="notice" value="notice" onclick="noticeType(1)">공지</div>
+            <div class="category type" id="event" value="event" onclick="noticeType(1)">이벤트</div>
             <%-- <a class="category type" id="notice" onclick="noticeType()">notice</a>
             <a class="category type" id="notice" onclick="noticeType()">event</a> --%>
             <%-- <a class="category" id="notice">notice</a> --%>
@@ -65,9 +65,7 @@
                             </c:when>
 
                             <c:otherwise>
-                                <li>
-                                <div value="event" onclick=""
-                                <a href="${url}${i}">${i}</a></li>        
+                                <li><a href="${url}${i}">${i}</a></li>        
                             </c:otherwise>
                         </c:choose>
 
@@ -79,7 +77,7 @@
                 </ul>
         </div>
     </div>
-
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
     <script>
         const contextPath = "${contextPath}";
     </script>
