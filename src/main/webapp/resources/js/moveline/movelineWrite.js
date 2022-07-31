@@ -58,15 +58,15 @@ function mlWriteValidation() {
     //     return false;
     // }
 
-    // if (themeSelect.length == 0) {
-    //     alert("테마를 선택해주세요.");
-    //     return false;
-    // }
+    if (themeSelect.length == 0) {
+        alert("테마를 선택해주세요.");
+        return false;
+    }
 
-    // if (img0.value == "") {
-    //     alert("사진을 1장 이상 첨부해주세요.");
-    //     return false;
-    // }
+    if (img0.value == "") {
+        alert("사진을 1장 이상 첨부해주세요.");
+        return false;
+    }
 
     if (content.value.trim().length == 0) {
         alert("내용을 입력해주세요.");
