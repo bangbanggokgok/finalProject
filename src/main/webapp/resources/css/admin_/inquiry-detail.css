@@ -133,3 +133,15 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 #createDate{
     padding-top: 10px;
 }
+
+#profile{
+    height:40px;
+    width: 40px;
+    margin-top: 8px;
+    margin-right: 10px;
+}
+
+#user-area{
+    display: flex;
+    margin-bottom: 8px;
+}
