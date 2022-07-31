@@ -60,7 +60,7 @@ function loadLocation(locationNum, pageNo) {
 
         for (let page of pageBtn) {
           page.addEventListener("click", () => {
-            page.classList.add("red");
+            page.classList.toggle("red");
           });
         }
         //검색키워드로 필터 적용
@@ -128,12 +128,14 @@ function loadLocation(locationNum, pageNo) {
         // init();
 
         // 페이지관련 로직
+
         const paginationUl = document.createElement("ul");
         for (let i = 0; i < map.pagination.endPage; i++) {
           let j = i + 1;
           const pageNumber = document.createElement("li");
           const a = document.createElement("a");
           a.innerText = j;
+          a.classList.add("page-btn");
           a.setAttribute(
             "onclick",
             "loadLocation(" + locationNum + "," + j + ")"
