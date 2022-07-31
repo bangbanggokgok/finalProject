@@ -109,7 +109,7 @@
 
     <div class="row">
       <div class="col-lg-3 col-md-6 flex">
-        <a href="#">
+        <a href="moveline-main/detail/216">
             <div class="card" style="width: 18rem">
                 <img
                 src="${contextPath}/resources/images/main/a.jpg"
@@ -125,7 +125,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <a href ="#">
+        <a href ="moveline-main/detail/217">
             <div class="card" style="width: 18rem">
                 <img
                     src="${contextPath}/resources/images/main/정동진.jpg"
@@ -142,7 +142,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <a href ="#">
+        <a href ="moveline-main/detail/218">
             <div class="card" style="width: 18rem">
                 <img
                     src="${contextPath}/resources/images/main/전주.jpg"
