@@ -71,9 +71,19 @@ public class MoveLineController {
 
 	// 코스 작성 페이지 조회
 	@GetMapping("/list/write")
-	public String movelineWrite(Model model) {
-
+	public String movelineWrite(Model model, HttpSession session, RedirectAttributes ra) {
+		
+		User loginUser = (User) session.getAttribute("loginUser");
+		if (loginUser == null) {
+			return redirectHome(ra);
+		}
+		
 		return "moveline/movelineWrite";
+	}
+	
+	public String redirectHome(RedirectAttributes ra) {
+		ra.addFlashAttribute("message", "로그인 후 이용 바람");
+		return "redirect:/user/login-page";
 	}
 
 	// 특정 지역에 따른 랜드마크 조회
