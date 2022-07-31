@@ -3,8 +3,11 @@
   padding: 0;
   list-style: none;
   margin-top: 80px;
+  /* margin-bottom: */
 }
-
+.reply-list-area {
+  margin-bottom: 50px;
+}
 /* 댓글 한 줄(댓글 하나) */
 .reply-row {
   padding: 15px 30px;
@@ -40,8 +43,11 @@
 .reply-btn-area {
   display: flex;
   justify-content: flex-end;
+  /* z-index: 34634534; */
 }
-
+#reply-area {
+  z-index: 3453453244;
+}
 /* 버튼 */
 .reply-btn-area > button {
   width: 50px;
