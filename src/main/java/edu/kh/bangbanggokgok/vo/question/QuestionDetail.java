@@ -16,6 +16,7 @@ public class QuestionDetail {
 	private String questionAnswer;
 	private int userNo;
 	private String managerName;
+	private String userProfile;
 	
 
 }

@@ -108,8 +108,8 @@ article, aside, details, figcaption, figure, footer, main, menu, nav, section, s
 }
 
 .boardImg{
-    width: 197px;
-    height: 197px;
+    width: 100%;
+    height: 100%;
     display: inline-block;
     text-align: center;
 }
