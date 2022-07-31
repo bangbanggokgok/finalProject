@@ -43,7 +43,7 @@ rangeInput.addEventListener("input", function () {
   //선택자.style.setProperty('background-color', 'blue');
 });
 //검색키워드로 필터 적용
-onst captions = document.querySelectorAll(
+const captions = document.querySelectorAll(
   ".image-list figcaption p:first-child"
   // image-list figcaption p:first-child
 );
