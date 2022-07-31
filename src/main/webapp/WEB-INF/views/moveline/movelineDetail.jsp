@@ -109,9 +109,10 @@
 
                             <li class="location-detail">
                                 <span>
-                                    <img src="${contextPath}/resources/images/movelineDetail/location.png" alt="">
+                                    <i class="fa-solid fa-car-side"></i>
+                                    <%-- <img src="${contextPath}/resources/images/movelineDetail/location.png" alt=""> --%>
                                 </span>
-                                <span>
+                                <span class=loca-wrap>
                                     <div class="loca1">지역</div>
                                     <div class="loca2">${movelineDetail.locationName}</div>
                                 </span>
@@ -120,9 +121,10 @@
 
                             <li class="theme-detail">
                                 <span>
-                                    <img src="${contextPath}/resources/images/movelineDetail/theme.png" alt="">
+                                    <%-- <img src="${contextPath}/resources/images/movelineDetail/theme.png" alt=""> --%>
+                                    <i class="fa-solid fa-plane"></i>
                                 </span>
-                                <span>
+                                <span class=thema-wrap>
                                     <div class="theme1">테마</div>
                                     <div class="theme2">
                                        <a>${movelineDetail.movelineTheme}</a>
@@ -135,7 +137,7 @@
                                 <span>87km</span>
                             </li>
                             <div id="moveline-hashtags">
-                                <div></div>
+                                <%-- <div></div> --%>
                                 <ul>
                                     <c:forEach var="movelineHashtag" items="${movelineHashtag}">
                                             <c:set var="MLHashTag" value="${movelineHashtag.MLHashTag}"/>
@@ -162,7 +164,7 @@
 
 
                 <div id="land-start">랜드마크
-                    <span><img src="${contextPath}/resources/images/movelineDetail/여행일러스트.jpg" style="width:100px;"></span>
+                    <%-- <span><img src="${contextPath}/resources/images/movelineDetail/여행일러스트.jpg" style="width:100px;"></span> --%>
                 </div>
 
                 <div class="landmark-detail">
@@ -184,21 +186,21 @@
 
                 
 
-                
+                <div class="modal">
+                    <span id="modal-close">&times;</span> <img id="modal-image"src="">
+                </div>
             
                 <!-- 댓글 -->
                 <jsp:include page="/WEB-INF/views/moveline/movelineReply.jsp"/>
+                <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
         </div>
 
-        <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+
+
 
     </main>
 
-    <div class="modal">
-      <span id="modal-close">&times;</span> <img id="modal-image"
-         src="">
-   </div>
-
+     
     <script>
         const contextPath = "${contextPath}";
         const userNo = "${loginUser.userNo}";
