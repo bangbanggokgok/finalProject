@@ -19,7 +19,7 @@
             <div id="modal2" class="modal-overlay2">
                 <div class="modal-window2">
                         <div class="title2">
-                            <h2>상세</h2>
+                            <h2></h2>
                         </div>
                     <div class="close-area2">X</div>
                     <div class="content2">

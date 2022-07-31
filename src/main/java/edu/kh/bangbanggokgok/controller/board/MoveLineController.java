@@ -243,15 +243,15 @@ public class MoveLineController {
 		// 중간 글자
 		String midName = movelineDetail.getUserName().substring(1, movelineDetail.getUserName().length()-1);
 		
-		String userName2 = "";
-		for(int i=-0; i<userName2.length(); i++) {
-			userName2 += "*";
+		String maskingName = "";
+		for(int i=-0; i<midName.length(); i++) {
+			maskingName += "*";
 		}
 		
 		// 마지막 글자
 		String lastName = movelineDetail.getUserName().substring(movelineDetail.getUserName().length()-1,movelineDetail.getUserName().length());
 		
-		String userName = fstName + midName + lastName;
+		String userName = fstName + maskingName + lastName;
 
 		movelineDetail.setUserName(userName);
 
