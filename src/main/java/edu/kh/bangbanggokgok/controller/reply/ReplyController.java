@@ -34,9 +34,9 @@ public class ReplyController {
 	
 	// 댓글 목록 조회
 	@GetMapping("/selectReplyList")
-	public String selectReplyList(int boardNo) {
+	public String selectReplyList(int movelineNo) {
 		
-		List<Reply> rList = service.selectReplyList(boardNo);
+		List<Reply> rList = service.selectReplyList(movelineNo);
 		return new Gson().toJson(rList);
 	}
 	
