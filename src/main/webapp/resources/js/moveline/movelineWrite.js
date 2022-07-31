@@ -387,8 +387,37 @@ $('.close').eq(0).click(modalAnimation);
 
 //  action="#" method="POST" enctype="multipart/form-data" onsubmit="return mlWriteValidation()"
 
+// $('#btnChk').click(function() {
+//     var gSize = "";$("input[name=themeSelect]:checked").each(function() {
+//         if(gSize == ""){
+//             gSize = $(this).val();
+//         } else {
+//             gSize = gSize + "," + $(this).val();
+//         }});
+//     $('#gSize').val(gSize);
+// });
+
+
+// $("input[name=themeSelect]:checked").each(function() {
+//     var theme = $(this).val();
+//     console.log(theme);
+//   });
+
 document.getElementById("postSubmit").addEventListener("click",function(){
     
+    // var gSize = "";
+
+    // $("input[name=themeSelect]:checked").each(function() {
+    //     if(theme == ""){
+    //         theme = $(this).val();
+    //     } else {
+    //         theme = theme + "," + $(this).val();
+    //         console.log(theme);
+
+    //     }});
+    // $('#theme').val(theme);
+
+
     if(mlWriteValidation()){
         
         const formTag = document.getElementsByTagName("form")[0]
@@ -422,6 +451,24 @@ document.getElementById("postSubmit").addEventListener("click",function(){
                 formTag.append(indexValue);
             }
         };
+        
+        var theme_arr = document.getElementsByName("themeSelect");
+
+        var themeList = "";
+        for(var i=0; i<theme_arr.length;i++) {
+            if(theme_arr[i].checked) {
+                themeList = themeList+','+theme_arr[i].value;
+            }
+        }
+        themeList = themeList.substring(1,themeList.length);
+    
+        const themeValue = document.createElement("input");
+        themeValue.setAttribute("type","hidden");
+        themeValue.setAttribute("name","themeList");
+        themeValue.setAttribute("value",themeList);
+        formTag.append(themeValue);
+
+    
         formTag.submit();
     };
 });

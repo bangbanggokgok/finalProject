@@ -53,13 +53,13 @@
                         <div>
                             <label class="optionList">테마 선택<span>(중복 체크 가능)</span></label>
                             <div class="themeSelect">
-                                <input type="checkbox" name="themeSelect" id="theme1"><label for="theme1">가족</label>
-                                <input type="checkbox" name="themeSelect" id="theme2"><label for="theme2">아이</label>
-                                <input type="checkbox" name="themeSelect" id="theme3"><label for="theme3">데이트</label>
-                                <input type="checkbox" name="themeSelect" id="theme4"><label for="theme4">도보</label>
-                                <input type="checkbox" name="themeSelect" id="theme5"><label for="theme5">힐링</label>
-                                <input type="checkbox" name="themeSelect" id="theme6"><label for="theme6">맛집</label>
-                                <input type="checkbox" name="themeSelect" id="theme7"><label for="theme7">캠핑</label>
+                                <input type="checkbox" name="themeSelect" id="theme1" value="가족"><label for="theme1">가족</label>
+                                <input type="checkbox" name="themeSelect" id="theme2" value="아이"><label for="theme2">아이</label>
+                                <input type="checkbox" name="themeSelect" id="theme3" value="데이트"><label for="theme3">데이트</label>
+                                <input type="checkbox" name="themeSelect" id="theme4" value="도보"><label for="theme4">도보</label>
+                                <input type="checkbox" name="themeSelect" id="theme5" value="힐링"><label for="theme5">힐링</label>
+                                <input type="checkbox" name="themeSelect" id="theme6" value="맛집"><label for="theme6">맛집</label>
+                                <input type="checkbox" name="themeSelect" id="theme7" value="캠핑"><label for="theme7">캠핑</label>
                             </div>
                         </div>
                         <div id="map" style="width:750px;height:350px;"></div>
@@ -70,102 +70,85 @@
                 <!-- 업로드 이미지 -->
                 <label class="addImg" style="font-weight:bold;">사진 첨부<span>(1장 필수)</span></label>
                 <div class="img-box">
-
-                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
-                    <c:choose>
-                        <c:when test="${moveLineImg.movelineLevel == 0}">
-                            <c:set var="img0"  value="${contextPath}${moveLineImg.movelineRename}" />
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-
-                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
-                    <c:choose>
-                        <c:when test="${moveLineImg.movelineLevel == 1}">
-                            <c:set var="img1"  value="${contextPath}${moveLineImg.movelineRename}" />
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-
-                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
-                    <c:choose>
-                        <c:when test="${moveLineImg.movelineLevel == 2}">
-                            <c:set var="img2"  value="${contextPath}${moveLineImg.movelineRename}" />
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-                
-                <c:forEach var="moveLineImg" items="${movelineImage.moveLineImg}" >
-                    <c:choose>
-                        <c:when test="${moveLineImg.movelineLevel == 3}">
-                            <c:set var="img3"  value="${contextPath}${moveLineImg.movelineRename}" />
-                        </c:when>
-                    </c:choose>
-                </c:forEach>
-
                     <div class="boardImg">
                         <label for="img0">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img0}">
+                            <c:if test="${!empty movelineImage.imageList[0]}">
+                                <c:if test="${movelineImage.imageList[0].MovelineLevel == 0}">
+                                    <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${movelineImage.imageList[0].movelineRename}">
+                                </c:if>    
+                            </c:if>
+                            <c:if test="${empty movelineImage.imageList[0]}">
+                                <img class="far fa-plus-circle fa-lg preview" src=""> 
+                            </c:if>
                         </label>
                         <input type="file" class="input-img" id="img0" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
-
                     <div class="boardImg">
                         <label for="img1">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img1}">
+                            <c:if test="${!empty movelineImage.imageList[1]}">
+                                <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${movelineImage.imageList[1].movelineRename}">
+                            </c:if>
+                            <c:if test="${empty movelineImage.imageList[1]}">
+                                <img class="far fa-plus-circle fa-lg preview" src=""> 
+                            </c:if>
                         </label>
                         <input type="file" class="input-img" id="img1" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
-    
                     <div class="boardImg">
                         <label for="img2">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img2}">
+                            <c:if test="${!empty movelineImage.imageList[2]}">
+                                <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${movelineImage.imageList[2].movelineRename}">
+                            </c:if>
+                            <c:if test="${empty movelineImage.imageList[2]}">
+                                <img class="far fa-plus-circle fa-lg preview" src=""> 
+                            </c:if>
                         </label>
                         <input type="file" class="input-img" id="img2" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
-                    
                     <div class="boardImg">
                         <label for="img3">
-                            <img class="far fa-plus-circle fa-lg preview" src="${img3}">
+                            <c:if test="${!empty movelineImage.imageList[3]}">
+                                <img class="far fa-plus-circle fa-lg preview" src="${contextPath}${movelineImage.imageList[3].movelineRename}">
+                            </c:if>
+                            <c:if test="${empty movelineImage.imageList[3]}">
+                                <img class="far fa-plus-circle fa-lg preview" src=""> 
+                            </c:if>
                         </label>
                         <input type="file" class="input-img" id="img3" name="images" accept="image/*" style="display:none;">
                         <span class="delete-image">&times;</span>
                     </div>
                     
-                    <input type="hidden" name="deleteList" id="deleteList" value="">
-                </div>
+                    <div class="contentField">
+                        <label class="contentLabel">상세정보</label>
+                        <article class="contentArea">
+                            <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
+                        </article>
 
-
-                 
-
-                <div class="contentField">
-                    <label class="contentLabel">상세정보</label>
-                    <article class="contentArea">
-                        <textarea name="contents" placeholder="내용을 입력해주세요." class="content" id="contents"></textarea>
-                    </article>
-
-                    <div class="WritingTag">
-                        <div class="tag_inner">
-                            <strong class="blind">태그 입력</strong>
-                            <div class="tag_input_box inactive">
-                                <input type="text" name="hashTag" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
-                                <div class="layer_auto_tag" style="display: none;">
-                                    <ul class="auto_tag_list"></ul>
+                        <div class="WritingTag">
+                            <div class="tag_inner">
+                                <strong class="blind">태그 입력</strong>
+                                <div class="tag_input_box inactive">
+                                    <input type="text" name="hashTag" placeholder="# 태그를 입력해주세요" class="tag_input" style="width: 300px;">
+                                    <div class="layer_auto_tag" style="display: none;">
+                                        <ul class="auto_tag_list"></ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
+                        <!-- <jsp:include page="/WEB-INF/views/moveline/hash.jsp"></jsp:include> -->
+
                     </div>
-                </div>
-                <section class="submitBar">
-                    <div class="buttonContainer">
-                        <div id="clickLatlng"></div>
-                        <button type="button" id="postSubmit" class="submitButton">등록하기</button>
-                    </div>
-                </section>
-            </form>
+                    <section class="submitBar">
+                        <div class="buttonContainer">
+                            <div id="clickLatlng"></div>
+                            <button type="button" id="postSubmit" class="submitButton">등록하기</button>
+                        </div>
+                    </section>
+                </form>
             <div class="sc-fznxKY bjxHni">
                 <section class="sc-fzpmMD fpVDsP"></section>
             </div>

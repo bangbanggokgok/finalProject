@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>scroll_menu</title>
+    <title>방방곡곡</title>
     <script
       src="https://kit.fontawesome.com/243327ab3a.js"
       crossorigin="anonymous"

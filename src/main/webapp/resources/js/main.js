@@ -1,63 +1,120 @@
-const outer = document.querySelector('.outer');
-const innerList = document.querySelector('.inner-list');
-const inners = document.querySelectorAll('.inner');
-let currentIndex = 0; // 현재 슬라이드 화면 인덱스
-
-inners.forEach((inner) => {
-  inner.style.width = `${outer.clientWidth}px`; // inner의 width를 모두 outer의 width로 만들기
-})
-
-innerList.style.width = `${outer.clientWidth * inners.length}px`; // innerList의 width를 inner의 width * inner의 개수로 만들기
-
-/*
-  버튼에 이벤트 등록하기
-*/
-const buttonLeft = document.querySelector('.button-left');
-const buttonRight = document.querySelector('.button-right');
-
-buttonLeft.addEventListener('click', () => {
-  currentIndex--;
-  currentIndex = currentIndex < 0 ? 0 : currentIndex; // index값이 0보다 작아질 경우 0으로 변경
-  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
-});
-
-buttonRight.addEventListener('click', () => {
-  currentIndex++;
-  currentIndex = currentIndex >= inners.length ? inners.length - 1 : currentIndex; // index값이 inner의 총 개수보다 많아질 경우 마지막 인덱스값으로 변경
-  innerList.style.marginLeft = `-${outer.clientWidth * currentIndex}px`; // index만큼 margin을 주어 옆으로 밀기
-});
-
-//--------------------------------------------------------
-
-
-
-
-var slides = document.querySelector('.slides'),
-slide = document.querySelectorAll('.slides li'),
-    currentIdx = 0,
-    slideCount = slide.length,
-    slideWidth = 180,
-    slideMargin = 30,
-    prevBtn = document.querySelector('.prev'),
-    nextBtn = document.querySelector('.next');
-
-    slides.style.width = (slideWidth + slideMargin)*slideCount - slideMargin + 'px';
-
-function moveSlide(num){
-  slides.style.left = -num * 210 + 'px';
-  currentIdx = num;
+const imageList = document.querySelector(".image-list");
+const btns = document.querySelectorAll(".view-options button");
+const imageListItems = document.querySelectorAll(".image-list li");
+const active = "active";
+const listView = "list-view";
+const gridView = "grid-view";
+const dNone = "d-none";
+const regions = document.querySelectorAll(".region-detail");
+const zoneTitle = document.querySelector("#zoneTitle");
+for (let region of regions) {
+  region.addEventListener("click", () => {
+    zoneTitle.innerText = region.innerText;
+  });
 }
-nextBtn.addEventListener('click', function(){
-  if(currentIdx < slideCount - 3){
-    moveSlide(currentIdx + 1);
-  }else{
-    moveSlide(0);
-  }
+//버튼 활성화
+for (const btn of btns) {
+  //배열명 btns 하나하나 각각의 요소를 btn이라는 요소로 설정한다
+  btn.addEventListener("click", function () {
+    const parent = this.parentElement;
+    document.querySelector(".view-options .active").classList.remove(active);
+    parent.classList.add(active);
+    if (parent.classList.contains("show-list")) {
+      parent.previousElementSibling.previousElementSibling.classList.add(dNone);
+      imageList.classList.remove(gridView);
+      imageList.classList.add(listView);
+    } else {
+      parent.previousElementSibling.classList.remove(dNone);
+      imageList.classList.remove(listView);
+      imageList.classList.add(gridView);
+    }
+  });
+}
+// 리스트 너비 조절 Range 스크립트
+const rangeInput = document.querySelector('input[type="range"]');
+rangeInput.addEventListener("input", function () {
+  //this.value
+  document.documentElement.style.setProperty(
+    "--minRangeValue",
+    `${this.value}px`
+  );
+  //this.value + 'px'랑 같다
+  //선택자.style.backgroundColor = 'blue';
+  //선택자.style.setProperty('background-color', 'blue');
 });
-prevBtn.addEventListener('click', function(){
-  if(currentIdx > 0){
-    moveSlide(currentIdx - 1);
-  }else{
-    moveSlide(slideCount - 3);
+//검색키워드로 필터 적용
+onst captions = document.querySelectorAll(
+  ".image-list figcaption p:first-child"
+  // image-list figcaption p:first-child
+);
+const myArray = [];
+let counter = 1;
+for (const caption of captions) {
+  myArray.push({
+    id: counter++,
+    text: caption.textContent,
+  });
+}
+// console.log(myArray);
+const searchInput = document.querySelector(".abc");
+const photosCounter = document.querySelector(".toolbar .counter span");
+searchInput.addEventListener("keyup", keyupHandler);
+//keyup : 키보드 눌르고 때는 순간
+//keydown : 사용자가 키보드 눌렀을 떄 한번만 작동
+//keypress : 사용자가 키보드 눌렀을 떄 계속 작동
+function keyupHandler() {
+  for (const item of imageListItems) {
+    item.classList.add(dNone);
   }
-});
+  const keywords = this.value;
+  const filteredArray = myArray.filter((el) =>
+    el.text.toLowerCase().includes(keywords.toLowerCase())
+  );
+  console.log(filteredArray);
+  if (filteredArray.length > 0) {
+    for (const el of filteredArray) {
+      //.image-list li:nth-child(2)
+      //.image-list li:nth-child(el.id)
+      document
+        .querySelector(`.image-list li:nth-child(${el.id})`)
+        .classList.remove(dNone);
+    }
+  }
+  photosCounter.textContent = filteredArray.length;
+  // photosCounter.textContent = filteredArray.length;
+}
+
+var region = document.getElementsByClassName("region-detail");
+function handleClick(event) {
+  // console.log(event.target);
+  // console.log(this);
+  // 콘솔창을 보면 둘다 동일한 값이 나온다
+  // console.log(event.target.classList);
+  if (event.target.classList[1] === "clicked") {
+    event.target.classList.remove("clicked");
+  } else {
+    for (var i = 0; i < region.length; i++) {
+      region[i].classList.remove("clicked");
+    }
+    event.target.classList.add("clicked");
+  }
+}
+function init() {
+  for (var i = 0; i < region.length; i++) {
+    region[i].addEventListener("click", handleClick);
+  }
+}
+init();
+
+//filter
+// var arr = {3,15,9,20,25};
+// var arr2 = arr.filter(function(n){
+//     return n % 5 == 0;  // 5로 나눴을 떄 나머지가 0인 값들만 다시 arr2 배열에 새로 넣겠다
+// });
+// console.log(arr2);
+// var arr = [3,15,9,20,25];
+// var arr2 = arr.filter(n=>{    return n % 5 == 0; });
+// console.log(arr2);
+// var arr = [3,15,9,20,25];
+// var arr2 = arr.filter(n=>n % 5 == 0);
+// console.log(arr2);

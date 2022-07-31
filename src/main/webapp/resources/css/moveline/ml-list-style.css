@@ -195,7 +195,12 @@ div > img {
 .icon-bookmark2:hover {
   cursor: pointer;
 }
-
+.bookmarkOn2.hide {
+  display: none;
+}
+.bookmarkOff2.hide {
+  display: none;
+}
 /* 페이지네이션(Pagination */
 .pagination {
   padding: 0;

@@ -16,12 +16,10 @@
 </c:forEach> --%>
 
 
-<%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
-   <c:if test="${landMarkNo == landmarkDetail.landMarkNo}">
-      <c:set var="landmarkName" value="${landmarkDetail.landmarkName}" />
-      <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
-   </c:if>
-</c:forEach> --%>
+<!-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
+    <c:set var="landmarkName" value="${landmarkDetail.landMarkName}" />
+    <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}" />
+</c:forEach>  -->
 
 <%-- <c:forEach var="landmarkDetail" items="${landmarkDetail}">
     <c:set var="landMarkNo" value="${landmarkDetail.landMarkNo}"/>
@@ -157,8 +155,8 @@
                     </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
-                    <div id="moveline-map-area">
-                        <div id="map"></div>
+                    <div id="moveline-map-area" class="landmark-list">
+                        <div id="map" class="landmark-list"></div>
                     </div>
 
                 </div>
@@ -206,22 +204,86 @@
         const movelineNo = "${movelineDetail.movelineNo}";
     </script>
 
+</body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943&libraries=services,clusterer,drawing"></script>
+    <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=bbde840e4c89992175cde165d98c8943"></script> -->
 
     <script>
-        var container = document.getElementById('map');
-        var options = {
-            center: new kakao.maps.LatLng(33.450701, 126.570667),
-            level: 3
-        };
 
-        var map = new kakao.maps.Map(container, options);
+        $( function() {
+            $( ".landmark-list" ).sortable();
+            
+            // alert("${landmarkDetail[0].landMarkX}")
+            // alert("${landmarkDetail[0].landMarkY}")
+            
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
+                mapOption = { 
+                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    level: 3 // 지도의 확대 레벨
+                };
+
+            var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+            
+            // 마커를 표시할 위치와 title 객체 배열입니다 
+            var positions = [
+                {
+                    title: '카카오', 
+                    latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+                },
+                {
+                    title: '생태연못', 
+                    latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+                },
+                {
+                    title: '텃밭', 
+                    latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+                }
+            ];
+
+            // 마커 이미지의 이미지 주소입니다
+            var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
+                
+            for (var i = 0; i < positions.length; i ++) {
+                
+                // 마커 이미지의 이미지 크기 입니다
+                var imageSize = new kakao.maps.Size(24, 35); 
+                
+                // 마커 이미지를 생성합니다    
+                var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize); 
+                
+                // 마커를 생성합니다
+                var marker = new kakao.maps.Marker({
+                    map: map, // 마커를 표시할 지도
+                    position: positions[i].latlng, // 마커를 표시할 위치
+                    title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
+                    image : markerImage // 마커 이미지 
+                });
+            }
+
+            // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
+            var linePath = [
+                new kakao.maps.LatLng(33.450705, 126.570677),
+                new kakao.maps.LatLng(33.450936, 126.569477),
+                new kakao.maps.LatLng(33.450879, 126.569940) 
+            ];
+
+            // 지도에 표시할 선을 생성합니다
+            var polyline = new kakao.maps.Polyline({
+                path: linePath, // 선을 구성하는 좌표배열 입니다
+                strokeWeight: 5, // 선의 두께 입니다
+                strokeColor: '#FFAE00', // 선의 색깔입니다
+                strokeOpacity: 0.7, // 선의 불투명도 입니다 1에서 0 사이의 값이며 0에 가까울수록 투명합니다
+                strokeStyle: 'solid' // 선의 스타일입니다
+            });
+
+            // 지도에 선을 표시합니다 
+            polyline.setMap(map);  
+        } );
+        // const contextPath = ${contextPath};
     </script>
 
-    
-
-</body>
     <script src="${contextPath}/resources/js/common/nav.js"></script>
     <script src="${contextPath}/resources/js/moveline/modal-test.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineBookmark.js"></script>
@@ -229,4 +291,5 @@
     <script src="${contextPath}/resources/js/landmark/landmark.js"></script>
     <script src="${contextPath}/resources/js/moveline/landmarkImageList.js"></script>
     <script src="${contextPath}/resources/js/moveline/movelineDetail.js"></script>
+    <script src="${contextPath}/resources/js/moveline/detailMap.js"></script>
 </html>

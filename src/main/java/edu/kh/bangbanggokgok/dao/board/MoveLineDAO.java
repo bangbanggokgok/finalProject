@@ -269,28 +269,42 @@ public class MoveLineDAO {
 	}
 
 
-	public int insertMoveline(Map<String, String> param) {
-		int result = sqlSession.insert("movelineMapper.insertMoveline",param);
-		if(result>0) {
-			return Integer.parseInt(param.get("movelineNo"));
-		}
-		return 0;
-	}
+	// 작동됨 - 사진, 해시태그, 테마 제외
+//	public int insertMoveline(Map<String, String> param) {
+//		int result = sqlSession.insert("movelineMapper.insertMoveline",param);
+//		if(result>0) {
+//			return Integer.parseInt(param.get("movelineNo"));
+//		}
+//		return result;
+//	}
 
 
 	public int insertIndex(Map<String, Integer> indexParam) {
-		// TODO Auto-generated method stub
 		return sqlSession.insert("movelineMapper.insertIndex",indexParam);
 	}
 
 
-	public int insertTheRest(Map<String, String> param) {
-		int result = sqlSession.insert("movelineMapper.insertTheRest",param);
-		if(result>0) {
-			return Integer.parseInt(param.get("movelineNo"));
-		}
-		return 0;
+	// 코스 삽입
+	public int insertMoveline(Map<String, String> param) {
+		int result = sqlSession.insert("movelineMapper.insertMoveline", param);
+		if (result > 0)
+			result = Integer.parseInt(param.get("movelineNo"));
+		return result;
 	}
+
+	// 코스 이미지 삽입
+	public int insertMoveLineImageList(List<MoveLineImage> moveLineImageList) {
+		return sqlSession.insert("movelineMapper.insertMovelineImageList", moveLineImageList);
+	}
+
+
+	public int insertHashTag(Map<String, Object> param) {
+		return sqlSession.insert("movelineMapper.insertHash", param);
+	}
+
+
+
+
 
 
 	

@@ -16,22 +16,6 @@ import edu.kh.bangbanggokgok.vo.board.MoveLineDetail;
 import edu.kh.bangbanggokgok.vo.hashTag.MoveLineHashTag;
 import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 
-/**
- * @author user
- *
- */
-/**
- * @author user
- *
- */
-/**
- * @author user
- *
- */
-/**
- * @author user
- *
- */
 public interface MoveLineService {
 
 //	List<String> selectMovelineList();
@@ -188,12 +172,17 @@ public interface MoveLineService {
 	int movelineBookmarkDelete(String loginNo, String movelineNo);
 
 
-	int insertMoveline(Map<String, String> param, int userNo);
+	
+	
+//	int insertMoveline(Map<String, String> param, int userNo);
 
 
 	int insertIndex(int[] indexArray, int movelineNumber);
 
-//	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, int userNo, String webPath);
+	int insertMoveline(Map<String, String> param, List<MultipartFile> imageList, String hashList, int userNo, String webPath, String folderPath) throws IOException;
+
+	// 코스 목록 즐겨찾기 확인용
+//	List<MoveLineBookmark> bookmarkCheck();
 
 	
 

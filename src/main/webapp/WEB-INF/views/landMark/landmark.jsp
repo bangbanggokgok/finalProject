@@ -11,7 +11,6 @@
   <c:set var="rankLandMarkList" value="${map.rankLandMarkList}">
   </c:set>
 </c:if>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -35,7 +34,6 @@
     <link rel="stylesheet" href="${contextPath}/resources/css/landmark/style.css" />
       <%-- <script>
       window.onload=function(){
-
         const num = 1;
         let locationNum = 100;
         let ismainchecked = localStorage.getItem("ismaincheck") || 'false'
@@ -68,44 +66,44 @@
           <%-- <li class="slide slideHtml">
         </li> --%>
           <li class="slide">
-            <img
+            <a href="#">
+              <img
               class="slide-img"
-              src="${contextPath}/resources/images/landmark/landmark2.jpg"
+              src="${contextPath}/resources/images/landmark/DDP3.jpg"
               alt="first_img"
-            />
+              />
+            </a>
           </li>
           <li class="slide">
-            <img
+            <a href="#">
+              <img
               class="slide-img"
-              src="${contextPath}/resources/images/landmark/landmark3.jpg"
+              src="${contextPath}/resources/images/landmark/경복궁4.jpg"
               alt="first_img"
-            />
+              />
+            </a>
           </li>
           <li class="slide">
-            <img
+            <a href="#">
+              <img
               class="slide-img"
-              src="${contextPath}/resources/images/landmark/landmark4.jpg"
+              src="${contextPath}/resources/images/landmark/별마당.jpg"
               alt="first_img"
-            />
+              />
+            </a>
           </li>
           <li class="slide">
-            <img
+            <a href="#">
+              <img
               class="slide-img"
-              src="${contextPath}/resources/images/landmark/landmark5.jpg"
+              src="${contextPath}/resources/images/landmark/안목해변.jpg"
               alt="first_img"
-            />
+              />
+            </a>
           </li>
-          <li class="slide">
-            <img
-              class="slide-img"
-              src="${contextPath}/resources/images/landmark/landmark6.jpg"
-              alt="first_img"
-            />
-          </li> 
         </ul>
         <p class="pager">
         </p>
-
         <a href="#" id="prev">
           <i class="fa-solid fa-angle-left"></i>
         </a>
@@ -114,7 +112,6 @@
         </a>
       </div>
     </section>
-
     <section class="gallery">
       <div class="container">
         <div class="tit">
@@ -163,7 +160,6 @@
             </li>
           </ul>
         </div>
-
         <ol class="image-list grid-view landMarkHtml" id="landMakrList">
         <c:if test="${!empty landmarkList}">
          <c:forEach var="landmark" items="${landmarkList}">

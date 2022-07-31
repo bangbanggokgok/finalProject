@@ -5,17 +5,17 @@ const bookmarkBtn2 = document.querySelectorAll('.btn-bookmark2');
 const bookmarkOn2 = document.querySelectorAll(".bookmarkOn2");
 const bookmarkOff2 = document.querySelectorAll(".bookmarkOff2");
 
-/*for(let i of bookmarkBtn2){
-  i.addEventListener('click', () =>{
-      bookmarkOn2.classList.toggle('active');
-      bookmarkOff2.classList.toggle('d-none');
-  });
-}*/
+// for(let i of bookmarkBtn2){
+//   i.addEventListener('click', () =>{
+//       bookmarkOn2.classList.toggle('active');
+//       bookmarkOff2.classList.toggle('d-none');
+//   });
+// }
 
 for (let i = 0; i < bookmarkBtn2.length; i++) {
     bookmarkBtn2[i].addEventListener("click", function () {
-        bookmarkOn2[i].classList.toggle('active');
-        bookmarkOff2[i].classList.toggle('d-none');
+        bookmarkOn2[i].classList.toggle('d-none');
+        bookmarkOff2[i].classList.toggle('active');
     });
 }
 
@@ -23,57 +23,60 @@ for (let i = 0; i < bookmarkBtn2.length; i++) {
 
 (() => {
     if ($(".bookmarkValue2").val() == 0) {
-        $(".bookmarkOff2").toggleClass("hide");
-    }
+        $(".bookmarkOn").toggleClass("d-none");
+        $(".bookmarkOff").toggleClass("active");    }
 
     if ($(".bookmarkValue2").val() == 1) {
         $(".bookmarkOn2").toggleClass("active");
-    }
+        $(".bookmarkOff2").toggleClass("d-none");    }
 })();
 
-$(".btn-bookmark2").click(function () {
 
-    if (userNo == "") {
-        alert("로그인 후 이용하세요.");
-        return;
-    }
-    if (userNo != 0) {
-        movelineNo = this.value;
-        if ($(this).find(".bookmarkValue2").val() == 0) {
-            $.ajax({
-                url: contextPath + "/moveline-main/list/bookmarkSet/" + movelineNo,
-                data: { "userNo": userNo },
-                type: "get",
-                success: function (result) {
-                    result = result * 1
-                    if (result == '1') {
-                        alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
-                        $(".bookmarkOn2").toggleClass("hide");
-                        $(".bookmarkOff2").toggleClass("hide");
-                        $(".bookmarkValue2").val('1');
-                    };
-                }
-            });
+for (let i = 0; i < bookmarkBtn2.length; i++) {
+
+    $(bookmarkBtn2[i]).click(function () {
+
+        if (userNo == "") {
+            alert("로그인 후 이용하세요.");
+            return;
         }
-        else {
-            alert("movelineNo");
-            if (confirm("즐겨찾기를 삭제하시겠습니까?")) {
+        if (userNo != 0) {
+            movelineNo = this.value;
+            if ($(this).find(".bookmarkValue2").val() == 0) {
                 $.ajax({
-                    url: contextPath + "/moveline-main/list/bookmarkDelete/" + movelineNo,
+                    url: contextPath + "/moveline-main/list/bookmarkSet/" + movelineNo,
                     data: { "userNo": userNo },
                     type: "get",
                     success: function (result) {
-                        alert("해당 랜드마크를 즐겨찾기 목록에서 삭제하였습니다.");
-                        $(".bookmarkOn2").toggleClass("hide");
-                        $(".bookmarkOff2").toggleClass("hide");
-                        $(".bookmarkValue2").val('0');
+                        result = result * 1
+                        if (result == '1') {
+                            alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
+                            $(".bookmarkOn2").toggleClass("active");
+                            $(".bookmarkOff2").toggleClass("d-none");
+                            $(".bookmarkValue2").val('1');
+                        };
                     }
-                })
+                });
+            }
+            else {
+                alert("movelineNo");
+                if (confirm("즐겨찾기를 삭제하시겠습니까?")) {
+                    $.ajax({
+                        url: contextPath + "/moveline-main/list/bookmarkDelete/" + movelineNo,
+                        data: { "userNo": userNo },
+                        type: "get",
+                        success: function (result) {
+                            alert("해당 랜드마크를 즐겨찾기 목록에서 삭제하였습니다.");
+                            $(".bookmarkOn2").toggleClass("d-none");
+                            $(".bookmarkOff2").toggleClass("active");
+                            $(".bookmarkValue2").val('0');
+                        }
+                    })
+                }
             }
         }
-    }
-});
-
+    });
+}
 
 
 // function setBookmark(movelineNo) {
@@ -116,11 +119,13 @@ bookmarkBtn.addEventListener("click", () => {
 
 (() => {
     if ($(".bookmarkValue").val() == 0) {
-        $(".bookmarkOff").toggleClass("hide");
+        $(".bookmarkOn").toggleClass("d-none");
+        $(".bookmarkOff").toggleClass("active");
     }
 
     if ($(".bookmarkValue").val() == 1) {
-        $(".bookmarkOn").toggleClass("hide");
+        $(".bookmarkOn").toggleClass("active");
+        $(".bookmarkOff").toggleClass("d-none");
     }
 })();
 
@@ -142,8 +147,8 @@ $(".btn-bookmark").click(() => {
                     result = result * 1
                     if (result == '1') {
                         alert("해당 랜드마크를 즐겨찾기 목록에 추가하였습니다.");
-                        $(".bookmarkOn").toggleClass("hide");
-                        $(".bookmarkOff").toggleClass("hide");
+                        $(".bookmarkOn").toggleClass("active");
+                        $(".bookmarkOff").toggleClass("d-none");
                         $(".bookmarkValue").val('1');
                     };
                 }
@@ -157,8 +162,8 @@ $(".btn-bookmark").click(() => {
                     type: "get",
                     success: function (result) {
                         alert("해당 랜드마크를 즐겨찾기 목록에서 삭제하였습니다.");
-                        $(".bookmarkOn").toggleClass("hide");
-                        $(".bookmarkOff").toggleClass("hide");
+                        $(".bookmarkOn").toggleClass("d-none");
+                        $(".bookmarkOff").toggleClass("active");
                         $(".bookmarkValue").val('0');
                     }
                 })
