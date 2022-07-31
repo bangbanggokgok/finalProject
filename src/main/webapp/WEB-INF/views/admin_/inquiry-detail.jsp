@@ -71,7 +71,7 @@
             
         </section>
     </section>
-
+    <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
 </body>
     <script>
         const contextPath = "${contextPath}";
