@@ -43,7 +43,7 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-            <a href="/bangbanggokgok/landmark-main/detail/101/231">
+            <a href="/FinalProject/landmark-main/detail/101/231">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Busan.jpg"
@@ -56,7 +56,7 @@
           
         </div>
         <div class="carousel-item">
-            <a href="/bangbanggokgok/landmark-main/detail/100/236">
+            <a href="/FinalProject/landmark-main/detail/100/236">
                 <img
                 class="img-back"
                 src="${contextPath}/resources/images/main/Cheongwadae.jpg"
@@ -69,7 +69,7 @@
             </a>
         </div>
         <div class="carousel-item">
-            <a href="/bangbanggokgok/landmark-main/detail/103/270">
+            <a href="/FinalProject/landmark-main/detail/103/270">
                 <img
                 src="${contextPath}/resources/images/main/Gangneung.jpg"
                 class="d-block w-100 img-back"
