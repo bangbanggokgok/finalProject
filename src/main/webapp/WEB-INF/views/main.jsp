@@ -175,7 +175,7 @@
           지금 바로 자신만의 코스와 랜드마크를 소개해보세요!<br/>
         </h2>
         <span class="text-muted">방방곡곡 어디든 GO!</span>
-        <a href="moveline-main/write/insert">
+        <a href="moveline-main/list/write?cp=1">
             <button type="button" class="btn btn-outline-dark">코스 작성하기</button>
         </a>
         <a href="landmark-main/write/insert">
