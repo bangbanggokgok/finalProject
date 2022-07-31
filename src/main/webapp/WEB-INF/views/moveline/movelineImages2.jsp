@@ -30,16 +30,16 @@
           
         </ul>
 
-        <p class="pager2" style="visibility:hidden">
+        <p class="pager2">
         </p>
 
-        <a class="prev2" style="visibility:hidden">
+        <a class="prev2">
           <li class="fa-solid fa-angle-left"></li>
         </a>
-        <a class="next2" style="visibility:hidden">
+        <a class="next2">
           <li class="fa-solid fa-angle-right"></li>
         </a>
-        <div style="visibility:hidden">
+        <div>
         <li class="landContent"></li>
         </div>
     </div>

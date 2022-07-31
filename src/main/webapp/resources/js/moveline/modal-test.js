@@ -1,6 +1,6 @@
 const modal2 = document.getElementById("modal2")
 
-const loremIpsum = document.getElementById("lorem-ipsum")
+const loremIpsum = document.getElementById("lorem-ipsum2")
     .then(response => response.text())
     .then(result => loremIpsum.innerHTML = result)
 

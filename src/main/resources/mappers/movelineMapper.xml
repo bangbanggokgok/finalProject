@@ -254,15 +254,8 @@
 		FROM (SELECT * FROM MOVELINE_BOARD
 		JOIN MOVELINE_HASH USING(ML_NO)
 		ORDER BY ML_NO DESC) A
-
-
-		<if test='hashtag != null and hashtag != ""'>
-
-			WHERE ML_HASH_NAME LIKE '%' || #{hashtag} || '%'
-
-		</if>
-
-		<!-- WHERE ML_HASH_NAME LIKE '%' || #{MLHashTag} || '%' -->
+		WHERE ML_DELETE_DT IS NULL
+		AND ML_HASH_NAME LIKE '%' || #{hashtag} || '%'
 	</select>
 
 
@@ -296,10 +289,8 @@
 		AND ML_IMG_LEVEL = 0) THUMBNAIL
 		FROM MOVELINE_BOARD A
 
-		<if test='theme != null and theme != ""'>
-			WHERE ML_THEME LIKE '%' || #{theme} || '%'
-		</if>
-		AND ML_DELETE_DT IS NULL
+		WHERE ML_DELETE_DT IS NULL
+		AND ML_THEME LIKE '%' || #{theme} || '%'
 	</select>
 
 	<!-- 코스 테마별 목록 조회 -->
@@ -317,8 +308,7 @@
 		WHERE A.ML_NO = ML_IMG.ML_NO
 		AND ML_IMG_LEVEL = 0) THUMBNAIL
 		FROM MOVELINE_BOARD A
-		WHERE ML_DELETE_DT IS
-		NULL
+		WHERE ML_DELETE_DT IS NULL
 	</select>
 
 	<!-- 전체 코스 수 조회 -->

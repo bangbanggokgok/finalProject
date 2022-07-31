@@ -157,6 +157,7 @@ h1 {
 .samples {
   border: 1px solid #ccc;
   margin-top: 20px;
+  width: auto;
   width: 350px;
   /* position: absolute; */
   display: inline-block;
