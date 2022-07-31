@@ -92,6 +92,7 @@
         </section>
     </div>
     <jsp:include page="/WEB-INF/views/common/footer.jsp"></jsp:include>
+    <script src="${contextPath}/resources/js/common/nav.js"></script>
 </body>
 
 </html>

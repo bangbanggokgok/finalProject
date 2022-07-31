@@ -131,6 +131,7 @@
         JOIN ML_IMG USING(ML_NO)
  		WHERE USER_NO = #{userNo}
  		AND ML_IMG_LEVEL = 0
+ 		AND ML_DELETE_DT IS NULL
  		ORDER BY ML_NO
  	</select>
  	
