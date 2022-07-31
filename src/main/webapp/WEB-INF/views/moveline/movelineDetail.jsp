@@ -51,7 +51,6 @@
                         </div>
                         <div id="top-bottom">
                         
-<<<<<<< HEAD
                             <c:choose>
                                 <c:when test="${loginUser.userNo == movelineDetail.userNo}">
 
@@ -68,17 +67,6 @@
                                     </div>
                                 </c:otherwise>
                             </c:choose>
-=======
-                            <c:if test="${!empty loginUser}">
-                                <div class="btn-area">
-                                    <c:if test="${loginUser.userNo == movelineDetail.userNo || loginUser.adminFlag == 'Y'}"> 
-                                        <button type="button" onclick="location.href='${contextPath}/moveline-main/list/write?cp=${pagination.currentPage}'">수정하기</button>
-                                        <button id="deleteBtn" type="button" value="${movelineNo}">삭제하기</button>
-                                    </c:if>
-                                        <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
-                                </div>
-                            </c:if>
->>>>>>> origin/aotthf
                             <div class="btn-area">
                                 <button type="button" id="goToList">목록으로</button>
                             </div>
