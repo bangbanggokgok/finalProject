@@ -35,7 +35,7 @@
                     </div>
                     
                     <div id="top-middle">
-                        <h1>${movelineDetail.movelineTitle} ${movelineNo}</h1>
+                        <h1>${movelineDetail.movelineTitle}</h1>
                     </div>
 
 
@@ -127,8 +127,6 @@
 
                     <div id="moveline-content">
                         ${movelineDetail.movelineContent}
-                        ${movelineDetail.userNo}
-                        ${loginUserNo}
                     </div>
                     <jsp:include page="/WEB-INF/views/moveline/movelineImages.jsp"></jsp:include>
                     
