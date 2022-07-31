@@ -71,7 +71,6 @@
                                     <img class='bookmarkOn' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기on">
                                     <input class="bookmarkValue" type="hidden" value = "${checkBookmark}" id="${movelineNo}">
                                 </span>
-                             
                             </button>
                         </div>
                         <div id="top-bottom">
@@ -174,7 +173,9 @@
                             <c:set var="landmarkName" value="${landmarkDetail.landMarkName}"/>
                             <c:set var="landmarkNo" value="${landmarkDetail.landMarkNo}"/>
                             <c:set var="landMarkContent" value="${landmarkDetail.landMarkContent}"/>
-                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" name="${landMarkContent}">${landmarkName}</button>
+                            <c:set var="landMarkX" value="${landmarkDetail.landMarkX}"/>
+                            <c:set var="landMarkY" value="${landmarkDetail.landMarkY}"/>
+                                <button type="button" id="btn-modal2" class="landmark showContent" value="${landmarkNo}" name="${landMarkContent}">${landmarkName} ${landMarkX}</button>
                         </c:forEach>
                     </ul>
                     
@@ -216,39 +217,52 @@
 
         $( function() {
             $( ".landmark-list" ).sortable();
+            const landmarkDetailLength = "${fn:length(landMarkJson)}";
+            var landMarkXList = new Array();
+            var landMarkYList = new Array();
+            <c:forEach var="detail" items="${landMarkJson}">
+                landMarkXList.push("${detail.landMarkX}");
+                landMarkYList.push("${detail.landMarkY}");
+            </c:forEach>
+            var averageX = 0;
+            var averageY = 0;
+            var positions = new Array();
+            var linePath = new Array();
+
+            for(let i=0;i<landMarkXList.length;i++) {
+                averageX += parseFloat(landMarkXList[i]);
+                averageY += parseFloat(landMarkYList[i]);
+                positions.push({"latlng":new kakao.maps.LatLng(parseFloat(landMarkYList[i]),parseFloat(landMarkXList[i]))});
+                linePath.push(new kakao.maps.LatLng(parseFloat(landMarkYList[i]),parseFloat(landMarkXList[i])));
+            }
             
-            // alert("${landmarkDetail[0].landMarkX}")
-            // alert("${landmarkDetail[0].landMarkY}")
-            
+
             var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
                 mapOption = { 
-                    center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-                    level: 3 // 지도의 확대 레벨
+                    // center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+                    center: new kakao.maps.LatLng(averageY/landMarkYList.length,averageX/landMarkXList.length), // 지도의 중심좌표
+                    level: 7 // 지도의 확대 레벨
                 };
 
             var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
-            
+
             // 마커를 표시할 위치와 title 객체 배열입니다 
-            var positions = [
-                {
-                    title: '카카오', 
-                    latlng: new kakao.maps.LatLng(33.450705, 126.570677)
-                },
-                {
-                    title: '생태연못', 
-                    latlng: new kakao.maps.LatLng(33.450936, 126.569477)
-                },
-                {
-                    title: '텃밭', 
-                    latlng: new kakao.maps.LatLng(33.450879, 126.569940)
-                }
-            ];
+            // var positions = [
+            //     {
+            //         latlng: new kakao.maps.LatLng(33.450705, 126.570677)
+            //     },
+            //     {
+            //         latlng: new kakao.maps.LatLng(33.450936, 126.569477)
+            //     },
+            //     {
+            //         latlng: new kakao.maps.LatLng(33.450879, 126.569940)
+            //     }
+            // ];
 
             // 마커 이미지의 이미지 주소입니다
             var imageSrc = "https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markerStar.png"; 
                 
             for (var i = 0; i < positions.length; i ++) {
-                
                 // 마커 이미지의 이미지 크기 입니다
                 var imageSize = new kakao.maps.Size(24, 35); 
                 
@@ -259,17 +273,16 @@
                 var marker = new kakao.maps.Marker({
                     map: map, // 마커를 표시할 지도
                     position: positions[i].latlng, // 마커를 표시할 위치
-                    title : positions[i].title, // 마커의 타이틀, 마커에 마우스를 올리면 타이틀이 표시됩니다
                     image : markerImage // 마커 이미지 
                 });
             }
 
             // 선을 구성하는 좌표 배열입니다. 이 좌표들을 이어서 선을 표시합니다
-            var linePath = [
-                new kakao.maps.LatLng(33.450705, 126.570677),
-                new kakao.maps.LatLng(33.450936, 126.569477),
-                new kakao.maps.LatLng(33.450879, 126.569940) 
-            ];
+            // var linePath = [
+            //     new kakao.maps.LatLng(33.450705, 126.570677),
+            //     new kakao.maps.LatLng(33.450936, 126.569477),
+            //     new kakao.maps.LatLng(33.450879, 126.569940) 
+            // ];
 
             // 지도에 표시할 선을 생성합니다
             var polyline = new kakao.maps.Polyline({

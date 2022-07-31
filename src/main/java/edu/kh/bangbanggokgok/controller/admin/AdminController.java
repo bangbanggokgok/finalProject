@@ -53,7 +53,7 @@ public class AdminController {
 
 	// 공지 작성
 	@GetMapping("/notice/{mode}")
-	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false) int noticeNo) {
+	public String noticeWriteForm(@PathVariable String mode, Model model, @RequestParam(value = "noticeNo", required = false, defaultValue = "0") int noticeNo) {
 		
 		if(mode.equals("update")) { // 수정
 			NoticeDetail detail = noticeService.selectNoticeDetail(noticeNo);

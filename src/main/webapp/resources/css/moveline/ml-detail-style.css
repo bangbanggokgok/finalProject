@@ -75,15 +75,7 @@ ul {
   width: 25px;
   height: 25px;
 }
-.bookmarkOn {
-  display: none;
-}
-.bookmarkOn.active {
-  display: inline-block;
-}
-.bookmarkOff.d-none {
-  display: none;
-}
+
 .icon-bookmark:hover {
   cursor: pointer;
 }
@@ -459,24 +451,29 @@ ul {
 .bookmarkOn {
   display: none;
 }
-/* .bookmarkOn2 {
-  display: none;
-} */
 .bookmarkOn.active {
   display: inline-block;
 }
-/* .bookmarkOn2.active {
+.bookmarkOn.d-none {
+  display: none;
+}
+.bookmarkOff {
+  display: none;
+}
+.bookmarkOff.active {
   display: inline-block;
-} */
+}
 .bookmarkOff.d-none {
   display: none;
 }
-.bookmarkOn.hide {
+/* .bookmarkOn2 {
   display: none;
-}
-.bookmarkOff.hide {
-  display: none;
-}
+} */
+
+/* .bookmarkOn2.active {
+  display: inline-block;
+} */
+
 /* .bookmarkOff2.d-none {
   display: none;
 } */
