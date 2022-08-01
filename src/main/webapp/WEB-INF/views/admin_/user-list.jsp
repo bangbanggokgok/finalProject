@@ -23,8 +23,8 @@
         <h1>회원관리</h1>
         <div class="list">
             <span class="category"><a id="all" href="${contextPath}/admin/user/list">전체</a></span>
-            <div class="category" id="register" value="register">활동회원</div>
-            <div class="category" id="secession" value="secession">탈퇴회원</div>
+            <div class="category register type" value="register">활동회원</div>
+            <div class="category secession type" value="secession">탈퇴회원</div>
         </div>
 
         <div>
@@ -60,7 +60,7 @@
         <div class="pagination-area">
 
                 <c:set var="url" value="${list}?cp="/>
-                <ul class="pagination" id="pagination">
+                <ul class="pagination">
                     <li><a href="${url}1"><i class="fal fa-angle-double-left"></i></a></li>
                     <li><a href="${url}${pagination.prevPage}"><i class="fal fa-angle-left"></i></a></li>
 

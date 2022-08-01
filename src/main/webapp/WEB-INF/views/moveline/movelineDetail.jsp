@@ -58,10 +58,14 @@
                                         <div class="btn-area">
                                             <button type="button" onclick="location.href='${contextPath}/moveline-main/list/write?cp=${pagination.currentPage}'">수정하기</button>
                                             <button id="deleteBtn" type="button" value="${movelineNo}">삭제하기</button>
-                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
                                         </div>
                                     </c:if>
                                 </c:when>
+                                <c:otherwise>
+                                    <div class="btn-area">
+                                        <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
+                                    </div>
+                                </c:otherwise>
                             </c:choose>
                             <div class="btn-area">
                                 <button type="button" id="goToList">목록으로</button>
@@ -268,6 +272,49 @@
 
             // 지도에 선을 표시합니다 
             polyline.setMap(map);  
+
+            function getDistanceFromLatLonInKm(lat1,lng1,lat2,lng2) {
+                function deg2rad(deg) {
+                    return deg * (Math.PI/180)
+                }
+
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2-lat1);  // deg2rad below
+                var dLon = deg2rad(lng2-lng1);
+                var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLon/2) * Math.sin(dLon/2);
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                var d = R * c; // Distance in km
+                return d;
+            }
+
+            function displayCircleDot(position, distance) {
+
+                // 클릭 지점을 표시할 빨간 동그라미 커스텀오버레이를 생성합니다
+                var circleOverlay = new kakao.maps.CustomOverlay({
+                    content: '<span class="dot"></span>',
+                    position: position,
+                    zIndex: 1
+                });
+
+                // 지도에 표시합니다
+                circleOverlay.setMap(map);
+
+                if (distance > 0) {
+                    // 클릭한 지점까지의 그려진 선의 총 거리를 표시할 커스텀 오버레이를 생성합니다
+                    var distanceOverlay = new kakao.maps.CustomOverlay({
+                        content: '<div class="dotOverlay">거리 <span class="number">' + distance + '</span>m</div>',
+                        position: position,
+                        yAnchor: 1,
+                        zIndex: 2
+                    });
+
+                    // 지도에 표시합니다
+                    distanceOverlay.setMap(map);
+                }
+
+                // 배열에 추가합니다
+                dots.push({circle:circleOverlay, distance: distanceOverlay});
+            }
         } );
         // const contextPath = ${contextPath};
     </script>

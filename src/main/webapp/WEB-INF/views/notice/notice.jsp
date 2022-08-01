@@ -21,14 +21,9 @@
     <div class="board">
         <h1>공지사항</h1>
         <div class="list">
-            <div class="category" value="all"><a id="all" href="${contextPath}/notice/list">전체</a></div>
-            <div class="category type" id="notice" value="notice" onclick="noticeType(1)">공지</div>
-            <div class="category type" id="event" value="event" onclick="noticeType(1)">이벤트</div>
-            <%-- <a class="category type" id="notice" onclick="noticeType()">notice</a>
-            <a class="category type" id="notice" onclick="noticeType()">event</a> --%>
-            <%-- <a class="category" id="notice">notice</a> --%>
-            <%-- <a class="category" id="notice" >event</a> --%>
-            <%-- <div class="category" id="event" value="event" onclick="noticeType(2)">이벤트</div> --%>
+            <div class="category" value="all"><a class ="all" id="all" href="${contextPath}/notice/list">전체</a></div>
+            <div class="category type notice"  value="notice">공지</div>
+            <div class="category type event"  value="event">이벤트</div>
         </div>
 
         <div  id="allPage">

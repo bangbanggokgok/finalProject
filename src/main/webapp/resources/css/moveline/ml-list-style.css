@@ -99,6 +99,10 @@ h1 {
   cursor: pointer;
 }
 
+.thumbnail>img{
+  width: 500px;
+}
+
 div > img {
   max-width: 200px;
   max-height: 150px;

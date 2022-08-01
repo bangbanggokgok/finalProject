@@ -55,12 +55,12 @@
 				<div style="display: none;" id="choiceFieldsContainer">
 					<div class="choiceFeild">
 						<div class="choiceFields" id="notice">
-							<div style="color: #333333;" class="title" onclick="noticeType(0)">공지</div>
+							<div style="color: #333333;" class="title">공지</div>
 						</div>
 					</div>
 					<div class="choiceFeild">
 						<div class="choiceFields" id="event">
-							<div style="color: #333333" class="title" onclick="noticeType(1)">이벤트</div>
+							<div style="color: #333333" class="title">이벤트</div>
 						</div>
 					</div>
 				</div>

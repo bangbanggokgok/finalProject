@@ -157,7 +157,7 @@
         </a>
       </div>
       <div class="col-lg-3 col-md-6 flex">
-        <a href ="moveline-main/list/location/100">
+        <a href ="moveline-main/detail/219">
             <div class="card" style="width: 18rem">
                 <img src="${contextPath}/resources/images/main/seoul.jpg" class="card-img-top" alt="..." />
                 <div class="card-body">

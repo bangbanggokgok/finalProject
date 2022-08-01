@@ -56,7 +56,15 @@
                     </c:when>
 
                     <c:otherwise>
-                        <div class="answerName">${detail.managerName}</div>    
+                        <div id="user-area">
+                            <c:if test="${empty detail.userProfile}">
+                                <img src="${contextPath}/resources/images/user.png" id="profile">
+                            </c:if>
+                            <c:if test="${!empty detail.userProfile}">
+                                <img src="${contextPath}${detail.userProfile}" id="profile">
+                            </c:if>
+                            <div class="answerName">${detail.managerName}</div>    
+                        </div>
                         <div class="answer">${detail.questionAnswer}</div>    
                     </c:otherwise>
                 </c:choose>
