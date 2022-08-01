@@ -3,6 +3,8 @@
   margin: 0;
   padding: 0;
   font-family: "Nunito", sans-serif;
+  /* font: 20px/1.5 "Helvetica", Arial, sans-serif; */
+  -webkit-font-smoothing: antialised;
 }
 /* body{
     background-color: hotpink;
