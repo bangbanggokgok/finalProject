@@ -76,7 +76,7 @@
                                             <strong>${moveline.movelineTitle}</strong>
                                             <ul>
                                                 <li>지역 : ${moveline.locationName}</li>
-                                                <li>총거리 : ${moveline.landMarkX}</li>
+                                                <%-- <li>총거리 : ${moveline.landMarkX}</li> --%>
                                             </ul>
                                         </a>
 
