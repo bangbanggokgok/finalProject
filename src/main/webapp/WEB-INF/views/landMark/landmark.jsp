@@ -75,7 +75,7 @@
             </a>
           </li> --%>
           <li class="slide">
-            <a href="/FinalProject/landmark-main/detail/100/248">
+            <a href="${contextPath}/landmark-main/detail/100/248">
               <img
               class="slide-img"
               src="${contextPath}/resources/images/landmark/별마당.jpg"
@@ -84,7 +84,7 @@
             </a>
           </li>
           <li class="slide">
-            <a href="/FinalProject/landmark-main/detail/100/236">
+            <a href="${contextPath}/landmark-main/detail/100/236">
               <img
               class="slide-img"
               src="${contextPath}/resources/images/landmark/a3.jpg"
@@ -93,7 +93,7 @@
             </a>
           </li>
           <li class="slide">
-            <a href="/FinalProject/landmark-main/detail/109/292">
+            <a href="${contextPath}/landmark-main/detail/109/292">
               <img
               class="slide-img"
               src="${contextPath}/resources/images/landmark/안목해변.jpg"

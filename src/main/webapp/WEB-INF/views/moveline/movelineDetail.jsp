@@ -62,9 +62,11 @@
                                     </c:if>
                                 </c:when>
                                 <c:otherwise>
-                                    <div class="btn-area">
-                                        <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
-                                    </div>
+                                    <c:if test="${!empty loginUser}"> 
+                                        <div class="btn-area">
+                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
+                                        </div>
+                                    </c:if>
                                 </c:otherwise>
                             </c:choose>
                             <div class="btn-area">
@@ -90,8 +92,8 @@
                             </li>
                         
                             <li class="distance">
-                                <span>코스 총 거리</span>
-                                <span>87km</span>
+                                <%-- <span>코스 총 거리</span>
+                                <span>87km</span> --%>
                             </li>
                             <div id="moveline-hashtags">
                                 <%-- <div></div> --%>
