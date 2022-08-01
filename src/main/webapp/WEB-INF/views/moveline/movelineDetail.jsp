@@ -115,8 +115,8 @@
                             </li>
                         
                             <li class="distance">
-                                <span>코스 총 거리</span>
-                                <span>87km</span>
+                                <%-- <span>코스 총 거리</span>
+                                <span>87km</span> --%>
                             </li>
                             <div id="moveline-hashtags">
                                 <%-- <div></div> --%>
