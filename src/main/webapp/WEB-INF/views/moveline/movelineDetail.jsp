@@ -75,29 +75,6 @@
                     </div>
                 </div>
                 
-                <div id="moveline-area">
-                <c:choose>
-                    <c:when test="${!empty movelineDetail.updateDate}"> 
-                        <div class="date">수정일 : ${movelineDetail.updateDate}</div>
-                    </c:when>
-                    <c:when test="${!empty movelineDetail.createDate}"> 
-                        <div class="date">작성일 : ${movelineDetail.createDate}</div>
-                    </c:when>
-                </c:choose>
-                    <div id="schedule-info">
-                        <ul class="schedule">
-
-                            <li class="location-detail">
-                                <span>
-                                    <i class="fa-solid fa-car-side"></i>
-                                    <%-- <img src="${contextPath}/resources/images/movelineDetail/location.png" alt=""> --%>
-                                </span>
-                                <span class=loca-wrap>
-                                    <div class="loca1">지역</div>
-                                    <div class="loca2">${movelineDetail.locationName}</div>
-                                </span>
-                            </li>
-
 
                             <li class="theme-detail">
                                 <span>
