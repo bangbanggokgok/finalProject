@@ -62,11 +62,9 @@
                                     </c:if>
                                 </c:when>
                                 <c:otherwise>
-                                    <c:if test="${!empty loginUser}"> 
-                                        <div class="btn-area">
-                                            <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
-                                        </div>
-                                    </c:if>
+                                    <div class="btn-area">
+                                        <button type="button" id="reportMoveline" onclick="location.href='../../report/moveline/${movelineNo}'">신고하기</button>
+                                    </div>
                                 </c:otherwise>
                             </c:choose>
                             <div class="btn-area">
@@ -77,6 +75,29 @@
                     </div>
                 </div>
                 
+                <div id="moveline-area">
+                <c:choose>
+                    <c:when test="${!empty movelineDetail.updateDate}"> 
+                        <div class="date">수정일 : ${movelineDetail.updateDate}</div>
+                    </c:when>
+                    <c:when test="${!empty movelineDetail.createDate}"> 
+                        <div class="date">작성일 : ${movelineDetail.createDate}</div>
+                    </c:when>
+                </c:choose>
+                    <div id="schedule-info">
+                        <ul class="schedule">
+
+                            <li class="location-detail">
+                                <span>
+                                    <i class="fa-solid fa-car-side"></i>
+                                    <%-- <img src="${contextPath}/resources/images/movelineDetail/location.png" alt=""> --%>
+                                </span>
+                                <span class=loca-wrap>
+                                    <div class="loca1">지역</div>
+                                    <div class="loca2">${movelineDetail.locationName}</div>
+                                </span>
+                            </li>
+
 
                             <li class="theme-detail">
                                 <span>
@@ -92,8 +113,8 @@
                             </li>
                         
                             <li class="distance">
-                                <%-- <span>코스 총 거리</span>
-                                <span>87km</span> --%>
+                                <span>코스 총 거리</span>
+                                <span>87km</span>
                             </li>
                             <div id="moveline-hashtags">
                                 <%-- <div></div> --%>
