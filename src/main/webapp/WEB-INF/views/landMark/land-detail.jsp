@@ -35,10 +35,10 @@
               <input class="bookmarkValue" type="hidden" value = ${checkBookmark}>
             </div>
             <%-- <a class="police" href=""> --%>
-            <%-- <div class="report" style="width:170px;">
+            <div class="report" style="width:170px;">
               <img src="${contextPath}/resources/images/landmark/신고.png" alt="" style="width: 25px;"/>
               <span style="letter-spacing:-3px">신고하기</span>
-            </div> --%>
+            </div>
             <%-- </a> --%>
           </div>
         </div>
