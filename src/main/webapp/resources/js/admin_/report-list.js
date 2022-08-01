@@ -1,9 +1,7 @@
 
-$("#wait").click(function () {
-    console.log("테스트");
+$(document).on("click","#wait",function(){
     if(confirm("신고처리 하시겠습니까?") == true){
         let reportNo = $(this).attr("value");
-        console.log(reportNo);
         $.ajax({
             url : contextPath + "/admin/report/situation",
             data : {"reportNo" : reportNo },
