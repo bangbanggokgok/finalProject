@@ -12,10 +12,6 @@
 		<id property="landMarkImageLV" column="LM_IMG_LEVEL" />
 	</resultMap>
 
-	<!-- <resultMap type="MoveLineImage" id="MoveLineImage_rm"> <id property="landMarkImageNo" 
-		column="ML_IMG_NO"/> <id property="landMarkNo" column="ML_RENAME"/> <id property="landMarkReName" 
-		column="ML_IMG_LEVEL"/> <id property="landMarkImageLV" column="LM_NO"/> </resultMap> -->
-
 	<!-- -->
 	<resultMap type="MoveLineTheme" id="MoveLineTheme_rm">
 		<id property="movelineNo" column="ML_NO" />
@@ -204,7 +200,6 @@
 	</select>
 
 
-
 	<!-- 특정 지역 전체 게시글 수 조회 -->
 	<select id="locationListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -258,16 +253,6 @@
 		AND ML_HASH_NAME LIKE '%' || #{hashtag} || '%'
 	</select>
 
-
-	<!-- 코스 즐겨찾기 -->
-	<!-- <insert id="bookmarkMoveline"> INSERT INTO BOOKMARK_ML VALUES (#{userNo}, 
-		#{movelineNo}) </insert> -->
-
-	<!-- 코스 즐겨찾기 목록 조회 -->
-	<!-- <select id="selectBookmarkList" resultMap="MoveLineBookmark_rm"> SELECT 
-		* FROM BOOKMARK_ML WHERE ML_NO = #{movelineNo} AND USER_NO = #{userNo} </select> -->
-
-
 	<!-- 특정 코스 테마 전체 수 조회 -->
 	<select id="themeListCount" resultType="_int">
 		SELECT COUNT(*)
@@ -293,14 +278,6 @@
 		AND ML_THEME LIKE '%' || #{theme} || '%'
 	</select>
 
-	<!-- 코스 테마별 목록 조회 -->
-	<!-- <select id="selectMovelineTheme" resultMap="MoveLineDetail_rm"> SELECT 
-		A.*, (SELECT ML_RENAME FROM ML_IMG WHERE A.ML_NO = ML_IMG.ML_NO AND ML_IMG_LEVEL 
-		= 0) THUMBNAIL FROM MOVELINE_BOARD A JOIN MOVELINE_HASH B USING(ML_NO) JOIN 
-		LOCATIONS C USING(LOCATION_TYPE) JOIN COORDINATE D USING(ML_NO) <if test='theme 
-		!= null and theme != ""'> WHERE ML_THEME LIKE '%' || #{theme} || '%' </if> 
-		</select> -->
-
 	<!-- 코스 전체 목록 조회 -->
 	<select id="selectAll" resultMap="MoveLineDetail_rm">
 		SELECT A.*,
@@ -317,9 +294,6 @@
 		FROM MOVELINE_BOARD
 
 		WHERE ML_DELETE_DT IS NULL
-<!-- 		<if test='selectAll != null and selectAll != ""'>
-
-		</if> -->
 	</select>
 
 
@@ -476,64 +450,5 @@
 			</foreach>
 		) A
 	</insert>
-	
-	
-	<!-- 여기부터 -->
-	<!-- <insert id=insertTheRest useGeneratedKeys="true">
-		<selectKey keyProperty="movelineNo" resultType="string" order="BEFORE">
-		INSERT INTO MOVELINE_BOARD VALUES
-		(SEQ_ML_NO.NEXTVAL, #{courseName},#{contents},DEFAULT,DEFAULT,DEFAULT,#{userNo},#{locationsValue},DEFAULT,DEFAULT)
-	</insert> -->
-	
-	<!-- <insert id="insertMoveline" useGeneratedKeys="true">
-		<selectKey keyProperty="movelineNo" resultType="string" order="BEFORE">
-			SELECT SEQ_ML_NO.NEXTVAL FROM DUAL
-		</selectKey>
-		INSERT INTO MOVELINE_BOARD VALUES
-		(#{movelineNo},#{courseName},#{contents},DEFAULT,DEFAULT,DEFAULT,#{userNo},#{locationsValue},DEFAULT,DEFAULT)
-	</insert> -->
-	
-	
-	<!-- <insert>
-		<selectKey keyProperty="seq" resultType="Integer", order="BEFORE">
-			SELECT MAX(SEQ) + 1 FROM MOVELINE_BOARD
-		</selectKey>
-		<foreach collection="list" index="index" item="item" open="INSERT ALL" seperator=" " close="SELECT 1 FROM DUAL"></foreach>
-			INTO MOVELINE_BOARD()
-	
-	</insert> -->
-	
-<!-- 	<insert id="insertMoveline" resultType="_int">
-		INSERT ALL
-		
-		INTO MOVELINE_BOARD(
-			ML_NO, ML_TITLE, ML_CONTENT,
-			ML_CREATE_DT, ML_UPDATE_DT,
-			ML_THEME, USER_NO, LOCATION_TYPE, ML_UPDATE_DT, READ_COUNT
-			)
-		VALUES(#{movelineNo}, #{courseName}, #{contents}, DEFAULT, DEFAULT, #{themeSelect}, #{userNo}, #{locationsValue}, DEFAULT, DEFAULT)
-		
-		INTO MOVELINE_HASH(
-			ML_HASH_NO, ML_HASH_NAME, ML_NO
-			)
-		VALUES (SEQ.ML_HASH_NO_NEXTVAL, #{hashTag}, #{movelineNo})
-	
-		INTO ML_IMG(
-			ML_IMG_NO, ML_RENAME, ML_IMG_LEVEL, ML_NO
-			)
-		VALUES (SEQ.ML_IMG_NO_NEXTVAL, #{movelineRename}, #{img.movelineLevel}, #{movelineNo})
-	
-		INTO COORDINATE(
-			ML_NO, LM_NO, LM_INDEX
-			)
-		VALUES(#{movelineNo},#{landmarkNo},#{indexNo})
-
-		SELECT * FROM DUAL;
-	</insert>
- -->
-	
-	
-	
-	
 
 </mapper>

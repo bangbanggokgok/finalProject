@@ -126,13 +126,13 @@
 											</div>
 
 											<div class="ml-detail-plus2">
-												<%-- <button type="button" class="btn-bookmark2" value="${moveline.movelineNo}">
+												<button type="button" class="btn-bookmark2" value="${moveline.movelineNo}">
 													<span class="icon-bookmark2">
 														<img class='bookmarkOff2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기off.png/" alt="즐겨찾기off">
 														<img class='bookmarkOn2' src="${contextPath}/resources/images/movelineDetail/즐겨찾기on.png/" alt="즐겨찾기on">
 														<input class="bookmarkValue2" type="hidden" value="${checkBookmark}" id="${moveline.movelineNo}">
 													</span>
-												</button> --%>
+												</button>
 											</div>
                                     </li>
                                 </ul>

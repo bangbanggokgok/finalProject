@@ -6,8 +6,6 @@
     if (thumbnail.length > 0) {
       // 목록에 썸네일 이미지가 있을 경우에만 이벤트 추가
   
-      // 애초에 모달이 없어요
-  
       const modal = document.querySelector(".modal");
       const modalImage = document.getElementById("modal-image");
       const modalClose = document.getElementById("modal-close");
