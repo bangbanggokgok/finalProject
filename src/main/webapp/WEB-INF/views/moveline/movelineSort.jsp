@@ -1,18 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 
-
-
-<%-- <c:forEach var="moveline" items="${preMoveLineList}">
-    <c:if test="${movelineNo == moveline.movelineNo}">
-        <c:set var="movelineTitle" value="${moveline.movelineTitle}" />
-        <c:set var="landMarkName" value="${moveline.landMarkName}" />
-        <c:set var="landMarkX" value="${moveline.landMarkX}" />
-        <c:set var="locationName" value="${moveline.locationName}" />
-        <c:set var="thumbnail" value="${moveline.thumbnail}" />
-    </c:if>
-</c:forEach> --%>
-
         <link rel="stylesheet" href="${contextPath}/resources/css/moveline/ml-sort-style.css">
         <jsp:include page="/WEB-INF/views/common/nav.jsp"></jsp:include>
 
@@ -30,7 +18,7 @@
                     	</c:if>
                         <li class="location-div" id="selectAll">전체</li>
                     </ul>
-                </div> 
+                </div>
         
                 <div id="course-area">
                     <h1>테마별</h1>
@@ -51,10 +39,6 @@
                     <h1>해시태그별</h1>
                     <div id="tags">
                         <ul id="tlist" class="t-list">
-                            <%-- <li>
-                                <a href="list/hashtag?hashTagName=${hashtag.MLHashTag}">해시태그1</a>
-                            </li> --%>
-
                             <c:if test="${!empty preHashTagList}">
                                 <c:forEach var="hashtag" items="${preHashTagList}">
                                     <li>
@@ -76,7 +60,6 @@
                                             <strong>${moveline.movelineTitle}</strong>
                                             <ul>
                                                 <li>지역 : ${moveline.locationName}</li>
-                                                <%-- <li>총거리 : ${moveline.landMarkX}</li> --%>
                                             </ul>
                                         </a>
 

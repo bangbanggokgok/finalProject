@@ -18,8 +18,6 @@ import edu.kh.bangbanggokgok.vo.image.MoveLineImage;
 
 public interface MoveLineService {
 
-//	List<String> selectMovelineList();
-
 	
 	/** 지역 구분 조회 서비스
 	 * @return locationList
@@ -54,21 +52,6 @@ public interface MoveLineService {
 	 * @return
 	 */
 	List<MoveLineDetail> selectMoveLineMain2();
-
-
-	/** 코스 즐겨찾기
-	 * @param moveLineBookMark
-	 * @return result
-	 */
-	// int movelineBookmark(MoveLineBookmark moveLineBookMark);
-
-
-	/** 코스 즐겨찾기 목록 조회
-	 * @param moveLineBookMark
-	 * @return result
-	 */
-	// List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark);
-
 
 	/** 코스 테마별 목록 조회
 	 * @param theme
@@ -155,7 +138,7 @@ public interface MoveLineService {
 
 	/** 코스 즐겨찾기 조회
 	 * @param sUserNo
-	 * @param	 sLandmarkNo
+	 * @param sLandmarkNo
 	 * @return
 	 */
 	int movelineBookmark(String userNo, String movelineNo);
@@ -168,14 +151,12 @@ public interface MoveLineService {
 	 */
 	int movelineBookmarkInsert(String loginNo, String movelineNo);
 
-
+	/** 코스 즐겨찾기 제거
+	 * @param loginNo
+	 * @param movelineNo
+	 * @return
+	 */
 	int movelineBookmarkDelete(String loginNo, String movelineNo);
-
-
-	
-	
-//	int insertMoveline(Map<String, String> param, int userNo);
-
 
 	int insertIndex(int[] indexArray, int movelineNumber);
 

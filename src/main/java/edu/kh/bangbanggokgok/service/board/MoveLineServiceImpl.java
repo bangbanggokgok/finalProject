@@ -42,13 +42,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.selectLocation();
 	}
 	
-
-//	@Override
-//	public List<String> selectMovelineList() {
-//		return null;
-//	}
-
-	
 	// 특정 지역 코스 목록 조회 서비스 구현
 	@Override
 	public Map<String, Object> selectLocationList(int cp, int locationNum) {
@@ -102,20 +95,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.selectMoveLineMain2();
 	}
 
-	
-//	// 코스 즐겨찾기
-//	@Override
-//	public int movelineBookmark(MoveLineBookmark moveLineBookMark) {
-//		return dao.bookmarkMoveline(moveLineBookMark);
-//	}
-//
-//	
-//	// 코스 즐겨찾기 목록 조회
-//	@Override
-//	public List<MoveLineBookmark> selectBookmarkList(MoveLineBookmark moveLineBookMark) {
-//		return dao.selectBookmarkList(moveLineBookMark);
-//	}
-
 
 	// 코스 테마별 목록 조회
 	@Override
@@ -125,8 +104,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 		Pagination pagination = new Pagination((int)paramMap.get("cp"), listCount);
 		
 		List<MoveLineList> listByTheme = dao.selectMovelineTheme(paramMap, pagination);
-		
-		System.out.println("themList : " + listByTheme);
 		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("pagination", pagination);
@@ -146,21 +123,12 @@ public class MoveLineServiceImpl implements MoveLineService{
 		
 		List<MoveLineList> listByAll = dao.selectMovelineTheme(paramMap, pagination);
 		
-		System.out.println("listByAll : " + listByAll);
-		
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("pagination", pagination);
 		map.put("movelineList", listByAll);
 
 		return map;
 	}
-
-
-//	@Override
-//	public List<String> selectMovelineList() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 
 	// 코스 상세 페이지 - 단건
@@ -253,12 +221,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 		return dao.movelineBookmarkDelete(infoA);
 	}
 
-	// 작동 됨 - 코스 사진, 해시태그, 테마 제외 값
-//	@Override
-//	public int insertMoveline(Map<String, String> param, int userNo) {
-//		param.put("userNo", Integer.toString(userNo));
-//		return dao.insertMoveline(param);
-//	}
 
 	@Override
 	public int insertIndex(int[] indexArray, int movelineNumber) {
@@ -274,7 +236,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 	}
 
 	
-	// 여기부터
 	@Override
 	public int insertMoveline(Map<String, String> param,
 							  List<MultipartFile> imageList,
@@ -285,27 +246,6 @@ public class MoveLineServiceImpl implements MoveLineService{
 		param.put("userNo", Integer.toString(userNo));
 		
 		int movelineNumber = dao.insertMoveline(param);
-//		movelineNumber.setLandMarkX(Double.parseDouble(param.get("lng")));
-//		movelineNumber.setLandMarkY(Double.parseDouble(param.get("lat")));
-		
-//		if(movelineNumber > 0) {
-//			
-//			for(int i = 0; i < hashList.size(); i++) {
-//				
-//				List<MoveLineHashTag> MoveLineHashTag = new ArrayList<MoveLineHashTag>();
-//				
-//				MoveLineHashTag hash = new MoveLineHashTag();
-//				
-//				hash.setMovelineNo(movelineNumber);
-//				
-//				int insertHash = dao.insertHashTag(MoveLineHashTag);
-//				
-//				System.out.println("hashtag : " + insertHash);
-//			}
-//			
-//		}
-		
-		System.out.println("movelineNumber : " + movelineNumber);
 		
 		if (movelineNumber > 0) {
 			
@@ -351,9 +291,7 @@ public class MoveLineServiceImpl implements MoveLineService{
 				}
 			}
 			
-//			System.out.println("hashList : " + hashList);
 			String[] hashArr = hashList.split("#");
-//			System.out.println("hashArr : " + hashArr[1]);
 			
 			for (int i = 1; i < hashArr.length; i++) {
 				Map<String, Object> hash = new HashMap<String, Object>();
